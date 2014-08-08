@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <!-- jquery.min.js インポート　-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <!-- jquery-ui.min.js インポート　-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <title>付箋</title>
+    <script>
+<!--//
+$(function() {
+  // #newボタンが押下された場合に、bodyタグ以下に不戦を追加する。
+  $('#new').click(function() {
+    $('<div class="sticky">Drag & Double Click!</div>')
+      .appendTo('body')
+      .draggable()
+      .dblclick(function() {
+        $(this).wrapInner('<textarea></textarea>')
+          .find('textarea')
+          .focus()
+          .select()
+          .blur(function() {
+            $(this).parent().html($(this).val());
+          });
+      });
+  });
+});
+//-->
+    </script>
+    <style>
+.sticky {
+  width: 250px;
+  height: 50px;
+  background-color: #aaf;
+  cursor: pointer;
+}
+textarea {
+  width: 100%;
+  height: 100%;
+}
+    </style>
+  </head>
+  <body>
+    <input id="new" type="button" value="new">
+  </body>
+</html>
