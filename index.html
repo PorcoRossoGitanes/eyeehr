@@ -12,16 +12,16 @@ $(function()
 	$( "#tabs" ).tabs();
 });
 $(function() {
-    $( "#draggable" ).draggable();
+    $( ".draggable" ).draggable();
   });
 <!--//
 ///メモを追加する。
 ///@param obj 呼出元
 function addMemo(i_obj) 
 {
-	var $element = $('<div>主訴：<input type=text value=' + i_obj.innerText + '></div>');
+	var $element = $('<li><div class=stamped>主訴：<input type=text value=' + i_obj.innerText + '></div></li>');
 	$element.draggable();
-	$('#note').append($element);
+	$('#chief_comprainment > ul').append($element);
 
 };
 //-->
@@ -70,7 +70,13 @@ function addMemo(i_obj)
 				<td valign="top">
 <!--カルテ-->
 <div id="note">
-	<!--button type="button" onclick="function(){ window.alert(this.json()); }"/-->
+	<!-- 主訴-->
+	<div id="chief_comprainment" class="draggable" style="border:solid 1px; width=50%">
+		<ul>
+			<li>いつから：</li>
+		</ul>
+	<div/>
+	<!--button type="button" onclick="function(){ window.alert($.getJson()); }"-->
 </div>
 <!--カルテ-->
 				</td>
