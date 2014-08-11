@@ -7,17 +7,25 @@
 		<script src="js/jquery-ui.js"></script>
 		<!--link rel="stylesheet" href="/resources/demos/style.css"-->
 		<script>
-$(function() {
+$(function() 
+{
 	$( "#tabs" ).tabs();
 });
+$(function() {
+    $( "#draggable" ).draggable();
+  });
 <!--//
 function addMemo(obj) 
 {
-	//window.alert(obj.innerText);
-	$('#note').append('<div>' + '<input type=text value=' + obj.innerText + '></div>');
+	var $element = $('<div id=draggable>主訴：<input type=text value=' + obj.innerText + '></div>');
+	$element.draggable();
+	$('#note').append($element);
+
 };
 //-->
 		</script>
+		<!-- スタイルシート -->
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<table border="1" width="1280" height="1024">
@@ -34,6 +42,7 @@ function addMemo(obj)
 		<li><a href="#tabs-test">検査</a></li>
 		<li><a href="#tabs-diagnosis">診断</a></li>
 		<li><a href="#tabs-prescription">処方</a></li>
+		<li><a href="#tabs-schema">シェーマ</a></li>
 	</ul>
 	<div id="tabs-interview">
 		<button class="stamp interview" onclick="addMemo(this)">目の周辺がかゆい</button>
@@ -48,6 +57,9 @@ function addMemo(obj)
   </div>
   <div id="tabs-prescription">
   	処方
+  </div>
+  <div id="tabs-schema">
+  	シェーマ
   </div>
 </div>
 				</td>
