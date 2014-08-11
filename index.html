@@ -11,21 +11,11 @@ $(function() {
 	$( "#tabs" ).tabs();
 });
 <!--//
-function func () 
+function addMemo(obj) 
 {
-	window.alert($('note', parent.document).innerText);
-	// var $iframe = $('#today_note');
-
-	// // iframe内のコンテンツのdocumentオブジェクト
-	// var ifrmDoc = $iframe[0].contentWindow.document;
-	// window.alert(ifrmDoc.innerText);
-
-	// // あとはいつも通りでおｋ
-	// //var $body = $('body', ifrmDoc);
-	// var $ele  = $('#note', ifrmDoc);
-	// window.alert($ele.innerText);
-}
-
+	//window.alert(obj.innerText);
+	$('#note').append('<div>' + '<input type=text value=' + obj.innerText + '></div>');
+};
 //-->
 		</script>
 	</head>
@@ -40,15 +30,15 @@ function func ()
 <!--スタンプリスト-->
 <div id="tabs">
 	<ul>
-		<li><a href="#tabs-question">問診／主訴</a></li>
+		<li><a href="#tabs-interview">問診／主訴</a></li>
 		<li><a href="#tabs-test">検査</a></li>
 		<li><a href="#tabs-diagnosis">診断</a></li>
 		<li><a href="#tabs-prescription">処方</a></li>
 	</ul>
-	<div id="tabs-question">
-		<button class="stamp" onclick="func()">目の周辺がかゆい</button>
-		<button class="stamp">目の周辺が腫れている</button>
-		<button class="stamp">目がぼんやりしている</button>
+	<div id="tabs-interview">
+		<button class="stamp interview" onclick="addMemo(this)">目の周辺がかゆい</button>
+		<button class="stamp interview" onclick="addMemo(this)">目の周辺が腫れている</button>
+		<button class="stamp interview" onclick="addMemo(this)">目がぼんやりしている</button>
   </div>
   <div id="tabs-test">
   	検査
@@ -63,7 +53,11 @@ function func ()
 				</td>
 			</tr>
 			<tr>
-				<td id="note">カルテ部分</td>
+				<td valign="top">
+<!--カルテ-->
+<div id="note"></div>
+<!--カルテ-->
+				</td>
 			</tr>
 		</table>
 	</body>
