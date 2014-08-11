@@ -15,9 +15,11 @@ $(function() {
     $( "#draggable" ).draggable();
   });
 <!--//
-function addMemo(obj) 
+///メモを追加する。
+///@param obj 呼出元
+function addMemo(i_obj) 
 {
-	var $element = $('<div id=draggable>主訴：<input type=text value=' + obj.innerText + '></div>');
+	var $element = $('<div>主訴：<input type=text value=' + i_obj.innerText + '></div>');
 	$element.draggable();
 	$('#note').append($element);
 
@@ -67,7 +69,9 @@ function addMemo(obj)
 			<tr>
 				<td valign="top">
 <!--カルテ-->
-<div id="note"></div>
+<div id="note">
+	<!--button type="button" onclick="function(){ window.alert(this.json()); }"/-->
+</div>
 <!--カルテ-->
 				</td>
 			</tr>
