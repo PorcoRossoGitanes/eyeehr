@@ -12,16 +12,24 @@ $(function()
 	$( "#tabs" ).tabs();
 });
 $(function() {
-    $( ".draggable" ).draggable();
+    $( ".panel" ).draggable();
+    $( ".panel" ).resizable();    
   });
 <!--//
 ///メモを追加する。
 ///@param obj 呼出元
 function addMemo(i_obj) 
 {
-	var $element = $('<li><div class=stamped>主訴：<input type=text value=' + i_obj.innerText + '></div></li>');
-	$element.draggable();
-	$('#chief_comprainment > ul').append($element);
+	$to = $(i_obj).data('to');
+	//var $element = $(
+	//	'<li>' + 
+	//	'<div class=stamped>主訴：<input type=text value=' + i_obj.innerText + '></div>' + 
+	//	'</li>'
+	//);
+	var $element = $($(i_obj).data('html-attached'));
+	//$element.draggable();
+	//console.log($(i_obj).data('to'));
+	$($to).append($element);
 
 };
 //-->
@@ -47,9 +55,24 @@ function addMemo(i_obj)
 		<li><a href="#tabs-schema">シェーマ</a></li>
 	</ul>
 	<div id="tabs-interview">
-		<button class="stamp interview" onclick="addMemo(this)">目の周辺がかゆい</button>
-		<button class="stamp interview" onclick="addMemo(this)">目の周辺が腫れている</button>
-		<button class="stamp interview" onclick="addMemo(this)">目がぼんやりしている</button>
+		<button 
+			class="stamp interview" 
+			data-to="div#chief_comprainment > ul" 
+			data-html-attached="<li><div class=stamped>主訴：<input type=text value=目の周辺がかゆい></div></li>'" 
+			onclick="addMemo(this)"
+		>目の周辺がかゆい</button>
+		<button 
+			class="stamp interview" 
+			data-to="div#chief_comprainment > ul" 
+			data-html-attached="<li><div class=stamped>主訴：<input type=text value=目の周辺が腫れている></div></li>'" 
+			onclick="addMemo(this)"
+		>目の周辺が腫れている</button>
+		<button 
+			class="stamp interview" 
+			data-to="div#chief_comprainment > ul" 
+			data-html-attached="<li><div class=stamped>主訴：<input type=text value=目がぼんやりしている></div></li>'" 
+			onclick="addMemo(this)"
+		>目がぼんやりしている</button>
   </div>
   <div id="tabs-test">
   	検査
@@ -71,7 +94,7 @@ function addMemo(i_obj)
 <!--カルテ-->
 <div id="note">
 	<!-- 主訴-->
-	<div id="chief_comprainment" class="draggable" style="border:solid 1px; width=50%">
+	<div id="chief_comprainment" class="panel" style="border:solid 1px;" width=200>
 		<ul>
 			<li>いつから：</li>
 		</ul>
