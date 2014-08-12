@@ -12,6 +12,9 @@ $(function()
 	$( "#tabs" ).tabs();
 });
 $(function() {
+    $( "#menu" ).menu();
+});
+$(function() {
     $( ".panel" ).draggable();
     $( ".panel" ).resizable();    
   });
@@ -32,15 +35,66 @@ function addMemo(i_obj)
 	$($to).append($element);
 
 };
+
+$("#menu li").hover(function() {
+    $(this).children('ul').show();
+}, function() {
+    $(this).children('ul').hide();
+});
+
 //-->
 		</script>
 		<!-- スタイルシート -->
 		<link rel="stylesheet" href="style.css">
-	</head>
+		<style>
+.ui-menu 
+{
+	height : 1em; 
+	width: 150px;
+	position: absolute, z-index: 99999; 
+}
+		</style>
+  	</head>
 	<body>
 		<table border="1" width="1280" height="1024">
 			<tr>
-				<td colspan="2" style="height:1em;">メニュー</td>
+				<td colspan="2" style="height:1em;">
+<!--メニュー-->
+<!--ul id="menu">
+  <li class="ui-state-disabled">Aberdeen</li>
+  <li>Ada</li>
+  <li>Adamsville</li>
+  <li>Addyston</li>
+  <li>Delphi
+    <ul>
+      <li class="ui-state-disabled">Ada</li>
+      <li>Saarland</li>
+      <li>Salzburg an der schönen Donau</li>
+    </ul>
+  </li>
+  <li>Saarland</li>
+  <li>Salzburg
+    <ul>
+      <li>Delphi
+        <ul>
+          <li>Ada</li>
+          <li>Saarland</li>
+          <li>Salzburg</li>
+        </ul>
+      </li>
+      <li>Delphi
+        <ul>
+          <li>Ada</li>
+          <li>Saarland</li>
+          <li>Salzburg</li>
+        </ul>
+      </li>
+      <li>Perch</li>
+    </ul>
+  </li>
+  <li class="ui-state-disabled">Amesville</li>
+</ul-->
+				</td>
 			</tr>
 			<tr>
 				<td id="patient_info" style="height:1em;">患者情報</td>
