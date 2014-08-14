@@ -7,17 +7,20 @@
 		<script src="js/jquery-ui.js"></script>
 		<!--link rel="stylesheet" href="/resources/demos/style.css"-->
 		<script>
-$(function() 
-{
-	$( "#tabs" ).tabs();
-});
+
 $(function() {
     $( "#menu" ).menu();
 });
+		</script>
+		<script>
+
 $(function() {
     $( ".panel" ).draggable();
     $( ".panel" ).resizable();    
   });
+		</script>
+		<script>
+
 <!--//
 ///メモを追加する。
 ///@param obj 呼出元
@@ -35,7 +38,8 @@ function addMemo(i_obj)
 	$($to).append($element);
 
 };
-
+		</script>
+		<script>
 $("#menu li").hover(function() {
     $(this).children('ul').show();
 }, function() {
@@ -99,7 +103,7 @@ $("#menu li").hover(function() {
 			<tr>
 				<td id="patient_info" style="height:1em;">患者情報</td>
 				<td id="stamp_list" rowspan="2" width="200" valign="top">
-<!--スタンプリスト-->
+<!--◆スタンプリスト-->
 <div id="tabs">
 	<ul>
 		<li><a href="#tabs-interview">問診／主訴</a></li>
@@ -141,6 +145,13 @@ $("#menu li").hover(function() {
   	シェーマ
   </div>
 </div>
+<script type="text/javascript">
+$(function() 
+{
+	$( "#tabs" ).tabs();
+});
+</script>
+<!--◆スタンプリスト-->
 				</td>
 			</tr>
 			<tr>
