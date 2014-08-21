@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="js/jquery-ui.css">
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="js/jquery-ui.js"></script>
+		<script src="js/util.js"></script>
 		<!--link rel="stylesheet" href="/resources/demos/style.css"-->
 		<script>
 
@@ -20,7 +21,6 @@ $(function() {
   });
 		</script>
 		<script>
-
 <!--//
 ///メモを追加する。
 ///@param obj 呼出元
@@ -36,8 +36,10 @@ function addMemo(i_obj)
 	//$element.draggable();
 	//console.log($(i_obj).data('to'));
 	$($to).append($element);
-
+	//$json = $.stringify(document.body);
+	console.log($($to).data());
 };
+//-->
 		</script>
 		<script>
 $("#menu li").hover(function() {
@@ -45,8 +47,6 @@ $("#menu li").hover(function() {
 }, function() {
     $(this).children('ul').hide();
 });
-
-//-->
 		</script>
 		<!-- スタイルシート -->
 		<link rel="stylesheet" href="style.css">
