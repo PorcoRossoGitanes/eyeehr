@@ -5,12 +5,14 @@
 		<link rel="stylesheet" href="js/jquery-ui.css">
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="js/jquery-ui.js"></script>
+		<script src="js/util.js"></script>
 		<!--link rel="stylesheet" href="/resources/demos/style.css"-->
 		<script>
-$(function() 
-{
-	$( "#tabs" ).tabs();
+
+$(function() {
+    $( "#menu" ).menu();
 });
+<<<<<<< HEAD:old/index.html
 $(function() 
 {
     $( ".draggable" ).draggable();
@@ -20,11 +22,23 @@ $(function()
 {
 	$( "#datepicker" ).datepicker();
 });
+=======
+		</script>
+		<script>
+
+$(function() {
+    $( ".panel" ).draggable();
+    $( ".panel" ).resizable();    
+  });
+		</script>
+		<script>
+>>>>>>> FETCH_HEAD:index.html
 <!--//
 ///メモを追加する。
 ///@param obj 呼出元
 function addMemo(i_obj) 
 {
+<<<<<<< HEAD:old/index.html
 
 	var $element = $(
 		'<li>' + 
@@ -34,21 +48,86 @@ function addMemo(i_obj)
 	//$element.draggable();
 	$('#chief_comprainment > ul').append($element);
 
+=======
+	$to = $(i_obj).data('to');
+	//var $element = $(
+	//	'<li>' + 
+	//	'<div class=stamped>主訴：<input type=text value=' + i_obj.innerText + '></div>' + 
+	//	'</li>'
+	//);
+	var $element = $($(i_obj).data('html-attached'));
+	//$element.draggable();
+	//console.log($(i_obj).data('to'));
+	$($to).append($element);
+	//$json = $.stringify(document.body);
+	console.log($($to).data());
+>>>>>>> FETCH_HEAD:index.html
 };
 //-->
 		</script>
+		<script>
+$("#menu li").hover(function() {
+    $(this).children('ul').show();
+}, function() {
+    $(this).children('ul').hide();
+});
+		</script>
 		<!-- スタイルシート -->
 		<link rel="stylesheet" href="style.css">
-	</head>
+		<style>
+.ui-menu 
+{
+	height : 1em; 
+	width: 150px;
+	position: absolute, z-index: 99999; 
+}
+		</style>
+  	</head>
 	<body>
 		<table border="1" width="1280" height="1024">
 			<tr>
-				<td colspan="2" style="height:1em;">メニュー</td>
+				<td colspan="2" style="height:1em;">
+<!--メニュー-->
+<!--ul id="menu">
+  <li class="ui-state-disabled">Aberdeen</li>
+  <li>Ada</li>
+  <li>Adamsville</li>
+  <li>Addyston</li>
+  <li>Delphi
+    <ul>
+      <li class="ui-state-disabled">Ada</li>
+      <li>Saarland</li>
+      <li>Salzburg an der schönen Donau</li>
+    </ul>
+  </li>
+  <li>Saarland</li>
+  <li>Salzburg
+    <ul>
+      <li>Delphi
+        <ul>
+          <li>Ada</li>
+          <li>Saarland</li>
+          <li>Salzburg</li>
+        </ul>
+      </li>
+      <li>Delphi
+        <ul>
+          <li>Ada</li>
+          <li>Saarland</li>
+          <li>Salzburg</li>
+        </ul>
+      </li>
+      <li>Perch</li>
+    </ul>
+  </li>
+  <li class="ui-state-disabled">Amesville</li>
+</ul-->
+				</td>
 			</tr>
 			<tr>
 				<td id="patient_info" style="height:1em;">患者情報</td>
 				<td id="stamp_list" rowspan="2" width="200" valign="top">
-<!--スタンプリスト-->
+<!--◆スタンプリスト-->
 <div id="tabs">
 	<ul>
 		<li><a href="#tabs-interview">問診／主訴</a></li>
@@ -58,9 +137,24 @@ function addMemo(i_obj)
 		<li><a href="#tabs-schema">シェーマ</a></li>
 	</ul>
 	<div id="tabs-interview">
-		<button class="stamp interview" onclick="addMemo(this)">目の周辺がかゆい</button>
-		<button class="stamp interview" onclick="addMemo(this)">目の周辺が腫れている</button>
-		<button class="stamp interview" onclick="addMemo(this)">目がぼんやりしている</button>
+		<button 
+			class="stamp interview" 
+			data-to="div#chief_comprainment > ul" 
+			data-html-attached="<li><div class=stamped>主訴：<input type=text value=目の周辺がかゆい></div></li>'" 
+			onclick="addMemo(this)"
+		>目の周辺がかゆい</button>
+		<button 
+			class="stamp interview" 
+			data-to="div#chief_comprainment > ul" 
+			data-html-attached="<li><div class=stamped>主訴：<input type=text value=目の周辺が腫れている></div></li>'" 
+			onclick="addMemo(this)"
+		>目の周辺が腫れている</button>
+		<button 
+			class="stamp interview" 
+			data-to="div#chief_comprainment > ul" 
+			data-html-attached="<li><div class=stamped>主訴：<input type=text value=目がぼんやりしている></div></li>'" 
+			onclick="addMemo(this)"
+		>目がぼんやりしている</button>
   </div>
   <div id="tabs-test">
   	検査
@@ -75,6 +169,13 @@ function addMemo(i_obj)
   	シェーマ
   </div>
 </div>
+<script type="text/javascript">
+$(function() 
+{
+	$( "#tabs" ).tabs();
+});
+</script>
+<!--◆スタンプリスト-->
 				</td>
 			</tr>
 			<tr>
@@ -82,8 +183,12 @@ function addMemo(i_obj)
 <!--カルテ-->
 <div id="note">
 	<!-- 主訴-->
+<<<<<<< HEAD:old/index.html
 	<div id="chief_comprainment" class="draggable" style="border:solid 1px;width:300">
 		主訴
+=======
+	<div id="chief_comprainment" class="panel" style="border:solid 1px;" width=200>
+>>>>>>> FETCH_HEAD:index.html
 		<ul>
 			<li>いつから：<input type="datetime" id="datepicker"></li>
 		</ul>
