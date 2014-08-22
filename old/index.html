@@ -11,16 +11,27 @@ $(function()
 {
 	$( "#tabs" ).tabs();
 });
-$(function() {
+$(function() 
+{
     $( ".draggable" ).draggable();
-  });
+    $( ".draggable" ).resizable();
+});
+$(function() 
+{
+	$( "#datepicker" ).datepicker();
+});
 <!--//
 ///メモを追加する。
 ///@param obj 呼出元
 function addMemo(i_obj) 
 {
-	var $element = $('<li><div class=stamped>主訴：<input type=text value=' + i_obj.innerText + '></div></li>');
-	$element.draggable();
+
+	var $element = $(
+		'<li>' + 
+		'<div class=stamped>症状：<input type=text value=' + i_obj.innerText + ' /></div>' + 
+		'</li>'
+	);
+	//$element.draggable();
 	$('#chief_comprainment > ul').append($element);
 
 };
@@ -71,9 +82,10 @@ function addMemo(i_obj)
 <!--カルテ-->
 <div id="note">
 	<!-- 主訴-->
-	<div id="chief_comprainment" class="draggable" style="border:solid 1px; width=50%">
+	<div id="chief_comprainment" class="draggable" style="border:solid 1px;width:300">
+		主訴
 		<ul>
-			<li>いつから：</li>
+			<li>いつから：<input type="datetime" id="datepicker"></li>
 		</ul>
 	<div/>
 	<!--button type="button" onclick="function(){ window.alert($.getJson()); }"-->
