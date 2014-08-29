@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>フォーム一覧</title>
+		<meta charset="UTF-8">
+		<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+		<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	</head>
+	<body>
+		<table border="1">
+			<tr>
+				<th>入力項目</th>
+				<th width="500">データ形式例</th>
+				<th>フォームサンプル</th>
+			</tr>
+			<tr>
+				<td>主訴</td>
+				<td>
+					<textarea rows="4" cols="70">
+<complaint>glしていても目が疲れる事がある。かすみ(+)、ぼやけ(+) が気になる。</complaint>
+<complaint>お変わりないとの事。本日、用事があるため、急いでほしい。</complaint>
+					</textarea>
+				</td>
+				<td>
+					<form>
+					<textarea id="area1" cols="40">
+						glしていても目が疲れる事がある。かすみ(+)、ぼやけ(+) が気になる。
+					</textarea>
+					<input type="button" onclick="window.alert(nicEditors.findEditor('area1').html() );">
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>サンプル名</td>
+				<td>形式例</td>
+				<td>
+					<form>
+					
+					</form>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
