@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>電子カルテ</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
+    <!--script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script--><!--nicEdit-->
+    <script src="js/nicEdit.js" type="text/javascript"></script>
+    <!--自作JS-->
+    <script src="js/NoteItem.js"></script>
+    <script src="js/NoteItemContainer.js"></script>
+    <script src="js/sample.js"></script>
+    <!--自作JS-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+  <div>
+    <button type="button" id="save" class="btn btn-info btn-xs">保存</button>
+    2014/08/31 12:34 
+    <label>患者</label>&nbsp; <input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
+    <button type="button" id="patient-info" class="btn btn-info btn-xs">患者情報</button>
+    <label>医師</label>&nbsp; 00001 渡邉花子
+  </div>
+  <table border="1">
+    <tr>
+      <td id="note" style="width:1000px;height:700px" rowspan="2" valign="top">
+        <!--カルテ記入欄-->
+      </td>
+      <td style="width:500px">
+        <button type="button" class="btn btn-info btn-xs" 
+          onclick="var item = new NoteItemComplaint('主訴を入力してください。'); item.appendTo('#NoteItemContainerComplaint');"
+        >主訴</button>
+        <button type="button" class="btn btn-info btn-xs" 
+        onclick="var item = new NoteItemDisease('病名を入力してください。'); item.appendTo('#NoteItemContainerDisease');"
+        >所見</button>
+        <button type="button" class="btn btn-info btn-xs" 
+        onclick="var item = new NoteItemMedicalCheck('検査を入力してください。'); item.appendTo('#NoteItemContainerMedicalCheck');"
+        >検査</button>
+        <button type="button" class="btn btn-info btn-xs" onclick="var item = new NoteItemPrescription('処方を入力してください。'); item.appendTo('#NoteItemContainerPrescription');"
+        >処方</button>
+        <button type="button" class="btn btn-info btn-xs" 
+        onclick="var item = new NoteItemOperation('手術を入力してください。'); item.appendTo('#NoteItemContainerOperation');"
+        >手術</button>
+        <button type="button" class="btn btn-info btn-xs" 
+        onclick="var item = new NoteItemMemo('メモを入力してください。'); item.appendTo('#NoteItemContainerMemo')">メモ</button>
+      </td>
+      <tr>
+        <td>
+          <textarea id="area1" data-from=""></textarea>
+          <input id="selectedNoteItem" type="hidden" value=""/> 
+          <input id="fix" type="button" value="付箋保存">
+        </td>
+      </tr>
+    </tr>
+  </table>  
+  <ul>
+    <li>アコーディオン</li>
+    <li>保存　読出</li>
+    <li>シェーマ</li>
+  </ul>
+</body>
+</html>

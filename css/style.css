@@ -1,0 +1,74 @@
+/**付箋コンテナ**/
+
+div.NoteItemContainer 
+{ 
+  width   : 400px; 
+  height  : auto;/*100px;*/ 
+  border  : solid 1px #000000;
+  margin            : 0px; 
+  padding : 2px; /*0.5em;*/ 
+}
+div.NoteItemContainer h1 
+{ 
+  /*border            : solid 1px;*/
+  color             : white;
+  background-color  : gray;
+  font-size         : 12pt;
+  text-align        : center;
+  padding           : 0;/*0.5em;*/ 
+  margin            : 0; 
+}
+
+/**付箋**/
+div.NoteItem
+{
+  width: 100%; /*250px*/
+  height: auto;/*100px;*/
+  /*background-color: #aaf;*/
+  cursor: pointer;
+  overflow: visible;
+  padding           : 0;/*0.5em;*/ 
+  margin            : 0; 
+  resize : both;
+  border: solid 1px #cccccc;
+}
+div.NoteItem #tags
+{
+ font-size: 7pt;
+}
+
+/**付箋（主訴）**/
+div.NoteItemComplaint
+{
+  background: #ff7f7f;
+}
+
+/**付箋（所見）**/
+div.NoteItemDisease
+{
+  background: #ff7fbf;
+}
+
+/**付箋（検査）**/
+div.NoteItemMedicalCheck
+{
+  background: #ff7fff;
+}
+
+/**付箋（処方）**/
+div.NoteItemPrescription
+{
+  background: #7f7fff;  
+}
+
+/**付箋（手術）**/
+div.NoteItemOperation
+{
+  background: #7fbfff;  
+}
+
+/**付箋（メモ）**/
+div.NoteItemMemo
+{
+  background: #7fffff;
+}
