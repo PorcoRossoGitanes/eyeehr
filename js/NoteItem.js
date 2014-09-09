@@ -4,9 +4,6 @@ function NoteItem(i_text, i_bgcolor) {
   ///@param クラス名
   this.name = 'NoteItem';
 
-  // // @param 色
-  // this.bgcolor;// = '#ffffff';//i_bgcolor; 
-
   // @param 付箋のID(MAX値)
   const MAX = 9999999999;
   // @param 付箋のID

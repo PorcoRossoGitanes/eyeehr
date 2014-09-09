@@ -12,6 +12,12 @@ bkLib.onDomLoaded(function() {
 
 $(function() 
 {
+	// TODO : テスト呼出し
+	XmlManager.SaveNote(
+		'/db/sample/test3.xml', 
+		'<note3></note3>'
+	);
+
 	// 「保存」ボタンを押下時、XMLを保存する。
 	$('button#save').click(function(){
 		//alert($('td#note').children().html());
@@ -29,7 +35,6 @@ $(function()
 		var memo = area.instanceById('area1').getContent();
 		var rootSelector = 'div#'+ $('input#selectedNoteItem').val();
 		NoteItem.ChangeVal($(rootSelector), memo);
-
 	});
 
 	//■コンテナを生成する。

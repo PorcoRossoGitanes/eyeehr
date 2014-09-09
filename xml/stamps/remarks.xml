@@ -1,0 +1,24 @@
+<stamps>
+	<stamp 
+		data-type-en="remark" 
+		data-type-ja="主訴" 
+		data-name="緑内障、緑内障の疑い"
+	>
+		<input type="text" data-name="value" value="緑内障、緑内障の疑い" />
+		<select name="select" class="bsize" id="selBox0" onChange="getSelect(0,this.value)">
+		<option value="test1">test1</option>
+		<option value="test2">test2</option>
+		<option value="test3">test3</option>
+		</select>
+	</stamp>
+	<stamp name="急性結膜炎、急性結膜炎の疑い"></stamp>
+	<stamp name="近視性乱視"></stamp>
+	<stamp name="アレルギー性結膜炎"></stamp>
+	<stamp name="びまん性表層角膜炎、びまん性表層角膜炎の疑い"></stamp>
+	<stamp name="白内障、白内障の疑い、白内障の術後"></stamp>
+	<stamp name="遠視性乱視、遠視性乱視の疑い"></stamp>
+	<stamp name="麦粒腫"></stamp>
+	<stamp name="ドライアイ"></stamp>
+	<stamp name="結膜炎、結膜炎の疑い"></stamp>
+	<stamp name="アレルギー性血管炎"></stamp>
+</stamps>
