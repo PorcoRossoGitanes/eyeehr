@@ -21,10 +21,10 @@
   </head>
   <body>
   <div>
-    <button type="button" id="save" class="btn btn-info btn-xs">保存</button>
+    <button type="button" id="save" class="btn btn-default btn-xs">保存</button>
     2014/08/31 12:34 
     <label>患者</label>&nbsp; <input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
-    <button type="button" id="patient-info" class="btn btn-info btn-xs">患者情報</button>
+    <button type="button" id="patient-info" class="btn btn-default btn-xs">患者情報</button>
     <label>医師</label>&nbsp; 00001 渡邉花子
   </div>
   <table border="1">
@@ -33,28 +33,28 @@
         <!--カルテ記入欄-->
       </td>
       <td style="width:280px">
-        <button type="button" class="btn btn-info btn-xs" 
+        <button type="button" class="btn btn-default btn-xs" 
           onclick="var item = new NoteItemComplaint('主訴を入力してください。'); item.appendTo('#NoteItemContainerComplaint');"
         >主訴</button>
-        <button type="button" class="btn btn-info btn-xs" 
+        <button type="button" class="btn btn-default btn-xs" 
         onclick="var item = new NoteItemDisease('病名を入力してください。'); item.appendTo('#NoteItemContainerDisease');"
         >所見</button>
-        <button type="button" class="btn btn-info btn-xs" 
+        <button type="button" class="btn btn-default btn-xs" 
         onclick="var item = new NoteItemMedicalCheck('検査を入力してください。'); item.appendTo('#NoteItemContainerMedicalCheck');"
         >検査</button>
-        <button type="button" class="btn btn-info btn-xs" onclick="var item = new NoteItemPrescription('処方を入力してください。'); item.appendTo('#NoteItemContainerPrescription');"
+        <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription('処方を入力してください。'); item.appendTo('#NoteItemContainerPrescription');"
         >処方</button>
-        <button type="button" class="btn btn-info btn-xs" 
+        <button type="button" class="btn btn-default btn-xs" 
         onclick="var item = new NoteItemOperation('手術を入力してください。'); item.appendTo('#NoteItemContainerOperation');"
         >手術</button>
-        <button type="button" class="btn btn-info btn-xs" 
+        <button type="button" class="btn btn-default btn-xs" 
         onclick="var item = new NoteItemMemo('メモを入力してください。'); item.appendTo('#NoteItemContainerMemo')">メモ</button>
       </td>
       <tr>
         <td>
           <textarea id="area1" data-from="" style="width: 100%;"></textarea>
           <input id="selectedNoteItem" type="hidden" value=""/> 
-          <input id="fix" type="button" value="付箋保存">
+          <button class="btn btn-default btn-xs" id="fix" type="button" value=>付箋保存</button>
         </td>
       </tr>
     </tr>

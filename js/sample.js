@@ -30,7 +30,7 @@ $(function()
 	});
 
 	// 「付箋保存」ボタンを押下時、付箋のテキストを更新する。
-	$('input#fix').click(function () 
+	$('button#fix').click(function () 
 	{
 		var memo = area.instanceById('area1').getContent();
 		var rootSelector = 'div#'+ $('input#selectedNoteItem').val();

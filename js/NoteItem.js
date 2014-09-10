@@ -106,6 +106,7 @@ function NoteItemDisease(i_text)
   this.name = 'NoteItemDisease';
 
   //--JQuery オブジェクト操作---//
+  // クラス属性を追加した。
   $jquery.addClass(this.name);
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
@@ -122,6 +123,7 @@ function NoteItemComplaint(i_text)
 
   this.name = 'NoteItemComplaint';
   //--JQuery オブジェクト操作---//
+  // クラス属性を追加した。
   $jquery.addClass(this.name);
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
@@ -139,6 +141,7 @@ function NoteItemMedicalCheck(i_text)
   this.name = 'NoteItemMedicalCheck';
 
   //--JQuery オブジェクト操作---//
+  // クラス属性を追加した。
   $jquery.addClass(this.name);
   $jquery.find('#form').append('<div>視力検査</div><input type=text value="test"/>');
   //console.log($jquery);
@@ -157,6 +160,7 @@ function NoteItemPrescription(i_text)
   this.name = 'NoteItemPrescription';
 
   //--JQuery オブジェクト操作---//
+  // クラス属性を追加した。
   $jquery.addClass(this.name);
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
@@ -175,6 +179,7 @@ function NoteItemOperation(i_text)
   this.name = 'NoteItemOperation'; 
 
   //--JQuery オブジェクト操作---//
+  // クラス属性を追加した。
   $jquery.addClass(this.name);
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
@@ -192,6 +197,7 @@ function NoteItemMemo(i_text)
   this.name = 'NoteItemMemo';
 
   //--JQuery オブジェクト操作---//
+  // クラス属性を追加した。
   $jquery.addClass(this.name);
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
