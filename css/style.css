@@ -27,9 +27,8 @@ div.NoteItem
   /*background-color: #aaf;*/
   cursor: pointer;
   overflow: visible;
-  padding           : 0;/*0.5em;*/ 
-  margin            : 0; 
-  resize : both;
+  padding           : 2px;/*0.5em;*/ 
+  margin            : 0px;/*0;*/ 
   border: solid 1px #cccccc;
 }
 div.NoteItem #tags

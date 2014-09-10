@@ -34,21 +34,21 @@
       </td>
       <td style="width:280px">
         <button type="button" class="btn btn-default btn-xs" 
-          onclick="var item = new NoteItemComplaint('主訴を入力してください。'); item.appendTo('#NoteItemContainerComplaint');"
+          onclick="var item = new NoteItemComplaint(); item.appendTo('#NoteItemContainerComplaint');"
         >主訴</button>
         <button type="button" class="btn btn-default btn-xs" 
-        onclick="var item = new NoteItemDisease('病名を入力してください。'); item.appendTo('#NoteItemContainerDisease');"
+        onclick="var item = new NoteItemDisease(); item.appendTo('#NoteItemContainerDisease');"
         >所見</button>
         <button type="button" class="btn btn-default btn-xs" 
-        onclick="var item = new NoteItemMedicalCheck('検査を入力してください。'); item.appendTo('#NoteItemContainerMedicalCheck');"
+        onclick="var item = new NoteItemMedicalCheck(); item.appendTo('#NoteItemContainerMedicalCheck');"
         >検査</button>
-        <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription('処方を入力してください。'); item.appendTo('#NoteItemContainerPrescription');"
+        <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.appendTo('#NoteItemContainerPrescription');"
         >処方</button>
         <button type="button" class="btn btn-default btn-xs" 
-        onclick="var item = new NoteItemOperation('手術を入力してください。'); item.appendTo('#NoteItemContainerOperation');"
+        onclick="var item = new NoteItemOperation(); item.appendTo('#NoteItemContainerOperation');"
         >手術</button>
         <button type="button" class="btn btn-default btn-xs" 
-        onclick="var item = new NoteItemMemo('メモを入力してください。'); item.appendTo('#NoteItemContainerMemo')">メモ</button>
+        onclick="var item = new NoteItemMemo(); item.appendTo('#NoteItemContainerMemo')">メモ</button>
       </td>
       <tr>
         <td>
