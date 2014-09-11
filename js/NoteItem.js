@@ -18,11 +18,11 @@ function NoteItem() {
     'class="' + 'NoteItem' + '" ' + 
     '>' + 
     <!--削除ボタン-->
-    '<button id="del" class="btn btn-default btn-xs">x</button>' + 
+    '<button id="del" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>' + 
     <!--最小化ボタン-->
-    '<button id="min" class="btn btn-default btn-xs" >_</button>' + 
+    '<button id="min" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>' + 
     <!--画像添付ボタン-->
-    '<button id="attachImg" class="btn btn-default btn-xs">画像</button>' + 
+    '<button id="attachImg" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-upload"></span></button>' + 
     <!--タグ表示用-->
     '<div id="tags"></div>' +
     <!--入力フォーム-->

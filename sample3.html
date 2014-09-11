@@ -26,7 +26,7 @@
   </head>
   <body>
   <div>
-    <button type="button" id="save" class="btn btn-default btn-xs">保存</button>
+    <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
     2014/08/31 12:34 
     <label>患者</label>&nbsp; <input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
     <button type="button" id="patient-info" class="btn btn-default btn-xs">患者情報</button>
@@ -46,36 +46,36 @@
       <tr>
         <td>
           <!--スタンプリスト（アコーディオンメニュー）-->
-        <div id="NoteItemMenu">
-          <h3 onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</h3>
-          <div></div>
-          <h3>所見</h3>
-          <div>
-            <button type="button" class="btn btn-default btn-xs" 
-            onclick="var item = new NoteItemDisease(); item.appendTo('[name=NoteItemContainerDisease]');"
-            >白内障</button>
+          <div id="NoteItemMenu">
+            <h3 class='ui-state-disabled' onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</h3>
+            <div></div>
+            <h3>所見</h3>
+            <div>
+              <button type="button" class="btn btn-default btn-xs" 
+              onclick="var item = new NoteItemDisease(); item.appendTo('[name=NoteItemContainerDisease]');"
+              >白内障</button>
+            </div>
+            <h3>検査</h3>
+            <div>
+              <button type="button" class="btn btn-default btn-xs" 
+              onclick="var item = new NoteItemMedicalCheck(); item.appendTo('[name=NoteItemContainerMedicalCheck]');"
+              >レフ・ケラト</button>
+            </div>
+            <h3>処方</h3>
+            <div>
+              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.appendTo('[name=NoteItemContainerPrescription]');">ヒアルロン酸目薬</button>
+            </div>
+            <h3>手術</h3>
+            <div>
+              <button type="button" class="btn btn-default btn-xs" 
+                  onclick="var item = new NoteItemOperation(); item.appendTo('[name=NoteItemContainerOperation]');"
+                  >レーザー手術</button>
+            </div>
+            <h3 class='ui-state-disabled' onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</h3>
+            <div></div>
           </div>
-          <h3>検査</h3>
-          <div>
-            <button type="button" class="btn btn-default btn-xs" 
-            onclick="var item = new NoteItemMedicalCheck(); item.appendTo('[name=NoteItemContainerMedicalCheck]');"
-            >レフ・ケラト</button>
-          </div>
-          <h3>処方</h3>
-          <div>
-            <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.appendTo('[name=NoteItemContainerPrescription]');">ヒアルロン酸目薬</button>
-          </div>
-          <h3>手術</h3>
-          <div>
-            <button type="button" class="btn btn-default btn-xs" 
-                onclick="var item = new NoteItemOperation(); item.appendTo('[name=NoteItemContainerOperation]');"
-                >レーザー手術</button>
-          </div>
-          <h3 onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</h3>
-          <div></div>
-        </div>
 <script>
-$( '#NoteItemMenu' ).accordion({heightStyle: "fill"});
+$( '#NoteItemMenu' ).accordion({heightStyle : "fill", active : 1});
 </script>
         <!--button type="button" class="btn btn-default btn-xs" 
           onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');"
