@@ -30,7 +30,7 @@ function NoteItem() {
     <!--イメージ添付用-->
     '<div id="img"></div>' +
     <!--文字列入力用--> 
-    '<div id="remarks" name="remarks">&nbsp;</div>' + 
+    '<div id="remarks" name="remarks"></div>' + 
     '</div>'
   );
   // 表示されている場合は、文字列を非表示とする。

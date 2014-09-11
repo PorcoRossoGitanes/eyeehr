@@ -12,12 +12,6 @@ bkLib.onDomLoaded(function() {
 
 $(function() 
 {
-	// TODO : テスト呼出し
-	// XmlManager.SaveNote(
-	// 	'/db/sample/test3.xml', 
-	// 	'<note3></note3>'
-	// );
-
 	// 「保存」ボタンを押下時、XMLを保存する。
 	$('button#save').click(function(){
 		// 本日のカルテをXMLに変更する。
@@ -25,10 +19,11 @@ $(function()
 		$('td[name="note"]').each(function(){
 			xml = Utility.HtmlInputItemToXml($(this));
 		})
-	    console.log('Utility.HtmlInputItemToXml : ' + xml);
+	    //console.log('Utility.HtmlInputItemToXml : ' + xml);
 
-		//Utility.HtmlInputItemToXml($('<input name="tag" type="text" value="testtext"/>'));
-
+		var xmlFilePath = '/db/sample/test3.xml';
+		XmlManager.SaveNote(xmlFilePath, xml);
+		alert('save');
 	});
 
 	// 「患者情報」ボタンを押下時、患者情報を表示する。
@@ -106,7 +101,7 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 			// TODO : TEXTAREA
 			// TODO : SELECTボックスなど
 			default : 
-				console.log($i_jquery[0].tagName);
+				//console.log($i_jquery[0].tagName);
 				// それ以外の場合は出力しない。
 				break;		
 		}

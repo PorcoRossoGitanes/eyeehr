@@ -29,7 +29,6 @@ foreach $pair (@query) {
 	$FORM{$key} = $value;
 }
 
-
 # 実行用XMLを登録する。
 $xml = $FORM{'xml'};
 $filepath  = $FORM{'filepath'};
