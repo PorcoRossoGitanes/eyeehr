@@ -29,26 +29,26 @@
   </div>
   <table border="1">
     <tr>
-      <td id="note" style="width:1000px;height:700px" rowspan="2" valign="top">
+      <td name="note" style="width:1000px;height:700px;" rowspan="2" valign="top">
         <!--カルテ記入欄-->
       </td>
       <td style="width:280px">
         <button type="button" class="btn btn-default btn-xs" 
-          onclick="var item = new NoteItemComplaint(); item.appendTo('#NoteItemContainerComplaint');"
+          onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');"
         >主訴</button>
         <button type="button" class="btn btn-default btn-xs" 
-        onclick="var item = new NoteItemDisease(); item.appendTo('#NoteItemContainerDisease');"
+        onclick="var item = new NoteItemDisease(); item.appendTo('[name=NoteItemContainerDisease]');"
         >所見</button>
         <button type="button" class="btn btn-default btn-xs" 
-        onclick="var item = new NoteItemMedicalCheck(); item.appendTo('#NoteItemContainerMedicalCheck');"
+        onclick="var item = new NoteItemMedicalCheck(); item.appendTo('[name=NoteItemContainerMedicalCheck]');"
         >検査</button>
-        <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.appendTo('#NoteItemContainerPrescription');"
+        <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.appendTo('[name=NoteItemContainerPrescription]');"
         >処方</button>
         <button type="button" class="btn btn-default btn-xs" 
-        onclick="var item = new NoteItemOperation(); item.appendTo('#NoteItemContainerOperation');"
+        onclick="var item = new NoteItemOperation(); item.appendTo('[name=NoteItemContainerOperation]');"
         >手術</button>
         <button type="button" class="btn btn-default btn-xs" 
-        onclick="var item = new NoteItemMemo(); item.appendTo('#NoteItemContainerMemo')">メモ</button>
+        onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</button>
       </td>
       <tr>
         <td>

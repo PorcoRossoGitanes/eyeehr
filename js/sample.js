@@ -13,21 +13,17 @@ bkLib.onDomLoaded(function() {
 $(function() 
 {
 	// TODO : テスト呼出し
-	XmlManager.SaveNote(
-		'/db/sample/test3.xml', 
-		'<note3></note3>'
-	);
+	// XmlManager.SaveNote(
+	// 	'/db/sample/test3.xml', 
+	// 	'<note3></note3>'
+	// );
 
 	// 「保存」ボタンを押下時、XMLを保存する。
 	$('button#save').click(function(){
-		//alert($('td#note').children().html());
-		//console.log($('td#note').children());
-		//var xml = Utility.HtmlInputItemToXml($('td#note').children());
-		//console.log(xml);
-		// （デモ）処方箋をXMLに変更する。
+		// 本日のカルテをXMLに変更する。
 		var xml = '';
-		$('#NoteItemContainerPrescription > .NoteItem').each(function(){
-			var xml = Utility.HtmlInputItemToXml($(this));
+		$('td[name="note"]').each(function(){
+			xml = Utility.HtmlInputItemToXml($(this));
 		})
 	    console.log('Utility.HtmlInputItemToXml : ' + xml);
 
@@ -49,20 +45,21 @@ $(function()
 	});
 
 	//■コンテナを生成する。
+	$currentNote = $('[name=note]');
 	var containerComplaint = new NoteItemContainerComplaint();
-	$('#note').append(containerComplaint.getJQueryObject());
+	$currentNote.append(containerComplaint.getJQueryObject());
 	var containerDisease = new NoteItemContainerDisease();
-	$('#note').append(containerDisease.getJQueryObject());
+	$currentNote.append(containerDisease.getJQueryObject());
 	var containerMedicalCheck = new NoteItemContainerMedicalCheck();
-	$('#note').append(containerMedicalCheck.getJQueryObject());
+	$currentNote.append(containerMedicalCheck.getJQueryObject());
 	var containerPrescription = new NoteItemContainerPrescription();
-	$('#note').append(containerPrescription.getJQueryObject());
+	$currentNote.append(containerPrescription.getJQueryObject());
 	var containerOperation = new NoteItemContainerOperation();
-	$('#note').append(containerOperation.getJQueryObject());
+	$currentNote.append(containerOperation.getJQueryObject());
 	var containerMemo = new NoteItemContainerMemo();
-	$('#note').append(containerMemo.getJQueryObject());
+	$currentNote.append(containerMemo.getJQueryObject());
 	var containerScheme = new NoteItemContainerScheme();
-	$('#note').append(containerScheme.getJQueryObject());
+	$currentNote.append(containerScheme.getJQueryObject());
 
 
 	// ■初回起動時、主訴欄を生成する。
@@ -79,9 +76,10 @@ function Utility() {
 Utility.HtmlInputItemToXml = function($i_jquery)
 {
 	var retVal = '';
-	//const childElementTags = {'DIV', 'INPUT', 'textarea', 'SELECT'};
 
-	//console.log($i_jquery);
+	// 入力タグとなりうる要素を取得する。
+	const childElementTags = new Array('DIV', 'INPUT', 'TEXTAREA', 'SELECT');
+
 
 	// name属性をタグとして使用する。
 	var tag = $i_jquery.attr('name');
@@ -92,19 +90,15 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 		retVal += '<' + tag + '>';
 	
 		// 子供を持っている場合は再起的にXMLを生成する。
-		var hasChildren = $i_jquery.children(
-			'DIV', 
-			'INPUT', 
-			'TEXTAREA', 
-			'SELECT'
-		).length > 0;
+		// テーブルなどで形式を制御する場合もあるので、findを使用する。
+		var inputChildrenCnt = $i_jquery.find(childElementTags.toString()).length
+		var containInputChildren =  inputChildrenCnt > 0;
 
 		// 内部文字列を取得する
 		switch ($i_jquery[0].tagName)
 		{
 			case 'DIV' :  // DIVタグの場合
-				console.log($i_jquery.children().length);
-				if(hasChildren == false) retVal += $i_jquery.html();
+				if(containInputChildren == false) retVal += $i_jquery.html();
 				break;
 			case 'INPUT' : // INPUTタグの場合
 				retVal += $i_jquery.attr('value');
@@ -125,13 +119,6 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 		retVal += '</' + tag + '>';		
 	}
 
-	if (tag == 'medicine') 
-	{
-		alert(retVal + '/' + $i_jquery.find().length);
-		console.log($i_jquery);
-	}
-
-	console.log(retVal);
 	return retVal;
 }
 
