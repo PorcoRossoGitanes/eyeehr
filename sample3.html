@@ -38,6 +38,7 @@
         <!--カルテ記入欄-->
       </td>
       <td style="width:280px">
+        <!--付箋特記事項編集欄-->
         <textarea id="area1" data-from="" style="width: 100%;"></textarea>
         <input id="selectedNoteItem" type="hidden" value=""/> 
         <button class="btn btn-default btn-xs" id="fix" type="button" value=>付箋保存</button>
@@ -70,7 +71,7 @@
                 onclick="var item = new NoteItemOperation(); item.appendTo('[name=NoteItemContainerOperation]');"
                 >レーザー手術</button>
           </div>
-          <h3>メモ</h3>
+          <h3 onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</h3>
           <div></div>
         </div>
 <script>
@@ -96,11 +97,5 @@ $( '#NoteItemMenu' ).accordion({heightStyle: "fill"});
       </tr>
     </tr>
   </table>  
-  <ul>
-    <li>アコーディオン</li>
-    <li>保存　読出</li>
-    <li>シェーマ</li>
-  </ul>
-
 </body>
 </html>
