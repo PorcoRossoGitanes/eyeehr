@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <!-- jQuery-ui 1.11.1 -->
+    <script src="js/jquery-ui.js"></script>
+    <link href="js/jquery-ui.css" rel="stylesheet">
+    <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" /-->
+    <!-- jQuery-ui 1.11.1 -->
     <link href="css/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
     <!--script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script--><!--nicEdit-->
     <script src="js/nicEdit.js" type="text/javascript"></script>
@@ -16,10 +20,9 @@
     <script src="js/XmlManager.js"/></script>
     <script src="js/sample.js"></script>
     <!--自作JS-->
-    <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" /-->
+    <!--自作CSS-->    
     <link href="css/style.css" rel="stylesheet" type="text/css">
-    <style>
-</style>
+    <!--自作CSS-->    
   </head>
   <body>
   <div>
@@ -35,43 +38,45 @@
         <!--カルテ記入欄-->
       </td>
       <td style="width:280px">
-        <!--スタンプリスト（アコーディオンメニュー）-->
-        <dl id="acMenu">
-          <dt onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</dt>
-          <dd>&nbsp;</dd>
-          <dt>所見</dt>
-          <dd>
+        <textarea id="area1" data-from="" style="width: 100%;"></textarea>
+        <input id="selectedNoteItem" type="hidden" value=""/> 
+        <button class="btn btn-default btn-xs" id="fix" type="button" value=>付箋保存</button>
+      </td>
+      <tr>
+        <td>
+          <!--スタンプリスト（アコーディオンメニュー）-->
+        <div id="NoteItemMenu">
+          <h3 onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</h3>
+          <div></div>
+          <h3>所見</h3>
+          <div>
             <button type="button" class="btn btn-default btn-xs" 
             onclick="var item = new NoteItemDisease(); item.appendTo('[name=NoteItemContainerDisease]');"
             >白内障</button>
-          </dd>
-          <dt>検査</dt>
-          <dd>
+          </div>
+          <h3>検査</h3>
+          <div>
             <button type="button" class="btn btn-default btn-xs" 
             onclick="var item = new NoteItemMedicalCheck(); item.appendTo('[name=NoteItemContainerMedicalCheck]');"
             >レフ・ケラト</button>
-          </dd>
-          <dt>処方</dt>
-          <dd>
+          </div>
+          <h3>処方</h3>
+          <div>
             <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.appendTo('[name=NoteItemContainerPrescription]');">ヒアルロン酸目薬</button>
-          </dd>
-          <dt>手術</dt>
-          <dd>
+          </div>
+          <h3>手術</h3>
+          <div>
             <button type="button" class="btn btn-default btn-xs" 
                 onclick="var item = new NoteItemOperation(); item.appendTo('[name=NoteItemContainerOperation]');"
                 >レーザー手術</button>
-          </dd>
-          <dt onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</button--></dt>
-          <dd>&nbsp;</dd>
-        </dl>        
-        <script>
-            $(function(){
-                $("#acMenu dt").on("click", function() {
-                    $(this).next().slideToggle();
-                });
-            });
-        </script>
-        <button type="button" class="btn btn-default btn-xs" 
+          </div>
+          <h3>メモ</h3>
+          <div></div>
+        </div>
+<script>
+$( '#NoteItemMenu' ).accordion({heightStyle: "fill"});
+</script>
+        <!--button type="button" class="btn btn-default btn-xs" 
           onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');"
         >主訴</button>
         <button type="button" class="btn btn-default btn-xs" 
@@ -86,13 +91,7 @@
         onclick="var item = new NoteItemOperation(); item.appendTo('[name=NoteItemContainerOperation]');"
         >手術</button>
         <button type="button" class="btn btn-default btn-xs" 
-        onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</button>
-      </td>
-      <tr>
-        <td>
-          <textarea id="area1" data-from="" style="width: 100%;"></textarea>
-          <input id="selectedNoteItem" type="hidden" value=""/> 
-          <button class="btn btn-default btn-xs" id="fix" type="button" value=>付箋保存</button>
+        onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</button-->
         </td>
       </tr>
     </tr>
@@ -102,5 +101,6 @@
     <li>保存　読出</li>
     <li>シェーマ</li>
   </ul>
+
 </body>
 </html>
