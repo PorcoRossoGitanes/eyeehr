@@ -16,8 +16,10 @@
     <script src="js/XmlManager.js"/></script>
     <script src="js/sample.js"></script>
     <!--自作JS-->
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+    <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" /-->
     <link href="css/style.css" rel="stylesheet" type="text/css">
+    <style>
+</style>
   </head>
   <body>
   <div>
@@ -33,6 +35,42 @@
         <!--カルテ記入欄-->
       </td>
       <td style="width:280px">
+        <!--スタンプリスト（アコーディオンメニュー）-->
+        <dl id="acMenu">
+          <dt onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</dt>
+          <dd>&nbsp;</dd>
+          <dt>所見</dt>
+          <dd>
+            <button type="button" class="btn btn-default btn-xs" 
+            onclick="var item = new NoteItemDisease(); item.appendTo('[name=NoteItemContainerDisease]');"
+            >白内障</button>
+          </dd>
+          <dt>検査</dt>
+          <dd>
+            <button type="button" class="btn btn-default btn-xs" 
+            onclick="var item = new NoteItemMedicalCheck(); item.appendTo('[name=NoteItemContainerMedicalCheck]');"
+            >レフ・ケラト</button>
+          </dd>
+          <dt>処方</dt>
+          <dd>
+            <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.appendTo('[name=NoteItemContainerPrescription]');">ヒアルロン酸目薬</button>
+          </dd>
+          <dt>手術</dt>
+          <dd>
+            <button type="button" class="btn btn-default btn-xs" 
+                onclick="var item = new NoteItemOperation(); item.appendTo('[name=NoteItemContainerOperation]');"
+                >レーザー手術</button>
+          </dd>
+          <dt onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</button--></dt>
+          <dd>&nbsp;</dd>
+        </dl>        
+        <script>
+            $(function(){
+                $("#acMenu dt").on("click", function() {
+                    $(this).next().slideToggle();
+                });
+            });
+        </script>
         <button type="button" class="btn btn-default btn-xs" 
           onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');"
         >主訴</button>

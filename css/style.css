@@ -1,3 +1,19 @@
+/* スタンプリスト（アコーディオンメニュー） */
+#acMenu dt
+{
+  margin: 1px 0 0 0;
+  padding: 0.7em 0.5em 0.5em 2em;
+  font-size: 16px;
+  font-weight: bold;
+}
+#acMenu dd
+{
+  margin: -2px 0 2px 0;
+  padding: 0.5em 2em 1.5em 2em;
+  font-size: 15px;
+}
+
+
 /**付箋コンテナ**/
 
 div.NoteItemContainer 
@@ -71,3 +87,5 @@ div.NoteItemMemo
 {
   background: #7fffff;
 }
+
+

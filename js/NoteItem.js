@@ -34,7 +34,7 @@ function NoteItem() {
     '</div>'
   );
   // 表示されている場合は、文字列を非表示とする。
-  $(this).parent().find('[name=tags]').show();
+  $(this).parent().find('#tags').show();
 
   // 付箋をリサイズ・ドラッグ可能とする。
   //$jquery.resizable({handles : 's'});
@@ -46,13 +46,13 @@ function NoteItem() {
     if ($(this).parent().find('[name=remarks]').css('display') == 'block') 
     {
       // 表示されている場合は、文字列を非表示とする。
-      $(this).parent().find('[name=tags]').show();
+      $(this).parent().find('#tags').show();
       $(this).parent().find('[name=remarks]').hide();
     } 
     else 
     {
       // 非表示の場合は、文字列を表示する。
-      $(this).parent().find('[name=tags]').hide();
+      $(this).parent().find('#tags').hide();
       $(this).parent().find('[name=remarks]').show();
     }
   });
@@ -94,7 +94,7 @@ NoteItem.ChangeVal = function($jquery, i_memo)
     //console.log($($strongs[index]).text());
   }
   
-  $jquery.find('[name=tags]').html(tags);
+  $jquery.find('#tags').html(tags);
   $jquery.find('[name=remarks]').html(i_memo);
 }
 
