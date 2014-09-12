@@ -147,7 +147,7 @@ function NoteItemMedicalCheck()
 NoteItemMedicalCheck.prototype = new NoteItem;
 
 ///@summary 処方コンストラクタ
-function NoteItemPrescription() 
+function NoteItemPrescription(i_name) 
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
@@ -158,9 +158,10 @@ function NoteItemPrescription()
   $jquery.find('#form').attr('name', 'medicine');
   $jquery.find('#form').append(
     '<input name="medicine-orca" type="hidden" value="ORCAID" />' + 
-    '<input name="medicine-name" type="disable" value="タリビッド眼軟膏0.3%"/>' + 
+    '<input name="medicine-name" type="disable" value="' + i_name +'"/>' + 
     '<input name="medicine-cnt"  type="text" value="1">個'
   );
+  console.log(i_name);
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
 }
