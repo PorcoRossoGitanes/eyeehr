@@ -25,8 +25,8 @@ function NoteItem() {
     '<button id="min" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>' + 
     <!--画像添付ボタン-->
     '<button id="attachImg" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-upload"></span></button>' + 
-    <!--タグ表示用-->
-    '<div id="tags"></div>' +
+    <!--タグ表示用(初期：非表示)-->
+    '<div id="tags" style="display:block"></div>' +
     <!--入力フォーム-->
     '<div id="form"></div>' +
     <!--イメージ添付用-->
@@ -36,29 +36,6 @@ function NoteItem() {
     '</div>'
   );
 
-  //-----------------------------------
-  /// @summary 最小化（切替）
-  /// @param i_switch true : 最小化（折り畳み）　false : 最大化（展開）
-  function minimize(i_switch)
-  {
-    if (i_switch) 
-    {
-      // 特記事項が表示されている場合は、文字列を非表示とする。
-      $jquery.find('#tags').show();
-      $jquery.find('[name=remarks]').hide();
-    } 
-    else 
-    {
-      // 特記事項が非表示の場合は、文字列を表示する。
-      $jquery.find('#tags').hide();
-      $jquery.find('[name=remarks]').show();
-    }
-  }
-  //-----------------------------------
-  
-  // 特記事項表示されている場合は、タグ文字列を非表示とする。
-  minimize(false);
-
   // 付箋をリサイズ・ドラッグ可能とする。
   //$jquery.resizable({handles : 's'});
   //$jquery.draggable();
@@ -67,7 +44,18 @@ function NoteItem() {
   $jquery.find('#min').click(function()
   {
     // タグが表示の場合は折り畳む（最小化する）。タグが非表示の場合は展開する。
-    minimize($jquery.find('#tags').css('display') != 'block');    
+    if ($jquery.find('#tags').css('display') != 'block')
+    {
+      // 特記事項が表示されている場合は、文字列を非表示とする。
+      $jquery.find('#tags').show();
+      $jquery.find('[name=remarks]').hide();      
+    }
+    else
+    {
+      // 特記事項が非表示の場合は、文字列を表示する。
+      $jquery.find('#tags').hide();
+      $jquery.find('[name=remarks]').show();
+    }
   });
 
   //　@summary 「削除」ボタンが押されたときには、付箋を削除する。
