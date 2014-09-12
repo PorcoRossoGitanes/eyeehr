@@ -104,7 +104,7 @@ NoteItem.ChangeVal = function($jquery, i_memo)
 // };
 
 ///@summary 病名コンストラクタ
-function NoteItemDisease() 
+function NoteItemDisease(i_name) 
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
@@ -112,6 +112,9 @@ function NoteItemDisease()
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemDisease');
   $jquery.addClass('NoteItemDisease');
+  $jquery.find('#form').append(
+    '<div name="disease-name">' + i_name + '</div>' 
+  );
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
 }
@@ -132,7 +135,7 @@ function NoteItemComplaint()
 NoteItemComplaint.prototype = new NoteItem;
 
 ///@summary 検査コンストラクタ
-function NoteItemMedicalCheck() 
+function NoteItemMedicalCheck(i_name) 
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
@@ -140,7 +143,10 @@ function NoteItemMedicalCheck()
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemMedicalCheck');
   $jquery.addClass('NoteItemMedicalCheck');
-  //$jquery.find('#form').append('<div>視力検査</div><input type=text value="test"/>');
+  $jquery.find('#form').append(
+    '<div name="medical-check-name">' + i_name + '</div>' + 
+    '<input name="medical-check-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
+  );
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
 }
@@ -169,14 +175,18 @@ NoteItemPrescription.prototype = new NoteItem;
 
 
 ///@summary 手術コンストラクタ
-function NoteItemOperation() 
+function NoteItemOperation(i_name) 
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-   $jquery.attr('name', 'NoteItemOperation');
- $jquery.addClass('NoteItemOperation');
+  $jquery.attr('name', 'NoteItemOperation');
+  $jquery.addClass('NoteItemOperation');
+  $jquery.find('#form').append(
+    '<div name="operation-name">' + i_name + '</div>' + 
+    '<input name="operation-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
+  );
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
 }
