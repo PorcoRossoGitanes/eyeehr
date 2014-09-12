@@ -47,9 +47,11 @@ div.NoteItem
   margin            : 0px;/*0;*/ 
   border: solid 1px #cccccc;
 }
+
 div.NoteItem #tags
 {
- font-size: 7pt;
+  color : #ffffff;
+  font-size: 9pt;
 }
 
 /**付箋（主訴）**/

@@ -5,13 +5,15 @@
 
 ///@summary コンストラクタ
 function NoteItem() {
-
+  //(初期化)-----------------------------------
+  
   // @param 付箋のID(MAX値)
   const MAX = 9999999999;
+  
   // @param 付箋のID
   var id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
-  // 付箋を生成する
+  // 付箋（JQuery オブジェクト）を生成する
   $jquery = $(
     '<div ' + 
     'id="' + id + '" ' + 
@@ -33,37 +35,47 @@ function NoteItem() {
     '<div id="remarks" name="remarks"></div>' + 
     '</div>'
   );
-  // 表示されている場合は、文字列を非表示とする。
-  $(this).parent().find('#tags').show();
+
+  //-----------------------------------
+  /// @summary 最小化（切替）
+  /// @param i_switch true : 最小化（折り畳み）　false : 最大化（展開）
+  function minimize(i_switch)
+  {
+    if (i_switch) 
+    {
+      // 特記事項が表示されている場合は、文字列を非表示とする。
+      $jquery.find('#tags').show();
+      $jquery.find('[name=remarks]').hide();
+    } 
+    else 
+    {
+      // 特記事項が非表示の場合は、文字列を表示する。
+      $jquery.find('#tags').hide();
+      $jquery.find('[name=remarks]').show();
+    }
+  }
+  //-----------------------------------
+  
+  // 特記事項表示されている場合は、タグ文字列を非表示とする。
+  minimize(false);
 
   // 付箋をリサイズ・ドラッグ可能とする。
   //$jquery.resizable({handles : 's'});
   //$jquery.draggable();
 
-  // @summary 「最小化」ボタンを押下したときには、文字列を表示／非表示を設定する。
+  // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
   $jquery.find('#min').click(function()
   {
-    if ($(this).parent().find('[name=remarks]').css('display') == 'block') 
-    {
-      // 表示されている場合は、文字列を非表示とする。
-      $(this).parent().find('#tags').show();
-      $(this).parent().find('[name=remarks]').hide();
-    } 
-    else 
-    {
-      // 非表示の場合は、文字列を表示する。
-      $(this).parent().find('#tags').hide();
-      $(this).parent().find('[name=remarks]').show();
-    }
+    // タグが表示の場合は折り畳む（最小化する）。タグが非表示の場合は展開する。
+    minimize($jquery.find('#tags').css('display') != 'block');    
   });
 
   //　@summary 「削除」ボタンが押されたときには、付箋を削除する。
   $jquery.find('#del').click(function(){
     $(this).parent().remove();
   });
-
   
-  // 付箋をダブルクリック時に入力欄を表示する。
+  // @summary 付箋をダブルクリック時に入力欄を表示する。
   $jquery.dblclick(function(){
     var memo = $(this).find('[name=remarks]').html();
     area.instanceById('area1').setContent(memo);
