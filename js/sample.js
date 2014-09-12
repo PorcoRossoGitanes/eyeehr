@@ -12,7 +12,7 @@ bkLib.onDomLoaded(function() {
 
 $(function() 
 {
-	// 「保存」ボタンを押下時、XMLを保存する。
+	// @summary 「保存」ボタンを押下時、XMLを保存する。
 	$('button#save').click(function(){
 		// 本日のカルテをXMLに変更する。
 		var xml = '';
@@ -26,17 +26,26 @@ $(function()
 		alert('save');
 	});
 
-	// 「患者情報」ボタンを押下時、患者情報を表示する。
+	// @summary 「患者情報」ボタンを押下時、患者情報を表示する。
 	$('button#patient-info').click(function(){
 		alert('患者情報表示');
 	});
 
-	// 「付箋保存」ボタンを押下時、付箋のテキストを更新する。
+	// @summary 「付箋保存」ボタンを押下時、付箋のテキストを更新する。
 	$('button#fix').click(function () 
 	{
+		// 変更内容を取得する。
 		var memo = area.instanceById('area1').getContent();
-		var rootSelector = 'div#'+ $('input#selectedNoteItem').val();
-		NoteItem.ChangeVal($(rootSelector), memo);
+		
+		// 付箋IDを取得する。
+		var id = $('input#selectedNoteItem').val();
+
+		// IDが存在すれば、付箋を更新する。
+		if (id != '')
+		{
+			var rootSelector = 'div#' + id;
+			NoteItem.ChangeVal($(rootSelector), memo);
+		}
 	});
 
 	//■コンテナを生成する。

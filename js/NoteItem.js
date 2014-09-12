@@ -44,17 +44,17 @@ function NoteItem() {
   $jquery.find('#min').click(function()
   {
     // タグが表示の場合は折り畳む（最小化する）。タグが非表示の場合は展開する。
-    if ($jquery.find('#tags').css('display') != 'block')
+    if ($(this).parent().find('#tags').css('display') != 'block')
     {
       // 特記事項が表示されている場合は、文字列を非表示とする。
-      $jquery.find('#tags').show();
-      $jquery.find('[name=remarks]').hide();      
+      $(this).parent().find('#tags').show();
+      $(this).parent().find('[name=remarks]').hide();      
     }
     else
     {
       // 特記事項が非表示の場合は、文字列を表示する。
-      $jquery.find('#tags').hide();
-      $jquery.find('[name=remarks]').show();
+      $(this).parent().find('#tags').hide();
+      $(this).parent().find('[name=remarks]').show();
     }
   });
 
