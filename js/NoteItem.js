@@ -48,12 +48,16 @@ function NoteItem() {
     {
       // 特記事項が表示されている場合は、文字列を非表示とする。
       $(this).parent().find('#tags').show();
+      $(this).parent().find('#form').hide();      
+      $(this).parent().find('#img').hide();      
       $(this).parent().find('[name=remarks]').hide();      
     }
     else
     {
       // 特記事項が非表示の場合は、文字列を表示する。
       $(this).parent().find('#tags').hide();
+      $(this).parent().find('#form').show();
+      $(this).parent().find('#img').show();
       $(this).parent().find('[name=remarks]').show();
     }
   });
