@@ -1,11 +1,7 @@
 #!/usr/bin/perl
-
-use utf8;
-#use strict;
-#use warnings;
-
 use RPC::XML;
 use RPC::XML::Client;
+use Encode;
 
 print "Content-type: text/html\n\n";
 
@@ -30,8 +26,17 @@ foreach $pair (@query) {
 }
 
 # 実行用XMLを登録する。
-$xml = $FORM{'xml'};
+#$xml = $FORM{'xml'};
 $filepath  = $FORM{'filepath'};
+
+# クエリを作成する。
+# ドキュメントルートノードを明確に記述しなければならない。
+#$filepath = "/db/sample/test20140916.xml";
+$query = <<END;
+for \$item in doc('$filepath') /note
+return \$item 
+END
+#print $query;
 
 # 接続先を設定する。
 #print "connecting to $URL...\n";
@@ -45,17 +50,9 @@ $options = RPC::XML::struct->new(
     #, 'stylesheet' => 'test.xsl'
 );
 
-# リクエストにクエリを設定する。
-#0より大きい値では、上書きされる。
-$overwrite = 1;
-
-#utf8エンコードを実行する。
-$req = RPC::XML::request->new(
-	"parse", 
-	RPC::XML::base64->new($xml), 
-	$filepath, 
-	$overwrite
-);
+# リクエストにクエリを設定する。（MAX件以上は表示されないので、注意する。）
+use constant MAX => 1000;
+$req = RPC::XML::request->new("query", $query, MAX, 1, $options);
 
 # リクエストを送信する。
 $response = $client->send_request($req);
@@ -66,6 +63,5 @@ if($response->is_fault) {
 }
 
 # 結果を出力する。
-#print $xml;
-print "response";
-print $response->value;
+#print utf8::is_utf8($response->value) ? encode('utf-8', $response->value) : response->value;
+print utf8::is_utf8($response->value) ? encode('utf-8', $response->value) : response->value;

@@ -12,7 +12,12 @@ bkLib.onDomLoaded(function() {
 
 $(function() 
 {
-	// @summary 「保存」ボタンを押下時、XMLを保存する。
+	/// @summary 「読込」ボタンを押下時、XMLを読込む。
+	$('button#load').click(function(){
+		XmlManager.LoadNote('');
+	});
+
+	/// @summary 「保存」ボタンを押下時、XMLを保存する。
 	$('button#save').click(function(){
 		// 本日のカルテをXMLに変更する。
 		var xml = '';
