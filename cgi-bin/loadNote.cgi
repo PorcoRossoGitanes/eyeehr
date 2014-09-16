@@ -5,6 +5,7 @@ use Encode;
 
 print "Content-type: text/html\n\n";
 
+#--- GET/POST処理は基本ルーチン ---
 # GET処理
 if($ENV{'REQUEST_METHOD'} eq "GET"){
 	$buffer = $ENV{'QUERY_STRING'};
@@ -24,6 +25,7 @@ foreach $pair (@query) {
 	#print $key."=".$value."<br>";
 	$FORM{$key} = $value;
 }
+#--- GET/POST処理は基本ルーチン ---
 
 # 実行用XMLを登録する。
 #$xml = $FORM{'xml'};

@@ -14,7 +14,7 @@ $(function()
 {
 	/// @summary 「読込」ボタンを押下時、XMLを読込む。
 	$('button#load').click(function(){
-		XmlManager.LoadNote('');
+		XmlManager.LoadNote($('div#currentFilePath').text());
 	});
 
 	/// @summary 「保存」ボタンを押下時、XMLを保存する。
@@ -46,8 +46,8 @@ $(function()
    			(ss[1]?ss:"0"+ss[0]);
    		//console.log(yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0])); // padding
 
-		var xmlFilePath = '/db/sample/test' + yyyyMMddhhmmss + '.xml';
-		XmlManager.SaveNote(xmlFilePath, xml);
+		$('div#currentFilePath').text('/db/sample/test' + yyyyMMddhhmmss + '.xml');
+		XmlManager.SaveNote($('div#currentFilePath').text(), xml);
 		//alert('save');
 	});
 

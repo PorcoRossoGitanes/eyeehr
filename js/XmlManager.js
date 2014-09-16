@@ -14,7 +14,7 @@ XmlManager.LoadNote = function (i_filePath)
     $.get(
         cgi,
         {
-            filepath : '/db/sample/test20140916.xml' //i_filePath
+            filepath : i_filePath //i_filePath
             // ,
             // xml : i_xmlText
         },
