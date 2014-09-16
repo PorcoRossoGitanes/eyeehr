@@ -21,9 +21,29 @@ $(function()
 		})
 	    //console.log('Utility.HtmlInputItemToXml : ' + xml);
 
-		var xmlFilePath = '/db/sample/test3.xml';
+	    var now = new Date();
+		
+		//console.log(now);
+		
+		var yyyy = now.getFullYear().toString();
+   		var MM = (now.getMonth()+1).toString(); // getMonth() is zero-based
+   		var dd = now.getDate().toString();
+   		var hh = now.getHours().toString();
+   		var mm = now.getMinutes().toString();
+        var ss = now.getSeconds().toString();
+
+   		var yyyyMMddhhmmss = 
+   			yyyy + 
+   			(MM[1]?MM:"0"+MM[0]) + 
+   			(dd[1]?dd:"0"+dd[0]) + 
+   			(hh[1]?hh:"0"+hh[0]) + 
+   			(mm[1]?mm:"0"+mm[0]) + 
+   			(ss[1]?ss:"0"+ss[0]);
+   		//console.log(yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0])); // padding
+
+		var xmlFilePath = '/db/sample/test' + yyyyMMddhhmmss + '.xml';
 		XmlManager.SaveNote(xmlFilePath, xml);
-		alert('save');
+		//alert('save');
 	});
 
 	// @summary 「患者情報」ボタンを押下時、患者情報を表示する。
