@@ -165,7 +165,7 @@ function NoteItemPrescription(i_name)
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemPrescription');
   $jquery.addClass('NoteItemPrescription');
-  $jquery.find('[name=form]').attr('name', 'medicine');
+  //$jquery.find('[name=form]').attr('name', 'medicine');
   $jquery.find('[name=form]').append(
     '<input name="medicine-orca" type="hidden" value="ORCAID" />' + 
     '<input name="medicine-name" type="disable" value="' + i_name +'"/>' + 
