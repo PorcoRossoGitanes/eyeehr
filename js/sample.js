@@ -14,7 +14,9 @@ $(function()
 {
 	/// @summary 「読込」ボタンを押下時、XMLを読込む。
 	$('button#load').click(function(){
+		
 		XmlManager.LoadNote($('div#currentFilePath').text());
+	
 	});
 
 	/// @summary 「保存」ボタンを押下時、XMLを保存する。
@@ -108,6 +110,7 @@ Utility.GetCurrentDateTime  = function ()
 	retVal = 
 		yyyy + (MM[1]?MM:"0"+MM[0]) + (dd[1]?dd:"0"+dd[0]) + 
 		(hh[1]?hh:"0"+hh[0]) + (mm[1]?mm:"0"+mm[0]) + (ss[1]?ss:"0"+ss[0]);
+
 	return retVal;
 }
 
@@ -118,8 +121,7 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 	var retVal = '';
 
 	// 入力タグとなりうる要素を取得する。
-	const childElementTags = new Array('DIV', 'INPUT', 'TEXTAREA', 'SELECT');
-
+	const childElementTags = new Array('DIV', 'INPUT'/*, 'TEXTAREA', 'SELECT'*/);
 
 	// name属性をタグとして使用する。
 	var tag = $i_jquery.attr('name');
@@ -138,9 +140,17 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 		switch ($i_jquery[0].tagName)
 		{
 			case 'DIV' :  // DIVタグの場合
-				if(containInputChildren == false) 
+				if($i_jquery.hasClass('NoteItemContainer'))
+				{
+					// NoteItemContaner要素の場合は、
+				}
+				else if (containInputChildren == false) 
 				{
 					retVal += $i_jquery.html();
+				}
+				else 
+				{
+					//
 				}
 				break;
 			case 'INPUT' : // INPUTタグの場合
@@ -149,7 +159,6 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 			// TODO : TEXTAREA
 			// TODO : SELECTボックスなど
 			default : 
-				//console.log($i_jquery[0].tagName);
 				// それ以外の場合は出力しない。
 				break;		
 		}

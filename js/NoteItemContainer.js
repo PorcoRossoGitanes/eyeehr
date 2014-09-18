@@ -5,13 +5,10 @@ function NoteItemContainer (i_name, i_title)
 {
 	///@param クラス名
 	this.name = 'NoteItemContainer';
-	
-	///@param クラス属性（デザイン統一用）
-	const class_attr_design = 'NoteItemContainer';
-	
+		
 	///@param HTML
 	$jquery = $('<div ' + 
-		'class="' + class_attr_design + '" ' + 
+		'class="' + 'NoteItemContainer' + '" ' + 
 		'name="' + i_name + '">' + 
 		'<h1>' + i_title + '</h1>' + 
 		//'<div id="attached"></div>' + 
