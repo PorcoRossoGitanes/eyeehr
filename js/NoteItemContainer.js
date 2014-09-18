@@ -1,25 +1,19 @@
 ///@summary コンストラクタ
-///@param 	i_id	ID
+///@param 	i_name	名前
 ///@param 	i_title	タイトル
-function NoteItemContainer (i_id, i_title)
+function NoteItemContainer (i_name, i_title)
 {
 	///@param クラス名
 	this.name = 'NoteItemContainer';
 	
-	///@param ID
-	this.id = i_id;
-
-	///@param タイトル
-	this.title = i_title;
-
 	///@param クラス属性（デザイン統一用）
 	const class_attr_design = 'NoteItemContainer';
 	
 	///@param HTML
 	$jquery = $('<div ' + 
 		'class="' + class_attr_design + '" ' + 
-		'name="' + i_id + '">' + 
-		'<h1>' + this.title + '</h1>' + 
+		'name="' + i_name + '">' + 
+		'<h1>' + i_title + '</h1>' + 
 		//'<div id="attached"></div>' + 
 	'</div>');
 	$jquery.draggable();

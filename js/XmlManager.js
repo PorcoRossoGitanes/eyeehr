@@ -21,18 +21,19 @@ XmlManager.LoadNote = function (i_filePath)
         function(data,textStatus) {
             if(textStatus=='success') {
                 // 実行成功時の処理を記述する。
-                $('#result').text('SUCCESS');
-                alert('SUCCESS');
-                alert(data);
+                $('#result-XmlManager_LoadNote').text('SUCCESS');
+                //alert('SUCCESS');
+                console.log($(data).find('note'));
+                return data;
              }
         }
         ,'html'
     );
 
     // 失敗を検出する。
-    if($('#result').text=='')
+    if($('#result-XmlManager_LoadNote').text=='')
     {
-         $('#result').text('FAILED');
+         $('#result-XmlManager_LoadNote').text('FAILED');
     }        
 }
 
@@ -53,17 +54,17 @@ XmlManager.SaveNote = function (i_filePath, i_xmlText)
         function(data,textStatus) {
             if(textStatus=='success') {
                 // 実行成功時の処理を記述する。
-                $('#result').text('SUCCESS');
-                alert('SUCCESS');
-                alert(data);
+                $('#result-XmlManager_SaveNote').text('SUCCESS');
+                //alert('SUCCESS');
+                //alert(data);
              }
         }
         ,'html'
     );
 
     // 失敗を検出する。
-    if($('#result').text=='')
+    if($('#result-XmlManager_SaveNote').text =='')
     {
-         $('#result').text('FAILED');
+         $('#result-XmlManager_SaveNote').text('FAILED');
     }        
 }

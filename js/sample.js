@@ -26,29 +26,22 @@ $(function()
 		})
 	    //console.log('Utility.HtmlInputItemToXml : ' + xml);
 
-	    var now = new Date();
-		
-		//console.log(now);
-		
-		var yyyy = now.getFullYear().toString();
-   		var MM = (now.getMonth()+1).toString(); // getMonth() is zero-based
-   		var dd = now.getDate().toString();
-   		var hh = now.getHours().toString();
-   		var mm = now.getMinutes().toString();
-        var ss = now.getSeconds().toString();
+	    // ディレクトリを取得する。
+	    var dir = '/db/sample/';
+	    // ディレクトリを取得する。
+	    var prefix = 'note';
+	    // 拡張子を取得する。
+	    var ext = '.xml';
+	    // 現在時刻を取得する。
+	    var yyyyMMddhhmmss = Utility.GetCurrentDateTime();
 
-   		var yyyyMMddhhmmss = 
-   			yyyy + 
-   			(MM[1]?MM:"0"+MM[0]) + 
-   			(dd[1]?dd:"0"+dd[0]) + 
-   			(hh[1]?hh:"0"+hh[0]) + 
-   			(mm[1]?mm:"0"+mm[0]) + 
-   			(ss[1]?ss:"0"+ss[0]);
-   		//console.log(yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0])); // padding
+   		var filePath = dir + prefix + yyyyMMddhhmmss + '.xml';
 
-		$('div#currentFilePath').text('/db/sample/test' + yyyyMMddhhmmss + '.xml');
-		XmlManager.SaveNote($('div#currentFilePath').text(), xml);
-		//alert('save');
+   		// 指定のファイルパスにXMLデーターを保存する。
+		XmlManager.SaveNote(filePath, xml);
+
+		// TODO : 現在のカルテファイルパスを表示する。
+		$('div#currentFilePath').text(filePath);
 	});
 
 	// @summary 「患者情報」ボタンを押下時、患者情報を表示する。
@@ -100,6 +93,24 @@ $(function()
 function Utility() {
 }
 
+///@summary 現在日時を取得する。
+Utility.GetCurrentDateTime  = function ()
+{
+	var retVal = '';
+ 
+    var now = new Date();		
+	var yyyy = now.getFullYear().toString();
+	var MM = (now.getMonth()+1).toString(); // getMonth() is zero-based
+	var dd = now.getDate().toString();
+	var hh = now.getHours().toString();
+	var mm = now.getMinutes().toString();
+    var ss = now.getSeconds().toString();
+	retVal = 
+		yyyy + (MM[1]?MM:"0"+MM[0]) + (dd[1]?dd:"0"+dd[0]) + 
+		(hh[1]?hh:"0"+hh[0]) + (mm[1]?mm:"0"+mm[0]) + (ss[1]?ss:"0"+ss[0]);
+	return retVal;
+}
+
 /// @summary 	HTMLをXMLに保存する。
 /// @param 		$i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
 Utility.HtmlInputItemToXml = function($i_jquery)
@@ -127,7 +138,10 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 		switch ($i_jquery[0].tagName)
 		{
 			case 'DIV' :  // DIVタグの場合
-				if(containInputChildren == false) retVal += $i_jquery.html();
+				if(containInputChildren == false) 
+				{
+					retVal += $i_jquery.html();
+				}
 				break;
 			case 'INPUT' : // INPUTタグの場合
 				retVal += $i_jquery.attr('value');

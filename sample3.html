@@ -15,6 +15,7 @@
     <!--script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script--><!--nicEdit-->
     <script src="js/nicEdit.js" type="text/javascript"></script>
     <!--自作JS-->
+    <script src="js/Utility.js"></script>    
     <script src="js/NoteItem.js"></script>
     <script src="js/NoteItemContainer.js"></script>
     <script src="js/XmlManager.js"/></script>
@@ -27,6 +28,8 @@
   <body>
   <div>
     <div id="currentFilePath"></div><!--保存中のファイル名（デバッグ用）-->
+    読込：<div id="result-XmlManager_LoadNote"></div><!--読込（デバッグ用）-->
+    保存：<div id="result-XmlManager_SaveNote"></div><!--保存（デバッグ用）-->
     <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">読込</span></button>
     <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
     2014/08/31 12:34 
