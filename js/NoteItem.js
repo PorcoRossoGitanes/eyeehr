@@ -32,7 +32,7 @@ function NoteItem() {
     <!--イメージ添付用-->
     '<div name="imgs"></div>' +
     <!--文字列入力用--> 
-    '<div id="remarks" name="remarks"></div>' + 
+    '<div name="remarks"></div>' + 
     '</div>'
   );
 
@@ -125,7 +125,7 @@ function NoteItemDisease(i_name)
 NoteItemDisease.prototype = new NoteItem;
 
 ///@summary 主訴コンストラクタ
-function NoteItemComplaint() 
+function NoteItemComplaint($i_xml) 
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
@@ -135,8 +135,11 @@ function NoteItemComplaint()
   $jquery.addClass('NoteItemComplaint');
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
+  console.log($i_xml);
+  console.log($jquery);
 }
-NoteItemComplaint.prototype = new NoteItem;
+
+
 
 ///@summary 検査コンストラクタ
 function NoteItemMedicalCheck(i_name) 

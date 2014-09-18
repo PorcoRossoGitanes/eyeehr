@@ -28,13 +28,17 @@ XmlManager.LoadNote = function (i_filePath)
                 $currentNote = $('[name=note]');
                 $currentNote.empty();
                 $note.children().each(function(){
+                    console.log($(this));
                     switch($(this)[0].tagName)
                     {
                         case 'NOTEITEMCONTAINERCOMPLAINT' : //主訴
                             var containerComplaint = new NoteItemContainerComplaint();
                             $currentNote.append(containerComplaint.getJQueryObject());
+                            
                             $(this).children().each(function(){
-                                // TODO : コーディング未済
+                                var item = new NoteItemComplaint($(this)); 
+                                console.log($(this));
+                                item.appendTo('[name=NoteItemContainerComplaint]');
                             });
                             break;
                         case 'NOTEITEMCONTAINERDISEASE' : // 病名 
