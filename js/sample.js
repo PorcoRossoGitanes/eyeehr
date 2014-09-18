@@ -154,7 +154,7 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 				}
 				break;
 			case 'INPUT' : // INPUTタグの場合
-				retVal += $i_jquery.attr('value');
+				retVal += $i_jquery.val();//$i_jquery.attr('value');
 				break;
 			// TODO : TEXTAREA
 			// TODO : SELECTボックスなど
