@@ -5,6 +5,8 @@ var area = null;
 
 // @summary nicEditの呼び込み時、入力欄を追加する。
 bkLib.onDomLoaded(function() {
+	const ID = 'area1';
+  	
   	area = new nicEditor(
   	{
 		buttonList:[
@@ -39,8 +41,14 @@ bkLib.onDomLoaded(function() {
 				NoteItem.ChangeVal($(rootSelector), memo);
 			}
   		}
+  	}).panelInstance(ID);
 
-  	}).panelInstance('area1');
+  	// // TODO : フォーカスを話したときに自動的に保存する。
+  	// area.addEvent('blur', function() {
+  	// 	alert('blur');
+   //  	area.instanceById(ID).saveContent();
+  	// });
+
 });
 
 $(function() 
