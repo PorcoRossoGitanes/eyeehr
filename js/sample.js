@@ -5,12 +5,43 @@ var area = null;
 
 // @summary nicEditの呼び込み時、入力欄を追加する。
 bkLib.onDomLoaded(function() {
-  area = new nicEditor(
+  	area = new nicEditor(
   	{
-  		buttonList:['bold','italic','underline'/*,'image','upload'*/],
-		convertToText:true
+		buttonList:[
+ 			'save', // 「保存ボタンを追加した。」
+ 			'bold',
+ 			'italic',
+ 			'underline', 
+ 			'forecolor',
+ 			'bgcolor'
+ 			/*,
+ 			'image',
+ 			'upload'*/
+ 		],
+		//convertToText:true
+
+		// 「保存」ボタン押下時、付箋の備考を保存する。
+		onSave : function(content, id, instance) {			
+			// 変更内容を取得する。
+			var memo = content;
+			
+			// 付箋IDを取得する。
+			var id = $('input#selectedNoteItem').val();
+
+			// IDが存在すれば、付箋を更新する。
+			if (id != '')
+			{
+				//console.log(memo);
+				memo = memo.replace(/<div>/g, '<br />');
+				memo = memo.replace(/<\/div>/g, '');
+				//console.log(memo);
+				var rootSelector = 'div#' + id;
+				NoteItem.ChangeVal($(rootSelector), memo);
+			}
+  		}
+
   	}).panelInstance('area1');
-	});
+});
 
 $(function() 
 {
@@ -53,27 +84,28 @@ $(function()
 		alert('患者情報表示');
 	});
 
-	// @summary 「付箋保存」ボタンを押下時、付箋のテキストを更新する。
-	$('button#fix').click(function () 
-	{
-		// 変更内容を取得する。
-		var memo = area.instanceById('area1').getContent();
+	// // @summary 「付箋保存」ボタンを押下時、付箋のテキストを更新する。
+	// // @remarks 	nicEdit保存ボタンに処理を移行した。
+	// $('button#fix').click(function () 
+	// {
+	// 	// 変更内容を取得する。
+	// 	var memo = area.instanceById('area1').getContent();
 		
-		// 付箋IDを取得する。
-		var id = $('input#selectedNoteItem').val();
+	// 	// 付箋IDを取得する。
+	// 	var id = $('input#selectedNoteItem').val();
 
-		// IDが存在すれば、付箋を更新する。
-		if (id != '')
-		{
-			console.log('pre');
-			console.log(memo);
-			memo = memo.replace(/<div>/g, '<br />');
-			memo = memo.replace(/<\/div>/g, '');
-			console.log(memo);
-			var rootSelector = 'div#' + id;
-			NoteItem.ChangeVal($(rootSelector), memo);
-		}
-	});
+	// 	// IDが存在すれば、付箋を更新する。
+	// 	if (id != '')
+	// 	{
+	// 		console.log('pre');
+	// 		console.log(memo);
+	// 		memo = memo.replace(/<div>/g, '<br />');
+	// 		memo = memo.replace(/<\/div>/g, '');
+	// 		console.log(memo);
+	// 		var rootSelector = 'div#' + id;
+	// 		NoteItem.ChangeVal($(rootSelector), memo);
+	// 	}
+	// });
 
 	//■コンテナを生成する。
 	$currentNote = $('[name=note]');
