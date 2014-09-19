@@ -40,7 +40,7 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 	
 		// 子供を持っている場合は再起的にXMLを生成する。
 		// テーブルなどで形式を制御する場合もあるので、findを使用する。
-		var inputChildrenCnt = $i_jquery.find(childElementTags.toString()).length
+		var inputChildrenCnt = $i_jquery.find(childElementTags.toString()).length;
 		var containInputChildren =  inputChildrenCnt > 0;
 
 		// 内部文字列を取得する
@@ -49,12 +49,11 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 			case 'DIV' :  // DIVタグの場合
 				if($i_jquery.hasClass('NoteItemContainer'))
 				{
-					// NoteItemContaner要素の場合は、
+					// NoteItemContaner要素の場合は、内容を出力しない。
 				}
 				else if (containInputChildren == false && $i_jquery.attr('name') != '') 
 				{
-
-					retVal += '<![CDATA[' + $i_jquery.html() + ']]>';
+					retVal += $i_jquery.html().replace(/<br>/g, '<br />');
 				}
 				else 
 				{
@@ -88,5 +87,57 @@ Utility.HtmlInputItemToXml = function($i_jquery)
 	// }
 
 	return retVal;
+}
+
+Utility.HtmlMinInputItemToXml = function($i_jquery)
+{
+	var retVal = '';
+	// 入力最小単位 :=
+	// （備考の場合のみ）XHTML |　→XHTMLに変換して保存する
+	//   <div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。
+	//   <img name=“test-1” src=“Thumbnail” data-command=“本当のデーター">  例）眼底写真 |　→XHTMLに変換して保存する
+	//   <input type=“text” name=“tag” value=“hogehoge">　※ほとんどinputでまかなえるのでそれ以外は無視
+	// TODO : ラジオボタン等はどのように扱うか、未検証である。
+
+	// 入力タグとなりうる要素を取得する。
+	$i_jquery.find('DIV', 'INPUT', 'IMG').each(function (){
+		if($(this).attr('name') !== undefined)
+		{
+			var tag = $(this).attr('name');
+
+			switch ($(this)[0].tagName)
+			{
+				case 'DIV':
+					retVal += '<' +  tag + '>';
+					retVal += $(this).text();
+					retVal += '</' + tag + '>';
+					break;
+				case 'INPUT':
+					retVal += '<' +  tag + '>';
+					retVal += $(this).val();
+					retVal += '</' + tag + '>';
+					break;
+				case 'IMG':
+					break;
+				default : 
+					Utility.HtmlToXhtml($(this).html())
+					break;
+			}
+		}
+
+	})
+}
+
+/// @ summary HTMLをXHTMLに変換する。
+Utility.HtmlToXhtml = function(i_html)
+{
+	// 入力最小単位 :=
+	// （備考の場合のみ）XHTML |　→XHTMLに変換して保存する
+	//   <div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。
+	//   <img name=“test-1” src=“Thumbnail” data-command=“本当のデーター">  例）眼底写真 |　→XHTMLに変換して保存する
+	//   <input type=“text” name=“tag” value=“hogehoge">　※ほとんどinputでまかなえるのでそれ以外は無視
+	var retVal = i_html;
+	retVal.replace(/(<img[^>]+)>/gm, "$1 />");
+	retVal.replace(/(<br[^>]+)>/gm, "$1 />");
 }
 

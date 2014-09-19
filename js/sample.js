@@ -40,10 +40,8 @@ bkLib.onDomLoaded(function() {
 			// IDが存在すれば、付箋を更新する。
 			if (id != '')
 			{
-				//console.log(memo);
 				memo = memo.replace(/<div>/g, '<br />');
 				memo = memo.replace(/<\/div>/g, '');
-				//console.log(memo);
 				var rootSelector = 'div#' + id;
 				NoteItem.ChangeVal($(rootSelector), memo);
 			}
