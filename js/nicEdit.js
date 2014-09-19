@@ -316,8 +316,55 @@ var nicEditorConfig = bkClass.extend({
 	},
 	iconsPath : 'auto',
 	convertToText : true,
-	buttonList : ['save','bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','indent','outdent','image','upload','link','unlink','forecolor','bgcolor','undo','redo'],
-	iconList : {"xhtml":1,"bgcolor":2,"forecolor":3,"bold":4,"center":5,"hr":6,"indent":7,"italic":8,"justify":9,"left":10,"ol":11,"outdent":12,"removeformat":13,"right":14,"save":25,"strikethrough":16,"subscript":17,"superscript":18,"ul":19,"underline":20,"image":21,"link":22,"unlink":23,"close":24,"arrow":26,"undo":27,"redo":28},
+	buttonList : [
+		'save',
+		'bold','italic','underline',
+		'left','center','right',
+		'ol','ul','fontSize',
+		'fontFamily','fontFormat',
+		'indent','outdent','image','upload',
+		'link','unlink',
+		'forecolor','forecolor-red', // 独自作成(forecolor-***)
+		'bgcolor',
+		'undo','redo'
+	],
+	iconList : {
+		"xhtml":1,
+		"bgcolor":2,
+		"forecolor":3,
+		// 独自作成(forecolor-***)
+		'forecolor-black':3,
+		'forecolor-red':3,
+		'forecolor-blue':3,
+		'forecolor-green':3,
+		'forecolor-brown':3,
+		'forecolor-yellow':3,
+		// 独自作成(forecolor-***)
+		"bold":4,
+		"center":5,
+		"hr":6,
+		"indent":7,
+		"italic":8,
+		"justify":9,
+		"left":10,
+		"ol":11,
+		"outdent":12,
+		"removeformat":13,
+		"right":14,
+		"save":25,
+		"strikethrough":16,
+		"subscript":17,
+		"superscript":18,
+		"ul":19,
+		"underline":20,
+		"image":21,
+		"link":22,
+		"unlink":23,
+		"close":24,
+		"arrow":26,
+		"undo":27,
+		"redo":28
+	},
 	externalCSS : ''
 });
 /* END CONFIG */
@@ -476,7 +523,10 @@ var nicEditor = bkClass.extend({
 				}
 			}
 		}
-		return {backgroundImage : "url('"+((icon) ? this.options.iconsPath : file)+"')", backgroundPosition : ((icon) ? ((icon-1)*-18) : 0)+'px 0px'};	
+		return {
+			backgroundImage : "url('"+((icon) ? this.options.iconsPath : file)+"')", 
+			backgroundPosition : ((icon) ? ((icon-1)*-18) : 0)+'px 0px'
+		};	
 	},
 		
 	selectCheck : function(e,t) {
@@ -1372,7 +1422,15 @@ nicEditors.registerPlugin(nicPlugin,nicLinkOptions);
 /* START CONFIG */
 var nicColorOptions = {
 	buttons : {
-		'forecolor' : {name : '文字色', type : 'nicEditorColorButton', noClose : true},
+		//'forecolor' : {name : '文字色', type : 'nicEditorColorButton', noClose : true},
+		/***独自色ペン**/
+		'forecolor-black'  : {name : '黒色', type : 'nicEditorColorButtonBlack', noClose : true},
+		'forecolor-red'    : {name : '赤色', type : 'nicEditorColorButtonRed', noClose : true},
+		'forecolor-blue'   : {name : '青色', type : 'nicEditorColorButtonBlue', noClose : true},
+		'forecolor-green'  : {name : '緑色', type : 'nicEditorColorButtonGreen', noClose : true},
+		'forecolor-brown'  : {name : '茶色', type : 'nicEditorColorButtonBrown', noClose : true},
+		'forecolor-yellow' : {name : '黄色', type : 'nicEditorColorButtonYellow', noClose : true},
+		/***独自色ペン**/
 		'bgcolor' : {name : '文字背景色', type : 'nicEditorBgColorButton', noClose : true}
 	}
 };
@@ -1416,6 +1474,46 @@ var nicEditorColorButton = nicEditorAdvancedButton.extend({
 		colorBorder.setStyle({border : '2px solid '+colorCode});		
 	}
 });
+
+/*** 独自拡張部 ***/
+// @黒ペン
+var nicEditorColorButtonBlack = nicEditorColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#000000');
+	}
+});
+// @赤ペン
+var nicEditorColorButtonRed = nicEditorColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#ff0000');
+	}
+});
+// @青ペン
+var nicEditorColorButtonBlue = nicEditorColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#0000ff');
+	}
+});
+// @緑ペン
+var nicEditorColorButtonGreen = nicEditorColorButton.extend({
+	addPane : function() {
+		//this.colorSelect('#228B22');
+		this.colorSelect('#00ff00');
+	}
+});
+// @黄色ペン
+var nicEditorColorButtonYellow = nicEditorColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#ffff00');
+	}
+});
+// @茶色ペン
+var nicEditorColorButtonBrown = nicEditorColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#A52A2A');
+	}
+});
+/*** 独自拡張部 ***/
 
 var nicEditorBgColorButton = nicEditorColorButton.extend({
 	colorSelect : function(c) {
