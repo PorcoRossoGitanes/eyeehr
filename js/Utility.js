@@ -32,7 +32,7 @@ Utility.HtmlNoteToXml = function($i_jquery)/* $('#note')*/
 
 	//TODO :  ヘッダー情報を保存する。
 	$i_jquery.children('div.NoteItemContainer').each(function () {
-		retVal += Utility.HtmlNoteItemContainerToXml($(this));
+		retVal += NoteItemContainer.HtmlToXml($(this));
 	})
 
 	retVal += '</' + tag + '>';
@@ -91,68 +91,8 @@ Utility.HtmlNoteToXml = function($i_jquery)/* $('#note')*/
 	return retVal;
 }
 
-/// @summary 	付箋コンテナHTMLをXMLに保存する。
-/// @param 		$i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
-Utility.HtmlNoteItemContainerToXml = function($i_jquery)
-{
-	var retVal = '';
 
-	var tag = $i_jquery.attr('name');
 
-	retVal += '<' + tag + '>';
-	// TODO ヘッダー情報を記入する。
-
-	// 子要素のXMLを取得しにいく。
-	$i_jquery.children('div.NoteItem').each(function () {
-		retVal += Utility.HtmlNoteItemToXml($(this));
-	})
-
-	retVal += '</' + tag + '>';
-
-	return retVal;
-}
-
-/// @summary 	付箋コンテナHTMLをXMLに保存する。
-/// @param 		$i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
-Utility.HtmlNoteItemToXml = function($i_jquery)
-{
-	var retVal = '';
-
-	var tag = $i_jquery.attr('name');
-
-	retVal += '<' + tag + '>';
-
-	//$i_jquery.find('del')
-	//$i_jquery.find('min')
-	//$i_jquery.find('attachImg')
-	
-	// □フォーム部
-	$form = $i_jquery.children('[name=form]');
-	retVal += '<' + $form.attr('name') + '>';
-	$i_jquery.children('[name=form]').find('DIV', 'INPUT', 'IMG').each(function(){
-		retVal += Utility.HtmlMinInputItemToXml($(this));
-		console.log($(this));
-	});
-	retVal += '</' + $form.attr('name') + '>';
-
-	// □画像添付部
-	$imgs = $i_jquery.children('[name=imgs]');
-	retVal += '<' + $imgs.attr('name') + '>';
-	$i_jquery.children('[name=imgs]').find('IMG').each(function(){
-		retVal += Utility.HtmlToXhtml ($remarks.html());
-	});
-	retVal += '</' + $imgs.attr('name') + '>';
-
-	// □備考添付部
-	$remarks = $i_jquery.children('[name=remarks]');
-	retVal += '<' + $remarks.attr('name') + '>';
-	retVal += Utility.HtmlToXhtml ($remarks.html());
-	retVal += '</' + $remarks.attr('name') + '>';
-	
-	retVal += '</' + tag + '>';
-
-	return retVal;
-}
 
 /// @summary  最小入力コントロールをXMLに置き換える。
 /// @param DIV, INPUT(集合で入ってくるかもしれない。）, IMG

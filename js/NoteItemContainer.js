@@ -30,6 +30,28 @@ function NoteItemContainer (i_name, i_title)
 	};
 }
 
+/// @summary 	付箋コンテナHTMLをXMLに保存する。
+/// @param 		$i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
+/// @return 	保存用XML
+NoteItemContainer.HtmlToXml = function($i_jquery)
+{
+	var retVal = '';
+
+	var tag = $i_jquery.attr('name');
+
+	retVal += '<' + tag + '>';
+	// TODO ヘッダー情報を記入する。
+
+	// 子要素のXMLを取得しにいく。
+	$i_jquery.children('div.NoteItem').each(function () {
+		retVal += NoteItem.HtmlToXml($(this));
+	})
+
+	retVal += '</' + tag + '>';
+
+	return retVal;
+}
+
 //--------------------------------------------------//
 ///@summary カルテ項目コンテナ（所見（病名））
 function NoteItemContainerDisease ()

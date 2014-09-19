@@ -84,6 +84,49 @@ function NoteItem() {
   }
 }
 
+/// @summary  付箋コンテナHTMLをXMLに保存する。
+/// @param    $i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
+/// @return   保存用XML
+NoteItem.HtmlToXml = function($i_jquery)
+{
+  var retVal = '';
+
+  var tag = $i_jquery.attr('name');
+
+  retVal += '<' + tag + '>';
+
+  //$i_jquery.find('del')
+  //$i_jquery.find('min')
+  //$i_jquery.find('attachImg')
+  
+  // □フォーム部
+  $form = $i_jquery.children('[name=form]');
+  retVal += '<' + $form.attr('name') + '>';
+  $i_jquery.children('[name=form]').find('DIV', 'INPUT', 'IMG').each(function(){
+    retVal += Utility.HtmlMinInputItemToXml($(this));
+    console.log($(this));
+  });
+  retVal += '</' + $form.attr('name') + '>';
+
+  // □画像添付部
+  $imgs = $i_jquery.children('[name=imgs]');
+  retVal += '<' + $imgs.attr('name') + '>';
+  $i_jquery.children('[name=imgs]').find('IMG').each(function(){
+    retVal += Utility.HtmlToXhtml ($remarks.html());
+  });
+  retVal += '</' + $imgs.attr('name') + '>';
+
+  // □備考添付部
+  $remarks = $i_jquery.children('[name=remarks]');
+  retVal += '<' + $remarks.attr('name') + '>';
+  retVal += Utility.HtmlToXhtml ($remarks.html());
+  retVal += '</' + $remarks.attr('name') + '>';
+  
+  retVal += '</' + tag + '>';
+
+  return retVal;
+}
+
 // @summary 文字列を変更する。
 NoteItem.ChangeVal = function($jquery, i_memo)
 {
