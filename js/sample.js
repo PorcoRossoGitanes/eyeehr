@@ -70,7 +70,7 @@ $(function()
 		// 本日のカルテをXMLに変更する。
 		var xml = '';
 		$('td[name="note"]').each(function(){
-			xml = Utility.HtmlInputItemToXml($(this));
+			xml = Utility.HtmlNoteToXml($(this));
 		})
 	    //console.log('Utility.HtmlInputItemToXml : ' + xml);
 
