@@ -8,6 +8,9 @@
  * Japanese Version
  * Translated and Customized by CMONOS (http://cmonos.jp)
  * Last-Modified: 2014-07-03
+ *
+ * Memo : skobayashi 2014/09/19
+ * 「独自」と記載された部分がカスタマイズされた部分である。
  */
 var bkExtend = function(){
 	var args = arguments;
@@ -324,21 +327,32 @@ var nicEditorConfig = bkClass.extend({
 		'fontFamily','fontFormat',
 		'indent','outdent','image','upload',
 		'link','unlink',
-		'forecolor','forecolor-red', // 独自作成(forecolor-***)
+		'forecolor',
+		// 独自作成(forecolor-***)　TODO : 必要分、色ペンを追加する
+		'forecolor-black','forecolor-red',
+		'forecolor-blue', 'forecolor-green', 
+		'forecolor-brown', 'forecolor-yellow', 
+		// 独自作成(forecolor-***)
 		'bgcolor',
+		// 独自作成(bgcolor-***) TODO : 必要分、マーカーを追加する。
+		'forecolor-red',
+		// 独自作成(bgcolor-***)
 		'undo','redo'
 	],
 	iconList : {
 		"xhtml":1,
 		"bgcolor":2,
+		// 独自作成(gbcolor-***)TODO : 必要分、マーカーを追加する。
+		"bgcolor-red":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		// 独自作成(bgcolor-***)
 		"forecolor":3,
-		// 独自作成(forecolor-***)
-		'forecolor-black':3,
-		'forecolor-red':3,
-		'forecolor-blue':3,
-		'forecolor-green':3,
-		'forecolor-brown':3,
-		'forecolor-yellow':3,
+		// 独自作成(forecolor-***)TODO : 必要分、色ペンを追加する
+		'forecolor-black':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-red':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-blue':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-green':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-brown':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-yellow':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
 		// 独自作成(forecolor-***)
 		"bold":4,
 		"center":5,
@@ -1422,16 +1436,19 @@ nicEditors.registerPlugin(nicPlugin,nicLinkOptions);
 /* START CONFIG */
 var nicColorOptions = {
 	buttons : {
-		//'forecolor' : {name : '文字色', type : 'nicEditorColorButton', noClose : true},
+		'forecolor' : {name : '文字色', type : 'nicEditorColorButton', noClose : true},
+		/***独自色ペン**/ //TODO : ボタンを登録する。 
+		'forecolor-black'  : {name : '黒ペン', type : 'nicEditorColorButtonBlack', noClose : true},
+		'forecolor-red'    : {name : '赤ペン', type : 'nicEditorColorButtonRed', noClose : true},
+		'forecolor-blue'   : {name : '青ペン', type : 'nicEditorColorButtonBlue', noClose : true},
+		'forecolor-green'  : {name : '緑ペン', type : 'nicEditorColorButtonGreen', noClose : true},
+		'forecolor-brown'  : {name : '茶ペン', type : 'nicEditorColorButtonBrown', noClose : true},
+		'forecolor-yellow' : {name : '黄ペン', type : 'nicEditorColorButtonYellow', noClose : true},
 		/***独自色ペン**/
-		'forecolor-black'  : {name : '黒色', type : 'nicEditorColorButtonBlack', noClose : true},
-		'forecolor-red'    : {name : '赤色', type : 'nicEditorColorButtonRed', noClose : true},
-		'forecolor-blue'   : {name : '青色', type : 'nicEditorColorButtonBlue', noClose : true},
-		'forecolor-green'  : {name : '緑色', type : 'nicEditorColorButtonGreen', noClose : true},
-		'forecolor-brown'  : {name : '茶色', type : 'nicEditorColorButtonBrown', noClose : true},
-		'forecolor-yellow' : {name : '黄色', type : 'nicEditorColorButtonYellow', noClose : true},
-		/***独自色ペン**/
-		'bgcolor' : {name : '文字背景色', type : 'nicEditorBgColorButton', noClose : true}
+		'bgcolor' : {name : '文字背景色', type : 'nicEditorBgColorButton', noClose : true},
+		/***独自色マーカー**/ //TODO : ボタンを登録する。
+		'bgcolor-red' : {name : '赤マーカー', type : 'nicEditorBgColorButtonRed', noClose : true}
+		/***独自色マーカー**/
 	}
 };
 /* END CONFIG */
@@ -1475,7 +1492,7 @@ var nicEditorColorButton = nicEditorAdvancedButton.extend({
 	}
 });
 
-/*** 独自拡張部 ***/
+/*** 独自拡張部 ***/ //TODO : 独自ボタンを定義する。
 // @黒ペン
 var nicEditorColorButtonBlack = nicEditorColorButton.extend({
 	addPane : function() {
@@ -1521,6 +1538,14 @@ var nicEditorBgColorButton = nicEditorColorButton.extend({
 		this.removePane();
 	}	
 });
+
+/*** 独自拡張部 ***/　//TODO : 独自ボタンを定義する。
+var nicEditorBgColorButtonRed = nicEditorBgColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#ff0000');
+	}
+});
+/*** 独自拡張部 ***/
 
 nicEditors.registerPlugin(nicPlugin,nicColorOptions);
 
