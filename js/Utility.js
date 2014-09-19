@@ -154,15 +154,17 @@ Utility.HtmlNoteItemToXml = function($i_jquery)
 	return retVal;
 }
 
+/// @summary  最小入力コントロールをXMLに置き換える。
+/// @param DIV, INPUT(集合で入ってくるかもしれない。）, IMG
+/// @remarks  入力最小単位 :=
+/// （備考の場合のみ）XHTML |　→XHTMLに変換して保存する
+///  <div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。
+///  <img name=“test-1” src=“Thumbnail” data-command=“本当のデーター">  例）眼底写真 |　→XHTMLに変換して保存する
+///  <input type=“text” name=“tag” value=“hogehoge">　※ほとんどinputでまかなえるのでそれ以外は無視
+/// TODO : ラジオボタン等はどのように扱うか、未検証である。
 Utility.HtmlMinInputItemToXml = function($i_jquery)
 {
 	var retVal = '';
-	// 入力最小単位 :=
-	// （備考の場合のみ）XHTML |　→XHTMLに変換して保存する
-	//   <div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。
-	//   <img name=“test-1” src=“Thumbnail” data-command=“本当のデーター">  例）眼底写真 |　→XHTMLに変換して保存する
-	//   <input type=“text” name=“tag” value=“hogehoge">　※ほとんどinputでまかなえるのでそれ以外は無視
-	// TODO : ラジオボタン等はどのように扱うか、未検証である。
 
 	// 入力タグとなりうる要素を取得する。
 	//$i_jquery.find('DIV', 'INPUT', 'IMG').each(function (){
@@ -195,14 +197,10 @@ Utility.HtmlMinInputItemToXml = function($i_jquery)
 	return retVal;
 }
 
-/// @ summary HTMLをXHTMLに変換する。
+/// @summary 	HTMLをXHTMLに変換する。（備考とIMGタグで使用する。）
+/// @param		HTML 
 Utility.HtmlToXhtml = function(i_html)
 {
-	// 入力最小単位 :=
-	// （備考の場合のみ）XHTML |　→XHTMLに変換して保存する
-	//   <div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。
-	//   <img name=“test-1” src=“Thumbnail” data-command=“本当のデーター">  例）眼底写真 |　→XHTMLに変換して保存する
-	//   <input type=“text” name=“tag” value=“hogehoge">　※ほとんどinputでまかなえるのでそれ以外は無視
 	var retVal = i_html;
 	retVal = retVal.replace( /(<img.*?)\/?>/g, '$1/>' )
 	retVal = retVal.replace( /(<br.*?)\/?>/g, '$1/>' )
