@@ -116,17 +116,19 @@ XmlManager.SaveNote = function (i_filePath, i_xmlText)
         function(data,textStatus) {
             if(textStatus=='success') {
                 // 実行成功時の処理を記述する。
-                $('#result-XmlManager_SaveNote').text('SUCCESS');
-                //alert('SUCCESS');
-                //alert(data);
+                if (data == 'ERROR')
+                {
+                    alert('保存に失敗しました。');
+                    //$('#result-XmlManager_SaveNote').text('失敗');
+                }
              }
         }
         ,'html'
     );
 
     // 失敗を検出する。
-    if($('#result-XmlManager_SaveNote').text =='')
-    {
-         $('#result-XmlManager_SaveNote').text('FAILED');
-    }        
+    // if($('#result-XmlManager_SaveNote').text == 'ERROR')
+    // {   
+    //     //$('#result-XmlManager_SaveNote').text('FAILED');
+    // }        
 }

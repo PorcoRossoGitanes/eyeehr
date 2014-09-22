@@ -7,6 +7,9 @@ use utf8;
 use RPC::XML;
 use RPC::XML::Client;
 
+# 失敗時は"ERROR"が返却される。
+use constant ERROR    => "ERROR";
+
 print "Content-type: text/html\n\n";
 
 #--- GET/POST処理は基本ルーチン ---
@@ -26,7 +29,6 @@ foreach $pair (@query) {
 	$value =~ tr/+/ /;
 	$value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
 	
-	#print $key."=".$value."<br>";
 	$FORM{$key} = $value;
 }
 #--- GET/POST処理は基本ルーチン ---
@@ -39,6 +41,11 @@ $filepath  = $FORM{'filepath'};
 #print "connecting to $URL...\n";
 $url = "http://admin:zaq12wsx\@localhost:8080/exist/xmlrpc";
 $client = new RPC::XML::Client $url;
+
+# ファイルパスに従ったコレクションがない場合は、
+# コレクションを作成する。
+
+
 $options = RPC::XML::struct->new(
     'indent' => 'yes'
     , 'encoding' => 'UTF-8'
@@ -64,10 +71,11 @@ $response = $client->send_request($req);
 
 # エラー発生時はエラーを表示する。
 if($response->is_fault) {
+	#失敗時はエラー文字列を出力する。
+	print ERROR;
     die "An error occurred: " . $response->string . "\n";
 }
 
 # 結果を出力する。
 #print $xml;
-print "response";
 print $response->value;

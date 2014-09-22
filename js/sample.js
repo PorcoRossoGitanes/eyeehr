@@ -73,7 +73,6 @@ $(function()
 
 	/// @summary 「読込」ボタンを押下時、XMLを読込む。
 	$('button#load').click(function(){
-		
 		XmlManager.LoadNote($('div#currentFilePath').text());
 	
 	});
@@ -88,7 +87,7 @@ $(function()
 	    //console.log('Utility.HtmlInputItemToXml : ' + xml);
 
 	    // ディレクトリを取得する。
-	    var dir = '/db/sample/';
+	    var dir = '/db/eyeehr/';
 	    // ディレクトリを取得する。
 	    var prefix = 'note';
 	    // 拡張子を取得する。
