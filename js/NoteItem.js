@@ -28,9 +28,9 @@ function NoteItem() {
     <!--タグ表示用(初期：非表示)-->
     '<div id="tags" style="display:block"></div>' +
     <!--入力フォーム-->
-    '<div name="form"></div>' +
+    '<div name="formats"></div>' +
     <!--イメージ添付用-->
-    '<div name="imgs"></div>' +
+    '<div name="images"></div>' +
     <!--文字列入力用--> 
     '<div name="remarks"></div>' + 
     '</div>'
@@ -48,16 +48,16 @@ function NoteItem() {
     {
       // 特記事項が表示されている場合は、文字列を非表示とする。
       $(this).parent().find('#tags').show();
-      $(this).parent().find('[name=form]').hide();      
-      $(this).parent().find('[name=imgs]').hide();      
+      $(this).parent().find('[name=formats]').hide();      
+      $(this).parent().find('[name=images]').hide();      
       $(this).parent().find('[name=remarks]').hide();      
     }
     else
     {
       // 特記事項が非表示の場合は、文字列を表示する。
       $(this).parent().find('#tags').hide();
-      $(this).parent().find('[name=form]').show();
-      $(this).parent().find('[name=imgs]').show();
+      $(this).parent().find('[name=formats]').show();
+      $(this).parent().find('[name=images]').show();
       $(this).parent().find('[name=remarks]').show();
     }
   });
@@ -100,21 +100,21 @@ NoteItem.HtmlToXml = function($i_jquery)
   //$i_jquery.find('attachImg')
   
   // □フォーム部
-  $form = $i_jquery.children('[name=form]');
-  retVal += '<' + $form.attr('name') + '>';
-  $i_jquery.children('[name=form]').find('DIV', 'INPUT', 'IMG').each(function(){
+  $formats = $i_jquery.children('[name=formats]');
+  retVal += '<' + $formats.attr('name') + '>';
+  $i_jquery.children('[name=formats]').find('DIV', 'INPUT', 'IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml($(this));
     console.log($(this));
   });
-  retVal += '</' + $form.attr('name') + '>';
+  retVal += '</' + $formats.attr('name') + '>';
 
   // □画像添付部
-  $imgs = $i_jquery.children('[name=imgs]');
-  retVal += '<' + $imgs.attr('name') + '>';
-  $i_jquery.children('[name=imgs]').find('IMG').each(function(){
+  $images = $i_jquery.children('[name=images]');
+  retVal += '<' + $images.attr('name') + '>';
+  $i_jquery.children('[name=images]').find('IMG').each(function(){
     retVal += Utility.HtmlToXhtml ($remarks.html());
   });
-  retVal += '</' + $imgs.attr('name') + '>';
+  retVal += '</' + $images.attr('name') + '>';
 
   // □備考添付部
   $remarks = $i_jquery.children('[name=remarks]');
@@ -159,7 +159,7 @@ function NoteItemDisease(i_name)
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemDisease');
   $jquery.addClass('NoteItemDisease');
-  $jquery.find('[name=form]').append(
+  $jquery.find('[name=formats]').append(
     '<div name="disease-name">' + i_name + '</div>' 
   );
   //console.log($jquery);
@@ -168,18 +168,32 @@ function NoteItemDisease(i_name)
 NoteItemDisease.prototype = new NoteItem;
 
 ///@summary 主訴コンストラクタ
+///@param $i_xml XMLオブジェクト
 function NoteItemComplaint($i_xml) 
 {
+  this.name = 'NoteItemComplaint';
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jquery.attr('name', 'NoteItemComplaint');
-  $jquery.addClass('NoteItemComplaint');
-  //console.log($jquery);
+  $jquery.attr('name', this.name);
+  $jquery.addClass(this.name);
+  
+  if ($i_xml !== undefined)
+  {
+    if ($i_xml[0].tagName == this.name.toUpperCase())
+    {
+      // 定型フォーマット部分を追加する。
+      console.log($i_xml.children('formats'));
+      // 画像添付部分を追加する。
+      console.log($i_xml.children('images'));
+      // 備考部分を追加する。
+      $jquery.find('[name=remarks]').html($i_xml.children('remarks').html);
+    }
+    //console.log($jquery);
+
+  }
   //--JQuery オブジェクト操作---//
-  console.log($i_xml);
-  console.log($jquery);
 }
 
 
@@ -193,7 +207,7 @@ function NoteItemMedicalCheck(i_name)
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemMedicalCheck');
   $jquery.addClass('NoteItemMedicalCheck');
-  $jquery.find('[name=form]').append(
+  $jquery.find('[name=formats]').append(
     '<div name="medical-check-name">' + i_name + '</div>' + 
     '<input name="medical-check-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
   );
@@ -211,8 +225,8 @@ function NoteItemPrescription(i_name)
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemPrescription');
   $jquery.addClass('NoteItemPrescription');
-  //$jquery.find('[name=form]').attr('name', 'medicine');
-  $jquery.find('[name=form]').append(
+  //$jquery.find('[name=formats]').attr('name', 'medicine');
+  $jquery.find('[name=formats]').append(
     '<input name="medicine-orca" type="hidden" value="ORCAID" />' + 
     '<input name="medicine-name" type="disable" value="' + i_name +'"/>' + 
     '<input name="medicine-cnt"  type="text" value="1">個'
@@ -233,7 +247,7 @@ function NoteItemOperation(i_name)
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemOperation');
   $jquery.addClass('NoteItemOperation');
-  $jquery.find('[name=form]').append(
+  $jquery.find('[name=formats]').append(
     '<div name="operation-name">' + i_name + '</div>' + 
     '<input name="operation-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
   );

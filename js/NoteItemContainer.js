@@ -72,11 +72,27 @@ NoteItemContainerDisease.prototype = new NoteItemContainer;
 //--------------------------------------------------//
 
 ///@summary カルテ項目コンテナ（主訴）
-function NoteItemContainerComplaint ()
+function NoteItemContainerComplaint ($i_xml)
 {
 	///@param クラス名
 	this.name = 'NoteItemContainerComplaint';
-	NoteItemContainer.call(this, 'NoteItemContainerComplaint', '主訴');
+	NoteItemContainer.call(this, this.name, '主訴');
+
+	// 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
+	if ($i_xml !== undefined)
+	{
+		if ($i_xml[0].tagName == this.name.toUpperCase())
+		{
+            $i_xml[0].children().each(function(){
+	            var item = new NoteItemComplaint($(this)); 
+	            //console.log($(this));
+	            item.appendTo('[name=' + this.name +']');
+	        });
+
+		}
+		// console.log(arguments.length);
+		// console.log($i_xml);
+	}
 	
 	///@summary クラス名を取得する。
 	///@returns クラス名

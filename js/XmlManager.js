@@ -19,20 +19,30 @@ XmlManager.LoadNote = function (i_filePath)
             // xml : i_xmlText
         },
         function(data,textStatus) {
+
             if(textStatus=='success') {
-                // 実行成功時の処理を記述する。
-                $('#result-XmlManager_LoadNote').text('SUCCESS');
-                //alert('SUCCESS');
-                $note = $(data).find('note');
-                // TODO XML→HTML読み出し部-----
+
+                // 現在のカルテ表示をクリアする。
                 $currentNote = $('[name=note]');
                 $currentNote.empty();
+
+                // 実行成功時の処理を記述する。
+                $('#result-XmlManager_LoadNote').text('SUCCESS');
+                
+                alert(data);
+                console.log($(data));
+                //alert('SUCCESS');
+                $note = $(data).find('note');
+                
+                // TODO XML→HTML読み出し部-----
+
                 $note.children().each(function(){
-                    console.log($(this));
+                    //console.log($(this));
                     switch($(this)[0].tagName)
                     {
-                        case 'NOTEITEMCONTAINERCOMPLAINT' : //主訴
-                            var containerComplaint = new NoteItemContainerComplaint();
+                        case 'NOTEITEMCONTAINERCOMPLAINT' : 
+                            // 主訴コンテナを追加する。
+                            var containerComplaint = new NoteItemContainerComplaint($(this));
                             $currentNote.append(containerComplaint.getJQueryObject());
                             
                             $(this).children().each(function(){
