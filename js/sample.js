@@ -58,6 +58,19 @@ bkLib.onDomLoaded(function() {
 
 $(function() 
 {
+	// console.log($('#menumenu'));
+	// // $("#menumenu").menubar({
+ // //    	// menuIcon: true,
+ // //    	// buttons: true
+	// // });
+
+	/// @summary 「新規」ボタンを押下時、カルテを新規作成する。
+	$('button#new').click(function(){
+		// TODO 未作成
+		alert('新規作成');
+		//XmlManager.LoadNote($('div#currentFilePath').text());
+	});
+
 	/// @summary 「読込」ボタンを押下時、XMLを読込む。
 	$('button#load').click(function(){
 		
