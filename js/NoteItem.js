@@ -183,14 +183,14 @@ function NoteItemComplaint($i_xml)
   {
     if ($i_xml[0].tagName == this.name.toUpperCase())
     {
-      // 定型フォーマット部分を追加する。
-      console.log($i_xml.children('formats'));
+      // TODO 定型フォーマット部分を追加する。
+      //console.log($i_xml.children('formats'));
       // 画像添付部分を追加する。
-      console.log($i_xml.children('images'));
+      $jquery.find('[name=images]').html($i_xml.children('images').html());
       // 備考部分を追加する。
-      $jquery.find('[name=remarks]').html($i_xml.children('remarks').html);
+      $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
     }
-    //console.log($jquery);
+  //   //console.log($jquery);
 
   }
   //--JQuery オブジェクト操作---//
