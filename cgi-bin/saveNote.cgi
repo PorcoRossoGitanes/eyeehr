@@ -6,6 +6,7 @@ use utf8;
 
 use RPC::XML;
 use RPC::XML::Client;
+use File::Basename;
 
 # 失敗時は"ERROR"が返却される。
 use constant ERROR    => "ERROR";
@@ -35,16 +36,31 @@ foreach $pair (@query) {
 
 # 実行用XMLを登録する。
 $xml = $FORM{'xml'};
-$filepath  = $FORM{'filepath'};
+$filepath = $FORM{'filepath'};
 
 # 接続先を設定する。
 #print "connecting to $URL...\n";
 $url = "http://admin:zaq12wsx\@localhost:8080/exist/xmlrpc";
 $client = new RPC::XML::Client $url;
 
-# ファイルパスに従ったコレクションがない場合は、
-# コレクションを作成する。
+# ファイルパスに従ったコレクションがない場合は、コレクションを作成する。
+# 親のコレクションがなければ自動的に作成する。
+# 他のファイルは消えないことを確認した。
+$collectionPath = dirname($filepath);
+$collectionPath =~ s/\/db\///g;
+$collectionPath = $collectionPath . '/';
+#print $collectionPath;
 
+#print $filepath;
+#print $collectionPath;
+
+$request = RPC::XML::request->new('createCollection', $collectionPath);	#/db/以降を指定する
+$response = $client->send_request($request);
+if($response->is_fault) 
+{
+	print ERROR;
+    die "An error occurred: " . $response->string . "\n";
+}
 
 $options = RPC::XML::struct->new(
     'indent' => 'yes'
@@ -54,8 +70,7 @@ $options = RPC::XML::struct->new(
     #, 'stylesheet' => 'test.xsl'
 );
 
-# リクエストにクエリを設定する。
-#0より大きい値では、上書きされる。
+# リクエストにクエリを設定する。0より大きい値では、上書きされる。
 $overwrite = 1;
 
 #utf8エンコードを実行する。
@@ -77,5 +92,4 @@ if($response->is_fault) {
 }
 
 # 結果を出力する。
-#print $xml;
 print $response->value;
