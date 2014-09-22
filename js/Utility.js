@@ -21,9 +21,13 @@ Utility.GetCurrentDateTime  = function ()
 	return retVal;
 }
 
+///@summary コンストラクタ
+function Note() {
+}
+
 /// @summary 	HTMLをXMLに保存する。
 /// @param 		$i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
-Utility.HtmlNoteToXml = function($i_jquery)/* $('#note')*/
+Note.HtmlNoteToXml = function($i_jquery)/* $('#note')*/
 {
 	var retVal = '';
 	var tag = $i_jquery.attr('name');
