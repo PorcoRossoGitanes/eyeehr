@@ -25,6 +25,8 @@ function NoteItem() {
     '<button id="min" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>' + 
     <!--画像添付ボタン-->
     '<button id="attachImg" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-upload"></span></button>' + 
+    <!--削除ボタン-->
+    '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">★<!--span class="glyphicon glyphicon-remove"></span--></button>' + 
     <!--タグ表示用(初期：非表示)-->
     '<div id="tags" style="display:block"></div>' +
     <!--入力フォーム-->
