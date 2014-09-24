@@ -1,6 +1,19 @@
-///@summary コンストラクタ
+///@summary カルテ
 function Note() {
-}
+};(function() {
+
+  // プロトタイプ
+  var _proto = Note.prototype;
+  // メンバメソッド
+
+  _proto.getName = function() {
+      return this._name;
+  };
+
+  _proto.setName = function(name) {
+      this._name = name;
+  };
+})();
 
 /// @summary 	HTMLをXMLに保存する。
 /// @param 		$i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等

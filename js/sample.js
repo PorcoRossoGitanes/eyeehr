@@ -47,17 +47,12 @@ bkLib.onDomLoaded(function() {
 			}
   		}
   	}).panelInstance(ID);
-
-  	// // TODO : フォーカスを話したときに自動的に保存する。
-  	// area.addEvent('blur', function() {
-  	// 	alert('blur');
-   //  	area.instanceById(ID).saveContent();
-  	// });
-
 });
 
 $(function() 
 {
+	// var noteItem = new NoteItemComplaint();
+	// alert(noteItem.getName());
 
 	/// @summary 「新規」ボタンを押下時、カルテを新規作成する。
 	$('button#new').click(function(){
