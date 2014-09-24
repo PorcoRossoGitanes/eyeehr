@@ -117,7 +117,7 @@ XmlManager.SaveNote = function (i_filePath, i_xmlText)
 {
     const cgi = './cgi-bin/saveNote.cgi';
 
-    $.get(
+    $.post(
         cgi,
         {
             filepath : i_filePath,
