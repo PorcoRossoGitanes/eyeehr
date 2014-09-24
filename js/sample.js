@@ -58,11 +58,6 @@ bkLib.onDomLoaded(function() {
 
 $(function() 
 {
-	// console.log($('#menumenu'));
-	// // $("#menumenu").menubar({
- // //    	// menuIcon: true,
- // //    	// buttons: true
-	// // });
 
 	/// @summary 「新規」ボタンを押下時、カルテを新規作成する。
 	$('button#new').click(function(){

@@ -1,12 +1,8 @@
-// ///@summary コンストラクタ
-// function NoteItem($i_jquery) {
-//   $jquery = $i_jquery;
-// }
-
-///@summary コンストラクタ
+// ノートアイテムクラス
 function NoteItem() {
-  //(初期化)-----------------------------------
-  
+  // メンバ変数の初期化
+  this._name = 'NoteItem';
+
   // @param 付箋のID(MAX値)
   const MAX = 9999999999;
   
@@ -75,17 +71,30 @@ function NoteItem() {
     area.instanceById('area1').setContent(memo);
     $('input#selectedNoteItem').val($(this).attr('id'));
   });
+};(function() {
+
+  // プロトタイプ
+  var _proto = NoteItem.prototype;
+  // メンバメソッド
+
+  _proto.getName = function() {
+      return this._name;
+  };
+
+  _proto.setName = function(name) {
+      this._name = name;
+  };
 
   ///@summary 付箋をカルテ上に登録する
   ///@param 貼付先
-  this.appendTo = function(i_to)
+  _proto.appendTo = function(i_to)
   {
     // 付箋をカルテ欄に登録する。
     $jquery.appendTo(i_to);  
     $jquery.dblclick();
   }
-}
-
+})();
+   
 /// @summary  付箋コンテナHTMLをXMLに保存する。
 /// @param    $i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
 /// @return   保存用XML
@@ -152,34 +161,49 @@ NoteItem.ChangeVal = function($jquery, i_memo)
 //   console.log("NoteItem's publicMethod");
 // };
 
-///@summary 病名コンストラクタ
-function NoteItemDisease(i_name) 
-{
-  NoteItem.call(this/*, i_text*/);  // 入力文字列
 
-  //--JQuery オブジェクト操作---//
-  // クラス属性を追加した。
-  $jquery.attr('name', 'NoteItemDisease');
-  $jquery.addClass('NoteItemDisease');
-  $jquery.find('[name=formats]').append(
-    '<div name="disease-name">' + i_name + '</div>' 
-  );
-  //console.log($jquery);
-  //--JQuery オブジェクト操作---//
-}
-NoteItemDisease.prototype = new NoteItem;
+// @sumamry 病名
+function NoteItemDisease(i_name) {
+    // 親クラス(Parent)のメンバ変数を継承
+    NoteItem.call(this);
+    //--JQuery オブジェクト操作---//
+    // クラス属性を追加した。
+    $jquery.attr('name', 'NoteItemDisease');
+    $jquery.addClass('NoteItemDisease');
+    $jquery.find('[name=formats]').append(
+      '<div name="disease-name">' + i_name + '</div>' 
+    );
+    //--JQuery オブジェクト操作---//
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItem.prototype;
+    NoteItemDisease.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemDisease.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        var name = _super.getName.call(this);
+        // 結果に'-child'を付け加える
+        return name + '-child';
+    };
+})();
 
-///@summary 主訴コンストラクタ
+
+
+///@summary 主訴クラス
 ///@param $i_xml XMLオブジェクト
 function NoteItemComplaint($i_xml) 
 {
-  this.name = 'NoteItemComplaint';
-  NoteItem.call(this/*, i_text*/);  // 入力文字列
+  // 親クラス(Parent)のメンバ変数を継承
+  NoteItem.call(this);
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jquery.attr('name', this.name);
-  $jquery.addClass(this.name);
+  $jquery.attr('name', 'NoteItemComplaint');
+  $jquery.addClass('NoteItemComplaint');
   
   if ($i_xml !== undefined)
   {
@@ -192,18 +216,29 @@ function NoteItemComplaint($i_xml)
       // 備考部分を追加する。
       $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
     }
-  //   //console.log($jquery);
-
   }
   //--JQuery オブジェクト操作---//
-}
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItem.prototype;
+    NoteItemComplaint.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemComplaint.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        var name = _super.getName.call(this);
+        // 結果に'-child'を付け加える
+        return name + '-child';
+    };
+})();
 
-
-
-///@summary 検査コンストラクタ
+///@summary 検査クラス
 function NoteItemMedicalCheck(i_name) 
 {
-  NoteItem.call(this/*, i_text*/);  // 入力文字列
+  NoteItem.call(this);
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
@@ -213,15 +248,28 @@ function NoteItemMedicalCheck(i_name)
     '<div name="medical-check-name">' + i_name + '</div>' + 
     '<input name="medical-check-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
   );
-  //console.log($jquery);
   //--JQuery オブジェクト操作---//
-}
-NoteItemMedicalCheck.prototype = new NoteItem;
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItem.prototype;
+    NoteItemMedicalCheck.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemMedicalCheck.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        var name = _super.getName.call(this);
+        // 結果に'-child'を付け加える
+        return name + '-child';
+    };
+})();
 
-///@summary 処方コンストラクタ
+///@summary 処方クラス
 function NoteItemPrescription(i_name) 
 {
-  NoteItem.call(this/*, i_text*/);  // 入力文字列
+  NoteItem.call(this);  // 入力文字列
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
@@ -236,8 +284,22 @@ function NoteItemPrescription(i_name)
   console.log(i_name);
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
-}
-NoteItemPrescription.prototype = new NoteItem;
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItem.prototype;
+    NoteItemPrescription.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemPrescription.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        var name = _super.getName.call(this);
+        // 結果に'-child'を付け加える
+        return name + '-child';
+    };
+})();
 
 
 ///@summary 手術コンストラクタ
@@ -255,8 +317,23 @@ function NoteItemOperation(i_name)
   );
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
-}
-NoteItemOperation.prototype = new NoteItem;
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItem.prototype;
+    NoteItemOperation.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemOperation.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        var name = _super.getName.call(this);
+        // 結果に'-child'を付け加える
+        return name + '-child';
+    };
+})();
+
 
 ///@summary メモコンストラクタ
 function NoteItemMemo() 
@@ -270,5 +347,19 @@ function NoteItemMemo()
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
 
-}
-NoteItemMemo.prototype = new NoteItem;
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItem.prototype;
+    NoteItemMemo.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemMemo.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        var name = _super.getName.call(this);
+        // 結果に'-child'を付け加える
+        return name + '-child';
+    };
+})();
