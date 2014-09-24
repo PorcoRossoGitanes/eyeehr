@@ -13,7 +13,12 @@ function NoteItemContainer (i_name, i_title)
 		'<h1>' + i_title + '</h1>' + 
 		//'<div id="attached"></div>' + 
 	'</div>');
-	$jquery.draggable();
+	
+	// 親要素内のみドラッグ可能に設定する。
+	$jquery.draggable({
+        containment: 'parent',
+        scroll: false,		
+	});
 
 	///@summary HTMLを出力する
 	///@return HTML
