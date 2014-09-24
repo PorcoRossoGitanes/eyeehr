@@ -95,7 +95,7 @@ NoteItem.HtmlToXml = function($i_jquery)
 
   var tag = $i_jquery.attr('name');
 
-  retVal += '<' + tag + '>';
+  retVal += '<' + tag + ' id=\'' + $i_jquery.attr('id') +'\'>';
 
   //$i_jquery.find('del')
   //$i_jquery.find('min')
