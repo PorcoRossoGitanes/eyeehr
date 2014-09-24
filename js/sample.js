@@ -87,7 +87,7 @@ $(function()
 	    //console.log('Utility.HtmlInputItemToXml : ' + xml);
 
 	    // ディレクトリを取得する。
-	    var dir = '/db/eyeehr/note/patient-00001/';
+	    var dir = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/';
 	    // ディレクトリを取得する。
 	    var prefix = 'note';
 	    // 拡張子を取得する。
