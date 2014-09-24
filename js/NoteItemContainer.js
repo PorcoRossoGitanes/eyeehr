@@ -1,4 +1,4 @@
-///@summary コンストラクタ
+///@summary ノートアイテムコンテナ
 ///@param 	i_name	名前
 ///@param 	i_title	タイトル
 function NoteItemContainer (i_name, i_title)
@@ -28,7 +28,20 @@ function NoteItemContainer (i_name, i_title)
 	{
 		return this.name;
 	};
-}
+};(function() {
+
+  // プロトタイプ
+  var _proto = NoteItem.prototype;
+  // メンバメソッド
+
+  _proto.getName = function() {
+      return this._name;
+  };
+
+  _proto.setName = function(name) {
+      this._name = name;
+  };
+})();
 
 /// @summary 	付箋コンテナHTMLをXMLに保存する。
 /// @param 		$i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
@@ -56,27 +69,29 @@ NoteItemContainer.HtmlToXml = function($i_jquery)
 ///@summary カルテ項目コンテナ（所見（病名））
 function NoteItemContainerDisease ()
 {
-	///@param クラス名
-	this.name = 'NoteItemContainerDisease';
-	NoteItemContainer.call(this, 'NoteItemContainerDisease', '病名');
-
-	///@summary クラス名を取得する。
-	///@returns クラス名
-	this.getName = function() 
-	{
-		return this.name;
-	};
-}
-NoteItemContainerDisease.prototype = new NoteItemContainer;
+	NoteItemContainer.call(this, this.getName(), '病名');
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItemContainer.prototype;
+    NoteItemContainerDisease.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemContainerDisease.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        //var name = _super.getName.call(this);
+        return 'NoteItemContainerDisease';
+    };
+})();
 
 //--------------------------------------------------//
 
 ///@summary カルテ項目コンテナ（主訴）
 function NoteItemContainerComplaint ($i_xml)
 {
-	///@param クラス名
-	this.name = 'NoteItemContainerComplaint';
-	NoteItemContainer.call(this, this.name, '主訴');
+	NoteItemContainer.call(this, this.getName(), '主訴');
 
 	// 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
 	if ($i_xml !== undefined)
@@ -85,24 +100,26 @@ function NoteItemContainerComplaint ($i_xml)
 		{
             $i_xml[0].children().each(function(){
 	            var item = new NoteItemComplaint($(this)); 
-	            //console.log($(this));
-	            item.appendTo('[name=' + this.name +']');
+	            item.appendTo('[name=' + this.getName() +']');
 	        });
 
 		}
-		// console.log(arguments.length);
-		// console.log($i_xml);
 	}
-	
-	///@summary クラス名を取得する。
-	///@returns クラス名
-	this.getName = function() 
-	{
-		return this.name;
-	};
-}
-NoteItemContainerComplaint.prototype = new NoteItemContainer;
-
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItemContainer.prototype;
+    NoteItemContainerComplaint.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemContainerComplaint.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        //var name = _super.getName.call(this);
+        return 'NoteItemContainerComplaint';
+    };
+})();
 
 //--------------------------------------------------//
 
@@ -110,71 +127,87 @@ NoteItemContainerComplaint.prototype = new NoteItemContainer;
 function NoteItemContainerMedicalCheck ()
 {
 	///@param クラス名
-	this.name = 'NoteItemContainerMedicalCheck';
-	NoteItemContainer.call(this, 'NoteItemContainerMedicalCheck', '検査');
-	
-	///@summary クラス名を取得する。
-	///@returns クラス名
-	this.getName = function() 
-	{
-		return this.name;
-	};
-}
-NoteItemContainerMedicalCheck.prototype = new NoteItemContainer;
+	NoteItemContainer.call(this, this.getName(), '検査');
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItemContainer.prototype;
+    NoteItemContainerMedicalCheck.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemContainerMedicalCheck.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        //var name = _super.getName.call(this);
+        return 'NoteItemContainerMedicalCheck';
+    };
+})();
 
 //--------------------------------------------------//
 
 ///@summary カルテ項目コンテナ（処方）
 function NoteItemContainerPrescription ()
 {
-	///@param クラス名
-	this.name = 'NoteItemContainerPrescription';
-	NoteItemContainer.call(this, 'NoteItemContainerPrescription', '処方');
-	
-	///@summary クラス名を取得する。
-	///@returns クラス名
-	this.getName = function() 
-	{
-		return this.name;
-	};
-}
-NoteItemContainerPrescription.prototype = new NoteItemContainer;
-
+	NoteItemContainer.call(this, this.getName(), '処方');
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItemContainer.prototype;
+    NoteItemContainerPrescription.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemContainerPrescription.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        //var name = _super.getName.call(this);
+        return 'NoteItemContainerPrescription';
+    };
+})();
 
 //--------------------------------------------------//
 
 ///@summary カルテ項目コンテナ（手術）
 function NoteItemContainerOperation ()
 {
-	///@param クラス名
-	this.name = 'NoteItemContainerOperation';
-	NoteItemContainer.call(this, 'NoteItemContainerOperation', '手術');
-	
-	///@summary クラス名を取得する。
-	///@returns クラス名
-	this.getName = function() 
-	{
-		return this.name;
-	};
-}
-NoteItemContainerOperation.prototype = new NoteItemContainer;
+	NoteItemContainer.call(this, this.getName(), '手術');
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItemContainer.prototype;
+    NoteItemContainerOperation.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemContainerOperation.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        //var name = _super.getName.call(this);
+        return 'NoteItemContainerOperation';
+    };
+})();
 
 //--------------------------------------------------//
 ///@summary カルテ項目コンテナ（メモ）
 function NoteItemContainerMemo ()
 {
-	///@param クラス名
-	this.name = 'NoteItemContainerMemo';
 	NoteItemContainer.call(this, 'NoteItemContainerMemo', 'メモ');
-	
-	///@summary クラス名を取得する。
-	///@returns クラス名
-	this.getName = function() 
-	{
-		return this.name;
-	};
-}
-NoteItemContainerMemo.prototype = new NoteItemContainer;
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItemContainer.prototype;
+    NoteItemContainerMemo.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemContainerMemo.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        //var name = _super.getName.call(this);
+        return 'NoteItemContainerMemo';
+    };
+})();
 
 //--------------------------------------------------//
 ///@summary カルテ項目コンテナ（シェーマ）
@@ -182,18 +215,21 @@ function NoteItemContainerScheme ()
 {
 	///@param クラス名
 	this.name = 'NoteItemContainerScheme';
-	NoteItemContainer.call(this, 'NoteItemContainerScheme', 'シェーマ');
-	
-	///@summary クラス名を取得する。
-	///@returns クラス名
-	this.getName = function() 
-	{
-		return this.name;
-	};
-}
-NoteItemContainerScheme.prototype = new NoteItemContainer;
+	NoteItemContainer.call(this, this.getName(), 'シェーマ');
+};(function() {
+    // 親クラス(Parent)のメソッドを継承
+    var Super = function Super(){};
+    Super.prototype = NoteItemContainer.prototype;
+    NoteItemContainerScheme.prototype = new Super();
+    var _super = Super.prototype;
+    // プロトタイプ
+    var _proto = NoteItemContainerScheme.prototype;
+    // メンバメソッド(オーバーライド)
+    _proto.getName = function() {
+        // 親クラス(Parent)のgetName()を呼び出す
+        //var name = _super.getName.call(this);
+        return 'NoteItemContainerScheme';
+    };
+})();
 
-
-
-
-
+//--------------------------------------------------//
