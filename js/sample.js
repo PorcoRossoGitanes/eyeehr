@@ -21,8 +21,13 @@ bkLib.onDomLoaded(function() {
  			'forecolor-green',
  			'forecolor-brown',
  			'forecolor-yellow',
- 			'bgcolor',
- 			'bgcolor-red'
+ 			// 'bgcolor',
+ 			// 'bgcolor-black',
+ 			'bgcolor-red',
+ 			'bgcolor-blue',
+ 			'bgcolor-green',
+ 			'bgcolor-brown',
+ 			'bgcolor-yellow'
  			/*,
  			'image',
  			'upload'*/

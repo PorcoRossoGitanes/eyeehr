@@ -329,13 +329,15 @@ var nicEditorConfig = bkClass.extend({
 		'link','unlink',
 		'forecolor',
 		// 独自作成(forecolor-***)　TODO : 必要分、色ペンを追加する
-		'forecolor-black','forecolor-red',
-		'forecolor-blue', 'forecolor-green', 
+		'forecolor-black', 'forecolor-red',
+		'forecolor-blue',  'forecolor-green', 
 		'forecolor-brown', 'forecolor-yellow', 
 		// 独自作成(forecolor-***)
 		'bgcolor',
 		// 独自作成(bgcolor-***) TODO : 必要分、マーカーを追加する。
-		'forecolor-red',
+		'bgcolor-black', 'bgcolor-red',
+		'bgcolor-blue',  'bgcolor-green',
+		'bgcolor-brown', 'bgcolor-yellow',
 		// 独自作成(bgcolor-***)
 		'undo','redo'
 	],
@@ -343,7 +345,12 @@ var nicEditorConfig = bkClass.extend({
 		"xhtml":1,
 		"bgcolor":2,
 		// 独自作成(gbcolor-***)TODO : 必要分、マーカーを追加する。
+		"bgcolor-black":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
 		"bgcolor-red":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		"bgcolor-blue":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		"bgcolor-green":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		"bgcolor-brown":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		"bgcolor-yellow":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
 		// 独自作成(bgcolor-***)
 		"forecolor":3,
 		// 独自作成(forecolor-***)TODO : 必要分、色ペンを追加する
@@ -1447,7 +1454,12 @@ var nicColorOptions = {
 		/***独自色ペン**/
 		'bgcolor' : {name : '文字背景色', type : 'nicEditorBgColorButton', noClose : true},
 		/***独自色マーカー**/ //TODO : ボタンを登録する。
-		'bgcolor-red' : {name : '赤マーカー', type : 'nicEditorBgColorButtonRed', noClose : true}
+		'bgcolor-black'    : {name : '黒マーカー', type : 'nicEditorBgColorButtonBlack', noClose : true},
+		'bgcolor-red'      : {name : '赤マーカー', type : 'nicEditorBgColorButtonRed', noClose : true},
+		'bgcolor-blue'     : {name : '青マーカー', type : 'nicEditorBgColorButtonBlue', noClose : true},
+		'bgcolor-green'    : {name : '緑マーカー', type : 'nicEditorBgColorButtonGreen', noClose : true},
+		'bgcolor-brown'    : {name : '茶マーカー', type : 'nicEditorBgColorButtonBrown', noClose : true},
+		'bgcolor-yellow'   : {name : '黄マーカー', type : 'nicEditorBgColorButtonYellow', noClose : true}
 		/***独自色マーカー**/
 	}
 };
@@ -1540,9 +1552,46 @@ var nicEditorBgColorButton = nicEditorColorButton.extend({
 });
 
 /*** 独自拡張部 ***/　//TODO : 独自ボタンを定義する。
+// @黒マーカー 
+var nicEditorBgColorButtonBlack = nicEditorBgColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#000000');
+	}
+});
+// @赤マーカー
 var nicEditorBgColorButtonRed = nicEditorBgColorButton.extend({
 	addPane : function() {
 		this.colorSelect('#ff0000');
+	}
+});
+// @緑マーカー
+var nicEditorBgColorButtonBlue = nicEditorBgColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#0000ff');
+	}
+});
+// @緑マーカー
+var nicEditorBgColorButtonGreen = nicEditorBgColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#00ff00');
+	}
+});
+/// @黄色マーカー
+var nicEditorBgColorButtonYellow= nicEditorBgColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#ffff00');
+	}
+});
+// @緑マーカー
+var nicEditorBgColorButtonGreen = nicEditorBgColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#00ff00');
+	}
+});
+/// @茶色ペン
+var nicEditorBgColorButtonBrown = nicEditorBgColorButton.extend({
+	addPane : function() {
+		this.colorSelect('#A52A2A');
 	}
 });
 /*** 独自拡張部 ***/

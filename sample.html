@@ -5,7 +5,7 @@
     <title>電子カルテ</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="js/jquery-2.1.1.js"></script>
     <!-- jQuery-ui 1.11.1 -->
     <script src="js/jquery-ui.js"></script>
     <link href="js/jquery-ui.css" rel="stylesheet">
@@ -35,13 +35,15 @@
     <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
     <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
     2014/08/31 12:34 
-    <label>患者</label>&nbsp; <input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
-    <button type="button" id="patient-info" class="btn btn-default btn-xs">患者情報</button>
     <label>医師</label>&nbsp; 00001 渡邉花子
   </div>
   <table border="1">
     <tr>
-      <td>患者情報</td>
+      <td>
+      患者情報
+      <label>患者</label>&nbsp; <input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
+      <button type="button" id="patient-info" class="btn btn-default btn-xs">患者情報</button>
+      </td>
       <td name="note" style="width:1000px;height:700px;" rowspan="2" valign="top">
         <!--カルテ記入欄-->
       </td>
