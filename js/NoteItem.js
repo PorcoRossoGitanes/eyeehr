@@ -16,19 +16,30 @@ function NoteItem() {
     'class="' + 'NoteItem' + '" ' + 
     '>' + 
     <!--削除ボタン-->
-    '<button id="del" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>' + 
+    '<button id="del" class="btn btn-default btn-xs">' + 
+    '<span class="glyphicon glyphicon-remove"></span>' +
+    '</button>' + 
     <!--最小化ボタン-->
-    '<button id="min" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>' + 
+    '<button id="min" class="btn btn-default btn-xs">' + 
+    '<span class="glyphicon glyphicon-minus"></span>' + 
+    '</button>' + 
+    <!--☆ボタン-->
+    '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
+    '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
+    '</button>' + 
     <!--画像添付ボタン-->
-    '<button id="attachImg" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-upload"></span></button>' + 
-    <!--削除ボタン-->
-    '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">★<!--span class="glyphicon glyphicon-remove"></span--></button>' + 
+    '<input id="attachImg" type="file" value="画像" /*style="display:none"*/ accept="image/jpeg" />' +
+    '<button id="attachImg" ' + 
+    'class="btn btn-default btn-xs" >' + 
+    '<span class="glyphicon glyphicon-upload"></span>' + 
+    '</button>' + 
     <!--タグ表示用(初期：非表示)-->
     '<div id="tags" style="display:block"></div>' +
     <!--入力フォーム-->
     '<div name="formats"></div>' +
     <!--イメージ添付用-->
-    '<div name="images"></div>' +
+    '<div name="images">' + 
+    '</div>' +
     <!--文字列入力用--> 
     '<div name="remarks"></div>' + 
     '</div>'
@@ -37,7 +48,18 @@ function NoteItem() {
   // 付箋をリサイズ・ドラッグ可能とする。
   //$jquery.resizable({handles : 's'});
   //$jquery.draggable();
-
+  $jquery.find('button#attachImg').click(function () {
+    // 画像選択ボタンを取得する。
+    $inputAttachImage = $(this).prev('input#attachImg');
+    // 画像選択ボタンをクリックする。
+    $inputAttachImage.click();
+    // 画像選択がなされたら、ファイルパスを取得し、
+    $inputAttachImage.change(function () {
+      console.log($inputAttachImage.val())
+      $jquery.find('[name=images]').append('<img src="' + $inputAttachImage.val() + '"/>');
+      //$jquery.find('images').append('<img src="' + $inputAttachImage.val() + '"/>');
+    })
+  })
   // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
   $jquery.find('#min').click(function()
   {

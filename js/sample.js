@@ -127,6 +127,9 @@ $(function()
 	// 	}
 	// });
 
+	// アコーディオンメニューを作成する。
+	$( '#NoteItemMenu' ).accordion({heightStyle : "fill", active : 1});
+
 	//■コンテナを生成する。
 	$currentNote = $('[name=note]');
 	var containerComplaint = new NoteItemContainerComplaint();
