@@ -45,34 +45,56 @@
 // 	alert('押されたけどページの更新はしないよ。');
 //     return e.preventDefault();
 // });
-
-$(document).ready(function(){
-	// $('input#submitBtn').click(function (e) {
-	// 	alert('押されたけどページの更新はしないよ。');
-	// 	return e.preventDefault();
-	// });
-    $("#form1").submit(function(){
-		alert('test');
-        $.post( 
-        	"http://192.168.33.10/exist/apps/eyeehr/upload.xq", 
-        	$(this).serialize(), 
-        	function(response){
-            	alert(response);
-        	} 
-        );
-        return false;
-    });
-});
+// $(document).ready(function(){
+//     // $("#form1").submit(function(){
+//     //     // 画像が保存されない。
+//     //     $.post( 
+//     //     	"http://192.168.33.10/exist/apps/eyeehr/upload.xq", 
+//     //     	$(this).serialize(), 
+//     //     	function(response){
+//     //         	alert(response);
+//     //     	} 
+//     //     );
+//     //     return false;
+//     // });
+// });
+// function upload(form) {
+//     alert('test');
+//     $form = $('#upload-form');
+//     fd = new FormData($form[0]);
+//     console.log(fd);
+//     $.ajax(
+//         "http://192.168.33.10/exist/apps/eyeehr/upload.xq", // 400エラー
+//         {
+//             type: 'post',
+//             processData: false,
+//             contentType: false,
+//             data: fd,
+//             dataType: "json",
+//             success: function(data) {
+//                 alert( data.message );
+//                 console.log(data);
+//             },
+//             error: function(XMLHttpRequest, textStatus, errorThrown) {
+//                 alert( "ERROR" );
+//                 alert( textStatus );
+//                 alert( errorThrown );
+//             }
+//         }
+//     );
+//     return false;
+// }
     	</script>
         <!--input type="file" name="file"/>
         <input type="button" value="ajax" onclick="submit()"/-->
+        <!--form id="form1" enctype="multipart/form-data" onsubmit="return upload(this)"-->
         <form id="form1" enctype="multipart/form-data" method="post" 
-        	action="http://192.168.33.10/exist/apps/eyeehr/upload.xq"
+            action="http://192.168.33.10/exist/apps/eyeehr/upload.xq"
         >
             <fieldset>
                 <legend>Upload Document:</legend>
                 <input type="file" name="file"/>
-                <input id="submitBtn" type="submit" value="Upload"/>
+                <input type="submit" value="Upload"/>
             </fieldset>
         </form>
     </body>
