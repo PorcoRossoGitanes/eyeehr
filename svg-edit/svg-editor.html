@@ -12,11 +12,14 @@
 <link rel="stylesheet" href="svg-editor.css" type="text/css"/>
 <link rel="stylesheet" href="spinbtn/JQuerySpinBtn.css" type="text/css"/>
 
-<!--{if jquery_release}>
+<!--{if jquery_release}>
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<!{else}-->
+<!{else}-->
+
   <script src="jquery.js"></script>
-<!--{endif}-->
+<!--{endif}-->
+
 
 <script src="js-hotkeys/jquery.hotkeys.min.js"></script>
 <script src="jquerybbq/jquery.bbq.min.js"></script>
@@ -25,9 +28,11 @@
 <script src="spinbtn/JQuerySpinBtn.min.js"></script>
 <script src="touch.js"></script>
 
-<!--{if svg_edit_release}-->
+<!--{if svg_edit_release}-->
+
   <script src="svgedit.compiled.js"></script>
-<!--{else}>
+<!--{else}>
+
   <script src="svgedit.js"></script>
   <script src="jquery-svg.js"></script>
   <script src="contextmenu/jquery.contextMenu.js"></script>
@@ -47,7 +52,8 @@
   <script src="svg-editor.js"></script>
   <script src="locale/locale.js"></script>
   <script src="contextmenu.js"></script>
-<!{endif}-->
+<!{endif}-->
+
 
 <!-- If you do not wish to add extensions by URL, you can load them
 by creating the following file and adding by calls to svgEditor.setConfig -->
@@ -451,17 +457,29 @@ by creating the following file and adding by calls to svgEditor.setConfig -->
 	<div class="tool_button" id="tool_select" title="Select Tool"></div>
 	<div class="tool_button" id="tool_fhpath" title="Pencil Tool"></div>
 	<div class="tool_button" id="tool_line" title="Line Tool"></div>
-	<div class="tool_button flyout_current" id="tools_rect_show" title="Square/Rect Tool">
+	<!--S.Kobayashi 2014.09.30 不要のため、非表示-->
+	<div class="tool_button flyout_current" id="tools_rect_show" 
+		title="Square/Rect Tool" 
+		style="display:none;"
+	>
 		<div class="flyout_arrow_horiz"></div>
 	</div>
-	<div class="tool_button flyout_current" id="tools_ellipse_show" title="Ellipse/Circle Tool">
+	<!--S.Kobayashi 2014.09.30 不要のため、非表示-->
+	<div class="tool_button flyout_current" id="tools_ellipse_show" 
+		title="Ellipse/Circle Tool" 
+		style="display:none;"
+	>
 		<div class="flyout_arrow_horiz"></div>
 	</div>
-	<div class="tool_button" id="tool_path" title="Path Tool"></div>
+	<!--S.Kobayashi 2014.09.30 不要のため、非表示（画像スタンプツール）-->
+	<div class="tool_button" id="tool_path" title="Path Tool" style="display:none;"></div>
 	<div class="tool_button" id="tool_text" title="Text Tool"></div>
-	<div class="tool_button" id="tool_image" title="Image Tool"></div>
-	<div class="tool_button" id="tool_zoom" title="Zoom Tool [Ctrl+Up/Down]"></div>
+	<!--S.Kobayashi 2014.09.30 不要のため、非表示（画像スタンプツール）-->
+	<div class="tool_button" id="tool_image" title="Image Tool" style="display:none;"></div>
+	<!--S.Kobayashi 2014.09.30 不要のため、非表示（ズーム）-->
+	<div class="tool_button" id="tool_zoom" title="Zoom Tool [Ctrl+Up/Down]" style="display:none;"></div>
 	
+	<!--S.Kobayashi 2014.09.30 不要のため削除-->
 	<div style="display: none">
 		<div id="tool_rect" title="Rectangle"></div>
 		<div id="tool_square" title="Square"></div>

@@ -5720,6 +5720,7 @@ this.setZoom = function(zoomlevel) {
 		selectorManager.requestSelector(elem).resize();
 	});
 	pathActions.zoomChange();
+	console.log("pathActions.zoomChange()");
 	runExtensions("zoomChanged", zoomlevel);
 };
 

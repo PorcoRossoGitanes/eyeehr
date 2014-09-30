@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>HTML Upload</title>
+	    <script src="js/jquery-2.1.1.js"></script>
+    </head>
+    <body>
+    	<script>
+// function submit ()
+// {
+// // 	// クロスサイトスクリプティングで実行できない。
+// // 	// alert('submit');
+// // 	// $.ajax({
+// // 	// 	url: "http://192.168.33.10:8080/exist/apps/eyeehr/upload.xq",
+// // 	// 	dataType: 'jsonp', // 追加
+// //  //        data: {
+// //  //        	filed: $('input[type=file]').val()
+// //  //        },
+// // 	// 	type: "GET",
+// // 	// 	success: function(res) {
+// // 	// 		console.log(res);
+// // 	// 	}
+// // 	// });
+
+//     $.post(
+//         "http://192.168.33.10/exist/apps/eyeehr/upload.xq",
+//         {
+//         	file : "1411112159_pen-128.png" //$('input[type=file]').val()
+//         },
+//         function(data,textStatus) {
+//             alert(textStatus);
+//             if(textStatus=='success') {
+//             	alert('SUCCESS');
+//                 // 実行成功時の処理を記述する。
+//                 if (data == 'ERROR')
+//                 {
+//                     alert('保存に失敗しました。');
+//                 }
+//              }
+//         }
+//         ,'html'
+//     );	
+// }
+
+// $('input#submit').click(function (e) {
+// 	alert('押されたけどページの更新はしないよ。');
+//     return e.preventDefault();
+// });
+
+$(document).ready(function(){
+	// $('input#submitBtn').click(function (e) {
+	// 	alert('押されたけどページの更新はしないよ。');
+	// 	return e.preventDefault();
+	// });
+    $("#form1").submit(function(){
+		alert('test');
+        $.post( 
+        	"http://192.168.33.10/exist/apps/eyeehr/upload.xq", 
+        	$(this).serialize(), 
+        	function(response){
+            	alert(response);
+        	} 
+        );
+        return false;
+    });
+});
+    	</script>
+        <!--input type="file" name="file"/>
+        <input type="button" value="ajax" onclick="submit()"/-->
+        <form id="form1" enctype="multipart/form-data" method="post" 
+        	action="http://192.168.33.10/exist/apps/eyeehr/upload.xq"
+        >
+            <fieldset>
+                <legend>Upload Document:</legend>
+                <input type="file" name="file"/>
+                <input id="submitBtn" type="submit" value="Upload"/>
+            </fieldset>
+        </form>
+    </body>
+</html>

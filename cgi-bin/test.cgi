@@ -16,21 +16,21 @@ print "Content-type: text/html\n\n";
 #--- GET/POST処理は基本ルーチン ---
 # GET処理
 if($ENV{'REQUEST_METHOD'} eq "GET"){
-    $buffer = $ENV{'QUERY_STRING'};
+	$buffer = $ENV{'QUERY_STRING'};
 }else{
-    read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
+	read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
 }
 
-    
+	
 @query = split(/&/, $buffer);
 
 foreach $pair (@query) {
-    ($key, $value) = split(/=/, $pair);
+	($key, $value) = split(/=/, $pair);
 
-    $value =~ tr/+/ /;
-    $value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
-    
-    $FORM{$key} = $value;
+	$value =~ tr/+/ /;
+	$value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+	
+	$FORM{$key} = $value;
 }
 #--- GET/POST処理は基本ルーチン ---
 
@@ -54,11 +54,11 @@ $collectionPath = $collectionPath . '/';
 #print $filepath;
 #print $collectionPath;
 
-$request = RPC::XML::request->new('createCollection', $collectionPath); #/db/以降を指定する
+$request = RPC::XML::request->new('createCollection', $collectionPath);	#/db/以降を指定する
 $response = $client->send_request($request);
 if($response->is_fault) 
 {
-    print ERROR;
+	print ERROR;
     die "An error occurred: " . $response->string . "\n";
 }
 
@@ -75,10 +75,10 @@ $overwrite = 1;
 
 #utf8エンコードを実行する。
 $req = RPC::XML::request->new(
-    "parse", 
-    RPC::XML::base64->new($xml), 
-    $filepath, 
-    $overwrite
+	"parseLocal", 
+	$filepath, 
+	"/sample/" . $filepath,
+	true
 );
 
 # リクエストを送信する。
@@ -86,8 +86,8 @@ $response = $client->send_request($req);
 
 # エラー発生時はエラーを表示する。
 if($response->is_fault) {
-    #失敗時はエラー文字列を出力する。
-    print ERROR;
+	#失敗時はエラー文字列を出力する。
+	print ERROR;
     die "An error occurred: " . $response->string . "\n";
 }
 

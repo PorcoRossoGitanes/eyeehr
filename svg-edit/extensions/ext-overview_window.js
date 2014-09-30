@@ -47,11 +47,11 @@ svgEditor.addExtension("overview_window", function() {	'use strict';
 		$("#overview_window_view_box").css("top",viewBoxY+"px");
 		$("#overview_window_view_box").css("left",viewBoxX+"px");
 	};
-	$("#workarea").scroll(function(){
-		if(!(overviewWindowGlobals.viewBoxDragging)){
-			updateViewBox();
-		}
-	});
+	// $("#workarea").scroll(function(){
+	// 	if(!(overviewWindowGlobals.viewBoxDragging)){
+	// 		updateViewBox();
+	// 	}
+	// });
 	$("#workarea").resize(updateViewBox);
 	updateViewBox();
 	
