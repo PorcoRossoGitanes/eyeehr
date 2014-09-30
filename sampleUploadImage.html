@@ -1,95 +1,19 @@
+<!--
+前提として下記のXqueryスクリプトが必要です。
+action="http://192.168.33.10/exist/apps/eyeehr/upload.xq"
+-->
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>HTML Upload</title>
 	    <script src="js/jquery-2.1.1.js"></script>
     </head>
     <body>
-    	<script>
-// function submit ()
-// {
-// // 	// クロスサイトスクリプティングで実行できない。
-// // 	// alert('submit');
-// // 	// $.ajax({
-// // 	// 	url: "http://192.168.33.10:8080/exist/apps/eyeehr/upload.xq",
-// // 	// 	dataType: 'jsonp', // 追加
-// //  //        data: {
-// //  //        	filed: $('input[type=file]').val()
-// //  //        },
-// // 	// 	type: "GET",
-// // 	// 	success: function(res) {
-// // 	// 		console.log(res);
-// // 	// 	}
-// // 	// });
-
-//     $.post(
-//         "http://192.168.33.10/exist/apps/eyeehr/upload.xq",
-//         {
-//         	file : "1411112159_pen-128.png" //$('input[type=file]').val()
-//         },
-//         function(data,textStatus) {
-//             alert(textStatus);
-//             if(textStatus=='success') {
-//             	alert('SUCCESS');
-//                 // 実行成功時の処理を記述する。
-//                 if (data == 'ERROR')
-//                 {
-//                     alert('保存に失敗しました。');
-//                 }
-//              }
-//         }
-//         ,'html'
-//     );	
-// }
-
-// $('input#submit').click(function (e) {
-// 	alert('押されたけどページの更新はしないよ。');
-//     return e.preventDefault();
-// });
-// $(document).ready(function(){
-//     // $("#form1").submit(function(){
-//     //     // 画像が保存されない。
-//     //     $.post( 
-//     //     	"http://192.168.33.10/exist/apps/eyeehr/upload.xq", 
-//     //     	$(this).serialize(), 
-//     //     	function(response){
-//     //         	alert(response);
-//     //     	} 
-//     //     );
-//     //     return false;
-//     // });
-// });
-// function upload(form) {
-//     alert('test');
-//     $form = $('#upload-form');
-//     fd = new FormData($form[0]);
-//     console.log(fd);
-//     $.ajax(
-//         "http://192.168.33.10/exist/apps/eyeehr/upload.xq", // 400エラー
-//         {
-//             type: 'post',
-//             processData: false,
-//             contentType: false,
-//             data: fd,
-//             dataType: "json",
-//             success: function(data) {
-//                 alert( data.message );
-//                 console.log(data);
-//             },
-//             error: function(XMLHttpRequest, textStatus, errorThrown) {
-//                 alert( "ERROR" );
-//                 alert( textStatus );
-//                 alert( errorThrown );
-//             }
-//         }
-//     );
-//     return false;
-// }
-    	</script>
-        <!--input type="file" name="file"/>
-        <input type="button" value="ajax" onclick="submit()"/-->
-        <!--form id="form1" enctype="multipart/form-data" onsubmit="return upload(this)"-->
-        <form id="form1" enctype="multipart/form-data" method="post" 
+        <!--画像登録用のフォーム-->
+        <form id="form1" 
+            enctype="multipart/form-data" 
+            method="post" 
             action="http://192.168.33.10/exist/apps/eyeehr/upload.xq"
+            target="ajaxPostImage"
         >
             <fieldset>
                 <legend>Upload Document:</legend>
@@ -97,5 +21,9 @@
                 <input type="submit" value="Upload"/>
             </fieldset>
         </form>
+        <!-- 結果表示用のiframeを用意する。 -->
+        <iframe id="ajax" name="ajaxPostImage"></iframe>
+        <!-- JQuery Object で中身を確認する。-->
+        <input type="button" onclick="console.log($('iframe#ajax').contents())"/>
     </body>
 </html>
