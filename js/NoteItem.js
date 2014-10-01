@@ -10,6 +10,8 @@ function NoteItem() {
   var id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
   // 付箋（JQuery オブジェクト）を生成する
+  var urlUploadImage = "http://192.168.33.10/exist/apps/eyeehr/upload.xq";
+  var iframetarget = 'uploadImage-' + id;
   $jquery = $(
     '<div ' + 
     'id="' + id + '" ' + 
@@ -28,7 +30,23 @@ function NoteItem() {
     '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
     '</button>' + 
     <!--画像添付ボタン-->
-    '<input id="attachImg" type="file" value="画像" /*style="display:none"*/ accept="image/jpeg" />' +
+    <!--画像入力フォーム-->
+    '<form ' + 
+    'id="attachImgForm" ' + 
+    'enctype="multipart/form-data" ' + 
+    'method="post" ' +
+    'action="' + urlUploadImage + '" ' + 
+    'target="' + iframetarget + '"' + 
+    'style="display:none" ' + 
+    '>' +
+    '<input id="attachImg" type="file" name="file" value="画像" ' + 
+    //'style="display:none" accept="image/jpeg" ' + 
+    '/>' +
+    '<input type="input" name="collection" value="/db/apps/eyeehr"/>' + 
+    '<input id="attachImgSubmit" type="submit" value="送信" />' +
+    '</form>' +
+    '<iframe name="' + iframetarget + '" style="display:none"></iframe>' + //結果表示用iframe
+    <!--画像選択ボタン（可視）-->
     '<button id="attachImg" ' + 
     'class="btn btn-default btn-xs" >' + 
     '<span class="glyphicon glyphicon-upload"></span>' + 
@@ -48,18 +66,25 @@ function NoteItem() {
   // 付箋をリサイズ・ドラッグ可能とする。
   //$jquery.resizable({handles : 's'});
   //$jquery.draggable();
+
+  // @summary 画像を追加する。
   $jquery.find('button#attachImg').click(function () {
     // 画像選択ボタンを取得する。
-    $inputAttachImage = $(this).prev('input#attachImg');
+    $inputAttachImage = $(this).parent().find('form > input#attachImg');
     // 画像選択ボタンをクリックする。
     $inputAttachImage.click();
-    // 画像選択がなされたら、ファイルパスを取得し、
+    // 画像選択がなされたら、ファイルパスを取得し、画像を追加する。
+    // 画像アップロード結果が入ってきたら、画像を追加する。
     $inputAttachImage.change(function () {
-      console.log($inputAttachImage.val())
-      $jquery.find('[name=images]').append('<img src="' + $inputAttachImage.val() + '"/>');
-      //$jquery.find('images').append('<img src="' + $inputAttachImage.val() + '"/>');
-    })
+      // フォームから画像を送信する。
+      $form = $(this).parent();
+      $form.submit();
+    });
   })
+  $jquery.find('iframe').load(function(){
+    //alert('画像添付が完了しました');
+    $jquery.find('[name=images]').append('<img src="' + $(this).contents().find('#url').text() + '" width="100%"/>');
+  });
   // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
   $jquery.find('#min').click(function()
   {
