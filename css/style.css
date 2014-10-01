@@ -21,7 +21,7 @@ div.NoteItemContainer
   width   : 400px; 
   height  : auto;/*100px;*/ 
   border  : solid 1px #000000;
-  margin            : 0px; 
+  margin  : 0px; 
   padding : 2px; /*0.5em;*/ 
 }
 div.NoteItemContainer h1 

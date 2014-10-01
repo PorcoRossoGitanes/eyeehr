@@ -10,7 +10,7 @@ function NoteItem() {
   var id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
   // 付箋（JQuery オブジェクト）を生成する
-  var urlUploadImage = "http://192.168.33.10/exist/apps/eyeehr/upload.xq";
+  var urlUploadImage = "/exist/apps/eyeehr/upload.xq";
   var iframetarget = 'uploadImage-' + id;
   $jquery = $(
     '<div ' + 
@@ -83,7 +83,11 @@ function NoteItem() {
   })
   $jquery.find('iframe').load(function(){
     //alert('画像添付が完了しました');
-    $jquery.find('[name=images]').append('<img src="' + $(this).contents().find('#url').text() + '" width="100%"/>');
+    $jquery.find('[name=images]').append(
+      '<img src="' + $(this).contents().find('#url').text() + '" width="100%" ' + 
+      'onclick="$(this).remove()"' + 
+      '/>'
+    );
   });
   // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
   $jquery.find('#min').click(function()
@@ -169,8 +173,8 @@ NoteItem.HtmlToXml = function($i_jquery)
   // □画像添付部
   $images = $i_jquery.children('[name=images]');
   retVal += '<' + $images.attr('name') + '>';
-  $i_jquery.children('[name=images]').find('IMG').each(function(){
-    retVal += Utility.HtmlToXhtml ($remarks.html());
+  $images.find('IMG').each(function(){
+    //retVal += Utility.HtmlToXhtml ($(this));
   });
   retVal += '</' + $images.attr('name') + '>';
 

@@ -72,6 +72,7 @@ Utility.HtmlMinInputItemToXml = function($i_jquery)
 Utility.HtmlToXhtml = function(i_html)
 {
 	var retVal = i_html;
+	console.log(retVal);
 	retVal = retVal.replace( /(<img.*?)\/?>/g, '$1/>' )
 	retVal = retVal.replace( /(<br.*?)\/?>/g, '$1/>' )
 	return retVal;

@@ -9,7 +9,8 @@ function NoteItemContainer (i_name, i_title)
 	///@param HTML
 	$jquery = $('<div ' + 
 		'class="' + 'NoteItemContainer' + '" ' + 
-		'name="' + i_name + '">' + 
+		'name="' + i_name + '" ' + 
+        'style="position:absolute;">' + 
 		'<h1>' + i_title + '</h1>' + 
 		//'<div id="attached"></div>' + 
 	'</div>');
