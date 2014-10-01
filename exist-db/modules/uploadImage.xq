@@ -8,6 +8,7 @@ let $login := xmldb:login($collection, 'admin', 'my-admin-password')
 let $store := xmldb:store($collection, $filename, request:get-uploaded-file-data('file'))
  
 return
-<results>
-   <message>File {$filename} has been stored at collection={$collection}.</message>
-</results>
+<html>
+   <div id='file'> {$filename}</div>
+   <div id='collection'>{$collection}</div>
+</html>
