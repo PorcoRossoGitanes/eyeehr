@@ -1,4 +1,6 @@
 ///@summary コンストラクタ
+///@remarks 使用するHTMLに下記が必要な点を留意する。 
+/// <div id="utility" style="display:none"></div><!--ユーティリティで使用-->
 function Utility() {
 }
 
@@ -21,9 +23,6 @@ Utility.GetCurrentDateTime  = function ()
 	return retVal;
 }
 
-
-
-
 /// @summary  最小入力コントロールをXMLに置き換える。
 /// @param DIV, INPUT(集合で入ってくるかもしれない。）, IMG
 /// @remarks  入力最小単位 :=
@@ -38,31 +37,38 @@ Utility.HtmlMinInputItemToXml = function($i_jquery)
 
 	// 入力タグとなりうる要素を取得する。
 	//$i_jquery.find('DIV', 'INPUT', 'IMG').each(function (){
-	if($i_jquery.attr('name') !== undefined)
-	{
-		var tag = $i_jquery.attr('name');
 
-		switch ($i_jquery[0].tagName)
-		{
-			case 'DIV':
+	switch ($i_jquery[0].tagName)
+	{
+		case 'DIV':
+			if($i_jquery.attr('name') !== undefined)
+			{
+				var tag = $i_jquery.attr('name');
 				retVal += '<' +  tag + '>';
 				retVal += $i_jquery.text();
 				retVal += '</' + tag + '>';
-				break;
-			case 'INPUT':
+			}
+			break;
+		case 'INPUT':
+			if($i_jquery.attr('name') !== undefined)
+			{
+				var tag = $i_jquery.attr('name');
 				retVal += '<' +  tag + '>';
 				retVal += $i_jquery.val();
 				retVal += '</' + tag + '>';
-				break;
-			case 'IMG':
-				// XHTMLに変換する。
-				retVal += Utility.HtmlToXhtml($(this).html()); 
-				break;
-			default : 
-				break;
-		}
+			}
+			break;
+		case 'IMG':
+			// XHTMLに変換する。（一度、親要素に配置しなければ、HTML文字列が取得できない。）
+			$utility = $('div#utility');
+			$utility.css('display', 'none');
+			$utility.children().remove();
+			var html = $('div#utility').append($i_jquery.clone()).html();
+			retVal += Utility.HtmlToXhtml(html);
+			break;
+		default : 
+			break;
 	}
-	//})
 
 	return retVal;
 }
@@ -72,7 +78,8 @@ Utility.HtmlMinInputItemToXml = function($i_jquery)
 Utility.HtmlToXhtml = function(i_html)
 {
 	var retVal = i_html;
-	console.log(retVal);
+	//'<img src=​"/​exist/​rest/​db/​apps/​eyeehr/​1411112202_paint_bucket_red.png" width=​"150" onclick=​"$(this)​.remove()​">​';
+	console.log(i_html);
 	retVal = retVal.replace( /(<img.*?)\/?>/g, '$1/>' )
 	retVal = retVal.replace( /(<br.*?)\/?>/g, '$1/>' )
 	return retVal;

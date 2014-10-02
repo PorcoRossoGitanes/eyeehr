@@ -37,7 +37,7 @@ function NoteItem() {
     'method="post" ' +
     'action="' + urlUploadImage + '" ' + 
     'target="' + iframetarget + '"' + 
-    'style="display:none" ' + 
+    //'style="display:none" ' + 
     '>' +
     '<input id="attachImg" type="file" name="file" value="画像" ' + 
     //'style="display:none" accept="image/jpeg" ' + 
@@ -82,12 +82,21 @@ function NoteItem() {
     });
   })
   $jquery.find('iframe').load(function(){
-    //alert('画像添付が完了しました');
-    $jquery.find('[name=images]').append(
-      '<img src="' + $(this).contents().find('#url').text() + '" width="100%" ' + 
-      'onclick="$(this).remove()"' + 
-      '/>'
-    );
+    //alert();
+    var url =  $(this).contents().find('#url').text();
+    if (url == "")
+    {
+      alert('画像の貼付けに失敗しました。');
+    }
+    else 
+    {
+      $(this).parent().find('[name=images]').append(
+        '<img src="' + url + '" width="150" ' + 
+        'onclick="$(this).remove()"' + 
+        '/>'
+      );      
+      //alert('画像の貼付けが完了しました');
+    }
   });
   // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
   $jquery.find('#min').click(function()
@@ -166,7 +175,7 @@ NoteItem.HtmlToXml = function($i_jquery)
   retVal += '<' + $formats.attr('name') + '>';
   $i_jquery.children('[name=formats]').find('DIV', 'INPUT', 'IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml($(this));
-    console.log($(this));
+    //console.log($(this));
   });
   retVal += '</' + $formats.attr('name') + '>';
 
@@ -174,7 +183,8 @@ NoteItem.HtmlToXml = function($i_jquery)
   $images = $i_jquery.children('[name=images]');
   retVal += '<' + $images.attr('name') + '>';
   $images.find('IMG').each(function(){
-    //retVal += Utility.HtmlToXhtml ($(this));
+    retVal += Utility.HtmlMinInputItemToXml($(this));
+    console.log($(this));
   });
   retVal += '</' + $images.attr('name') + '>';
 
