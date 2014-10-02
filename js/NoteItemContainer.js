@@ -67,9 +67,23 @@ NoteItemContainer.HtmlToXml = function($i_jquery)
 
 //--------------------------------------------------//
 ///@summary カルテ項目コンテナ（所見（病名））
-function NoteItemContainerDisease ()
+///@param $i_xml XML JQuery Object
+function NoteItemContainerDisease ($i_xml)
 {
 	NoteItemContainer.call(this, this.getName(), '病名');
+
+    // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
+    if ($i_xml !== undefined)
+    {
+        if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
+        {
+            $i_xml.children().each(function(){
+                var item = new NoteItemComplaint($(this)); 
+                $jqueryNoteItemContainer.append(item.getJQueryObject());
+            });
+        }
+    }
+
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
@@ -124,10 +138,23 @@ function NoteItemContainerComplaint ($i_xml)
 //--------------------------------------------------//
 
 ///@summary カルテ項目コンテナ（検査）
-function NoteItemContainerMedicalCheck ()
+///@param $i_xml XML JQuery Object
+function NoteItemContainerMedicalCheck ($i_xml)
 {
 	///@param クラス名
 	NoteItemContainer.call(this, this.getName(), '検査');
+
+    // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
+    if ($i_xml !== undefined)
+    {
+        if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
+        {
+            $i_xml.children().each(function(){
+                var item = new NoteItemContainerMedicalCheck($(this)); 
+                $jqueryNoteItemContainer.append(item.getJQueryObject());
+            });
+        }
+    }
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
@@ -147,9 +174,22 @@ function NoteItemContainerMedicalCheck ()
 //--------------------------------------------------//
 
 ///@summary カルテ項目コンテナ（処方）
-function NoteItemContainerPrescription ()
+///@param $i_xml XML JQuery Object
+function NoteItemContainerPrescription ($i_xml)
 {
 	NoteItemContainer.call(this, this.getName(), '処方');
+
+    // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
+    if ($i_xml !== undefined)
+    {
+        if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
+        {
+            $i_xml.children().each(function(){
+                var item = new NoteItemContainerPrescription($(this)); 
+                $jqueryNoteItemContainer.append(item.getJQueryObject());
+            });
+        }
+    }
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
@@ -169,9 +209,22 @@ function NoteItemContainerPrescription ()
 //--------------------------------------------------//
 
 ///@summary カルテ項目コンテナ（手術）
-function NoteItemContainerOperation ()
+///@param $i_xml XML JQuery Object
+function NoteItemContainerOperation ($i_xml)
 {
 	NoteItemContainer.call(this, this.getName(), '手術');
+
+    // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
+    if ($i_xml !== undefined)
+    {
+        if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
+        {
+            $i_xml.children().each(function(){
+                var item = new NoteItemContainerOperation($(this)); 
+                $jqueryNoteItemContainer.append(item.getJQueryObject());
+            });
+        }
+    }
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
@@ -224,11 +277,22 @@ function NoteItemContainerMemo ($i_xml)
 
 //--------------------------------------------------//
 ///@summary カルテ項目コンテナ（シェーマ）
-function NoteItemContainerScheme ()
+///@param $i_xml XML JQuery Object
+function NoteItemContainerScheme ($i_xml)
 {
-	///@param クラス名
-	this.name = 'NoteItemContainerScheme';
-	NoteItemContainer.call(this, this.getName(), 'シェーマ');
+	NoteItemContainer.call(this, 'NoteItemContainerScheme', 'シェーマ');
+
+    // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
+    if ($i_xml !== undefined)
+    {
+        if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
+        {
+            $i_xml.children().each(function(){
+                var item = new NoteItemContainerScheme($(this)); 
+                $jqueryNoteItemContainer.append(item.getJQueryObject());
+            });
+        }
+    }
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
