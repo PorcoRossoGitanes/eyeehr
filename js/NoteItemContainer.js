@@ -7,7 +7,7 @@ function NoteItemContainer (i_name, i_title)
 	this.name = 'NoteItemContainer';
 		
 	///@param HTML
-	$jquery = $('<div ' + 
+	$jqueryNoteItemContainer = $('<div ' + 
 		'class="' + 'NoteItemContainer' + '" ' + 
 		'name="' + i_name + '" ' + 
         'style="position:absolute;">' + 
@@ -16,7 +16,7 @@ function NoteItemContainer (i_name, i_title)
 	'</div>');
 	
 	// 親要素内のみドラッグ可能に設定する。
-	$jquery.draggable({
+	$jqueryNoteItemContainer.draggable({
         containment: 'parent',
         scroll: false,		
 	});
@@ -25,7 +25,7 @@ function NoteItemContainer (i_name, i_title)
 	///@return HTML
 	this.getJQueryObject = function () 
 	{
-		return $jquery;
+		return $jqueryNoteItemContainer;
 	}
 
 	///@summary クラス名を取得する。
@@ -102,13 +102,12 @@ function NoteItemContainerComplaint ($i_xml)
 	// 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
 	if ($i_xml !== undefined)
 	{
-		if ($i_xml[0].tagName == this.name.toUpperCase())
+		if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
 		{
-            $i_xml[0].children().each(function(){
-	            var item = new NoteItemComplaint($(this)); 
-	            item.appendTo('[name=' + this.getName() +']');
-	        });
-
+            $i_xml.children().each(function(){
+                var item = new NoteItemComplaint($(this)); 
+                $jqueryNoteItemContainer.append(item);
+            });
 		}
 	}
 };(function() {

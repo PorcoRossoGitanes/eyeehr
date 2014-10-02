@@ -42,57 +42,39 @@ XmlManager.LoadNote = function (i_filePath)
                     switch($(this)[0].tagName)
                     {
                         case 'NOTEITEMCONTAINERCOMPLAINT' : 
-                            // 主訴コンテナを追加する。
+                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerComplaint = new NoteItemContainerComplaint($(this));
                             $currentNote.append(containerComplaint.getJQueryObject());
-                            
-                            $(this).children().each(function(){
-                                var item = new NoteItemComplaint($(this)); 
-                                console.log($(this));
-                                item.appendTo('[name=NoteItemContainerComplaint]');
-                            });
                             break;
                         case 'NOTEITEMCONTAINERDISEASE' : // 病名 
+                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerDisease = new NoteItemContainerDisease();
                             $currentNote.append(containerDisease.getJQueryObject());
-                            $(this).children().each(function(){
-                                // TODO : コーディング未済
-                            });
                             break;
                         case 'NOTEITEMCONTAINERMEDICALCHECK' :　// 検査
+                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerMedicalCheck = new NoteItemContainerMedicalCheck();
                             $currentNote.append(containerMedicalCheck.getJQueryObject());
-                            $(this).children().each(function(){
-                                // TODO : コーディング未済
-                            });
                             break; 
                         case 'NOTEITEMCONTAINERPRESCRIPTION' :  // 処方
+                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerPrescription = new NoteItemContainerPrescription();
                             $currentNote.append(containerPrescription.getJQueryObject());
-                            $(this).children().each(function(){
-                                // TODO : コーディング未済
-                            });
                             break;
                         case 'NOTEITEMCONTAINEROPERATION' :     // 手術
+                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerOperation = new NoteItemContainerOperation();
                             $currentNote.append(containerOperation.getJQueryObject());
-                            $(this).children().each(function(){
-                                // TODO : コーディング未済
-                            });
                             break;
                         case 'NOTEITEMCONTAINERMEMO' : // メモ
+                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerMemo = new NoteItemContainerMemo();
                             $currentNote.append(containerMemo.getJQueryObject());
-                            $(this).children().each(function(){
-                                // TODO : コーディング未済                                
-                            });
                             break;
                         case 'NOTEITEMCONTAINERSCHEME' :　// シェーマ
+                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerScheme = new NoteItemContainerScheme();
                             $currentNote.append(containerScheme.getJQueryObject());
-                            $(this).children().each(function(){                                
-                                // TODO : コーディング未済
-                            });
                             break;
                         default :
                             break;
