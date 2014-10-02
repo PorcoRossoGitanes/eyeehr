@@ -89,6 +89,7 @@ function NoteItemContainerDisease ()
 //--------------------------------------------------//
 
 ///@summary カルテ項目コンテナ（主訴）
+///@param $i_xml XML JQuery Object
 function NoteItemContainerComplaint ($i_xml)
 {
 	NoteItemContainer.call(this, this.getName(), '主訴');
@@ -189,9 +190,22 @@ function NoteItemContainerOperation ()
 
 //--------------------------------------------------//
 ///@summary カルテ項目コンテナ（メモ）
-function NoteItemContainerMemo ()
+///@param $i_xml XML JQuery Object
+function NoteItemContainerMemo ($i_xml)
 {
 	NoteItemContainer.call(this, 'NoteItemContainerMemo', 'メモ');
+
+    // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
+    if ($i_xml !== undefined)
+    {
+        if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
+        {
+            $i_xml.children().each(function(){
+                var item = new NoteItemMemo($(this)); 
+                $jqueryNoteItemContainer.append(item.getJQueryObject());
+            });
+        }
+    }
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};

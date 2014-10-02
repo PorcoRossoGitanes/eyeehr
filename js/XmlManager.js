@@ -63,7 +63,7 @@ XmlManager.LoadNote = function (i_filePath)
                             $currentNote.append(containerOperation.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERMEMO' : // メモ
-                            var containerMemo = new NoteItemContainerMemo();
+                            var containerMemo = new NoteItemContainerMemo($(this));
                             $currentNote.append(containerMemo.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERSCHEME' :　// シェーマ

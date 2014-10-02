@@ -278,8 +278,8 @@ function NoteItemComplaint($i_xml)
   {
     if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
     {
-      // TODO 定型フォーマット部分を追加する。
-      //console.log($i_xml.children('formats'));
+      // 定型フォーマット部分を追加する。
+      $jquery.find('[name=formats]').html($i_xml.children('formats').html());
       // 画像添付部分を追加する。
       $jquery.find('[name=images]').html($i_xml.children('images').html());
       // 備考部分を追加する。
@@ -315,7 +315,8 @@ function NoteItemMedicalCheck(i_name)
   $jquery.addClass('NoteItemMedicalCheck');
   $jquery.find('[name=formats]').append(
     '<div name="medical-check-name">' + i_name + '</div>' + 
-    '<input name="medical-check-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
+    '<input name="medical-check-custom" type="text" value="入力欄（カスタム）"/>'  
+    // TODO : 入力欄カスタム作成
   );
   //--JQuery オブジェクト操作---//
 };(function() {
@@ -405,7 +406,8 @@ function NoteItemOperation(i_name)
 
 
 ///@summary メモコンストラクタ
-function NoteItemMemo() 
+///@param $i_xml XML
+function NoteItemMemo($i_xml) 
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
@@ -414,6 +416,21 @@ function NoteItemMemo()
   $jquery.attr('name', 'NoteItemMemo');
   $jquery.addClass('NoteItemMemo');
   //console.log($jquery);
+
+  if ($i_xml !== undefined)
+  {
+    if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+    {
+      console.log('Memoload');
+      console.log($i_xml);
+      // 定型フォーマット部分を追加する。
+      $jquery.find('[name=formats]').html($i_xml.children('formats').html());
+      // 画像添付部分を追加する。
+      $jquery.find('[name=images]').html($i_xml.children('images').html());
+      // 備考部分を追加する。
+      $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+    }
+  }
   //--JQuery オブジェクト操作---//
 
 };(function() {

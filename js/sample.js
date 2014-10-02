@@ -63,12 +63,11 @@ $(function()
 	$('button#new').click(function(){
 		// TODO 未作成
 		alert('新規作成');
-		//XmlManager.LoadNote($('div#currentFilePath').text());
 	});
 
 	/// @summary 「読込」ボタンを押下時、XMLを読込む。
 	$('button#load').click(function(){
-		XmlManager.LoadNote($('div#currentFilePath').text());
+		XmlManager.LoadNote($('input#currentFilePath').val());
 	
 	});
 
@@ -97,7 +96,7 @@ $(function()
 		XmlManager.SaveNote(filePath, xml);
 
 		// TODO : 現在のカルテファイルパスを表示する。
-		$('div#currentFilePath').text(filePath);
+		$('input#currentFilePath').val(filePath);
 	});
 
 	// @summary 「患者情報」ボタンを押下時、患者情報を表示する。
