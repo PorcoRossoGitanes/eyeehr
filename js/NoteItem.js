@@ -12,7 +12,7 @@ function NoteItem() {
   // 付箋（JQuery オブジェクト）を生成する
   var urlUploadImage = "/exist/apps/eyeehr/upload.xq";
   var iframetarget = 'uploadImage-' + id;
-  $jqueryNoteItem = $(
+  $jquery = $(
     '<div ' + 
     'id="' + id + '" ' + 
     'class="' + 'NoteItem' + '" ' + 
@@ -64,11 +64,11 @@ function NoteItem() {
   );
 
   // 付箋をリサイズ・ドラッグ可能とする。
-  //$jqueryNoteItem.resizable({handles : 's'});
-  //$jqueryNoteItem.draggable();
+  //$jquery.resizable({handles : 's'});
+  //$jquery.draggable();
 
   // @summary 画像を追加する。
-  $jqueryNoteItem.find('button#attachImg').click(function () {
+  $jquery.find('button#attachImg').click(function () {
     // 画像選択ボタンを取得する。
     $inputAttachImage = $(this).parent().find('form > input#attachImg');
     // 画像選択ボタンをクリックする。
@@ -81,7 +81,7 @@ function NoteItem() {
       $form.submit();
     });
   })
-  $jqueryNoteItem.find('iframe').load(function(){
+  $jquery.find('iframe').load(function(){
     //alert();
     var url =  $(this).contents().find('#url').text();
     if (url == "")
@@ -99,7 +99,7 @@ function NoteItem() {
     }
   });
   // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
-  $jqueryNoteItem.find('#min').click(function()
+  $jquery.find('#min').click(function()
   {
     // タグが表示の場合は折り畳む（最小化する）。タグが非表示の場合は展開する。
     if ($(this).parent().find('#tags').css('display') != 'block')
@@ -121,12 +121,12 @@ function NoteItem() {
   });
 
   //　@summary 「削除」ボタンが押されたときには、付箋を削除する。
-  $jqueryNoteItem.find('#del').click(function(){
+  $jquery.find('#del').click(function(){
     $(this).parent().remove();
   });
   
   // @summary 付箋をダブルクリック時に入力欄を表示する。
-  $jqueryNoteItem.dblclick(function(){
+  $jquery.dblclick(function(){
     var memo = $(this).find('[name=remarks]').html();
     area.instanceById('area1').setContent(memo);
     $('input#selectedNoteItem').val($(this).attr('id'));
@@ -150,8 +150,16 @@ function NoteItem() {
   _proto.appendTo = function(i_to)
   {
     // 付箋をカルテ欄に登録する。
-    $jqueryNoteItem.appendTo(i_to);  
-    $jqueryNoteItem.dblclick();
+    console.log('appendTo');
+    $jquery.appendTo(i_to);  
+    $jquery.dblclick();
+  }
+
+  ///@summary JQueryObjectを出力する
+  ///@return JQueryObject
+  _proto.getJQueryObject = function () 
+  {
+    return $jquery;
   }
 })();
    
@@ -200,7 +208,7 @@ NoteItem.HtmlToXml = function($i_jquery)
 }
 
 // @summary 文字列を変更する。
-NoteItem.ChangeVal = function($jqueryNoteItem, i_memo)
+NoteItem.ChangeVal = function($jquery, i_memo)
 {
   $memo = $('<memo>' + i_memo + '</memo>');
   $strongs = $memo.find('strong');
@@ -213,8 +221,8 @@ NoteItem.ChangeVal = function($jqueryNoteItem, i_memo)
     //console.log($($strongs[index]).text());
   }
   
-  $jqueryNoteItem.find('#tags').html(tags);
-  $jqueryNoteItem.find('[name=remarks]').html(i_memo);
+  $jquery.find('#tags').html(tags);
+  $jquery.find('[name=remarks]').html(i_memo);
 }
 
 // /// @summary 公式メソッド
@@ -229,9 +237,9 @@ function NoteItemDisease(i_name) {
     NoteItem.call(this);
     //--JQuery オブジェクト操作---//
     // クラス属性を追加した。
-    $jqueryNoteItem.attr('name', 'NoteItemDisease');
-    $jqueryNoteItem.addClass('NoteItemDisease');
-    $jqueryNoteItem.find('[name=formats]').append(
+    $jquery.attr('name', 'NoteItemDisease');
+    $jquery.addClass('NoteItemDisease');
+    $jquery.find('[name=formats]').append(
       '<div name="disease-name">' + i_name + '</div>' 
     );
     //--JQuery オブジェクト操作---//
@@ -263,19 +271,19 @@ function NoteItemComplaint($i_xml)
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jqueryNoteItem.attr('name', 'NoteItemComplaint');
-  $jqueryNoteItem.addClass('NoteItemComplaint');
+  $jquery.attr('name', 'NoteItemComplaint');
+  $jquery.addClass('NoteItemComplaint');
   
   if ($i_xml !== undefined)
   {
-    if ($i_xml[0].tagName == $jqueryNoteItem.attr('name').toUpperCase())
+    if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
     {
       // TODO 定型フォーマット部分を追加する。
       //console.log($i_xml.children('formats'));
       // 画像添付部分を追加する。
-      $jqueryNoteItem.find('[name=images]').html($i_xml.children('images').html());
+      $jquery.find('[name=images]').html($i_xml.children('images').html());
       // 備考部分を追加する。
-      $jqueryNoteItem.find('[name=remarks]').html($i_xml.children('remarks').html());
+      $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
     }
   }
   //--JQuery オブジェクト操作---//
@@ -303,9 +311,9 @@ function NoteItemMedicalCheck(i_name)
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jqueryNoteItem.attr('name', 'NoteItemMedicalCheck');
-  $jqueryNoteItem.addClass('NoteItemMedicalCheck');
-  $jqueryNoteItem.find('[name=formats]').append(
+  $jquery.attr('name', 'NoteItemMedicalCheck');
+  $jquery.addClass('NoteItemMedicalCheck');
+  $jquery.find('[name=formats]').append(
     '<div name="medical-check-name">' + i_name + '</div>' + 
     '<input name="medical-check-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
   );
@@ -334,16 +342,16 @@ function NoteItemPrescription(i_name)
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jqueryNoteItem.attr('name', 'NoteItemPrescription');
-  $jqueryNoteItem.addClass('NoteItemPrescription');
-  //$jqueryNoteItem.find('[name=formats]').attr('name', 'medicine');
-  $jqueryNoteItem.find('[name=formats]').append(
+  $jquery.attr('name', 'NoteItemPrescription');
+  $jquery.addClass('NoteItemPrescription');
+  //$jquery.find('[name=formats]').attr('name', 'medicine');
+  $jquery.find('[name=formats]').append(
     '<input name="medicine-orca" type="hidden" value="ORCAID" />' + 
     '<input name="medicine-name" type="disable" value="' + i_name +'"/>' + 
     '<input name="medicine-cnt"  type="text" value="1">個'
   );
   console.log(i_name);
-  //console.log($jqueryNoteItem);
+  //console.log($jquery);
   //--JQuery オブジェクト操作---//
 };(function() {
     // 親クラス(Parent)のメソッドを継承
@@ -370,13 +378,13 @@ function NoteItemOperation(i_name)
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jqueryNoteItem.attr('name', 'NoteItemOperation');
-  $jqueryNoteItem.addClass('NoteItemOperation');
-  $jqueryNoteItem.find('[name=formats]').append(
+  $jquery.attr('name', 'NoteItemOperation');
+  $jquery.addClass('NoteItemOperation');
+  $jquery.find('[name=formats]').append(
     '<div name="operation-name">' + i_name + '</div>' + 
     '<input name="operation-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
   );
-  //console.log($jqueryNoteItem);
+  //console.log($jquery);
   //--JQuery オブジェクト操作---//
 };(function() {
     // 親クラス(Parent)のメソッドを継承
@@ -403,9 +411,9 @@ function NoteItemMemo()
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jqueryNoteItem.attr('name', 'NoteItemMemo');
-  $jqueryNoteItem.addClass('NoteItemMemo');
-  //console.log($jqueryNoteItem);
+  $jquery.attr('name', 'NoteItemMemo');
+  $jquery.addClass('NoteItemMemo');
+  //console.log($jquery);
   //--JQuery オブジェクト操作---//
 
 };(function() {

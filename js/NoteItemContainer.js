@@ -28,12 +28,12 @@ function NoteItemContainer (i_name, i_title)
 		return $jqueryNoteItemContainer;
 	}
 
-	///@summary クラス名を取得する。
-	///@returns クラス名
-	this.getName = function() 
-	{
-		return this.name;
-	};
+	// ///@summary クラス名を取得する。
+	// ///@returns クラス名
+	// this.getName = function() 
+	// {
+	// 	return this.name;
+	// };
 };(function() {
 
   // プロトタイプ
@@ -106,7 +106,7 @@ function NoteItemContainerComplaint ($i_xml)
 		{
             $i_xml.children().each(function(){
                 var item = new NoteItemComplaint($(this)); 
-                $jqueryNoteItemContainer.append(item);
+                $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
 		}
 	}

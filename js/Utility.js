@@ -78,8 +78,6 @@ Utility.HtmlMinInputItemToXml = function($i_jquery)
 Utility.HtmlToXhtml = function(i_html)
 {
 	var retVal = i_html;
-	//'<img src=​"/​exist/​rest/​db/​apps/​eyeehr/​1411112202_paint_bucket_red.png" width=​"150" onclick=​"$(this)​.remove()​">​';
-	console.log(i_html);
 	retVal = retVal.replace( /(<img.*?)\/?>/g, '$1/>' )
 	retVal = retVal.replace( /(<br.*?)\/?>/g, '$1/>' )
 	return retVal;

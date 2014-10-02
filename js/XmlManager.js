@@ -47,34 +47,31 @@ XmlManager.LoadNote = function (i_filePath)
                             $currentNote.append(containerComplaint.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERDISEASE' : // 病名 
-                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerDisease = new NoteItemContainerDisease();
                             $currentNote.append(containerDisease.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERMEDICALCHECK' :　// 検査
-                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerMedicalCheck = new NoteItemContainerMedicalCheck();
                             $currentNote.append(containerMedicalCheck.getJQueryObject());
                             break; 
                         case 'NOTEITEMCONTAINERPRESCRIPTION' :  // 処方
-                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerPrescription = new NoteItemContainerPrescription();
                             $currentNote.append(containerPrescription.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINEROPERATION' :     // 手術
-                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerOperation = new NoteItemContainerOperation();
                             $currentNote.append(containerOperation.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERMEMO' : // メモ
-                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerMemo = new NoteItemContainerMemo();
                             $currentNote.append(containerMemo.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERSCHEME' :　// シェーマ
-                            // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerScheme = new NoteItemContainerScheme();
                             $currentNote.append(containerScheme.getJQueryObject());
+                            $(this).children().each(function(){                                
+                                // TODO : コーディング未済
+                            });
                             break;
                         default :
                             break;
