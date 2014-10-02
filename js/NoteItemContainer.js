@@ -21,19 +21,13 @@ function NoteItemContainer (i_name, i_title)
         scroll: false,		
 	});
 
-	///@summary HTMLを出力する
-	///@return HTML
+	///@summary JQuery Objectを出力する
+	///@return  JQuery Object
 	this.getJQueryObject = function () 
 	{
 		return $jqueryNoteItemContainer;
 	}
 
-	// ///@summary クラス名を取得する。
-	// ///@returns クラス名
-	// this.getName = function() 
-	// {
-	// 	return this.name;
-	// };
 };(function() {
 
   // プロトタイプ
