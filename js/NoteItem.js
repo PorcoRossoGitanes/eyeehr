@@ -82,9 +82,10 @@ function NoteItem() {
     });
   })
   $jquery.find('iframe').load(function(){
-    //alert();
+    var file = $(this).parent().find("#attachImg").val();
     var url =  $(this).contents().find('#url').text();
-    if (url == "")
+    // 画像ファイルが指定されているが、URLが未指定の場合、保存に失敗したと見なす。
+    if (url == "" && file != "")
     {
       alert('画像の貼付けに失敗しました。');
     }
@@ -150,7 +151,6 @@ function NoteItem() {
   _proto.appendTo = function(i_to)
   {
     // 付箋をカルテ欄に登録する。
-    console.log('appendTo');
     $jquery.appendTo(i_to);  
     $jquery.dblclick();
   }
@@ -423,8 +423,8 @@ function NoteItemMemo($i_xml)
     {
       console.log('Memoload');
       console.log($i_xml);
-      // 定型フォーマット部分を追加する。
-      $jquery.find('[name=formats]').html($i_xml.children('formats').html());
+      // TODO : 定型フォーマット部分を追加する。
+      //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
       // 画像添付部分を追加する。
       $jquery.find('[name=images]').html($i_xml.children('images').html());
       // 備考部分を追加する。
