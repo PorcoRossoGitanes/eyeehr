@@ -107,6 +107,24 @@ $(function()
 		alert('患者情報表示');
 	});
 
+	// 担当者情報を読み取る。
+	$('#loadStaff').click(function(){
+		$.ajax({
+		    //url: "/exist/rest/apps/eyeehr/data/staff/staff-1.xml",
+		    url : "/exist/rest/apps/eyeehr/data/staff?_query=/staff", // コレクション毎取得する場合
+		    async: true,
+		    cache: false,
+		    dataType:"xml",
+		    error: function(){
+		        alert('Error loading XML document');
+		    },
+		    success: function(xml){
+		        console.log(xml);
+		    }
+		});
+		
+	})
+
 	// // @summary 「付箋保存」ボタンを押下時、付箋のテキストを更新する。
 	// // @remarks 	nicEdit保存ボタンに処理を移行した。
 	// $('button#fix').click(function () 
