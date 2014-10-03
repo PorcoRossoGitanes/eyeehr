@@ -78,7 +78,7 @@ function NoteItemContainerDisease ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemComplaint($(this)); 
+                var item = new NoteItemDisease($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }
@@ -150,7 +150,7 @@ function NoteItemContainerMedicalCheck ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemContainerMedicalCheck($(this)); 
+                var item = new NoteItemMedicalCheck($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }
@@ -185,7 +185,7 @@ function NoteItemContainerPrescription ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemContainerPrescription($(this)); 
+                var item = new NoteItemPrescription($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }
@@ -220,7 +220,7 @@ function NoteItemContainerOperation ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemContainerOperation($(this)); 
+                var item = new NoteItemOperation($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }
@@ -288,7 +288,7 @@ function NoteItemContainerScheme ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemContainerScheme($(this)); 
+                var item = new NoteItemScheme($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }
