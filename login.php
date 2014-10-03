@@ -1,10 +1,12 @@
 <?php
+  // セッションを開始する。
   session_start();
   
+  // XMLデーターを初期化する。
   $xmlData = "";
-  // エラーメッセージ
+  // エラーメッセージを初期化する。
   $errorMessage = "";
-  // 画面に表示するため特殊文字をエスケープする
+  // 画面に表示するため特殊文字をエスケープする。
   $viewUserId = htmlspecialchars($_POST["userid"], ENT_QUOTES);
 
   // ログインボタンが押された場合に、実行する。      
@@ -17,16 +19,16 @@
     . "/exist/rest/apps/eyeehr/" // プロジェクトルート
     . "data/staff/"             // データパス
     . "staff-" . $_POST["userid"] . ".xml";//ファイルを指定
+
     $xmlData = simplexml_load_file($uri);//xmlを読み込む
 
-    // 認証成功
     if ($_POST["userid"] == $xmlData['id'] && $_POST["password"] == $xmlData->pswd) 
     {
-      // セッションIDを新規に発行する
+      // 認証成功時、セッションIDを新規に発行する。
       session_regenerate_id(TRUE);
       $_SESSION["USERID"] = $_POST["userid"];
 
-      // 電子カルテメイン画面に移動する
+      // 電子カルテメイン画面に移動する。
       header("Location: main.php");
       exit;
     }

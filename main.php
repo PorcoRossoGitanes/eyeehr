@@ -1,3 +1,15 @@
+<?php
+// セッションを開始する。
+session_start();
+
+// セッションでログイン状態のチェックする。
+// $_SESSION["USERID"]が存在しない場合には、ログアウトする。
+if (!isset($_SESSION["USERID"])) {
+  header("Location: logout.php");
+  exit;
+}
+//echo "ようこそ" . $_SESSION["USERID"] . "さん";
+?>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -32,12 +44,25 @@
     <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
     読込：<div id="result-XmlManager_LoadNote" style="display: inline-block; _display: inline;"></div><!--読込（デバッグ用）-->
     <!--保存：<div id="result-XmlManager_SaveNote" style="display: inline-block; _display: inline;"></div--><!--保存（デバッグ用）-->
-    <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規</span></button>
-    <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
-    <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
+    <button type="button" id="new" class="btn btn-default btn-s">
+      <span class="glyphicon glyphicon-plus">新規</span>
+    </button>
+    <button type="button" id="load" class="btn btn-default btn-s">
+      <span class="glyphicon glyphicon-open">読込</span>
+    </button>
+    <button type="button" id="save" class="btn btn-default btn-s">
+      <span class="glyphicon glyphicon-save">保存</span>
+    </button>
+  
     2014/08/31 12:34 
     <label>医師</label>&nbsp; 00001 渡邉花子
     <button id="loadStaff">スタッフ読込</button>
+
+    <!-- ログアウト -->
+    <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'">
+      <span class="glyphicon glyphicon-plus">ログアウト</span>
+    </button>
+    <!-- ログアウト -->
   </div>
   <table border="1">
     <tr>
