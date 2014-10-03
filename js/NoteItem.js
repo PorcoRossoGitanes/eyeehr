@@ -37,7 +37,7 @@ function NoteItem() {
     'method="post" ' +
     'action="' + urlUploadImage + '" ' + 
     'target="' + iframetarget + '"' + 
-    //'style="display:none" ' + 
+    'style="display:none" ' + 
     '>' +
     '<input id="attachImg" type="file" name="file" value="画像" ' + 
     //'style="display:none" accept="image/jpeg" ' + 
@@ -67,7 +67,7 @@ function NoteItem() {
   //$jquery.resizable({handles : 's'});
   //$jquery.draggable();
 
-  // @summary 画像を追加する。
+  /// @summary 画像を追加する。
   $jquery.find('button#attachImg').click(function () {
     // 画像選択ボタンを取得する。
     $inputAttachImage = $(this).parent().find('form > input#attachImg');
@@ -76,24 +76,36 @@ function NoteItem() {
     // 画像選択がなされたら、ファイルパスを取得し、画像を追加する。
     // 画像アップロード結果が入ってきたら、画像を追加する。
     $inputAttachImage.change(function () {
-      // フォームから画像を送信する。
-      $form = $(this).parent();
-      $form.submit();
+      // 画像ファイル名が入力済みの場合のみ、フォームから画像を送信する。
+      if($(this).val() != "") 
+      {
+        $form = $(this).parent();
+        $form.submit();
+      }
     });
   })
+
+  /// @summary  画像添付（送信）処理が実施され、
+  ///           iframeがロードされたとき、
+  ///           成功時は画像を表示する。
   $jquery.find('iframe').load(function(){
     var file = $(this).parent().find("#attachImg").val();
     var url =  $(this).contents().find('#url').text();
-    // 画像ファイルが指定されているが、URLが未指定の場合、保存に失敗したと見なす。
-    if (url == "" && file != "")
+    if (file == "")
     {
+      // 画像ファイルが指定されていない場合は処理を実行しない。
+    }
+    else if (file != ""　&& url == "")
+    {
+      // 画像ファイルが指定されているが、URLが未指定の場合、保存に失敗したと見なす。
       alert('画像の貼付けに失敗しました。');
     }
     else 
     {
+      //console.log(file);
       $(this).parent().find('[name=images]').append(
         '<img src="' + url + '" width="150" ' + 
-        'onclick="$(this).remove()"' + 
+        'ondbclick="$(this).remove()"' + 
         '/>'
       );      
       //alert('画像の貼付けが完了しました');
