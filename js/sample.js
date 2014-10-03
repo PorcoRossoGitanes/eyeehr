@@ -80,16 +80,19 @@ $(function()
 		})
 	    //console.log('Utility.HtmlInputItemToXml : ' + xml);
 
+	    // 本日(yyMMdd)を取得する。
+	    var yyyyMMdd = Utility.GetCurrentDate();
+		    //Utility.GetCurrentDateTime();
+
 	    // ディレクトリを取得する。
-	    var dir = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/';
+	    var dir = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/' + yyyyMMdd + '/';
+
 	    // ディレクトリを取得する。
 	    var prefix = 'note';
 	    // 拡張子を取得する。
 	    var ext = '.xml';
-	    // 現在時刻を取得する。
-	    var yyyyMMddhhmmss = Utility.GetCurrentDateTime();
 
-   		var filePath = dir + prefix + yyyyMMddhhmmss + '.xml';
+   		var filePath = dir + prefix + yyyyMMdd + '.xml';
 
    		// 指定のファイルパスにXMLデーターを保存する。
    		alert(xml);

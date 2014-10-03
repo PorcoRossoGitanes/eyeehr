@@ -23,6 +23,25 @@ Utility.GetCurrentDateTime  = function ()
 	return retVal;
 }
 
+///@summary 現在日(yyyyMMdd)を取得する。
+Utility.GetCurrentDate  = function ()
+{
+	var retVal = '';
+ 
+    var now = new Date();		
+	var yyyy = now.getFullYear().toString();
+	var MM = (now.getMonth()+1).toString(); // getMonth() is zero-based
+	var dd = now.getDate().toString();
+	// var hh = now.getHours().toString();
+	// var mm = now.getMinutes().toString();
+ //    var ss = now.getSeconds().toString();
+	retVal = 
+		yyyy + (MM[1]?MM:"0"+MM[0]) + (dd[1]?dd:"0"+dd[0]);
+		 // + (hh[1]?hh:"0"+hh[0]) + (mm[1]?mm:"0"+mm[0]) + (ss[1]?ss:"0"+ss[0]);
+
+	return retVal;
+}
+
 /// @summary  最小入力コントロールをXMLに置き換える。
 /// @param DIV, INPUT(集合で入ってくるかもしれない。）, IMG
 /// @remarks  入力最小単位 :=

@@ -105,7 +105,7 @@ function NoteItem() {
       //console.log(file);
       $(this).parent().find('[name=images]').append(
         '<img src="' + url + '" width="150" ' + 
-        'ondbclick="$(this).remove()"' + 
+        'ondblclick="$(this).remove()"' + 
         '/>'
       );      
       //alert('画像の貼付けが完了しました');
