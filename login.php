@@ -5,7 +5,7 @@
   // XMLデーターを初期化する。
   $xmlData = "";
   // エラーメッセージを初期化する。
-  $errorMessage = "";
+  $message = "";
   // 画面に表示するため特殊文字をエスケープする。
   $viewUserId = htmlspecialchars($_POST["userid"], ENT_QUOTES);
 
@@ -33,7 +33,7 @@
       exit;
     }
     else {
-      $errorMessage = "ユーザID、または、パスワードに誤りがあります。";
+      $message = "ユーザID、または、パスワードに誤りがあります。";
     }
   }
 ?>
@@ -47,7 +47,7 @@
     <form id="formLogin" name="formLogin" action="<?php print($_SERVER['PHP_SELF']) ?>" method="POST">
     <fieldset>
       <legend>ログイン</legend>
-      <div><?php echo $errorMessage ?></div>
+      <div><?php echo $message ?></div>
       <label for="userid">ユーザID</label>
       <input type="text" id="userid" name="userid" value="<?php echo $viewUserId ?>">
       <br>

@@ -114,7 +114,8 @@ function NoteItemContainerComplaint ($i_xml)
 		if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
 		{
             $i_xml.children().each(function(){
-                var item = new NoteItemComplaint($(this)); 
+                var item = new NoteItemComplaint();
+                item.setByXml($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
 		}
@@ -254,7 +255,8 @@ function NoteItemContainerMemo ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemMemo($(this)); 
+                var item = new NoteItemMemo(); 
+                item.setByXml($(this));
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }

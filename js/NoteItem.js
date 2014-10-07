@@ -263,6 +263,26 @@ function NoteItemDisease(i_name) {
     var _super = Super.prototype;
     // プロトタイプ
     var _proto = NoteItemDisease.prototype;
+    
+    ///@summary XMLを設定する。
+    ///@param $i_xml XMLオブジェクト
+    _proto.setByXml = function ($i_xml)
+    {
+      if ($i_xml !== undefined)
+      {
+        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        {
+          //console.log($i_xml);
+          // TODO : 定型フォーマット部分を追加する。
+          //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
+          // 画像添付部分を追加する。
+          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          // 備考部分を追加する。
+          $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+        }
+      }
+    }
+
     // メンバメソッド(オーバーライド)
     _proto.getName = function() {
         // 親クラス(Parent)のgetName()を呼び出す
@@ -275,8 +295,7 @@ function NoteItemDisease(i_name) {
 
 
 ///@summary 主訴クラス
-///@param $i_xml XMLオブジェクト
-function NoteItemComplaint($i_xml) 
+function NoteItemComplaint() 
 {
   // 親クラス(Parent)のメンバ変数を継承
   NoteItem.call(this);
@@ -286,18 +305,6 @@ function NoteItemComplaint($i_xml)
   $jquery.attr('name', 'NoteItemComplaint');
   $jquery.addClass('NoteItemComplaint');
   
-  if ($i_xml !== undefined)
-  {
-    if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
-    {
-      // 定型フォーマット部分を追加する。
-      $jquery.find('[name=formats]').html($i_xml.children('formats').html());
-      // 画像添付部分を追加する。
-      $jquery.find('[name=images]').html($i_xml.children('images').html());
-      // 備考部分を追加する。
-      $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
-    }
-  }
   //--JQuery オブジェクト操作---//
 };(function() {
     // 親クラス(Parent)のメソッドを継承
@@ -307,8 +314,27 @@ function NoteItemComplaint($i_xml)
     var _super = Super.prototype;
     // プロトタイプ
     var _proto = NoteItemComplaint.prototype;
+
+    ///@summary XMLを設定する。
+    ///@param $i_xml XMLオブジェクト
+    _proto.setByXml = function ($i_xml)
+    {
+      if ($i_xml !== undefined)
+      {
+        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        {
+          // 定型フォーマット部分を追加する。
+          $jquery.find('[name=formats]').html($i_xml.children('formats').html());
+          // 画像添付部分を追加する。
+          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          // 備考部分を追加する。
+          $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+        }
+      }
+    }
     // メンバメソッド(オーバーライド)
-    _proto.getName = function() {
+    _proto.getName = function() 
+    {
         // 親クラス(Parent)のgetName()を呼び出す
         var name = _super.getName.call(this);
         // 結果に'-child'を付け加える
@@ -339,6 +365,26 @@ function NoteItemMedicalCheck(i_name)
     var _super = Super.prototype;
     // プロトタイプ
     var _proto = NoteItemMedicalCheck.prototype;
+
+        ///@summary XMLを設定する。
+    ///@param $i_xml XMLオブジェクト
+    _proto.setByXml = function ($i_xml)
+    {
+      if ($i_xml !== undefined)
+      {
+        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        {
+          //console.log($i_xml);
+          // TODO : 定型フォーマット部分を追加する。
+          //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
+          // 画像添付部分を追加する。
+          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          // 備考部分を追加する。
+          $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+        }
+      }
+    }
+
     // メンバメソッド(オーバーライド)
     _proto.getName = function() {
         // 親クラス(Parent)のgetName()を呼び出す
@@ -374,6 +420,26 @@ function NoteItemPrescription(i_name)
     var _super = Super.prototype;
     // プロトタイプ
     var _proto = NoteItemPrescription.prototype;
+
+    ///@summary XMLを設定する。
+    ///@param $i_xml XMLオブジェクト
+    _proto.setByXml = function ($i_xml)
+    {
+      if ($i_xml !== undefined)
+      {
+        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        {
+          //console.log($i_xml);
+          // TODO : 定型フォーマット部分を追加する。
+          //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
+          // 画像添付部分を追加する。
+          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          // 備考部分を追加する。
+          $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+        }
+      }
+    }
+
     // メンバメソッド(オーバーライド)
     _proto.getName = function() {
         // 親クラス(Parent)のgetName()を呼び出す
@@ -407,6 +473,25 @@ function NoteItemOperation(i_name)
     var _super = Super.prototype;
     // プロトタイプ
     var _proto = NoteItemOperation.prototype;
+
+    ///@summary XMLを設定する。
+    ///@param $i_xml XMLオブジェクト
+    _proto.setByXml = function ($i_xml)
+    {
+      if ($i_xml !== undefined)
+      {
+        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        {
+          //console.log($i_xml);
+          // TODO : 定型フォーマット部分を追加する。
+          //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
+          // 画像添付部分を追加する。
+          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          // 備考部分を追加する。
+          $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+        }
+      }
+    }
     // メンバメソッド(オーバーライド)
     _proto.getName = function() {
         // 親クラス(Parent)のgetName()を呼び出す
@@ -419,7 +504,7 @@ function NoteItemOperation(i_name)
 
 ///@summary メモコンストラクタ
 ///@param $i_xml XML
-function NoteItemMemo($i_xml) 
+function NoteItemMemo() 
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
@@ -429,20 +514,6 @@ function NoteItemMemo($i_xml)
   $jquery.addClass('NoteItemMemo');
   //console.log($jquery);
 
-  if ($i_xml !== undefined)
-  {
-    if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
-    {
-      console.log('Memoload');
-      console.log($i_xml);
-      // TODO : 定型フォーマット部分を追加する。
-      //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
-      // 画像添付部分を追加する。
-      $jquery.find('[name=images]').html($i_xml.children('images').html());
-      // 備考部分を追加する。
-      $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
-    }
-  }
   //--JQuery オブジェクト操作---//
 
 };(function() {
@@ -453,6 +524,24 @@ function NoteItemMemo($i_xml)
     var _super = Super.prototype;
     // プロトタイプ
     var _proto = NoteItemMemo.prototype;
+    ///@summary XMLを設定する。
+    ///@param $i_xml XMLオブジェクト
+    _proto.setByXml = function ($i_xml)
+    {
+      if ($i_xml !== undefined)
+      {
+        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        {
+          //console.log($i_xml);
+          // TODO : 定型フォーマット部分を追加する。
+          //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
+          // 画像添付部分を追加する。
+          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          // 備考部分を追加する。
+          $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+        }
+      }
+    }
     // メンバメソッド(オーバーライド)
     _proto.getName = function() {
         // 親クラス(Parent)のgetName()を呼び出す
