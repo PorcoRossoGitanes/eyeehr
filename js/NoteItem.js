@@ -104,7 +104,7 @@ function NoteItem() {
     {
       //console.log(file);
       $(this).parent().find('[name=images]').append(
-        '<img src="' + url + '" width="150" ' + 
+        '<img src="' + url + '" width="25%" ' + 
         'ondblclick="$(this).remove()"' + 
         '/>'
       );      

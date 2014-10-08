@@ -4,7 +4,7 @@
 function NoteItemContainer (i_name, i_title)
 {
 	///@param クラス名
-	this.name = 'NoteItemContainer';
+	this._name = 'NoteItemContainer';
 		
 	///@param HTML
 	$jqueryNoteItemContainer = $('<div ' + 
@@ -52,8 +52,12 @@ NoteItemContainer.HtmlToXml = function($i_jquery)
 
 	var tag = $i_jquery.attr('name');
 
-	retVal += '<' + tag + '>';
-	// TODO ヘッダー情報を記入する。
+    // ヘッダー情報（位置）を記入する。
+	retVal += '<' + tag + ' ';
+    retVal += 'left="' + $i_jquery.css('left') + '" ';
+    retVal += 'top="' + $i_jquery.css('top') + '" ';
+    retVal += '>';
+
 
 	// 子要素のXMLを取得しにいく。
 	$i_jquery.children('div.NoteItem').each(function () {
