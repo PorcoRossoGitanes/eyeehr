@@ -1,3 +1,13 @@
+<!--
+◆ペン色を追加する場合、各ボタンのdata-color属性を変更する。(RGB可)
+◆ハッチング色を追加する場合、各ボタンのdata-color属性を変更し、
+　imgフォルダ直下のbg-(data-color).svgを作成する。
+
+フォルダ構成）
++svg_edit.html（本HTML)
++img/
+  +bg-xxx.svg(ハッチング画像)
+-->
 <html>
 	<head>
 	    <meta content="text/html" charset="UTF-8">
@@ -6,25 +16,38 @@
 	</head>
 	<body>
 		<ul>
-			<li>フリーハンド（太さ変更）</li>
-			<li>ハッチング（太さ変更）</li>
+			<li><u>フリーハンド（太さ変更）</u></li>
+			<li><u>ハッチング</u></li>
 			<li>背景</li>
 			<li>削除（ダブルクリックで削除できます）</li>
 		</ul>
+		<!-- TODO : 色が追加される場合、UI追加する。 -->
+		<input class="tool pen"   type="button" data-color="black" value="→" title="黒ペン" style="color:black" />
+		<input class="tool pen"   type="button" data-color="red" value="→" title="赤ペン" style="color:red" />
+		<input class="tool pen"   type="button" data-color="blue"value="→" title="青ペン" style="color:blue" />
+		<input class="tool pen"   type="button" data-color="green" value="→" title="緑ペン" style="color:green" />
+		<input class="tool pen"   type="button" data-color="brown" value="→" title="茶ペン" style="color:brown" />
+		<input class="tool pen"   type="button" data-color="yellow" value="→" title="黄ペン" style="color:yellow"/>
+		ペン幅
+		<select name="pen-width"> 
+			<option value="1">1</option>
+			<option value="3">3</option>
+			<option value="5">5</option>
+			<option value="7">7</option>
+			<option value="9">9</option>
+		</select>
 
-		<!--各種ボタン-->
-		<div>ツール: <input type="text"   value="pen" /></div>
-		<div>色<input type="text"   value="#000000" /></div>
-		<div>線幅: <input type="text"   value="1" /></div>
-		<input type="button" value="ペン"/>
-		<input type="button" value="ハッチング"/>
-		<input type="button" value="背景"/>
-		<input type="button" value="画像挿入"/>
+		<input class="tool hatch" type="button" data-color="black" value="///" title="黒ハッチ" style="color:black" />
+		<input class="tool hatch" type="button" data-color="red" value="///" title="赤ハッチ" style="color:red" />
+		<input class="tool hatch" type="button" data-color="blue" value="///" title="青ハッチ" style="color:blue" />
+		<input class="tool hatch" type="button" data-color="green" value="///" title="緑ハッチ" style="color:green" />
+		<input class="tool hatch" type="button" data-color="brown" value="///" title="茶ハッチ" style="color:brown" />
+		<input class="tool hatch" type="button" data-color="yellow" value="///" title="黄ハッチ" style="color:yellow" />
+		<input class="tool" type="file" value="画像挿入"/>
 		<!--SVGキャンバス部-->
 		<div id="svg"></div>
 		<script type="text/javascript">
 $(function(){
-
     // SVGキャンバスを設定する。（幅・高さ・背景色）
     var stageW = 590, stageH = 300, bgcolor = "#eee";
     $('#svg').css('width', stageW);
@@ -35,97 +58,120 @@ $(function(){
     var paper = Raphael("svg", $('#svg').css('width'), $('#svg').css('height'));
 
 //------------------------------
-	var currentTool; 
-	var currentColor;
+	// @param 現在のツール
+	var currentTool = TOOL_PEN; 
+	const TOOL_PEN = 'PEN';
+	const TOOL_HATCH = 'HATCH';
+
+	// @param 現在のペン色
+	var currentPenColor = 'black';
+	// @param 現在のペン幅
+	var currentPenWitdh = 1;
+
+	// @param 現在のハッチ色
+	var currentHatchColor = 'black';
+
+	// ツールを切り替える。
+	$('.tool.pen').click(function(){
+		// ツールをペンに変更する。
+		currentTool = TOOL_PEN;
+		// ペン色を変更する。
+		currentPenColor = $(this).data('color');
+	});
+	$('.tool.hatch').click(function(){
+		// ツールをハッチに変更する。
+		currentTool = TOOL_HATCH;
+		currentHatchColor = $(this).data('color');
+	});
+	// @event ペン幅変更
+	$('[name=pen-width]').change(function(){
+		currentPenWitdh = $(this).val();
+	});
 
 
 //------------------------------
-	//　パス
-   	var path = undefined;
-	// const patterns = 
-	// '<pattern id="Triangle" width="10" height="10" patternUnits="userSpaceOnUse">' + 
-	// '<polygon points="5,0 10,10 0,10"/>' +
-	// '</pattern>';
-	// $('svg').children('defs').append(patterns);
-	// console.log($('svg').children('defs'));
-
-	// マウスのクリック状態（クリック時、true）
+	// @param マウスのクリック状態（クリック時、true）
     var clicked = false;
-    // パスの座標データ（格納用）
-    var d = "";
-    // 直前の座標(prevX,prevY) 現在の座標(x,y)
-   	var prevX = undefined, prevY = undefined;
-   	var x = undefined, y = undefined;
 
-   	// マウスダウン時、描画を開始する。
+	// @param パス（フリーハンド）のインスタンス　→　ペン・ハッチング用
+   	var path = undefined;
+
+    // @param パスの座標データ（格納用）
+    var d = "";
+    
+    // @param 直前の座標(prevX,prevY) 現在の座標(x,y)
+   	var prevX = undefined, prevY = undefined, x = undefined, y = undefined;
+
+   	// @event マウスダウン時、描画を開始する。===
    	$('#svg').mousedown(function(e){ startDrawing(); });
     $('#svg').bind('touchstart', function(e){ startDrawing();});
 
-    /// 描画開始
+    /// @summary 描画開始
    	function startDrawing () 
    	{
-   		//alert('startDrawing');		
 	   	prevX = undefined;
 	   	prevY = undefined;
    		clicked = true;
    		d = "";   
    	}
+   	//===
 
-   	// マウスアップ時、描画を終了する。
+   	// @event マウスアップ時、描画を終了する。===
    	$('#svg').mouseup(function(e){ stopDrawing(); });
     $('#svg').bind('touchend', function(e){ stopDrawing();});
 
-    /// 描画停止
+    /// @summary 描画停止
    	function stopDrawing ()
    	{
    		clicked = false;
    		path = undefined;
-   		//alert('stopDrawing');
    	}
+   	//===
 
-   	// マウス移動時、描画を実行する。
+   	// @event マウス移動時、描画を実行する。
     $('#svg').mousemove(function(e){
     	draw(e.offsetX, e.offsetY); 
-    	//draw(e.clientX - $(this).position().left, e.clientY - $(this).position().top); 
  	});
     $('#svg').bind('touchmove', function(e){ 
     	// タッチ移動による画面移動を抑止する。
     	event.preventDefault();
+    	// TODO : 画面を下に移動したときの動作をチェックする
     	draw(
     		event.changedTouches[0].pageX - $(this).position().left, 
     		event.changedTouches[0].pageY - $(this).position().top
     	); 
-    	// draw(
-    	// 	event.changedTouches[0].pageX - $(this).position().left, 
-    	// 	event.changedTouches[0].pageY - $(this).position().top
-    	// ); 
     });
 
-    /// 描画する。
+    /// @summary パスを描画する。
     function draw (currentX, currentY) 
     {
-    	// alert('draw');
     	// クリック中はフリーハンドでライン／ハッチングを描ける
     	if (clicked)
     	{
+    		// 現在位置と直前の位置を取得する。
 	    	x = currentX;
 	    	y = currentY;
 	    	prevX = prevX === undefined ? x : prevX; 
 	    	prevY = prevY === undefined ? y : prevY;
 
+	    	// PathStringを作成する。
     		d = (d == "") ? 
     			("M" + prevX + "," + prevY + " " + "L" + x + "," + y) : 
     			(d + " " + "L" + x + "," + y);
 
     		if (path === undefined)
     		{
+
 	    		path =  paper.path(d);
-	    		path.attr({
-	    			'fill' : 'url(bg-red.svg)',
-	    			'stroke-width': 10, 
-	    			'stroke' : 'red',
-	    			'stroke-linecap' : 'round',	    			
-	    			'stroke-linejoin' : 'bevel'	    			
+	    		// ハッチングが必要な場合は、ハッチングを設定する。
+	    		if (currentTool == TOOL_HATCH)
+	    		{
+		    		path.attr({ 'fill' : 'url(img/bg-' + currentHatchColor + '.svg)'});
+	    		} 
+	    		// ハッチングは枠線を表示しない。
+	    		path.attr({ 'stroke-width': (currentTool == TOOL_HATCH) ? 1 : currentPenWitdh }); 
+	    		path.attr({ 
+	    			'stroke' : (currentTool == TOOL_HATCH) ? currentHatchColor : currentPenColor
 	    		});
     		}
     		else 
@@ -138,11 +184,11 @@ $(function(){
     			this.remove();
     		})
 
-    		path.drag(
-    			function(){console.log('移動')},
-    			function(){},
-    			function(){}
-    		);
+    		// path.drag(
+    		// 	function(){console.log('移動')},
+    		// 	function(){},
+    		// 	function(){}
+    		// );
 
     	}
     }
