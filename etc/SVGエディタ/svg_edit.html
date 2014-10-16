@@ -3,38 +3,52 @@
 	    <meta content="text/html" charset="UTF-8">
     	<script src="js/jquery-2.1.1.js"></script>
 		<script type="text/javascript" src="js/raphael-min.js"></script>
-		<style>
-#svg 
-{
-    width: 590px;
-    height: 300px;
-    background: #eee;
-}
-		</style>
 	</head>
 	<body>
 		<ul>
 			<li>フリーハンド（太さ変更）</li>
 			<li>ハッチング（太さ変更）</li>
 			<li>背景</li>
-			<li>削除</li>
+			<li>削除（ダブルクリックで削除できます）</li>
 		</ul>
 
+		<!--各種ボタン-->
+		<div>ツール: <input type="text"   value="pen" /></div>
+		<div>色<input type="text"   value="#000000" /></div>
+		<div>線幅: <input type="text"   value="1" /></div>
+		<input type="button" value="ペン"/>
+		<input type="button" value="ハッチング"/>
+		<input type="button" value="背景"/>
+		<input type="button" value="画像挿入"/>
+		<!--SVGキャンバス部-->
+		<div id="svg"></div>
 		<script type="text/javascript">
 $(function(){
-    // キャンバスを設定する。
-    // 幅
-    var stageW = 590;
-    // 高さ
-    var stageH = 300;
-    // キャンバス
-    var paper = Raphael("svg", stageW, stageH);
-    // //円を描画（x:150, y:100の位置にサイズ50）
-    // var circle = paper.circle(150, 100, 50);
+
+    // SVGキャンバスを設定する。（幅・高さ・背景色）
+    var stageW = 590, stageH = 300, bgcolor = "#eee";
+    $('#svg').css('width', stageW);
+    $('#svg').css('height', stageH);
+    $('#svg').css('background', bgcolor);
+
+    // キャンバスにペーパーを用意する。
+    var paper = Raphael("svg", $('#svg').css('width'), $('#svg').css('height'));
+
+//------------------------------
+	var currentTool; 
+	var currentColor;
+
 
 //------------------------------
 	//　パス
    	var path = undefined;
+	// const patterns = 
+	// '<pattern id="Triangle" width="10" height="10" patternUnits="userSpaceOnUse">' + 
+	// '<polygon points="5,0 10,10 0,10"/>' +
+	// '</pattern>';
+	// $('svg').children('defs').append(patterns);
+	// console.log($('svg').children('defs'));
+
 	// マウスのクリック状態（クリック時、true）
     var clicked = false;
     // パスの座標データ（格納用）
@@ -43,6 +57,7 @@ $(function(){
    	var prevX = undefined, prevY = undefined;
    	var x = undefined, y = undefined;
 
+   	// マウスダウン時、描画を開始する。
    	$('#svg').mousedown(function(e){ startDrawing(); });
     $('#svg').bind('touchstart', function(e){ startDrawing();});
 
@@ -56,6 +71,7 @@ $(function(){
    		d = "";   
    	}
 
+   	// マウスアップ時、描画を終了する。
    	$('#svg').mouseup(function(e){ stopDrawing(); });
     $('#svg').bind('touchend', function(e){ stopDrawing();});
 
@@ -67,17 +83,25 @@ $(function(){
    		//alert('stopDrawing');
    	}
 
+   	// マウス移動時、描画を実行する。
     $('#svg').mousemove(function(e){
-    	draw(e.clientX - $(this).position().left, e.clientY - $(this).position().top); 
+    	draw(e.offsetX, e.offsetY); 
+    	//draw(e.clientX - $(this).position().left, e.clientY - $(this).position().top); 
  	});
     $('#svg').bind('touchmove', function(e){ 
+    	// タッチ移動による画面移動を抑止する。
     	event.preventDefault();
     	draw(
     		event.changedTouches[0].pageX - $(this).position().left, 
     		event.changedTouches[0].pageY - $(this).position().top
     	); 
+    	// draw(
+    	// 	event.changedTouches[0].pageX - $(this).position().left, 
+    	// 	event.changedTouches[0].pageY - $(this).position().top
+    	// ); 
     });
 
+    /// 描画する。
     function draw (currentX, currentY) 
     {
     	// alert('draw');
@@ -96,24 +120,52 @@ $(function(){
     		if (path === undefined)
     		{
 	    		path =  paper.path(d);
-	    		path.attr('stroke-width', 10);
+	    		path.attr({
+	    			'fill' : 'url(bg-red.svg)',
+	    			'stroke-width': 10, 
+	    			'stroke' : 'red',
+	    			'stroke-linecap' : 'round',	    			
+	    			'stroke-linejoin' : 'bevel'	    			
+	    		});
     		}
     		else 
     		{
     			path.attr('path', d);
     		}
 
-    		path.mousedown(function (){
+    		// パスにダブルクリック時、パスを削除する。
+    		path.dblclick(function (){
     			this.remove();
     		})
 
+    		path.drag(
+    			function(){console.log('移動')},
+    			function(){},
+    			function(){}
+    		);
+
     	}
     }
+
+ //    var src = "data:image/jpeg;base64,/9j/4AAQSk...";
+	// var img = paper.image(src, 10, 10, 80, 80);
+	// img.drag = function(e)
+	// {
+	// 	console.log(e.clientX + ", "+ e.clientY);
+	// 	//img.scale(1,2);
+	// 	console.log(this)
+	// };
+	// paper.text(100, 199, "test");
+	// var c = paper.circle(10, 10, 10);
+	// console.log(c.node);
+	// c.node.onclick = function () {
+	//     c.attr("fill", "red");
+	// };
+
+
 });
 //------------------------------
 		</script>
-		<!--SVGキャンバス部-->
-		<div id="svg"></div>
 		<script type="text/javascript">
 
 		</script>
@@ -124,12 +176,21 @@ $(function(){
 		<button id="SVG_SRC">SVGタグ出力</button>
 		<script>
 $('#SVG_SRC').click(function(){
-	$('textarea').text($('div#svg').html());
-	$('div#displaySVG').html($('div#svg').html());
+	var svg_xml = $('div#svg').html();
+
+	$('textarea#SVG_XML').text(svg_xml);
+	var b64 = Base64.encode(svg_xml); 
+	var url = "data:image/svg+xml;base64," + b64;
+	var img = "<img src='"+ url +"' alt='file.svg'/>";
+	$('textarea#SVG_DSCHEME').text(url);
+	$('div#SVG_DSCHEME').html(img);
+	$('div#SVG_XML').html(svg_xml);
 });
 		</script>
-		<textarea></textarea>
-		<div id="displaySVG" ></div>
+		<textarea id="SVG_DSCHEME"></textarea>
+		<textarea id="SVG_XML"></textarea>
+		<div id="SVG_DSCHEME"></div>
+		<div id="SVG_XML" ></div>
 
 		<!--そのままSVGタグを取得すれば、画像は抽出できる-->
 		<!--svg height="300" version="1.1" width="590" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;"><desc>Created with Raphaﾃｫl 2.1.2</desc><defs></defs><circle cx="150" cy="100" r="50" fill="none" stroke="#000"></circle></svg-->
