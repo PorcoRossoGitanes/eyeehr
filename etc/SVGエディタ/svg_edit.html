@@ -43,19 +43,63 @@
 		<input class="tool hatch" type="button" data-color="green" value="///" title="緑ハッチ" style="color:green" />
 		<input class="tool hatch" type="button" data-color="brown" value="///" title="茶ハッチ" style="color:brown" />
 		<input class="tool hatch" type="button" data-color="yellow" value="///" title="黄ハッチ" style="color:yellow" />
-		<input class="tool" type="file" value="画像挿入"/>
+		<input class="tool" type="file" value="画像挿入" onchange="fileget(this);"/>
+		<img id="testtest" src="">
 		<!--SVGキャンバス部-->
 		<div id="svg"></div>
 		<script type="text/javascript">
+// SVGキャンバスを設定する。（幅・高さ・背景色）
+const stageW = 590, stageH = 300, bgcolor = "#eee";
+
+var paper;
+var dragged = false;
+var tx= 0, ty = 0;
+// エレメント移動用===
+// エレメント移動開始時
+var elementDragStart = function () {
+	dragged = true;
+    this.ox = this.attr("x");
+    this.oy = this.attr("y");
+};
+// エレメント移動移動中
+//var pdx = 0, pdy = 0;
+var elementDragMove = function (dx, dy) {
+    this.attr({x: this.ox + dx, y: this.oy + dy});
+    //if (dx - pdx != 0 || dy - pdy != 0) this.translate(dx - pdx, dy - pdy);
+};
+// エレメント移動移動後
+var elementDragUp = function () {
+	dragged = false;
+};
+// エレメント移動用===
+
+function fileget(imgfile) {
+		if(!imgfile.files.length) return;
+		var file=imgfile.files[0];
+		var fr=new FileReader();
+		fr.onload=function(evt) {
+			var image = paper.image(evt.target.result, 10, 10, 100, 100);
+			// image.scale(2,2);
+			// document.getElementById("base64area").innerHTML=evt.target.result;
+			// document.getElementById("datauri").href=evt.target.result;
+
+
+			image.drag(elementDragMove, elementDragStart, elementDragUp);
+
+		}
+
+		fr.readAsDataURL(file);
+	}
+
+
 $(function(){
-    // SVGキャンバスを設定する。（幅・高さ・背景色）
-    var stageW = 590, stageH = 300, bgcolor = "#eee";
+
     $('#svg').css('width', stageW);
     $('#svg').css('height', stageH);
     $('#svg').css('background', bgcolor);
 
     // キャンバスにペーパーを用意する。
-    var paper = Raphael("svg", $('#svg').css('width'), $('#svg').css('height'));
+    paper = Raphael("svg", $('#svg').css('width'), $('#svg').css('height'));
 
 //------------------------------
 	// @param 現在のツール
@@ -146,7 +190,8 @@ $(function(){
     function draw (currentX, currentY) 
     {
     	// クリック中はフリーハンドでライン／ハッチングを描ける
-    	if (clicked)
+    	//console.log(dragged);
+    	if (clicked && !dragged)
     	{
     		// 現在位置と直前の位置を取得する。
 	    	x = currentX;
@@ -179,10 +224,10 @@ $(function(){
     			path.attr('path', d);
     		}
 
+ 			path.drag(elementDragMove, elementDragStart, elementDragUp);
+
     		// パスにダブルクリック時、パスを削除する。
-    		path.dblclick(function (){
-    			this.remove();
-    		})
+    		path.dblclick(function (){ this.remove(); })
 
     		// path.drag(
     		// 	function(){console.log('移動')},
@@ -201,7 +246,7 @@ $(function(){
 	// 	//img.scale(1,2);
 	// 	console.log(this)
 	// };
-	// paper.text(100, 199, "test");
+	paper.text(100, 199, "test\ntext");
 	// var c = paper.circle(10, 10, 10);
 	// console.log(c.node);
 	// c.node.onclick = function () {
