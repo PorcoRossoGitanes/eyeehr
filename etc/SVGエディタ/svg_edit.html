@@ -22,16 +22,16 @@
 			<li>削除（ダブルクリックで削除できます）</li>
 		</ul>
 		<!-- TODO : 色が追加される場合、UI追加する。 -->
-		<input class="tool pen"   type="button" data-color="black" value="→" title="黒ペン" style="color:black" />
-		<input class="tool pen"   type="button" data-color="red" value="→" title="赤ペン" style="color:red" />
-		<input class="tool pen"   type="button" data-color="blue"value="→" title="青ペン" style="color:blue" />
-		<input class="tool pen"   type="button" data-color="green" value="→" title="緑ペン" style="color:green" />
-		<input class="tool pen"   type="button" data-color="brown" value="→" title="茶ペン" style="color:brown" />
-		<input class="tool pen"   type="button" data-color="yellow" value="→" title="黄ペン" style="color:yellow"/>
+		<input class="tool pen"   type="button" data-color="black" value="-" title="黒ペン" style="color:black" />
+		<input class="tool pen"   type="button" data-color="red" value="-" title="赤ペン" style="color:red" />
+		<input class="tool pen"   type="button" data-color="blue"value="-" title="青ペン" style="color:blue" />
+		<input class="tool pen"   type="button" data-color="green" value="-" title="緑ペン" style="color:green" />
+		<input class="tool pen"   type="button" data-color="brown" value="-" title="茶ペン" style="color:brown" />
+		<input class="tool pen"   type="button" data-color="yellow" value="-" title="黄ペン" style="color:yellow"/>
 		ペン幅
 		<select name="pen-width"> 
 			<option value="1">1</option>
-			<option value="3">3</option>
+			<option value="3" selected>3</option>
 			<option value="5">5</option>
 			<option value="7">7</option>
 			<option value="9">9</option>
@@ -44,7 +44,9 @@
 		<input class="tool hatch" type="button" data-color="brown" value="///" title="茶ハッチ" style="color:brown" />
 		<input class="tool hatch" type="button" data-color="yellow" value="///" title="黄ハッチ" style="color:yellow" />
 		<input class="tool" type="file" value="画像挿入" onchange="fileget(this);"/>
-		<img id="testtest" src="">
+
+		<input class="tool arrow" type="button" data-color="black" value="→" title="矢印" style="color:black" />
+
 		<!--SVGキャンバス部-->
 		<div id="svg"></div>
 		<script type="text/javascript">
@@ -105,14 +107,19 @@ $(function(){
 	var currentTool = TOOL_PEN; 
 	const TOOL_PEN = 'PEN';
 	const TOOL_HATCH = 'HATCH';
+	const TOOL_ARROW = 'ARROW';
 
 	// @param 現在のペン色
 	var currentPenColor = 'black';
 	// @param 現在のペン幅
-	var currentPenWitdh = 1;
+	var currentPenWitdh = 3;
 
 	// @param 現在のハッチ色
 	var currentHatchColor = 'black';
+
+	// @param 現在の矢印の色
+	var currentHatchColor = 'black';
+
 
 	// ツールを切り替える。
 	$('.tool.pen').click(function(){
@@ -121,14 +128,19 @@ $(function(){
 		// ペン色を変更する。
 		currentPenColor = $(this).data('color');
 	});
+	// @event ペン幅変更
+	$('[name=pen-width]').change(function(){
+		currentPenWitdh = $(this).val();
+	});
 	$('.tool.hatch').click(function(){
 		// ツールをハッチに変更する。
 		currentTool = TOOL_HATCH;
 		currentHatchColor = $(this).data('color');
-	});
-	// @event ペン幅変更
-	$('[name=pen-width]').change(function(){
-		currentPenWitdh = $(this).val();
+	});	
+	$('.tool.arrow').click(function(){
+		// ツールをハッチに変更する。
+		currentTool = TOOL_ARROW;
+		currentHatchColor = $(this).data('color');
 	});
 
 
@@ -212,12 +224,13 @@ $(function(){
 	    		{
 		    		path.attr({ 'fill' : 'url(img/bg-' + currentHatchColor + '.svg)'});
 	    		} 
-	    		// ハッチングは枠線を表示しない。
+	    		// ペン・矢印の太さを設定する。ハッチの枠は固定1とする。
 	    		path.attr({ 'stroke-width': (currentTool == TOOL_HATCH) ? 1 : currentPenWitdh }); 
 	    		// ペン色・ハッチング枠色を設定する。
 	    		path.attr({ 
 	    			'stroke' : (currentTool == TOOL_HATCH) ? currentHatchColor : currentPenColor
 	    		});
+	    		if (currentTool == TOOL_ARROW) path.attr({ 'arrow-end' : 'open' });
     		}
     		else 
     		{
@@ -227,15 +240,27 @@ $(function(){
     		// パスにダブルクリック時、パスを削除する。
     		path.dblclick(function (){ this.remove(); })
     		path.drag(elementDragMove, elementDragStart, elementDragUp);
-
     	}
     }
 
 
-	paper.text(100, 199, "test\ntext");
-	path = paper.path("M10,10 L100,100").attr({
-		'arrow-end' : 'open'
-	});
+	// var text = paper.text(100, 199, "test\ntext");
+
+	// var bbox = text.getBBox(true);
+	// var shadow = paper.path(path);
+	// shadow.attr({stroke: "none", fill: "#555", translation: "4,4"});
+	// shadow.blur(4);
+	// var shape = paper.path(path);
+
+	// path = paper.path("M10,10 L100,100").attr({
+	// 	'arrow-end' : 'open'
+	// });
+	// var bbox = path.getBBox(true);
+	// console.log(bbox);
+
+	// paper.forEach(function (el) {
+	//     el.attr({ stroke: "blue" });
+	// });
 
 });
 //------------------------------
