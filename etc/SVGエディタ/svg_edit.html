@@ -53,7 +53,7 @@ const stageW = 590, stageH = 300, bgcolor = "#eee";
 
 var paper;
 var dragged = false;
-var tx= 0, ty = 0;
+
 // エレメント移動用===
 // エレメント移動開始時
 var elementDragStart = function () {
@@ -66,6 +66,8 @@ var elementDragStart = function () {
 var elementDragMove = function (dx, dy) {
     this.attr({x: this.ox + dx, y: this.oy + dy});
     //if (dx - pdx != 0 || dy - pdy != 0) this.translate(dx - pdx, dy - pdy);
+    console.log("elementDragMove");
+
 };
 // エレメント移動移動後
 var elementDragUp = function () {
@@ -74,22 +76,19 @@ var elementDragUp = function () {
 // エレメント移動用===
 
 function fileget(imgfile) {
-		if(!imgfile.files.length) return;
-		var file=imgfile.files[0];
-		var fr=new FileReader();
-		fr.onload=function(evt) {
-			var image = paper.image(evt.target.result, 10, 10, 100, 100);
-			// image.scale(2,2);
-			// document.getElementById("base64area").innerHTML=evt.target.result;
-			// document.getElementById("datauri").href=evt.target.result;
 
+	if(!imgfile.files.length) return;
 
-			image.drag(elementDragMove, elementDragStart, elementDragUp);
+	var file=imgfile.files[0];
+	var fr=new FileReader();
 
-		}
+	fr.readAsDataURL(file);
 
-		fr.readAsDataURL(file);
+	fr.onload=function(evt) {
+		var image = paper.image(evt.target.result, 10, 10, 100, 100);
+		image.drag(elementDragMove, elementDragStart, elementDragUp);
 	}
+}
 
 
 $(function(){
@@ -156,7 +155,7 @@ $(function(){
 	   	prevX = undefined;
 	   	prevY = undefined;
    		clicked = true;
-   		d = "";   
+   		d = "";  
    	}
    	//===
 
@@ -215,6 +214,7 @@ $(function(){
 	    		} 
 	    		// ハッチングは枠線を表示しない。
 	    		path.attr({ 'stroke-width': (currentTool == TOOL_HATCH) ? 1 : currentPenWitdh }); 
+	    		// ペン色・ハッチング枠色を設定する。
 	    		path.attr({ 
 	    			'stroke' : (currentTool == TOOL_HATCH) ? currentHatchColor : currentPenColor
 	    		});
@@ -224,35 +224,18 @@ $(function(){
     			path.attr('path', d);
     		}
 
- 			path.drag(elementDragMove, elementDragStart, elementDragUp);
-
     		// パスにダブルクリック時、パスを削除する。
     		path.dblclick(function (){ this.remove(); })
-
-    		// path.drag(
-    		// 	function(){console.log('移動')},
-    		// 	function(){},
-    		// 	function(){}
-    		// );
+    		path.drag(elementDragMove, elementDragStart, elementDragUp);
 
     	}
     }
 
- //    var src = "data:image/jpeg;base64,/9j/4AAQSk...";
-	// var img = paper.image(src, 10, 10, 80, 80);
-	// img.drag = function(e)
-	// {
-	// 	console.log(e.clientX + ", "+ e.clientY);
-	// 	//img.scale(1,2);
-	// 	console.log(this)
-	// };
-	paper.text(100, 199, "test\ntext");
-	// var c = paper.circle(10, 10, 10);
-	// console.log(c.node);
-	// c.node.onclick = function () {
-	//     c.attr("fill", "red");
-	// };
 
+	paper.text(100, 199, "test\ntext");
+	path = paper.path("M10,10 L100,100").attr({
+		'arrow-end' : 'open'
+	});
 
 });
 //------------------------------
@@ -268,7 +251,6 @@ $(function(){
 		<script>
 $('#SVG_SRC').click(function(){
 	var svg_xml = $('div#svg').html();
-
 	$('textarea#SVG_XML').text(svg_xml);
 	var b64 = Base64.encode(svg_xml); 
 	var url = "data:image/svg+xml;base64," + b64;
