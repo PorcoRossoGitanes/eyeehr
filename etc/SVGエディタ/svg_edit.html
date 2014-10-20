@@ -15,6 +15,7 @@
 		<script type="text/javascript" src="js/raphael-min.js"></script>
 	</head>
 	<body>
+		<div>
 		<ul>
 			<li><u>フリーハンド（太さ変更）</u></li>
 			<li><u>ハッチング</u></li>
@@ -48,6 +49,8 @@
 		<input class="tool" type="file" value="画像挿入" onchange="fileget(this);"/>
 
 		<input class="tool arrow" type="button" data-color="black" value="→" title="矢印" style="color:black" />
+
+		</div>
 
 		<!--SVGキャンバス部-->
 		<div id="svg"></div>
@@ -103,6 +106,36 @@ $(function(){
 
     // キャンバスにペーパーを用意する。
     paper = Raphael("svg", $('#svg').css('width'), $('#svg').css('height'));
+
+    var hatch = function(color)
+    {
+    	var retVal = '<svg style="display:none"><defs>' + 
+    	'<pattern id="' + color + '" width="20" height="20" patternUnits="userSpaceOnUse">' + 
+ 		'<g stroke="' + color + '">' + 
+    	'<line x1="5"  y1="0"  x2="0"  y2="5" />' + 
+    	'<line x1="10" y1="0"  x2="0"  y2="10" />' + 
+    	'<line x1="15" y1="0"  x2="0"  y2="15" />' + 
+    	'<line x1="20" y1="0"  x2="0"  y2="20" />' + 
+    	'<line x1="20" y1="5"  x2="5"  y2="20" />' + 
+    	'<line x1="20" y1="10" x2="10" y2="20" />' + 
+    	'<line x1="20" y1="15" x2="15" y2="20" />' + 
+    	'</g>' +
+    	'</pattern>' + 
+    	'</defs></svg>';
+
+    	return retVal;
+    }
+
+    var aryHatchColor = 
+    	['black', 'red', 'blue', 'yellow', 'brown', 'green'];
+    aryHatchColor.forEach(function(i_value, i_index, i_ary){
+	    console.log(i_value);
+	    var dummy = $(hatch(i_value)).appendTo('body');
+	    console.log(dummy);
+		$(paper.canvas).find('defs').append(dummy.find('#' + i_value));
+		dummy.remove();
+    });
+
 
 //------------------------------
 	// @param 現在のツール
@@ -224,7 +257,7 @@ $(function(){
 	    		// ハッチングが必要な場合は、ハッチングを設定する。
 	    		if (currentTool == TOOL_HATCH)
 	    		{
-		    		path.attr({ 'fill' : 'url(img/bg-' + currentHatchColor + '.svg)'});
+    				path.node.setAttribute('fill','url(#' + currentHatchColor + ')');
 	    		} 
 	    		// ペン・矢印の太さを設定する。ハッチの枠は固定1とする。
 	    		path.attr({ 'stroke-width': (currentTool == TOOL_HATCH) ? 1 : currentPenWitdh }); 
@@ -248,7 +281,21 @@ $(function(){
 
 	// var text = paper.text(100, 199, "test\ntext");
 
-	// var bbox = text.getBBox(true);
+	// var bbox1 = text.getBBox(true);
+	// console.log(bbox1);
+	// console.log(bbox1.x);
+	// var rect = paper.rect(bbox1.x, bbox1.y, bbox1.width, bbox1.height);
+	// rect.attr("stroke-dasharray", "- ");
+	// var set = paper.set();
+	// set.push(text, rect);
+	// set.translate(10,10);
+	// set.pop().remove();
+
+	// paper.drag(
+	// 	function () { console.log('start');},
+	// 	function () { console.log('drag');},
+	// 	function () { console.log('end');}
+	// );
 	// var shadow = paper.path(path);
 	// shadow.attr({stroke: "none", fill: "#555", translation: "4,4"});
 	// shadow.blur(4);
