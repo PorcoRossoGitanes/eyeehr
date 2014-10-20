@@ -135,20 +135,46 @@ var canvas = this;
 var svgdoc = container.ownerDocument;
 
 // This is a container for the document being edited, not the document itself.
-var svgroot = svgdoc.importNode(svgedit.utilities.text2xml(
-		'<svg id="svgroot" xmlns="' + svgns + '" xlinkns="' + xlinkns + '" ' +
+var svg = '<svg id="svgroot" xmlns="' + svgns + '" xlinkns="' + xlinkns + '" ' +
 			'width="' + dimensions[0] + '" height="' + dimensions[1] + '" x="' + dimensions[0] + '" y="' + dimensions[1] + '" overflow="visible">' +
-			'<defs>' +
-				'<filter id="canvashadow" filterUnits="objectBoundingBox">' +
-					'<feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>'+
-					'<feOffset in="blur" dx="5" dy="5" result="offsetBlur"/>'+
-					'<feMerge>'+
-						'<feMergeNode in="offsetBlur"/>'+
-						'<feMergeNode in="SourceGraphic"/>'+
-					'</feMerge>'+
-				'</filter>'+
-			'</defs>'+
-		'</svg>').documentElement, true);
+			'<defs>';
+// ハッチング色
+var patternColors = {
+	hatch_black 	: "000000",
+	hatch_white		: "FFFFFF",
+	hatch_red 		: 'FF0000', 
+	hatch_green 	: "00FF00", 
+	hatch_blue 		: "0000FF",
+	hatch_yellow 	: "FFFF00", 
+	hatch_brown		: "A52A2A"
+};
+for (var name in patternColors) {
+	console.log(patternColors[name]);
+	var pattern =  
+    	'<pattern id="' + name + '" width="20" height="20" patternUnits="userSpaceOnUse">' + 
+ 		'<g stroke="#' + patternColors[name] + '">' + 
+    	'<line x1="5"  y1="0"  x2="0"  y2="5" />' + 
+    	'<line x1="10" y1="0"  x2="0"  y2="10" />' + 
+    	'<line x1="15" y1="0"  x2="0"  y2="15" />' + 
+    	'<line x1="20" y1="0"  x2="0"  y2="20" />' + 
+    	'<line x1="20" y1="5"  x2="5"  y2="20" />' + 
+    	'<line x1="20" y1="10" x2="10" y2="20" />' + 
+    	'<line x1="20" y1="15" x2="15" y2="20" />' + 
+    	'</g>' +
+    	'</pattern>';
+    svg += pattern;
+}	
+svg += '<filter id="canvashadow" filterUnits="objectBoundingBox">' +
+		'<feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>'+
+		'<feOffset in="blur" dx="5" dy="5" result="offsetBlur"/>'+
+		'<feMerge>'+
+			'<feMergeNode in="offsetBlur"/>'+
+			'<feMergeNode in="SourceGraphic"/>'+
+		'</feMerge>'+
+	'</filter>'+
+'</defs>'+
+'</svg>';		
+var svgroot = svgdoc.importNode(svgedit.utilities.text2xml(svg).documentElement, true);
 container.appendChild(svgroot);
 
 // The actual element that represents the final output SVG element

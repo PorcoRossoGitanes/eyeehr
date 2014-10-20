@@ -334,7 +334,7 @@
 			var palette = 
 				[
 					/*"#000000", "#FFFFFF", */
-					"#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#A52A2A"
+					"#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#A52A2A",
 				/*	"#444444", "#482816", "#422C10", "#3B2F0E", "#32320F", 
 					 "#293414", "#1F361B", "#153723", "#0C372C", 
 					 "#083734", "#0E353B", "#1A333F", "#273141", 
@@ -360,6 +360,15 @@
 					 "#FFDBD2", "#FFDFB8"
 			    */ 
 			    ],
+			    paletteHatch = {
+					hatch_black 	: "000000",
+					hatch_white		: "FFFFFF",
+					hatch_red 		: 'FF0000', 
+					hatch_green 	: "00FF00", 
+					hatch_blue 		: "0000FF",
+					hatch_yellow 	: "FFFF00", 
+					hatch_brown		: "A52A2A"
+			    },
 				isMac = (navigator.platform.indexOf("Mac") >= 0),
 				isWebkit = (navigator.userAgent.indexOf("AppleWebKit") >= 0),
 				modKey = (isMac ? "meta+" : "ctrl+"), // ⌘
@@ -1654,6 +1663,9 @@
 			palette.forEach(function(item, i){
 				str += '<div class="palette_item" style="background-color: ' + item + ';" data-rgb="' + item + '"></div>';
 			});
+			for (var name in paletteHatch){
+				str += '<div class="palette_item" style="background-color: #' + paletteHatch[name] + ';" data-rgb="url(#' + name + ')"></div>';
+			}
 			$('#palette').append(str);
 			
 			var changeFontSize = function(ctl) {
