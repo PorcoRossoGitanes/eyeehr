@@ -149,7 +149,7 @@ var patternColors = {
 	hatch_brown		: "A52A2A"
 };
 for (var name in patternColors) {
-	console.log(patternColors[name]);
+	// console.log(patternColors[name]);
 	var pattern =  
     	'<pattern id="' + name + '" width="20" height="20" patternUnits="userSpaceOnUse">' + 
  		'<g stroke="#' + patternColors[name] + '">' + 

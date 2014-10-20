@@ -1657,14 +1657,15 @@
 			svgCanvas.bind("extension_added", extAdded);
 			svgCanvas.textActions.setInputElem($("#text")[0]);
 		
-			var str = '<div class="palette_item transparent" data-rgb="none"></div>\
-								<div class="palette_item black" data-rgb="#000000"></div>\
-								<div class="palette_item white" data-rgb="#ffffff"></div>'
+			var str = 
+				'<div class="palette_item transparent" data-rgb="none" hidden></div>' + 
+				'<div class="palette_item black" data-rgb="#000000"></div>' + 
+				'<div class="palette_item white" data-rgb="#ffffff"></div>'
 			palette.forEach(function(item, i){
 				str += '<div class="palette_item" style="background-color: ' + item + ';" data-rgb="' + item + '"></div>';
 			});
 			for (var name in paletteHatch){
-				str += '<div class="palette_item" style="background-color: #' + paletteHatch[name] + ';" data-rgb="url(#' + name + ')"></div>';
+				str += '<div class="palette_item ' + name + '" data-rgb="url(#' + name + ')"></div>';
 			}
 			$('#palette').append(str);
 			
