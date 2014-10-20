@@ -1800,17 +1800,28 @@
 					
 					Editor.paintBox[picker].setPaint(paint);
 					
-					if (isStroke) {
-						svgCanvas.setColor('stroke', color, noUndo);
-						if (color != 'none' && svgCanvas.getStrokeOpacity() != 1) {
-							svgCanvas.setPaintOpacity('stroke', 1.0);
-						}
-					} else {
-						svgCanvas.setColor('fill', color, noUndo);
-						if (color != 'none' && svgCanvas.getFillOpacity() != 1) {
-							svgCanvas.setPaintOpacity('fill', 1.0);
-						}
+
+					// 線色・塗りつぶし色を一致させる。
+					//console.log(color);
+					svgCanvas.setColor('stroke', color, noUndo);
+					if (color != 'none' && svgCanvas.getStrokeOpacity() != 1) {
+						svgCanvas.setPaintOpacity('stroke', 1.0);
 					}
+					svgCanvas.setColor('fill', color, noUndo);
+					if (color != 'none' && svgCanvas.getFillOpacity() != 1) {
+						svgCanvas.setPaintOpacity('fill', 1.0);
+					}
+					// if (isStroke) {
+					// 	svgCanvas.setColor('stroke', color, noUndo);
+					// 	if (color != 'none' && svgCanvas.getStrokeOpacity() != 1) {
+					// 		svgCanvas.setPaintOpacity('stroke', 1.0);
+					// 	}
+					// } else {
+					// 	svgCanvas.setColor('fill', color, noUndo);
+					// 	if (color != 'none' && svgCanvas.getFillOpacity() != 1) {
+					// 		svgCanvas.setPaintOpacity('fill', 1.0);
+					// 	}
+					// }
 				}
 			}).bind('contextmenu', function(e) {e.preventDefault()});
 		
@@ -3053,7 +3064,8 @@
 				
 			$('#tool_fill').click(function(){
 			  if ($('#tool_fill').hasClass('active')) {
-				  colorPicker($('#fill_color'));
+				  // カラーピッカーをOFFに設定する。
+				  //colorPicker($('#fill_color'));
 				}
 				else {
 				  $('#tool_fill').addClass('active');
@@ -3063,7 +3075,7 @@
 			
 			$('#tool_stroke').on("click", function(){
 			  if ($('#tool_stroke').hasClass('active')) {
-				  colorPicker($('#stroke_color'));
+				  //colorPicker($('#stroke_color'));
 				}
 				else {
 				  $('#tool_stroke').addClass('active');
@@ -3081,7 +3093,7 @@
 				  colorPicker($('#stroke_color'));
 			});
 
-      $('#tool_fill').on("touchstart", function(){
+      		$('#tool_fill').on("touchstart", function(){
 			    $('#tool_fill').addClass('active');
 				  $("#tool_stroke").removeClass('active');
 				  colorPicker($('#fill_color'));

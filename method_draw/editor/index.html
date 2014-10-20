@@ -49,7 +49,7 @@
   <script type="text/javascript" src="lib/jgraduate/jpicker.min.js"></script>
   <script type="text/javascript" src="lib/mousewheel.js"></script>
   <script type="text/javascript" src="extensions/ext-eyedropper.js"></script>
-  <script type="text/javascript" src="extensions/ext-shapes.js"></script>
+  <!--script type="text/javascript" src="extensions/ext-shapes.js"></script-->
   <script type="text/javascript" src="extensions/ext-grid.js"></script>
   <script type="text/javascript" src="lib/requestanimationframe.js"></script>
   <script type="text/javascript" src="lib/taphold.js"></script>
@@ -517,6 +517,7 @@
 <div id="tools_left" class="tools_panel">
 	<div class="tool_button" id="tool_select" title="Select Tool [V]"></div>
 	<div class="tool_button" id="tool_fhpath" title="Pencil Tool [P]"></div>
+	<div class="tool_button" id="tool_fhhatch" title="Hatch Tool [H]"></div>
 	<div class="tool_button" id="tool_line" title="Line Tool [L]"></div>
 	<!-- MODIFIED_START S.K-->
 	<!--
@@ -524,12 +525,12 @@
 	<div class="tool_button" id="tool_ellipse" title="Ellipse/Circle Tool [C]"></div>
 	-->
 	<!-- ========== -->
-	<!--div class="tool_button" id="tool_rect" title="Square/Rect Tool [R]"></div-->
-	<!--div class="tool_button" id="tool_ellipse" title="Ellipse/Circle Tool [C]"></div-->
+	<div class="tool_button" id="tool_rect" title="Square/Rect Tool [R]" hidden></div>
+	<div class="tool_button" id="tool_ellipse" title="Ellipse/Circle Tool [C]" hidden></div>
+	<div class="tool_button" id="tool_path" title="Path Tool [P]" hidden></div>
+	<div class="tool_button" id="tool_zoom" title="Zoom Tool [Z]" hidden></div>
 	<!-- MODIFIED_END S.K-->
-	<div class="tool_button" id="tool_path" title="Path Tool [P]"></div>
 	<div class="tool_button" id="tool_text" title="Text Tool [T]"></div>
-	<div class="tool_button" id="tool_zoom" title="Zoom Tool [Z]"></div>
 	
   <div id="color_tools">
         <div id="tool_switch" title="Switch stroke and fill colors [X]"></div>
@@ -541,7 +542,8 @@
 				  </div>
   			</div>
 
-  			<div class="color_tool" id="tool_stroke">
+  			<div class="color_tool active" id="tool_stroke">
+  			<!--div class="color_tool" id="tool_stroke"-->
   					<label class="icon_label" title="Change stroke color"></label>
   				<div class="color_block">
   					<div id="stroke_bg"></div>
