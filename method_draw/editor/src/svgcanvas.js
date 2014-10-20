@@ -275,6 +275,7 @@ var selectedElements = new Array(1);
 // Returns: The new element
 var addSvgElementFromJson = this.addSvgElementFromJson = function(data) {
 	var shape = svgedit.utilities.getElem(data.attr.id);
+
 	// if shape is a path but we need to create a rect/ellipse, then remove the path
 	var current_layer = getCurrentDrawing().getCurrentLayer();
 	if (shape && data.element != shape.tagName) {
@@ -287,6 +288,7 @@ var addSvgElementFromJson = this.addSvgElementFromJson = function(data) {
 			(current_group || current_layer).appendChild(shape);
 		}
 	}
+	console.log(shape);
 	if(data.curStyles) {
 		svgedit.utilities.assignAttributes(shape, {
 			"fill": cur_shape.fill,
@@ -2392,6 +2394,12 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 	//   and do nothing else
 	var mouseDown = function(evt)
 	{
+		// console.log(
+		// 	"mousedown - " + current_mode + " " + 
+		// 	"stroke-color " + cur_shape.stroke + " " +
+		// 	"fill-color " + cur_shape.fill
+		// );
+
 		if (canvas.spaceKey) return;
 		var right_click = evt.button === 2;
 		
@@ -2592,6 +2600,27 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				freehand.miny = real_y;
 				freehand.maxy = real_y;
 				break;
+			case "fhhatch":
+				started = true;
+				d_attr = real_x + "," + real_y + " ";
+				var stroke_w = cur_shape.stroke_width == 0?1:cur_shape.stroke_width;
+				addSvgElementFromJson({
+					"element": "polyline",
+					"curStyles": true,
+					"attr": {
+						"points": d_attr,
+						"id": getNextId(),
+						"fill": cur_shape.fill,
+						"opacity": cur_shape.opacity / 2,
+						"stroke-linecap": "round",
+						"style": "pointer-events:none"
+					}
+				});
+				freehand.minx = real_x;
+				freehand.maxx = real_x;
+				freehand.miny = real_y;
+				freehand.maxy = real_y;
+				break;
 			case "image":
 				started = true;
 				var newImage = addSvgElementFromJson({
@@ -2649,7 +2678,8 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 						"stroke-opacity": cur_shape.stroke_opacity,
 						"fill": "none",
 						"opacity": cur_shape.opacity / 2,
-						"style": "pointer-events:none"
+						"style": "pointer-events:none",
+						"arrow-end" :"classic-wide-long"
 					}
 				});
 				break;
@@ -3102,6 +3132,11 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				shape.setAttributeNS(null, "points", d_attr);
 				break;
 			// update path stretch line coordinates
+			case "fhhatch":
+				d_attr += + real_x + "," + real_y + " ";
+				shape.setAttributeNS(null, "points", d_attr);
+				break;
+			// update path stretch line coordinates
 			case "path":
 				// fall through
 			case "pathedit":
@@ -3372,6 +3407,22 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 					element = pathActions.smoothPolylineIntoPath(element);
 				}
 				break;
+			case "fhhatch":
+				// Check that the path contains at least 2 points; a degenerate one-point path
+				// causes problems.
+				// Webkit ignores how we set the points attribute with commas and uses space
+				// to separate all coordinates, see https://bugs.webkit.org/show_bug.cgi?id=29870
+				var coords = element.getAttribute('points');
+				var commaIndex = coords.indexOf(',');
+				if (commaIndex >= 0) {
+					keep = coords.indexOf(',', commaIndex+1) >= 0;
+				} else {
+					keep = coords.indexOf(' ', coords.indexOf(' ')+1) >= 0;
+				}
+				if (keep) {
+					element = pathActions.smoothPolylineIntoPath(element);
+				}
+				break;
 			case "line":
 				var attrs = $(element).attr(["x1", "x2", "y1", "y2"]);
 				keep = (attrs.x1 != attrs.x2 || attrs.y1 != attrs.y2);
@@ -3468,6 +3519,14 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				// This could occur in an extension
 				break;
 		}
+
+		// console.log(
+		// 	"mouseup - " + current_mode + " " + 
+		// 	"stroke-color " + cur_shape.stroke + " " +
+		// 	"fill-color " + cur_shape.fill
+		// );
+		// console.log(cur_shape);
+
 		
 		var ext_result = runExtensions("mouseUp", {
 			event: evt,
@@ -3551,6 +3610,8 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 		
 		start_transform = null;
 	};
+
+
 	
 	var dblClick = function(evt) {
 		var evt_target = evt.target;
@@ -4160,9 +4221,11 @@ var pathActions = canvas.pathActions = function() {
 				"attr": {
 					"id": getId(),
 					"d": d,
-					"fill": "none"
+					//"fill": "none"
+					"fill": current_mode == 'fhhatch' ? cur_shape.fill : "none"
 				}
 			});
+			//console.log(current_mode);
 			// No need to call "changed", as this is already done under mouseUp
 		}
 		return element;
@@ -7283,8 +7346,6 @@ this.setPaint = function(type, paint) {
 			  var selector = (type == "fill") ? "#fill_color rect" : "#stroke_color rect" 
 			  document.querySelector(selector).setAttribute('fill', 'none');
 			}
-			console.log("color changed");
-			console.log(svgCanvas.getMode());
 			break;
 		case "linearGradient":
 		case "radialGradient":

@@ -227,6 +227,7 @@
 					'select':'select.png',
 					'select_node':'select_node.png',
 					'pencil':'pencil.png',
+					'hatch' : 'pencil.png',/*'hatch.svg',*/
 					'pen':'line.png',
 					'rect':'square.png',
 					'ellipse':'ellipse.png',
@@ -3273,7 +3274,7 @@
 				var tool_buttons = [
 					{sel:'#tool_select', fn: clickSelect, evt: 'click', key: ['V', true]},
 					{sel:'#tool_fhpath', fn: clickFHPath, evt: 'click', key: ['Q', true]},
-					{sel:'#tool_fhhatch', fn: clickFHHatch, evt: 'click', key: ['Q', true]},
+					{sel:'#tool_fhhatch', fn: clickFHHatch, evt: 'click', key: ['H', true]},
 					{sel:'#tool_line', fn: clickLine, evt: 'click', key: ['L', true]},
 					{sel:'#tool_rect', fn: clickRect, evt: 'click', key: ['R', true], icon: 'rect'},
 					{sel:'#tool_ellipse', fn: clickEllipse, evt: 'mouseup', key: ['C', true], icon: 'ellipse'},
