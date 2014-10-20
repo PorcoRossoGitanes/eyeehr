@@ -250,6 +250,7 @@
 				  '#logo':'logo',
 					'#tool_select':'select',
 					'#tool_fhpath':'pencil',
+					'#tool_fhhatch':'hatch',
 					'#tool_line':'pen',
 					'#tool_rect,#tools_rect_show':'rect',
 					'#tool_ellipse,#tools_ellipse_show':'ellipse',
@@ -1807,10 +1808,14 @@
 					if (color != 'none' && svgCanvas.getStrokeOpacity() != 1) {
 						svgCanvas.setPaintOpacity('stroke', 1.0);
 					}
-					svgCanvas.setColor('fill', color, noUndo);
+					svgCanvas.setColor('fill', svgCanvas.getMode() == 'fhpath' ? 'none' : color, noUndo);
 					if (color != 'none' && svgCanvas.getFillOpacity() != 1) {
 						svgCanvas.setPaintOpacity('fill', 1.0);
 					}
+					console.log(color);
+					//console.log("color changed");
+					console.log(svgCanvas.getMode());
+
 					// if (isStroke) {
 					// 	svgCanvas.setColor('stroke', color, noUndo);
 					// 	if (color != 'none' && svgCanvas.getStrokeOpacity() != 1) {
@@ -2139,6 +2144,12 @@
 			var clickFHPath = function() {
 				if (toolButtonClick('#tool_fhpath')) {
 					svgCanvas.setMode('fhpath');
+				}
+			};
+
+			var clickFHHatch = function() {
+				if (toolButtonClick('#tool_fhhatch')) {
+					svgCanvas.setMode('fhhatch');
 				}
 			};
 		
@@ -3262,6 +3273,7 @@
 				var tool_buttons = [
 					{sel:'#tool_select', fn: clickSelect, evt: 'click', key: ['V', true]},
 					{sel:'#tool_fhpath', fn: clickFHPath, evt: 'click', key: ['Q', true]},
+					{sel:'#tool_fhhatch', fn: clickFHHatch, evt: 'click', key: ['Q', true]},
 					{sel:'#tool_line', fn: clickLine, evt: 'click', key: ['L', true]},
 					{sel:'#tool_rect', fn: clickRect, evt: 'click', key: ['R', true], icon: 'rect'},
 					{sel:'#tool_ellipse', fn: clickEllipse, evt: 'mouseup', key: ['C', true], icon: 'ellipse'},

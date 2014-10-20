@@ -7283,6 +7283,8 @@ this.setPaint = function(type, paint) {
 			  var selector = (type == "fill") ? "#fill_color rect" : "#stroke_color rect" 
 			  document.querySelector(selector).setAttribute('fill', 'none');
 			}
+			console.log("color changed");
+			console.log(svgCanvas.getMode());
 			break;
 		case "linearGradient":
 		case "radialGradient":
