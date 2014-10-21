@@ -134,12 +134,10 @@ var canvas = this;
 // NOTE: This is not actually a SVG document, but a HTML document.
 var svgdoc = container.ownerDocument;
 
-// This is a container for the document being edited, not the document itself.
-var svg = '<svg id="svgroot" xmlns="' + svgns + '" xlinkns="' + xlinkns + '" ' +
-			'width="' + dimensions[0] + '" height="' + dimensions[1] + '" x="' + dimensions[0] + '" y="' + dimensions[1] + '" overflow="visible">' +
-			'<defs>';
+// [カスタマイズ]パターン(SVG)
+var customepatterns = "";
 // ハッチング色
-var patternColors = {
+const patternColors = {
 	hatch_black 	: "000000",
 	hatch_white		: "FFFFFF",
 	hatch_red 		: 'FF0000', 
@@ -162,8 +160,15 @@ for (var name in patternColors) {
     	'<line x1="20" y1="15" x2="15" y2="20" />' + 
     	'</g>' +
     	'</pattern>';
-    svg += pattern;
+    customepatterns += pattern;
 }	
+
+// This is a container for the document being edited, not the document itself.
+var svg =  ''
+svg += '<svg id="svgroot" xmlns="' + svgns + '" xlinkns="' + xlinkns + '" ' +
+		'width="' + dimensions[0] + '" height="' + dimensions[1] + '" x="' + dimensions[0] + '" y="' + dimensions[1] + '" overflow="visible">' +
+		'<defs>';
+svg	+= customepatterns;		
 svg += '<filter id="canvashadow" filterUnits="objectBoundingBox">' +
 		'<feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>'+
 		'<feOffset in="blur" dx="5" dy="5" result="offsetBlur"/>'+
@@ -184,6 +189,7 @@ var svgcontent = svgdoc.createElementNS(svgns, "svg");
 var clearSvgContentElement = canvas.clearSvgContentElement = function() {
 	while (svgcontent.firstChild) { svgcontent.removeChild(svgcontent.firstChild); }
 
+
 	// TODO: Clear out all other attributes first?
 	$(svgcontent).attr({
 		id: 'svgcontent',
@@ -200,6 +206,14 @@ var clearSvgContentElement = canvas.clearSvgContentElement = function() {
 	// TODO: make this string optional and set by the client
 	var comment = svgdoc.createComment(" Created with Method Draw - http://github.com/duopixel/Method-Draw/ ");
 	svgcontent.appendChild(comment);
+
+	// svgootとsvgcontentの両方のdefにパターンを入れておく
+	// svgoot→描画用
+	// svgcontent→保存用
+	var svgCustomDefs = '<svg><defs>' + customepatterns + '</defs></svg>';
+	var svgCustomDocs = svgdoc.importNode(svgedit.utilities.text2xml(svgCustomDefs).documentElement, true);
+	var svgCustomDefs = svgCustomDocs.getElementsByTagName('defs');
+	svgcontent.appendChild(svgCustomDefs[0]);
 };
 clearSvgContentElement();
 
@@ -288,7 +302,7 @@ var addSvgElementFromJson = this.addSvgElementFromJson = function(data) {
 			(current_group || current_layer).appendChild(shape);
 		}
 	}
-	console.log(shape);
+	//console.log(shape);
 	if(data.curStyles) {
 		svgedit.utilities.assignAttributes(shape, {
 			"fill": cur_shape.fill,
