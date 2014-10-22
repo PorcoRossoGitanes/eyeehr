@@ -1813,10 +1813,10 @@ const bgImages = {
 					if (color != 'none' && svgCanvas.getStrokeOpacity() != 1) {
 						svgCanvas.setPaintOpacity('stroke', 1.0);
 					}
-					// svgCanvas.setColor('fill', svgCanvas.getMode() == 'fhpath' ? 'none' : color, noUndo);
-					// if (color != 'none' && svgCanvas.getFillOpacity() != 1) {
-					// 	svgCanvas.setPaintOpacity('fill', 1.0);
-					// }
+					svgCanvas.setColor('fill', svgCanvas.getMode() == 'fhpath' ? 'none' : color, noUndo);
+					if (color != 'none' && svgCanvas.getFillOpacity() != 1) {
+						svgCanvas.setPaintOpacity('fill', 1.0);
+					}
 					// --- 前のコード ---
 					// if (isStroke) {
 					// 	svgCanvas.setColor('stroke', color, noUndo);
