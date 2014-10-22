@@ -4236,7 +4236,8 @@ var pathActions = canvas.pathActions = function() {
 					"id": getId(),
 					"d": d,
 					//"fill": "none"
-					"fill": current_mode == 'fhhatch' ? cur_shape.fill : "none"
+					// ハッチングの時は、ストローク色と塗りつぶし色を一致させる。
+					"fill": current_mode == 'fhhatch' ? cur_shape['stroke'] : "none"
 				}
 			});
 			//console.log(current_mode);
@@ -7152,8 +7153,11 @@ this.getColor = function(type) {
 // val - The value to set the stroke attribute to
 // preventUndo - Boolean indicating whether or not this should be and undoable option
 this.setColor = function(type, val, preventUndo) {
+	//現在の形状の色を変更する。
 	cur_shape[type] = val;
 	cur_properties[type + '_paint'] = {type:"solidColor"};
+
+	//選択中の形状の色を変更する。
 	var elems = [];
 	var i = selectedElements.length;
 	while (i--) {

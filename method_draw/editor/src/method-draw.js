@@ -1809,19 +1809,15 @@ const bgImages = {
 					
 
 					// 線色・塗りつぶし色を一致させる。
-					//console.log(color);
 					svgCanvas.setColor('stroke', color, noUndo);
 					if (color != 'none' && svgCanvas.getStrokeOpacity() != 1) {
 						svgCanvas.setPaintOpacity('stroke', 1.0);
 					}
-					svgCanvas.setColor('fill', svgCanvas.getMode() == 'fhpath' ? 'none' : color, noUndo);
-					if (color != 'none' && svgCanvas.getFillOpacity() != 1) {
-						svgCanvas.setPaintOpacity('fill', 1.0);
-					}
-					console.log(color);
-					//console.log("color changed");
-					console.log(svgCanvas.getMode());
-
+					// svgCanvas.setColor('fill', svgCanvas.getMode() == 'fhpath' ? 'none' : color, noUndo);
+					// if (color != 'none' && svgCanvas.getFillOpacity() != 1) {
+					// 	svgCanvas.setPaintOpacity('fill', 1.0);
+					// }
+					// --- 前のコード ---
 					// if (isStroke) {
 					// 	svgCanvas.setColor('stroke', color, noUndo);
 					// 	if (color != 'none' && svgCanvas.getStrokeOpacity() != 1) {
@@ -1833,6 +1829,7 @@ const bgImages = {
 					// 		svgCanvas.setPaintOpacity('fill', 1.0);
 					// 	}
 					// }
+					// --- 前のコード ---
 				}
 			}).bind('contextmenu', function(e) {e.preventDefault()});
 		
