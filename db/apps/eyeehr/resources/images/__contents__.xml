@@ -1,17 +1,5 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eyeehr/resources/images" owner="admin" group="dba" mode="775" created="2014-09-22T23:52:09+09:00" version="1">
     <acl entries="0" version="1"/>
-    <resource type="BinaryResource" name="grey-box-rpt.gif" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="grey-box-rpt.gif" mimetype="image/gif">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="bgmenuhi.gif" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="bgmenuhi.gif" mimetype="image/gif">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="grey-box-top.gif" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="grey-box-top.gif" mimetype="image/gif">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="body.gif" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="body.gif" mimetype="image/gif">
-        <acl entries="0" version="1"/>
-    </resource>
     <resource type="BinaryResource" name="existdb.png" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="existdb.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
@@ -55,6 +43,18 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="bgmenu.gif" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="bgmenu.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="grey-box-rpt.gif" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="grey-box-rpt.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="bgmenuhi.gif" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="bgmenuhi.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="grey-box-top.gif" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="grey-box-top.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="body.gif" owner="admin" group="dba" mode="664" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="body.gif" mimetype="image/gif">
         <acl entries="0" version="1"/>
     </resource>
 </collection>
