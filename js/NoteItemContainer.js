@@ -1,19 +1,29 @@
 ///@summary ノートアイテムコンテナ
 ///@param 	i_name	名前
 ///@param 	i_title	タイトル
-function NoteItemContainer (i_name, i_title)
+///@param   $i_xml XMLデータ（JQuery Object)
+function NoteItemContainer (i_name, i_title, $i_xml)
 {
 	///@param クラス名
 	this._name = 'NoteItemContainer';
 		
 	///@param HTML
-	$jqueryNoteItemContainer = $('<div ' + 
-		'class="' + 'NoteItemContainer' + '" ' + 
-		'name="' + i_name + '" ' + 
-        'style="position:absolute;">' + 
-		'<h1>' + i_title + '</h1>' + 
-		//'<div id="attached"></div>' + 
-	'</div>');
+    var leftpos = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('left');
+    var toppos  = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('top');
+    //console.log(i_name + left + top);
+    var html = '<div ' + 
+        'class="' + 'NoteItemContainer' + '" ' + 
+        'name="' + i_name + '" ' + 
+        'style="position:absolute;' + 
+        //'left=' + left + ';top=' + top+ ';' + 
+        '">' + 
+        '<h1>' + i_title + '</h1>' + 
+        //'<div id="attached"></div>' + 
+    '</div>';
+	$jqueryNoteItemContainer = $(html);
+
+    // 位置を移動する。
+    $jqueryNoteItemContainer.css({left : leftpos, top : toppos});
 	
 	// 親要素内のみドラッグ可能に設定する。
 	$jqueryNoteItemContainer.draggable({
@@ -74,7 +84,7 @@ NoteItemContainer.HtmlToXml = function($i_jquery)
 ///@param $i_xml XML JQuery Object
 function NoteItemContainerDisease ($i_xml)
 {
-	NoteItemContainer.call(this, this.getName(), '病名');
+	NoteItemContainer.call(this, this.getName(), '病名', $i_xml);
 
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
     if ($i_xml !== undefined)
@@ -110,7 +120,7 @@ function NoteItemContainerDisease ($i_xml)
 ///@param $i_xml XML JQuery Object
 function NoteItemContainerComplaint ($i_xml)
 {
-	NoteItemContainer.call(this, this.getName(), '主訴');
+	NoteItemContainer.call(this, this.getName(), '主訴', $i_xml);
 
 	// 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
 	if ($i_xml !== undefined)
@@ -147,7 +157,7 @@ function NoteItemContainerComplaint ($i_xml)
 function NoteItemContainerMedicalCheck ($i_xml)
 {
 	///@param クラス名
-	NoteItemContainer.call(this, this.getName(), '検査');
+	NoteItemContainer.call(this, this.getName(), '検査', $i_xml);
 
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
     if ($i_xml !== undefined)
@@ -182,7 +192,7 @@ function NoteItemContainerMedicalCheck ($i_xml)
 ///@param $i_xml XML JQuery Object
 function NoteItemContainerPrescription ($i_xml)
 {
-	NoteItemContainer.call(this, this.getName(), '処方');
+	NoteItemContainer.call(this, this.getName(), '処方', $i_xml);
 
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
     if ($i_xml !== undefined)
@@ -217,7 +227,7 @@ function NoteItemContainerPrescription ($i_xml)
 ///@param $i_xml XML JQuery Object
 function NoteItemContainerOperation ($i_xml)
 {
-	NoteItemContainer.call(this, this.getName(), '手術');
+	NoteItemContainer.call(this, this.getName(), '手術', $i_xml);
 
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
     if ($i_xml !== undefined)
@@ -251,7 +261,7 @@ function NoteItemContainerOperation ($i_xml)
 ///@param $i_xml XML JQuery Object
 function NoteItemContainerMemo ($i_xml)
 {
-	NoteItemContainer.call(this, 'NoteItemContainerMemo', 'メモ');
+	NoteItemContainer.call(this, 'NoteItemContainerMemo', 'メモ', $i_xml);
 
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
     if ($i_xml !== undefined)
@@ -286,7 +296,7 @@ function NoteItemContainerMemo ($i_xml)
 ///@param $i_xml XML JQuery Object
 function NoteItemContainerScheme ($i_xml)
 {
-	NoteItemContainer.call(this, 'NoteItemContainerScheme', 'シェーマ');
+	NoteItemContainer.call(this, 'NoteItemContainerScheme', 'シェーマ', $i_xml);
 
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
     if ($i_xml !== undefined)
