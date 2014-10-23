@@ -11,7 +11,9 @@ function NoteItem() {
 
   // 付箋（JQuery オブジェクト）を生成する 。
   var uploadFile = "/exist/apps/eyeehr/upload.xq";
-  const collectionRoot = '/db/apps/eyeehr';
+  // 画像の保存先を設定する。
+  // TODO : 画像の保存先はカルテのフォルダの直下のimgコレクションとする。（後で対応）
+  const saveImageTo = '/db/apps/eyeehr/img';
   var iframetarget = 'uploadImage-' + id;
   $jquery = $(
     '<div ' + 
@@ -43,7 +45,7 @@ function NoteItem() {
     '<input id="attachImg" type="file" name="file" value="" title="ファイルを添付します。"' + 
     'style="display:none" accept="image/jpeg, image/png, image/bmp, application/pdf" ' + 
     '/>' +
-    '<input type="input" name="collection" value="' + collectionRoot + '"/>' + 
+    '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
     '<input id="attachImgSubmit" type="submit" value="submit" />' +
     '</form>' +
     '<iframe name="' + iframetarget + '" style="display:none"></iframe>' + //結果表示用iframe
