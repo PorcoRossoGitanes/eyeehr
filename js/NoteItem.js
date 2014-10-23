@@ -30,8 +30,8 @@ function NoteItem() {
     '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
     '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
     '</button>' + 
-    <!--画像添付ボタン-->
-    <!--画像入力フォーム-->
+    <!--ファイル添付ボタン-->
+    <!--ファイル入力フォーム-->
     '<form ' + 
     'id="attachImgForm" ' + 
     'enctype="multipart/form-data" ' + 
@@ -308,7 +308,7 @@ function NoteItemDisease(i_name) {
         // 親クラス(Parent)のgetName()を呼び出す
         var name = _super.getName.call(this);
         // 結果に'-child'を付け加える
-        return name + '-child';
+        return name + ' ' + 'NoteItemDisease';
     };
 })();
 
@@ -358,7 +358,7 @@ function NoteItemComplaint()
         // 親クラス(Parent)のgetName()を呼び出す
         var name = _super.getName.call(this);
         // 結果に'-child'を付け加える
-        return name + '-child';
+        return name + ' ' + 'NoteItemComplaint';
     };
 })();
 
@@ -410,7 +410,7 @@ function NoteItemMedicalCheck(i_name)
         // 親クラス(Parent)のgetName()を呼び出す
         var name = _super.getName.call(this);
         // 結果に'-child'を付け加える
-        return name + '-child';
+        return name + ' ' + 'NoteItemMedicalCheck';
     };
 })();
 
@@ -465,7 +465,7 @@ function NoteItemPrescription(i_name)
         // 親クラス(Parent)のgetName()を呼び出す
         var name = _super.getName.call(this);
         // 結果に'-child'を付け加える
-        return name + '-child';
+        return name + ' ' + 'NoteItemPrescription';
     };
 })();
 
@@ -517,7 +517,7 @@ function NoteItemOperation(i_name)
         // 親クラス(Parent)のgetName()を呼び出す
         var name = _super.getName.call(this);
         // 結果に'-child'を付け加える
-        return name + '-child';
+        return name + ' ' + 'NoteItemOperation';
     };
 })();
 
@@ -567,6 +567,6 @@ function NoteItemMemo()
         // 親クラス(Parent)のgetName()を呼び出す
         var name = _super.getName.call(this);
         // 結果に'-child'を付け加える
-        return name + '-child';
+        return name + ' ' + 'NoteItemMemo';
     };
 })();
