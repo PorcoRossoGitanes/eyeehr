@@ -102,3 +102,13 @@ Utility.HtmlToXhtml = function(i_html)
 	return retVal;
 }
 
+/// @summary	URLから拡張子を取得する。
+/// @param 	url URL
+/// @returns 拡張子
+Utility.GetExtention = function (url) {
+    var ext = url.replace(/\?.*$/, "")          // 拡張子以降のパラメータを除去
+                 .replace(/#.*$/, "")           // 拡張子以降のパラメータを除去
+                 .replace(/^.*\.(.+)$/, "$1");  // 拡張子部分（最後の.以降）をキャプチャして置換
+    return ext;
+}
+

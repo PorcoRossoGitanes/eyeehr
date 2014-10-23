@@ -9,8 +9,9 @@ function NoteItem() {
   // @param 付箋のID
   var id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
-  // 付箋（JQuery オブジェクト）を生成する
-  var urlUploadImage = "/exist/apps/eyeehr/upload.xq";
+  // 付箋（JQuery オブジェクト）を生成する 。
+  var uploadFile = "/exist/apps/eyeehr/upload.xq";
+  const collectionRoot = '/db/apps/eyeehr';
   var iframetarget = 'uploadImage-' + id;
   $jquery = $(
     '<div ' + 
@@ -35,15 +36,15 @@ function NoteItem() {
     'id="attachImgForm" ' + 
     'enctype="multipart/form-data" ' + 
     'method="post" ' +
-    'action="' + urlUploadImage + '" ' + 
+    'action="' + uploadFile + '" ' + 
     'target="' + iframetarget + '"' + 
     'style="display:none" ' + 
     '>' +
-    '<input id="attachImg" type="file" name="file" value="画像" ' + 
-    //'style="display:none" accept="image/jpeg" ' + 
+    '<input id="attachImg" type="file" name="file" value="" title="ファイルを添付します。"' + 
+    'style="display:none" accept="image/jpeg, image/png, image/bmp, application/pdf" ' + 
     '/>' +
-    '<input type="input" name="collection" value="/db/apps/eyeehr"/>' + 
-    '<input id="attachImgSubmit" type="submit" value="送信" />' +
+    '<input type="input" name="collection" value="' + collectionRoot + '"/>' + 
+    '<input id="attachImgSubmit" type="submit" value="submit" />' +
     '</form>' +
     '<iframe name="' + iframetarget + '" style="display:none"></iframe>' + //結果表示用iframe
     <!--画像選択ボタン（可視）-->
@@ -55,8 +56,8 @@ function NoteItem() {
     '<div id="tags" style="display:block"></div>' +
     <!--入力フォーム-->
     '<div name="formats"></div>' +
-    <!--イメージ添付用-->
-    '<div name="images">' + 
+    <!--ファイル添付用-->
+    '<div name="attachments">' + 
     '</div>' +
     <!--文字列入力用--> 
     '<div name="remarks"></div>' + 
@@ -98,17 +99,36 @@ function NoteItem() {
     else if (file != ""　&& url == "")
     {
       // 画像ファイルが指定されているが、URLが未指定の場合、保存に失敗したと見なす。
-      alert('画像の貼付けに失敗しました。');
+      alert('ファイルの保存に失敗しました。');
     }
     else 
     {
-      //console.log(file);
-      $(this).parent().find('[name=images]').append(
-        '<img src="' + url + '" width="25%" ' + 
-        'ondblclick="$(this).remove()"' + 
-        '/>'
-      );      
-      //alert('画像の貼付けが完了しました');
+      // // 画像の拡張子を列挙する。
+      // const imgExt = ['jpg', 'jpeg', 'png', 'svg', 'bmp'];
+
+      // // アップロードされたファイルの拡張子を取得する。
+      // var ext = Utility.GetExtention(url);
+
+      // // 画像が添付された場合は、imgタグを追加する。
+      // var index = imgExt.indexOf(ext);
+      // if (index >= 0)
+      // {
+        $(this).parent().find('[name=attachments]').append(
+          '<a href="' + url + '" target="_blank">' + 
+          '<img src="' + url + '" width="25%" ondblclick="$(this).remove()" />' + 
+          '</a>'
+        );      
+      // }
+      // else
+      // {
+      //   $(this).parent().find('[name=attachments]').append(
+      //   '<a href="' + url + '" ' + 
+      //   'ondblclick="$(this).remove()"' + 
+      //   '>' + url + 
+      //   '</a>'
+      //   );      
+      // }
+      // //alert('画像の貼付けが完了しました');
     }
   });
   // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
@@ -120,7 +140,7 @@ function NoteItem() {
       // 特記事項が表示されている場合は、文字列を非表示とする。
       $(this).parent().find('#tags').show();
       $(this).parent().find('[name=formats]').hide();      
-      $(this).parent().find('[name=images]').hide();      
+      $(this).parent().find('[name=attachments]').hide();      
       $(this).parent().find('[name=remarks]').hide();      
     }
     else
@@ -128,7 +148,7 @@ function NoteItem() {
       // 特記事項が非表示の場合は、文字列を表示する。
       $(this).parent().find('#tags').hide();
       $(this).parent().find('[name=formats]').show();
-      $(this).parent().find('[name=images]').show();
+      $(this).parent().find('[name=attachments]').show();
       $(this).parent().find('[name=remarks]').show();
     }
   });
@@ -200,13 +220,13 @@ NoteItem.HtmlToXml = function($i_jquery)
   retVal += '</' + $formats.attr('name') + '>';
 
   // □画像添付部
-  $images = $i_jquery.children('[name=images]');
-  retVal += '<' + $images.attr('name') + '>';
-  $images.find('IMG').each(function(){
+  $attachments = $i_jquery.children('[name=attachments]');
+  retVal += '<' + $attachments.attr('name') + '>';
+  $attachments.find('IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml($(this));
     console.log($(this));
   });
-  retVal += '</' + $images.attr('name') + '>';
+  retVal += '</' + $attachments.attr('name') + '>';
 
   // □備考添付部
   $remarks = $i_jquery.children('[name=remarks]');
@@ -276,7 +296,7 @@ function NoteItemDisease(i_name) {
           // TODO : 定型フォーマット部分を追加する。
           //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
           // 画像添付部分を追加する。
-          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
           // 備考部分を追加する。
           $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
         }
@@ -326,7 +346,7 @@ function NoteItemComplaint()
           // 定型フォーマット部分を追加する。
           $jquery.find('[name=formats]').html($i_xml.children('formats').html());
           // 画像添付部分を追加する。
-          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
           // 備考部分を追加する。
           $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
         }
@@ -378,7 +398,7 @@ function NoteItemMedicalCheck(i_name)
           // TODO : 定型フォーマット部分を追加する。
           //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
           // 画像添付部分を追加する。
-          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
           // 備考部分を追加する。
           $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
         }
@@ -433,7 +453,7 @@ function NoteItemPrescription(i_name)
           // TODO : 定型フォーマット部分を追加する。
           //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
           // 画像添付部分を追加する。
-          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
           // 備考部分を追加する。
           $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
         }
@@ -486,7 +506,7 @@ function NoteItemOperation(i_name)
           // TODO : 定型フォーマット部分を追加する。
           //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
           // 画像添付部分を追加する。
-          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
           // 備考部分を追加する。
           $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
         }
@@ -536,7 +556,7 @@ function NoteItemMemo()
           // TODO : 定型フォーマット部分を追加する。
           //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
           // 画像添付部分を追加する。
-          $jquery.find('[name=images]').html($i_xml.children('images').html());
+          $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
           // 備考部分を追加する。
           $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
         }
