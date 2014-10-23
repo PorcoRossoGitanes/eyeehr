@@ -4237,7 +4237,10 @@ var pathActions = canvas.pathActions = function() {
 					"d": d,
 					//"fill": "none"
 					// ハッチングの時は、ストローク色と塗りつぶし色を一致させる。
-					"fill": current_mode == 'fhhatch' ? cur_shape['stroke'] : "none"
+					"fill": current_mode == 'fhhatch' ? cur_shape['stroke'] : "none",
+					// ペンシルもハッチングもpathに集約されてしまうので、
+					// data-shape属性に fhhatch = ハッチ、ペンシル = fhpathとなる
+					"data-shape" : current_mode
 				}
 			});
 			//console.log(current_mode);
@@ -7167,7 +7170,11 @@ this.setColor = function(type, val, preventUndo) {
 				svgedit.utilities.walkTree(elem, function(e){if(e.nodeName!="g") elems.push(e);});
 			else {
 				if(type == 'fill') {
-					if(elem.tagName != "polyline" && elem.tagName != "line") {
+					if (elem.tagName == "path"){
+						// ハッチングの場合のみ色を変更する。
+						if($(elem).data('shape') == "fhhatch") elems.push(elem);						
+					}
+					else if(elem.tagName != "polyline" && elem.tagName != "line") {
 						elems.push(elem);
 					}
 				} else {
