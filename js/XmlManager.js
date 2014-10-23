@@ -45,21 +45,23 @@ XmlManager.LoadNote = function (i_filePath)
                             // コンテナを追加し、カルテにコンテナを貼付ける。
                             var containerComplaint = new NoteItemContainerComplaint($(this));
                             $currentNote.append(containerComplaint.getJQueryObject());
+                            console.log(containerComplaint.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERDISEASE' : // 病名 
-                            var containerDisease = new NoteItemContainerDisease();
+                            var containerDisease = new NoteItemContainerDisease($(this));
                             $currentNote.append(containerDisease.getJQueryObject());
+                            console.log(containerDisease.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERMEDICALCHECK' :　// 検査
-                            var containerMedicalCheck = new NoteItemContainerMedicalCheck();
+                            var containerMedicalCheck = new NoteItemContainerMedicalCheck($(this));
                             $currentNote.append(containerMedicalCheck.getJQueryObject());
                             break; 
                         case 'NOTEITEMCONTAINERPRESCRIPTION' :  // 処方
-                            var containerPrescription = new NoteItemContainerPrescription();
+                            var containerPrescription = new NoteItemContainerPrescription($(this));
                             $currentNote.append(containerPrescription.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINEROPERATION' :     // 手術
-                            var containerOperation = new NoteItemContainerOperation();
+                            var containerOperation = new NoteItemContainerOperation($(this));
                             $currentNote.append(containerOperation.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERMEMO' : // メモ
@@ -67,7 +69,7 @@ XmlManager.LoadNote = function (i_filePath)
                             $currentNote.append(containerMemo.getJQueryObject());
                             break;
                         case 'NOTEITEMCONTAINERSCHEME' :　// シェーマ
-                            var containerScheme = new NoteItemContainerScheme();
+                            var containerScheme = new NoteItemContainerScheme($(this));
                             $currentNote.append(containerScheme.getJQueryObject());
                             $(this).children().each(function(){                                
                                 // TODO : コーディング未済

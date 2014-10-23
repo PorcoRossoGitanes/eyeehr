@@ -92,10 +92,12 @@ function NoteItemContainerDisease ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemDisease($(this)); 
+                var item = new NoteItemDisease();
+                item.setByXml($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }
+        //console.log($jqueryNoteItemContainer);
     }
 
 };(function() {
@@ -165,7 +167,8 @@ function NoteItemContainerMedicalCheck ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemMedicalCheck($(this)); 
+                var item = new NoteItemMedicalCheck();
+                item.setByXml($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }
@@ -200,7 +203,8 @@ function NoteItemContainerPrescription ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemPrescription($(this)); 
+                var item = new NoteItemPrescription(); 
+                item.setByXml($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }
@@ -235,7 +239,8 @@ function NoteItemContainerOperation ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemOperation($(this)); 
+                var item = new NoteItemOperation();
+                item.setByXml($(this));  
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }
@@ -304,7 +309,8 @@ function NoteItemContainerScheme ($i_xml)
         if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
         {
             $i_xml.children().each(function(){
-                var item = new NoteItemScheme($(this)); 
+                var item = new NoteItemScheme(); 
+                item.setByXml($(this)); 
                 $jqueryNoteItemContainer.append(item.getJQueryObject());
             });
         }

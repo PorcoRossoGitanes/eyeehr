@@ -264,16 +264,14 @@ NoteItem.ChangeVal = function($jquery, i_memo)
 
 
 // @sumamry 病名
-function NoteItemDisease(i_name) {
+function NoteItemDisease() {
     // 親クラス(Parent)のメンバ変数を継承
     NoteItem.call(this);
     //--JQuery オブジェクト操作---//
     // クラス属性を追加した。
     $jquery.attr('name', 'NoteItemDisease');
     $jquery.addClass('NoteItemDisease');
-    $jquery.find('[name=formats]').append(
-      '<div name="disease-name">' + i_name + '</div>' 
-    );
+
     //--JQuery オブジェクト操作---//
 };(function() {
     // 親クラス(Parent)のメソッドを継承
@@ -284,6 +282,15 @@ function NoteItemDisease(i_name) {
     // プロトタイプ
     var _proto = NoteItemDisease.prototype;
     
+    ///@summary 定型フォーマットを設定する。
+    ///@param $i_name 名前
+    _proto.setFormats = function (i_name)
+    {
+      $jquery.find('[name=formats]').append(
+        '<div name="disease-name">' + i_name + '</div>' 
+      );
+    }
+
     ///@summary XMLを設定する。
     ///@param $i_xml XMLオブジェクト
     _proto.setByXml = function ($i_xml)
@@ -363,7 +370,7 @@ function NoteItemComplaint()
 })();
 
 ///@summary 検査クラス
-function NoteItemMedicalCheck(i_name) 
+function NoteItemMedicalCheck() 
 {
   NoteItem.call(this);
 
@@ -371,11 +378,6 @@ function NoteItemMedicalCheck(i_name)
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemMedicalCheck');
   $jquery.addClass('NoteItemMedicalCheck');
-  $jquery.find('[name=formats]').append(
-    '<div name="medical-check-name">' + i_name + '</div>' + 
-    '<input name="medical-check-custom" type="text" value="入力欄（カスタム）"/>'  
-    // TODO : 入力欄カスタム作成
-  );
   //--JQuery オブジェクト操作---//
 };(function() {
     // 親クラス(Parent)のメソッドを継承
@@ -405,6 +407,17 @@ function NoteItemMedicalCheck(i_name)
       }
     }
 
+    ///@summary 定型フォーマットを設定する。
+    ///@param $i_name 名前
+    _proto.setFormats = function (i_name)
+    {
+      $jquery.find('[name=formats]').append(
+        '<div name="medical-check-name">' + i_name + '</div>' + 
+        '<input name="medical-check-custom" type="text" value="入力欄（カスタム）"/>'  
+        // TODO : 入力欄カスタム作成
+      );
+    }
+
     // メンバメソッド(オーバーライド)
     _proto.getName = function() {
         // 親クラス(Parent)のgetName()を呼び出す
@@ -415,7 +428,7 @@ function NoteItemMedicalCheck(i_name)
 })();
 
 ///@summary 処方クラス
-function NoteItemPrescription(i_name) 
+function NoteItemPrescription() 
 {
   NoteItem.call(this);  // 入力文字列
 
@@ -424,12 +437,7 @@ function NoteItemPrescription(i_name)
   $jquery.attr('name', 'NoteItemPrescription');
   $jquery.addClass('NoteItemPrescription');
   //$jquery.find('[name=formats]').attr('name', 'medicine');
-  $jquery.find('[name=formats]').append(
-    '<input name="medicine-orca" type="hidden" value="ORCAID" />' + 
-    '<input name="medicine-name" type="disable" value="' + i_name +'"/>' + 
-    '<input name="medicine-cnt"  type="text" value="1">個'
-  );
-  console.log(i_name);
+
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
 };(function() {
@@ -440,6 +448,17 @@ function NoteItemPrescription(i_name)
     var _super = Super.prototype;
     // プロトタイプ
     var _proto = NoteItemPrescription.prototype;
+
+    ///@summary 定型フォーマットを設定する。
+    ///@param $i_name 名前
+    _proto.setFormats = function (i_name)
+    {
+      $jquery.find('[name=formats]').append(
+        '<input name="medicine-orca" type="hidden" value="ORCAID" />' + 
+        '<input name="medicine-name" type="disable" value="' + i_name +'"/>' + 
+        '<input name="medicine-cnt"  type="text" value="1">個'
+      );
+    }
 
     ///@summary XMLを設定する。
     ///@param $i_xml XMLオブジェクト
@@ -471,7 +490,7 @@ function NoteItemPrescription(i_name)
 
 
 ///@summary 手術コンストラクタ
-function NoteItemOperation(i_name) 
+function NoteItemOperation() 
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
@@ -479,10 +498,6 @@ function NoteItemOperation(i_name)
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemOperation');
   $jquery.addClass('NoteItemOperation');
-  $jquery.find('[name=formats]').append(
-    '<div name="operation-name">' + i_name + '</div>' + 
-    '<input name="operation-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
-  );
   //console.log($jquery);
   //--JQuery オブジェクト操作---//
 };(function() {
@@ -512,6 +527,17 @@ function NoteItemOperation(i_name)
         }
       }
     }
+
+    ///@summary 定型フォーマットを設定する。
+    ///@param $i_name 名前
+    _proto.setFormats = function (i_name)
+    {
+      $jquery.find('[name=formats]').append(
+        '<div name="operation-name">' + i_name + '</div>' + 
+        '<input name="operation-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
+      );
+    }
+
     // メンバメソッド(オーバーライド)
     _proto.getName = function() {
         // 親クラス(Parent)のgetName()を呼び出す
