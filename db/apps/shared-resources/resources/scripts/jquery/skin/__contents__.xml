@@ -1,0 +1,42 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/shared-resources/resources/scripts/jquery/skin" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="loading.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="loading.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="icons.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="icons.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ltFld.groups.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ltFld.groups.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ltFld.locked.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ltFld.locked.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ui.dynatree.css" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ui.dynatree.css" mimetype="text/css">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ltFld.link.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ltFld.link.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ltFld.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ltFld.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="vline.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="vline.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ltFld.key.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ltFld.key.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ltFld.page.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ltFld.page.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ltFld.page.link.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ltFld.page.link.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ltFld.user.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ltFld.user.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ltFld.locked.link.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="ltFld.locked.link.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

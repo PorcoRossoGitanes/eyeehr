@@ -1,0 +1,27 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/doc/modules" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:15+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="docs-query-highlighter.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:15+09:00" modified="2014-08-20T03:28:15+09:00" filename="docs-query-highlighter.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="view.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:15+09:00" modified="2014-08-20T03:28:15+09:00" filename="view.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="docs.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:15+09:00" modified="2014-08-20T03:28:15+09:00" filename="docs.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="config.xqm" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:15+09:00" modified="2014-08-20T03:28:15+09:00" filename="config.xqm" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="diagnostics.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:15+09:00" modified="2014-08-20T03:28:15+09:00" filename="diagnostics.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="search.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:15+09:00" modified="2014-08-20T03:28:15+09:00" filename="search.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="review.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="review.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="docbook.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:15+09:00" modified="2014-08-20T03:28:15+09:00" filename="docbook.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

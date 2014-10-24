@@ -1,0 +1,27 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/demo/modules" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="view.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="view.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="cex.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="cex.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="demo.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="demo.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="i18n-templates.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="i18n-templates.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="cex-trigger.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:08+09:00" modified="2014-08-20T03:28:08+09:00" filename="cex-trigger.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="config.xqm" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:08+09:00" modified="2014-08-20T03:28:08+09:00" filename="config.xqm" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="restxq.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:08+09:00" modified="2014-08-20T03:28:08+09:00" filename="restxq.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="i18n.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="i18n.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

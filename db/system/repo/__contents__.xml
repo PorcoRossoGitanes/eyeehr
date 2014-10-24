@@ -1,0 +1,9 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/system/repo" owner="SYSTEM" group="dba" mode="755" created="2014-09-22T23:52:10+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="tutorial-0.1.xar" owner="admin" group="dba" mode="644" created="2014-09-23T00:05:55+09:00" modified="2014-09-23T00:05:55+09:00" filename="tutorial-0.1.xar" mimetype="application/zip">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="eyeehr-0.1.xar" owner="admin" group="dba" mode="644" created="2014-09-22T23:52:10+09:00" modified="2014-09-22T23:59:05+09:00" filename="eyeehr-0.1.xar" mimetype="application/zip">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

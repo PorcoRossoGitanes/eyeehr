@@ -1,0 +1,30 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/dashboard/plugins/packageManager/images" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="dbplus2.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="dbplus2.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="Remove-32.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="Remove-32.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="packages-128.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="packages-128.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="progressbar.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="progressbar.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="deleteApp.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="deleteApp.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="deleteApp1.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="deleteApp1.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="Upload-24.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="Upload-24.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="Upload-32.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="Upload-32.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="download-32.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="download-32.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

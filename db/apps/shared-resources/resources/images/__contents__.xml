@@ -1,0 +1,27 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/shared-resources/resources/images" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="bgmenuhi.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="bgmenuhi.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="body.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="body.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="existdb.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="existdb.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="body-base.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="body-base.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="header.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="header.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="noise.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="noise.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="horizontal.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="horizontal.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="bgmenu.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="bgmenu.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

@@ -1,0 +1,36 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/shared-resources/resources/css" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="bootstrap.min.css" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="bootstrap.min.css" mimetype="text/css">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="bootstrap-responsive.min.css" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="bootstrap-responsive.min.css" mimetype="text/css">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="settings.less" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="settings.less" mimetype="application/less">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="exist.less" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="exist.less" mimetype="application/less">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="Quicksand_Book-webfont.woff" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="Quicksand_Book-webfont.woff" mimetype="application/font-woff">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="exist.css" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="exist.css" mimetype="text/css">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="content.less" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="content.less" mimetype="application/less">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Quicksand_Book-webfont.svg" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="Quicksand_Book-webfont.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="Quicksand_Book-webfont.ttf" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:03+09:00" modified="2014-08-20T03:28:03+09:00" filename="Quicksand_Book-webfont.ttf" mimetype="application/octet-stream">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="fonts.css" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="fonts.css" mimetype="text/css">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="Quicksand_Book-webfont.eot" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="Quicksand_Book-webfont.eot" mimetype="application/octet-stream">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

@@ -1,0 +1,24 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/demo/examples/web" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:13+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="XMLResource" name="shakespeare-ajax.html" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:13+09:00" modified="2014-08-20T03:28:13+09:00" filename="shakespeare-ajax.html" mimetype="text/html">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="index.html" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:13+09:00" modified="2014-08-20T03:28:13+09:00" filename="index.html" mimetype="text/html">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="guess.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:13+09:00" modified="2014-08-20T03:28:13+09:00" filename="guess.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="shakespeare.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:13+09:00" modified="2014-08-20T03:28:13+09:00" filename="shakespeare.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="guess-templates.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:13+09:00" modified="2014-08-20T03:28:13+09:00" filename="guess-templates.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="guess.html" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:13+09:00" modified="2014-08-20T03:28:13+09:00" filename="guess.html" mimetype="text/html">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="shakespeare.html" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:13+09:00" modified="2014-08-20T03:28:13+09:00" filename="shakespeare.html" mimetype="text/html">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

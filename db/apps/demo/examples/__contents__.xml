@@ -1,0 +1,10 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/demo/examples" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:12+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <subcollection name="templating" filename="templating"/>
+    <subcollection name="urlrewriting" filename="urlrewriting"/>
+    <subcollection name="special" filename="special"/>
+    <subcollection name="basic" filename="basic"/>
+    <subcollection name="xforms" filename="xforms"/>
+    <subcollection name="web" filename="web"/>
+    <subcollection name="tests" filename="tests"/>
+</collection>
