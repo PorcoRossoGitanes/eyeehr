@@ -112,3 +112,21 @@ Utility.GetExtention = function (url) {
     return ext;
 }
 
+Utility.CreateCollection = function (i_collectionPath)
+{
+	$.ajax({
+	    url : "/exist/apps/eyeehr/modules/create-collection.xql", // コレクション毎取得する場合
+	    async: false, // 雨期通信に設定する
+	    cache: false,
+	    dataType:"xml",
+	    data: "parent-collection=/db&target-collection=/finc",
+	    error: function(){
+	        alert('コレクションの作成に失敗しました。');
+	    },
+	    success: function(xml){
+	        console.log(xml);
+	    }
+	});
+
+}
+

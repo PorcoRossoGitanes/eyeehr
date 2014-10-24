@@ -10,7 +10,8 @@ function NoteItem() {
   var id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
   // 付箋（JQuery オブジェクト）を生成する 。
-  var uploadFile = "/exist/apps/eyeehr/upload.xq";
+  const uploadFile = "/exist/apps/eyeehr/upload.xq";
+  
   // 画像の保存先を設定する。
   // TODO : 画像の保存先はカルテのフォルダの直下のimgコレクションとする。（後で対応）
   const saveImageTo = '/db/apps/eyeehr/img';
@@ -105,32 +106,11 @@ function NoteItem() {
     }
     else 
     {
-      // // 画像の拡張子を列挙する。
-      // const imgExt = ['jpg', 'jpeg', 'png', 'svg', 'bmp'];
-
-      // // アップロードされたファイルの拡張子を取得する。
-      // var ext = Utility.GetExtention(url);
-
-      // // 画像が添付された場合は、imgタグを追加する。
-      // var index = imgExt.indexOf(ext);
-      // if (index >= 0)
-      // {
-        $(this).parent().find('[name=attachments]').append(
-          '<a href="' + url + '" target="_blank">' + 
-          '<img src="' + url + '" width="25%" ondblclick="$(this).remove()" />' + 
-          '</a>'
-        );      
-      // }
-      // else
-      // {
-      //   $(this).parent().find('[name=attachments]').append(
-      //   '<a href="' + url + '" ' + 
-      //   'ondblclick="$(this).remove()"' + 
-      //   '>' + url + 
-      //   '</a>'
-      //   );      
-      // }
-      // //alert('画像の貼付けが完了しました');
+      $(this).parent().find('[name=attachments]').append(
+        '<a href="' + url + '" target="_blank">' + 
+        '<img src="' + url + '" width="25%" ondblclick="$(this).remove()" />' + 
+        '</a>'
+      );      
     }
   });
   // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
