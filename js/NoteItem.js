@@ -33,8 +33,9 @@ function NoteItem() {
     '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
     '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
     '</button>' + 
-    <!--ファイル添付ボタン-->
-    <!--ファイル入力フォーム-->
+//---画像　　添付---
+    <!--画像ファイル添付ボタン-->
+    <!--画像ファイル入力フォーム-->
     '<form ' + 
     'id="attachImgForm" ' + 
     'enctype="multipart/form-data" ' + 
@@ -55,6 +56,14 @@ function NoteItem() {
     'class="btn btn-default btn-xs" >' + 
     '<span class="glyphicon glyphicon-upload"></span>' + 
     '</button>' + 
+//---画像　　添付---
+//---シェーマ添付---
+    <!--シェーマ追加ボタン（可視）-->
+    '<button id="addScheme" ' + 
+    'class="btn btn-default btn-xs" >' + 
+    '<span class="glyphicon glyphicon-upload"></span>' + 
+    '</button>' + 
+//---シェーマ添付---
     <!--タグ表示用(初期：非表示)-->
     '<div id="tags" style="display:block"></div>' +
     <!--入力フォーム-->
@@ -87,7 +96,7 @@ function NoteItem() {
         $form.submit();
       }
     });
-  })
+  });
 
   /// @summary  画像添付（送信）処理が実施され、
   ///           iframeがロードされたとき、
@@ -113,6 +122,32 @@ function NoteItem() {
       );      
     }
   });
+
+  /// @summary シェーマ画像を追加する。
+  $jquery.find('button#addScheme').click(function () {
+    
+    // Method Drawの画面最大サイズ
+    const MethodDrawWidthMax = 1024;
+    const MethodDrawHeightMax = 768;
+    // Meethod DrawのURL(相対パス)
+    const MethodDrawPath = './method_draw/editor/index.html';
+
+    // Method Drawの画面サイズ（画面をオーバーする場合は画面のサイズに合わせる。）
+    var methodDrawWidth = window.parent.screen.width > MethodDrawWidthMax ? MethodDrawWidthMax : window.parent.screen.width;
+    var methodDrawHeight = window.parent.screen.heght > MethodDrawHeightMax ? MethodDrawHeightMax : window.parent.screen.height;
+
+    // NoteItemのIDを取得する。
+    var noteItemId = $(this).parent().attr("id");
+
+    // コマンドを設定する（追加時「add」、編集時「edit」とする。）
+    var command = 'add';
+
+    var url = MethodDrawPath + '?command=add&id=' + noteItemId;
+
+    // Method Drawを開く。
+    window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
+  });
+
   // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
   $jquery.find('#min').click(function()
   {
@@ -577,4 +612,54 @@ function NoteItemMemo()
         // 結果に'-child'を付け加える
         return name + ' ' + 'NoteItemMemo';
     };
+})();
+
+///@summary シェーマコンストラクタ
+///@param $i_xml XML
+function NoteItemScheme() 
+{
+  NoteItem.call(this/*, i_text*/);  // 入力文字列
+
+  //--JQuery オブジェクト操作---//
+  // クラス属性を追加した。
+  $jquery.attr('name', 'NoteItemScheme');
+  $jquery.addClass('NoteItemScheme');
+  //console.log($jquery);
+
+  //--JQuery オブジェクト操作---//
+
+};(function() {
+  // 親クラス(Parent)のメソッドを継承
+  var Super = function Super(){};
+  Super.prototype = NoteItem.prototype;
+  NoteItemScheme.prototype = new Super();
+  var _super = Super.prototype;
+  // プロトタイプ
+  var _proto = NoteItemScheme.prototype;
+  
+  ///@summary XMLを設定する。
+  ///@param $i_xml XMLオブジェクト
+  _proto.setByXml = function ($i_xml)
+  {
+    if ($i_xml !== undefined)
+    {
+      if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+      {
+        //console.log($i_xml);
+        // TODO : 定型フォーマット部分を追加する。
+        //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
+        // 画像添付部分を追加する。
+        $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
+        // 備考部分を追加する。
+        $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+      }
+    }
+  }
+  // メンバメソッド(オーバーライド)
+  _proto.getName = function() {
+      // 親クラス(Parent)のgetName()を呼び出す
+      var name = _super.getName.call(this);
+      // 結果に'-child'を付け加える
+      return name + ' ' + 'NoteItemScheme';
+  };
 })();

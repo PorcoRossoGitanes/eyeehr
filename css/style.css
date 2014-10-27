@@ -84,6 +84,13 @@ div.NoteItemOperation
   background: #7fbfff;  
 }
 
+/**付箋（シェーマ）**/
+div.NoteItemScheme
+{
+  background: #ffffff;
+}
+
+
 /**付箋（メモ）**/
 div.NoteItemMemo
 {

@@ -121,6 +121,8 @@ if (!isset($_SESSION["USERID"])) {
                   onclick="var item = new NoteItemOperation(); item.setFormats('レーザー手術'); item.appendTo('[name=NoteItemContainerOperation]');"
                   >レーザー手術</button>
             </div>
+            <h3 class='ui-state-disabled' onclick="var item = new NoteItemScheme(); item.appendTo('[name=NoteItemContainerScheme]')">シェーマ</h3>
+            <div></div>
             <h3 class='ui-state-disabled' onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</h3>
             <div></div>
           </div>
