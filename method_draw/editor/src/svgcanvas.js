@@ -5689,7 +5689,8 @@ this.open = function() {
 //
 // Returns: 
 // Nothing
-this.save = function(opts) {
+// @param closeWindow 画面を閉じるとき true 画面を開いたままにするとき false
+this.save = function(opts, closeWindow) {
 	// remove the selected outline before serializing
 	clearSelection();
 	// Update save options if provided
@@ -5697,8 +5698,54 @@ this.save = function(opts) {
 	save_options.apply = true;
 	
 	// no need for doctype, see http://jwatt.org/svg/authoring/#doctype-declaration
+	// 画像保存時、SVG文字列を取得している。
 	var str = this.svgCanvasToString();
-	call("saved", str);
+
+	// GET値からコマンドとNoteItemIdを取得する。
+	var result = {};
+    if( 1 < window.location.search.length )
+    {
+        // 最初の1文字 (?記号) を除いた文字列を取得する
+        var query = window.location.search.substring( 1 );
+
+        // クエリの区切り記号 (&) で文字列を配列に分割する
+        var parameters = query.split( '&' );
+
+        for( var i = 0; i < parameters.length; i++ )
+        {
+            // パラメータ名とパラメータ値に分割する
+            var element = parameters[ i ].split( '=' );
+            var paramName = decodeURIComponent( element[ 0 ] );
+            var paramValue = decodeURIComponent( element[ 1 ] );
+
+            // パラメータ名をキーとして連想配列に追加する
+            result[ paramName ] = paramValue;
+        }
+    }
+
+    if (result.length <= 0)
+    {
+    	// GET値がない場合は、デフォルトの処理を行う
+		call("saved", str);
+    }
+    else 
+    {
+    	// GET値がある場合は、サーバーにファイルを保存し、URLを返却する。
+	    const KeyCommand = 'command';	// コマンド（新規追加か編集か）
+	    const KeyNoteItemId = 'id';		// NoteItem ID
+
+	    // コマンド値・NoteItemIDを取得する。
+	    var command = result[KeyCommand];
+	    var noteItemId = result[KeyNoteItemId]
+
+	    // 親画面（カルテ側）に値を渡す？アップロードする？
+		console.log(window.opener.$('#' + noteItemId));
+		window.opener.$('#' + noteItemId + ' '+ 'remarks').text('aaa');
+
+		// 画面を閉じる場合のみ、画面を閉じる処理を実行すr。
+		if (closeWindow) window.close();    	
+    }
+
 };
 
 // Function: rasterExport

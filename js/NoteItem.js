@@ -10,7 +10,7 @@ function NoteItem() {
   var id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
   // 付箋（JQuery オブジェクト）を生成する 。
-  const uploadFile = "/exist/apps/eyeehr/upload.xq";
+  const uploadFile = "/exist/apps/eyeehr/modules/upload.xq";
   
   // 画像の保存先を設定する。
   // TODO : 画像の保存先はカルテのフォルダの直下のimgコレクションとする。（後で対応）

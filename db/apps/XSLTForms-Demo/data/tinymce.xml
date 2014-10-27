@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:rte="http://www.agencexml.com/xsltforms/rte" xmlns:xsltforms="http://www.agencexml.com/xsltforms"><head><title>TinyMCE Support</title><style type="text/css">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:rte="http://www.agencexml.com/xsltforms/rte" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsltforms="http://www.agencexml.com/xsltforms"><head><title>TinyMCE Support</title><style type="text/css">
 			.large-textarea textarea {
 				font-family: Courier, sans-serif;
 				height: 10em;

@@ -21,9 +21,6 @@
     <resource type="XMLResource" name="test.xhtml" owner="admin" group="dba" mode="644" created="2014-10-23T09:22:59+09:00" modified="2014-10-23T09:22:59+09:00" filename="test.xhtml" mimetype="text/html">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="upload.xq" owner="admin" group="dba" mode="755" created="2014-09-29T02:37:26+09:00" modified="2014-10-02T04:25:05+09:00" filename="upload.xq" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
     <resource type="BinaryResource" name="pre-install.xql" owner="admin" group="dba" mode="775" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="pre-install.xql" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>

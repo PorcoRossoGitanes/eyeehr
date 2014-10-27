@@ -2609,7 +2609,7 @@ const bgImages = {
 					'images': curPrefs.img_save,
 					'round_digits': 6
 				}
-				svgCanvas.save(saveOpts);
+				svgCanvas.save(saveOpts, false);
 			};
 			
 			var saveSourceEditor = function(){
@@ -3630,7 +3630,10 @@ const bgImages = {
 			$('#cmenu_canvas li').disableContextMenu();
 			canv_menu.enableContextMenuItems('#delete,#cut,#copy');
 			
-			window.onbeforeunload = function() { 
+			window.onbeforeunload = function() {
+
+				//svgCanvas.save(saveOpts, true);
+
 				// Suppress warning if page is empty 
 				if(undoMgr.getUndoStackSize() === 0) {
 					Editor.show_save_warning = false;
