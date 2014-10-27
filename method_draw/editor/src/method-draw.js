@@ -575,7 +575,8 @@ const bgImages = {
 			};
 			
 			// called when we've selected a different element
-			var selectedChanged = function(window,elems) {			  
+			var selectedChanged = function(window,elems) {	
+//				console.log('selectedChanged');		  
 				var mode = svgCanvas.getMode();
 				if(mode === "select") setSelectMode();
 				if (mode === "pathedit") return updateContextPanel();
@@ -2522,7 +2523,7 @@ const bgImages = {
 			}
 
 			var clickSelectBgImage = function () {
-				console.log('clickSelectBgImage');
+//				console.log('clickSelectBgImage');
 				importBgImage($(this).data('key'));
 			}
 		

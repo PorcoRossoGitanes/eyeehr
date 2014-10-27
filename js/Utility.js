@@ -119,7 +119,7 @@ Utility.CreateCollection = function (i_collectionPath)
 	    async: false, // 雨期通信に設定する
 	    cache: false,
 	    dataType:"xml",
-	    data: "parent-collection=/db&target-collection=/finc",
+	    data: "parent-collection=/db&target-collection=func",
 	    error: function(){
 	        alert('コレクションの作成に失敗しました。');
 	    },

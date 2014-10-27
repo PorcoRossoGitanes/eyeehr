@@ -2193,6 +2193,8 @@ var root_sctm = null;
 // Parameters: 
 // noCall - Optional boolean that when true does not call the "selected" handler
 var clearSelection = this.clearSelection = function(noCall) {
+	//console.log('clearSelection');
+	//console.log(selectedElements);
 	if (selectedElements[0] != null) {
 		var len = selectedElements.length;
 		for (var i = 0; i < len; ++i) {
@@ -2216,6 +2218,7 @@ var clearSelection = this.clearSelection = function(noCall) {
 // elemsToAdd - an array of DOM elements to add to the selection
 // showGrips - a boolean flag indicating whether the resize grips should be shown
 var addToSelection = this.addToSelection = function(elemsToAdd, showGrips) {
+	console.log('addToSelection');
 	if (elemsToAdd.length == 0) { return; }
 	// find the first null in our selectedElements array
 	var j = 0;
@@ -2595,7 +2598,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 			case "fhrect":
 			case "fhpath":
 				started = true;
-				d_attr = real_x + "," + real_y + " ";
+				d_attr = real_x + "," + real_y  + " ";
 				var stroke_w = cur_shape.stroke_width == 0?1:cur_shape.stroke_width;
 				addSvgElementFromJson({
 					"element": "polyline",
@@ -3420,6 +3423,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				if (keep) {
 					element = pathActions.smoothPolylineIntoPath(element);
 				}
+				//canvas.clearSelection();
 				break;
 			case "fhhatch":
 				// Check that the path contains at least 2 points; a degenerate one-point path
@@ -3436,6 +3440,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				if (keep) {
 					element = pathActions.smoothPolylineIntoPath(element);
 				}
+				//canvas.clearSelection();
 				break;
 			case "line":
 				var attrs = $(element).attr(["x1", "x2", "y1", "y2"]);
@@ -3611,7 +3616,9 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 					pathActions.toEditMode(element);
 				} else {
 					if(curConfig.selectNew) {
-						selectOnly([element], true);
+						if(current_mode == "fhpath"){} 
+						else if (current_mode == "fhpatch"){} 
+						else { selectOnly([element], true);}
 					}
 				}
 				// we create the insert command that is stored on the stack
