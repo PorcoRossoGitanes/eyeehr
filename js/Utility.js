@@ -114,6 +114,7 @@ Utility.GetExtention = function (url) {
 
 Utility.CreateCollection = function (i_collectionPath)
 {
+	var term = line.split( ',' );
 	$.ajax({
 	    url : "/exist/apps/eyeehr/modules/create-collection.xql", // コレクション毎取得する場合
 	    async: false, // 雨期通信に設定する

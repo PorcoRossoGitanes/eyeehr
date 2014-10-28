@@ -5739,8 +5739,8 @@ this.save = function(opts, closeWindow) {
 	    var noteItemId = result[KeyNoteItemId]
 
 	    // 親画面（カルテ側）に値を渡す？アップロードする？
-		console.log(window.opener.$('#' + noteItemId));
-		window.opener.$('#' + noteItemId + ' '+ 'remarks').text('aaa');
+	    $noteItem = window.opener.$('#' + noteItemId);
+		window.opener.$('#' + noteItemId + ' '+ '#addImage').text('aaa');
 
 		// 画面を閉じる場合のみ、画面を閉じる処理を実行すr。
 		if (closeWindow) window.close();    	
