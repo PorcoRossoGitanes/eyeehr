@@ -3632,9 +3632,6 @@ const bgImages = {
 			
 			window.onbeforeunload = function() {
 
-				// 画像を保存する。
-				svgCanvas.save(saveOpts);
-
 				// Suppress warning if page is empty 
 				if(undoMgr.getUndoStackSize() === 0) {
 					Editor.show_save_warning = false;
@@ -3645,6 +3642,8 @@ const bgImages = {
 					// Browser already asks question about closing the page
 					return uiStrings.notification.unsavedChanges; 
 				}
+
+				return "保存は完了しましたか？"
 			};
 			
 			Editor.openPrep = function(func) {
