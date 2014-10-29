@@ -15,7 +15,29 @@ function NoteItem() {
   // 画像の保存先を設定する。
   // TODO : 画像の保存先はカルテのフォルダの直下のimgコレクションとする。（後で対応）
   const saveImageTo = '/db/apps/eyeehr/img';
+
+  <!--画像ファイル入力フォーム-->
   var iframetarget = 'uploadImage-' + id;
+  var formAttachFile =     
+    '<form ' + 
+    'id="attachFileForm" ' + 
+    'enctype="multipart/form-data" ' + 
+    'method="post" ' +
+    'action="' + uploadFileToXmlDb + '" ' + 
+    'target="' + iframetarget + '"' + 
+    'style="display:none" ' + 
+    '>' +
+    '<input id="attachFile" type="file" name="file" value="" title="ファイルを添付します。"' + 
+    'style="display:none" accept="image/jpeg, image/png, image/bmp, application/pdf" ' + 
+    '/>' +
+    '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
+    '<input type="input" name="type" value="bin"/>' + 
+    '<input id="attachFileSubmit" type="submit" value="submit" />' +
+    '</form>' +
+    '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
+  <!--画像ファイル入力フォーム-->
+
+
   $jquery = $(
     '<div ' + 
     'id="' + id + '" ' + 
@@ -33,31 +55,14 @@ function NoteItem() {
     '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
     '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
     '</button>' + 
-//---画像　　添付---
-    <!--画像ファイル添付ボタン-->
-    <!--画像ファイル入力フォーム-->
-    '<form ' + 
-    'id="attachImgForm" ' + 
-    'enctype="multipart/form-data" ' + 
-    'method="post" ' +
-    'action="' + uploadFileToXmlDb + '" ' + 
-    'target="' + iframetarget + '"' + 
-    'style="display:none" ' + 
-    '>' +
-    '<input id="attachImg" type="file" name="file" value="" title="ファイルを添付します。"' + 
-    'style="display:none" accept="image/jpeg, image/png, image/bmp, application/pdf" ' + 
-    '/>' +
-    '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
-    '<input type="input" name="type" value="bin"/>' + 
-    '<input id="attachImgSubmit" type="submit" value="submit" />' +
-    '</form>' +
-    '<iframe name="' + iframetarget + '" style="display:none"></iframe>' + //結果表示用iframe
-    <!--画像選択ボタン（可視）-->
-    '<button id="attachImg" ' + 
+//---ファイル　添付-------------
+    formAttachFile + // 隠し埋め込みフォーム
+    <!--ファイル選択ボタン（可視）-->
+    '<button id="attachFile" ' + 
     'class="btn btn-default btn-xs" >' + 
     '<span class="glyphicon glyphicon-upload"></span>' + 
     '</button>' + 
-//---画像　　添付---
+//---ファイル　添付-------------
 //---シェーマ添付---
     <!--シェーマ追加ボタン（可視）-->
     '<button id="addScheme" ' + 
@@ -65,15 +70,11 @@ function NoteItem() {
     '<span class="glyphicon glyphicon-upload"></span>' + 
     '</button>' + 
 //---シェーマ添付---
-    <!--タグ表示用(初期：非表示)-->
-    '<div id="tags" style="display:block"></div>' +
-    <!--入力フォーム-->
-    '<div name="formats"></div>' +
-    <!--ファイル添付用-->
-    '<div name="attachments">' + 
-    '</div>' +
-    <!--文字列入力用--> 
-    '<div name="remarks"></div>' + 
+    '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
+    '<div name="formats"></div>' +                    <!--入力フォーム（定型フォーム）-->
+    '<div name="attachments"></div>' +                <!--ファイル添付用--> 
+    '<div name="scheme"></div>' +                     <!--シェーマ入力用--> 
+    '<div name="remarks"></div>' +                    <!--備考入力用--> 
     '</div>'
   );
 
@@ -82,9 +83,9 @@ function NoteItem() {
   //$jquery.draggable();
 
   /// @summary 画像を追加する。
-  $jquery.find('button#attachImg').click(function () {
+  $jquery.find('button#attachFile').click(function () {
     // 画像選択ボタンを取得する。
-    $inputAttachImage = $(this).parent().find('form > input#attachImg');
+    $inputAttachImage = $(this).parent().find('form > input#attachFile');
     // 画像選択ボタンをクリックする。
     $inputAttachImage.click();
     // 画像選択がなされたら、ファイルパスを取得し、画像を追加する。
@@ -102,8 +103,9 @@ function NoteItem() {
   /// @summary  画像添付（送信）処理が実施され、
   ///           iframeがロードされたとき、
   ///           成功時は画像を表示する。
-  $jquery.find('iframe').load(function(){
-    var file = $(this).parent().find("#attachImg").val();
+  $jquery.find('iframe').load(function()
+  {
+    var file = $(this).parent().find("#attachFile").val();
     var url =  $(this).contents().find('#url').text();
     if (file == "")
     {
@@ -226,7 +228,7 @@ NoteItem.HtmlToXml = function($i_jquery)
 
   //$i_jquery.find('del')
   //$i_jquery.find('min')
-  //$i_jquery.find('attachImg')
+  //$i_jquery.find('attachFile')
   
   // □フォーム部
   $formats = $i_jquery.children('[name=formats]');

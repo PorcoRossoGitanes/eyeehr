@@ -2609,7 +2609,7 @@ const bgImages = {
 					'images': curPrefs.img_save,
 					'round_digits': 6
 				}
-				svgCanvas.save(saveOpts, false);
+				svgCanvas.save(saveOpts);
 			};
 			
 			var saveSourceEditor = function(){
@@ -3632,7 +3632,8 @@ const bgImages = {
 			
 			window.onbeforeunload = function() {
 
-				//svgCanvas.save(saveOpts, true);
+				// 画像を保存する。
+				svgCanvas.save(saveOpts);
 
 				// Suppress warning if page is empty 
 				if(undoMgr.getUndoStackSize() === 0) {

@@ -48,7 +48,7 @@ if (!isset($_SESSION["USERID"])) {
     <script src="js/NoteItemContainerPrescription.js"></script>
     <script src="js/NoteItemContainerOperation.js"></script>
     <script src="js/NoteItemContainerScheme.js"></script>
-    <script src="js/NoteItemContainerMemo .js"></script>
+    <script src="js/NoteItemContainerMemo.js"></script>
 
     
     <script src="js/XmlManager.js"/></script>
@@ -150,5 +150,5 @@ if (!isset($_SESSION["USERID"])) {
       </tr>
     </tr>
   </table>  
-</body>
+  </body>
 </html>

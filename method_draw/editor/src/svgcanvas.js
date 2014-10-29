@@ -3617,7 +3617,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				} else {
 					if(curConfig.selectNew) {
 						if(current_mode == "fhpath"){} 
-						else if (current_mode == "fhpatch"){} 
+						else if (current_mode == "fhhatch"){} 
 						else { selectOnly([element], true);}
 					}
 				}
@@ -5689,8 +5689,7 @@ this.open = function() {
 //
 // Returns: 
 // Nothing
-// @param closeWindow 画面を閉じるとき true 画面を開いたままにするとき false
-this.save = function(opts, closeWindow) {
+this.save = function(opts) {
 	// remove the selected outline before serializing
 	clearSelection();
 	// Update save options if provided
@@ -5723,29 +5722,63 @@ this.save = function(opts, closeWindow) {
         }
     }
 
-    if (result.length <= 0)
+	// GET値がある場合は、サーバーにファイルを保存し、URLを返却する。
+    const KeyCommand = 'command';	// コマンド（新規追加か編集か）
+    const KeyNoteItemId = 'id';		// NoteItem ID
+
+    // コマンド値・NoteItemIDを取得する。
+    var command = result[KeyCommand];
+    var noteItemId = result[KeyNoteItemId]
+    if (command === undefined && noteItemId === undefined)
     {
     	// GET値がない場合は、デフォルトの処理を行う
 		call("saved", str);
     }
     else 
     {
-    	// GET値がある場合は、サーバーにファイルを保存し、URLを返却する。
-	    const KeyCommand = 'command';	// コマンド（新規追加か編集か）
-	    const KeyNoteItemId = 'id';		// NoteItem ID
+    	// 画像をXMLDB上に保存する。
+	    const Url = '/exist/apps/eyeehr/modules/upload.xq';
+		$.ajax({
+		  	async 	: false, 	// 同期通信
+		  	url 	: Url,
+		  	type 	:'POST',
+		  	cache 	: false,
+		  	data 	: 
+			{ 
+				type       : 'xml', 
+				collection : '/db/test',
+				filename   : 'uploadtest.svg',
+				xml        : str
+			},
+			success: function(data) {
+	
+				// 画像をDB保存成功時は、カルテに戻る。
+				console.log($(data));
+				var url = $(data).find('#url').text();
 
-	    // コマンド値・NoteItemIDを取得する。
-	    var command = result[KeyCommand];
-	    var noteItemId = result[KeyNoteItemId]
+				// 親画面にシェーマ画像のタグを返却する。
+			 	$noteItem = window.opener.$('#' + noteItemId);
+			 	$scheme = $noteItem.children("[name='scheme']");
+			 	//console.log($scheme);
 
-	    // 親画面（カルテ側）に値を渡す？アップロードする？
-	    $noteItem = window.opener.$('#' + noteItemId);
-		window.opener.$('#' + noteItemId + ' '+ '#addImage').text('aaa');
-
-		// 画面を閉じる場合のみ、画面を閉じる処理を実行すr。
-		if (closeWindow) window.close();    	
-    }
-
+				var exist = ($scheme.children("object[data='" + url + "']").length > 0);
+			 	if (exist) $scheme.children("object[data='" + url + "']").attr('src', url);
+		 		else $scheme.append('<object type="image/svg+xml" data="' + url + '" height=”240px” width=”230px”></object>');
+         	},
+	      	error: function(XMLHttpRequest, textStatus, errorThrown) 
+	      	{
+	      		alert('画像の保存に失敗しました。: ' + textStatus);
+            	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
+            	// $("#textStatus").html("textStatus : " + textStatus);
+            	// $("#errorThrown").html("errorThrown : " + errorThrown.message);
+         	},
+			complete : function(data) 
+			{
+				console.log('画像をXMLDBに保存する処理が完了した。');
+			    //alert("finishi");
+			}
+		});
+	}
 };
 
 // Function: rasterExport
