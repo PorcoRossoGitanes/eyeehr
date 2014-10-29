@@ -5753,17 +5753,14 @@ this.save = function(opts) {
 			success: function(data) {
 	
 				// 画像をDB保存成功時は、カルテに戻る。
-				console.log($(data));
 				var url = $(data).find('#url').text();
 
 				// 親画面にシェーマ画像のタグを返却する。
 			 	$noteItem = window.opener.$('#' + noteItemId);
 			 	$scheme = $noteItem.children("[name='scheme']");
-			 	//console.log($scheme);
 
-				var exist = ($scheme.children("object[data='" + url + "']").length > 0);
-			 	if (exist) $scheme.children("object[data='" + url + "']").attr('src', url);
-		 		else $scheme.append('<object type="image/svg+xml" data="' + url + '" height=”240px” width=”230px”></object>');
+			 	if ($scheme.children("object[data='" + url + "']").length > 0) { $scheme.children("object[data='" + url + "']").remove(); }
+		 		$scheme.append('<object type="image/svg+xml" ' + 'data="' + url + '" ' + 'style="width:100%" ></object>');		 			
          	},
 	      	error: function(XMLHttpRequest, textStatus, errorThrown) 
 	      	{
