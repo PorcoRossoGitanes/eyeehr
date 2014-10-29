@@ -27,10 +27,22 @@ if (!isset($_SESSION["USERID"])) {
     <!--script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script--><!--nicEdit-->
     <script src="js/nicEdit/nicEdit.js" type="text/javascript"></script>
     <!--自作JS-->
-    <script src="js/Utility.js"></script>    
+    <script src="js/Utility.js"></script>   
+     
     <script src="js/Note.js"></script>
+
+
     <script src="js/NoteItem.js"></script>
+    <script src="js/NoteItemComplaint.js"></script>
+    <script src="js/NoteItemDisease.js"></script>
+    <script src="js/NoteItemMedicalCheck.js"></script>
+    <script src="js/NoteItemPrescription.js"></script>
+    <script src="js/NoteItemOperation.js"></script>
+    <script src="js/NoteItemScheme.js"></script>
+    <script src="js/NoteItemMemo.js"></script>
+    
     <script src="js/NoteItemContainer.js"></script>
+    
     <script src="js/XmlManager.js"/></script>
     <script src="js/sample.js"></script>
     <!--自作JS-->
