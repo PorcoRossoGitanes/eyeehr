@@ -42,6 +42,14 @@ if (!isset($_SESSION["USERID"])) {
     <script src="js/NoteItemMemo.js"></script>
     
     <script src="js/NoteItemContainer.js"></script>
+    <script src="js/NoteItemContainerComplaint.js"></script>
+    <script src="js/NoteItemContainerDisease.js"></script>
+    <script src="js/NoteItemContainerMedicalCheck.js"></script>
+    <script src="js/NoteItemContainerPrescription.js"></script>
+    <script src="js/NoteItemContainerOperation.js"></script>
+    <script src="js/NoteItemContainerScheme.js"></script>
+    <script src="js/NoteItemContainerMemo .js"></script>
+
     
     <script src="js/XmlManager.js"/></script>
     <script src="js/sample.js"></script>
