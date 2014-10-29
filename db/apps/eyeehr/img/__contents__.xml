@@ -9,7 +9,7 @@
     <resource type="BinaryResource" name="fa_melanoma_Tumor.jpg" owner="admin" group="dba" mode="644" created="2014-10-26T09:07:43+09:00" modified="2014-10-26T09:07:43+09:00" filename="fa_melanoma_Tumor.jpg" mimetype="image/jpeg">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="fa_tumorslesions_CHRPE_ResMax.jpg" owner="admin" group="dba" mode="644" created="2014-10-27T02:39:30+09:00" modified="2014-10-27T02:39:30+09:00" filename="fa_tumorslesions_CHRPE_ResMax.jpg" mimetype="image/jpeg">
+    <resource type="BinaryResource" name="fa_tumorslesions_CHRPE_ResMax.jpg" owner="admin" group="dba" mode="644" created="2014-10-27T02:39:30+09:00" modified="2014-10-29T01:56:26+09:00" filename="fa_tumorslesions_CHRPE_ResMax.jpg" mimetype="image/jpeg">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="1411112202_paint_bucket_red.png" owner="admin" group="dba" mode="644" created="2014-10-23T08:34:27+09:00" modified="2014-10-23T08:34:27+09:00" filename="1411112202_paint_bucket_red.png" mimetype="image/png">

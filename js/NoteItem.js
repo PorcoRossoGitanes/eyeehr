@@ -48,6 +48,7 @@ function NoteItem() {
     'style="display:none" accept="image/jpeg, image/png, image/bmp, application/pdf" ' + 
     '/>' +
     '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
+    '<input type="input" name="type" value="bin"/>' + 
     '<input id="attachImgSubmit" type="submit" value="submit" />' +
     '</form>' +
     '<iframe name="' + iframetarget + '" style="display:none"></iframe>' + //結果表示用iframe

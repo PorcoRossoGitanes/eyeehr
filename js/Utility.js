@@ -112,22 +112,37 @@ Utility.GetExtention = function (url) {
     return ext;
 }
 
+/// @summary コレクションを作成する。
+/// @param  i_collectionPath コレクションパス
 Utility.CreateCollection = function (i_collectionPath)
 {
-	var term = line.split( ',' );
-	$.ajax({
-	    url : "/exist/apps/eyeehr/modules/create-collection.xql", // コレクション毎取得する場合
-	    async: false, // 雨期通信に設定する
-	    cache: false,
-	    dataType:"xml",
-	    data: "parent-collection=/db&target-collection=func",
-	    error: function(){
-	        alert('コレクションの作成に失敗しました。');
-	    },
-	    success: function(xml){
-	        console.log(xml);
-	    }
-	});
+	var ret = false;
+	const SCRIPT = "/exist/apps/eyeehr/modules/create-collection.xql";
+	console.log('Utility.CreateCollection');
+	
+	var lastIndexOfSlash = i_collectionPath.lastIndexOf('/');
+	
+	if (lastIndexOfSlash >= 0)
+	{
+		var senddata = 
+			"parent-collection=" + i_collectionPath.substring(0, lastIndexOfSlash) + 
+			"&target-collection=" + i_collectionPath.substr(lastIndexOfSlash + 1);
+		$.ajax({
+		    url : SCRIPT, // コレクション毎取得する場合
+		    async: false, // 同期通信に設定する
+		    cache: false,
+		    dataType:"xml",
+		    data: senddata,
+		    error: function(){
+		        alert('コレクションの作成に失敗しました。');
+		    },
+		    success: function(xml){
+		        console.log(xml);
+		        ret = true;
+		    }
+		});
+	}
 
+	return ret;
 }
 

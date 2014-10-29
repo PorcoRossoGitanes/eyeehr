@@ -1,14 +1,13 @@
 xquery version "3.0";
 
 (: 
-	@summary 
+    @summary 
 	@prama GET/POST [parent-collection] = 追加対象のコレクションの親のコレクション（末尾スラッシュなし）
 	@param GET/POST [target-collection] = 追加対象のコレクション（末尾スラッシュなし）
 	@return 
     	成功時、コレクションパスが返却される。
     	失敗時、空文字列が返却される
 :)
-
 
 (:追加対象のコレクションの親のコレクションを取得する:)
 let $parent-collection := 
@@ -32,17 +31,16 @@ let $collection-parts := insert-before(
 :)
 let $cnt := fn:count($collection-parts)
 
-for $index in (2 to $cnt - 1) (: $index = 1 の場合、$part = ''（先頭部のため）:)
-
-	let $part := $collection-parts[$index + 1]
-
+for $index in (2 to $cnt - 1) (: $index = 1 の場合、$new-collection = ''（先頭部のため）:)
+	let $new-collection := $collection-parts[$index + 1]
 	let $current-parent-collection := string-join( $collection-parts[position() <= $index], '/')
-
-	let $result := xmldb:create-collection($current-parent-collection, $part)
+	let $login := xmldb:login($current-parent-collection, 'admin', 'zaq12wsx')
+	let $result := xmldb:create-collection($current-parent-collection, $new-collection)
 return 
+	if ($index = $cnt - 1) then 
 <html>
-   <!--div id='parent-collection'>{$parent-collection}</div--> 
-   <div id='current-parent-collection'>{$current-parent-collection}</div> 
-   <div id='part'>{$part}</div> 
    <div id='result'>{$result}</div> 
 </html>
+	else 
+	(
+	)

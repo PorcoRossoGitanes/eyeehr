@@ -57,7 +57,7 @@ if (!isset($_SESSION["USERID"])) {
     2014/08/31 12:34 
     <label>医師</label>&nbsp; 00001 渡邉花子
     <button id="loadStaff">スタッフ読込</button>
-    <button id="createCollection" onclick="Utility.CreateCollection('aaa')">コレクション作成</button>
+    <button id="createCollection" onclick="Utility.CreateCollection('/db/ccc/aaa/ccc')">コレクション作成</button>
 
     <!-- ログアウト -->
     <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'">
