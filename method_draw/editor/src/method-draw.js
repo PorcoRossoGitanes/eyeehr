@@ -29,7 +29,7 @@
 
 			// 背景メニューを追加する。
 			$('#bgimage_menu').children().each(function(){
-				console.log($(this));
+				//console.log($(this));
 				var key = $(this).data('key');
 				if (key <= bgImages.length)
 				{
@@ -3831,7 +3831,7 @@
         workarea[0].addEventListener('dragover', onDragOver, false);
         workarea[0].addEventListener('dragleave', onDragLeave, false);
         workarea[0].addEventListener('drop', import_image, false);
-			  
+
 				var open = $('<input type="file">').change(function() {
 					var f = this;
 					Editor.openPrep(function(ok) {
@@ -3848,6 +3848,56 @@
 					});
 				});
 				$("#tool_open").show().prepend(open);
+
+				///@summary サーバー上の特定のファイルを読み込む。
+				///@param   i_url URL 
+				var openServerFile = function(i_url) {
+					if (i_url !== undefined)
+					{
+						alert(i_url);
+						$.ajax({
+							url : i_url,
+							type : "get",
+							contentType : "text/xml",
+							success : function(data){
+								$svg = $(data.firstChild);
+								$('<parent/>').append($svg)
+								var svg = $svg.parent().html();
+								//alert(data);
+								loadSvgString(svg);
+								updateCanvas();
+							}
+						});						
+					}
+				};
+				// GET値からコマンドとNoteItemIdを取得する。
+				var result = {};
+			    if( 1 < window.location.search.length )
+			    {
+			        // 最初の1文字 (?記号) を除いた文字列を取得する
+			        var query = window.location.search.substring( 1 );
+
+			        // クエリの区切り記号 (&) で文字列を配列に分割する
+			        var parameters = query.split( '&' );
+
+			        for( var i = 0; i < parameters.length; i++ )
+			        {
+			            // パラメータ名とパラメータ値に分割する
+			            var element = parameters[ i ].split( '=' );
+			            var paramName = decodeURIComponent( element[ 0 ] );
+			            var paramValue = decodeURIComponent( element[ 1 ] );
+
+			            // パラメータ名をキーとして連想配列に追加する
+			            result[ paramName ] = paramValue;
+			        }
+			    }
+		        const KeyCommand = 'command';		// コマンド(add,edit)
+		        const CommandEdit = 'edit';
+		        const KeyUrl = 'url';				// 画像URL
+				$("#tool_open_server").click(function(){
+					// 編集時のみ画像を読み込む。
+					if(result[KeyCommand]) openServerFile(result[KeyUrl]);
+				});
 				
 				var img_import = $('<input type="file">').change(import_image);
 				$("#tool_import").show().prepend(img_import);

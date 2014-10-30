@@ -5734,6 +5734,7 @@ this.save = function(opts) {
     // コマンド値・NoteItemIDを取得する。
     var command = result[KeyCommand];
     var noteItemId = result[KeyNoteItemId]
+
     if (command === undefined && noteItemId === undefined)
     {
     	// GET値がない場合は、デフォルトの処理を行う
@@ -5772,14 +5773,17 @@ this.save = function(opts) {
 			 		// シェーマ領域を取得する。
 				 	$scheme = $noteItem.children("[name='scheme']");
 				 	// 元画像を取得し、一度削除、再度追加する。
-				 	$imgs = $scheme.children("img[src='" + url + "']");
+				 	$imgs = $scheme.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
-				 	$scheme.append($('<img src=' + url + ' width="100%"/>'));
+				 	$img = $( '<img src=' + url + '?' + (new Date().getTime()) + ' width="100%"/>' );
+				 	$scheme.append($img);
 			 	}
          	},
 	      	error: function(XMLHttpRequest, textStatus, errorThrown) 
 	      	{
-	      		alert('画像の保存に失敗しました。: ' + textStatus);
+	      		alert('画像の保存に失敗しました。: ' + 
+	      			XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message
+	      		);
             	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
             	// $("#textStatus").html("textStatus : " + textStatus);
             	// $("#errorThrown").html("errorThrown : " + errorThrown.message);
