@@ -165,8 +165,13 @@ for (var name in patternColors) {
 
 // This is a container for the document being edited, not the document itself.
 var svg =  ''
+var width = dimensions[0], height = dimensions[1]; x = dimensions[0]; y = dimensions[1];
+// console.log(width);console.log(height);
+// console.log(x); console.log(y);
 svg += '<svg id="svgroot" xmlns="' + svgns + '" xlinkns="' + xlinkns + '" ' +
-		'width="' + dimensions[0] + '" height="' + dimensions[1] + '" x="' + dimensions[0] + '" y="' + dimensions[1] + '" overflow="visible">' +
+		'width="' + width + '" height="' + height + '" x="' + x + '" y="' + y + '" ' + 
+		//'viewBox="0 0 ' + width + ' ' + height + '" ' + 
+		'overflow="visible">' +
 		'<defs>';
 svg	+= customepatterns;		
 svg += '<filter id="canvashadow" filterUnits="objectBoundingBox">' +
@@ -5757,10 +5762,20 @@ this.save = function(opts) {
 
 				// 親画面にシェーマ画像のタグを返却する。
 			 	$noteItem = window.opener.$('#' + noteItemId);
-			 	$scheme = $noteItem.children("[name='scheme']");
-
-			 	if ($scheme.children("object[data='" + url + "']").length > 0) { $scheme.children("object[data='" + url + "']").remove(); }
-		 		$scheme.append('<object type="image/svg+xml" ' + 'data="' + url + '" ' + 'style="width:100%" ></object>');		 			
+			 	if($noteItem === undefined)
+			 	{
+			 		// 呼出元(NoteItem)が存在しなくなっている場合
+			 		alert('呼出元が削除された可能性があります。')
+			 	}
+			 	else 
+			 	{
+			 		// シェーマ領域を取得する。
+				 	$scheme = $noteItem.children("[name='scheme']");
+				 	// 元画像を取得し、一度削除、再度追加する。
+				 	$imgs = $scheme.children("img[src='" + url + "']");
+				 	if ($imgs.length > 0) { $imgs.remove(); } 
+				 	$scheme.append($('<img src=' + url + ' width="100%"/>'));
+			 	}
          	},
 	      	error: function(XMLHttpRequest, textStatus, errorThrown) 
 	      	{
