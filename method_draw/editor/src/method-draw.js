@@ -26,12 +26,24 @@
 		UrlBgImages,
 		function (json) {
 			bgImages = json;
+
 			// 背景メニューを追加する。
-			for (var index = 0; index < bgImages.length; index++){
-				var key = bgImages[index].key, title = bgImages[index].title, data = bgImages[index].data;
-				var menu = '<div class="menu_item" id="tool_bg_color_' + key + '" data-key="' + key + '">' + title + '</div>';
-				$('#bgimage_menu').append(menu);
-			} 
+			$('#bgimage_menu').children().each(function(){
+				console.log($(this));
+				var key = $(this).data('key');
+				if (key <= bgImages.length)
+				{
+					var index = key - 1;
+					var key = bgImages[index].key, title = bgImages[index].title, data = bgImages[index].data;
+					//$menu.attr('id', 'tool_bg_color_' + key);
+					//$menu.data('key', key);
+					$(this).text(title);
+				}
+				else 
+				{
+					$(this).css('display', 'none');
+				}
+			});
 		}
 	).error(function(jqXHR, textStatus, errorThrown) {
 	    alert("背景画像の読み込みに失敗した。 " + textStatus);
@@ -3349,8 +3361,26 @@
 					
 					// 背景画像を追加する。
 					//{sel:'#tool_bg_color_bucket', fn: clickSelectBgImage, evt: 'click'},				
-					{sel:'#tool_bg_color_mydriasis', fn: clickSelectBgImage, evt: 'click'},				
-					{sel:'#tool_bg_color_eyes', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_1', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_2', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_3', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_4', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_5', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_6', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_7', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_8', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_9', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_10', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_11', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_12', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_13', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_14', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_15', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_16', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_17', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_18', fn: clickSelectBgImage, evt: 'click'},				
+					{sel:'#tool_bg_color_19', fn: clickSelectBgImage, evt: 'click'},					
+					{sel:'#tool_bg_color_20', fn: clickSelectBgImage, evt: 'click'},				
 					// Shortcuts not associated with buttons
 					
 					{key: 'ctrl+left', fn: function(){rotateSelected(0,1)}},
@@ -3766,6 +3796,7 @@
 					}
 				}
 				svgCanvas.selectOnly([newImage]);
+				svgCanvas.clearSelection();
 				svgCanvas.alignSelectedElements("m", "page");
 	  			svgCanvas.alignSelectedElements("c", "page");
 				updateContextPanel();
