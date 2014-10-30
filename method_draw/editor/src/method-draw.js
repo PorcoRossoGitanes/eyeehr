@@ -26,9 +26,12 @@
 		UrlBgImages,
 		function (json) {
 			bgImages = json;
-			// for (var index = 0; index < bgImages.length; index++){
-			// 	console.log(bgImages[index].key);
-			// } 
+			// 背景メニューを追加する。
+			for (var index = 0; index < bgImages.length; index++){
+				var key = bgImages[index].key, title = bgImages[index].title, data = bgImages[index].data;
+				var menu = '<div class="menu_item" id="tool_bg_color_' + key + '" data-key="' + key + '">' + title + '</div>';
+				$('#bgimage_menu').append(menu);
+			} 
 		}
 	).error(function(jqXHR, textStatus, errorThrown) {
 	    alert("背景画像の読み込みに失敗した。 " + textStatus);
