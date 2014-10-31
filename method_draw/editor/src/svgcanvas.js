@@ -3623,6 +3623,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 					if(curConfig.selectNew) {
 						if(current_mode == "fhpath"){} 
 						else if (current_mode == "fhhatch"){} 
+						else if (current_mode == "line"){} 
 						else { selectOnly([element], true);}
 					}
 				}
@@ -5775,7 +5776,7 @@ this.save = function(opts) {
 				 	// 元画像を取得し、一度削除、再度追加する。
 				 	$imgs = $scheme.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
-				 	$img = $( '<img src=' + url + '?' + (new Date().getTime()) + ' width="100%"/>' );
+				 	$img = $( '<div><img src=' + url + '?' + (new Date().getTime()) + ' width="100%"/></>' );
 				 	$scheme.append($img);
 			 	}
          	},
