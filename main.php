@@ -52,7 +52,7 @@ if (!isset($_SESSION["USERID"])) {
 
     
     <script src="js/XmlManager.js"/></script>
-    <script src="js/sample.js"></script>
+    <script src="js/Main.js"></script>
     <!--自作JS-->
     <!--自作CSS-->    
     <link href="css/style.css" rel="stylesheet" type="text/css">
