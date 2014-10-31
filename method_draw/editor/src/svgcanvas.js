@@ -3623,7 +3623,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 					if(curConfig.selectNew) {
 						if(current_mode == "fhpath"){} 
 						else if (current_mode == "fhhatch"){} 
-						else if (current_mode == "line"){} 
+						else if (current_mode == "line"){$('#tool_text').click();} 
 						else if (current_mode == "text"){} 
 						else { selectOnly([element], true);}
 					}
@@ -5783,7 +5783,7 @@ this.save = function(opts) {
 				 	// 元画像を取得し、一度削除、再度追加する。
 				 	$imgs = $scheme.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
-				 	$img = $( '<img src=' + url + '?' + (new Date().getTime()) + '" width="100%"/>' );
+				 	$img = $( '<img src="' + url + '?' + (new Date().getTime()) + '" width="100%"/>' );
 				 	$scheme.append($img);
 
 				 	// 完了メッセージを表示する。
@@ -7252,6 +7252,7 @@ this.setMode = function(name) {
 	$("#workarea").attr("class", name);
 	cur_properties = (selectedElements[0] && selectedElements[0].nodeName == 'text') ? cur_text : cur_shape;
 	current_mode = name;
+	if(name != 'select') svgCanvas.clearSelection();
 };
 
 // Group: Element Styling
