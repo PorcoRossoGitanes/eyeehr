@@ -152,7 +152,7 @@ Utility.CreateCollection = function (i_collectionPath)
 ///  （使用不可）svg	image/svg
 ///  （使用不可）bmp	image/bmp?
 /// @example
-///	onvertImgToBase64('http://goo.gl/AOxHAL', function(base64Img){
+///	onvertImgToBase64('http://goo.gl/AOxHAL', 'image/png', function(base64Img){
 ///		console.log('IMAGE:',base64Img);
 ///	})
 Utility.ConvertImgToBase64 = function (url, outputFormat, callback){
