@@ -1,7 +1,7 @@
 xquery version "3.0";
 
 (:
-	@summary ファイルを指定のコレクションに保存する
+    @summary ファイルを指定のコレクションに保存する
 	@prama GET/POST [type] = 	bin = file inputからなどバイナリデーターで保存する
 								xml = XMLデーターを保存する
 	@param GET/POST [collection] = 追加対象のコレクション（末尾スラッシュなし）
