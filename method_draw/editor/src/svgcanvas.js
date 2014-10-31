@@ -3624,6 +3624,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 						if(current_mode == "fhpath"){} 
 						else if (current_mode == "fhhatch"){} 
 						else if (current_mode == "line"){} 
+						else if (current_mode == "text"){} 
 						else { selectOnly([element], true);}
 					}
 				}
