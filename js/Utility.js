@@ -142,3 +142,33 @@ Utility.CreateCollection = function (i_collectionPath)
 	}
 }
 
+/// @summary 画像からBase64に変換する
+/// @param  {String}   URL
+/// @param  {String}   [outputFormat='image/png'] 出力フォーマット
+/// @param  {Function} callback　コールバック関数
+/// @remarks 画像形式
+///  PNG 	image/png
+///  JPEG	image/jpeg
+///  （使用不可）svg	image/svg
+///  （使用不可）bmp	image/bmp?
+/// @example
+///	onvertImgToBase64('http://goo.gl/AOxHAL', function(base64Img){
+///		console.log('IMAGE:',base64Img);
+///	})
+Utility.ConvertImgToBase64 = function (url, outputFormat, callback){
+	var canvas = document.createElement('CANVAS');
+	var ctx = canvas.getContext('2d');
+	var img = new Image;
+	img.crossOrigin = 'Anonymous';
+	img.onload = function(){
+		canvas.height = img.height;
+		canvas.width = img.width;
+	  	ctx.drawImage(img,0,0);
+	  	var dataURL = canvas.toDataURL(outputFormat);
+	  	callback.call(this, dataURL);
+        // Clean up
+	  	canvas = null; 
+	};
+	img.src = url;
+}
+
