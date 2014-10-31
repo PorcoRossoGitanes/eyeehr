@@ -2502,6 +2502,11 @@
 					svgCanvas.ungroupSelectedElement();
 				}
 			};
+
+			var clickQuit = function(){
+				//alert('clickQuit');
+				window.close();
+			};
 			
 			var clickClone = function(){
 			  flash($('#edit_menu'));
@@ -3129,10 +3134,11 @@
 				  $("#tool_fill").removeClass('active');
 				}
 			});
-			
-			$('#tool_canvas').on("click touchstart", function(){
-				  colorPicker($('#canvas_color'));
-			});
+
+			// 背景色は白のままでよい。			
+			// $('#tool_canvas').on("click touchstart", function(){
+			// 	  colorPicker($('#canvas_color'));
+			// });
 			
 			$('#tool_stroke').on("touchstart", function(){
 			    $('#tool_stroke').addClass('active');
@@ -3347,6 +3353,8 @@
 					{sel:'#tool_group', fn: clickGroup, evt: 'click', key: [modKey + 'G', true]},
 					{sel:'#tool_ungroup', fn: clickGroup, evt: 'click', key: modKey + 'shift+G'},
 					{sel:'#tool_unlink_use', fn: clickGroup, evt: 'click'},
+					{sel:'#tool_quit', fn: clickQuit, evt: 'mouseup', key: [modKey + 'Q', true]},
+					{sel:'#tool_save_quit', fn: function() { editingsource?saveSourceEditor():clickSave();clickQuit();}, evt: 'mouseup', key: ['shift+W', true]},
 					{sel:'[id^=tool_align]', fn: clickAlign, evt: 'click'},
 					{sel:'#tool_undo', fn: clickUndo, evt: 'click', key: modKey + 'z'},
 					{sel:'#tool_redo', fn: clickRedo, evt: 'click', key: ['y', true]},
@@ -3685,8 +3693,6 @@
 					// Browser already asks question about closing the page
 					return uiStrings.notification.unsavedChanges; 
 				}
-
-				return "保存は完了しましたか？"
 			};
 			
 			Editor.openPrep = function(func) {

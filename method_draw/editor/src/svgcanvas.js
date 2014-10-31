@@ -5761,15 +5761,15 @@ this.save = function(opts) {
 				// 画像をDB保存成功時は、カルテに戻る。
 				var url = $(data).find('#url').text();
 
-				// 親画面にシェーマ画像のタグを返却する。
-			 	$noteItem = window.opener.$('#' + noteItemId);
-			 	if($noteItem === undefined)
+			 	if(window.opener == null)
 			 	{
-			 		// 呼出元(NoteItem)が存在しなくなっている場合
-			 		alert('呼出元が削除された可能性があります。')
+			 		// 呼出元(NoteItem)が存在しなくなっている場合はエラーメッセージを表示する
+			 		alert('呼出元が削除された可能性があります。保存を完了できません。アプリケーションを終了し、もう一度やり直してください。');
 			 	}
 			 	else 
 			 	{
+					// 親画面にシェーマ画像のタグを返却する。
+				 	$noteItem = window.opener.$('#' + noteItemId);
 			 		// シェーマ領域を取得する。
 				 	$scheme = $noteItem.children("[name='scheme']");
 				 	// 元画像を取得し、一度削除、再度追加する。
