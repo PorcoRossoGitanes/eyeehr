@@ -8,6 +8,8 @@ function NoteItemScheme()
   // クラス属性を追加した。
   $jquery.attr('name', 'NoteItemScheme');
   $jquery.addClass('NoteItemScheme');
+  // シェーマの場合のみ、「シェーマ」ボタンを表示する。
+  $jquery.children('#addScheme').css('visibility', 'inherit');
   //console.log($jquery);
 
   //--JQuery オブジェクト操作---//

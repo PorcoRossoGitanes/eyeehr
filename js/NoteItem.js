@@ -16,7 +16,7 @@ function NoteItem() {
   // TODO : 画像の保存先はカルテのフォルダの直下のimgコレクションとする。（後で対応）
   const saveImageTo = '/db/apps/eyeehr/img';
 
-  <!--画像ファイル入力フォーム-->
+  /*** 画像ファイル入力フォーム ***/
   var iframetarget = 'uploadImage-' + id;
   var formAttachFile =     
     '<form ' + 
@@ -35,37 +35,29 @@ function NoteItem() {
     '<input id="attachFileSubmit" type="submit" value="submit" />' +
     '</form>' +
     '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
-  <!--画像ファイル入力フォーム-->
-
+  /*** 画像ファイル入力フォーム ***/
 
   $jquery = $(
     '<div ' + 
     'id="' + id + '" ' + 
     'class="' + 'NoteItem' + '" ' + 
     '>' + 
-    <!--削除ボタン-->
-    '<button id="del" class="btn btn-default btn-xs">' + 
-    '<span class="glyphicon glyphicon-remove"></span>' +
-    '</button>' + 
-    <!--最小化ボタン-->
-    '<button id="min" class="btn btn-default btn-xs">' + 
-    '<span class="glyphicon glyphicon-minus"></span>' + 
-    '</button>' + 
-    <!--☆ボタン-->
+    /*** 削除ボタン ***/
+    '<button id="del" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>' + 
+    /*** 最小化ボタン ***/
+    '<button id="min" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>' + 
+    /*** ☆ボタン ***/
     // '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
     // '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
     // '</button>' + 
 //---ファイル　添付-------------
     formAttachFile + // 隠し埋め込みフォーム
     <!--ファイル選択ボタン（可視）-->
-    '<button id="attachFile" ' + 
-    'class="btn btn-default btn-xs" >' + 
-    '<span class="glyphicon glyphicon-upload"></span>' + 
-    '</button>' + 
+    '<button id="attachFile" class="btn btn-default btn-xs" ><span class="glyphicon glyphicon-upload"></span></button>' + 
 //---ファイル　添付-------------
 //---シェーマ添付---
     <!--シェーマ追加ボタン（可視）-->
-    '<button id="addScheme" class="btn btn-default btn-xs" >シェーマ</button>' + 
+    '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:hidden">シェーマ</button>' + 
 //---シェーマ添付---
     '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
     '<div name="formats"></div>' +                    <!--入力フォーム（定型フォーム）-->
