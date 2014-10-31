@@ -1,0 +1,27 @@
+<html>
+	<body>
+    	<script src="js/jquery-2.1.1.js"></script>
+    	<script src="js/Utility.js"/></script>
+		<script>
+		$(document).ready(function(){
+			$('input').click(function(){
+				//alert('clicked');
+				var file = $(this).val();
+				var format = $(this).data('format');
+				Utility.ConvertImgToBase64(
+					file, 
+					format,
+					(function(base64Img){
+						//console.log('IMAGE:',base64Img);
+						$('textarea').text(base64Img);
+					}))//,
+			});			
+		});
+		</script>
+		<input type="button" value="img/quarterfoil.png" data-format="image/png" />
+		<input type="button" value="img/img_1.jpeg" data-format="image/jpeg"/>
+		<input type="button" value="img/uploadtest.svg" data-format="image/svg"/>
+		<input type="button" value="img/bitmap.bmp" data-format="image/bmp"/>
+		<textarea></textarea>
+	</body>
+</html>

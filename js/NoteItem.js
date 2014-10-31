@@ -10,7 +10,7 @@ function NoteItem() {
   var id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
   // 付箋（JQuery オブジェクト）を生成する 。
-  const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/upload.xq";
+  const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/uploadFileBin.xq";
   
   // 画像の保存先を設定する。
   // TODO : 画像の保存先はカルテのフォルダの直下のimgコレクションとする。（後で対応）
@@ -27,14 +27,17 @@ function NoteItem() {
     'target="' + iframetarget + '"' + 
     'style="display:none" ' + 
     '>' +
-    '<input id="attachFile" type="file" name="file" value="" title="ファイルを添付します。"' + 
-    'style="display:none" accept="image/jpeg, image/png, image/bmp, application/pdf" ' + 
+    '<input type="input" name="type" value="bin"/>' + 
+    '<input id="attachFile" type="file" name="file" value="" ' + 
+    //'style="display:none" ' + 
+    'accept="image/jpeg, image/png, image/bmp, application/pdf" ' + 
     '/>' +
     '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
-    '<input type="input" name="type" value="bin"/>' + 
     '<input id="attachFileSubmit" type="submit" value="submit" />' +
     '</form>' +
-    '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
+    '<iframe name="' + iframetarget + '" ' + 
+    'style="display:none"' + 
+    '></iframe>'; //結果表示用iframe
   /*** 画像ファイル入力フォーム ***/
 
   $jquery = $(
@@ -96,6 +99,7 @@ function NoteItem() {
   {
     var file = $(this).parent().find("#attachFile").val();
     var url =  $(this).contents().find('#url').text();
+    console.log($(this).contents());
     if (file == "")
     {
       // 画像ファイルが指定されていない場合は処理を実行しない。
@@ -132,7 +136,7 @@ function NoteItem() {
     var noteItemId = $(this).parent().attr("id");
 
     // コマンドを設定する（追加時「add」、編集時「edit」とする。）
-    var url = MethodDrawPath + '?command=add' + '&id=' + noteItemId + '&image=' + '/db/test/aaa/bbb/test.svg';
+    var url = MethodDrawPath + '?command=add' + '&id=' + noteItemId + '&image=' + '/db/test/aaa/bbb/' + (new Date()).getTime() +'.svg';
 
     // Method Drawを開く。
     window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
