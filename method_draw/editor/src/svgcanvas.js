@@ -5732,18 +5732,24 @@ this.save = function(opts) {
 	// GET値がある場合は、サーバーにファイルを保存し、URLを返却する。
     const KeyCommand = 'command';	// コマンド（新規追加か編集か）
     const KeyNoteItemId = 'id';		// NoteItem ID
+    const KeyImage = 'image';		// NoteItem ID
 
     // コマンド値・NoteItemIDを取得する。
     var command = result[KeyCommand];
-    var noteItemId = result[KeyNoteItemId]
+    var noteItemId = result[KeyNoteItemId];
+    var image = result[KeyImage];
 
-    if (command === undefined && noteItemId === undefined)
+    if (command === undefined || noteItemId === undefined || image === undefined)
     {
     	// GET値がない場合は、デフォルトの処理を行う
 		call("saved", str);
     }
     else 
     {
+    	// コレクションとファイル名を取得する。
+    	var collection = image.substr(0, image.lastIndexOf('/'));
+    	var file = image.substr(image.lastIndexOf('/') + 1);
+
     	// 画像をXMLDB上に保存する。
 	    const Url = '/exist/apps/eyeehr/modules/upload.xq';
 		$.ajax({
@@ -5754,8 +5760,8 @@ this.save = function(opts) {
 		  	data 	: 
 			{ 
 				type       : 'xml', 
-				collection : '/db/test',
-				filename   : 'uploadtest.svg',
+				collection : collection,
+				filename   : file,
 				xml        : str
 			},
 			success: function(data) {
@@ -5766,19 +5772,22 @@ this.save = function(opts) {
 			 	if(window.opener == null)
 			 	{
 			 		// 呼出元(NoteItem)が存在しなくなっている場合はエラーメッセージを表示する
-			 		alert('呼出元が削除された可能性があります。保存を完了できません。アプリケーションを終了し、もう一度やり直してください。');
+			 		alert('呼出元が削除された可能性があるため、保存を完了できません。');
 			 	}
 			 	else 
 			 	{
 					// 親画面にシェーマ画像のタグを返却する。
 				 	$noteItem = window.opener.$('#' + noteItemId);
 			 		// シェーマ領域を取得する。
-				 	$scheme = $noteItem.children("[name='scheme']");
+				 	$scheme = $noteItem.children('[name="scheme"]');
 				 	// 元画像を取得し、一度削除、再度追加する。
 				 	$imgs = $scheme.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
-				 	$img = $( '<div><img src=' + url + '?' + (new Date().getTime()) + ' width="100%"/></>' );
+				 	$img = $( '<img src=' + url + '?' + (new Date().getTime()) + '" width="100%"/>' );
 				 	$scheme.append($img);
+
+				 	// 完了メッセージを表示する。
+				 	alert('画像の保存が完了しました。');
 			 	}
          	},
 	      	error: function(XMLHttpRequest, textStatus, errorThrown) 

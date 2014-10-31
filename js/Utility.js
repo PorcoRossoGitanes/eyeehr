@@ -116,7 +116,6 @@ Utility.GetExtention = function (url) {
 /// @param  i_collectionPath コレクションパス
 Utility.CreateCollection = function (i_collectionPath)
 {
-	var ret = false;
 	const SCRIPT = "/exist/apps/eyeehr/modules/create-collection.xql";
 	console.log('Utility.CreateCollection');
 	
@@ -138,11 +137,8 @@ Utility.CreateCollection = function (i_collectionPath)
 		    },
 		    success: function(xml){
 		        console.log(xml);
-		        ret = true;
 		    }
 		});
 	}
-
-	return ret;
 }
 

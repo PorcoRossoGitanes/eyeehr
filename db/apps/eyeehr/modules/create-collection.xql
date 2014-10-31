@@ -9,6 +9,9 @@ xquery version "3.0";
     	失敗時、空文字列が返却される
 :)
 
+let $user := 'admin'
+let $pswd := 'zaq12wsx'
+
 (:追加対象のコレクションの親のコレクションを取得する:)
 let $parent-collection := 
     request:get-parameter('parent-collection', '')
@@ -34,7 +37,7 @@ let $cnt := fn:count($collection-parts)
 for $index in (2 to $cnt - 1) (: $index = 1 の場合、$new-collection = ''（先頭部のため）:)
 	let $new-collection := $collection-parts[$index + 1]
 	let $current-parent-collection := string-join( $collection-parts[position() <= $index], '/')
-	let $login := xmldb:login($current-parent-collection, 'admin', 'zaq12wsx')
+	let $login := xmldb:login($current-parent-collection, $user, $pswd)
 	let $result := xmldb:create-collection($current-parent-collection, $new-collection)
 return 
 	if ($index = $cnt - 1) then 

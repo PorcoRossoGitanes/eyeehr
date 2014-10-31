@@ -52,9 +52,9 @@ function NoteItem() {
     '<span class="glyphicon glyphicon-minus"></span>' + 
     '</button>' + 
     <!--☆ボタン-->
-    '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
-    '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
-    '</button>' + 
+    // '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
+    // '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
+    // '</button>' + 
 //---ファイル　添付-------------
     formAttachFile + // 隠し埋め込みフォーム
     <!--ファイル選択ボタン（可視）-->
@@ -65,10 +65,7 @@ function NoteItem() {
 //---ファイル　添付-------------
 //---シェーマ添付---
     <!--シェーマ追加ボタン（可視）-->
-    '<button id="addScheme" ' + 
-    'class="btn btn-default btn-xs" >' + 
-    '<span class="glyphicon glyphicon-upload"></span>' + 
-    '</button>' + 
+    '<button id="addScheme" class="btn btn-default btn-xs" >シェーマ</button>' + 
 //---シェーマ添付---
     '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
     '<div name="formats"></div>' +                    <!--入力フォーム（定型フォーム）-->
@@ -143,9 +140,7 @@ function NoteItem() {
     var noteItemId = $(this).parent().attr("id");
 
     // コマンドを設定する（追加時「add」、編集時「edit」とする。）
-    var command = 'add';
-
-    var url = MethodDrawPath + '?command=add&id=' + noteItemId;
+    var url = MethodDrawPath + '?command=add' + '&id=' + noteItemId + '&image=' + '/db/test/aaa/bbb/test.svg';
 
     // Method Drawを開く。
     window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
