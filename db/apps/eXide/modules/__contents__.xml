@@ -1,5 +1,26 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eXide/modules" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" version="1">
     <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="apply-config.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="apply-config.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="run-test.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="run-test.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="debuger.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="debuger.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="dates.xqm" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="dates.xqm" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="store.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="store.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="outline.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="outline.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="find.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="find.xql" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
     <resource type="BinaryResource" name="pretty-print.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="pretty-print.xql" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
@@ -49,27 +70,6 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="deployment.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="deployment.xql" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="apply-config.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="apply-config.xql" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="run-test.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="run-test.xql" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="debuger.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="debuger.xql" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="dates.xqm" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="dates.xqm" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="store.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="store.xql" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="outline.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="outline.xql" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="find.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="find.xql" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
 </collection>

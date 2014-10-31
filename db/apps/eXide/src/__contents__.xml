@@ -1,5 +1,23 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eXide/src" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" version="1">
     <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="xml-helper.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="xml-helper.js" mimetype="application/x-javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="xquery-helper.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="xquery-helper.js" mimetype="application/x-javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="eXide.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="eXide.js" mimetype="application/x-javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="popup.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="popup.js" mimetype="application/x-javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="util.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="util.js" mimetype="application/x-javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="commands.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="commands.js" mimetype="application/x-javascript">
+        <acl entries="0" version="1"/>
+    </resource>
     <resource type="BinaryResource" name="snippets.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="snippets.js" mimetype="application/x-javascript">
         <acl entries="0" version="1"/>
     </resource>
@@ -64,24 +82,6 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="visitor.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="visitor.js" mimetype="application/x-javascript">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="xml-helper.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="xml-helper.js" mimetype="application/x-javascript">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="xquery-helper.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="xquery-helper.js" mimetype="application/x-javascript">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="eXide.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="eXide.js" mimetype="application/x-javascript">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="popup.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="popup.js" mimetype="application/x-javascript">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="util.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="util.js" mimetype="application/x-javascript">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="commands.js" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="commands.js" mimetype="application/x-javascript">
         <acl entries="0" version="1"/>
     </resource>
 </collection>

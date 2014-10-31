@@ -123,9 +123,6 @@
     <resource type="BinaryResource" name="reference.css" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="reference.css" mimetype="text/css">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="reference.less" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:05+09:00" modified="2014-08-20T03:28:05+09:00" filename="reference.less" mimetype="application/less">
-        <acl entries="0" version="1"/>
-    </resource>
     <resource type="XMLResource" name="TriggerCSSImage.xhtml" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="TriggerCSSImage.xhtml" mimetype="application/xhtml+xml">
         <acl entries="0" version="1"/>
     </resource>
@@ -136,6 +133,9 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="XMLResource" name="AlertDefault.xhtml" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="AlertDefault.xhtml" mimetype="application/xhtml+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="reference.less" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:05+09:00" modified="2014-08-20T03:28:05+09:00" filename="reference.less" mimetype="application/less">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="XMLResource" name="Uploadbase64.xhtml" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="Uploadbase64.xhtml" mimetype="application/xhtml+xml">

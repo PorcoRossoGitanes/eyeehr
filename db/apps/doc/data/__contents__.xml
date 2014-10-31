@@ -24,7 +24,10 @@
     <resource type="XMLResource" name="xacml-intro.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="xacml-intro.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="XMLResource" name="xqdoc.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="xqdoc.xml" mimetype="application/xml">
+    <resource type="BinaryResource" name="display-collection.xq" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="display-collection.xq" mimetype="application/xquery">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="urlrewrite.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="urlrewrite.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="XMLResource" name="xqsuite.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="xqsuite.xml" mimetype="application/xml">
@@ -117,10 +120,7 @@
     <resource type="XMLResource" name="eclipse.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="display-collection.xq" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="display-collection.xq" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="testvars.xq" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="testvars.xq" mimetype="application/xquery">
+    <resource type="XMLResource" name="xqdoc.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="xqdoc.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="XMLResource" name="kwic.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="kwic.xml" mimetype="application/xml">
@@ -288,7 +288,7 @@
     <resource type="XMLResource" name="config-cache.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="config-cache.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="XMLResource" name="urlrewrite.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="urlrewrite.xml" mimetype="application/xml">
+    <resource type="BinaryResource" name="testvars.xq" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="testvars.xq" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="XMLResource" name="lucene.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="lucene.xml" mimetype="application/xml">

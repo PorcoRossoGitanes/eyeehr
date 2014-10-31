@@ -9,13 +9,19 @@
     <resource type="XMLResource" name="fe97f7fa-5801-4ea5-82f6-0283ae5f59f2.xml" owner="guest" group="guest" mode="644" created="2014-10-22T07:48:18+09:00" modified="2014-10-22T07:48:18+09:00" filename="fe97f7fa-5801-4ea5-82f6-0283ae5f59f2.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="XMLResource" name="abbcc652-0665-4f9d-9df5-c2c96aaf3c51.xml" owner="admin" group="dba" mode="777" created="2014-08-20T03:28:11+09:00" modified="2014-08-20T03:28:11+09:00" filename="abbcc652-0665-4f9d-9df5-c2c96aaf3c51.xml" mimetype="application/xml">
-        <acl entries="0" version="1"/>
-    </resource>
     <resource type="XMLResource" name="ca686155-e27c-4db4-8b90-d7513a1f8ff3.xml" owner="guest" group="guest" mode="644" created="2014-10-22T09:51:16+09:00" modified="2014-10-22T09:51:16+09:00" filename="ca686155-e27c-4db4-8b90-d7513a1f8ff3.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="XMLResource" name="f7c80988-5a9f-47ff-9435-e5cdf5dedd4a.xml" owner="guest" group="guest" mode="644" created="2014-10-23T04:17:51+09:00" modified="2014-10-23T04:17:51+09:00" filename="f7c80988-5a9f-47ff-9435-e5cdf5dedd4a.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="2ea432a0-ceed-48d7-a701-e31cbd699a7a.xml" owner="guest" group="guest" mode="644" created="2014-10-22T09:21:22+09:00" modified="2014-10-22T09:21:22+09:00" filename="2ea432a0-ceed-48d7-a701-e31cbd699a7a.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="f07922e8-99fc-4fcb-a64d-675a6b619184.xml" owner="guest" group="guest" mode="644" created="2014-10-23T04:13:56+09:00" modified="2014-10-23T04:13:56+09:00" filename="f07922e8-99fc-4fcb-a64d-675a6b619184.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="75a7170b-ad64-47ac-9b54-59ad50b6c47d.xml" owner="admin" group="dba" mode="777" created="2014-08-20T03:28:11+09:00" modified="2014-08-20T03:28:11+09:00" filename="75a7170b-ad64-47ac-9b54-59ad50b6c47d.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="XMLResource" name="19791b37-f546-4dc0-9bb4-ba3c36f9bb35.xml" owner="admin" group="dba" mode="777" created="2014-08-20T03:28:11+09:00" modified="2014-08-20T03:28:11+09:00" filename="19791b37-f546-4dc0-9bb4-ba3c36f9bb35.xml" mimetype="application/xml">
@@ -24,7 +30,7 @@
     <resource type="XMLResource" name="7db9a6b3-6f06-4205-b4de-4f906ec9fd94.xml" owner="admin" group="dba" mode="777" created="2014-08-20T03:28:11+09:00" modified="2014-08-20T03:28:11+09:00" filename="7db9a6b3-6f06-4205-b4de-4f906ec9fd94.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="XMLResource" name="2ea432a0-ceed-48d7-a701-e31cbd699a7a.xml" owner="guest" group="guest" mode="644" created="2014-10-22T09:21:22+09:00" modified="2014-10-22T09:21:22+09:00" filename="2ea432a0-ceed-48d7-a701-e31cbd699a7a.xml" mimetype="application/xml">
+    <resource type="XMLResource" name="abbcc652-0665-4f9d-9df5-c2c96aaf3c51.xml" owner="admin" group="dba" mode="777" created="2014-08-20T03:28:11+09:00" modified="2014-08-20T03:28:11+09:00" filename="abbcc652-0665-4f9d-9df5-c2c96aaf3c51.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="XMLResource" name="0ff8612a-b998-4677-84a3-73e9ef84ba5f.xml" owner="admin" group="dba" mode="777" created="2014-08-20T03:28:11+09:00" modified="2014-08-20T03:28:11+09:00" filename="0ff8612a-b998-4677-84a3-73e9ef84ba5f.xml" mimetype="application/xml">
@@ -34,9 +40,6 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="XMLResource" name="2895645b-d16f-415e-a99a-a4504faaa6c2.xml" owner="admin" group="dba" mode="777" created="2014-10-22T09:38:02+09:00" modified="2014-10-22T09:38:02+09:00" filename="2895645b-d16f-415e-a99a-a4504faaa6c2.xml" mimetype="application/xml">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="XMLResource" name="f07922e8-99fc-4fcb-a64d-675a6b619184.xml" owner="guest" group="guest" mode="644" created="2014-10-23T04:13:56+09:00" modified="2014-10-23T04:13:56+09:00" filename="f07922e8-99fc-4fcb-a64d-675a6b619184.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
 </collection>

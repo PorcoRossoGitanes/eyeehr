@@ -3,13 +3,13 @@
     <resource type="XMLResource" name="collection.xconf" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="collection.xconf" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
+    <resource type="XMLResource" name="repo.xml" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="repo.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
     <resource type="BinaryResource" name="controller.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="controller.xql" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="icon.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="icon.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="XMLResource" name="repo.xml" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="repo.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="pre-install.xql" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="pre-install.xql" mimetype="application/xquery">

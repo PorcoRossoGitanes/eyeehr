@@ -1,11 +1,5 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/dashboard/plugins/browsing/images" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" version="1">
     <acl entries="0" version="1"/>
-    <resource type="BinaryResource" name="page_paste.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="page_paste.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="application_form_edit.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="application_form_edit.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
     <resource type="BinaryResource" name="database_add.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="database_add.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
@@ -31,6 +25,12 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="arrow_refresh.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="arrow_refresh.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="page_paste.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="page_paste.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="application_form_edit.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="application_form_edit.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
 </collection>

@@ -1,14 +1,5 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eXide/resources/css/black-tie/images" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" version="1">
     <acl entries="0" version="1"/>
-    <resource type="BinaryResource" name="ui-icons_222222_256x240.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="ui-icons_222222_256x240.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="ui-bg_flat_65_ffffff_40x100.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="ui-bg_flat_65_ffffff_40x100.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="ui-bg_glass_55_1c1c1c_1x400.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="ui-bg_glass_55_1c1c1c_1x400.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
     <resource type="BinaryResource" name="ui-bg_glass_40_111111_1x400.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="ui-bg_glass_40_111111_1x400.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
@@ -46,6 +37,15 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="ui-icons_ffcf29_256x240.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="ui-icons_ffcf29_256x240.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ui-icons_222222_256x240.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="ui-icons_222222_256x240.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ui-bg_flat_65_ffffff_40x100.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="ui-bg_flat_65_ffffff_40x100.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="ui-bg_glass_55_1c1c1c_1x400.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="ui-bg_glass_55_1c1c1c_1x400.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
 </collection>

@@ -1,5 +1,23 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/doc/resources/eclipse" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:16+09:00" version="1">
     <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="eclipse_debug_config_arguments.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_debug_config_arguments.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="eclipse_add_svn_repository.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_add_svn_repository.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="eclipse_debug_config_main.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_debug_config_main.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="AddSVNRepository.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="AddSVNRepository.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="eclipse_exist_svn_repository.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_exist_svn_repository.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="eclipse_prjprop_build_path.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_prjprop_build_path.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
     <resource type="BinaryResource" name="eclipse_add_activation_jar.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_add_activation_jar.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
@@ -46,24 +64,6 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="eclipse_svn_perspective.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_svn_perspective.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="eclipse_debug_config_arguments.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_debug_config_arguments.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="eclipse_add_svn_repository.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_add_svn_repository.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="eclipse_debug_config_main.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_debug_config_main.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="AddSVNRepository.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="AddSVNRepository.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="eclipse_exist_svn_repository.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_exist_svn_repository.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="eclipse_prjprop_build_path.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:16+09:00" modified="2014-08-20T03:28:16+09:00" filename="eclipse_prjprop_build_path.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
 </collection>

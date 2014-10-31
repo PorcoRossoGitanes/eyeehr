@@ -1,26 +1,5 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/dashboard/resources/images" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" version="1">
     <acl entries="0" version="1"/>
-    <resource type="BinaryResource" name="1332878545_user_group.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="1332878545_user_group.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="Java-icon.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="Java-icon.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="release-notes.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="release-notes.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="close_exit.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="close_exit.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="install.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="install.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="library.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="library.gif" mimetype="image/gif">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="close.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="close.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
     <resource type="BinaryResource" name="existdb.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="existdb.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
@@ -94,6 +73,27 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="user-admin.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="user-admin.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="1332878545_user_group.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="1332878545_user_group.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="Java-icon.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="Java-icon.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="release-notes.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="release-notes.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="close_exit.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="close_exit.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="install.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="install.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="library.gif" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="library.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="close.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:07+09:00" modified="2014-08-20T03:28:07+09:00" filename="close.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
 </collection>

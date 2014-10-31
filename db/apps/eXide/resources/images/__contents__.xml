@@ -1,5 +1,26 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eXide/resources/images" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" version="1">
     <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="error.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="error.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="page_paste.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="page_paste.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="application_go.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="application_go.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="toggle-up.gif" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="toggle-up.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="public.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="public.png" mimetype="image/png">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="bubble.gif" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="bubble.gif" mimetype="image/gif">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="exide.svg" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="exide.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
     <resource type="BinaryResource" name="application_form_edit.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="application_form_edit.png" mimetype="image/png">
         <acl entries="0" version="1"/>
     </resource>
@@ -28,9 +49,6 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="layouts_split.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="layouts_split.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="XMLResource" name="exide.svg" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="exide.svg" mimetype="image/svg+xml">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="header.gif" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="header.gif" mimetype="image/gif">
@@ -85,24 +103,6 @@
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="page_delete.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="page_delete.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="error.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="error.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="page_paste.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="page_paste.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="application_go.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="application_go.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="toggle-up.gif" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="toggle-up.gif" mimetype="image/gif">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="public.png" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="public.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="bubble.gif" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="bubble.gif" mimetype="image/gif">
         <acl entries="0" version="1"/>
     </resource>
 </collection>

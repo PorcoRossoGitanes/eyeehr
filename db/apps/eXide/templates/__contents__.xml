@@ -1,9 +1,9 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eXide/templates" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:17+09:00" version="1">
     <acl entries="0" version="1"/>
-    <resource type="XMLResource" name="documents.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="documents.xml" mimetype="application/xml">
+    <resource type="BinaryResource" name="xml.snippets" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="xml.snippets" mimetype="application/octet-stream">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="XMLResource" name="snippets.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="snippets.xml" mimetype="application/xml">
+    <resource type="BinaryResource" name="html.snippets" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="html.snippets" mimetype="application/octet-stream">
         <acl entries="0" version="1"/>
     </resource>
     <resource type="BinaryResource" name="css.snippets" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="css.snippets" mimetype="application/octet-stream">
@@ -18,10 +18,10 @@
     <resource type="BinaryResource" name="namespaces.json" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="namespaces.json" mimetype="application/json">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="html.snippets" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="html.snippets" mimetype="application/octet-stream">
+    <resource type="XMLResource" name="documents.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="documents.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="xml.snippets" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="xml.snippets" mimetype="application/octet-stream">
+    <resource type="XMLResource" name="snippets.xml" owner="admin" group="dba" mode="664" created="2014-08-20T03:28:17+09:00" modified="2014-08-20T03:28:17+09:00" filename="snippets.xml" mimetype="application/xml">
         <acl entries="0" version="1"/>
     </resource>
     <subcollection name="bootstrap" filename="bootstrap"/>
