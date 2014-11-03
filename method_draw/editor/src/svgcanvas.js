@@ -5751,7 +5751,7 @@ this.save = function(opts) {
     	var file = image.substr(image.lastIndexOf('/') + 1);
 
     	// 画像をXMLDB上に保存する。
-	    const Url = '/exist/apps/eyeehr/modules/upload.xq';
+	    const Url = '/exist/apps/eyeehr/modules/uploadFileXml.xq';
 		$.ajax({
 		  	async 	: false, 	// 同期通信
 		  	url 	: Url,
