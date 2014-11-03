@@ -2632,14 +2632,14 @@
 				$('#svg_source_textarea').focus().select();
 			};
 			
-			var clickSave = function(){
+			var clickSave = function(callback){
 			  flash($('#file_menu'));
 				// In the future, more options can be provided here
 				var saveOpts = {
 					'images': curPrefs.img_save,
 					'round_digits': 6
 				}
-				svgCanvas.save(saveOpts);
+				svgCanvas.save(saveOpts, callback);
 			};
 			
 			var saveSourceEditor = function(){
@@ -3354,7 +3354,18 @@
 					{sel:'#tool_ungroup', fn: clickGroup, evt: 'click', key: modKey + 'shift+G'},
 					{sel:'#tool_unlink_use', fn: clickGroup, evt: 'click'},
 					{sel:'#tool_quit', fn: clickQuit, evt: 'mouseup', key: [modKey + 'Q', true]},
-					{sel:'#tool_save_quit', fn: function() { editingsource?saveSourceEditor():clickSave();clickQuit();}, evt: 'mouseup', key: ['shift+W', true]},
+					{sel:'#tool_save_quit', 
+						fn: function() { 
+							editingsource?saveSourceEditor():clickSave(
+									function(){
+										console.log('close');
+										window.close();
+									}
+								)
+						 }, 
+						 evt: 'mouseup', 
+						 key: [modKey + 'shift+W', true]
+					},
 					{sel:'[id^=tool_align]', fn: clickAlign, evt: 'click'},
 					{sel:'#tool_undo', fn: clickUndo, evt: 'click', key: modKey + 'z'},
 					{sel:'#tool_redo', fn: clickRedo, evt: 'click', key: ['y', true]},

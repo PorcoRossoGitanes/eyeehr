@@ -111,7 +111,7 @@ function NoteItem() {
     {
       $(this).parent().find('[name=attachments]').append(
         '<a href="' + url + '" target="_blank">' + 
-        '<img src="' + url + '" width="25%" ' + /* 'ondblclick="$(this).remove()"' + */ '/>' + 
+        '<img class="attachment" src="' + url + '" ' + /* 'ondblclick="$(this).remove()"' + */ '/>' + 
         '</a>'
       );      
     }
@@ -235,25 +235,32 @@ NoteItem.HtmlToXml = function($i_jquery)
   //$i_jquery.find('min')
   //$i_jquery.find('attachFile')
   
-  // □フォーム部
+  // □フォーム部をXMLに変換する。
   $formats = $i_jquery.children('[name=formats]');
   retVal += '<' + $formats.attr('name') + '>';
   $i_jquery.children('[name=formats]').find('DIV', 'INPUT', 'IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml($(this));
-    //console.log($(this));
   });
   retVal += '</' + $formats.attr('name') + '>';
 
-  // □画像添付部
+  // □画像添付部をXMLに変換する。
   $attachments = $i_jquery.children('[name=attachments]');
   retVal += '<' + $attachments.attr('name') + '>';
   $attachments.find('IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml($(this));
-    console.log($(this));
   });
   retVal += '</' + $attachments.attr('name') + '>';
 
-  // □備考添付部
+  // □シェーマ添付部をXMLに変換する。
+  $schemes = $i_jquery.children('[name=scheme]');
+  retVal += '<' + $schemes.attr('name') + '>';
+  $schemes.find('IMG').each(function(){
+    retVal += Utility.HtmlMinInputItemToXml($(this)); 
+  });
+  retVal += '<' + $schemes.attr('name') + '/>';
+
+
+  // □備考をXMLに変換する。
   $remarks = $i_jquery.children('[name=remarks]');
   retVal += '<' + $remarks.attr('name') + '>';
   retVal += Utility.HtmlToXhtml ($remarks.html());

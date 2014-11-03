@@ -5696,7 +5696,8 @@ this.open = function() {
 //
 // Returns: 
 // Nothing
-this.save = function(opts) {
+/// @param callback　コールバック関数
+this.save = function(opts, callback) {
 	// remove the selected outline before serializing
 	clearSelection();
 	// Update save options if provided
@@ -5783,11 +5784,14 @@ this.save = function(opts) {
 				 	// 元画像を取得し、一度削除、再度追加する。
 				 	$imgs = $scheme.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
-				 	$img = $('<img class="demo1" src="' + url + '?' + (new Date().getTime()) + '" width="100%"/>');
+				 	$img = $('<img class="scheme" src="' + url + '?' + (new Date().getTime()) + '"/>');
 				 	$scheme.append($img);
 
 				 	// 完了メッセージを表示する。
 				 	alert('画像の保存が完了しました。');
+
+				 	// コールバック関数があれば、コールバック関数を実行する。
+				 	if(callback) callback(); 
 			 	}
          	},
 	      	error: function(XMLHttpRequest, textStatus, errorThrown) 

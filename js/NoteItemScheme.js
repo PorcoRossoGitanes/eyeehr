@@ -40,6 +40,8 @@ function NoteItemScheme()
         // 画像添付部分を追加する。
         $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
         // 備考部分を追加する。
+        $jquery.find('[name=scheme]').html($i_xml.children('scheme').html());
+        // 備考部分を追加する。
         $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
       }
     }

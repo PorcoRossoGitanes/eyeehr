@@ -87,7 +87,7 @@ div.NoteItemOperation
 /**付箋（シェーマ）**/
 div.NoteItemScheme
 {
-  background: #ffffff;
+  background: #dddddd;
 }
 
 
@@ -97,4 +97,12 @@ div.NoteItemMemo
   background: #7fffff;
 }
 
+img.attachment
+{
+  width : 20%;
+}
 
+img.scheme 
+{
+  width : 100%;
+}
