@@ -40,7 +40,8 @@ function NoteItemComplaint()
       }
     }
 
-    //@summary クラス名（親クラス...現在のクラス）を取得する
+    ///@summary クラス名（親クラス...現在のクラス）を取得する
+    ///@return クラス名（親クラス...現在のクラス）
     _proto.getName = function() 
     {
         var name = _super.getName.call(this);

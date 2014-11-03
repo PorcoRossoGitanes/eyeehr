@@ -1,13 +1,17 @@
 // @sumamry 病名
 function NoteItemDisease() {
-    // 親クラス(Parent)のメンバ変数を継承
-    NoteItem.call(this);
-    //--JQuery オブジェクト操作---//
-    // クラス属性を追加した。
-    $jquery.attr('name', 'NoteItemDisease');
-    $jquery.addClass('NoteItemDisease');
+  // 親クラス(Parent)のメンバ変数を継承
+  NoteItem.call(this);
+  
+  /// @param クラス名
+  this._name = 'NoteItemDisease';
 
-    //--JQuery オブジェクト操作---//
+  //--JQuery オブジェクト操作---//
+  // クラス属性を追加した。
+  $jquery.attr('name', this._name);
+  $jquery.addClass(this._name);
+  //--JQuery オブジェクト操作---//
+
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
