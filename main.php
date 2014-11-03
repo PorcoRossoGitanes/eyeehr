@@ -18,20 +18,18 @@ if (!isset($_SESSION["USERID"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="js/jquery-2.1.1.js"></script>
-    <!-- jQuery-ui 1.11.1 -->
-    <script src="js/jquery-ui/jquery-ui.js"></script>
-    <link href="js/jquery-ui/jquery-ui.css" rel="stylesheet">
+    <script src="js/jquery-ui/jquery-ui.js"></script><!-- jQuery-ui 1.11.1 -->
+    <link href="js/jquery-ui/jquery-ui.css" rel="stylesheet"><!-- jQuery-ui 1.11.1 -->
     <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" /-->
-    <!-- jQuery-ui 1.11.1 -->
+    <script src="js/contextmenu/jquery.contextmenu.r2.packed.js"></script><!-- ContextMenu Plugin dependent on jQuery  -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
     <!--script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script--><!--nicEdit-->
-    <script src="js/nicEdit/nicEdit.js" type="text/javascript"></script>
+    <script src="js/nicEdit/nicEdit.js" type="text/javascript"></script><!--nicEdit-->
+
     <!--自作JS-->
-    <script src="js/Utility.js"></script>   
-     
+    <script src="js/Utility.js"></script>
+
     <script src="js/Note.js"></script>
-
-
     <script src="js/NoteItem.js"></script>
     <script src="js/NoteItemComplaint.js"></script>
     <script src="js/NoteItemDisease.js"></script>

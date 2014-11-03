@@ -5783,7 +5783,7 @@ this.save = function(opts) {
 				 	// 元画像を取得し、一度削除、再度追加する。
 				 	$imgs = $scheme.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
-				 	$img = $( '<img src="' + url + '?' + (new Date().getTime()) + '" width="100%"/>' );
+				 	$img = $('<img class="demo1" src="' + url + '?' + (new Date().getTime()) + '" width="100%"/>');
 				 	$scheme.append($img);
 
 				 	// 完了メッセージを表示する。
@@ -5799,11 +5799,11 @@ this.save = function(opts) {
             	// $("#textStatus").html("textStatus : " + textStatus);
             	// $("#errorThrown").html("errorThrown : " + errorThrown.message);
          	},
-			complete : function(data) 
-			{
-				console.log('画像をXMLDBに保存する処理が完了した。');
-			    //alert("finishi");
-			}
+			// complete : function(data) 
+			// {
+			// 	console.log('画像をXMLDBに保存する処理が完了した。');
+			//     //alert("finishi");
+			// }
 		});
 	}
 };

@@ -9,7 +9,9 @@ function NoteItemScheme()
   $jquery.attr('name', 'NoteItemScheme');
   $jquery.addClass('NoteItemScheme');
   // シェーマの場合のみ、「シェーマ」ボタンを表示する。
-  $jquery.children('#addScheme').css('visibility', 'inherit');
+  $jquery.children('button#addScheme').css('visibility', 'inherit');
+  // シェーマ添付部を表示する。
+  $jquery.children('div[name="scheme"]').css('visibility', 'inherit');
   //console.log($jquery);
 
   //--JQuery オブジェクト操作---//

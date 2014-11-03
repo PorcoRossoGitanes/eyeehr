@@ -45,27 +45,25 @@ function NoteItem() {
     'id="' + id + '" ' + 
     'class="' + 'NoteItem' + '" ' + 
     '>' + 
-    /*** 削除ボタン ***/
+/*** 削除ボタン ***/
     '<button id="del" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>' + 
-    /*** 最小化ボタン ***/
+/*** 最小化ボタン ***/
     '<button id="min" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>' + 
-    /*** ☆ボタン ***/
+/*** ☆ボタン ***/
     // '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
     // '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
     // '</button>' + 
-//---ファイル　添付-------------
+/***ファイル　添付***/
     formAttachFile + // 隠し埋め込みフォーム
-    <!--ファイル選択ボタン（可視）-->
     '<button id="attachFile" class="btn btn-default btn-xs" ><span class="glyphicon glyphicon-upload"></span></button>' + 
-//---ファイル　添付-------------
-//---シェーマ添付---
-    <!--シェーマ追加ボタン（可視）-->
+/***ファイル　添付***/
+/***シェーマ添付***/
     '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:hidden">シェーマ</button>' + 
-//---シェーマ添付---
+/***シェーマ添付***/
     '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
     '<div name="formats"></div>' +                    <!--入力フォーム（定型フォーム）-->
     '<div name="attachments"></div>' +                <!--ファイル添付用--> 
-    '<div name="scheme"></div>' +                     <!--シェーマ入力用--> 
+    '<div name="scheme" style="visibility:hidden"></div>' +<!--シェーマ添付用--> 
     '<div name="remarks"></div>' +                    <!--備考入力用--> 
     '</div>'
   );
@@ -95,7 +93,7 @@ function NoteItem() {
   /// @summary  画像添付（送信）処理が実施され、
   ///           iframeがロードされたとき、
   ///           成功時は画像を表示する。
-  $jquery.find('iframe').load(function()
+  $jquery.find('div#attachements iframe').load(function()
   {
     var file = $(this).parent().find("#attachFile").val();
     var url =  $(this).contents().find('#url').text();
@@ -113,13 +111,13 @@ function NoteItem() {
     {
       $(this).parent().find('[name=attachments]').append(
         '<a href="' + url + '" target="_blank">' + 
-        '<img src="' + url + '" width="25%" ondblclick="$(this).remove()" />' + 
+        '<img src="' + url + '" width="25%" ' + /* 'ondblclick="$(this).remove()"' + */ '/>' + 
         '</a>'
       );      
     }
   });
 
-  /// @summary シェーマ画像を追加する。
+  /// @summary シェーマ画像を追加するために、シェーマ描画ツールを表示する。
   $jquery.find('button#addScheme').click(function () {
     
     // Method Drawの画面最大サイズ
@@ -136,14 +134,26 @@ function NoteItem() {
     var noteItemId = $(this).parent().attr("id");
 
     // コマンドを設定する（追加時「add」、編集時「edit」とする。）
-    var url = MethodDrawPath + '?command=add' + '&id=' + noteItemId + '&image=' + '/db/test/aaa/bbb/' + (new Date()).getTime() +'.svg';
+    var url = MethodDrawPath + '?command=add' + '&id=' + noteItemId + '&image=' + '/db/test/aaa/bbb/' +　'scheme-' + (new Date()).getTime() +'.svg';
 
     // Method Drawを開く。
     window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
   });
 
+  /// @summary シェーマ領域が変更された場合に、画像にコンテキストイベントを追加する。
+  $jquery.find('div#scheme').load(function(){
+    
+    console.log('シェーマ画像が変更されました。');
+    alert('シェーマ画像が変更されました。');
+        
+    // シェーマ画像を右クリックしたときに、コンテキストメニュー表示出来るように変更する。
+    $(this).find('img').each(function () {
+
+    });
+  });
+
   // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
-  $jquery.find('#min').click(function()
+  $jquery.find('button#min').click(function()
   {
     // タグが表示の場合は折り畳む（最小化する）。タグが非表示の場合は展開する。
     if ($(this).parent().find('#tags').css('display') != 'block')
@@ -165,7 +175,7 @@ function NoteItem() {
   });
 
   //　@summary 「削除」ボタンが押されたときには、付箋を削除する。
-  $jquery.find('#del').click(function(){
+  $jquery.find('button#del').click(function(){
     $(this).parent().remove();
   });
   
@@ -175,6 +185,8 @@ function NoteItem() {
     area.instanceById('area1').setContent(memo);
     $('input#selectedNoteItem').val($(this).attr('id'));
   });
+
+
 };(function() {
 
   // プロトタイプ

@@ -3,7 +3,7 @@ xquery version "3.0";
 (:
     @summary ファイルを指定のコレクションに保存する
 	@param GET/POST [collection] = 追加対象のコレクション（末尾スラッシュなし）
-	@param GET/POST [filename] = ファイル名
+	@param GET/POST [file] = ファイル(<input name="file" />)
 	@return 
     	成功時、画像迄のURLが返却される。
     	失敗時、空文字列が返却される
