@@ -4,14 +4,18 @@
 ///@param $i_xml XML JQuery Object
 function NoteItemContainerComplaint ($i_xml)
 {
+    NoteItemContainer.call(this, $i_xml);
+
     ///@param クラス名
     this._name = 'NoteItemContainerComplaint';
 
-	NoteItemContainer.call(this, this._name, '主訴', $i_xml);
+    ///@param タイトル
+    this._title = '主訴';
 
     //--JQuery オブジェクト操作---//
     $jqueryNoteItemContainer.addClass(this._name);
-    //--JQuery オブジェクト操作---//
+    $jqueryNoteItemContainer.attr('name', this._name);
+    $jqueryNoteItemContainer.find('#title').text(this._title);    //--JQuery オブジェクト操作---//
 
 	// 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
 	if ($i_xml !== undefined)

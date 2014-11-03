@@ -1,29 +1,29 @@
 ///@summary ノートアイテムコンテナ
-///@param 	i_name	名前
 ///@param 	i_title	タイトル
 ///@param   $i_xml XMLデータ（JQuery Object)
-function NoteItemContainer (i_name, i_title, $i_xml)
+function NoteItemContainer ($i_xml)
 {
 	///@param クラス名
 	this._name = 'NoteItemContainer';
+
+  ///@param タイトル
+  this._title = this._name;
 		
 	///@param HTML
     var leftpos = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('left');
     var toppos  = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('top');
     //console.log(i_name + left + top);
-    var html = '<div ' + 
-        'class="' + this._name + '" ' + 
-        'name="' + i_name + '" ' + 
-        'style="position:absolute;' + 
-        //'left=' + left + ';top=' + top+ ';' + 
-        '">' + 
-        '<h1>' + i_title + '</h1>' + 
+    var html = 
+    '<div ' + 
+        'class="' + this._name + '" ' + /**'name="' + i_name + '" ' + **/
+        'style="position:absolute;' + /**'left=' + left + ';top=' + top+ ';' + **/ '">' + 
+        '<h1 id="title">' + this._name + '</h1>' + 
         //'<div id="attached"></div>' + 
     '</div>';
 	$jqueryNoteItemContainer = $(html);
 
     // 位置を移動する。
-    $jqueryNoteItemContainer.css({left : leftpos, top : toppos});
+  $jqueryNoteItemContainer.css({left : leftpos, top : toppos});
 	
 	// 親要素内のみドラッグ可能に設定する。
 	$jqueryNoteItemContainer.draggable({

@@ -3,13 +3,18 @@
 ///@param $i_xml XML JQuery Object
 function NoteItemContainerDisease ($i_xml)
 {
+    NoteItemContainer.call(this, $i_xml);
+
     ///@param クラス名
     this._name = 'NoteItemContainerDisease';
 
-	NoteItemContainer.call(this, this._name, '病名', $i_xml);
+        ///@param タイトル
+    this._title = '病名';
 
     //--JQuery オブジェクト操作---//
     $jqueryNoteItemContainer.addClass(this._name);
+    $jqueryNoteItemContainer.attr('name', this._name);
+    $jqueryNoteItemContainer.find('#title').text(this._title);
     //--JQuery オブジェクト操作---//
 
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
