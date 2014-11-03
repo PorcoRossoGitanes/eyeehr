@@ -93,7 +93,7 @@ function NoteItem() {
   /// @summary  画像添付（送信）処理が実施され、
   ///           iframeがロードされたとき、
   ///           成功時は画像を表示する。
-  $jquery.find('div#attachements iframe').load(function()
+  $jquery.find('iframe').load(function()
   {
     var file = $(this).parent().find("#attachFile").val();
     var url =  $(this).contents().find('#url').text();
@@ -134,7 +134,9 @@ function NoteItem() {
     var noteItemId = $(this).parent().attr("id");
 
     // コマンドを設定する（追加時「add」、編集時「edit」とする。）
-    var url = MethodDrawPath + '?command=add' + '&id=' + noteItemId + '&image=' + '/db/test/aaa/bbb/' +　'scheme-' + (new Date()).getTime() +'.svg';
+    var url = MethodDrawPath + '?command=add' + 
+      '&id=' + noteItemId + 
+      '&image=' + saveImageTo +'/' +　'scheme-' + (new Date()).getTime() +'.svg';
 
     // Method Drawを開く。
     window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
