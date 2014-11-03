@@ -43,7 +43,7 @@ function NoteItem() {
   $jquery = $(
     '<div ' + 
     'id="' + id + '" ' + 
-    'class="' + 'NoteItem' + '" ' + 
+    'class="' + this._name + '" ' + 
     '>' + 
 /*** 削除ボタン ***/
     '<button id="del" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>' + 

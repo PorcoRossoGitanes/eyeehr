@@ -12,7 +12,7 @@ function NoteItemContainer (i_name, i_title, $i_xml)
     var toppos  = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('top');
     //console.log(i_name + left + top);
     var html = '<div ' + 
-        'class="' + 'NoteItemContainer' + '" ' + 
+        'class="' + this._name + '" ' + 
         'name="' + i_name + '" ' + 
         'style="position:absolute;' + 
         //'left=' + left + ';top=' + top+ ';' + 
