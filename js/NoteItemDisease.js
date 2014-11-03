@@ -45,12 +45,12 @@ function NoteItemDisease() {
       }
     }
 
-    // メンバメソッド(オーバーライド)
-    _proto.getName = function() {
-        // 親クラス(Parent)のgetName()を呼び出す
+    ///@summary クラス名（親クラス...現在のクラス）を取得する
+    ///@return クラス名（親クラス...現在のクラス）
+    _proto.getName = function() 
+    {
         var name = _super.getName.call(this);
-        // 結果に'-child'を付け加える
-        return name + ' ' + 'NoteItemDisease';
+        return name + ' ' + this._name;
     };
 })();
 

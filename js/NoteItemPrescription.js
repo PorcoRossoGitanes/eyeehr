@@ -3,14 +3,15 @@ function NoteItemPrescription()
 {
   NoteItem.call(this);  // 入力文字列
 
+  /// @param クラス名
+  this._name = 'NoteItemPrescription';
+
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jquery.attr('name', 'NoteItemPrescription');
-  $jquery.addClass('NoteItemPrescription');
-  //$jquery.find('[name=formats]').attr('name', 'medicine');
-
-  //console.log($jquery);
+  $jquery.attr('name', this._name);
+  $jquery.addClass(this._name);
   //--JQuery オブジェクト操作---//
+
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
@@ -50,12 +51,13 @@ function NoteItemPrescription()
       }
     }
 
-    // メンバメソッド(オーバーライド)
-    _proto.getName = function() {
-        // 親クラス(Parent)のgetName()を呼び出す
+    ///@summary クラス名（親クラス...現在のクラス）を取得する
+    ///@return クラス名（親クラス...現在のクラス）
+    _proto.getName = function() 
+    {
         var name = _super.getName.call(this);
-        // 結果に'-child'を付け加える
-        return name + ' ' + 'NoteItemPrescription';
+        return name + ' ' + this._name;
     };
+
 })();
 

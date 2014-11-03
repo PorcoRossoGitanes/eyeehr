@@ -4,12 +4,15 @@ function NoteItemComplaint()
   // 親クラス(Parent)のメンバ変数を継承
   NoteItem.call(this);
 
+  /// @param クラス名
+  this._name = 'NoteItemComplaint';
+
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jquery.attr('name', 'NoteItemComplaint');
-  $jquery.addClass('NoteItemComplaint');
-  
+  $jquery.attr('name', this._name);
+  $jquery.addClass(this._name);  
   //--JQuery オブジェクト操作---//
+
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
@@ -36,13 +39,12 @@ function NoteItemComplaint()
         }
       }
     }
-    // メンバメソッド(オーバーライド)
+
+    //@summary クラス名（親クラス...現在のクラス）を取得する
     _proto.getName = function() 
     {
-        // 親クラス(Parent)のgetName()を呼び出す
         var name = _super.getName.call(this);
-        // 結果に'-child'を付け加える
-        return name + ' ' + 'NoteItemComplaint';
+        return name + ' ' + this._name;
     };
 })();
 

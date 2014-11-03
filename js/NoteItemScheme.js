@@ -4,16 +4,17 @@ function NoteItemScheme()
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
+  /// @param クラス名
+  this._name = 'NoteItemScheme';
+
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jquery.attr('name', 'NoteItemScheme');
-  $jquery.addClass('NoteItemScheme');
+  $jquery.attr('name', this._name);
+  $jquery.addClass(this._name);
   // シェーマの場合のみ、「シェーマ」ボタンを表示する。
   $jquery.children('button#addScheme').css('visibility', 'inherit');
   // シェーマ添付部を表示する。
   $jquery.children('div[name="scheme"]').css('visibility', 'inherit');
-  //console.log($jquery);
-
   //--JQuery オブジェクト操作---//
 
 };(function() {
@@ -43,11 +44,13 @@ function NoteItemScheme()
       }
     }
   }
-  // メンバメソッド(オーバーライド)
-  _proto.getName = function() {
-      // 親クラス(Parent)のgetName()を呼び出す
+  
+  ///@summary クラス名（親クラス...現在のクラス）を取得する
+  ///@return クラス名（親クラス...現在のクラス）
+  _proto.getName = function() 
+  {
       var name = _super.getName.call(this);
-      // 結果に'-child'を付け加える
-      return name + ' ' + 'NoteItemScheme';
+      return name + ' ' + this._name;
   };
+
 })();

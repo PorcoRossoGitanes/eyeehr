@@ -4,12 +4,13 @@ function NoteItemMemo()
 {
   NoteItem.call(this/*, i_text*/);  // 入力文字列
 
+  /// @param クラス名
+  this._name = 'NoteItemMemo';
+
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jquery.attr('name', 'NoteItemMemo');
-  $jquery.addClass('NoteItemMemo');
-  //console.log($jquery);
-
+  $jquery.attr('name', this._name);
+  $jquery.addClass(this._name);
   //--JQuery オブジェクト操作---//
 
 };(function() {
@@ -38,12 +39,14 @@ function NoteItemMemo()
         }
       }
     }
-    // メンバメソッド(オーバーライド)
-    _proto.getName = function() {
-        // 親クラス(Parent)のgetName()を呼び出す
+    
+    ///@summary クラス名（親クラス...現在のクラス）を取得する
+    ///@return クラス名（親クラス...現在のクラス）
+    _proto.getName = function() 
+    {
         var name = _super.getName.call(this);
-        // 結果に'-child'を付け加える
-        return name + ' ' + 'NoteItemMemo';
+        return name + ' ' + this._name;
     };
+
 })();
 
