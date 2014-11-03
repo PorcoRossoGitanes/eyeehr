@@ -2,10 +2,9 @@ xquery version "3.0";
 
 (:
     @summary ファイルを指定のコレクションに保存する
-	@prama GET/POST [type] = 	bin = file inputからなどバイナリデーターで保存する
-								xml = XMLデーターを保存する
 	@param GET/POST [collection] = 追加対象のコレクション（末尾スラッシュなし）
-	@param GET/POST [filename] = ファイル名
+	@param GET/POST [filename] = ファイル名 例）img.jpg
+	@param GET/POST [xml] = データ（SVG可）
 	@return 
     	成功時、画像迄のURLが返却される。
     	失敗時、空文字列が返却される
@@ -15,15 +14,9 @@ let $user := 'admin'
 let $pswd := 'zaq12wsx'
 
 (:===GETデータを取得する。===:)
-let $type  := request:get-parameter('type', '')
 let $collection := request:get-parameter('collection', '')
-let $filename := 
-	if ($type = 'bin') then (request:get-uploaded-file-name('file')) 
-	else (request:get-parameter('filename', ''))
-
-let $data := 
-	if ($type = 'bin') then (request:get-uploaded-file-data('file')) 
-	else request:get-parameter('xml', '')
+let $filename := request:get-parameter('filename', '')
+let $data := request:get-parameter('xml', '')
 
 (:===コレクションを作成する。===:)
 
@@ -45,21 +38,16 @@ let $ret :=
 	return 
 		($index = $cnt - 1)
 
-(:===ファイルを保存する===:)
-let $rootrest := '/exist/rest'
-
-
 (: ログインする。 :)
 let $login := xmldb:login($collection, $user, $pswd)
 
 (: ファイルを保存する :)
 let $store := xmldb:store($collection, $filename, $data)
+let $rootrest := '/exist/rest'
 let $url := if($store  ne '') then ($rootrest || $collection || '/' || $filename) else ('')
  
 return
 <html>
    <div id='url'>{$url}</div>
-   <div id='collection'>{$collection}</div>
-   <div id='file'> {$filename}</div>
-   <div id='data'>{$data}</div>
+   <div id='store'>{$store}</div>
 </html>
