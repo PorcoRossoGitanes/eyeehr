@@ -109,11 +109,40 @@ function NoteItem() {
     }
     else 
     {
-      $(this).parent().find('[name=attachments]').append(
+      $img = $(
         '<a href="' + url + '" target="_blank">' + 
         '<img class="attachment" src="' + url + '" ' + /* 'ondblclick="$(this).remove()"' + */ '/>' + 
         '</a>'
-      );      
+      );
+      $(this).parent().find('[name=attachments]').append($img);   
+
+      // 画像が右クリックされたら、コンテキストメニューを表示する。   
+      $img.bind("contextmenu", function(event){
+
+        //var posX = event.pageX, posY = event.pageY;
+        var posX = event.clientX, posY = event.clientY;
+
+        $ctx = $('<ul id="ctx">' + 
+          //'<li id="ctxEdit" disabled>編集</li>' + 
+          '<li id="ctxDel">削除</li>' + 
+        '</ul>');
+        $(this).after($ctx);
+        //$ctx.children('#ctxEdit').mousedown(function (){console.log('ctxEdit');});
+        // 削除を選択時、画像を削除する。
+        $ctx.children('#ctxDel').mousedown(function () {
+          $(this).parent().prev().remove();
+        });
+        // マウスダウン時、コンテキストメニューを閉じる。
+        $(document).mousedown(function(){ 
+          $ctx.hide(); 
+          $ctx.remove(); 
+        });
+
+        $ctx.css("left", posX).css("top", posY).show();
+     
+        // 通常の右クリック操作をOFFに設定する。
+        return false;
+      });
     }
   });
 
