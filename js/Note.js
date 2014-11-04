@@ -31,56 +31,64 @@ Note.HtmlNoteToXml = function($i_jquery)/* $('#note')*/
 
 	retVal += '</' + tag + '>';
 
-	// // 入力タグとなりうる要素を取得する。
-	// const childElementTags = new Array('DIV', 'INPUT'/*, 'TEXTAREA', 'SELECT'*/);
-
-	// // name属性をタグとして使用する。
-	// var tag = $i_jquery.attr('name');
-
-	// // XMLを生成する。
-	// if(tag !== undefined)
-	// {
-	// 	retVal += '<' + tag + '>';
-	
-	// 	// 子供を持っている場合は再起的にXMLを生成する。
-	// 	// テーブルなどで形式を制御する場合もあるので、findを使用する。
-	// 	var inputChildrenCnt = $i_jquery.find(childElementTags.toString()).length;
-	// 	var containInputChildren =  inputChildrenCnt > 0;
-
-	// 	// 内部文字列を取得する
-	// 	switch ($i_jquery[0].tagName)
-	// 	{
-	// 		case 'DIV' :  // DIVタグの場合
-	// 			if($i_jquery.hasClass('NoteItemContainer'))
-	// 			{
-	// 				// NoteItemContaner要素の場合は、内容を出力しない。
-	// 			}
-	// 			else if (containInputChildren == false && $i_jquery.attr('name') != '') 
-	// 			{
-	// 				retVal += $i_jquery.html().replace(/<br>/g, '<br />');
-	// 			}
-	// 			else 
-	// 			{
-	// 				//
-	// 			}
-	// 			break;
-	// 		case 'INPUT' : // INPUTタグの場合
-	// 			retVal += $i_jquery.val();//$i_jquery.attr('value');
-	// 			break;
-	// 		// TODO : TEXTAREA
-	// 		// TODO : SELECTボックスなど
-	// 		default : 
-	// 			// それ以外の場合は出力しない。
-	// 			break;		
-	// 	}
-
-	// 	// 子供の要素を再起的に呼び出す。
-	// 	$i_jquery.children().each(function () {
-	// 		retVal += Utility.HtmlInputItemToXml($(this));
-	// 	})
-
-	// 	retVal += '</' + tag + '>';		
-	// }
-
 	return retVal;
+}
+
+///@summary XMLファイルを読込む
+///@param $i_xml XML（JQuery Object） <note />
+Note.LoadXml = function ($i_xml)
+{
+	// 現在のカルテを空にする。
+	$currentNote = $('[name=note]');
+	$currentNote.empty();
+
+	$note = $i_xml.find('note');
+	//console.log($note);
+
+	$note.children().each(function(){
+
+	    //console.log($(this));
+	   	//console.log($(this)[0].tagName);
+
+	    switch($(this)[0].tagName)
+	    {
+	        case 'NoteItemContainerComplaint' : 
+	            // コンテナを追加し、カルテにコンテナを貼付ける。
+	            var containerComplaint = new NoteItemContainerComplaint($(this));
+	            $currentNote.append(containerComplaint.getJQueryObject());
+	            //console.log(containerComplaint.getJQueryObject());
+	            break;
+	        case 'NoteItemContainerDisease' : // 病名 
+	            var containerDisease = new NoteItemContainerDisease($(this));
+	            $currentNote.append(containerDisease.getJQueryObject());
+	            // console.log($(this));
+	            // console.log(containerDisease.getJQueryObject());
+	            break;
+	        case 'NoteItemContainerMedicalCheck' :　// 検査
+	            var containerMedicalCheck = new NoteItemContainerMedicalCheck($(this));
+	            $currentNote.append(containerMedicalCheck.getJQueryObject());
+	            break; 
+	        case 'NoteItemContainerPrescription' :  // 処方
+	            var containerPrescription = new NoteItemContainerPrescription($(this));
+	            $currentNote.append(containerPrescription.getJQueryObject());
+	            break;
+	        case 'NoteItemContainerOperation' :     // 手術
+	            var containerOperation = new NoteItemContainerOperation($(this));
+	            $currentNote.append(containerOperation.getJQueryObject());
+	            break;
+	        case 'NoteItemContainerMemo' : // メモ
+	            var containerMemo = new NoteItemContainerMemo($(this));
+	            $currentNote.append(containerMemo.getJQueryObject());
+	            break;
+	        case 'NoteItemContainerScheme' :　// シェーマ
+	            var containerScheme = new NoteItemContainerScheme($(this));
+	            $currentNote.append(containerScheme.getJQueryObject());
+	            // $(this).children().each(function(){                                
+	            //     // TODO : コーディング未済
+	            // });
+	            break;
+	        default :
+	            break;
+	    }
+	});
 }

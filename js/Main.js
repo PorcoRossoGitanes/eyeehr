@@ -68,7 +68,8 @@ $(function()
 	/// @summary 「読込」ボタンを押下時、XMLを読込む。
 	$('button#load').click(function(){
 		var filePath = $('input#currentFilePath').val();
-		Utility.LoadXml(filePath)
+		
+		Utility.LoadXml(filePath, Note.LoadXml);
 		//XmlManager.LoadNote(filePath);
 	});
 
