@@ -125,7 +125,7 @@ function NoteItem() {
         $(document).mousedown(function(){ $ctx.hide(); $ctx.remove(); });
 
         // コンテキストメニューを表示する。
-        var imagePosX = $img.position().left, imagePosY = $img.position().top;console.log(imagePosX + ',' + imagePosY);
+        var imagePosX = $(this).position().left, imagePosY = $(this).position().top;console.log(imagePosX + ',' + imagePosY);
         var posX = imagePosX + event.offsetX, posY =  imagePosY + event.offsetY; console.log(posX + ',' + posY);
         $ctx.css('left', posX).css('top', posY).show();
      
