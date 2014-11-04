@@ -2,8 +2,27 @@
 function Note() {
 };(function() {
 
-	$currentNote = $('[name="note"]');
-	console.log($currentNote);
+	///@param クラス名
+	this._name = 'note';
+
+    ///@param [保存先]コレクション
+    this._collection = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/' + Utility.GetCurrentDate() + '/';
+
+    ///@param [保存先]ファイル名
+    this._filename =  'note' + Utility.GetCurrentDate() + '.xml';
+
+    ///@param [保存先]URL
+    this._url = this._collection + this._filename;
+
+    ///@param カルテ
+	$currentNote = $('[name="' + this._name + '"]');
+
+	// カルテを空にする。
+	$currentNote.empty();
+
+	$currentNote.attr('data-url', this._url);
+
+	//console.log($currentNote);
 	var containerComplaint = new NoteItemContainerComplaint();
 	$currentNote.append(containerComplaint.getJQueryObject());
 	var containerDisease = new NoteItemContainerDisease();
@@ -19,17 +38,17 @@ function Note() {
 	var containerScheme = new NoteItemContainerScheme();
 	$currentNote.append(containerScheme.getJQueryObject());
 
-  // プロトタイプ
-  var _proto = Note.prototype;
-  // メンバメソッド
+	// プロトタイプ
+	var _proto = Note.prototype;
 
-  _proto.getName = function() {
-      return this._name;
-  };
+	// メンバメソッド
+	_proto.getName = function() {
+	  return this._name;
+	};
 
-  _proto.setName = function(name) {
-      this._name = name;
-  };
+	_proto.setName = function(name) {
+	  this._name = name;
+	};
 })();
 
 /// @summary 	HTMLをXMLに保存する。
@@ -54,19 +73,12 @@ Note.HtmlNoteToXml = function($i_jquery)/* $('#note')*/
 ///@summary カルテ（XMLファイル）を保存する
 Note.SaveXml = function ()
 {
-	// TODO ファイルパスを取得する
-    var yyyyMMdd = Utility.GetCurrentDate();//Utility.GetCurrentDateTime();
-    var dir = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/' + yyyyMMdd + '/'; // コレクションを取得する。
-    var prefix = 'note'; // プレフィクスを取得する。
-    var ext = '.xml'; // 拡張子を取得する。
-	var filePath = dir + prefix + yyyyMMdd + ext;
-
 	// 指定のカルテをXML(<note />)に変換する。
 	var xml = ''; $('td[name="note"]').each(function(){ xml = Note.HtmlNoteToXml($(this));});
 
 	// 指定のファイルパスにXMLデーターを保存する。
-	Utility.SaveXml(filePath, xml); 
-	console.log(xml);
+	console.log($currentNote.data('url'));
+	Utility.SaveXml($currentNote.data('url'), xml); 
 }
 
 ///@summary カルテ（XMLファイル）を読込む
@@ -74,7 +86,6 @@ Note.SaveXml = function ()
 Note.LoadXml = function ($i_xml)
 {
 	// 現在のカルテを空にする。
-	$currentNote = $('[name=note]');
 	$currentNote.empty();
 
 	$note = $i_xml.find('note');

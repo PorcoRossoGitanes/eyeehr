@@ -15,15 +15,17 @@ if (!isset($_SESSION["USERID"])) {
   <head>
     <meta charset="utf-8">
     <title>電子カルテ</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="js/jquery-2.1.1.js"></script>
+    <!--meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"-->
+
+    <script src="js/jquery-2.1.1.js"></script><!-- jQuery 2.1.1 -->
     <script src="js/jquery-ui/jquery-ui.js"></script><!-- jQuery-ui 1.11.1 -->
     <link href="js/jquery-ui/jquery-ui.css" rel="stylesheet"><!-- jQuery-ui 1.11.1 -->
     <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" /-->
     <script src="js/contextmenu/jquery.contextmenu.r2.packed.js"></script><!-- ContextMenu Plugin dependent on jQuery  -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
     <!--script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script--><!--nicEdit-->
+    
     <script src="js/nicEdit/nicEdit.js" type="text/javascript"></script><!--nicEdit-->
 
     <!--自作CSS-->    
@@ -36,20 +38,14 @@ if (!isset($_SESSION["USERID"])) {
     <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
     <!--読込：<div id="result-XmlManager_LoadNote" style="display: inline-block; _display: inline;"></div><!--読込（デバッグ用）-->
     <!--保存：<div id="result-XmlManager_SaveNote" style="display: inline-block; _display: inline;"></div--><!--保存（デバッグ用）-->
-    <button type="button" id="new" class="btn btn-default btn-s">
-      <span class="glyphicon glyphicon-plus">新規</span>
-    </button>
-    <button type="button" id="load" class="btn btn-default btn-s">
-      <span class="glyphicon glyphicon-open">読込</span>
-    </button>
-    <button type="button" id="save" class="btn btn-default btn-s">
-      <span class="glyphicon glyphicon-save">保存</span>
-    </button>
+    <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button>
+    <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
+    <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
   
-    2014/08/31 12:34 
+    <!--2014/08/31 12:34--><!--現在時刻不要？-->
     <label>医師</label>&nbsp; 00001 渡邉花子
     <button id="loadStaff">スタッフ読込</button>
-    <button id="createCollection" onclick="Utility.CreateCollection('/db/ccc/aaa/ccc')">コレクション作成</button>
+    <!--button id="createCollection" onclick="Utility.CreateCollection('/db/ccc/aaa/ccc')">コレクション作成</button-->
 
     <!-- ログアウト -->
     <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'">
@@ -81,17 +77,11 @@ if (!isset($_SESSION["USERID"])) {
           <div id="NoteItemMenu">
             <h3 class='ui-state-disabled' onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</h3>
             <div></div>
-            <h3>所見</h3>
+            <h3>病名</h3>
             <div>
-              <button type="button" class="btn btn-default btn-xs" 
-              onclick="var item = new NoteItemDisease(); item.setFormats('アレルギー性結膜炎'); item.appendTo('[name=NoteItemContainerDisease]');"
-               title="アレルギー性結膜炎">ア結</button>
-              <button type="button" class="btn btn-default btn-xs" 
-              onclick="var item = new NoteItemDisease('角膜円錐'); item.setFormats('角膜円錐'); item.appendTo('[name=NoteItemContainerDisease]');"
-              >角膜円錐</button>
-               <button type="button" class="btn btn-default btn-xs" 
-              onclick="var item = new NoteItemDisease('白内障'); item.setFormats('白内障'); item.appendTo('[name=NoteItemContainerDisease]');"
-              >白内障</button>
+              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemDisease(); item.setFormats('アレルギー性結膜炎'); item.appendTo('[name=NoteItemContainerDisease]');" title="アレルギー性結膜炎">ア結</button>
+              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemDisease('角膜円錐'); item.setFormats('角膜円錐'); item.appendTo('[name=NoteItemContainerDisease]');">角膜円錐</button>
+              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemDisease('白内障'); item.setFormats('白内障'); item.appendTo('[name=NoteItemContainerDisease]');">白内障</button>
             </div>
             <h3>検査</h3>
             <div>
@@ -110,9 +100,7 @@ if (!isset($_SESSION["USERID"])) {
             </div>
             <h3>手術</h3>
             <div>
-              <button type="button" class="btn btn-default btn-xs" 
-                  onclick="var item = new NoteItemOperation(); item.setFormats('レーザー手術'); item.appendTo('[name=NoteItemContainerOperation]');"
-                  >レーザー手術</button>
+              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemOperation(); item.setFormats('レーザー手術'); item.appendTo('[name=NoteItemContainerOperation]');">レーザー手術</button>
             </div>
             <h3 class='ui-state-disabled' onclick="var item = new NoteItemScheme(); item.appendTo('[name=NoteItemContainerScheme]')">シェーマ</h3>
             <div></div>
@@ -123,7 +111,7 @@ if (!isset($_SESSION["USERID"])) {
       </tr>
     </tr>
   </table>  
-  <!--自作JS 本ファイルの末尾で登録してください。-->
+<!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->
   <script src="js/Utility.js"></script>
 
   <script src="js/NoteItem.js"></script>
@@ -148,6 +136,7 @@ if (!isset($_SESSION["USERID"])) {
 
   <!--script src="js/XmlManager.js"/></script-->
   <script src="js/Main.js"></script>
-  <!--自作JS-->
+<!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->
+
   </body>
 </html>

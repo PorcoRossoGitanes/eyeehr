@@ -83,7 +83,7 @@ $(function()
 		// XmlManager.SaveNote(filePath, xml);
 
 		// TODO : 現在のカルテファイルパスを表示する。
-		$('input#currentFilePath').val(filePath);
+		$('input#currentFilePath').val($currentNote.data('url'));
 	});
 
 	// @summary 「患者情報」ボタンを押下時、患者情報を表示する。
