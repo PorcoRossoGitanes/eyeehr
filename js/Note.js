@@ -3,13 +3,13 @@ function Note() {
 };(function() {
 
 	///@param クラス名
-	this._name = 'note';
+	this._name = 'Note';
 
     ///@param [保存先]コレクション
     this._collection = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/' + Utility.GetCurrentDate() + '/';
 
     ///@param [保存先]ファイル名
-    this._filename =  'note' + Utility.GetCurrentDate() + '.xml';
+    this._filename =  this._name + Utility.GetCurrentDate() + '.xml';
 
     ///@param [保存先]URL
     this._url = this._collection + this._filename;
@@ -20,9 +20,10 @@ function Note() {
 	// カルテを空にする。
 	$currentNote.empty();
 
+	// URLをDATA[url]に格納する。
 	$currentNote.attr('data-url', this._url);
 
-	//console.log($currentNote);
+	// NoteContainerを追加する。
 	var containerComplaint = new NoteItemContainerComplaint();
 	$currentNote.append(containerComplaint.getJQueryObject());
 	var containerDisease = new NoteItemContainerDisease();
@@ -41,11 +42,12 @@ function Note() {
 	// プロトタイプ
 	var _proto = Note.prototype;
 
-	// メンバメソッド
+	/// @summary クラス名を取得する。
 	_proto.getName = function() {
 	  return this._name;
 	};
 
+	/// @summary クラス名を設定する。
 	_proto.setName = function(name) {
 	  this._name = name;
 	};
@@ -74,7 +76,7 @@ Note.HtmlNoteToXml = function($i_jquery)/* $('#note')*/
 Note.SaveXml = function ()
 {
 	// 指定のカルテをXML(<note />)に変換する。
-	var xml = ''; $('td[name="note"]').each(function(){ xml = Note.HtmlNoteToXml($(this));});
+	var xml = ''; $currentNote.each(function(){ xml = Note.HtmlNoteToXml($(this));});
 
 	// 指定のファイルパスにXMLデーターを保存する。
 	console.log($currentNote.data('url'));
@@ -88,13 +90,10 @@ Note.LoadXml = function ($i_xml)
 	// 現在のカルテを空にする。
 	$currentNote.empty();
 
-	$note = $i_xml.find('note');
+	$note = $i_xml.find('Note');
 	//console.log($note);
 
 	$note.children().each(function(){
-
-	    //console.log($(this));
-	   	//console.log($(this)[0].tagName);
 
 	    switch($(this)[0].tagName)
 	    {
