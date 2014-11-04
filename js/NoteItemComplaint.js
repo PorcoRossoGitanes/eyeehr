@@ -28,7 +28,7 @@ function NoteItemComplaint()
     {
       if ($i_xml !== undefined)
       {
-        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        if ($i_xml[0].tagName == $jquery.attr('name'))
         {
           // 定型フォーマット部分を追加する。
           $jquery.find('[name=formats]').html($i_xml.children('formats').html());

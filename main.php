@@ -49,7 +49,7 @@ if (!isset($_SESSION["USERID"])) {
     <script src="js/NoteItemContainerMemo.js"></script>
 
     
-    <script src="js/XmlManager.js"/></script>
+    <!--script src="js/XmlManager.js"/></script-->
     <script src="js/Main.js"></script>
     <!--自作JS-->
     <!--自作CSS-->    
@@ -60,7 +60,7 @@ if (!isset($_SESSION["USERID"])) {
   <div id="utility" style="display:none"></div><!--ユーティリティで使用-->
   <div>
     <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
-    読込：<div id="result-XmlManager_LoadNote" style="display: inline-block; _display: inline;"></div><!--読込（デバッグ用）-->
+    <!--読込：<div id="result-XmlManager_LoadNote" style="display: inline-block; _display: inline;"></div><!--読込（デバッグ用）-->
     <!--保存：<div id="result-XmlManager_SaveNote" style="display: inline-block; _display: inline;"></div--><!--保存（デバッグ用）-->
     <button type="button" id="new" class="btn btn-default btn-s">
       <span class="glyphicon glyphicon-plus">新規</span>

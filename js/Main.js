@@ -67,8 +67,9 @@ $(function()
 
 	/// @summary 「読込」ボタンを押下時、XMLを読込む。
 	$('button#load').click(function(){
-		XmlManager.LoadNote($('input#currentFilePath').val());
-	
+		var filePath = $('input#currentFilePath').val();
+		Utility.LoadXml(filePath)
+		//XmlManager.LoadNote(filePath);
 	});
 
 	/// @summary 「保存」ボタンを押下時、XMLを保存する。
@@ -95,8 +96,8 @@ $(function()
    		var filePath = dir + prefix + yyyyMMdd + '.xml';
 
    		// 指定のファイルパスにXMLデーターを保存する。
+  		alert(xml);
 		Utility.SaveXml(filePath, xml); 
-  		 alert(xml);
 		// XmlManager.SaveNote(filePath, xml);
 
 		// TODO : 現在のカルテファイルパスを表示する。

@@ -21,7 +21,7 @@ function NoteItemContainerOperation ($i_xml)
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
     if ($i_xml !== undefined)
     {
-        if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name').toUpperCase())
+        if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name'))
         {
             $i_xml.children().each(function(){
                 var item = new NoteItemOperation();

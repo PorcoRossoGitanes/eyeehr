@@ -27,9 +27,11 @@ function NoteItemMemo()
     {
       if ($i_xml !== undefined)
       {
-        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        if ($i_xml[0].tagName == $jquery.attr('name'))
         {
-          //console.log($i_xml);
+          // console.log($jquery);
+          // console.log($i_xml);
+
           // TODO : 定型フォーマット部分を追加する。
           //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
           // 画像添付部分を追加する。

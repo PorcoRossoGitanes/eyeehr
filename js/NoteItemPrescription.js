@@ -38,7 +38,7 @@ function NoteItemPrescription()
     {
       if ($i_xml !== undefined)
       {
-        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        if ($i_xml[0].tagName == $jquery.attr('name'))
         {
           //console.log($i_xml);
           // TODO : 定型フォーマット部分を追加する。

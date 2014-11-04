@@ -36,7 +36,7 @@ function NoteItemDisease() {
     {
       if ($i_xml !== undefined)
       {
-        if ($i_xml[0].tagName == $jquery.attr('name').toUpperCase())
+        if ($i_xml[0].tagName == $jquery.attr('name'))
         {
           //console.log($i_xml);
           // TODO : 定型フォーマット部分を追加する。
@@ -45,6 +45,7 @@ function NoteItemDisease() {
           $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
           // 備考部分を追加する。
           $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+          // console.log($jquery);
         }
       }
     }
