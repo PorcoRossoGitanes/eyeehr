@@ -90,48 +90,27 @@ function NoteItem() {
     });
   });
 
-  /// @summary  画像添付（送信）処理が実施され、
+  /// @summary  ファイル添付（送信）処理が実施され、
   ///           iframeがロードされたとき、
-  ///           成功時は画像を表示する。
+  ///           成功時はファイル（imgタグ）を表示する。
   $jquery.find('iframe').load(function()
   {
+    // ファイル名が指定されているか確認する。
     var file = $(this).parent().find("#attachFile").val();
     var url =  $(this).contents().find('#url').text();
-    console.log($(this).contents());
+    //console.log($(this).contents());
     if (file == "")
     {
       // 画像ファイルが指定されていない場合は処理を実行しない。
     }
-    else if (file != ""　&& url == "")
+    else if (url == "")
     {
       // 画像ファイルが指定されているが、URLが未指定の場合、保存に失敗したと見なす。
       alert('ファイルの保存に失敗しました。');
     }
     else 
     {
-      // 画像を添付する。
-      $img = $('<a href="' + url + '" target="_blank"><img class="attachment" src="' + url + '" /></a>');
-      $(this).parent().find('[name=attachments]').append($img);   
-
-      // 画像が右クリックされたら、コンテキストメニューを表示する。   
-      $img.bind("contextmenu", function(event){
-
-        $ctx = $('<ul id="ctx"><!--li id="ctxEdit" disabled>編集</li--><li id="ctxDel">削除</li></ul>');
-        $(this).after($ctx);
-
-        // 削除を選択時、画像を削除する。
-        $ctx.children('#ctxDel').mousedown(function () { $(this).parent().prev().remove(); });
-        // マウスダウン時、コンテキストメニューを閉じる。
-        $(document).mousedown(function(){ $ctx.hide(); $ctx.remove(); });
-
-        // コンテキストメニューを表示する。
-        var imagePosX = $(this).position().left, imagePosY = $(this).position().top;console.log(imagePosX + ',' + imagePosY);
-        var posX = imagePosX + event.offsetX, posY =  imagePosY + event.offsetY; console.log(posX + ',' + posY);
-        $ctx.css('left', posX).css('top', posY).show();
-     
-        // 通常の右クリック操作をOFFに設定する。
-        return false;
-      });
+      NoteItem.AttachFile($(this).parent().find('[name=attachments]'), url);
     }
   });
 
@@ -160,19 +139,19 @@ function NoteItem() {
     window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
   });
 
-  /// @summary シェーマ領域が変更された場合に、画像にコンテキストイベントを追加する。
-  $jquery.find('div#scheme').load(function(){
+  // /// @summary シェーマ領域が変更された場合に、画像にコンテキストイベントを追加する。
+  // $jquery.find('div#scheme').load(function(){
     
-    console.log('シェーマ画像が変更されました。');
-    alert('シェーマ画像が変更されました。');
+  //   // console.log('シェーマ画像が変更されました。');
+  //   // alert('シェーマ画像が変更されました。');
         
-    // シェーマ画像を右クリックしたときに、コンテキストメニュー表示出来るように変更する。
-    $(this).find('img').each(function () {
+  //   // シェーマ画像を右クリックしたときに、コンテキストメニュー表示出来るように変更する。
+  //   $(this).find('img').each(function () {
 
-    });
-  });
+  //   });
+  // });
 
-  // @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
+  /// @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
   $jquery.find('button#min').click(function()
   {
     // タグが表示の場合は折り畳む（最小化する）。タグが非表示の場合は展開する。
@@ -305,6 +284,37 @@ NoteItem.ChangeVal = function($jquery, i_memo)
   
   $jquery.find('#tags').html(tags);
   $jquery.find('[name=remarks]').html(i_memo);
+}
+
+/// @summary ファイルを添付する
+/// @param $i_attachements 添付部 <div name="attachements">
+/// @param i_url ファイルURL
+NoteItem.AttachFile = function ($i_attachments, i_url)
+{
+  alert('NoteItem.AttachFile' + i_url);
+  // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
+  $img = $('<a href="' + i_url + '" target="_blank"><img class="attachment" src="' + i_url + '" /></a>');
+  $i_attachments.append($img);   
+
+  // 画像が右クリックされたら、コンテキストメニューを表示する。   
+  $img.bind("contextmenu", function(event){
+
+    $ctx = $('<ul id="ctx"><!--li id="ctxEdit" disabled>編集</li--><li id="ctxDel">削除</li></ul>');
+    $(this).after($ctx);
+
+    // 削除を選択時、画像を削除する。
+    $ctx.children('#ctxDel').mousedown(function () { $(this).parent().prev().remove(); });
+    // マウスダウン時、コンテキストメニューを閉じる。
+    $(document).mousedown(function(){ $ctx.hide(); $ctx.remove(); });
+
+    // コンテキストメニューを表示する。
+    var imagePosX = $(this).position().left, imagePosY = $(this).position().top;console.log(imagePosX + ',' + imagePosY);
+    var posX = imagePosX + event.offsetX, posY =  imagePosY + event.offsetY; console.log(posX + ',' + posY);
+    $ctx.css('left', posX).css('top', posY).show();
+
+    // 通常の右クリック操作をOFFに設定する。
+    return false;
+  });
 }
 
 // /// @summary 公式メソッド
