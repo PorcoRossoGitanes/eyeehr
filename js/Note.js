@@ -79,7 +79,7 @@ Note.SaveXml = function ()
 	var xml = ''; $currentNote.each(function(){ xml = Note.HtmlNoteToXml($(this));});
 
 	// 指定のファイルパスにXMLデーターを保存する。
-	console.log($currentNote.data('url'));
+	//console.log($currentNote.data('url'));
 	Utility.SaveXml($currentNote.data('url'), xml); 
 }
 

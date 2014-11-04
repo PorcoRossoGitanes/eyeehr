@@ -145,8 +145,9 @@ Utility.CreateCollection = function (i_collectionPath)
 /// @summary XMLを保存する。
 /// @param i_path ファイルパス(URL)
 /// @param i_xml XML文字列
+/// @param callback コールバック関数
 /// @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
-Utility.SaveXml = function (i_path, i_xml) 
+Utility.SaveXml = function (i_path, i_xml, callback) 
 {
 	// コレクションとファイル名を取得する。
 	var collection = i_path.substr(0, i_path.lastIndexOf('/'));
@@ -172,7 +173,7 @@ Utility.SaveXml = function (i_path, i_xml)
 			var url = $(data).find('#url').text();
 
 		 	// 完了メッセージを表示する。
-		 	alert('画像の保存が完了しました。');
+		 	alert('ファイルの保存が完了しました。');
 
 		 	// コールバック関数があれば、コールバック関数を実行する。
 		 	if(callback !== undefined) callback(); 
@@ -180,9 +181,7 @@ Utility.SaveXml = function (i_path, i_xml)
      	},
       	error: function(XMLHttpRequest, textStatus, errorThrown) 
       	{
-      		alert('画像の保存に失敗しました。: ' + 
-      			XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message
-      		);
+      		alert('ファイルの保存に失敗しました。: ' + XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message);
         	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
         	// $("#textStatus").html("textStatus : " + textStatus);
         	// $("#errorThrown").html("errorThrown : " + errorThrown.message);

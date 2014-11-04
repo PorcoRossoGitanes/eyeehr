@@ -113,6 +113,7 @@ if (!isset($_SESSION["USERID"])) {
   </table>  
 <!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->
   <script src="js/Utility.js"></script>
+  <script src="js/Staff.js"></script>
 
   <script src="js/NoteItem.js"></script>
   <script src="js/NoteItemComplaint.js"></script>
