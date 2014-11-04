@@ -226,7 +226,7 @@ NoteItem.HtmlToXml = function($i_jquery)
 
   var tag = $i_jquery.attr('name');
 
-  retVal += '<' + tag + ' id=\'' + $i_jquery.attr('id') +'\'>';
+  retVal += '<' + tag + ' id="' + $i_jquery.attr('id') +'">';
 
   //$i_jquery.find('del')
   //$i_jquery.find('min')
@@ -254,8 +254,7 @@ NoteItem.HtmlToXml = function($i_jquery)
   $schemes.find('IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml($(this)); 
   });
-  retVal += '<' + $schemes.attr('name') + '/>';
-
+  retVal += '</' + $schemes.attr('name') + '>';
 
   // □備考をXMLに変換する。
   $remarks = $i_jquery.children('[name=remarks]');
@@ -291,7 +290,7 @@ NoteItem.ChangeVal = function($jquery, i_memo)
 /// @param i_url ファイルURL
 NoteItem.AttachFile = function ($i_attachments, i_url)
 {
-  alert('NoteItem.AttachFile' + i_url);
+  //alert('NoteItem.AttachFile ' + i_url);
   // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
   $img = $('<a href="' + i_url + '" target="_blank"><img class="attachment" src="' + i_url + '" /></a>');
   $i_attachments.append($img);   

@@ -95,8 +95,9 @@ $(function()
    		var filePath = dir + prefix + yyyyMMdd + '.xml';
 
    		// 指定のファイルパスにXMLデーターを保存する。
-   		alert(xml);
-		XmlManager.SaveNote(filePath, xml);
+		Utility.SaveXml(filePath, xml); 
+  		 alert(xml);
+		// XmlManager.SaveNote(filePath, xml);
 
 		// TODO : 現在のカルテファイルパスを表示する。
 		$('input#currentFilePath').val(filePath);

@@ -142,6 +142,60 @@ Utility.CreateCollection = function (i_collectionPath)
 	}
 }
 
+/// @summary XMLを保存する。
+/// @param i_path ファイルパス(URL)
+/// @param i_xml XML文字列
+/// @param callback コールバック関数
+/// @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
+Utility.SaveXml = function (i_path, i_xml, callcack) 
+{
+	// コレクションとファイル名を取得する。
+	var collection = i_path.substr(0, i_path.lastIndexOf('/'));
+	var file = i_path.substr(i_path.lastIndexOf('/') + 1);
+
+	// 画像をXMLDB上に保存する。
+    const Url = '/exist/apps/eyeehr/modules/uploadFileXml.xq';
+	$.ajax({
+	  	async 	: false, 	// 同期通信
+	  	url 	: Url,
+	  	type 	:'POST',
+	  	cache 	: false,
+	  	data 	: 
+		{ 
+			type       : 'xml', 
+			collection : collection,
+			filename   : file,
+			xml        : i_xml
+		},
+		success: function(data) {
+
+			// DB保存成功時は、URLを取得する。
+			var url = $(data).find('#url').text();
+
+		 	// 完了メッセージを表示する。
+		 	alert('画像の保存が完了しました。');
+
+		 	// コールバック関数があれば、コールバック関数を実行する。
+		 	if(callback) callback(); 
+  
+     	},
+      	error: function(XMLHttpRequest, textStatus, errorThrown) 
+      	{
+      		alert('画像の保存に失敗しました。: ' + 
+      			XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message
+      		);
+        	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
+        	// $("#textStatus").html("textStatus : " + textStatus);
+        	// $("#errorThrown").html("errorThrown : " + errorThrown.message);
+     	},
+		// complete : function(data) 
+		// {
+		// 	console.log('画像をXMLDBに保存する処理が完了した。');
+		//     //alert("finishi");
+		// }
+	});
+}
+
 /// @summary 画像からBase64に変換する
 /// @param  {String}   URL
 /// @param  {String}   [outputFormat='image/png'] 出力フォーマット
@@ -171,4 +225,5 @@ Utility.ConvertImgToBase64 = function (url, outputFormat, callback){
 	};
 	img.src = url;
 }
+
 
