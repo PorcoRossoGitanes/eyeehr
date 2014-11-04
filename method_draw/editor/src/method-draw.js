@@ -258,8 +258,8 @@
 				  'logo':'logo.png',
 					'select':'select.png',
 					'select_node':'select_node.png',
-					'pencil':'pencil.png',
-					'hatch' : 'pencil.png',/*'hatch.svg',*/
+					//'pencil':'pencil.png',
+					'hatch' : 'hatch.svg',
 					'pen':'line.png',
 					'rect':'square.png',
 					'ellipse':'ellipse.png',
@@ -285,6 +285,7 @@
 					'#tool_fhpath':'pencil',
 					'#tool_fhhatch':'hatch',
 					'#tool_line':'pen',
+					'#tool_delete':'delete',
 					'#tool_rect,#tools_rect_show':'rect',
 					'#tool_ellipse,#tools_ellipse_show':'ellipse',
 					'#tool_path':'path',
