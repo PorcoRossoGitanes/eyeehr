@@ -2,6 +2,23 @@
 function Note() {
 };(function() {
 
+	$currentNote = $('[name="note"]');
+	console.log($currentNote);
+	var containerComplaint = new NoteItemContainerComplaint();
+	$currentNote.append(containerComplaint.getJQueryObject());
+	var containerDisease = new NoteItemContainerDisease();
+	$currentNote.append(containerDisease.getJQueryObject());
+	var containerMedicalCheck = new NoteItemContainerMedicalCheck();
+	$currentNote.append(containerMedicalCheck.getJQueryObject());
+	var containerPrescription = new NoteItemContainerPrescription();
+	$currentNote.append(containerPrescription.getJQueryObject());
+	var containerOperation = new NoteItemContainerOperation();
+	$currentNote.append(containerOperation.getJQueryObject());
+	var containerMemo = new NoteItemContainerMemo();
+	$currentNote.append(containerMemo.getJQueryObject());
+	var containerScheme = new NoteItemContainerScheme();
+	$currentNote.append(containerScheme.getJQueryObject());
+
   // プロトタイプ
   var _proto = Note.prototype;
   // メンバメソッド

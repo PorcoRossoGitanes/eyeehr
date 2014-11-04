@@ -26,32 +26,6 @@ if (!isset($_SESSION["USERID"])) {
     <!--script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script--><!--nicEdit-->
     <script src="js/nicEdit/nicEdit.js" type="text/javascript"></script><!--nicEdit-->
 
-    <!--自作JS-->
-    <script src="js/Utility.js"></script>
-
-    <script src="js/Note.js"></script>
-    <script src="js/NoteItem.js"></script>
-    <script src="js/NoteItemComplaint.js"></script>
-    <script src="js/NoteItemDisease.js"></script>
-    <script src="js/NoteItemMedicalCheck.js"></script>
-    <script src="js/NoteItemPrescription.js"></script>
-    <script src="js/NoteItemOperation.js"></script>
-    <script src="js/NoteItemScheme.js"></script>
-    <script src="js/NoteItemMemo.js"></script>
-    
-    <script src="js/NoteItemContainer.js"></script>
-    <script src="js/NoteItemContainerComplaint.js"></script>
-    <script src="js/NoteItemContainerDisease.js"></script>
-    <script src="js/NoteItemContainerMedicalCheck.js"></script>
-    <script src="js/NoteItemContainerPrescription.js"></script>
-    <script src="js/NoteItemContainerOperation.js"></script>
-    <script src="js/NoteItemContainerScheme.js"></script>
-    <script src="js/NoteItemContainerMemo.js"></script>
-
-    
-    <!--script src="js/XmlManager.js"/></script-->
-    <script src="js/Main.js"></script>
-    <!--自作JS-->
     <!--自作CSS-->    
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <!--自作CSS-->    
@@ -90,9 +64,10 @@ if (!isset($_SESSION["USERID"])) {
       <!--label>患者</label>&nbsp; --><input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
       <button type="button" id="patient-info" class="btn btn-default btn-xs">患者情報</button>
       </td>
-      <td name="note" style="width:1000px;height:700px;" rowspan="2" valign="top">
-        <!--カルテ記入欄-->
-      </td>
+
+      <!--name="note" カルテ記入欄-->
+      <td name="note" style="width:1000px;height:700px;" rowspan="2" valign="top"></td>
+      
       <td style="width:280px">
         <!--付箋特記事項編集欄-->
         <textarea id="area1" data-from="" style="width: 100%;"></textarea>
@@ -148,5 +123,31 @@ if (!isset($_SESSION["USERID"])) {
       </tr>
     </tr>
   </table>  
+  <!--自作JS 本ファイルの末尾で登録してください。-->
+  <script src="js/Utility.js"></script>
+
+  <script src="js/NoteItem.js"></script>
+  <script src="js/NoteItemComplaint.js"></script>
+  <script src="js/NoteItemDisease.js"></script>
+  <script src="js/NoteItemMedicalCheck.js"></script>
+  <script src="js/NoteItemPrescription.js"></script>
+  <script src="js/NoteItemOperation.js"></script>
+  <script src="js/NoteItemScheme.js"></script>
+  <script src="js/NoteItemMemo.js"></script>
+
+  <script src="js/NoteItemContainer.js"></script>
+  <script src="js/NoteItemContainerComplaint.js"></script>
+  <script src="js/NoteItemContainerDisease.js"></script>
+  <script src="js/NoteItemContainerMedicalCheck.js"></script>
+  <script src="js/NoteItemContainerPrescription.js"></script>
+  <script src="js/NoteItemContainerOperation.js"></script>
+  <script src="js/NoteItemContainerScheme.js"></script>
+  <script src="js/NoteItemContainerMemo.js"></script>
+
+  <script src="js/Note.js"></script>
+
+  <!--script src="js/XmlManager.js"/></script-->
+  <script src="js/Main.js"></script>
+  <!--自作JS-->
   </body>
 </html>
