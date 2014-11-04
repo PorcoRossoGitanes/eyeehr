@@ -68,37 +68,18 @@ $(function()
 	/// @summary 「読込」ボタンを押下時、XMLを読込む。
 	$('button#load').click(function(){
 		var filePath = $('input#currentFilePath').val();
-		
+
 		Utility.LoadXml(filePath, Note.LoadXml);
 		//XmlManager.LoadNote(filePath);
 	});
 
 	/// @summary 「保存」ボタンを押下時、XMLを保存する。
 	$('button#save').click(function(){
-		// 本日のカルテをXMLに変更する。
-		var xml = '';
-		$('td[name="note"]').each(function(){
-			xml = Note.HtmlNoteToXml($(this));
-		})
+
 	    //console.log('Utility.HtmlInputItemToXml : ' + xml);
 
-	    // 本日(yyMMdd)を取得する。
-	    var yyyyMMdd = Utility.GetCurrentDate();
-		    //Utility.GetCurrentDateTime();
-
-	    // ディレクトリを取得する。
-	    var dir = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/' + yyyyMMdd + '/';
-
-	    // ディレクトリを取得する。
-	    var prefix = 'note';
-	    // 拡張子を取得する。
-	    var ext = '.xml';
-
-   		var filePath = dir + prefix + yyyyMMdd + '.xml';
-
-   		// 指定のファイルパスにXMLデーターを保存する。
-  		alert(xml);
-		Utility.SaveXml(filePath, xml); 
+   		// カルテを保存する。
+   		Note.SaveXml();
 		// XmlManager.SaveNote(filePath, xml);
 
 		// TODO : 現在のカルテファイルパスを表示する。

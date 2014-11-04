@@ -34,7 +34,25 @@ Note.HtmlNoteToXml = function($i_jquery)/* $('#note')*/
 	return retVal;
 }
 
-///@summary XMLファイルを読込む
+///@summary カルテ（XMLファイル）を保存する
+Note.SaveXml = function ()
+{
+	// TODO ファイルパスを取得する
+    var yyyyMMdd = Utility.GetCurrentDate();//Utility.GetCurrentDateTime();
+    var dir = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/' + yyyyMMdd + '/'; // コレクションを取得する。
+    var prefix = 'note'; // プレフィクスを取得する。
+    var ext = '.xml'; // 拡張子を取得する。
+	var filePath = dir + prefix + yyyyMMdd + ext;
+
+	// 指定のカルテをXML(<note />)に変換する。
+	var xml = ''; $('td[name="note"]').each(function(){ xml = Note.HtmlNoteToXml($(this));});
+
+	// 指定のファイルパスにXMLデーターを保存する。
+	Utility.SaveXml(filePath, xml); 
+	console.log(xml);
+}
+
+///@summary カルテ（XMLファイル）を読込む
 ///@param $i_xml XML（JQuery Object） <note />
 Note.LoadXml = function ($i_xml)
 {
