@@ -33,9 +33,9 @@
     <resource type="XMLResource" name="test.xhtml" owner="admin" group="dba" mode="644" created="2014-10-23T09:22:59+09:00" modified="2014-10-23T09:22:59+09:00" filename="test.xhtml" mimetype="application/xhtml+xml">
         <acl entries="0" version="1"/>
     </resource>
+    <subcollection name="resources" filename="resources"/>
     <subcollection name="data" filename="data"/>
+    <subcollection name="templates" filename="templates"/>
     <subcollection name="modules" filename="modules"/>
     <subcollection name="img" filename="img"/>
-    <subcollection name="resources" filename="resources"/>
-    <subcollection name="templates" filename="templates"/>
 </collection>

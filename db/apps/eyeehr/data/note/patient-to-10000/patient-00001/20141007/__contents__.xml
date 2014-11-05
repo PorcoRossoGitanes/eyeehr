@@ -1,6 +1,0 @@
-<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/20141007" owner="admin" group="dba" mode="755" created="2014-10-07T06:36:47+09:00" version="1">
-    <acl entries="0" version="1"/>
-    <resource type="XMLResource" name="note20141007.xml" owner="admin" group="dba" mode="644" created="2014-10-07T09:56:20+09:00" modified="2014-10-07T09:56:20+09:00" filename="note20141007.xml" mimetype="application/xml">
-        <acl entries="0" version="1"/>
-    </resource>
-</collection>
