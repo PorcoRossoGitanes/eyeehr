@@ -63,7 +63,7 @@ function NoteItem() {
     '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
     '<div name="formats"></div>' +                    <!--入力フォーム（定型フォーム）-->
     '<div name="attachments"></div>' +                <!--ファイル添付用--> 
-    '<div name="scheme" style="visibility:hidden"></div>' +<!--シェーマ添付用--> 
+    '<div name="schemes" style="visibility:hidden"></div>' +<!--シェーマ添付用--> 
     '<div name="remarks"></div>' +                    <!--備考入力用--> 
     '</div>'
   );

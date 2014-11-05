@@ -5778,14 +5778,14 @@ this.save = function(opts, callback) {
 			 	else 
 			 	{
 					// 親画面にシェーマ画像のタグを返却する。
-				 	$noteItem = window.opener.$('#' + noteItemId);
+				 	$noteItem = window.opener.$('#' + noteItemId); console.log($noteItem);
 			 		// シェーマ領域を取得する。
-				 	$scheme = $noteItem.children('[name="scheme"]');
+				 	$schemes = $noteItem.children('[name="schemes"]'); console.log($schemes);
 				 	// 元画像を取得し、一度削除、再度追加する。
-				 	$imgs = $scheme.children("img[src^='" + url + "']");
+				 	$imgs = $schemes.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
 				 	$img = $('<img class="scheme" src="' + url + '?' + (new Date().getTime()) + '"/>');
-				 	$scheme.append($img);
+				 	$schemes.append($img);
 
 				 	// 完了メッセージを表示する。
 				 	alert('画像の保存が完了しました。');

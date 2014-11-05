@@ -14,7 +14,7 @@ function NoteItemScheme()
   // シェーマの場合のみ、「シェーマ」ボタンを表示する。
   $jquery.children('button#addScheme').css('visibility', 'inherit');
   // シェーマ添付部を表示する。
-  $jquery.children('div[name="scheme"]').css('visibility', 'inherit');
+  $jquery.children('div[name="schemes"]').css('visibility', 'inherit');
   //--JQuery オブジェクト操作---//
 
 };(function() {
@@ -40,7 +40,7 @@ function NoteItemScheme()
         // 画像添付部分を追加する。
         $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
         // 備考部分を追加する。
-        $jquery.find('[name=scheme]').html($i_xml.children('scheme').html());
+        $jquery.find('[name=schemes]').html($i_xml.children('schemes').html());
         // 備考部分を追加する。
         $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
       }
