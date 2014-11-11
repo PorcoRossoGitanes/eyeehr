@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# ログイン情報を入力
+username=admin
+password=zaq12wsx
+exist=eXist-db-setup-2.1-rev18721.jar
+
+# expect で eXist-DBのインストールを実行する。
+expect -c "
+
+# タイムアウト値の指定する。
+set timeout 20
+
+# spawnで新しいジョブを生成する。(exist本体のインストールを実行する。)
+spawn java -jar $exist
+
+# パスはデフォルトのままとする
+expect \"Select target path\"
+send \"\/usr\/local\/lib\/exist\n\"
+
+# インストール先で1(続行）を指示する。
+expect \"press 1 to continue, 2 to quit, 3 to redisplay\"
+send \"1\n\"
+
+# データディレクトリをデフォルトに設定する。
+expect \"Data dir:\"
+send \"\n\"
+
+# データディレクトリで1(続行）を指示する。
+expect \"press 1 to continue, 2 to quit, 3 to redisplay\"
+send \"1\n\"
+
+# パスワードを入力する。
+expect \"Enter password:\"
+send \"$password\n\"
+
+# パスワードを再入力する。
+expect \"Enter password:\"
+send \"$password\n\"
+
+# 最大メモリをデフォルト指定する。
+expect \"Maximum memory in mb:\"
+send \"\n\"
+
+# キャッシュメモリをデフォルト指定する。
+expect \"Cache memory in mb:\"
+send \"\n\"
+
+# 1(続行）を指示する。
+expect \"press 1 to continue, 2 to quit, 3 to redisplay\"
+send \"1\n\"
+
+# spawnジョブを通常の通信にする
+interact
+"
+## eXist-DBを開始する。
+sudo /usr/local/lib/exist/bin/startup.sh
+
+## デーモンを登録する。
+## デフォルトで常時起動に設定されている。
+sudo /usr/local/lib/exist/tools/wrapper/bin/exist.sh install
+## alternativeも登録する。
+sudo ln -s /usr/local/lib/exist/tools/wrapper/bin/exist.sh /etc/init.d/exist

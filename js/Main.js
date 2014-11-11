@@ -142,5 +142,42 @@ $(function()
 	// ■初回起動時、主訴欄を生成する。
 	//new NoteItemComplaint('本日の主訴を入力してください。');
 
+	$('#loadXmlFromOrca').click(function(){
+		//Patient.LoadXmlFromOrca();
+				// 画像をXMLDB上に保存する。
+	    var url = 'http://ormaster:ormaster123@192.168.24.117:8000/api01rv2/patientgetv2'+ '?id=1233';
+	    var user = 'ormaster';
+	    var pswd = 'ormaster123';
+	    //console.log(url);
+
+		$.ajax({
+		  	async 	: false, 	// 同期通信
+		  	url 	: url,
+		  	type 	:'GET',
+		  	cache 	: false,
+		 //  	data    : {id: '1233'}, 
+	  // 		beforeSend: function(xhr) {
+			// 	var credentials = $.base64.encode(user + ':' + pswd);
+			//     xhr.setRequestHeader ("Authorization", "Basic " + credentials); 
+			//     //xhr.setRequestHeader("Authorization", "Basic " + btoa(user + ':' + pswd)/*credentials*/);
+			// },
+			success: function(data) {
+				alert(data);
+				//if(callback !== undefined) callback($(data)); 
+	     	},
+	      	error: function(XMLHttpRequest, textStatus, errorThrown) 
+	      	{
+	      		alert('読込みに失敗しました。: ' + XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message);
+	        	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
+	        	// $("#textStatus").html("textStatus : " + textStatus);
+	        	// $("#errorThrown").html("errorThrown : " + errorThrown.message);
+	     	}
+	     	//,
+			// complete : function(data) 
+			// {
+			// }
+		});
+	});
+
 });
 
