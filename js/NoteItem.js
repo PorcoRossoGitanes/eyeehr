@@ -249,7 +249,7 @@ NoteItem.HtmlToXml = function($i_jquery)
   retVal += '</' + $attachments.attr('name') + '>';
 
   // □シェーマ添付部をXMLに変換する。
-  $schemes = $i_jquery.children('[name=scheme]');
+  $schemes = $i_jquery.children('[name=schemes]');
   retVal += '<' + $schemes.attr('name') + '>';
   $schemes.find('IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml($(this)); 

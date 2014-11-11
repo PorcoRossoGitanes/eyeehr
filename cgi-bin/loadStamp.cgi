@@ -96,7 +96,8 @@ $practice_in{'MEDICAL_CHECK'} 	= 600;
 #use constant TREATMENT => 400; # 処置は、医療行為CSVの400番台
 #use constant OPERATION => 500; # 手術は、医療行為CSVの500番台
 #use constant MEDICAL_CHECK => 600; # 検査は、医療行為CSVの600番台
-#use constant MEDICATION_GENERIC_FLG_DEFAULT => "yes"; #診療行為一般処方指示[初期値:YES]
+
+use constant MEDICATION_GENERIC_FLG_DEFAULT => "yes"; #診療行為一般処方指示[初期値:YES]
 
 # 既存のコレクションを格納していく（チューニングのため）
 my @collection_exist;
@@ -129,7 +130,7 @@ my
 # データ保存ディレクトリを設定する。
 my $data_dir = "./data";
 # データ保存コレクションを設定する。
-my $data_col = "/db/apps/eyeehr/data";
+my $data_col = "/db/apps/eyeehr/data/Stamp";
 
 my $argv_length = @ARGV;
 if ($argv_length > 0)
@@ -272,7 +273,7 @@ sub lineToXml
 	#変換されたXMLデータを格納する。
 	my $ret = "";
 
-	use constant Stamp => "Stamp";
+	use constant STAMP => "Stamp";
 	use constant ORCA => "Orca";
 	use constant MEDICAL_CLASS => "Medical_Class";	#診療種別区分
 	use constant MEDICATION_CODE => "Medication_Code";	#診療行為コード
@@ -320,10 +321,10 @@ sub lineToXml
 	else 
 	{ 
 		$current_col = $data_col . "/" . $collection[$file_type];
-		print "[診療部門]$current_col\n";
+		#print "[診療部門]$current_col\n";
 		$current_col = &XmlDbUtil::CreateCollection($current_col); 
 		push(@collection, $current_col);
-		print "[診療部門]$current_col\n";
+		#print "[診療部門]$current_col\n";
 	}
 
 	if ($file_type eq PRACTICE)
@@ -366,14 +367,14 @@ sub lineToXml
 	elsif ($file_type eq COMMENT)
 	{
 		#use constant COMMENT => 6; 		# コメント
-		if ($length == $len[COMMENT])
-		{
+		#if ($length == $len[COMMENT])
+		#{
 			#$medical_class 		= $item[9]; #見つからない
 			$medication_code 		= $item[1];
 			$medication_name 		= $item[4];	
 			$medication_unit_point 	= $item[5];
 			#$medication_unit 		= $item[7]; #見つからない
-		}
+		#}
 	}
 	elsif ($file_type eq PRIVATE_EXPENSE)
 	{
@@ -391,16 +392,19 @@ sub lineToXml
 	# 診療コードがあるデータのみ出力する。
 	if ($medication_code ne "")
 	{
-		# 診療区分番号によってフォルダを分割する。
-		if ($toXmlDB eq FALSE) 
+		if ($medical_class ne "")
 		{
-			$current_dir = &File::MakeDir($current_dir . "/" . $medical_class); 
-		}
-		else 
-		{ 	
-			$current_col = &XmlDbUtil::CreateCollection($current_col . "/" . $medical_class); 
-			push(@collection, $current_col);
-			print "[診療コード]$current_col\n";
+			# 診療区分番号によってフォルダを分割する。
+			if ($toXmlDB eq FALSE) 
+			{
+				$current_dir = &File::MakeDir($current_dir . "/" . $medical_class); 
+			}
+			else 
+			{ 	
+				$current_col = &XmlDbUtil::CreateCollection($current_col . "/" . $medical_class); 
+				push(@collection, $current_col);
+				#print "[診療コード]$current_col\n";
+			}			
 		}
 
 		my $xml = 
@@ -436,6 +440,8 @@ sub lineToXml
 
 
 		#print $result . "\n";
+		print "$line";
+
 		$ret = $xml;
 	}
 
