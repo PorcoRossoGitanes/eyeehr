@@ -117,10 +117,10 @@ my @len =
 
 #ファイルタイプ=1, 診療行為CSVの場合に使用する。
 my %practice_in;
-$practice_in{'INJECTION'} 		= 300;
-$practice_in{'TREATMENT'} 		= 400;
-$practice_in{'OPERATION'} 		= 500;
-$practice_in{'MEDICAL_CHECK'} 	= 600;
+$practice_in{'INJECTION'} 		= 300;　# 注射(300番台)
+$practice_in{'TREATMENT'} 		= 400;	# 処置(400番台)
+$practice_in{'OPERATION'} 		= 500;	# 手術(500番台)
+$practice_in{'MEDICAL_CHECK'} 	= 600;	# 検査(600番台)
 
 # プログラム変数。
 my 

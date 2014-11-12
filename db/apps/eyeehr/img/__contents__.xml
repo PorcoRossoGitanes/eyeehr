@@ -1,0 +1,57 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eyeehr/img" owner="admin" group="dba" mode="755" created="2014-11-03T01:29:22+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="pdf_3604.pdf" owner="admin" group="dba" mode="644" created="2014-11-11T11:11:07+09:00" modified="2014-11-11T11:11:07+09:00" filename="pdf_3604.pdf" mimetype="application/pdf">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415704308329.svg" owner="admin" group="dba" mode="644" created="2014-11-11T11:11:54+09:00" modified="2014-11-11T11:11:54+09:00" filename="scheme-1415704308329.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415704705535.svg" owner="admin" group="dba" mode="644" created="2014-11-11T11:18:30+09:00" modified="2014-11-11T11:18:30+09:00" filename="scheme-1415704705535.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="images.jpeg" owner="admin" group="dba" mode="644" created="2014-11-11T11:20:04+09:00" modified="2014-11-11T11:20:04+09:00" filename="images.jpeg" mimetype="image/jpeg">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="fa_othvasccond_Sickle_Cell_Retinopathy_.jpg" owner="admin" group="dba" mode="644" created="2014-11-05T01:41:44+09:00" modified="2014-11-05T01:41:44+09:00" filename="fa_othvasccond_Sickle_Cell_Retinopathy_.jpg" mimetype="image/jpeg">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="fa_tumorslesions_CHRPE_ResMax.jpg" owner="admin" group="dba" mode="644" created="2014-11-05T01:41:51+09:00" modified="2014-11-05T01:41:51+09:00" filename="fa_tumorslesions_CHRPE_ResMax.jpg" mimetype="image/jpeg">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153315994.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:08:42+09:00" modified="2014-11-05T02:08:42+09:00" filename="scheme-1415153315994.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153585027.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:13:11+09:00" modified="2014-11-05T02:13:11+09:00" filename="scheme-1415153585027.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153598077.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:13:21+09:00" modified="2014-11-05T02:13:21+09:00" filename="scheme-1415153598077.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153644743.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:14:07+09:00" modified="2014-11-05T02:14:07+09:00" filename="scheme-1415153644743.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153684973.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:14:54+09:00" modified="2014-11-05T02:14:54+09:00" filename="scheme-1415153684973.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153702524.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:15:12+09:00" modified="2014-11-05T02:15:12+09:00" filename="scheme-1415153702524.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153749109.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:15:51+09:00" modified="2014-11-05T02:15:51+09:00" filename="scheme-1415153749109.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153759718.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:17:32+09:00" modified="2014-11-05T02:17:32+09:00" filename="scheme-1415153759718.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153923259.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:18:59+09:00" modified="2014-11-05T02:18:59+09:00" filename="scheme-1415153923259.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415153970870.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:19:34+09:00" modified="2014-11-05T02:19:34+09:00" filename="scheme-1415153970870.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="scheme-1415154069859.svg" owner="admin" group="dba" mode="644" created="2014-11-05T02:21:12+09:00" modified="2014-11-05T02:21:12+09:00" filename="scheme-1415154069859.svg" mimetype="image/svg+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="fa_melanoma_Tumor.jpg" owner="admin" group="dba" mode="644" created="2014-11-07T04:42:59+09:00" modified="2014-11-07T04:42:59+09:00" filename="fa_melanoma_Tumor.jpg" mimetype="image/jpeg">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

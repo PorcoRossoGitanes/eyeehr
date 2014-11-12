@@ -1,0 +1,897 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eyeehr/data/Stamp/Comment" owner="admin" group="dba" mode="755" created="2014-11-12T04:14:51+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="XMLResource" name="Comment-001000139.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000139.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000140.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000140.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000141.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000141.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000142.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000142.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000143.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000143.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000144.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000144.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000206.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000206.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000207.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000207.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000208.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000208.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000209.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000209.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000210.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000210.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000211.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000211.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000212.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000212.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000213.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000213.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000214.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000214.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000215.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000215.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000216.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000216.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000217.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000217.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000218.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000218.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000219.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000219.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000220.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000220.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000301.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000301.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000305.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000305.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000306.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000306.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000307.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000307.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000308.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000308.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000309.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000309.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000310.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000310.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000311.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000311.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000312.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000312.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000313.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000313.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000314.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000314.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000315.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000315.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000316.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000316.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000317.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000317.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000318.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000318.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000401.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000401.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000404.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000404.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000405.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000405.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000406.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000406.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000407.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000407.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000408.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000408.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000503.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000503.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000504.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000504.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000505.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000505.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000506.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000506.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000507.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000507.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000508.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000508.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000509.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000509.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000510.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000510.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000511.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000511.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000513.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000513.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000514.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000514.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000515.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000515.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000516.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000516.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000517.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000517.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000518.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000518.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000519.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000519.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000520.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000520.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000521.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000521.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000522.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000522.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000523.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000523.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000524.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000524.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000525.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000525.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000526.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000526.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000527.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000527.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000528.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000528.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000529.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000529.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000530.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000530.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000531.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000531.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000532.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000532.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000533.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000533.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000534.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000534.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000535.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000535.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000536.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000536.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000537.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000537.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000538.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000538.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000539.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000539.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000540.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000540.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000541.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000541.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000542.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000542.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000543.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000543.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000544.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000544.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000545.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000545.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000546.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000546.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000547.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000547.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000548.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000548.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000549.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000549.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000550.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000550.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000551.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000551.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000552.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000552.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000553.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000553.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000554.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000554.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000555.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000555.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000556.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000556.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000557.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000557.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000558.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000558.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000559.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000559.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000561.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000561.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000563.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000563.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000822.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000822.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000981.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001000981.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001101.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001001101.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001102.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001001102.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001103.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001001103.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001104.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001001104.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001105.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001001105.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001106.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001001106.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001107.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:39+09:00" modified="2014-11-12T05:35:39+09:00" filename="Comment-001001107.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001108.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001108.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001109.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001109.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001110.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001110.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001111.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001111.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001112.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001112.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001113.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001113.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001114.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001114.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001115.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001115.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001116.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001116.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001117.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001117.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001118.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001118.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001119.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001119.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001120.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001120.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001121.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001121.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001122.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001122.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001123.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001123.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001124.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001124.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001125.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001125.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001126.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001126.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001127.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001127.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001128.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001128.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001129.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001129.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001130.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001130.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001131.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001131.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001132.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001132.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001133.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001133.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001134.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001134.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001135.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001135.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001136.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001136.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001137.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001137.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001138.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001138.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001139.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001139.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001140.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001140.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001141.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001141.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001142.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001142.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001143.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001143.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001144.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001144.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001145.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001145.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001146.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001146.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001147.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001147.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001148.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001148.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001149.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001149.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001150.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001150.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001151.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001151.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001152.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001152.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001153.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001153.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001154.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001154.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001155.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001155.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001156.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001156.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001157.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001157.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001158.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001158.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001159.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001159.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001160.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001160.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001161.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001161.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001162.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001162.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001163.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001163.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001164.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001164.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001165.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001165.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001166.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001166.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001167.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001167.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001168.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001168.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001169.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001169.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001170.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001170.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001171.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001171.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001172.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001172.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001173.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001173.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001174.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001174.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001175.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001175.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001176.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001176.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000101.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000101.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000106.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000106.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000107.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000107.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000108.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000108.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000109.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000109.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000110.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000110.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000111.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000111.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000112.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000112.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001000113.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:38+09:00" modified="2014-11-12T05:35:38+09:00" filename="Comment-001000113.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001177.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001177.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001178.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001178.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001179.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001179.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001180.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001180.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001181.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001181.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001182.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001182.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001183.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001183.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001184.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001184.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001185.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001185.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001186.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001186.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001187.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001187.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001188.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001188.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001189.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001189.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001190.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001190.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001191.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001191.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001192.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001192.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001193.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001193.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001194.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001194.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001195.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001195.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001196.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001196.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001197.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001197.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001198.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001198.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001199.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001199.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001200.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001200.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001201.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001201.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001202.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001202.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001203.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001203.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001204.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001204.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001205.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001205.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001206.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001206.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001207.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001207.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001208.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001208.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001209.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001209.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001210.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001210.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001211.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001211.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001212.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001212.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001213.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:40+09:00" modified="2014-11-12T05:35:40+09:00" filename="Comment-001001213.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001214.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001214.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001215.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001215.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001216.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001216.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001217.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001217.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001218.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001218.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001219.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001219.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001220.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001220.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001221.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001221.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001222.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001222.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001223.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001223.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001224.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001224.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001225.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001225.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001226.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001226.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001227.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001227.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001229.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001229.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001230.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001230.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001231.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001231.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001232.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001232.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001233.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001233.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001234.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001234.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001235.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001235.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001236.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001236.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001237.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001237.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001238.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001238.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001239.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001239.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001240.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001240.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001241.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001241.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001242.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001242.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001243.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001243.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001244.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001244.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001245.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001245.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001246.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001246.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001247.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001247.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001248.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001248.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001249.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001249.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001250.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001250.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001251.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001251.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001252.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001252.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001253.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001253.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-001001255.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-001001255.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-002000001.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-002000001.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-002000002.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-002000002.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-002000003.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-002000003.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-002000004.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-002000004.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-002000005.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-002000005.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200001.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200001.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200002.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200002.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200003.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200003.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200004.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200004.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200005.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200005.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200006.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200006.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200007.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200007.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200008.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200008.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200009.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200009.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200010.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200010.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200011.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200011.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200012.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200012.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200013.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200013.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200014.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200014.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200015.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200015.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200016.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200016.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200017.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200017.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200018.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200018.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200019.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200019.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200020.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200020.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200021.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200021.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200022.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200022.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008200023.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008200023.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008300001.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008300001.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008400001.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008400001.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008400002.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008400002.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-008500000.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-008500000.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-810000001.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-810000001.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="Comment-840000082.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:41+09:00" modified="2014-11-12T05:35:41+09:00" filename="Comment-840000082.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

@@ -1,0 +1,6 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eyeehr/data/Stamp/Practice/510" owner="admin" group="dba" mode="755" created="2014-11-12T04:14:40+09:00" version="1">
+    <acl entries="0" version="1"/>
+    <resource type="XMLResource" name="Practice-150225770.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:30+09:00" modified="2014-11-12T05:35:30+09:00" filename="Practice-150225770.xml" mimetype="application/xml">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>
