@@ -120,6 +120,7 @@ if (!isset($_SESSION["USERID"])) {
   
   <script src="js/Patient.js"></script>
 
+  <script src="js/Stamp.js"></script>
   <script src="js/NoteItem.js"></script>
   <script src="js/NoteItemComplaint.js"></script>
   <script src="js/NoteItemDisease.js"></script>

@@ -194,8 +194,8 @@ Utility.SaveXml = function (i_path, i_xml, callback)
 	});
 }
 
-/// @summary XMLを読込む。
-/// @param i_path ファイルパス(URL)
+/// @summary XMLを読込む。(REST)
+/// @param i_path ファイルパス(URL) 
 /// @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
 Utility.LoadXml = function (i_path, callback) 
 {
@@ -208,14 +208,14 @@ Utility.LoadXml = function (i_path, callback)
 		$.ajax({
 		  	async 	: false, 	// 同期通信
 		  	url 	: url,
-		  	type 	:'GET',
+		  	type 	: 'POST',
 		  	cache 	: false,
 			success: function(data) {
 				if(callback !== undefined) callback($(data)); 
 	     	},
 	      	error: function(XMLHttpRequest, textStatus, errorThrown) 
 	      	{
-	      		alert('画像の読込みに失敗しました。: ' + 
+	      		alert('ファイルの読込みに失敗しました。: ' + 
 	      			XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message
 	      		);
 	        	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
