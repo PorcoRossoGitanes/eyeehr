@@ -87,6 +87,8 @@ Note.SaveXml = function ()
 ///@param $i_xml XML（JQuery Object） <note />
 Note.LoadXml = function ($i_xml)
 {
+	console.log($i_xml);
+	
 	// 現在のカルテを空にする。
 	$currentNote.empty();
 
