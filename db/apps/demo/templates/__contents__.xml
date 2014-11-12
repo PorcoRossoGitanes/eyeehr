@@ -1,6 +1,0 @@
-<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/demo/templates" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:08+09:00" version="1">
-    <acl entries="0" version="1"/>
-    <resource type="XMLResource" name="page.html" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:08+09:00" modified="2014-08-20T03:28:08+09:00" filename="page.html" mimetype="text/html">
-        <acl entries="0" version="1"/>
-    </resource>
-</collection>

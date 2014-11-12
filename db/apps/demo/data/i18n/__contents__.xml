@@ -1,9 +1,0 @@
-<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/demo/data/i18n" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:12+09:00" version="1">
-    <acl entries="0" version="1"/>
-    <resource type="XMLResource" name="collection_de.xml" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:12+09:00" modified="2014-08-20T03:28:12+09:00" filename="collection_de.xml" mimetype="application/xml">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="XMLResource" name="collection_es.xml" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:12+09:00" modified="2014-08-20T03:28:12+09:00" filename="collection_es.xml" mimetype="application/xml">
-        <acl entries="0" version="1"/>
-    </resource>
-</collection>

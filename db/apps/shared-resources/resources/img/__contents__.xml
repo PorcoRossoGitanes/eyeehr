@@ -1,9 +1,0 @@
-<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/shared-resources/resources/img" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" version="1">
-    <acl entries="0" version="1"/>
-    <resource type="BinaryResource" name="glyphicons-halflings-white.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="glyphicons-halflings-white.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="glyphicons-halflings.png" owner="admin" group="dba" mode="775" created="2014-08-20T03:28:04+09:00" modified="2014-08-20T03:28:04+09:00" filename="glyphicons-halflings.png" mimetype="image/png">
-        <acl entries="0" version="1"/>
-    </resource>
-</collection>

@@ -1,4 +1,0 @@
-<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/system/security/exist/groups" owner="SYSTEM" group="dba" mode="770" created="2014-08-20T03:25:53+09:00" version="1">
-    <acl entries="0" version="1"/>
-    <subcollection name="removed" filename="removed"/>
-</collection>
