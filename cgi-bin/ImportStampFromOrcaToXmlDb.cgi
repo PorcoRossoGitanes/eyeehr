@@ -231,9 +231,9 @@ else
 				);			
 			}
 		}
-	}
 
-	print "<hr/>";
+		print "<hr/>";
+	}
 }
 
 ### @summary 	フォームからXML文字列を取得し、XMLに変換する。
@@ -256,7 +256,7 @@ sub ExportXmlFromForm
 	else 
 	{
 		$current_col = &XmlDbUtil::CreateCollection($data_col); 
-		push(@collection, $current_col);
+		#push(@collection, $current_col);
 		#print "$current_col\n";
 	}
 
@@ -298,7 +298,7 @@ sub ExportXml
 	else 
 	{
 		$current_col = &XmlDbUtil::CreateCollection($data_col); 
-		push(@collection, $current_col);
+		#push(@collection, $current_col);
 		print "$current_col\n";
 	}
 
@@ -365,7 +365,7 @@ sub lineToXml
 		$current_col = $data_col . "/" . $collection[$file_type];
 		#print "[診療部門]$current_col\n";
 		$current_col = &XmlDbUtil::CreateCollection($current_col); 
-		push(@collection, $current_col);
+		#push(@collection, $current_col);
 		#print "[診療部門]$current_col\n";
 	}
 
@@ -443,25 +443,25 @@ sub lineToXml
 			else 
 			{ 	
 				$current_col = &XmlDbUtil::CreateCollection($current_col . "/" . $medical_class); 
-				push(@collection, $current_col);
+				#push(@collection, $current_col);
 				#print "[診療コード]$current_col\n";
 			}			
 		}
 
 		my $xml = 
-		"<" . STAMP. ">\n" .		
-		"\t<" . ORCA. ">\n" .
-		"\t\t<" . MEDICAL_CLASS          . ">" . $medical_class          . "</" . MEDICAL_CLASS          . ">\n" .
-		"\t\t<" . MEDICATION_CODE        . ">" . $medication_code        . "</" . MEDICATION_CODE        . ">\n" .
-		"\t\t<" . MEDICATION_NAME        . ">" . $medication_name        . "</" . MEDICATION_NAME        . ">\n" .
-		"\t\t<" . MEDICATION_NUMBER      . ">" . $medication_number      . "</" . MEDICATION_NUMBER      . ">\n" .
-		"\t\t<" . MEDICATION_GENERIC_FLG . ">" . $medication_generic_flg . "</" . MEDICATION_GENERIC_FLG . ">\n" .
-		"\t\t<" . MEDICATION_UNIT_POINT  . ">" . $medication_unit_point  . "</" . MEDICATION_UNIT_POINT  . ">\n" .
-		"\t\t<" . MEDICATOIN_UNIT        . ">" . $medication_unit        . "</" . MEDICATOIN_UNIT        . ">\n" .
-		"\t</" . ORCA . ">\n" . 
-		"\t<" . EYEEHR . ">\n" . 
-		"\t</" . EYEEHR . ">\n" . 
-		"</" . STAMP . ">\n";
+		"<" . STAMP. ">\r\n" .		
+		"\t<" . ORCA. ">\r\n" .
+		"\t\t<" . MEDICAL_CLASS          . ">" . $medical_class          . "</" . MEDICAL_CLASS          . ">\r\n" .
+		"\t\t<" . MEDICATION_CODE        . ">" . $medication_code        . "</" . MEDICATION_CODE        . ">\r\n" .
+		"\t\t<" . MEDICATION_NAME        . ">" . $medication_name        . "</" . MEDICATION_NAME        . ">\r\n" .
+		"\t\t<" . MEDICATION_NUMBER      . ">" . $medication_number      . "</" . MEDICATION_NUMBER      . ">\r\n" .
+		"\t\t<" . MEDICATION_GENERIC_FLG . ">" . $medication_generic_flg . "</" . MEDICATION_GENERIC_FLG . ">\r\n" .
+		"\t\t<" . MEDICATION_UNIT_POINT  . ">" . $medication_unit_point  . "</" . MEDICATION_UNIT_POINT  . ">\r\n" .
+		"\t\t<" . MEDICATOIN_UNIT        . ">" . $medication_unit        . "</" . MEDICATOIN_UNIT        . ">\r\n" .
+		"\t</" . ORCA . ">\r\n" . 
+		"\t<" . EYEEHR . ">\r\n" . 
+		"\t</" . EYEEHR . ">\r\n" . 
+		"</" . STAMP . ">\r\n";
 
 		#【デバッグ用】XMLを標準出力する。
 		#print $debug;
