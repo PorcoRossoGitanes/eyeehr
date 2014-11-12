@@ -55,6 +55,7 @@ my $data_col = "/db/apps/eyeehr/data/Stamp";
 
 #=== XMLDB XMLタグ ===#
 use constant STAMP => "Stamp";
+
 use constant ORCA => "Orca";
 use constant MEDICAL_CLASS => "Medical_Class";						#診療種別区分
 use constant MEDICATION_CODE => "Medication_Code";					#診療行為コード
@@ -63,6 +64,9 @@ use constant MEDICATION_NUMBER => "Medication_Number";				#診療行為数量
 use constant MEDICATION_GENERIC_FLG => "Medication_Generic_Flg"; 	#診療行為一般処方指示
 use constant MEDICATION_UNIT_POINT => "Medication_Unit_Point";		#診療行為単位点数
 use constant MEDICATOIN_UNIT => "Medication_Unit";					#診療行為単位
+
+use constant EYEEHR => "Eyeehr";									#電子カルテ用					
+
 use constant MEDICATION_GENERIC_FLG_DEFAULT => "yes";				#診療行為一般処方指示[初期値:YES]
 
 #=== ↑↑↑カスタマイズ部↑↑↑ ===#
@@ -455,6 +459,8 @@ sub lineToXml
 		"\t\t<" . MEDICATION_UNIT_POINT  . ">" . $medication_unit_point  . "</" . MEDICATION_UNIT_POINT  . ">\n" .
 		"\t\t<" . MEDICATOIN_UNIT        . ">" . $medication_unit        . "</" . MEDICATOIN_UNIT        . ">\n" .
 		"\t</" . ORCA . ">\n" . 
+		"\t<" . EYEEHR . ">\n" . 
+		"\t</" . EYEEHR . ">\n" . 
 		"</" . STAMP . ">\n";
 
 		#【デバッグ用】XMLを標準出力する。
