@@ -41,11 +41,11 @@ use RPC::XML::Client;
 # 呼出元フォームのinput nameを格納する。
 my @input_name = 
 (
-	"filename[001]",		# 1.診療行為
-	"filename[002]",		# 2.医薬品
-	"filename[003]",		# 3.医薬品
-	"filename[006]", 		# 6.特定機材
-	"filename[007]"#,	 	# 7.自費診療
+	"OUTPUT001",		# 1.診療行為
+	"OUTPUT002",		# 2.医薬品
+	"OUTPUT003",		# 3.医薬品
+	"OUTPUT006", 		# 6.特定機材
+	"OUTPUT007"#,	 	# 7.自費診療
 );
 
 # データ保存ディレクトリを設定する。
