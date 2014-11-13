@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 #######################################################
-# ORCA出力CSVを電子カルテ用XMLに変換する。                
+# CSVを電子カルテ用XMLに変換する。                
 # コンソール呼出時
 # @ARGV[0] ファイルパス　　
 # @ARGV[1] ファイルタイプ　※1参照
@@ -150,8 +150,6 @@ my @collection_exist;
 #--- GET/POST処理は基本ルーチン ---
 
 print "Content-type: text/html\n\n";
-
-
 
 my $argv_length = @ARGV;
 if ($argv_length > 0)

@@ -17,33 +17,73 @@ if (!isset($_SESSION["USERID"])) {
 
 <html>
 	<head>
-		<title>ORCAデーター取込</title>
+		<title>マスター取込機能</title>
 	    <script src="js/jquery-2.1.1.js"></script><!-- jQuery 2.1.1 -->
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-JP">
+	    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
+	    <!--自作CSS-->    
+	    <link href="css/style.css" rel="stylesheet" type="text/css">
+	    <!--自作CSS-->    
 	</head>
 	<body>
-<!--使い方-->
-		<p>ORCAの点数マスター（CSV）からスタンプを自動登録する事が出来ます。</p>
-		<ol>
-			<li>「ファイルを選択」から点数マスター（CSV）を指定してください。</li>
-			<li>「送信」ボタンを押してください。</li>
-		</ol>
-<!--入力フォーム-->
-		<form 
-			name="ImportStampFromOrcaToXmlDb"
-			method="POST" 
-			action="./cgi-bin/ImportStampFromOrcaToXmlDb.cgi" 
-			enctype="multipart/form-data" 
-			target="result"
-		>
-			<table>
-				<tr><th>OUTPUT001.csv（診療行為）</th><td><input type="file" name="OUTPUT001" data-default="OUTPUT001.csv"></td></tr>
-				<tr><th>OUTPUT002.csv（医薬品）</th><td><input type="file" name="OUTPUT002" data-default="OUTPUT002.csv"></td></tr>
-				<tr><th>OUTPUT003.csv（特定機材）</th><td><input type="file" name="OUTPUT003" data-default="OUTPUT003.csv"></td></tr>
-				<tr><th>OUTPUT006.csv（コメントファイル）</th><td><input type="file" name="OUTPUT006" data-default="OUTPUT006.csv"></td></tr>
-				<tr><th>OUTPUT007.csv（自費）</th><td><input type="file" name="OUTPUT007" data-filename="OUTPUT001.csv"></td></tr>
-				<tr><td colspan="2"><input type="submit" name="submit" value="送信"></td></tr>
-			</table>
+		<h1>マスター取込機能</h1>
+		<h2>スタンプ</h2>
+		<h3>CSVファイルからスタンプを読み込む</h3>
+			<p>CSVファイルからスタンプを自動登録する事が出来ます。</p>
+			<ol>
+				<li>「ファイルを選択」からCSVファイルを指定してください。</li>
+				<li>「送信」ボタンを押してください。</li>
+			</ol>
+			<form 
+				name="ImportStampFromOrcaToXmlDb"
+				method="POST" 
+				action="./cgi-bin/ImportStampFromOrcaToXmlDb.cgi" 
+				enctype="multipart/form-data" 
+				target="result"
+			>
+		    <div class="container">
+		      	<table class="table table-striped">
+		      		<thead></thead>
+		      		<tfoot class="submit">
+						<tr><td colspan="3"><input type="submit" name="submit" value="送信"></td></tr>	      			
+		      		</tfoot>
+		      		<tbody>
+						<tr>
+							<th>病名（所見）</th>
+							<td><input type="file" name="OUTPUT001" data-default="OUTPUT001.csv"></td>
+							<td>書式</td>
+						</tr>
+					<tbody>
+				</table>
+			</div>		
+			<h3>ORCA点数マスターからスタンプを読み込む</h3>
+			<p>ORCAの点数マスター（CSV）からスタンプを自動登録する事が出来ます。</p>
+			<ol>
+				<li>「ファイルを選択」から点数マスター（CSV）を指定してください。</li>
+				<li>「送信」ボタンを押してください。</li>
+			</ol>
+			<form 
+				name="ImportStampFromOrcaToXmlDb"
+				method="POST" 
+				action="./cgi-bin/ImportStampFromOrcaToXmlDb.cgi" 
+				enctype="multipart/form-data" 
+				target="result"
+			>
+		    <div class="container">
+		      	<table class="table table-striped">
+		      		<thead></thead>
+		      		<tfoot class="submit">
+						<tr><td colspan="2"><input type="submit" name="submit" value="送信"></td></tr>	      			
+		      		</tfoot>
+		      		<tbody>
+						<tr><th>OUTPUT001.csv（診療行為）</th><td><input type="file" name="OUTPUT001" data-default="OUTPUT001.csv"></td></tr>
+						<tr><th>OUTPUT002.csv（医薬品）</th><td><input type="file" name="OUTPUT002" data-default="OUTPUT002.csv"></td></tr>
+						<tr><th>OUTPUT003.csv（特定機材）</th><td><input type="file" name="OUTPUT003" data-default="OUTPUT003.csv"></td></tr>
+						<tr><th>OUTPUT006.csv（コメントファイル）</th><td><input type="file" name="OUTPUT006" data-default="OUTPUT006.csv"></td></tr>
+						<tr><th>OUTPUT007.csv（自費）</th><td><input type="file" name="OUTPUT007" data-filename="OUTPUT001.csv"></td></tr>
+					<tbody>
+				</table>
+			</div>
 		</form>
 		<script>
 //---
