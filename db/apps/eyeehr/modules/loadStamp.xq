@@ -13,7 +13,7 @@ xquery version "3.0";
 			"MEDICAL_PRODUCT" 	Medical_Product 	=> "002" 		# 医薬品
 			"MACHINE" 			Machine 			=> "003" 		# 特定機材
 			"COMMENT" 			Comment 			=> "006" 		# コメント
-			"PRIVATE_EXPENSE" 	Privete_Expense		=> "007"		# 自費診療
+			"PRIVATE_EXPENSE" 	Private_Expense		=> "007"		# 自費診療
 		};
 	@param GET/POST [file] = ファイル(<input name="file" />)
 	@return 

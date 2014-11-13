@@ -62,37 +62,53 @@ $(function()
 	var note = new Note();
 
 	//----- スタンプを自動生成する。 -----------------------------------------------
-	var stampListArray = {
-	  'PRACTICE'        : '',//'div.stamp_list#practice'         //Practice        => "001"    # 診療行為
-	  'INJECTION'       : 'div.stamp_list#injection',        //Practice/300    => "001-300"  # 注射(300番台)
-	  'TREATMENT'       : 'div.stamp_list#treatment',        //Practice/400    => "001-400"    # 処置(400番台)
-	  'OPERATION'       : 'div.stamp_list#operation',        //Practice/500    => "001-500"  # 手術(500番台)
-	  'MEDICAL_CHECK'   : 'div.stamp_list#medical_check',    //Practice/600    => "001-600"  # 検査(600番台)
-	  'MEDICAL_PRODUCT' : 'div.stamp_list#medical_product',  //Medical_Product   => "002"    # 医薬品
-	  'MACHINE'         : 'div.stamp_list#machine',          //Machine       => "003"    # 特定機材
-	  "COMMENT"         : '',//'div.stamp_list#comment',          //Comment       => "006"    # コメント
-	  "PRIVATE_EXPENSE" : '',//'div.stamp_list#private_expense'  //Private_Expense   => "007"    # 自費診療
+	const StampListSetting = {
+	  "Stamp" : [
+	  	{'key' : 'PRACTICE'			,'selector' : ''/*'div.stamp_list#practice'*/			, 'class' : ''				        /*Practice => "001" # 診療行為*/                  	},
+	  	{'key' : 'INJECTION'		,'selector' : 'div.stamp_list#injection'				, 'class' : 'StampInjection'		/*Practice/300    => "001-300"  # 注射(300番台)*/		},
+	  	{'key' : 'TREATMENT'		,'selector' : 'div.stamp_list#treatment'				, 'class' : 'StampTreatment'       	/*Practice/400    => "001-400"    # 処置(400番台)*/	},
+	  	{'key' : 'OPERATION'		,'selector' : 'div.stamp_list#operation'				, 'class' : 'StampOperation'      	/*Practice/500    => "001-500"  # 手術(500番台)*/		},
+	  	{'key' : 'MEDICAL_CHECK'	,'selector' : 'div.stamp_list#medical_check'			, 'class' : 'StampMedicalCheck'    	/*Practice/600    => "001-600"  # 検査(600番台)*/		},
+	  	{'key' : 'MEDICAL_PRODUCT'	,'selector' : 'div.stamp_list#medical_product'			, 'class' : 'StampMedicalProduct'  	/*Medical_Product   => "002"    # 医薬品*/			},
+	  	{'key' : 'MACHINE'			,'selector' : 'div.stamp_list#machine'					, 'class' : 'StampMachine'         	/*Machine       => "003"    # 特定機材*/				},
+	  	{'key' : 'COMMENT'			,'selector' : ''/*'div.stamp_list#comment'*/			, 'class' : ''         				/*Comment       => "006"    # コメント*/				},
+	  	{'key' : 'PRIVATE_EXPENSE'	,'selector' : ''/*'div.stamp_list#private_expense' */ 	, 'class' : ''						/*Private_Expense   => "007"    # 自費診療*/			}
+	  ]	  
 	}
 	
-	for (var key in stampListArray) {
-	
-		var selector = stampListArray[key];
+	for (var i in StampListSetting.Stamp) {
+		var key = StampListSetting.Stamp[i].key;
+		var selector = StampListSetting.Stamp[i].selector;
 		if (selector != '') {
 			Stamp.LoadXml(key, function($result){ 
-				CreateStamp(selector, $result.children());
+				CreateStamp(key, selector, $result.children());
 			});
 		}
 	}
 	/// @param スタンプを生成する。
+	/// @param i_key キー
 	/// @param i_selector スタンプの張付先
 	/// @param i_stamps スタンプリスト(XML)
-	function CreateStamp (i_selector, $i_stamps)
+	function CreateStamp (i_key, i_selector, $i_stamps)
 	{
 		// 貼付先を取得する。
 		$stampList = $(i_selector);
 		// XMLデーターをもとにボタンを貼付ける。
 		$i_stamps.each(function (){
-			var stamp = new Stamp(); 
+			var stamp = null;
+			switch (i_key)
+			{
+				case 'PRACTICE'      	: stamp = new Stamp(); 					break;
+				case 'INJECTION'     	: stamp = new StampInjection(); 		break;
+				case 'TREATMENT'     	: stamp = new StampTreatment();			break;
+				case 'OPERATION'     	: stamp = new StampOperation(); 		break;
+				case 'MEDICAL_CHECK' 	: stamp = new StampMedicalCheck(); 		break;
+				case 'MEDICAL_PRODUCT'	: stamp = new StampMedicalProduct(); 	break;
+				case 'MACHINE'			: stamp = new StampMachine();			break;
+				case 'COMMENT'			: stamp = new Stamp(); 					break;
+				case 'PRIVATE_EXPENSE'	: stamp = new Stamp();					break;
+				default 				: stamp = new Stamp(); 					break;
+			} 
 			stamp.setByXml($(this)); 
 			$stampList.append(stamp.getJQueryObject());
 		});
