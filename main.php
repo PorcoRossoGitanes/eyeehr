@@ -35,16 +35,12 @@ if (!isset($_SESSION["USERID"])) {
   <div id="utility" style="display:none"></div><!--ユーティリティで使用-->
   <div>
     <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
-    <!--読込：<div id="result-XmlManager_LoadNote" style="display: inline-block; _display: inline;"></div><!--読込（デバッグ用）-->
-    <!--保存：<div id="result-XmlManager_SaveNote" style="display: inline-block; _display: inline;"></div--><!--保存（デバッグ用）-->
     <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button>
     <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
     <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
   
     <!--2014/08/31 12:34--><!--現在時刻不要？-->
     <label>医師</label>&nbsp; 00001 渡邉花子
-    <button id="loadStaff">スタッフ読込</button>
-    <!--button id="createCollection" onclick="Utility.CreateCollection('/db/ccc/aaa/ccc')">コレクション作成</button-->
 
     <!-- ログアウト -->
     <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'">
@@ -67,7 +63,6 @@ if (!isset($_SESSION["USERID"])) {
         <!--付箋特記事項編集欄-->
         <textarea id="area1" data-from="" style="width: 100%;"></textarea>
         <input id="selectedNoteItem" type="hidden" value=""/> 
-        <!--button class="btn btn-default btn-xs" id="fix" type="button" value=>付箋保存</button-->
       </td>
       <tr>
         <td>付箋</td>
