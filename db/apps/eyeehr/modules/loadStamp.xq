@@ -24,10 +24,10 @@ xquery version "3.0";
 (:===定数定義　[target] = 検索対象===:)
 let $col_stamp 				:= '/db/apps/eyeehr/data/Stamp' 	(:スタンプルートコレクション:)
 let $col_practice 			:= 'Practice' 						(:診療行為:)
-let $col_medical_product 	:= 'Medical_Product'				(:医薬品:)
+let $col_medical_product 	:= 'MedicalProduct'					(:医薬品:)
 let $col_machine 			:= 'Machine'						(:特定機材:)
 let $col_comment 			:= 'Comment'						(:コメント:)
-let $col_private_expense 	:= 'Privete_Expense'				(:自費:)
+let $col_private_expense 	:= 'PrivateExpense'					(:自費:)
 
 
 (:===GETデータを取得する。===:)

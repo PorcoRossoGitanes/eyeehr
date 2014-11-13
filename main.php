@@ -44,7 +44,6 @@ if (!isset($_SESSION["USERID"])) {
     <!--2014/08/31 12:34--><!--現在時刻不要？-->
     <label>医師</label>&nbsp; 00001 渡邉花子
     <button id="loadStaff">スタッフ読込</button>
-    <button id="loadXmlFromOrca">ORCA取得</button>
     <!--button id="createCollection" onclick="Utility.CreateCollection('/db/ccc/aaa/ccc')">コレクション作成</button-->
 
     <!-- ログアウト -->

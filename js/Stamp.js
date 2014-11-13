@@ -64,11 +64,27 @@ function Stamp() {
 /// 		"COMMENT" 			Comment 			=> "006" 		# コメント
 /// 		"PRIVATE_EXPENSE" 	Privete_Expense		=> "007"		# 自費診療
 /// @param callback コールバック関数
-/// @return 成功時、指定のデータが返却される。失敗時、スタンプが返却されない。
+/// @return 成功時、指定のスタンプ一覧が返却される。失敗時、スタンプが返却されない。
+/// 出力例)
+///<Stamp>
+///<Orca>
+///<Medical_Class/>
+///<Medication_Code>096000001</Medication_Code>
+///<Medication_Name>文書料</Medication_Name>
+///<Medication_Number>1</Medication_Number>
+///<Medication_Generic_Flg>yes</Medication_Generic_Flg>
+///<Medication_Unit_Point>000003240.00</Medication_Unit_Point>
+///<Medication_Unit/>
+///</Orca>
+///<Eyeehr>
+///</Eyeehr>
+///</Stamp>
+///<Stamp>...</Stamp>
+///<Stamp>...</Stamp>
 Stamp.LoadXml = function (i_target, callback)
 {
 	const SCRIPT = '/exist/apps/eyeehr/modules/loadStamp.xq';
-	var senddata = "target=TREATMENT";
+	var senddata = "target=" + i_target;
 	$.ajax({
 	    url : SCRIPT, // コレクション毎取得する場合
 	    async: false, // 同期通信に設定する
@@ -79,8 +95,7 @@ Stamp.LoadXml = function (i_target, callback)
 	        alert('スタンプの読込みに失敗しました。');
 	    },
 	    success: function(xml){
-	        if (callback !== undefined)  callback();
-	        console.log($(xml).contents());
+	        if (callback !== undefined)  callback($(xml).contents().children());
 	    }
 	});
 }
