@@ -87,14 +87,13 @@ Note.SaveXml = function ()
 ///@param $i_xml XML（JQuery Object） <note />
 Note.LoadXml = function ($i_xml)
 {
-	console.log($i_xml);
-	
 	// 現在のカルテを空にする。
 	$currentNote.empty();
 
-	$note = $i_xml.find('Note');
+	$note = $i_xml;
 	//console.log($note);
 
+	//console.log($note.children());
 	$note.children().each(function(){
 
 	    switch($(this)[0].tagName)

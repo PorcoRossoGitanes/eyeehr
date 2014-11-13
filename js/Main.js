@@ -69,7 +69,7 @@ $(function()
 	$('button#load').click(function(){
 		var filePath = $('input#currentFilePath').val();
 
-		Utility.LoadXml(filePath, Note.LoadXml);
+		Utility.LoadXml('REST', filePath, '', Note.LoadXml);
 		//XmlManager.LoadNote(filePath);
 	});
 
@@ -89,6 +89,24 @@ $(function()
 	// @summary 「患者情報」ボタンを押下時、患者情報を表示する。
 	$('button#patient-info').click(function(){
 		alert('患者情報表示');
+	});
+
+	// 担当者情報を読み取る。
+	$('#loadStaff').click(function(){
+		// $.ajax({
+		//     //url: "/exist/rest/apps/eyeehr/data/staff/staff-1.xml",
+		//     url : "/exist/rest/apps/eyeehr/data/staff?_query=/staff", // コレクション毎取得する場合
+		//     async: true,
+		//     cache: false,
+		//     dataType:"xml",
+		//     error: function(){
+		//         alert('Error loading XML document');
+		//     },
+		//     success: function(xml){
+		//         console.log(xml);
+		//     }
+		// });
+		Staff.LoadXml();
 	});
 
 		// 担当者情報を読み取る。

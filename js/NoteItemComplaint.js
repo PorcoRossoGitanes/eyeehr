@@ -30,12 +30,7 @@ function NoteItemComplaint()
       {
         if ($i_xml[0].tagName == $jquery.attr('name'))
         {
-          // 定型フォーマット部分を追加する。
-          $jquery.find('[name=formats]').html($i_xml.children('formats').html());
-          // 画像添付部分を追加する。
-          $jquery.find('[name=attachments]').html($i_xml.children('attachments').html());
-          // 備考部分を追加する。
-          $jquery.find('[name=remarks]').html($i_xml.children('remarks').html());
+          _super.setByXml.call(this, $i_xml);
         }
       }
     }

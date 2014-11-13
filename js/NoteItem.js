@@ -215,6 +215,24 @@ function NoteItem() {
   {
     return $jquery;
   }
+
+  ///@summary XMLを設定する。
+  ///@param $i_xml XMLオブジェクト
+  _proto.setByXml = function ($i_xml)
+  {
+    console.log("_proto.setByXml");
+    if ($i_xml !== undefined)
+    {
+      // TODO : 定型フォーマット部分を追加する。
+      //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
+      // ファイル添付部分を追加する。
+      $jquery.find('[name=attachments]').html(Utility.InnerHtml($i_xml.children('attachments')));
+      // シェーマ部分を追加する。
+      $jquery.find('[name=schemes]').html(Utility.InnerHtml($i_xml.children('schemes')));
+      // 備考部分を追加する。
+      $jquery.find('[name=remarks]').html(Utility.InnerHtml($i_xml.children('remarks')));
+    }
+  }
 })();
    
 /// @summary  付箋コンテナHTMLをXMLに保存する。

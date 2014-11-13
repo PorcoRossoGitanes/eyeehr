@@ -12,15 +12,115 @@
   </head>
   <body>
     <h1>電子カルテ テスト</h1>
-    <h2>ORCA点数マスター取込</h2>
-    <h2>スタンプリスト読込</h2>
     <div  class="container">
       <table class="table table-striped">
+        <thead><tr><td colspan="5">JQuery関連</td></tr></thead>
+        <tbody>
+          <tr>
+            <td><button type="button" id="UtilityInnerHtml" class="btn btn-default btn-s page">内部HTML取得</button></td>
+<script>
+$('button#UtilityInnerHtml').click(function () {
+  var test = $('<div/>').append('<test><strong>TEST1</strong><br/>TEST2</test>').html();
+  $test = $(test); $result = Utility.InnerHtml($test);
+  console.log('[' + test + ']=>' + $result);
+
+  var test = '<test/>';
+  $test = $(test); $result = Utility.InnerHtml($test);
+  console.log('[' + test + ']=>' + $result);
+
+  alert('結果はコンソールに出力されました。');
+});
+</script>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+          </tr>
+        </tbody>
+        <thead><tr><td colspan="5">XML読込</td></tr></thead>
+        <tbody>
+          <tr>
+            <td><button type="button" id="UtilityLoadXml" class="btn btn-default btn-s page">REST(ドキュメント）</button></td>
+<script>
+$('button#UtilityLoadXml').click(function () {
+  console.log($(this).text());
+  var url = '/db/apps/eyeehr/data/staff/staff-1.xml';
+  Utility.LoadXml('REST', url, '', function($xml){
+    console.log($xml);
+  })
+  alert('結果はコンソールに出力されました。');
+});
+</script>
+            <td><button type="button" id="UtilityLoadXmlList" class="btn btn-default btn-s page">REST（コレクション）※</button></td>
+<script>
+$('button#UtilityLoadXmlList').click(function () {
+  console.log($(this).text());
+  var url = '/db/apps/eyeehr/data/staff';
+  Utility.LoadXml('REST', url, '', function($xml){
+    console.log($xml);
+  })
+  alert('結果はコンソールに出力されました。');
+});
+</script>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+          </tr>         
+        </tbody>
+        <tbody>
+          <tr>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">POST※未済</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">GET※未済</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+          </tr>
+        </tbody>
+        <thead><tr><td colspan="5">スタッフ取込</td></tr></thead>
+        <tbody>
+          <tr>
+            <td><button type="button" id="StaffLoadXml" class="btn btn-default btn-s page">スタッフ読込※</button></td>
+<script>
+$('button#StaffLoadXml').click(function () {
+  console.log($(this).text());
+  var url = '/db/apps/eyeehr/data/staff/staff-1.xml';
+  Utility.LoadXml('REST', url, '', function($xml){
+    console.log($xml);
+  })
+  alert('結果はコンソールに出力されました。');
+});
+</script>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+          </tr>         
+        </tbody>
+        <thead><tr><td colspan="5">ORCA点数マスター取込</td></tr></thead>
+        <tbody>
+          <tr>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+          </tr>         
+        </tbody>
+        <thead><tr><td colspan="5">スタンプリスト読込</td></tr></thead>
         <tbody>
           <tr>
             <td><button type="button" id="StampLoadXml" class="btn btn-default btn-s page">ORCA点数マスター取得</button></td>
 <script type="text/javascript">
-// 担当者情報を読み取る。
+// スタンプ情報を読み取る。
 $('button#StampLoadXml').click(function(){
   console.log($(this).text());
   var target = new Array(
@@ -35,8 +135,10 @@ $('button#StampLoadXml').click(function(){
     "PRIVATE_EXPENSE"   //Privete_Expense   => "007"    # 自費診療
   );
   $.each(target, function(index, value) {
-    Stamp.LoadXml(value, function($stamps){ 
+    Stamp.LoadXml(value, function($result){ 
+      $stamps = $result.children();
       console.log("[" + value + "] " + (($stamps.length > 0) ? ("成功" + $stamps.length + "件") : "失敗"));
+      console.log($result);
     });
   });
   alert('結果はコンソールに出力されました。');

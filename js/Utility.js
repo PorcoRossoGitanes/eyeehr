@@ -195,39 +195,80 @@ Utility.SaveXml = function (i_path, i_xml, callback)
 }
 
 /// @summary XMLを読込む。(REST)
+/// @param i_type 
+///				REST...RESTful
+///				GET...GET送信
+///             POST...POST送信
+/// @param i_senddata 送信データ
+/// 	GET時　	URL?以降のGETパラメータ　例）"param1=aaa&param2=bbb"
+/// 	POST時　	POSTパラメータ(JSON形式）　例）{"page": 2}
 /// @param i_path ファイルパス(URL) 
 /// @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
-Utility.LoadXml = function (i_path, callback) 
+Utility.LoadXml = function (i_type, i_path, i_senddata, callback) 
 {
-	if (i_path != "")
+	// パスが設定されている場合のみ実行する。
+	if (i_path != '')
 	{
-		// 画像をXMLDB上に保存する。
-	    var url = '/exist/rest' + i_path;
-	    //console.log(url);
+		// RESTfulの場合は"/exist/rest"を先頭に追加する。
+	    var url = (i_type == 'REST') ? '/exist/rest' + i_path : i_path;
 
-		$.ajax({
-		  	async 	: false, 	// 同期通信
-		  	url 	: url,
-		  	type 	: 'POST',
-		  	cache 	: false,
-			success: function(data) {
-				if(callback !== undefined) callback($(data)); 
-	     	},
-	      	error: function(XMLHttpRequest, textStatus, errorThrown) 
-	      	{
-	      		alert('ファイルの読込みに失敗しました。: ' + 
-	      			XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message
-	      		);
-	        	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
-	        	// $("#textStatus").html("textStatus : " + textStatus);
-	        	// $("#errorThrown").html("errorThrown : " + errorThrown.message);
-	     	},
-			// complete : function(data) 
-			// {
-			// 	console.log('画像をXMLDBに保存する処理が完了した。');
-			//     //alert("finishi");
-			// }
-		});
+		if (i_type == 'POST')
+		{
+			// TODO : POST送信失敗
+			// console.log(url);
+			// console.log(i_senddata);
+			$.ajax({
+			  	async 	: false, 	// 同期通信
+			  	url 	: url,
+			  	type 	: 'POST',
+//			    data    : i_senddata,
+			  	cache 	: false,
+				success: function(data) {
+					if(callback !== undefined) callback($(data)); 
+		     	},
+		      	error: function(XMLHttpRequest, textStatus, errorThrown) 
+		      	{
+		      		alert(
+		      			'XMLデータの読込みに失敗しました。\n' + 
+		      			'URL=' + url + ' \n' +
+		      			'XMLHttpRequest状態=' + XMLHttpRequest.status + ' \n' + 
+		      			'テキストステータス='   + textStatus + ' \n' + 
+		      			'エラーメッセージ=' + errorThrown.message
+		      		);
+		     	}//,
+				// complete : function(data) 
+				// {
+				// 	//console.log('ファイルの読み込みが完了しました。');
+				// }
+			});
+		}
+		else if (i_type == 'REST' || i_type == 'GET')
+		{
+			$.ajax({
+			    url : url, // コレクション毎取得する場合
+			    async: false, // 同期通信に設定する
+			    cache: false,
+			    dataType:"xml",
+			    data: i_senddata,
+			    success: function(data){
+			        if (callback !== undefined)  callback($(data).contents());
+			    },
+		      	error: function(XMLHttpRequest, textStatus, errorThrown) 
+		      	{
+		      		alert(
+		      			'XMLデータの読込みに失敗しました。\n' + 
+		      			'URL=' + url + ' \n' +
+		      			'XMLHttpRequest状態=' + XMLHttpRequest.status + ' \n' + 
+		      			'テキストステータス='   + textStatus + ' \n' + 
+		      			'エラーメッセージ=' + errorThrown.message
+		      		);
+		     	}//,
+			});
+		}
+	}
+	else 
+	{
+		alert('送信先URLが設定されていません。');
 	}
 }
 
@@ -259,6 +300,38 @@ Utility.ConvertImgToBase64 = function (url, outputFormat, callback){
 	  	canvas = null; 
 	};
 	img.src = url;
+}
+
+/// @summary 内部HTMLを取得する。
+/// @param 対象のJQueryオブジェクト
+/// @return 内部HTML
+/// @remarks $JQUery.html関数はHTMLのみに対応するため、
+///  XMLでも使用できるユーティリティ関数を用意する。
+Utility.InnerHtml = function ($i_jquery){
+
+ 	var ret = '';
+
+	//console.log($i_jquery);
+	
+	$div = $('<div></div>');
+	$div.append($i_jquery);
+
+	// タグを取得する。大文字となってしまう。
+ 	// var tag = $i_jquery[0].tagName;
+ 	// console.log(tag); 
+
+	ret = $.trim($div.html());
+	console.log(ret);
+	ret = ret.replace('\t/g', '');
+	ret = ret.replace(' /g', '');
+	ret = ret.replace('<br></br>/g', '<br/>');
+	console.log(ret);
+
+	// タグを排除する。
+	var startIndex = ret.indexOf('>') + 1; var lastIndex = ret.lastIndexOf('<');
+	ret = ret.slice(startIndex, lastIndex);
+
+	return ret;
 }
 
 

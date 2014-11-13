@@ -85,17 +85,18 @@ Stamp.LoadXml = function (i_target, callback)
 {
 	const SCRIPT = '/exist/apps/eyeehr/modules/loadStamp.xq';
 	var senddata = "target=" + i_target;
-	$.ajax({
-	    url : SCRIPT, // コレクション毎取得する場合
-	    async: false, // 同期通信に設定する
-	    cache: false,
-	    dataType:"xml",
-	    data: senddata,
-	    error: function(){
-	        alert('スタンプの読込みに失敗しました。');
-	    },
-	    success: function(xml){
-	        if (callback !== undefined)  callback($(xml).contents().children());
-	    }
-	});
+	Utility.LoadXml('GET', SCRIPT, senddata, callback);
+	// $.ajax({
+	//     url : SCRIPT, // コレクション毎取得する場合
+	//     async: false, // 同期通信に設定する
+	//     cache: false,
+	//     dataType:"xml",
+	//     data: senddata,
+	//     error: function(){
+	//         alert('スタンプの読込みに失敗しました。');
+	//     },
+	//     success: function(xml){
+	//         if (callback !== undefined)  callback($(xml).contents().children());
+	//     }
+	// });
 }
