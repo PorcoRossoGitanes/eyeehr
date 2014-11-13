@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 #######################################################
-# CSVを電子カルテ用XMLに変換する。                
+# ORCA出力CSVを電子カルテ用XMLに変換する。                
 # コンソール呼出時
 # @ARGV[0] ファイルパス　　
 # @ARGV[1] ファイルタイプ　※1参照
@@ -117,7 +117,7 @@ my @len =
 
 #ファイルタイプ=1, 診療行為CSVの場合に使用する。
 my %practice_in;
-$practice_in{'INJECTION'} 		= 300;　# 注射(300番台)
+$practice_in{'INJECTION'} 		= 300;	# 注射(300番台)
 $practice_in{'TREATMENT'} 		= 400;	# 処置(400番台)
 $practice_in{'OPERATION'} 		= 500;	# 手術(500番台)
 $practice_in{'MEDICAL_CHECK'} 	= 600;	# 検査(600番台)
@@ -186,17 +186,12 @@ else
 	# ファイル名を取得する。
 	foreach my $name(@input_name){
 	 	
-	 	#print "$name\n";
-		my $filename = $query->param($name); #print "[FILE_NAME] $filename<br/>";
-
-		print "<div class='input' style='font-size:9pt;white-space:nowrap;'>";
-		print "$name $filename";
-		print "</div>";
+		my $filename = $query->param($name);
 
 		if ($filename eq "") 
 		{
 			print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";
-			print "ファイルが指定されていません。";
+			print "ファイルが指定されていません。$name $filename";
 			print "</div>";
 		}
 		else 
@@ -211,6 +206,10 @@ else
 			}
 			else 
 			{
+				print "<div class='input' style='font-size:9pt;white-space:nowrap;'>";
+				print "$name $filename";
+				print "</div>";
+
 				#ファイルからCSVを読み込む。
 				my $csv = ""; while(read($filename,$buffer,1024)) { $csv .= $buffer;} close($filename); 
 
@@ -436,7 +435,7 @@ sub lineToXml
 			# 診療区分番号によってフォルダを分割する。
 			if ($toXmlDB eq FALSE) 
 			{
-				$current_dir = &File::MakeDir($current_dir . "/" . $medical_class); 
+				$current_dir = &FileUtil::MakeDir($current_dir . "/" . $medical_class); 
 			}
 			else 
 			{ 	
@@ -497,6 +496,3 @@ sub lineToXml
 
 	return $ret;
 }
-
-
-
