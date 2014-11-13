@@ -1,3 +1,4 @@
+<!-- ログイン処理 -->
 <?php
   // セッションを開始する。
   session_start();
@@ -13,7 +14,7 @@
   if (isset($_POST["login"])) 
   {
 
-    // XMLファイルを指定する。
+    // TODO : XMLファイルを指定する。
     // 例）$uri = "sample.xml";//"http://192.168.33.10:8080/exist/rest/apps/eyeehr/data/staff/staff-1.xml";
     $uri = "http://" .$_SERVER["SERVER_NAME"] /*. ":8080"*/   // ドメイン・ポート
     . "/exist/rest/apps/eyeehr/" // プロジェクトルート
@@ -29,7 +30,8 @@
       $_SESSION["USERID"] = $_POST["userid"];
 
       // 電子カルテメイン画面に移動する。
-      header("Location: main.php");
+      header("Location: index.php");
+
       exit;
     }
     else {
