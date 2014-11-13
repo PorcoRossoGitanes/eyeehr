@@ -41,6 +41,7 @@ use RPC::XML::Client;
 # 呼出元フォームのinput nameを格納する。
 my @input_name = 
 (
+	"DISEASE",			# D.診療行為
 	"OUTPUT001",		# 1.診療行為
 	"OUTPUT002",		# 2.医薬品
 	"OUTPUT003",		# 3.医薬品
@@ -197,7 +198,7 @@ else
 		else 
 		{
 			# ファイルタイプを取得する。（行頭の0を削除する。）
-			my $file_type = substr($filename, 6,3); $file_type =~ s/^0+//g; #print "[FILE_TYPE] $file_type<br/>";
+			my $file_type = substr($name, 6,3); $file_type =~ s/^0+//g; #print "[FILE_TYPE] $file_type<br/>";
 			if ($file_type eq "")
 			{
 				print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";

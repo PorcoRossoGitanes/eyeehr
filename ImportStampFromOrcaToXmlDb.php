@@ -51,7 +51,7 @@ if (!isset($_SESSION["USERID"])) {
 		      		</tfoot>
 		      		<tbody>
 						<tr>
-							<th>病名（所見）</th>
+							<th>DISEASE.csv （病名・所見）</th>
 							<td><input type="file" name="DISEASE" data-default="DISEASE.csv"></td>
 							<td>書式</td>
 						</tr>
@@ -95,10 +95,14 @@ $('input[type="file"]').change(function (){
 	// 選択されたファイル名がデフォルトのファイル名が異なる場合、警告ダイアログを表示する。
 	if ($cur_filename != $def_filename) 
 	{
+		// // メッセージを生成する。
+		// var message = '選択された「' + $cur_filename + '」は、\n' +'ORCA標準のファイル名「' + $def_filename + '」と\n' + '異なりますが、設定しますか。\n' + 'よろしいですか?';
+		// // キャンセル時はリセットする。
+		// if (!confirm(message)) $(this).val("");
 		// メッセージを生成する。
-		var message = '選択された「' + $cur_filename + '」は、\n' +'ORCA標準のファイル名「' + $def_filename + '」と\n' + '異なりますが、設定しますか。\n' + 'よろしいですか?';
+		var message = '選択された「' + $cur_filename + '」は、\n' +'ORCA標準のファイル名「' + $def_filename + '」と\n' + '異なるため設定できません。';
 		// キャンセル時はリセットする。
-		if (!confirm(message)) $(this).val("");
+		alert(message); $(this).val("");
 	}
 });
 //---
