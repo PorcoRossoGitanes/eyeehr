@@ -77,24 +77,12 @@ if (!isset($_SESSION["USERID"])) {
               <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemDisease('角膜円錐'); item.setFormats('角膜円錐'); item.appendTo('[name=NoteItemContainerDisease]');">角膜円錐</button>
               <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemDisease('白内障'); item.setFormats('白内障'); item.appendTo('[name=NoteItemContainerDisease]');">白内障</button>
             </div>
-            <h3>検査</h3>
-            <div>
-              <button type="button" class="btn btn-default btn-xs" 
-              onclick="var item = new NoteItemMedicalCheck(); item.setFormats('レフ・ケラト'); item.appendTo('[name=NoteItemContainerMedicalCheck]');"
-              >レフ・ケラト</button>
-            </div>
-            <h3>処方</h3>
-            <div>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.setFormats('ベストロン点眼用0.5%'); item.appendTo('[name=NoteItemContainerPrescription]');">ベストロン点眼用0.5%</button>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.setFormats('ヒアルロン酸目薬'); item.appendTo('[name=NoteItemContainerPrescription]');">ヒアルロン酸目薬</button>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.setFormats('タリビッド眼軟膏0.3%');  item.appendTo('[name=NoteItemContainerPrescription]');">タリビッド眼軟膏0.3%</button>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.setFormats('タリフロン点眼液0.3%');  item.appendTo('[name=NoteItemContainerPrescription]');">タリフロン点眼液0.3%</button>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.setFormats('クラビット点眼液0.5%'); item.appendTo('[name=NoteItemContainerPrescription]');">クラビット点眼液0.5%</button>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemPrescription(); item.setFormats('バンコマイシン眼軟膏1%');  item.appendTo('[name=NoteItemContainerPrescription]');">バンコマイシン眼軟膏1%</button>
-            </div>
-            <h3>手術</h3>
-            <div>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemOperation(); item.setFormats('レーザー手術'); item.appendTo('[name=NoteItemContainerOperation]');">レーザー手術</button>
+            <h3>検査</h3><div class="stamp_list" id="medical_check"></div>
+            <h3>注射</h3><div class="stamp_list" id="injection"></div>
+            <h3>特定機材</h3><div class="stamp_list" id="machine"></div>
+            <h3>処置</h3><div class="stamp_list" id="treatment"></div>
+            <h3>手術</h3><div class="stamp_list" id="operation"></div>
+            <h3>処方（医薬品）</h3><div class="stamp_list" id="medical_product">
             </div>
             <h3 class='ui-state-disabled' onclick="var item = new NoteItemScheme(); item.appendTo('[name=NoteItemContainerScheme]')">シェーマ</h3>
             <div></div>
