@@ -42,31 +42,31 @@ $('button#StampLoadXml').click(function(){
   alert('結果はコンソールに出力されました。');
 });
 </script>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
           </tr>
           <tr>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
           </tr>
           <tr>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
           </tr>
           <tr>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
           </tr>
         </tbody>
       </table>
