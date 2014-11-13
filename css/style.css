@@ -1,3 +1,22 @@
+/*
+ * @summary 電子カルテ　CSS
+ * @author S.Kobayashi
+ */
+
+/*タイトル*/
+h1
+{
+  text-align: center; 
+}
+
+/*ページ遷移ボタン*/
+button.page 
+{
+  /**/
+  display : inline-block;
+  width : 200px;
+}
+
 /* スタンプリスト（アコーディオンメニュー） */
 #acMenu dt
 {

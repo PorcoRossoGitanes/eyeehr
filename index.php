@@ -18,21 +18,7 @@ if (!isset($_SESSION["USERID"])) {
     <script src="js/jquery-ui/jquery-ui.js"></script><!-- jQuery-ui 1.11.1 -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
     <!--自作CSS-->    
-    <!--link href="css/style.css" rel="stylesheet" type="text/css"-->
-    <style>
-/*タイトル*/
-h1
-{
-  text-align: center; 
-}
-/*ページ遷移ボタン*/
-button.page 
-{
-  /**/
-  display : inline-block;
-  width : 200px;
-}
-    </style>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <!--自作CSS-->    
   </head>
   <body>
