@@ -302,43 +302,17 @@ Utility.ConvertImgToBase64 = function (url, outputFormat, callback){
 	img.src = url;
 }
 
-/// @summary 内部HTMLを取得する。
+/// @summary JQueryオブジェクトからXML文字列(または、HTML文字列)を取得する。
 /// @param 対象のJQueryオブジェクト
-/// @return 内部HTML
-/// @remarks $JQUery.html関数はHTMLのみに対応するため、
-///  XMLでも使用できるユーティリティ関数を用意する。
-Utility.InnerHtml = function ($i_jquery){
-
- 	var ret = '';
-
-	//console.log($i_jquery);
-	
-	$div = $('<div></div>');
-	$div.append($i_jquery);
-
-	// タグを取得する。大文字となってしまう。
- 	// var tag = $i_jquery[0].tagName;
- 	// console.log(tag); 
-
-	ret = $.trim($div.html());
-	console.log(ret);
-	ret = ret.replace('\t/g', '');
-	ret = ret.replace(' /g', '');
-	ret = ret.replace('<br></br>/g', '<br/>');
-	console.log(ret);
-
-	// タグを排除する。
-	var startIndex = ret.indexOf('>') + 1; var lastIndex = ret.lastIndexOf('<');
-	ret = ret.slice(startIndex, lastIndex);
-
-	return ret;
+/// @return XML文字列(または、HTML文字列)
+Utility.JQueryToStr = function ($i_jquery) {
+	return Utility.XmlToStr($i_jquery[0]);
 }
 
-/**
-*  XML→String。クロスブラウザ対応。
-*/
-Utility.XmlToStr = function (xmlNode)
-{
+///@summary XML NodeからXML文字列(または、HTML文字列)を取得する。
+///@param  	xmlNode XML Node
+///@return  XML文字列(または、HTML文字列)
+Utility.XmlToStr = function (xmlNode) {
 	try 
 	{
 		// IE以外の場合は、下記を処理する。

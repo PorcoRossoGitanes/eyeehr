@@ -63,8 +63,10 @@ function Stamp() {
 			$jquery.data('title', this._title);
 			$jquery.attr('title', this._title);
 			$jquery.text(this._short_title);
+			//console.log(xml2Str($i_xml[0]));
 		}
 	}
+
 
 	///@summary JQueryObjectを出力する
 	///@return JQueryObject
