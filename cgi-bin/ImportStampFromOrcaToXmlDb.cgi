@@ -77,10 +77,7 @@ my %tag =
 	"TITLE" 					=> "Title"#,					#電子カルテ用	スタンプタイトル				
 );
 
-my %default_value = 
-(
-	"MEDICATION_GENERIC_FLG_DEFAULT" => "yes"#,				#診療行為一般処方指示[初期値:YES]
-);
+use constant MEDICATION_GENERIC_FLG_DEFAULT => "yes";				#診療行為一般処方指示[初期値:YES]
 
 
 #=== ↑↑↑カスタマイズ部↑↑↑ ===#
@@ -392,7 +389,7 @@ sub lineToXml
 	# ファイルを書き出す。
 	my $filepath;
 	my $result;
-	my $filename = $collection . "-" . $medication_code . ".xml";
+	my $filename = $collection . "-" . $id . ".xml";
 	if ($toXmlDB eq FALSE) 
 	{
 		$filepath = $current_dir . "/" . $filename;
