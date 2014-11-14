@@ -38,7 +38,6 @@ function StampDisease()
     _proto.setByXml = function ($i_xml)
     {
       if ($i_xml !== undefined) _super.setByXml.call(this, $i_xml);
-      console.log($i_xml);
     }
 
     ///@summary クラス名（親クラス...現在のクラス）を取得する
