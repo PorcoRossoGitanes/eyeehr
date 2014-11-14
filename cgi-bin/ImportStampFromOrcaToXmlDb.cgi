@@ -25,6 +25,7 @@ require 'FileUtil.cgi';
 # UTF用
 use utf8;
 use Encode;
+#use Jcode;
 
 # ファイルアップロード用
 use CGI;
@@ -89,16 +90,12 @@ use constant TRUE => 1;
 use constant FALSE => 0;
 
 #=== ORCA関連仕様===#
-#ファイルタイプ　※1
-use constant 
-{
-	PRACTICE 			=> 001, 	# 診療行為
-	MEDICAL_PRODUCT 	=> 002, 	# 医薬品
-	MACHINE 			=> 003, 	# 特定機材
-	COMMENT 			=> 006, 	# コメント
-	PRIVATE_EXPENSE 	=> 007,	# 自費診療
-};
-
+#ファイルタイプ=1, 診療行為CSVの場合に使用する。
+#my %practice_in;
+#$practice_in{'INJECTION'} 		= 300;	# 注射(300番台)
+#$practice_in{'TREATMENT'} 		= 400;	# 処置(400番台)
+#$practice_in{'OPERATION'} 		= 500;	# 手術(500番台)
+#$practice_in{'MEDICAL_CHECK'} 	= 600;	# 検査(600番台)
 
 #ファイルタイプ　※1
 #my @len = 
@@ -113,14 +110,7 @@ use constant
 #	18#,	# 7.自費診療
 #);
 
-#ファイルタイプ=1, 診療行為CSVの場合に使用する。
-my %practice_in;
-$practice_in{'INJECTION'} 		= 300;	# 注射(300番台)
-$practice_in{'TREATMENT'} 		= 400;	# 処置(400番台)
-$practice_in{'OPERATION'} 		= 500;	# 手術(500番台)
-$practice_in{'MEDICAL_CHECK'} 	= 600;	# 検査(600番台)
-
-# プログラム変数。
+# プログラム変数
 my $csv; 		# CSVファイル（コマンド実行時、ファイルパス。CGI実行時、value値）
 my $debug; 		# デバッグ表示を実行する場合は0以外, デバック表示を実行しない場合は0
 my $toXmlDB;	# XMLDBに保存する場合、TRUE。ファイルを展開する場合、false。 
@@ -136,9 +126,13 @@ my $query = new CGI;
 # ファイル名を取得する。
 foreach my $input(@input)
 {
-	my $key = @{$input}[0];
-	my $name = @{$input}[1];
-	my $filename_fix = @{$input}[2];
+	my $csv; 							#CSV文字列
+
+	my $key = @{$input}[0];				#キー
+	my $name = @{$input}[1];			#name属性
+	my $filename_fix = @{$input}[2];	#ファイル名（固定）
+	my $collection = @{$input}[3];		#保存先コレクション(Stampコレクションからの相対パス)
+	my $orca = @{$input}[4];			#ORCA形式確認
 
 	# ファイル名を取得する。
 	my $filename = $query->param($name);
@@ -153,18 +147,6 @@ foreach my $input(@input)
 		print "<hr/>";
 		next;
 	}
-	
-	# ファイルタイプを取得する。（行頭の0を削除する。）
-	my $file_type = substr($name, 6,3); $file_type =~ s/^0+//g; 
-	#if ($file_type !~ /[0-9]+/)
-	#{
-	#	print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";
-	#	print "ファイルが不正です。";
-	#	print "[入力] $name [正しいファイル名] $filename_fix [入力されたファイル名] $filename";
-	#	print "</div>";
-	#	print "<hr/>";
-	#	next;
-	#}
 
 	# ファイルを読み込み、XMLDBに保存する。
 	{
@@ -173,8 +155,15 @@ foreach my $input(@input)
 		print "</div>";
 
 		#ファイルからCSVを読み込む。
-		my $csv = ""; while(read($filename,$buffer,1024)) { $csv .= $buffer;} close($filename); 
+		$csv = ""; while(read($filename,$buffer,1024)) { $csv .= $buffer;} close($filename); 
+	}
 
+	# 文字コードがEUC-JPの場合は、UTF-8に変換する。
+	if($key ne "DISEASE"){
+		Encode::from_to($csv, 'eucjp', 'utf8'); 
+	}
+
+	{
 		# XMLDBに書出す。
 		$toXmlDB = TRUE;
 
@@ -184,8 +173,10 @@ foreach my $input(@input)
 		# フォームの内容から値を取得する。
 		&ExportXmlFromForm(
 			$key,
+			$orca,
 			$csv, 			# CSVデータを格納する。
 			$toXmlDB,		# XMLDBに保存する。
+			$collection, 	# コレクションを指定する。
 			$debug			#,	# デバッグ表示を実行する場合は0以外, デバック表示を実行しない場合は0
 		);	
 
@@ -200,7 +191,7 @@ foreach my $input(@input)
 sub ExportXmlFromForm
 {
 	# 引数を取得する。
-	my ($key, $csv, $toXmlDB, $debug) = @_;
+	my ($key, $orca, $csv, $toXmlDB, $collection, $debug) = @_;
 
 	my $line_cnt = 0;	# データ行数をカウントする。
 	my $exec_cnt = 0;	# 実行成功行数をカウントする。
@@ -208,7 +199,7 @@ sub ExportXmlFromForm
 	# データ退避用のディレクトリを作成する。
 	if ($toXmlDB eq FALSE) 
 	{
-		$current_dir = &FileUtil::MakeDir($data_dir ); 
+		$current_dir = &FileUtil::MakeDir($data_dir); 
 	}
 	else 
 	{
@@ -220,7 +211,7 @@ sub ExportXmlFromForm
 	my @lines = split(/\n/, $csv);
 	$line_cnt = @lines;
 	foreach my $line(@lines){
-		my $xml = &lineToXml($key, $line, $toXmlDB, $debug);
+		my $xml = &lineToXml($key, $orca, $line, $toXmlDB, $collection, $debug);
 		if ($xml ne "") {$exec_cnt += 1;}
 	}
 
@@ -230,6 +221,8 @@ sub ExportXmlFromForm
 }
 
 ### @summary 	1行のデータをXMLに変換する。
+### @param		$key 		キー
+### @param 		$orca 		"ORCA" : ORCA形式、その他：カスタム形式
 ### @param 		$file_type 	ファイルタイプ
 ### @param 		$line 		1行のデーター
 ### @return 	$ret 		XML(失敗時、空文字列)
@@ -240,20 +233,17 @@ sub lineToXml
 	my $ret = "";
 
 	# 引数を取得する。
-	my ($key, $line, $toXmlDB, $debug) = @_;
+	my ($key, $orca, $line, $toXmlDB, $collection, $debug) = @_;
 
 	#改行を削除する。
 	#chomp($line);	
-
-	# EUC-JPをUTF8に変換する。
-	Encode::from_to($line, 'eucjp', 'utf8'); 
-	#print "$line";
 
 	# カンマ区切りを分割する。
 	my @item = split(/,/, $line);
 	my $length = @item;
 
 	#CSVのデーターを格納する。
+	my $id = -1;
 	my $medical_class = "";
 	my $medication_code = "";
 	my $medication_name = "";
@@ -268,17 +258,16 @@ sub lineToXml
 	my $current_dir = "";
 	my $current_col = "";
 
-	# 保存ディレクトリを用意する。
-	#print "file_type $file_type collection $collection{1}";
-	
 	if ($toXmlDB eq FALSE) 
 	{ 
-		$current_dir = $data_dir  . "/" . $collection[$file_type];
+		# 保存ディレクトリを用意する。
+		$current_dir = $data_dir  . "/" . $collection;
 		$current_dir = &FileUtil::MakeDir($current_dir); 
 	}
 	else 
 	{ 
-		$current_col = $data_col . "/" . $collection[$file_type];
+		# 保存コレクションを用意する。
+		$current_col = $data_col . "/" . $collection;
 		$current_col = &XmlDbUtil::CreateCollection($current_col); 
 	}
 
@@ -292,7 +281,8 @@ sub lineToXml
 			#$medication_name 		= $item[4];			
 			#$medication_unit_point 	= $item[5];
 			#$medication_unit 		= $item[6];
-			$title = $item[0];
+			$id = $item[0];
+			$title = $item[1];
 		} 
 	}
 	elsif ($key eq "PRACTICE")
@@ -305,6 +295,8 @@ sub lineToXml
 			$medication_name 		= $item[4];			
 			$medication_unit_point 	= $item[5];
 			$medication_unit 		= $item[6];
+			$id = $medication_code;
+			$title = $medication_name;
 		} 
 	}
 	elsif ($key eq "MEDICAL_PRODUCT")
@@ -317,6 +309,8 @@ sub lineToXml
 			$medication_name 		= $item[4];	
 			$medication_unit_point 	= $item[5];
 			$medication_unit 		= $item[6];
+			$id = $medication_code;
+			$title = $medication_name;
 		}
 	}
 	elsif ($key eq "MACHINE")
@@ -329,6 +323,8 @@ sub lineToXml
 			$medication_name 		= $item[5];	
 			$medication_unit_point 	= $item[6];
 			$medication_unit 		= $item[7];
+			$id = $medication_code;
+			$title = $medication_name;
 		}
 	}
 	elsif ($key eq "COMMENT")
@@ -341,6 +337,8 @@ sub lineToXml
 			$medication_name 		= $item[4];	
 			$medication_unit_point 	= $item[5];
 			#$medication_unit 		= $item[7]; #見つからない
+			$id = $medication_code;
+			$title = $medication_name;
 		}
 	}
 	elsif ($key eq "PRIVATE_EXPENSE")
@@ -353,75 +351,73 @@ sub lineToXml
 			$medication_name 		= $item[4];	
 			$medication_unit_point 	= $item[5];
 			#$medication_unit 		= $item[7]; #見つからない
+			$id = $medication_code;
+			$title = $medication_name;
 		}
 	}
-	# スタンプタイトルが存在しない場合はORCAの点数名を登録する。
-	if ($title eq '') {$title = $medication_name;}
 
-
-	# 診療コードがあるデータのみ出力する。
-	if ($medication_code ne "")
+	# 診療区分番号があれば、コレクション・フォルダを分割する。
+	if ($medical_class ne "")
 	{
-		if ($medical_class ne "")
-		{
-			# 診療区分番号によってフォルダを分割する。
-			if ($toXmlDB eq FALSE) {$current_dir = &FileUtil::MakeDir($current_dir . "/" . $medical_class); }
-			else 
-			{ 	
-				$current_col = &XmlDbUtil::CreateCollection($current_col . "/" . $medical_class); 
-				#push(@collection, $current_col);
-			}			
-		}
-
-		my $xml = 
-		"<$tag{'STAMP'}>\r\n" .		
-		"\t<$tag{'ORCA'}>\r\n" .
-		"\t\t<$tag{'MEDICAL_CLASS'}>$medical_class</$tag{'MEDICAL_CLASS'}>\r\n" .
-		"\t\t<$tag{'MEDICATION_CODE'}>$medication_code</$tag{'MEDICATION_CODE'}>\r\n" .
-		"\t\t<$tag{'MEDICATION_NAME'}>$medication_name</$tag{'MEDICATION_NAME'}>\r\n" .
-		"\t\t<$tag{'MEDICATION_NUMBER'}>$medication_number</$tag{'MEDICATION_NUMBER'}>\r\n" .
-		"\t\t<$tag{'MEDICATION_GENERIC_FLG'}>$medication_generic_flg</$tag{'MEDICATION_GENERIC_FLG'}>\r\n" .
-		"\t\t<$tag{'MEDICATION_UNIT_POINT'}>$medication_unit_point</$tag{'MEDICATION_UNIT_POINT'}>\r\n" .
-		"\t\t<$tag{'MEDICATOIN_UNIT'}>$medication_unit</$tag{'MEDICATOIN_UNIT'}>\r\n" .
-		"\t</$tag{'ORCA'}>\r\n" . 
-		"\t<$tag{'EYEEHR'}>\r\n" . 
-		"\t\t<$tag{'TITLE'}>$title</$tag{'TITLE'}>\r\n" . 
-		"\t</$tag{'EYEEHR'}>\r\n" . 
-		"</$tag{'STAMP'}>\r\n";
-
-		#【デバッグ用】XMLを標準出力する。
-		if ($debug == TRUE) { print "<textarea>$xml</textarea>"; }
-
-		# ファイルを書き出す。
-		my ($filepath, $result);
-		my $filename = $collection[$file_type] . "-" . $medication_code . ".xml";
 		if ($toXmlDB eq FALSE) 
 		{
-			$filepath = $current_dir . "/" . $filename;
-			$result = &FileUtil::SaveXml($filepath, $xml);
+			$current_dir = &FileUtil::MakeDir($current_dir . "/" . $medical_class); 
 		}
 		else 
 		{ 	
-			$filepath = $current_col . "/" . $filename;
-			$result = &XmlDbUtil::SaveDoc($filepath, $xml); 
-		}
-
-		print "<div class='line' style='font-size:9pt;white-space:nowrap;'>";
-		if ($result eq "") 
-		{ 
-			print "[NG] "; 
-		}
-		else 
-		{
-			print "[OK] ";
-		}
-		print "$result ";
-		print "$line ";
-		print "</div>";
-
-		$ret = $xml;
+			$current_col = &XmlDbUtil::CreateCollection($current_col . "/" . $medical_class); 
+			#push(@collection, $current_col);
+		}			
 	}
 
+	my $xml = 
+	"<$tag{'STAMP'}>\r\n" .		
+	"\t<$tag{'ORCA'}>\r\n" .
+	"\t\t<$tag{'MEDICAL_CLASS'}>$medical_class</$tag{'MEDICAL_CLASS'}>\r\n" .
+	"\t\t<$tag{'MEDICATION_CODE'}>$medication_code</$tag{'MEDICATION_CODE'}>\r\n" .
+	"\t\t<$tag{'MEDICATION_NAME'}>$medication_name</$tag{'MEDICATION_NAME'}>\r\n" .
+	"\t\t<$tag{'MEDICATION_NUMBER'}>$medication_number</$tag{'MEDICATION_NUMBER'}>\r\n" .
+	"\t\t<$tag{'MEDICATION_GENERIC_FLG'}>$medication_generic_flg</$tag{'MEDICATION_GENERIC_FLG'}>\r\n" .
+	"\t\t<$tag{'MEDICATION_UNIT_POINT'}>$medication_unit_point</$tag{'MEDICATION_UNIT_POINT'}>\r\n" .
+	"\t\t<$tag{'MEDICATOIN_UNIT'}>$medication_unit</$tag{'MEDICATOIN_UNIT'}>\r\n" .
+	"\t</$tag{'ORCA'}>\r\n" . 
+	"\t<$tag{'EYEEHR'}>\r\n" . 
+	"\t\t<$tag{'TITLE'}>$title</$tag{'TITLE'}>\r\n" . 
+	"\t</$tag{'EYEEHR'}>\r\n" . 
+	"</$tag{'STAMP'}>\r\n";
+
+	#【デバッグ用】XMLを標準出力する。
+	if ($debug == TRUE) { print "<textarea>$xml</textarea>"; }
+
+	# ファイルを書き出す。
+	my $filepath;
+	my $result;
+	my $filename = $collection . "-" . $medication_code . ".xml";
+	if ($toXmlDB eq FALSE) 
+	{
+		$filepath = $current_dir . "/" . $filename;
+		$result = &FileUtil::SaveXml($filepath, $xml);
+	}
+	else 
+	{ 	
+		$filepath = $current_col . "/" . $filename;
+		$result = &XmlDbUtil::SaveDoc($filepath, $xml); 
+	}
+
+	print "<div class='line' style='font-size:9pt;white-space:nowrap;'>";
+	if ($result eq "") 
+	{ 
+		print "[NG] "; 
+	}
+	else 
+	{
+		print "[OK] ";
+	}
+	print "$result ";
+	print "$line $filepath";
+	print "</div>";
+
+	$ret = $xml;
 
 	return $ret;
 }

@@ -77,7 +77,7 @@ if (!isset($_SESSION["USERID"])) {
 						</tr>
 						<tr>
 							<th>OUTPUT007.csv（ORCA 点数マスター 自費）</th>
-							<td><input type="file" name="OUTPUT007" data-filename="OUTPUT001.csv"></td>
+							<td><input type="file" name="OUTPUT007" data-default="OUTPUT007.csv"></td>
 							<td>&nbsp;</td>
 						</tr>
 					<tbody>
