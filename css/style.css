@@ -32,23 +32,21 @@ button.page
 }
 
 /* スタンプリスト（アコーディオンメニュー） */
-#acMenu dt
+div#NoteItemMenu h3
 {
-  margin: 1px 0 0 0;
-  padding: 0.7em 0.5em 0.5em 2em;
-  font-size: 16px;
-  font-weight: bold;
+/* 
+  margin paddingは初期設定に準拠する。
+  margin  : 0em 0em 0em 0em;
+  padding : 0em 0em 0em 0em;
+*/
 }
-#acMenu dd
-{
-  margin: -2px 0 2px 0;
-  padding: 0.5em 2em 1.5em 2em;
-  font-size: 15px;
-}
-div.stamp_list 
+
+div#NoteItemMenu div.stamp_list 
 {
   overflow: scroll;
   height : 200px; /* TODO : 暫定 */
+  margin  : 0.em 0em 0em 0em;
+  padding : 0.1em 0.1em 0.1em 0.1em;
 }
 
 
