@@ -4,6 +4,9 @@ function Stamp() {
   ///@param クラス名
   this._name = 'Stamp';
 
+  ///@param ID(ファイル名　拡張子なし)
+  this._id = '';
+
   ///@param スタンプタイトル（正式）
   this._title = 'N/A';
 
@@ -11,13 +14,13 @@ function Stamp() {
   this._short_title = this._title;
 
   ///@param [保存先]コレクション
-  this._collection = '/db/apps/eyeehr/data/Stamp';
+  //this._collection = '/db/apps/eyeehr/data/Stamp';
 
   ///@param [保存先]ファイル名
-  //this._filename =  this._name + Utility.GetCurrentDate() + '.xml';
+  ///this._filename =  this._name + Utility.GetCurrentDate() + '.xml';
 
   ///@param [保存先]URL
-  //this._url = this._collection + this._filename;
+  this._url = '';
 
   // ■初期化
   // JQuery オブジェクト
@@ -54,16 +57,25 @@ function Stamp() {
 	{
 		if ($i_xml !== undefined)
 		{
+			this._id = $i_xml.attr('Id');
+			this._url = $i_xml.attr('Url');
+
 			// 正式名称を取得する。
 			this._title = $i_xml.children('Eyeehr').children('Title').text();
+			
 			// 略称（表示名）を取得する。
 			this._short_title = 
 				(this._title.length >= SHORT_TITLE_MAX_LENGTH) ?  
 				this._title.slice(0, SHORT_TITLE_MAX_LENGTH - 1) + '...' : this._title; 
-			$jquery.data('title', this._title);
+
+			var xml =  Utility.JQueryToStr($i_xml);
+			$jquery.attr('id', this._id);
+			$jquery.data('url', this._url);
 			$jquery.attr('title', this._title);
+			//$jquery.data('xml', xml);
 			$jquery.text(this._short_title);
-			$jquery.data('xml', Utility.JQueryToStr($i_xml));
+			console.log(this._url);
+			//console.log(xml);
 		}
 	}
 

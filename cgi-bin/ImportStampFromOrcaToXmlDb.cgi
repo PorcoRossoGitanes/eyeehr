@@ -380,7 +380,7 @@ sub lineToXml
 		$filepath = $current_col . "/" . $filename;
 	}
 
-	my $xml = "<$tag{'STAMP'} id=\"$stamp_id\" url=\"$filepath\">" ;
+	my $xml = "<$tag{'STAMP'} Id=\"$stamp_id\" Url=\"$filepath\">" ;
 
 	if ($medication_code ne '')
 	{
