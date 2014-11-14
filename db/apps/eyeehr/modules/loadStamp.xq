@@ -5,6 +5,7 @@ xquery version "3.0";
     @param 	GET/POST [target] = 検索対象（下記参照）
 		use constant 
 		{
+			"DISEASE" 			Disease 			=> "   " 		# 病名・所見
 			"PRACTICE" 			Practice 			=> "001" 		# 診療行為
 			"INJECTION" 		Practice/300		=> "001-300" 	# 注射(300番台)
 			"TREATMENT" 		Practice/400		=> "001-400"  	# 処置(400番台)
@@ -23,6 +24,7 @@ xquery version "3.0";
 
 (:===定数定義　[target] = 検索対象===:)
 let $col_stamp 				:= '/db/apps/eyeehr/data/Stamp' 	(:スタンプルートコレクション:)
+let $col_disease 			:= 'Disease' 						(:病名・所見:)
 let $col_practice 			:= 'Practice' 						(:診療行為:)
 let $col_medical_product 	:= 'MedicalProduct'					(:医薬品:)
 let $col_machine 			:= 'Machine'						(:特定機材:)
@@ -36,20 +38,22 @@ let $target := request:get-parameter('target', '')
 (:===対象のコレクションを取得する。===:)
 let $cur_collection   := ''
 let $cur_collection   := 
-	if ($target = 'PRACTICE' ) then ($col_stamp || '/' || $col_practice) 					(:診療行為:)
-	else if ($target = 'INJECTION') then ($col_stamp || '/' || $col_practice) 				(:注射(300番台):)
-	else if ($target = 'TREATMENT') then ($col_stamp || '/' || $col_practice) 				(:処置(400番台):)
-	else if ($target = 'OPERATION') then ($col_stamp || '/' || $col_practice) 				(:手術(500番台):)
-	else if ($target = 'MEDICAL_CHECK') then ($col_stamp || '/' || $col_practice) 			(:検査(600番台):)
+	if      ($target = 'DISEASE'        ) then ($col_stamp || '/' || $col_disease) 			(:病名・所見:)
+	else if ($target = 'PRACTICE'       ) then ($col_stamp || '/' || $col_practice) 		(:診療行為:)
+	else if ($target = 'INJECTION'      ) then ($col_stamp || '/' || $col_practice) 		(:注射(300番台):)
+	else if ($target = 'TREATMENT'      ) then ($col_stamp || '/' || $col_practice) 		(:処置(400番台):)
+	else if ($target = 'OPERATION'      ) then ($col_stamp || '/' || $col_practice) 		(:手術(500番台):)
+	else if ($target = 'MEDICAL_CHECK'  ) then ($col_stamp || '/' || $col_practice) 		(:検査(600番台):)
 	else if ($target = 'MEDICAL_PRODUCT') then ($col_stamp || '/' || $col_medical_product)	(:医薬品:)
-	else if ($target = 'MACHINE') then ($col_stamp || '/' || $col_machine)					(:特定機材:)
-	else if ($target = 'COMMENT') then ($col_stamp || '/' || $col_comment)					(:コメント:)
+	else if ($target = 'MACHINE'        ) then ($col_stamp || '/' || $col_machine)			(:特定機材:)
+	else if ($target = 'COMMENT'        ) then ($col_stamp || '/' || $col_comment)			(:コメント:)
 	else if ($target = 'PRIVATE_EXPENSE') then ($col_stamp || '/' || $col_private_expense)	(:自費:)
 	else ''
 
 (:===結果を取得する===:)
 let $start := 
-	if ($target = 'PRACTICE' )				then 	-1 	 	(:診療行為:)
+	if      ($target = 'DISEASE' )			then 	-1 	 	(:病名・所見:)
+	else if ($target = 'PRACTICE' )			then 	-1 	 	(:診療行為:)
 	else if ($target = 'INJECTION') 		then 	300 	(:注射(300番台):)
 	else if ($target = 'TREATMENT') 		then 	400		(:処置(400番台):)
 	else if ($target = 'OPERATION') 		then 	500		(:手術(500番台):)

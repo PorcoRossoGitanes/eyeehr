@@ -69,25 +69,16 @@ if (!isset($_SESSION["USERID"])) {
         <td>
           <!--スタンプリスト（アコーディオンメニュー）-->
           <div id="NoteItemMenu">
-            <h3 class='ui-state-disabled' onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</h3>
-            <div></div>
-            <h3>病名</h3>
-            <div>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemDisease(); item.setFormats('アレルギー性結膜炎'); item.appendTo('[name=NoteItemContainerDisease]');" title="アレルギー性結膜炎">ア結</button>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemDisease('角膜円錐'); item.setFormats('角膜円錐'); item.appendTo('[name=NoteItemContainerDisease]');">角膜円錐</button>
-              <button type="button" class="btn btn-default btn-xs" onclick="var item = new NoteItemDisease('白内障'); item.setFormats('白内障'); item.appendTo('[name=NoteItemContainerDisease]');">白内障</button>
-            </div>
+            <h3 class='ui-state-disabled' onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</h3><div></div>
+            <h3>病名</h3><div class="stamp_list" id="disease"></div>
             <h3>検査</h3><div class="stamp_list" id="medical_check"></div>
             <h3>注射</h3><div class="stamp_list" id="injection"></div>
             <h3>特定機材</h3><div class="stamp_list" id="machine"></div>
             <h3>処置</h3><div class="stamp_list" id="treatment"></div>
             <h3>手術</h3><div class="stamp_list" id="operation"></div>
-            <h3>処方（医薬品）</h3><div class="stamp_list" id="medical_product">
-            </div>
-            <h3 class='ui-state-disabled' onclick="var item = new NoteItemScheme(); item.appendTo('[name=NoteItemContainerScheme]')">シェーマ</h3>
-            <div></div>
-            <h3 class='ui-state-disabled' onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</h3>
-            <div></div>
+            <h3>処方（医薬品）</h3><div class="stamp_list" id="medical_product"></div>
+            <h3 class='ui-state-disabled' onclick="var item = new NoteItemScheme(); item.appendTo('[name=NoteItemContainerScheme]')">シェーマ</h3><div></div>
+            <h3 class='ui-state-disabled' onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</h3><div></div>
           </div>
         </td>
       </tr>
@@ -103,12 +94,14 @@ if (!isset($_SESSION["USERID"])) {
   <script src="js/Patient.js"></script>
 
   <script src="js/Stamp.js"></script>
+  <script src="js/StampDisease.js"></script>
   <script src="js/StampInjection.js"></script>
   <script src="js/StampMachine.js"></script>
   <script src="js/StampMedicalCheck.js"></script>
   <script src="js/StampMedicalProduct.js"></script>
   <script src="js/StampOperation.js"></script>
   <script src="js/StampTreatment.js"></script>
+
   <script src="js/NoteItem.js"></script>
   <script src="js/NoteItemComplaint.js"></script>
   <script src="js/NoteItemDisease.js"></script>

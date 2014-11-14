@@ -55,7 +55,7 @@ function Stamp() {
 		if ($i_xml !== undefined)
 		{
 			// 正式名称を取得する。
-			this._title = $i_xml.children('Orca').children('Medication_Name').text();
+			this._title = $i_xml.children('Eyeehr').children('Title').text();
 			// 略称（表示名）を取得する。
 			this._short_title = 
 				(this._title.length >= SHORT_TITLE_MAX_LENGTH) ?  

@@ -63,7 +63,8 @@ $(function()
 
 	//----- スタンプを自動生成する。 -----------------------------------------------
 	const StampListSetting = {
-	  "Stamp" : [
+	  'Stamp' : [
+	  	{'key' : 'DISEASE'			,'selector' : 'div.stamp_list#disease'					, 'class' : 'StampDisease'		    /*Disease => "" # 病名・所見*/                  	},
 	  	{'key' : 'PRACTICE'			,'selector' : ''/*'div.stamp_list#practice'*/			, 'class' : ''				        /*Practice => "001" # 診療行為*/                  	},
 	  	{'key' : 'INJECTION'		,'selector' : 'div.stamp_list#injection'				, 'class' : 'StampInjection'		/*Practice/300    => "001-300"  # 注射(300番台)*/		},
 	  	{'key' : 'TREATMENT'		,'selector' : 'div.stamp_list#treatment'				, 'class' : 'StampTreatment'       	/*Practice/400    => "001-400"    # 処置(400番台)*/	},
@@ -98,6 +99,7 @@ $(function()
 			var stamp = null;
 			switch (i_key)
 			{
+				case 'DISEASE'      	: stamp = new StampDisease(); 			break;
 				case 'PRACTICE'      	: stamp = new Stamp(); 					break;
 				case 'INJECTION'     	: stamp = new StampInjection(); 		break;
 				case 'TREATMENT'     	: stamp = new StampTreatment();			break;
