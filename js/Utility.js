@@ -334,4 +334,30 @@ Utility.InnerHtml = function ($i_jquery){
 	return ret;
 }
 
+/**
+*  XML→String。クロスブラウザ対応。
+*/
+Utility.XmlToStr = function (xmlNode)
+{
+	try 
+	{
+		// IE以外の場合は、下記を処理する。
+		return (new XMLSerializer()).serializeToString(xmlNode);	
+	}
+	catch (e) 
+	{
+		try 
+		{
+			// IEの場合は、下記を処理する。
+			return xmlNode.xml;
+		}
+		catch (e)
+		{
+			console.log('Xmlserializer はサポートされていません。');
+		}
+	}
+	
+	return false;
+}
+
 

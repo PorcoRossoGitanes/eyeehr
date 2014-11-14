@@ -20,13 +20,16 @@
             <td><button type="button" id="UtilityInnerHtml" class="btn btn-default btn-s page">内部HTML取得</button></td>
 <script>
 $('button#UtilityInnerHtml').click(function () {
-  var test = $('<div/>').append('<test><strong>TEST1</strong><br/>TEST2</test>').html();
-  $test = $(test); $result = Utility.InnerHtml($test);
-  console.log('[' + test + ']=>' + $result);
+  var test = '<test><strong>TEST1</strong><br/>TEST2</test>';
+  var result = Utility.XmlToStr($(test)[0]);
+  console.log('[' + test + ']=>' + result);
 
-  var test = '<test/>';
-  $test = $(test); $result = Utility.InnerHtml($test);
-  console.log('[' + test + ']=>' + $result);
+  // $test = $(test); $result = Utility.InnerHtml($test);
+  // console.log('[' + test + ']=>' + $result);
+
+  // var test = '<test/>';
+  // $test = $(test); $result = Utility.InnerHtml($test);
+  // console.log('[' + test + ']=>' + $result);
 
   alert('結果はコンソールに出力されました。');
 });
