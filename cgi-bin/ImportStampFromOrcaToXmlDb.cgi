@@ -61,20 +61,26 @@ my @input =
 
 
 #=== XMLDB XMLタグ ===#
-use constant STAMP => "Stamp";
+my %tag = 
+(
+	"STAMP" 					=> "Stamp",
+	"ORCA" 						=> "Orca",
+	"MEDICAL_CLASS" 			=> "Medical_Class",				#診療種別区分
+	"MEDICATION_CODE" 			=> "Medication_Code",			#診療行為コード
+	"MEDICATION_NAME" 			=> "Medication_Name",			#診療行為名称
+	"MEDICATION_NUMBER" 		=> "Medication_Number",			#診療行為数量
+	"MEDICATION_GENERIC_FLG" 	=> "Medication_Generic_Flg", 	#診療行為一般処方指示
+	"MEDICATION_UNIT_POINT" 	=> "Medication_Unit_Point",		#診療行為単位点数
+	"MEDICATOIN_UNIT" 			=> "Medication_Unit",			#診療行為単位
+	"EYEEHR" 					=> "Eyeehr",					#電子カルテ用					
+	"TITLE" 					=> "Title"#,					#電子カルテ用	スタンプタイトル				
+);
 
-use constant ORCA => "Orca";
-use constant MEDICAL_CLASS => "Medical_Class";						#診療種別区分
-use constant MEDICATION_CODE => "Medication_Code";					#診療行為コード
-use constant MEDICATION_NAME => "Medication_Name";					#診療行為名称
-use constant MEDICATION_NUMBER => "Medication_Number";				#診療行為数量
-use constant MEDICATION_GENERIC_FLG => "Medication_Generic_Flg"; 	#診療行為一般処方指示
-use constant MEDICATION_UNIT_POINT => "Medication_Unit_Point";		#診療行為単位点数
-use constant MEDICATOIN_UNIT => "Medication_Unit";					#診療行為単位
+my %default_value = 
+(
+	"MEDICATION_GENERIC_FLG_DEFAULT" => "yes"#,				#診療行為一般処方指示[初期値:YES]
+);
 
-use constant EYEEHR => "Eyeehr";									#電子カルテ用					
-
-use constant MEDICATION_GENERIC_FLG_DEFAULT => "yes";				#診療行為一般処方指示[初期値:YES]
 
 #=== ↑↑↑カスタマイズ部↑↑↑ ===#
 
@@ -93,21 +99,6 @@ use constant
 	PRIVATE_EXPENSE 	=> 007,	# 自費診療
 };
 
-#コレクション名
-my @collection = 
-(
-	"",
-	"Practice", 			# 1.診療行為
-	"MedicalProduct",		# 2.医薬品
-	"Machine",				# 3.医薬品
-	"",
-	"",
-	"Comment", 				# 6.特定機材
-	"PrivateExpense",	 	# 7.自費診療
-	"", 
-	"",
-	""#,
-);
 
 #ファイルタイプ　※1
 #my @len = 
@@ -296,12 +287,12 @@ sub lineToXml
 		#use constant DISEASE => X; 		# 病名・所見
 		if ($length > 1)#== $len[PRACTICE])
 		{
-			$title = $item[0];
 			#$medical_class 			= $item[9];
 			#$medication_code 		= $item[1];
 			#$medication_name 		= $item[4];			
 			#$medication_unit_point 	= $item[5];
 			#$medication_unit 		= $item[6];
+			$title = $item[0];
 		} 
 	}
 	elsif ($key eq "PRACTICE")
@@ -364,6 +355,9 @@ sub lineToXml
 			#$medication_unit 		= $item[7]; #見つからない
 		}
 	}
+	# スタンプタイトルが存在しない場合はORCAの点数名を登録する。
+	if ($title eq '') {$title = $medication_name;}
+
 
 	# 診療コードがあるデータのみ出力する。
 	if ($medication_code ne "")
@@ -380,23 +374,23 @@ sub lineToXml
 		}
 
 		my $xml = 
-		"<" . STAMP. ">\r\n" .		
-		"\t<" . ORCA. ">\r\n" .
-		"\t\t<" . MEDICAL_CLASS          . ">" . $medical_class          . "</" . MEDICAL_CLASS          . ">\r\n" .
-		"\t\t<" . MEDICATION_CODE        . ">" . $medication_code        . "</" . MEDICATION_CODE        . ">\r\n" .
-		"\t\t<" . MEDICATION_NAME        . ">" . $medication_name        . "</" . MEDICATION_NAME        . ">\r\n" .
-		"\t\t<" . MEDICATION_NUMBER      . ">" . $medication_number      . "</" . MEDICATION_NUMBER      . ">\r\n" .
-		"\t\t<" . MEDICATION_GENERIC_FLG . ">" . $medication_generic_flg . "</" . MEDICATION_GENERIC_FLG . ">\r\n" .
-		"\t\t<" . MEDICATION_UNIT_POINT  . ">" . $medication_unit_point  . "</" . MEDICATION_UNIT_POINT  . ">\r\n" .
-		"\t\t<" . MEDICATOIN_UNIT        . ">" . $medication_unit        . "</" . MEDICATOIN_UNIT        . ">\r\n" .
-		"\t</" . ORCA . ">\r\n" . 
-		"\t<" . EYEEHR . ">\r\n" . 
-		"\t</" . EYEEHR . ">\r\n" . 
-		"</" . STAMP . ">\r\n";
+		"<$tag{'STAMP'}>\r\n" .		
+		"\t<$tag{'ORCA'}>\r\n" .
+		"\t\t<$tag{'MEDICAL_CLASS'}>$medical_class</$tag{'MEDICAL_CLASS'}>\r\n" .
+		"\t\t<$tag{'MEDICATION_CODE'}>$medication_code</$tag{'MEDICATION_CODE'}>\r\n" .
+		"\t\t<$tag{'MEDICATION_NAME'}>$medication_name</$tag{'MEDICATION_NAME'}>\r\n" .
+		"\t\t<$tag{'MEDICATION_NUMBER'}>$medication_number</$tag{'MEDICATION_NUMBER'}>\r\n" .
+		"\t\t<$tag{'MEDICATION_GENERIC_FLG'}>$medication_generic_flg</$tag{'MEDICATION_GENERIC_FLG'}>\r\n" .
+		"\t\t<$tag{'MEDICATION_UNIT_POINT'}>$medication_unit_point</$tag{'MEDICATION_UNIT_POINT'}>\r\n" .
+		"\t\t<$tag{'MEDICATOIN_UNIT'}>$medication_unit</$tag{'MEDICATOIN_UNIT'}>\r\n" .
+		"\t</$tag{'ORCA'}>\r\n" . 
+		"\t<$tag{'EYEEHR'}>\r\n" . 
+		"\t\t<$tag{'TITLE'}>$title</$tag{'TITLE'}>\r\n" . 
+		"\t</$tag{'EYEEHR'}>\r\n" . 
+		"</$tag{'STAMP'}>\r\n";
 
 		#【デバッグ用】XMLを標準出力する。
-		#print $debug;
-		if ($debug == TRUE) { print $xml; }
+		if ($debug == TRUE) { print "<textarea>$xml</textarea>"; }
 
 		# ファイルを書き出す。
 		my ($filepath, $result);
@@ -427,6 +421,7 @@ sub lineToXml
 
 		$ret = $xml;
 	}
+
 
 	return $ret;
 }
