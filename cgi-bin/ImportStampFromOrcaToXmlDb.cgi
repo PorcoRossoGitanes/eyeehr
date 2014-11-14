@@ -38,21 +38,27 @@ use RPC::XML::Client;
 
 #=== ↓↓↓カスタマイズ部↓↓↓ ===#
 
-# 呼出元フォームのinput nameを格納する。
-my @input_name = 
+# データ保存ディレクトリを設定する。（ファイル出力）
+my $data_dir = "./data";
+# データ保存コレクションを設定する。（XmlDB出力）
+my $data_col = "/db/apps/eyeehr/data/Stamp";
+
+# 呼出元フォームの設定を格納する。
+# [0]KEY 
+# [1]HTMLのNAME属性
+# [2]ファイル名
+# [3]コレクション
+# [4]ORCA : ORCA形式準拠（末尾カスタム追加可）, それ以外:カスタム形式
+my @input =
 (
-	"DISEASE",			# D.診療行為
-	"OUTPUT001",		# 1.診療行為
-	"OUTPUT002",		# 2.医薬品
-	"OUTPUT003",		# 3.医薬品
-	"OUTPUT006", 		# 6.特定機材
-	"OUTPUT007"#,	 	# 7.自費診療
+	["DISEASE"			,"DISEASE"		,"DISEASE.csv"		,"Disease"			,""		],	# X.病名（所見）
+	["PRACTICE"			,"OUTPUT001"	,"OUTPUT001.csv"	,"Practice"			,"ORCA"	],	# 1.診療行為
+	["MEDICAL_PRODUCT"	,"OUTPUT002"	,"OUTPUT002.csv"	,"MedicalProduct"	,"ORCA"	], 	# 2.医薬品
+	["MACHINE"			,"OUTPUT003"	,"OUTPUT003.csv"	,"Machine"			,"ORCA"	],	# 3.特定機材
+	["COMMENT"			,"OUTPUT006"	,"OUTPUT006.csv"	,"Comment"			,"ORCA"	],	# 6.コメント
+	["PRIVATE_EXPENSE"	,"OUTPUT007"	,"OUTPUT007.csv" 	,"PrivateExpense"	,"ORCA"	]#,	# 7.自費診療
 );
 
-# データ保存ディレクトリを設定する。
-my $data_dir = "./data";
-# データ保存コレクションを設定する。
-my $data_col = "/db/apps/eyeehr/data/Stamp";
 
 #=== XMLDB XMLタグ ===#
 use constant STAMP => "Stamp";
@@ -104,17 +110,17 @@ my @collection =
 );
 
 #ファイルタイプ　※1
-my @len = 
-(
-	-1,		# 0.(未定義の場合=-1)
-	25, 	# 1.診療行為
-	16,		# 2.医薬品
-	18,		# 3.医薬品
-	-1,		# 4.(未定義の場合=-1)
-	-1,		# 5.(未定義の場合=-1)
-	23, 	# 6.特定機材
-	18#,	# 7.自費診療
-);
+#my @len = 
+#(
+#	-1,		# 0.(未定義の場合=-1)
+#	25, 	# 1.診療行為
+#	16,		# 2.医薬品
+#	18,		# 3.医薬品
+#	-1,		# 4.(未定義の場合=-1)
+#	-1,		# 5.(未定義の場合=-1)
+#	23, 	# 6.特定機材
+#	18#,	# 7.自費診療
+#);
 
 #ファイルタイプ=1, 診療行為CSVの場合に使用する。
 my %practice_in;
@@ -124,116 +130,75 @@ $practice_in{'OPERATION'} 		= 500;	# 手術(500番台)
 $practice_in{'MEDICAL_CHECK'} 	= 600;	# 検査(600番台)
 
 # プログラム変数。
-my 
-(
-	$file_type,	# ファイルタイプを取得する。(上記定数参照。診療行為の場合は1、医薬品の場合は2...) 
-	$csv, 		# CSVファイル（コマンド実行時、ファイルパス。CGI実行時、value値）
-	$debug, 		# デバッグ表示を実行する場合は0以外, デバック表示を実行しない場合は0
-	$toXmlDB	# XMLDBに保存する場合、TRUE。ファイルを展開する場合、false。 
-);
+my $csv; 		# CSVファイル（コマンド実行時、ファイルパス。CGI実行時、value値）
+my $debug; 		# デバッグ表示を実行する場合は0以外, デバック表示を実行しない場合は0
+my $toXmlDB;	# XMLDBに保存する場合、TRUE。ファイルを展開する場合、false。 
 
 # 既存のコレクションを格納していく（チューニングのため）
-my @collection_exist;
-
-#--- GET/POST処理は基本ルーチン ---
-# GET処理
-#if($ENV{'REQUEST_METHOD'} eq "GET"){ $buffer = $ENV{'QUERY_STRING'};}
-#else{ read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});}
-#
-#@query = split(/&/, $buffer);
-#
-#foreach $pair (@query) {
-#	($key, $value) = split(/=/, $pair);
-#	$value =~ tr/+/ /;
-#	$value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
-#	$FORM{$key} = $value;
-#}
-#--- GET/POST処理は基本ルーチン ---
+#my @collection_exist;
 
 print "Content-type: text/html\n\n";
 
-my $argv_length = @ARGV;
-if ($argv_length > 0)
-{
-    # コマンド実行	
-	if ($argv_length == 3)
-	{
-		$file_type 	= $ARGV[1];
-		$csv 		= $ARGV[0];
-		$debug 		= $ARGV[2];
-		$toXmlDB    = FALSE;
+# CGI実行
+my $query = new CGI;
 
-		&ExportXml(
-			$file_type,  	# ファイルタイプを取得する。(上記定数参照。診療行為の場合は1、医薬品の場合は2...)
-			$csv, 			# 取込用のファイルパスを取得する。(../tmp/orca/OUTPUT001（診療行為）.csv)
-			$toXmlDB,		# XMLDBに保存する。
-			$debug			#,	# デバッグ表示を実行する場合は0以外, デバック表示を実行しない場合は0
-		);
-	} else 
-	{
-		die(
-			"処理系の呼出しに失敗しました。\n" .
-			"ARGV[0] ファイルパス\n" .
-			"ARGV[1] ファイルタイプ\n" .
-			"ARGV[2] デバッグ 0=FALSE 0以外=TRUE\n"
-		);
-	}	
-}
-else 
+# ファイル名を取得する。
+foreach my $input(@input)
 {
-	# CGI実行
-	my $query = new CGI;
+	my $key = @{$input}[0];
+	my $name = @{$input}[1];
+	my $filename_fix = @{$input}[2];
 
 	# ファイル名を取得する。
-	foreach my $name(@input_name){
-	 	
-		my $filename = $query->param($name);
+	my $filename = $query->param($name);
 
-		# ファイルが指定されているか、確認する。
-		if ($filename eq "") 
-		{
-			print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";
-			print "ファイルが指定されていません。$name $filename";
-			print "</div>";
-			print "<hr/>";
-			next;
-		}
-		# ファイルタイプを取得する。（行頭の0を削除する。）
-		my $file_type = substr($name, 6,3); $file_type =~ s/^0+//g; 
-		if ($file_type !~ /[0-9]+/)
-		{
-			print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";
-			print "ファイルタイプを判別できませんでした。";
-			print "[NAME] $name [FILE_TYPE]$file_type [FILENAME]$filename";
-			print "</div>";
-			print "<hr/>";
-			next;
-		}
+	# ファイルが指定されているか、確認する。
+	if ($filename ne $filename_fix) 
+	{
+		print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";
+		print "正しいファイルが指定されていません。";
+		print "[入力] $name [正しいファイル名] $filename_fix [入力されたファイル名] $filename";
+		print "</div>";
+		print "<hr/>";
+		next;
+	}
+	
+	# ファイルタイプを取得する。（行頭の0を削除する。）
+	my $file_type = substr($name, 6,3); $file_type =~ s/^0+//g; 
+	#if ($file_type !~ /[0-9]+/)
+	#{
+	#	print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";
+	#	print "ファイルが不正です。";
+	#	print "[入力] $name [正しいファイル名] $filename_fix [入力されたファイル名] $filename";
+	#	print "</div>";
+	#	print "<hr/>";
+	#	next;
+	#}
 
-		{
-			print "<div class='input' style='font-size:9pt;white-space:nowrap;'>";
-			print "[NAME] $name [FILE_TYPE]$file_type [FILENAME]$filename";
-			print "</div>";
+	# ファイルを読み込み、XMLDBに保存する。
+	{
+		print "<div class='input' style='font-size:9pt;white-space:nowrap;'>";
+		print "[入力] $name [入力されたファイル名] $filename";
+		print "</div>";
 
-			#ファイルからCSVを読み込む。
-			my $csv = ""; while(read($filename,$buffer,1024)) { $csv .= $buffer;} close($filename); 
+		#ファイルからCSVを読み込む。
+		my $csv = ""; while(read($filename,$buffer,1024)) { $csv .= $buffer;} close($filename); 
 
-			# XMLDBに書出す。
-			$toXmlDB = TRUE;
+		# XMLDBに書出す。
+		$toXmlDB = TRUE;
 
-			#デバッグフラグをOFFに設定する。
-			$debug = FALSE;
+		#デバッグフラグをOFFに設定する。
+		$debug = FALSE;
 
-			# フォームの内容から値を取得する。
-			&ExportXmlFromForm(
-				$file_type,  	# ファイルタイプを取得する。(上記定数参照。診療行為の場合は1、医薬品の場合は2...)
-				$csv, 			# CSVデータを格納する。
-				$toXmlDB,		# XMLDBに保存する。
-				$debug			#,	# デバッグ表示を実行する場合は0以外, デバック表示を実行しない場合は0
-			);	
+		# フォームの内容から値を取得する。
+		&ExportXmlFromForm(
+			$key,
+			$csv, 			# CSVデータを格納する。
+			$toXmlDB,		# XMLDBに保存する。
+			$debug			#,	# デバッグ表示を実行する場合は0以外, デバック表示を実行しない場合は0
+		);	
 
-			print "<hr/>";
-		}
+		print "<hr/>";
 	}
 }
 
@@ -244,7 +209,7 @@ else
 sub ExportXmlFromForm
 {
 	# 引数を取得する。
-	my ($file_type, $csv, $toXmlDB, $debug) = @_;
+	my ($key, $csv, $toXmlDB, $debug) = @_;
 
 	my $line_cnt = 0;	# データ行数をカウントする。
 	my $exec_cnt = 0;	# 実行成功行数をカウントする。
@@ -264,7 +229,7 @@ sub ExportXmlFromForm
 	my @lines = split(/\n/, $csv);
 	$line_cnt = @lines;
 	foreach my $line(@lines){
-		my $xml = &lineToXml($file_type, $line, $toXmlDB, $debug);
+		my $xml = &lineToXml($key, $line, $toXmlDB, $debug);
 		if ($xml ne "") {$exec_cnt += 1;}
 	}
 
@@ -280,8 +245,7 @@ sub ExportXmlFromForm
 sub ExportXml
 {
 	# 引数を取得する。
-	my ($file_type, $file_path, $toXmlDB, $debug) = @_;
-	#print "file_type $file_type $collection[$file_type]\n";
+	my ($key, $file_path, $toXmlDB, $debug) = @_;
 
 	# データ行数をカウントする。
 	my $line_cnt = 0;
@@ -306,7 +270,7 @@ sub ExportXml
 	# 1行ずつ読み込み、標準出力する。
 	while (my $line = <DATAFILE>)
 	{
-		my $xml = &lineToXml($file_type, $line, $toXmlDB, $debug);
+		my $xml = &lineToXml($key, $line, $toXmlDB, $debug);
 		$line_cnt += 1; if ($xml ne "") {$exec_cnt += 1;}
 	}
 
@@ -324,7 +288,7 @@ sub lineToXml
 	my $ret = "";
 
 	# 引数を取得する。
-	my ($file_type, $line, $toXmlDB, $debug) = @_;
+	my ($key, $line, $toXmlDB, $debug) = @_;
 
 	#改行を削除する。
 	#chomp($line);	
@@ -346,6 +310,8 @@ sub lineToXml
 	my $medication_number = 1;
 	my $medication_generic_flg = MEDICATION_GENERIC_FLG_DEFAULT;
 
+	my $title = "";
+
 	# 現在のディレクトリを格納する。
 	my $current_dir = "";
 	my $current_col = "";
@@ -364,7 +330,20 @@ sub lineToXml
 		$current_col = &XmlDbUtil::CreateCollection($current_col); 
 	}
 
-	if ($file_type eq PRACTICE)
+	if ($key eq "DISEASE")
+	{
+		#use constant DISEASE => X; 		# 病名・所見
+		if ($length > 1)#== $len[PRACTICE])
+		{
+			$title = $item[0];
+			#$medical_class 			= $item[9];
+			#$medication_code 		= $item[1];
+			#$medication_name 		= $item[4];			
+			#$medication_unit_point 	= $item[5];
+			#$medication_unit 		= $item[6];
+		} 
+	}
+	elsif ($key eq "PRACTICE")
 	{
 		#use constant PRACTICE => 1; 		# 診療行為
 		if ($length > 9)#== $len[PRACTICE])
@@ -376,7 +355,7 @@ sub lineToXml
 			$medication_unit 		= $item[6];
 		} 
 	}
-	elsif ($file_type eq MEDICAL_PRODUCT)
+	elsif ($key eq "MEDICAL_PRODUCT")
 	{
 		#use constant MEDICAL_PRODUCT => 2; # 医薬品
 		if ($length > 6)#== $len[MEDICAL_PRODUCT])
@@ -388,7 +367,7 @@ sub lineToXml
 			$medication_unit 		= $item[6];
 		}
 	}
-	elsif ($file_type eq MACHINE)
+	elsif ($key eq "MACHINE")
 	{
 		#use constant MACHINE => 3; 		# 特定機材
 		if ($length > 7)#== $len[MACHINE])
@@ -400,7 +379,7 @@ sub lineToXml
 			$medication_unit 		= $item[7];
 		}
 	}
-	elsif ($file_type eq COMMENT)
+	elsif ($key eq "COMMENT")
 	{
 		#use constant COMMENT => 6; 		# コメント
 		if ($length > 5) #== $len[COMMENT])
@@ -412,7 +391,7 @@ sub lineToXml
 			#$medication_unit 		= $item[7]; #見つからない
 		}
 	}
-	elsif ($file_type eq PRIVATE_EXPENSE)
+	elsif ($key eq "PRIVATE_EXPENSE")
 	{
 		#use constant PRIVATE_EXPENSE =>7;	# 自費診療
 		if ($length > 5)#== $len[PRIVATE_EXPENSE])
@@ -431,15 +410,11 @@ sub lineToXml
 		if ($medical_class ne "")
 		{
 			# 診療区分番号によってフォルダを分割する。
-			if ($toXmlDB eq FALSE) 
-			{
-				$current_dir = &FileUtil::MakeDir($current_dir . "/" . $medical_class); 
-			}
+			if ($toXmlDB eq FALSE) {$current_dir = &FileUtil::MakeDir($current_dir . "/" . $medical_class); }
 			else 
 			{ 	
 				$current_col = &XmlDbUtil::CreateCollection($current_col . "/" . $medical_class); 
 				#push(@collection, $current_col);
-				#print "[診療コード]$current_col\n";
 			}			
 		}
 
