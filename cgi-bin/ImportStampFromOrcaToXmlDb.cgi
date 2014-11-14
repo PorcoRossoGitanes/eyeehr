@@ -367,39 +367,51 @@ sub lineToXml
 		}			
 	}
 
-	my $xml = "<$tag{'STAMP'}>\r\n" ;
+	# ファイルパスを検出する。
+	my $filepath;
+	my $stamp_id = $collection . "-" . $id;
+	my $filename = $stamp_id . ".xml";
+	if ($toXmlDB eq FALSE) 
+	{
+		$filepath = $current_dir . "/" . $filename;
+	}
+	else 
+	{ 	
+		$filepath = $current_col . "/" . $filename;
+	}
+
+	my $xml = "<$tag{'STAMP'} id=\"$stamp_id\" url=\"$filepath\">" ;
+
 	if ($medication_code ne '')
 	{
-		$xml .= "\t<$tag{'ORCA'}>\r\n" .
-			"\t\t<$tag{'MEDICAL_CLASS'}>$medical_class</$tag{'MEDICAL_CLASS'}>\r\n" .
-			"\t\t<$tag{'MEDICATION_CODE'}>$medication_code</$tag{'MEDICATION_CODE'}>\r\n" .
-			"\t\t<$tag{'MEDICATION_NAME'}>$medication_name</$tag{'MEDICATION_NAME'}>\r\n" .
-			"\t\t<$tag{'MEDICATION_NUMBER'}>$medication_number</$tag{'MEDICATION_NUMBER'}>\r\n" .
-			"\t\t<$tag{'MEDICATION_GENERIC_FLG'}>$medication_generic_flg</$tag{'MEDICATION_GENERIC_FLG'}>\r\n" .
-			"\t\t<$tag{'MEDICATION_UNIT_POINT'}>$medication_unit_point</$tag{'MEDICATION_UNIT_POINT'}>\r\n" .
-			"\t\t<$tag{'MEDICATOIN_UNIT'}>$medication_unit</$tag{'MEDICATOIN_UNIT'}>\r\n" .
-			"\t</$tag{'ORCA'}>\r\n";
+
+		$xml .= "<$tag{'ORCA'}>" .
+			"<$tag{'MEDICAL_CLASS'}>$medical_class</$tag{'MEDICAL_CLASS'}>" .
+			"<$tag{'MEDICATION_CODE'}>$medication_code</$tag{'MEDICATION_CODE'}>" .
+			"<$tag{'MEDICATION_NAME'}>$medication_name</$tag{'MEDICATION_NAME'}>" .
+			"<$tag{'MEDICATION_NUMBER'}>$medication_number</$tag{'MEDICATION_NUMBER'}>" .
+			"<$tag{'MEDICATION_GENERIC_FLG'}>$medication_generic_flg</$tag{'MEDICATION_GENERIC_FLG'}>" .
+			"<$tag{'MEDICATION_UNIT_POINT'}>$medication_unit_point</$tag{'MEDICATION_UNIT_POINT'}>" .
+			"<$tag{'MEDICATOIN_UNIT'}>$medication_unit</$tag{'MEDICATOIN_UNIT'}>" .
+			"</$tag{'ORCA'}>";
 	}
-	$xml .= "\t<$tag{'EYEEHR'}>\r\n" . 
-		"\t\t<$tag{'TITLE'}>$title</$tag{'TITLE'}>\r\n" . 
-		"\t</$tag{'EYEEHR'}>\r\n";
-	$xml .= "</$tag{'STAMP'}>\r\n";
+
+	$xml .= "<$tag{'EYEEHR'}>" . 
+		"<$tag{'TITLE'}>$title</$tag{'TITLE'}>" . 
+		"</$tag{'EYEEHR'}>";
+	$xml .= "</$tag{'STAMP'}>";
 
 	#【デバッグ用】XMLを標準出力する。
 	if ($debug == TRUE) { print "<textarea>$xml</textarea>"; }
 
 	# ファイルを書き出す。
-	my $filepath;
 	my $result;
-	my $filename = $collection . "-" . $id . ".xml";
 	if ($toXmlDB eq FALSE) 
 	{
-		$filepath = $current_dir . "/" . $filename;
 		$result = &FileUtil::SaveXml($filepath, $xml);
 	}
 	else 
 	{ 	
-		$filepath = $current_col . "/" . $filename;
 		$result = &XmlDbUtil::SaveDoc($filepath, $xml); 
 	}
 
