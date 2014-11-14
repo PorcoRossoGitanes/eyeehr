@@ -27,7 +27,6 @@ tfoot.submit
 /*ページ遷移ボタン*/
 button.page 
 {
-  /**/
   display : inline-block;
   width : 200px;
 }
@@ -45,6 +44,11 @@ button.page
   margin: -2px 0 2px 0;
   padding: 0.5em 2em 1.5em 2em;
   font-size: 15px;
+}
+div.stamp_list 
+{
+  overflow: scroll;
+  height : 200px; /* TODO : 暫定 */
 }
 
 
@@ -130,15 +134,19 @@ div.NoteItemMemo
   background: #7fffff;
 }
 
+/**ファイル添付**/
 img.attachment
 {
   width : 20%;
 }
 
+/**シェーマ**/
 img.scheme 
 {
   width : 100%;
 }
+
+
 
 /*** コンテキストメニュー ***/
 #ctx {
