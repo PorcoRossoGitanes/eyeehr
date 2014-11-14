@@ -24,12 +24,8 @@ $('button#UtilityInnerHtml').click(function () {
   var result = Utility.XmlToStr($(test)[0]);
   console.log('[' + test + ']=>' + result);
 
-  // $test = $(test); $result = Utility.JQueryToStr($test);
-  // console.log('[' + test + ']=>' + $result);
-
-  // var test = '<test/>';
-  // $test = $(test); $result = Utility.JQueryToStr($test);
-  // console.log('[' + test + ']=>' + $result);
+  $test = $(test); $result = Utility.JQueryToStr($(test));
+  console.log('[' + test + ']=>' + $result);
 
   alert('結果はコンソールに出力されました。');
 });

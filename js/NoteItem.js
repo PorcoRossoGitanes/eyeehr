@@ -57,8 +57,8 @@ function NoteItem() {
     formAttachFile + // 隠し埋め込みフォーム
     '<button id="attachFile" class="btn btn-default btn-xs" ><span class="glyphicon glyphicon-upload"></span></button>' + 
 /***ファイル　添付***/
-/***シェーマ添付***/
-    '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:hidden">シェーマ</button>' + 
+/***シェーマ添付（処置・手術・検査などでシェーマを書くので、デフォルト表示とする。）***/
+    '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:inherit">シェーマ</button>' + 
 /***シェーマ添付***/
     '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
     '<div name="formats"></div>' +                    <!--入力フォーム（定型フォーム）-->
@@ -226,11 +226,11 @@ function NoteItem() {
       // TODO : 定型フォーマット部分を追加する。
       //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
       // ファイル添付部分を追加する。
-      $jquery.find('[name=attachments]').html(Utility.InnerHtml($i_xml.children('attachments')));
+      $jquery.find('[name=attachments]').html(Utility.JQueryToStr($i_xml.children('attachments')));
       // シェーマ部分を追加する。
-      $jquery.find('[name=schemes]').html(Utility.InnerHtml($i_xml.children('schemes')));
+      $jquery.find('[name=schemes]').html(Utility.JQueryToStr($i_xml.children('schemes')));
       // 備考部分を追加する。
-      $jquery.find('[name=remarks]').html(Utility.InnerHtml($i_xml.children('remarks')));
+      $jquery.find('[name=remarks]').html(Utility.JQueryToStr($i_xml.children('remarks')));
     }
   }
 })();
