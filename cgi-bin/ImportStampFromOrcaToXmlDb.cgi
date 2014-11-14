@@ -189,48 +189,51 @@ else
 	 	
 		my $filename = $query->param($name);
 
+		# ファイルが指定されているか、確認する。
 		if ($filename eq "") 
 		{
 			print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";
 			print "ファイルが指定されていません。$name $filename";
 			print "</div>";
+			print "<hr/>";
+			next;
 		}
-		else 
+		# ファイルタイプを取得する。（行頭の0を削除する。）
+		my $file_type = substr($name, 6,3); $file_type =~ s/^0+//g; 
+		if ($file_type !~ /[0-9]+/)
 		{
-			# ファイルタイプを取得する。（行頭の0を削除する。）
-			my $file_type = substr($name, 6,3); $file_type =~ s/^0+//g; #print "[FILE_TYPE] $file_type<br/>";
-			if ($file_type eq "")
-			{
-				print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";
-				print "ファイルを判別できませんでした。";
-				print "</div>";
-			}
-			else 
-			{
-				print "<div class='input' style='font-size:9pt;white-space:nowrap;'>";
-				print "$name $filename";
-				print "</div>";
-
-				#ファイルからCSVを読み込む。
-				my $csv = ""; while(read($filename,$buffer,1024)) { $csv .= $buffer;} close($filename); 
-
-				# XMLDBに書出す。
-				$toXmlDB = TRUE;
-
-				#デバッグフラグをOFFに設定する。
-				$debug = FALSE;
-
-				# フォームの内容から値を取得する。
-				&ExportXmlFromForm(
-					$file_type,  	# ファイルタイプを取得する。(上記定数参照。診療行為の場合は1、医薬品の場合は2...)
-					$csv, 			# CSVデータを格納する。
-					$toXmlDB,		# XMLDBに保存する。
-					$debug			#,	# デバッグ表示を実行する場合は0以外, デバック表示を実行しない場合は0
-				);			
-			}
+			print "<div class='error' style='font-size:9pt;white-space:nowrap;'>";
+			print "ファイルタイプを判別できませんでした。";
+			print "[NAME] $name [FILE_TYPE]$file_type [FILENAME]$filename";
+			print "</div>";
+			print "<hr/>";
+			next;
 		}
 
-		print "<hr/>";
+		{
+			print "<div class='input' style='font-size:9pt;white-space:nowrap;'>";
+			print "[NAME] $name [FILE_TYPE]$file_type [FILENAME]$filename";
+			print "</div>";
+
+			#ファイルからCSVを読み込む。
+			my $csv = ""; while(read($filename,$buffer,1024)) { $csv .= $buffer;} close($filename); 
+
+			# XMLDBに書出す。
+			$toXmlDB = TRUE;
+
+			#デバッグフラグをOFFに設定する。
+			$debug = FALSE;
+
+			# フォームの内容から値を取得する。
+			&ExportXmlFromForm(
+				$file_type,  	# ファイルタイプを取得する。(上記定数参照。診療行為の場合は1、医薬品の場合は2...)
+				$csv, 			# CSVデータを格納する。
+				$toXmlDB,		# XMLDBに保存する。
+				$debug			#,	# デバッグ表示を実行する場合は0以外, デバック表示を実行しない場合は0
+			);	
+
+			print "<hr/>";
+		}
 	}
 }
 
@@ -258,11 +261,9 @@ sub ExportXmlFromForm
 		#print "$current_col\n";
 	}
 
-	#print "<textarea cols=50 rows=20>";
 	my @lines = split(/\n/, $csv);
 	$line_cnt = @lines;
 	foreach my $line(@lines){
-		#print "[LINE]$line<br/>";
 		my $xml = &lineToXml($file_type, $line, $toXmlDB, $debug);
 		if ($xml ne "") {$exec_cnt += 1;}
 	}
@@ -270,7 +271,6 @@ sub ExportXmlFromForm
 	print "<div class='result' style='font-size:9pt;white-space: nowrap;'>";
 	print $exec_cnt . "/" . $line_cnt . "が成功した。";
 	print "</div>";
-	#print "</textarea>";
 }
 
 ### @summary CSVからXMLに変換する。
@@ -361,10 +361,7 @@ sub lineToXml
 	else 
 	{ 
 		$current_col = $data_col . "/" . $collection[$file_type];
-		#print "[診療部門]$current_col\n";
 		$current_col = &XmlDbUtil::CreateCollection($current_col); 
-		#push(@collection, $current_col);
-		#print "[診療部門]$current_col\n";
 	}
 
 	if ($file_type eq PRACTICE)
