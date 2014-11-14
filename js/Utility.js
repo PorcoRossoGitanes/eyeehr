@@ -79,10 +79,7 @@ Utility.HtmlMinInputItemToXml = function($i_jquery)
 			break;
 		case 'IMG':
 			// XHTMLに変換する。（一度、親要素に配置しなければ、HTML文字列が取得できない。）
-			$utility = $('div#utility');
-			$utility.css('display', 'none');
-			$utility.children().remove();
-			var html = $('div#utility').append($i_jquery.clone()).html();
+			var html = $('<div></div>').append($i_jquery.clone()).html();
 			retVal += Utility.HtmlToXhtml(html);
 			break;
 		default : 
@@ -302,6 +299,19 @@ Utility.ConvertImgToBase64 = function (url, outputFormat, callback){
 	img.src = url;
 }
 
+/// @summary JQueryオブジェクトからXML文字列(または、HTML文字列)を取得する。
+/// @param 対象のJQueryオブジェクト
+/// @return XML文字列(または、HTML文字列)
+Utility.InnerHtml = function ($i_jquery) {
+
+	var ret = Utility.XmlToStr($i_jquery[0]);
+
+	// タグを排除する。
+	var startIndex = ret.indexOf('>') + 1; var lastIndex = ret.lastIndexOf('<');
+	ret = ret.slice(startIndex, lastIndex);
+
+	return ret;
+}
 /// @summary JQueryオブジェクトからXML文字列(または、HTML文字列)を取得する。
 /// @param 対象のJQueryオブジェクト
 /// @return XML文字列(または、HTML文字列)

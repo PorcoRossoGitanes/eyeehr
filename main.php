@@ -32,7 +32,6 @@ if (!isset($_SESSION["USERID"])) {
     <!--自作CSS-->    
   </head>
   <body>
-  <div id="utility" style="display:none"></div><!--ユーティリティで使用-->
   <div>
     <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
     <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button>
