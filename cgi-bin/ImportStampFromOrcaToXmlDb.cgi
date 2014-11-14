@@ -367,21 +367,23 @@ sub lineToXml
 		}			
 	}
 
-	my $xml = 
-	"<$tag{'STAMP'}>\r\n" .		
-	"\t<$tag{'ORCA'}>\r\n" .
-	"\t\t<$tag{'MEDICAL_CLASS'}>$medical_class</$tag{'MEDICAL_CLASS'}>\r\n" .
-	"\t\t<$tag{'MEDICATION_CODE'}>$medication_code</$tag{'MEDICATION_CODE'}>\r\n" .
-	"\t\t<$tag{'MEDICATION_NAME'}>$medication_name</$tag{'MEDICATION_NAME'}>\r\n" .
-	"\t\t<$tag{'MEDICATION_NUMBER'}>$medication_number</$tag{'MEDICATION_NUMBER'}>\r\n" .
-	"\t\t<$tag{'MEDICATION_GENERIC_FLG'}>$medication_generic_flg</$tag{'MEDICATION_GENERIC_FLG'}>\r\n" .
-	"\t\t<$tag{'MEDICATION_UNIT_POINT'}>$medication_unit_point</$tag{'MEDICATION_UNIT_POINT'}>\r\n" .
-	"\t\t<$tag{'MEDICATOIN_UNIT'}>$medication_unit</$tag{'MEDICATOIN_UNIT'}>\r\n" .
-	"\t</$tag{'ORCA'}>\r\n" . 
-	"\t<$tag{'EYEEHR'}>\r\n" . 
-	"\t\t<$tag{'TITLE'}>$title</$tag{'TITLE'}>\r\n" . 
-	"\t</$tag{'EYEEHR'}>\r\n" . 
-	"</$tag{'STAMP'}>\r\n";
+	my $xml = "<$tag{'STAMP'}>\r\n" ;
+	if ($medication_code ne '')
+	{
+		$xml .= "\t<$tag{'ORCA'}>\r\n" .
+			"\t\t<$tag{'MEDICAL_CLASS'}>$medical_class</$tag{'MEDICAL_CLASS'}>\r\n" .
+			"\t\t<$tag{'MEDICATION_CODE'}>$medication_code</$tag{'MEDICATION_CODE'}>\r\n" .
+			"\t\t<$tag{'MEDICATION_NAME'}>$medication_name</$tag{'MEDICATION_NAME'}>\r\n" .
+			"\t\t<$tag{'MEDICATION_NUMBER'}>$medication_number</$tag{'MEDICATION_NUMBER'}>\r\n" .
+			"\t\t<$tag{'MEDICATION_GENERIC_FLG'}>$medication_generic_flg</$tag{'MEDICATION_GENERIC_FLG'}>\r\n" .
+			"\t\t<$tag{'MEDICATION_UNIT_POINT'}>$medication_unit_point</$tag{'MEDICATION_UNIT_POINT'}>\r\n" .
+			"\t\t<$tag{'MEDICATOIN_UNIT'}>$medication_unit</$tag{'MEDICATOIN_UNIT'}>\r\n" .
+			"\t</$tag{'ORCA'}>\r\n";
+	}
+	$xml .= "\t<$tag{'EYEEHR'}>\r\n" . 
+		"\t\t<$tag{'TITLE'}>$title</$tag{'TITLE'}>\r\n" . 
+		"\t</$tag{'EYEEHR'}>\r\n";
+	$xml .= "</$tag{'STAMP'}>\r\n";
 
 	#【デバッグ用】XMLを標準出力する。
 	if ($debug == TRUE) { print "<textarea>$xml</textarea>"; }
