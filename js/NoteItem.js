@@ -61,6 +61,7 @@ function NoteItem() {
     '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:inherit">シェーマ</button>' + 
 /***シェーマ添付***/
     '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
+    '<div name="Orca" style="display:block"></div>' + <!--入力フォーム（ORCA連携用定型フォーム）-->
     '<div name="formats"></div>' +                    <!--入力フォーム（定型フォーム）-->
     '<div name="attachments"></div>' +                <!--ファイル添付用--> 
     '<div name="schemes"></div>' +                    <!--シェーマ添付用--> 
@@ -220,7 +221,6 @@ function NoteItem() {
   ///@param $i_xml XMLオブジェクト
   _proto.setByXml = function ($i_xml)
   {
-    console.log("_proto.setByXml");
     if ($i_xml !== undefined)
     {
       // TODO : 定型フォーマット部分を追加する。

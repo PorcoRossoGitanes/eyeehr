@@ -76,7 +76,7 @@ if (!isset($_SESSION["USERID"])) {
             <h3>処置</h3><div class="stamp_list" id="treatment"></div>
             <h3>手術</h3><div class="stamp_list" id="operation"></div>
             <h3>処方（医薬品）</h3><div class="stamp_list" id="medical_product"></div>
-            <h3 class='ui-state-disabled' onclick="var item = new NoteItemScheme(); item.appendTo('[name=NoteItemContainerScheme]')">シェーマ</h3><div></div>
+            <!--h3 class='ui-state-disabled' onclick="var item = new NoteItemScheme(); item.appendTo('[name=NoteItemContainerScheme]')">シェーマ</h3><div></div-->
             <h3 class='ui-state-disabled' onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</h3><div></div>
           </div>
         </td>
