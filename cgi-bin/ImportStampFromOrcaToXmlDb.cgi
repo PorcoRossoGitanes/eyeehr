@@ -238,45 +238,6 @@ sub ExportXmlFromForm
 	print "</div>";
 }
 
-### @summary CSVからXMLに変換する。
-### @param $file_type　ファイルタイプ
-### @param $file_path　元データのファイルパス
-### @param $debug      デバッグプリントする場合はTRUE, デバッグプリントしない場合はFALSE
-sub ExportXml
-{
-	# 引数を取得する。
-	my ($key, $file_path, $toXmlDB, $debug) = @_;
-
-	# データ行数をカウントする。
-	my $line_cnt = 0;
-	# 実行成功行数をカウントする。
-	my $exec_cnt = 0;
-
-	# データ退避用のディレクトリを作成する。
-	if ($toXmlDB eq FALSE) 
-	{
-		$current_dir = &FileUtil::MakeDir($data_dir ); 
-	}
-	else 
-	{
-		$current_col = &XmlDbUtil::CreateCollection($data_col); 
-		#push(@collection, $current_col);
-		print "$current_col\n";
-	}
-
-	# ファイルを読み込む。（ファイルを読み込めない場合はスクリプト終了する。）
-	open(DATAFILE, "< $file_path") or die("error :$!");
-
-	# 1行ずつ読み込み、標準出力する。
-	while (my $line = <DATAFILE>)
-	{
-		my $xml = &lineToXml($key, $line, $toXmlDB, $debug);
-		$line_cnt += 1; if ($xml ne "") {$exec_cnt += 1;}
-	}
-
-	print $exec_cnt . "/" . $line_cnt . "が成功した。\n";
-}
-
 ### @summary 	1行のデータをXMLに変換する。
 ### @param 		$file_type 	ファイルタイプ
 ### @param 		$line 		1行のデーター
