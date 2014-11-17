@@ -226,11 +226,11 @@ function NoteItem() {
       // TODO : 定型フォーマット部分を追加する。
       //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
       // ファイル添付部分を追加する。
-      $jquery.find('[name=attachments]').html(Utility.InnerHtml($i_xml.children('attachments')));
+      $jquery.find('[name=attachments]').html(Utility.InnerXml($i_xml.children('attachments')));
       // シェーマ部分を追加する。
-      $jquery.find('[name=schemes]').html(Utility.InnerHtml($i_xml.children('schemes')));
+      $jquery.find('[name=schemes]').html(Utility.InnerXml($i_xml.children('schemes')));
       // 備考部分を追加する。
-      $jquery.find('[name=remarks]').html(Utility.InnerHtml($i_xml.children('remarks')));
+      $jquery.find('[name=remarks]').html(Utility.InnerXml($i_xml.children('remarks')));
     }
   }
 })();
