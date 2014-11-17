@@ -1,4 +1,4 @@
-// ノートアイテムクラス
+/// @summary スタンプクラス
 function Stamp() {
 
   ///@param クラス名
