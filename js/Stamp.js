@@ -87,7 +87,7 @@ function Stamp() {
 			$jquery.attr('title', this._title);
 			//$jquery.data('xml', xml);
 			$jquery.text(this._short_title);
-			console.log(this._url);
+			//console.log(this._url);
 			//console.log(xml);
 		}
 	}
