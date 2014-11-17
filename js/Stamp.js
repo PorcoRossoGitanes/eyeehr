@@ -35,7 +35,7 @@ function Stamp() {
   this._xml = '';
 
   /**
-   * JQuery オブジェクト
+   * @param {Object} JQuery オブジェクト
    */
   this._jquery = $(
     '<button ' + 
@@ -51,23 +51,31 @@ function Stamp() {
   arguments.callee.Xml = ''; 
 
 
-
 };(function() {
 
-	// プロトタイプ
+	/**
+	 * @param {Object} プロトタイプ
+	 */
 	var _proto = Stamp.prototype;
 
-	///@param スタンプタイトル（略称・表示名）の最大長
+	/**
+	 * @param {Number} スタンプタイトル（略称・表示名）の最大長
+	 */
 	const SHORT_TITLE_MAX_LENGTH = 5;
 
-	// ■メンバーメソッド
 
-	/// @summary クラス名を取得する。
+	/**
+	 * クラス名を取得する。
+	 * @method getName
+	 */
 	_proto.getName = function() {
 		return this._name;
 	};
 
-	/// @summary クラス名を設定する。
+	/**
+	 * クラス名を設定する。
+	 * @param {String} name クラス名
+	 */
 	_proto.setName = function(name) {
 		this._name = name;
 	};
@@ -81,7 +89,7 @@ function Stamp() {
 		if (i_xml !== undefined)
 		{
 			this._xml = i_xml;
-			console.log(this._xml);
+			//console.log(this._xml);
 
 			this._id = $(i_xml).attr('Id');
 			this._url = $(i_xml).attr('Url');
@@ -94,20 +102,21 @@ function Stamp() {
 				(this._title.length >= SHORT_TITLE_MAX_LENGTH) ?  
 				this._title.slice(0, SHORT_TITLE_MAX_LENGTH - 1) + '...' : this._title; 
 
-			var xml =  Utility.JQueryToStr($(i_xml));
 			$(this._jquery).attr('id', this._id);
 			$(this._jquery).data('url', this._url);
 			$(this._jquery).attr('title', this._title);
-			//$(this._jquery).data('xml', xml);
 			$(this._jquery).text(this._short_title);
-			//console.log(this._url);
-			//console.log(xml);
+
+			$(this._jquery).data('xml', this._xml);
+			//console.log($(this._jquery).data('xml'));
 		}
 	}
 
 
-	///@summary JQueryObjectを出力する
-	///@return JQueryObject
+	/**
+	 * JQueryObjectを出力する
+	 * @return {JQueryObject} JQuery オブジェクト
+	 */
 	_proto.getJQueryObject = function () 
 	{
 	  return $(this._jquery);

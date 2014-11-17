@@ -95,7 +95,7 @@ $(function()
 	 */
 	function CreateStamp (i_key, i_selector, i_stampsXml)
 	{
-		console.log(i_stampsXml);
+		//console.log(i_stampsXml);
 		
 		// 貼付先を取得する。
 		$stampList = $(i_selector);
