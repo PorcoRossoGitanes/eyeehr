@@ -10,23 +10,27 @@ function NoteItemContainer ($i_xml)
   this._title = this._name;
 		
 	///@param HTML
-    var leftpos = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('left');
-    var toppos  = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('top');
-    //console.log(i_name + left + top);
-    var html = 
-    '<div ' + 
-        'class="' + this._name + '" ' + /**'name="' + i_name + '" ' + **/
-        'style="position:absolute;' + /**'left=' + left + ';top=' + top+ ';' + **/ '">' + 
-        '<h1 id="title">' + this._name + '</h1>' + 
-        //'<div id="attached"></div>' + 
-    '</div>';
-	$jqueryNoteItemContainer = $(html);
+  var leftpos = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('left');
+  var toppos  = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('top');
+  //console.log(i_name + left + top);
+  var html = 
+  '<div ' + 
+      'class="' + this._name + '" ' + /**'name="' + i_name + '" ' + **/
+      'style="position:absolute;' + /**'left=' + left + ';top=' + top+ ';' + **/ '">' + 
+      '<h1 id="title">' + this._name + '</h1>' + 
+      //'<div id="attached"></div>' + 
+  '</div>';
+    
+  /**
+   * @param {Object} JQuery オブジェクト
+   */
+  this._jquery = $(html)[0];
 
     // 位置を移動する。
-  $jqueryNoteItemContainer.css({left : leftpos, top : toppos});
+  $(this._jquery).css({left : leftpos, top : toppos});
 	
 	// 親要素内のみドラッグ可能に設定する。
-	$jqueryNoteItemContainer.draggable({
+	$(this._jquery).draggable({
         containment: 'parent',
         scroll: false,		
 	});
@@ -35,7 +39,7 @@ function NoteItemContainer ($i_xml)
 	///@return  JQuery Object
 	this.getJQueryObject = function () 
 	{
-		return $jqueryNoteItemContainer;
+		return $(this._jquery);
 	}
 
 };(function() {

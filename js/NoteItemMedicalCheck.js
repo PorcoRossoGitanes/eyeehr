@@ -8,8 +8,8 @@ function NoteItemMedicalCheck()
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jquery.attr('name', this._name);
-  $jquery.addClass(this._name);
+  $(this._jquery).attr('name', this._name);
+  $(this._jquery).addClass(this._name);
   //--JQuery オブジェクト操作---//
 
 };(function() {
@@ -27,7 +27,7 @@ function NoteItemMedicalCheck()
     {
       if ($i_xml !== undefined)
       {
-        if ($i_xml[0].tagName == $jquery.attr('name'))
+        if ($i_xml[0].tagName == $(this._jquery).attr('name'))
         {
           _super.setByXml.call(this, $i_xml);
         }
@@ -38,7 +38,7 @@ function NoteItemMedicalCheck()
     ///@param $i_name 名前
     _proto.setFormats = function (i_name)
     {
-      $jquery.find('[name=formats]').append(
+      $(this._jquery).find('[name=formats]').append(
         '<div name="medical-check-name">' + i_name + '</div>' + 
         '<input name="medical-check-custom" type="text" value="入力欄（カスタム）"/>'  
         // TODO : 入力欄カスタム作成

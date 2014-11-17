@@ -9,12 +9,12 @@ function NoteItemScheme()
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jquery.attr('name', this._name);
-  $jquery.addClass(this._name);
+  $(this._jquery).attr('name', this._name);
+  $(this._jquery).addClass(this._name);
   // // シェーマの場合のみ、「シェーマ」ボタンを表示する。
-  // $jquery.children('button#addScheme').css('visibility', 'inherit');
+  // $(this._jquery).children('button#addScheme').css('visibility', 'inherit');
   // // シェーマ添付部を表示する。
-  // $jquery.children('div[name="schemes"]').css('visibility', 'inherit');
+  // $(this._jquery).children('div[name="schemes"]').css('visibility', 'inherit');
   //--JQuery オブジェクト操作---//
 
 };(function() {
@@ -32,7 +32,7 @@ function NoteItemScheme()
   {
     if ($i_xml !== undefined)
     {
-      if ($i_xml[0].tagName == $jquery.attr('name'))
+      if ($i_xml[0].tagName == $(this._jquery).attr('name'))
       {
         _super.setByXml.call(this, $i_xml);
       }

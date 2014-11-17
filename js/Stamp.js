@@ -98,7 +98,7 @@ function Stamp() {
 			$(this._jquery).attr('id', this._id);
 			$(this._jquery).data('url', this._url);
 			$(this._jquery).attr('title', this._title);
-			//$jquery.data('xml', xml);
+			//$(this._jquery).data('xml', xml);
 			$(this._jquery).text(this._short_title);
 			//console.log(this._url);
 			//console.log(xml);

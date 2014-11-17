@@ -40,7 +40,10 @@ function NoteItem() {
     '></iframe>'; //結果表示用iframe
   /*** 画像ファイル入力フォーム ***/
 
-  $jquery = $(
+  /**
+   * @param {Object} JQuery オブジェクト
+   */
+  this._jquery = $(
     '<div ' + 
     'id="' + id + '" ' + 
     'class="' + this._name + '" ' + 
@@ -67,14 +70,14 @@ function NoteItem() {
     '<div name="schemes"></div>' +                    <!--シェーマ添付用--> 
     '<div name="remarks"></div>' +                    <!--備考入力用--> 
     '</div>'
-  );
+  )[0];
 
   // 付箋をリサイズ・ドラッグ可能とする。
-  //$jquery.resizable({handles : 's'});
-  //$jquery.draggable();
+  //$(this._jquery).resizable({handles : 's'});
+  //$(this._jquery).draggable();
 
   /// @summary 画像を追加する。
-  $jquery.find('button#attachFile').click(function () {
+  $(this._jquery).find('button#attachFile').click(function () {
     // 画像選択ボタンを取得する。
     $inputAttachImage = $(this).parent().find('form > input#attachFile');
     // 画像選択ボタンをクリックする。
@@ -94,7 +97,7 @@ function NoteItem() {
   /// @summary  ファイル添付（送信）処理が実施され、
   ///           iframeがロードされたとき、
   ///           成功時はファイル（imgタグ）を表示する。
-  $jquery.find('iframe').load(function()
+  $(this._jquery).find('iframe').load(function()
   {
     // ファイル名が指定されているか確認する。
     var file = $(this).parent().find("#attachFile").val();
@@ -116,7 +119,7 @@ function NoteItem() {
   });
 
   /// @summary シェーマ画像を追加するために、シェーマ描画ツールを表示する。
-  $jquery.find('button#addScheme').click(function () {
+  $(this._jquery).find('button#addScheme').click(function () {
     
     // Method Drawの画面最大サイズ
     const MethodDrawWidthMax = 1024;
@@ -141,7 +144,7 @@ function NoteItem() {
   });
 
   // /// @summary シェーマ領域が変更された場合に、画像にコンテキストイベントを追加する。
-  // $jquery.find('div#scheme').load(function(){
+  // $(this._jquery).find('div#scheme').load(function(){
     
   //   // console.log('シェーマ画像が変更されました。');
   //   // alert('シェーマ画像が変更されました。');
@@ -153,7 +156,7 @@ function NoteItem() {
   // });
 
   /// @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
-  $jquery.find('button#min').click(function()
+  $(this._jquery).find('button#min').click(function()
   {
     // タグが表示の場合は折り畳む（最小化する）。タグが非表示の場合は展開する。
     if ($(this).parent().find('#tags').css('display') != 'block')
@@ -175,12 +178,12 @@ function NoteItem() {
   });
 
   //　@summary 「削除」ボタンが押されたときには、付箋を削除する。
-  $jquery.find('button#del').click(function(){
+  $(this._jquery).find('button#del').click(function(){
     $(this).parent().remove();
   });
   
   // @summary 付箋をダブルクリック時に入力欄を表示する。
-  $jquery.dblclick(function(){
+  $(this._jquery).dblclick(function(){
     var memo = $(this).find('[name=remarks]').html();
     area.instanceById('area1').setContent(memo);
     $('input#selectedNoteItem').val($(this).attr('id'));
@@ -206,15 +209,15 @@ function NoteItem() {
   _proto.appendTo = function(i_to)
   {
     // 付箋をカルテ欄に登録する。
-    $jquery.appendTo(i_to);  
-    $jquery.dblclick();
+    $(this._jquery).appendTo(i_to);  
+    $(this._jquery).dblclick();
   }
 
   ///@summary JQueryObjectを出力する
   ///@return JQueryObject
   _proto.getJQueryObject = function () 
   {
-    return $jquery;
+    return $(this._jquery);
   }
 
   ///@summary XMLを設定する。
@@ -224,13 +227,13 @@ function NoteItem() {
     if ($i_xml !== undefined)
     {
       // TODO : 定型フォーマット部分を追加する。
-      //$jquery.find('[name=formats]').html($i_xml.children('formats').html());
+      //$(this._jquery).find('[name=formats]').html($i_xml.children('formats').html());
       // ファイル添付部分を追加する。
-      $jquery.find('[name=attachments]').html(Utility.InnerXml($i_xml.children('attachments')));
+      $(this._jquery).find('[name=attachments]').html(Utility.InnerXml($i_xml.children('attachments')));
       // シェーマ部分を追加する。
-      $jquery.find('[name=schemes]').html(Utility.InnerXml($i_xml.children('schemes')));
+      $(this._jquery).find('[name=schemes]').html(Utility.InnerXml($i_xml.children('schemes')));
       // 備考部分を追加する。
-      $jquery.find('[name=remarks]').html(Utility.InnerXml($i_xml.children('remarks')));
+      $(this._jquery).find('[name=remarks]').html(Utility.InnerXml($i_xml.children('remarks')));
     }
   }
 })();

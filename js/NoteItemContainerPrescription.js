@@ -13,20 +13,20 @@ function NoteItemContainerPrescription ($i_xml)
     this._title = '処方';
     
     //--JQuery オブジェクト操作---//
-    $jqueryNoteItemContainer.addClass(this._name);
-    $jqueryNoteItemContainer.attr('name', this._name);
-    $jqueryNoteItemContainer.find('#title').text(this._title);
+    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', this._name);
+    $(this._jquery).find('#title').text(this._title);
     //--JQuery オブジェクト操作---//
     
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
     if ($i_xml !== undefined)
     {
-        if ($i_xml[0].tagName == $jqueryNoteItemContainer.attr('name'))
+        if ($i_xml[0].tagName == $(this._jquery).attr('name'))
         {
             $i_xml.children().each(function(){
                 var item = new NoteItemPrescription(); 
                 item.setByXml($(this)); 
-                $jqueryNoteItemContainer.append(item.getJQueryObject());
+                $(this._jquery).append(item.getJQueryObject());
             });
         }
     }

@@ -12,12 +12,11 @@ function StampDisease()
    */
   this._name = 'StampDisease';
 
-  /*
-  * @param {String} XML
-  * @static
-  */
+  /**
+   * @param {String} XML
+   * @static
+   */
   arguments.callee.Xml = ''; 
-
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
