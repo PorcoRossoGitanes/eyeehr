@@ -249,8 +249,9 @@ Utility.LoadXml = function (i_type, i_path, i_senddata, callback)
 			    data: i_senddata,
 			    success: function(data){
 			        if (callback !== undefined)  callback($(data).contents());
-			    	console.log(data.toString());
-			        console.log($(data).contents().toString());
+			        var xml = Utility.JQueryToStr($(data).contents());
+			    	console.log(xml);
+			        //console.log(typeof(xml));
 			    },
 		      	error: function(XMLHttpRequest, textStatus, errorThrown) 
 		      	{
@@ -271,19 +272,19 @@ Utility.LoadXml = function (i_type, i_path, i_senddata, callback)
 	}
 }
 
-/// @summary 画像からBase64に変換する
-/// @param  {String}   URL
-/// @param  {String}   [outputFormat='image/png'] 出力フォーマット
-/// @param  {Function} callback　コールバック関数
-/// @remarks 画像形式
-///  PNG 	image/png
-///  JPEG	image/jpeg
-///  （使用不可）svg	image/svg
-///  （使用不可）bmp	image/bmp?
-/// @example
-///	onvertImgToBase64('http://goo.gl/AOxHAL', 'image/png', function(base64Img){
-///		console.log('IMAGE:',base64Img);
-///	})
+/** 
+ * 画像からBase64に変換する
+ * @method ConvertImgToBase64
+ * @param  {String}   URL
+ * @param  {String}   [outputFormat='image/png'] 出力フォーマット
+ * @param  {Function} callback　コールバック関数
+ * @remarks 画像形式
+ *  PNG 	image/png
+ *  JPEG	image/jpeg
+ *  （使用不可）svg	image/svg
+ *  （使用不可）bmp	image/bmp?
+ * @example Utility.ConvertImgToBase64('http://goo.gl/AOxHAL', 'image/png', function(base64Img){console.log('IMAGE:',base64Img);})
+ */
 Utility.ConvertImgToBase64 = function (url, outputFormat, callback){
 	var canvas = document.createElement('CANVAS');
 	var ctx = canvas.getContext('2d');
@@ -295,16 +296,18 @@ Utility.ConvertImgToBase64 = function (url, outputFormat, callback){
 	  	ctx.drawImage(img,0,0);
 	  	var dataURL = canvas.toDataURL(outputFormat);
 	  	callback.call(this, dataURL);
-        // Clean up
 	  	canvas = null; 
 	};
 	img.src = url;
 }
 
-/// @summary JQueryオブジェクトからXML文字列(または、HTML文字列)を取得する。
-/// @param 対象のJQueryオブジェクト
-/// @return XML文字列(または、HTML文字列)
-Utility.InnerHtml = function ($i_jquery) {
+/** 
+ * JQueryObjectからXML(HTML)文字列を取得する。
+ * @method InnerHtml
+ * @param {JQueryObject} 対象のJQueryオブジェクト
+ * @return {String} XML文字列(HTML文字列)
+ */
+Utility.InnerXml = function ($i_jquery) {
 
 	var ret = Utility.XmlToStr($i_jquery[0]);
 
@@ -314,20 +317,27 @@ Utility.InnerHtml = function ($i_jquery) {
 
 	return ret;
 }
-/// @summary JQueryオブジェクトからXML文字列(または、HTML文字列)を取得する。
-/// @param 対象のJQueryオブジェクト
-/// @return XML文字列(または、HTML文字列)
+/**
+ * JQueryオブジェクトからXML文字列(または、HTML文字列)を取得する。
+ * @method JQueryToStr
+ * @param {JQueryObject} 対象のJQueryオブジェクト
+ * @return {String} XML文字列(または、HTML文字列)
+ */
 Utility.JQueryToStr = function ($i_jquery) {
 	return Utility.XmlToStr($i_jquery[0]);
 }
 
 /**
- * XML NodeからXML文字列(または、HTML文字列)を取得する。
- * @param  {Object} i_xmlNode XMLNode
+ * XML Node(Element)からXML文字列(または、HTML文字列)を取得する。
+ * @method XmlToStr
+ * @param  {Element} i_xmlNode XMLNode
  * @return {String} XML文字列(または、HTML文字列)
  */
 Utility.XmlToStr = function (i_xmlNode) {
+	
 	var ret = '';
+
+	//console.log(i_xmlNode.toString());
 	
 	try 
 	{
