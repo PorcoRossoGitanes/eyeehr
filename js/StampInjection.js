@@ -16,7 +16,7 @@ function StampInjection()
   $jquery.click(function () {
     // TODO : 手術ではなく処置として登録する。
     var item = new NoteItemOperation(); 
-    item.setFormats($(this).data('title'));
+    item.setFormats($(this).attr('title'));
     item.appendTo('[name=NoteItemContainerOperation]');  
   });
 

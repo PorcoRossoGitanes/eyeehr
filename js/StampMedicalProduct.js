@@ -16,7 +16,7 @@ function StampMedicalProduct()
   $jquery.click(function () {
     // TODO : 項目によって貼付先が異なる
     var item = new NoteItemContainerPrescription(); 
-    item.setFormats($(this).data('title'));
+    item.setFormats($(this).attr('title'));
     item.appendTo('[name=NoteItemContainerPrescription]');  
   });
 

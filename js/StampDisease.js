@@ -16,7 +16,7 @@ function StampDisease()
   $jquery.click(function () {
     // TODO : 手術ではなく処置として登録する。
     var item = new NoteItemDisease(); 
-    item.setFormats($(this).data('title'));
+    item.setFormats($(this).attr('title'));
     item.appendTo('[name=NoteItemContainerDisease]');  
   });
 

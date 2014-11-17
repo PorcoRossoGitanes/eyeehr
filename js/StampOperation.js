@@ -15,7 +15,7 @@ function StampOperation()
 
   $jquery.click(function () {
     var item = new NoteItemOperation(); 
-    item.setFormats($(this).data('title'));
+    item.setFormats($(this).attr('title'));
     item.appendTo('[name=NoteItemContainerOperation]');  
   });
 
