@@ -249,6 +249,8 @@ Utility.LoadXml = function (i_type, i_path, i_senddata, callback)
 			    data: i_senddata,
 			    success: function(data){
 			        if (callback !== undefined)  callback($(data).contents());
+			    	console.log(data.toString());
+			        console.log($(data).contents().toString());
 			    },
 		      	error: function(XMLHttpRequest, textStatus, errorThrown) 
 		      	{
@@ -319,29 +321,49 @@ Utility.JQueryToStr = function ($i_jquery) {
 	return Utility.XmlToStr($i_jquery[0]);
 }
 
-///@summary XML NodeからXML文字列(または、HTML文字列)を取得する。
-///@param  	xmlNode XML Node
-///@return  XML文字列(または、HTML文字列)
-Utility.XmlToStr = function (xmlNode) {
+/**
+ * XML NodeからXML文字列(または、HTML文字列)を取得する。
+ * @param  {Object} i_xmlNode XMLNode
+ * @return {String} XML文字列(または、HTML文字列)
+ */
+Utility.XmlToStr = function (i_xmlNode) {
+	var ret = '';
+	
 	try 
 	{
 		// IE以外の場合は、下記を処理する。
-		return (new XMLSerializer()).serializeToString(xmlNode);	
+		ret = (new XMLSerializer()).serializeToString(i_xmlNode);	
 	}
 	catch (e) 
 	{
+		// IEの場合は、下記を処理する。
 		try 
 		{
-			// IEの場合は、下記を処理する。
-			return xmlNode.xml;
+			ret =  xmlNode.xml;
 		}
 		catch (e)
 		{
-			console.log('Xmlserializer はサポートされていません。');
+			console.log('XmlSerializer はサポートされていません。');
 		}
 	}
-	
-	return false;
+
+	return ret;
 }
+
+// /**
+//  * XML Document を XML（文字列）に変換する。
+//  * @method XmlDocumentToXml
+//  * @param {XMLDocument} i_xmlDocument XmlDocumentオブジェクト
+//  * @return {String} XML文字列
+//  */
+// Utility.XmlDocumentToXml = function (i_xmlDocument) 
+// {
+// 	var ret = '';
+
+// 	var serializer = new XMLSerializer();
+// 	ret = serializer.serializeToString(i_xmlDocument);
+
+// 	return ret;
+// } 
 
 

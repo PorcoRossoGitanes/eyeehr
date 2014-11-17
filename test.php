@@ -17,7 +17,7 @@
         <thead><tr><td colspan="5">JQuery関連</td></tr></thead>
         <tbody>
           <tr>
-            <td><button type="button" id="UtilityInnerHtml" class="btn btn-default btn-s page">内部HTML取得</button></td>
+            <td><button type="button" id="UtilityInnerHtml" class="btn btn-default btn-s page">JS Object-&gt;HTML</button></td>
 <script>
 $('button#UtilityInnerHtml').click(function () {
   var test = '<test><strong>TEST1</strong><br/>TEST2</test>';
@@ -30,6 +30,24 @@ $('button#UtilityInnerHtml').click(function () {
   alert('結果はコンソールに出力されました。');
 });
 </script>
+<!--
+            <td><button type="button" id="UtilityXmlDocumentToXml" class="btn btn-default btn-s page">XMLDocument->XML</button></td>
+<script>
+$('button#UtilityXmlDocumentToXml').click(function () {
+
+  // XML Documentを生成する。
+  var test = '<?xml version="1.0" encoding="UTF-8"?><data><item>Oh!</item><item>MZ</item></data>';
+  var dpObj = new DOMParser();
+  var xmlDoc = dpObj.parseFromString(test, "text/xml");
+
+  var result = Utility.XmlDocumentToXml(xmlDoc);
+
+  console.log('[' + test  + ']=>' + result);
+
+  alert('結果はコンソールに出力されました。');
+});
+</script>
+-->
             <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
             <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
             <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
