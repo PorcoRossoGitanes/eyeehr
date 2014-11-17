@@ -34,20 +34,23 @@ function Stamp() {
    */
   this._xml = '';
 
-  /*
-  * @param {String} XML
-  * @static
-  */
-  arguments.callee.Xml = ''; 
-
-  // ■初期化
-  // JQuery オブジェクト
-  $jquery = $(
+  /**
+   * JQuery オブジェクト
+   */
+  this._jquery = $(
     '<button ' + 
     'type="button" ' + 
     'class="btn btn-default btn-xs"' + 
     ' ></button>'
-  );
+  )[0];
+
+  /**
+   * @param {String} XML
+   * @static
+   */
+  arguments.callee.Xml = ''; 
+
+
 
 };(function() {
 
@@ -79,6 +82,7 @@ function Stamp() {
 		{
 			this._xml = i_xml;
 			console.log(this._xml);
+
 			this._id = $(i_xml).attr('Id');
 			this._url = $(i_xml).attr('Url');
 
@@ -91,11 +95,11 @@ function Stamp() {
 				this._title.slice(0, SHORT_TITLE_MAX_LENGTH - 1) + '...' : this._title; 
 
 			var xml =  Utility.JQueryToStr($(i_xml));
-			$jquery.attr('id', this._id);
-			$jquery.data('url', this._url);
-			$jquery.attr('title', this._title);
+			$(this._jquery).attr('id', this._id);
+			$(this._jquery).data('url', this._url);
+			$(this._jquery).attr('title', this._title);
 			//$jquery.data('xml', xml);
-			$jquery.text(this._short_title);
+			$(this._jquery).text(this._short_title);
 			//console.log(this._url);
 			//console.log(xml);
 		}
@@ -106,7 +110,7 @@ function Stamp() {
 	///@return JQueryObject
 	_proto.getJQueryObject = function () 
 	{
-	  return $jquery;
+	  return $(this._jquery);
 	}
 })();
    

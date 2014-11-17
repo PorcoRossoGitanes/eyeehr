@@ -12,19 +12,19 @@ function StampOperation()
    */
   this._name = 'StampOperation';
 
-  /*
-  * @param {String} XML
-  * @static
-  */
+  /**
+   * @param {String} XML
+   * @static
+   */
   arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
-  $jquery.attr('name', this._name);
-  $jquery.addClass(this._name);  
+  $(this._jquery).attr('name', this._name);
+  $(this._jquery).addClass(this._name);  
   //--JQuery オブジェクト操作---//
 
-  $jquery.click(function () {
+  $(this._jquery).click(function () {
     var item = new NoteItemOperation(); 
     item.setFormats($(this).attr('title'));
     item.appendTo('[name=NoteItemContainerOperation]');  
