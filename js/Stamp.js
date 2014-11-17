@@ -29,6 +29,11 @@ function Stamp() {
    */
   this._url = '';
 
+  /**
+   * @param {String} XML文字列
+   */
+  this._xml = '';
+
   /*
   * @param {String} XML
   * @static
@@ -72,6 +77,8 @@ function Stamp() {
 	{
 		if (i_xml !== undefined)
 		{
+			this._xml = i_xml;
+			console.log(this._xml);
 			this._id = $(i_xml).attr('Id');
 			this._url = $(i_xml).attr('Url');
 
