@@ -62,8 +62,8 @@ $('button#UtilityXmlDocumentToXml').click(function () {
 $('button#UtilityLoadXml').click(function () {
   console.log($(this).text());
   var url = '/db/apps/eyeehr/data/staff/staff-1.xml';
-  Utility.LoadXml('REST', url, '', function($xml){
-    console.log($xml);
+  Utility.LoadXml('REST', url, '', function(xml){
+    console.log($(xml));
   })
   alert('結果はコンソールに出力されました。');
 });
@@ -73,8 +73,8 @@ $('button#UtilityLoadXml').click(function () {
 $('button#UtilityLoadXmlList').click(function () {
   console.log($(this).text());
   var url = '/db/apps/eyeehr/data/staff';
-  Utility.LoadXml('REST', url, '', function($xml){
-    console.log($xml);
+  Utility.LoadXml('REST', url, '', function(xml){
+    console.log($(xml));
   })
   alert('結果はコンソールに出力されました。');
 });

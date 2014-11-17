@@ -83,14 +83,17 @@ Note.SaveXml = function ()
 	Utility.SaveXml($currentNote.data('url'), xml); 
 }
 
-///@summary カルテ（XMLファイル）を読込む
-///@param $i_xml XML（JQuery Object） <note />
-Note.LoadXml = function ($i_xml)
+/**
+ * カルテ（XMLファイル）を読込む。
+ * @method LoadXml
+ * @param {String/Object} i_xml XML<Note />
+ */
+Note.LoadXml = function (i_xml)
 {
 	// 現在のカルテを空にする。
 	$currentNote.empty();
 
-	$note = $i_xml;
+	$note = $(i_xml);
 	//console.log($note);
 
 	//console.log($note.children());

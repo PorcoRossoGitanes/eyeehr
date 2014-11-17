@@ -248,9 +248,9 @@ Utility.LoadXml = function (i_type, i_path, i_senddata, callback)
 			    dataType:"xml",
 			    data: i_senddata,
 			    success: function(data){
-			        if (callback !== undefined)  callback($(data).contents());
-			        var xml = Utility.JQueryToStr($(data).contents());
-			    	console.log(xml);
+			        if (callback !== undefined)  callback(data);
+			     //    var xml = Utility.JQueryToStr($(data).contents());
+			    	// console.log(xml);
 			        //console.log(typeof(xml));
 			    },
 		      	error: function(XMLHttpRequest, textStatus, errorThrown) 

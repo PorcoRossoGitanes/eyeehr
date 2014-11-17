@@ -43,12 +43,13 @@ function StampOperation()
     // プロトタイプ
     var _proto = StampOperation.prototype;
 
-    ///@summary XMLを設定する。
-    ///@param $i_xml XMLオブジェクト
-    _proto.setByXml = function ($i_xml)
+    /**
+     * XMLを設定する。
+     * @param {String} i_xml XMLオブジェクト
+     */
+    _proto.setByXml = function (i_xml)
     {
-      if ($i_xml !== undefined) _super.setByXml.call(this, $i_xml);
-      //console.log(this._title);
+      if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
     }
 
     ///@summary クラス名（親クラス...現在のクラス）を取得する

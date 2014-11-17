@@ -81,22 +81,32 @@ $(function()
 		var key = StampListSetting.Stamp[i].key;
 		var selector = StampListSetting.Stamp[i].selector;
 		if (selector != '') {
-			Stamp.LoadXml(key, function($result){ 
-				CreateStamp(key, selector, $result.children());
+			Stamp.LoadXml(key, function(result){ 
+				CreateStamp(key, selector, result.childNodes[0].children);
+				//console.log(result.childNodes[0].children);
 			});
 		}
 	}
-	/// @param スタンプを生成する。
-	/// @param i_key キー
-	/// @param i_selector スタンプの張付先
-	/// @param i_stamps スタンプリスト(XML)
-	function CreateStamp (i_key, i_selector, $i_stamps)
+	/** 
+	 * スタンプを生成する。
+	 * @param {String} i_key キー
+	 * @param {String} i_selector スタンプの張付先(JQueryセレクタ)
+	 * @param {XmlDocument} i_stampsXml スタンプリスト(XML)
+	 */
+	function CreateStamp (i_key, i_selector, i_stampsXml)
 	{
+		//console.log(i_stampsXml);
+		
 		// 貼付先を取得する。
 		$stampList = $(i_selector);
+
 		// XMLデーターをもとにボタンを貼付ける。
-		$i_stamps.each(function (){
+		for (var index = 0; index < i_stampsXml.length; index++)
+		{
 			var stamp = null;
+			//var stampXml = i_stampsXml[index];			
+			//console.log(stampXml);
+
 			switch (i_key)
 			{
 				case 'DISEASE'      	: stamp = new StampDisease(); 			break;
@@ -111,9 +121,10 @@ $(function()
 				case 'PRIVATE_EXPENSE'	: stamp = new Stamp();					break;
 				default 				: stamp = new Stamp(); 					break;
 			} 
-			stamp.setByXml($(this)); 
-			$stampList.append(stamp.getJQueryObject());
-		});
+			
+		 	stamp.setByXml(Utility.XmlToStr(i_stampsXml[index])); 
+		 	$stampList.append(stamp.getJQueryObject());
+		};
 	}
 	
 	//----- アコーディオンメニューを作成する。 --------------------------------------

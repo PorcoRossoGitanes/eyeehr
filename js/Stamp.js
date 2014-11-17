@@ -64,24 +64,26 @@ function Stamp() {
 		this._name = name;
 	};
 
-	///@summary XMLを設定する。
-	///@param $i_xml XMLオブジェクト
-	_proto.setByXml = function ($i_xml)
+	/** 
+	 * XMLを設定する。
+	 * @param {String} i_xml XML文字列
+	 */
+	_proto.setByXml = function (i_xml)
 	{
-		if ($i_xml !== undefined)
+		if (i_xml !== undefined)
 		{
-			this._id = $i_xml.attr('Id');
-			this._url = $i_xml.attr('Url');
+			this._id = $(i_xml).attr('Id');
+			this._url = $(i_xml).attr('Url');
 
 			// 正式名称を取得する。
-			this._title = $i_xml.children('Eyeehr').children('Title').text();
+			this._title = $(i_xml).children('Eyeehr').children('Title').text();
 			
 			// 略称（表示名）を取得する。
 			this._short_title = 
 				(this._title.length >= SHORT_TITLE_MAX_LENGTH) ?  
 				this._title.slice(0, SHORT_TITLE_MAX_LENGTH - 1) + '...' : this._title; 
 
-			var xml =  Utility.JQueryToStr($i_xml);
+			var xml =  Utility.JQueryToStr($(i_xml));
 			$jquery.attr('id', this._id);
 			$jquery.data('url', this._url);
 			$jquery.attr('title', this._title);

@@ -41,5 +41,5 @@ function Staff() {
 Staff.LoadXml = function ()
 {
 	var url = '/db/apps/eyeehr/data/staff/' + 'staff-1.xml';
-	Utility.LoadXml('REST', url, '', function($xml){console.log($xml.children()/*$xml.find('staff')*/);})
+	Utility.LoadXml('REST', url, '', function(xml){console.log(($(xml).children())[0]/*$xml.find('staff')*/);})
 }
