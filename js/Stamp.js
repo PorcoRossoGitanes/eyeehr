@@ -1,26 +1,39 @@
-/// @summary スタンプクラス
+/**
+ * スタンプクラス
+ * @class Stamp
+ */
 function Stamp() {
 
-  ///@param クラス名
+  /**
+   * @param {String}クラス名
+   */
   this._name = 'Stamp';
 
-  ///@param ID(ファイル名　拡張子なし)
+  /**
+   * @param {String} ID (ファイル名　拡張子なし)
+   */
   this._id = '';
 
-  ///@param スタンプタイトル（正式）
+  /**
+   *@param {String} スタンプタイトル（正式）
+   */
   this._title = 'N/A';
 
-  ///@param スタンプタイトル（略称・表示名）
+  /**
+   * @param {String }スタンプタイトル（略称・表示名）
+   */
   this._short_title = this._title;
 
-  ///@param [保存先]コレクション
-  //this._collection = '/db/apps/eyeehr/data/Stamp';
-
-  ///@param [保存先]ファイル名
-  ///this._filename =  this._name + Utility.GetCurrentDate() + '.xml';
-
-  ///@param [保存先]URL
+  /**
+   * @param {String} [保存先]URL
+   */
   this._url = '';
+
+  /*
+  * @param {String} XML
+  * @static
+  */
+  arguments.callee.Xml = ''; 
 
   // ■初期化
   // JQuery オブジェクト

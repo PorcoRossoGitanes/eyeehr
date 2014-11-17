@@ -1,11 +1,22 @@
-///@summary 手術スタンプクラス
+/**
+ * 手術スタンプクラス
+ * @class StampOperation
+ */
 function StampOperation() 
 {
   // 親クラス(Parent)のメンバ変数を継承
   Stamp.call(this);
 
-  /// @param クラス名
+  /**
+   * @param {String}クラス名
+   */
   this._name = 'StampOperation';
+
+  /*
+  * @param {String} XML
+  * @static
+  */
+  arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
