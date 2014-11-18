@@ -3,22 +3,31 @@
 ///@param   $i_xml XMLデータ（JQuery Object)
 function NoteItemContainer ($i_xml)
 {
-	///@param クラス名
+	/**
+   * @param {String}クラス名
+   */
 	this._name = 'NoteItemContainer';
 
-  ///@param タイトル
+  /**
+   * @param {String} タイトル
+   */
   this._title = this._name;
+
+  /**
+   * @param {Object} XML オブジェクト
+   */
+  this._xml = ($i_xml == undefined) ? null : $i_xml[0];
 		
 	///@param HTML
   var leftpos = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('left');
   var toppos  = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('top');
-  //console.log(i_name + left + top);
+
   var html = 
   '<div ' + 
-      'class="' + this._name + '" ' + /**'name="' + i_name + '" ' + **/
-      'style="position:absolute;' + /**'left=' + left + ';top=' + top+ ';' + **/ '">' + 
+    'class="' + this._name + '" ' + /**'name="' + i_name + '" ' + **/
+    'style="position:absolute;' + /**'left=' + left + ';top=' + top+ ';' + **/ +
+  '">' + 
       '<h1 id="title">' + this._name + '</h1>' + 
-      //'<div id="attached"></div>' + 
   '</div>';
     
   /**

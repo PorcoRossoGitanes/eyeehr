@@ -22,11 +22,12 @@ function NoteItemContainerMemo ($i_xml)
     {
         if ($i_xml[0].tagName == $(this._jquery).attr('name'))
         {
-            $i_xml.children().each(function(){
-                var item = new NoteItemMemo(); 
-                item.setByXml($(this));
+            for (var index = 0; index < this._xml.children.length; index++)
+            {
+                var item = new NoteItemMemo();
+                item.setByXml($(this._xml.children[index])); 
                 $(this._jquery).append(item.getJQueryObject());
-            });
+            }
         }
     }
 };(function() {
