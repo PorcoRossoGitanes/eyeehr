@@ -24,12 +24,11 @@ function NoteItemContainer ($i_xml)
 
   var html = 
   '<div ' + 
-    'class="' + this._name + '" ' + /**'name="' + i_name + '" ' + **/
-    'style="position:absolute;' + /**'left=' + left + ';top=' + top+ ';' + **/ +
-  '">' + 
+    'class="' + this._name + '" ' + 
+    'style="position:absolute;">' + 
       '<h1 id="title">' + this._name + '</h1>' + 
   '</div>';
-    
+
   /**
    * @param {Object} JQuery オブジェクト
    */
@@ -44,10 +43,14 @@ function NoteItemContainer ($i_xml)
         scroll: false,		
 	});
 
-	///@summary JQuery Objectを出力する
-	///@return  JQuery Object
+	/** 
+   * JQuery オブジェクトを返す。
+   * @method getJQueryObject
+	 * @return {JQuery Object} JQuery オブジェクト
+   */
 	this.getJQueryObject = function () 
 	{
+    //console.log($(this._jquery)[0]);
 		return $(this._jquery);
 	}
 
