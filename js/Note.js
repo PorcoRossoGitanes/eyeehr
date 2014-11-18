@@ -36,8 +36,8 @@ function Note() {
 	$currentNote.append(containerOperation.getJQueryObject());
 	var containerMemo = new NoteItemContainerMemo();
 	$currentNote.append(containerMemo.getJQueryObject());
-	var containerScheme = new NoteItemContainerScheme();
-	$currentNote.append(containerScheme.getJQueryObject());
+	// var containerScheme = new NoteItemContainerScheme();
+	// $currentNote.append(containerScheme.getJQueryObject());
 
 	// プロトタイプ
 	var _proto = Note.prototype;
@@ -90,13 +90,13 @@ Note.SaveXml = function ()
  */
 Note.LoadXml = function (i_xml)
 {
-	console.log(i_xml);
+	//console.log(i_xml);
 
 	// 現在のカルテを空にする。
 	$currentNote.empty();
 
 	$note = $(i_xml);
-	console.log($note[0]);
+	//console.log($note[0]);
 
 	$note.children().each(function(){
 
