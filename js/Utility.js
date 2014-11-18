@@ -248,10 +248,9 @@ Utility.LoadXml = function (i_type, i_path, i_senddata, callback)
 			    dataType:"xml",
 			    data: i_senddata,
 			    success: function(data){
-			        if (callback !== undefined)  callback(data);
-			     //    var xml = Utility.JQueryToStr($(data).contents());
-			    	// console.log(xml);
-			        //console.log(typeof(xml));
+			    	// data = #document
+			    	// data.children = ルートノードオブジェクト 
+			        if (callback !== undefined) callback(data.children); //d console.log(data.children); console.log(typeof(data.children));
 			    },
 		      	error: function(XMLHttpRequest, textStatus, errorThrown) 
 		      	{

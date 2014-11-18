@@ -82,8 +82,9 @@ $(function()
 		var selector = StampListSetting.Stamp[i].selector;
 		if (selector != '') {
 			Stamp.LoadXml(key, function(result){ 
-				CreateStamp(key, selector, result.childNodes[0].children);
-				//console.log(result.childNodes[0].children);
+				//result[0]がルートノードとなる。
+				//console.log(result[0].children); 
+				CreateStamp(key, selector, result[0].children);
 			});
 		}
 	}
@@ -101,6 +102,7 @@ $(function()
 		$stampList = $(i_selector);
 
 		// XMLデーターをもとにボタンを貼付ける。
+		console.log(i_stampsXml);
 		for (var index = 0; index < i_stampsXml.length; index++)
 		{
 			var stamp = null;
