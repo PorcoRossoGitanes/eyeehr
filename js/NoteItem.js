@@ -236,8 +236,22 @@ function NoteItem() {
       $(this._jquery).find('[name=remarks]').html(Utility.InnerXml($i_xml.children('remarks')));
     }
   }
+
+  /**
+   * 定型フォーマットを設定する。
+   * @method setFormats
+   * @param {String} i_title タイトル
+   */
+  _proto.setFormats = function (i_title)
+  {
+    $(this._jquery).find('[name=formats]').append(
+      '<div name="Title">' + i_title + '</div>' 
+      + '<input name="Custom" type="text" value="" style="width:100%" />'  
+    );
+  }
 })();
-   
+
+
 /// @summary  付箋コンテナHTMLをXMLに保存する。
 /// @param    $i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
 /// @return   保存用XML

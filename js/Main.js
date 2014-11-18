@@ -102,7 +102,7 @@ $(function()
 		$stampList = $(i_selector);
 
 		// XMLデーターをもとにボタンを貼付ける。
-		console.log(i_stampsXml);
+		//console.log(i_stampsXml);
 		for (var index = 0; index < i_stampsXml.length; index++)
 		{
 			var stamp = null;
