@@ -64,7 +64,16 @@ if (!isset($_SESSION["USERID"])) {
         <input id="selectedNoteItem" type="hidden" value=""/> 
       </td>
       <tr>
-        <td>付箋</td>
+        <td valign="top">
+          <div id="IndexList">
+            <div >2014/02/06</div>
+            <div >○○検査</div>
+            <div >視力検査</div>
+            <div >処方（AAA,XXX）</div>
+            <div >2014/01/06</div>
+            <div >○○検査</div>
+          </div>
+        </td>
         <td>
           <!--スタンプリスト（アコーディオンメニュー）-->
           <div id="NoteItemMenu">
