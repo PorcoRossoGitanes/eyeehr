@@ -26,7 +26,7 @@ function StampMedicalCheck()
 
   $(this._jquery).click(function () {
     var item = new NoteItemMedicalCheck(); 
-    item.setFormats($(this).attr('title'));
+    item.setTitle($(this).attr('title'));
     item.appendTo('[name=NoteItemContainerMedicalCheck]');  
   });
 

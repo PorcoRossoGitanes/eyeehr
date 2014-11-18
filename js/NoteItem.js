@@ -9,6 +9,8 @@ function NoteItem() {
   // @param 付箋のID
   var id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
+  this._title = '';
+
   // 付箋（JQuery オブジェクト）を生成する 。
   const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/uploadFileBin.xq";
   
@@ -64,6 +66,7 @@ function NoteItem() {
     '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:inherit">シェーマ</button>' + 
 /***シェーマ添付***/
     '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
+    '<div name="Title" style="display:block"></div>' + <!--入力フォーム（タイトル）-->
     '<div name="Orca" style="display:block"></div>' + <!--入力フォーム（ORCA連携用定型フォーム）-->
     '<div name="formats"></div>' +                    <!--入力フォーム（定型フォーム）-->
     '<div name="attachments"></div>' +                <!--ファイル添付用--> 
@@ -226,6 +229,8 @@ function NoteItem() {
   {
     if ($i_xml !== undefined)
     {
+      // TODO : タイトル部分を追加する。
+      $(this._jquery).find('[name="Title"]').html(Utility.InnerXml($i_xml.children('Title')));
       // TODO : 定型フォーマット部分を追加する。
       //$(this._jquery).find('[name=formats]').html($i_xml.children('formats').html());
       // ファイル添付部分を追加する。
@@ -238,17 +243,27 @@ function NoteItem() {
   }
 
   /**
-   * 定型フォーマットを設定する。
-   * @method setFormats
+   * タイトルを設定する。
+   * @method setTitle
    * @param {String} i_title タイトル
    */
-  _proto.setFormats = function (i_title)
+  _proto.setTitle = function (i_title)
   {
-    $(this._jquery).find('[name=formats]').append(
-      '<div name="Title">' + i_title + '</div>' 
-      + '<input name="Custom" type="text" value="" style="width:100%" />'  
+    $(this._jquery).find('[name="Title"]').text(i_title); 
+  }
+
+  /**
+   * 定型フォーマットを設定する。
+   * @method setFormat
+   */
+  _proto.setFormat = function ()
+  {
+    $(this._jquery).find('[name="Format"]').append(
+      '<input name="Custom" type="text" value="" style="width:100%" />'  
+      + ''
     );
   }
+
 })();
 
 
@@ -267,6 +282,15 @@ NoteItem.HtmlToXml = function($i_jquery)
   //$i_jquery.find('min')
   //$i_jquery.find('attachFile')
   
+  // □タイトルをXMLに変換する。
+  $title = $i_jquery.children('[name="Title"]');
+  retVal += '<' + $title.attr('name') + '>' + $title.text() + '</' + $title.attr('name') + '>';
+  // retVal += '<' + $formats.attr('name') + '>';
+  // $i_jquery.children('[name="Title"]').find('DIV', 'INPUT', 'IMG').each(function(){
+  //   retVal += Utility.HtmlMinInputItemToXml($(this));
+  // });
+  // retVal += '</' + $formats.attr('name') + '>';
+
   // □フォーム部をXMLに変換する。
   $formats = $i_jquery.children('[name=formats]');
   retVal += '<' + $formats.attr('name') + '>';

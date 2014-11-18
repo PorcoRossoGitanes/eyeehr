@@ -23,7 +23,7 @@ function NoteItemPrescription()
 
     ///@summary 定型フォーマットを設定する。
     ///@param $i_name 名前
-    _proto.setFormats = function (i_name)
+    _proto.setFormat = function (i_name)
     {
       $(this._jquery).find('[name=formats]').append(
         '<input name="medicine-orca" type="hidden" value="ORCAID" />' + 

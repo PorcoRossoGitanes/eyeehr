@@ -35,16 +35,6 @@ function NoteItemOperation()
       }
     }
 
-    ///@summary 定型フォーマットを設定する。
-    ///@param $i_name 名前
-    _proto.setFormats = function (i_name)
-    {
-      $(this._jquery).find('[name=formats]').append(
-        '<div name="operation-name">' + i_name + '</div>' + 
-        '<input name="operation-custom" type="text" value="入力欄（カスタム）"/>'  // TODO : 入力欄カスタム作成
-      );
-    }
-
     ///@summary クラス名（親クラス...現在のクラス）を取得する
     ///@return クラス名（親クラス...現在のクラス）
     _proto.getName = function() 

@@ -21,14 +21,6 @@ function NoteItemDisease() {
     // プロトタイプ
     var _proto = NoteItemDisease.prototype;
     
-    ///@summary 定型フォーマットを設定する。
-    ///@param $i_name 名前
-    _proto.setFormats = function (i_name)
-    {
-      $(this._jquery).find('[name=formats]').append(
-        '<div name="disease-name">' + i_name + '</div>' 
-      );
-    }
 
     ///@summary XMLを設定する。
     ///@param $i_xml XMLオブジェクト
