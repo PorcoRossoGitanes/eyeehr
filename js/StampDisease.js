@@ -19,16 +19,14 @@ function StampDisease()
   arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
-  // クラス属性を追加した。
   $(this._jquery).attr('name', this._name);
   $(this._jquery).addClass(this._name);  
   //--JQuery オブジェクト操作---//
 
   $(this._jquery).click(function () {
-    // TODO : 手術ではなく処置として登録する。
     var item = new NoteItemDisease(); 
     item.setTitle($(this).attr('title'));
-    item.appendTo('[name=NoteItemContainerDisease]');  
+    item.appendTo('[name="NoteItemContainerDisease"]');  
   });
 
 };(function() {

@@ -9,6 +9,9 @@ function NoteItem() {
   // @param 付箋のID
   var id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
+  /**
+   * @param {String} タイトル
+   */
   this._title = '';
 
   // 付箋（JQuery オブジェクト）を生成する 。
@@ -50,25 +53,25 @@ function NoteItem() {
     'id="' + id + '" ' + 
     'class="' + this._name + '" ' + 
     '>' + 
-/*** 削除ボタン ***/
+    /*** 削除ボタン ***/
     '<button id="del" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>' + 
-/*** 最小化ボタン ***/
+    /*** 最小化ボタン ***/
     '<button id="min" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>' + 
-/*** ☆ボタン ***/
+    /*** ☆ボタン ***/
     // '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
     // '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
     // '</button>' + 
-/***ファイル　添付***/
+    /***ファイル　添付***/
     formAttachFile + // 隠し埋め込みフォーム
     '<button id="attachFile" class="btn btn-default btn-xs" ><span class="glyphicon glyphicon-upload"></span></button>' + 
-/***ファイル　添付***/
-/***シェーマ添付（処置・手術・検査などでシェーマを書くので、デフォルト表示とする。）***/
+    /***ファイル　添付***/
+    /***シェーマ添付（処置・手術・検査などでシェーマを書くので、デフォルト表示とする。）***/
     '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:inherit">シェーマ</button>' + 
-/***シェーマ添付***/
+    /***シェーマ添付***/
     '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
     '<div name="Title" style="display:block"></div>' + <!--入力フォーム（タイトル）-->
     '<div name="Orca" style="display:block"></div>' + <!--入力フォーム（ORCA連携用定型フォーム）-->
-    '<div name="formats"></div>' +                    <!--入力フォーム（定型フォーム）-->
+    '<div name="Format"></div>' +                    <!--入力フォーム（定型フォーム）-->
     '<div name="attachments"></div>' +                <!--ファイル添付用--> 
     '<div name="schemes"></div>' +                    <!--シェーマ添付用--> 
     '<div name="remarks"></div>' +                    <!--備考入力用--> 
@@ -166,7 +169,7 @@ function NoteItem() {
     {
       // 特記事項が表示されている場合は、文字列を非表示とする。
       $(this).parent().find('#tags').show();
-      $(this).parent().find('[name=formats]').hide();      
+      $(this).parent().find('[name=Format]').hide();      
       $(this).parent().find('[name=attachments]').hide();      
       $(this).parent().find('[name=remarks]').hide();      
     }
@@ -174,7 +177,7 @@ function NoteItem() {
     {
       // 特記事項が非表示の場合は、文字列を表示する。
       $(this).parent().find('#tags').hide();
-      $(this).parent().find('[name=formats]').show();
+      $(this).parent().find('[name=Format]').show();
       $(this).parent().find('[name=attachments]').show();
       $(this).parent().find('[name=remarks]').show();
     }
@@ -232,7 +235,7 @@ function NoteItem() {
       // TODO : タイトル部分を追加する。
       $(this._jquery).find('[name="Title"]').html(Utility.InnerXml($i_xml.children('Title')));
       // TODO : 定型フォーマット部分を追加する。
-      //$(this._jquery).find('[name=formats]').html($i_xml.children('formats').html());
+      //$(this._jquery).find('[name=Format]').html($i_xml.children('Format').html());
       // ファイル添付部分を追加する。
       $(this._jquery).find('[name=attachments]').html(Utility.InnerXml($i_xml.children('attachments')));
       // シェーマ部分を追加する。
@@ -250,6 +253,30 @@ function NoteItem() {
   _proto.setTitle = function (i_title)
   {
     $(this._jquery).find('[name="Title"]').text(i_title); 
+  }
+
+  /**
+   * ORCAフォーマットを設定する。
+   * @param {String/Object} i_xml ORCA情報
+   */
+  _proto.setOrca = function (i_xml)
+  {
+    const NameMedicalClass = 'Medical_Class';
+    const NameMedicationCode = 'Medication_Code';
+    const NameMedicationName = 'Medication_Name';
+    const NameMedicationNumber = 'Medication_Number';
+    const NameMecicationGenericFlg = 'Medication_Generic_Flg';
+    const NameMedicationUnitPoint = 'Medication_Unit_Point';
+    const NameMedicationUnit = 'Medication_Unit';
+
+    $(this._jquery).find('[name="Orca"]').append(
+      '<div name="' + NameMedicalClass + '" style="display:none">' + $(i_xml).children(NameMedicalClass).text() + '</div>' +
+      '<div name="' + NameMedicationCode + '" style="display:none">' + $(i_xml).children(NameMedicationCode).text() + '</div>' + 
+      '<div name="' + NameMedicationName + '" style="display:none">' + $(i_xml).children(NameMedicationName).text() +'</div>' + 
+      '<input name="' + NameMedicationNumber +'"  type="text" value="' + 0 + '"/>' + 
+      $(i_xml).children(NameMedicationUnit).text() + 
+      '<div name="' + NameMedicationUnitPoint +'"  style="display:none">' + $(i_xml).children(NameMedicationUnitPoint).text() + '</div>' //+ 
+    );
   }
 
   /**
@@ -285,19 +312,33 @@ NoteItem.HtmlToXml = function($i_jquery)
   // □タイトルをXMLに変換する。
   $title = $i_jquery.children('[name="Title"]');
   retVal += '<' + $title.attr('name') + '>' + $title.text() + '</' + $title.attr('name') + '>';
-  // retVal += '<' + $formats.attr('name') + '>';
+  // retVal += '<' + $title.attr('name') + '>';
   // $i_jquery.children('[name="Title"]').find('DIV', 'INPUT', 'IMG').each(function(){
   //   retVal += Utility.HtmlMinInputItemToXml($(this));
   // });
-  // retVal += '</' + $formats.attr('name') + '>';
+  // retVal += '</' + $title.attr('name') + '>';
 
-  // □フォーム部をXMLに変換する。
-  $formats = $i_jquery.children('[name=formats]');
-  retVal += '<' + $formats.attr('name') + '>';
-  $i_jquery.children('[name=formats]').find('DIV', 'INPUT', 'IMG').each(function(){
+  // □ORCAフォーマット部をXMLに変換する。
+  $orca = $i_jquery.children('[name="Orca"]');
+  console.log($orca[0]);
+  retVal += '<' + $orca.attr('name') + '>';
+  //$i_jquery.children('[name="Orca"]').find('DIV', 'INPUT', 'IMG').each(function(){
+  $i_jquery.children('[name="Orca"]').children().each(function(){
+    console.log(this);
     retVal += Utility.HtmlMinInputItemToXml($(this));
+    console.log(Utility.HtmlMinInputItemToXml($(this)));
   });
-  retVal += '</' + $formats.attr('name') + '>';
+  retVal += '</' + $orca.attr('name') + '>';
+
+  // □ORCAフォーマット部をXMLに変換する。
+  $format = $i_jquery.children('[name="Format"]');
+  retVal += '<' + $format.attr('name') + '>';
+  // $i_jquery.children('[name="Format"]').find('DIV', 'INPUT', 'IMG').each(function(){
+  //   console.log(this);
+  //   retVal += Utility.HtmlMinInputItemToXml($(this));
+  //   console.log(Utility.HtmlMinInputItemToXml($(this)));
+  // });
+  retVal += '</' + $format.attr('name') + '>';
 
   // □画像添付部をXMLに変換する。
   $attachments = $i_jquery.children('[name=attachments]');

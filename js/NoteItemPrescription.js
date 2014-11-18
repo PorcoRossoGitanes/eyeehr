@@ -25,7 +25,7 @@ function NoteItemPrescription()
     ///@param $i_name 名前
     _proto.setFormat = function (i_name)
     {
-      $(this._jquery).find('[name=formats]').append(
+      $(this._jquery).find('[name="Format"]').append(
         '<input name="medicine-orca" type="hidden" value="ORCAID" />' + 
         '<input name="medicine-name" type="disable" value="' + i_name +'"/>' + 
         '<input name="medicine-cnt"  type="text" value="1">個'

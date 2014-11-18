@@ -24,10 +24,14 @@ function StampMedicalProduct()
   $(this._jquery).addClass(this._name);  
   //--JQuery オブジェクト操作---//
 
+  /**
+   * クリック時に、NoteItemをカルテに貼付ける。
+   */
   $(this._jquery).click(function () {
-    // TODO : 項目によって貼付先が異なる
-    var item = new NoteItemContainerPrescription(); 
+    var item = new NoteItemPrescription();
     item.setTitle($(this).attr('title'));
+    var xml = $(this).data('xml');
+    item.setOrca($(xml).children('Orca')[0]);
     item.appendTo('[name=NoteItemContainerPrescription]');  
   });
 
