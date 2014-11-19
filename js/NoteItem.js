@@ -273,8 +273,8 @@ function NoteItem() {
       '<div name="' + NameMedicalClass + '" style="display:none">' + $(i_xml).children(NameMedicalClass).text() + '</div>' +
       '<div name="' + NameMedicationCode + '" style="display:none">' + $(i_xml).children(NameMedicationCode).text() + '</div>' + 
       '<div name="' + NameMedicationName + '" style="display:none">' + $(i_xml).children(NameMedicationName).text() +'</div>' + 
-      '<input name="' + NameMedicationNumber +'"  type="text" value="' + 0 + '"/>' + 
-      $(i_xml).children(NameMedicationUnit).text() + 
+      '<input name="' + NameMedicationNumber +'"  type="text" value="' + 1 + '"/>' + 
+      '<div name="' + NameMedicationUnit + '" style="display:inherit">' + $(i_xml).children(NameMedicationUnit).text() + '</div>' + 
       '<div name="' + NameMedicationUnitPoint +'"  style="display:none">' + $(i_xml).children(NameMedicationUnitPoint).text() + '</div>' //+ 
     );
   }
@@ -324,9 +324,9 @@ NoteItem.HtmlToXml = function($i_jquery)
   retVal += '<' + $orca.attr('name') + '>';
   //$i_jquery.children('[name="Orca"]').find('DIV', 'INPUT', 'IMG').each(function(){
   $i_jquery.children('[name="Orca"]').children().each(function(){
-    console.log(this);
+    //console.log(this);
     retVal += Utility.HtmlMinInputItemToXml($(this));
-    console.log(Utility.HtmlMinInputItemToXml($(this)));
+    //console.log(Utility.HtmlMinInputItemToXml($(this)));
   });
   retVal += '</' + $orca.attr('name') + '>';
 
