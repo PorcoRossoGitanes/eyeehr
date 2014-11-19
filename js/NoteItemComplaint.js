@@ -11,9 +11,6 @@ function NoteItemComplaint()
   // クラス属性を追加した。
   $(this._jquery).attr('name', this._name);
   $(this._jquery).addClass(this._name);  
-  $(this._jquery).css('left', 350);  
-  $(this._jquery).css('top', 30);  
-
   //--JQuery オブジェクト操作---//
 
 };(function() {
