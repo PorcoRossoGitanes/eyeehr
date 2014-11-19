@@ -238,12 +238,12 @@ function NoteItem() {
       this.setOrca(($i_xml.children('Orca'))[0]);
       // TODO : 定型フォーマット部分を追加する。
       //$(this._jquery).find('[name=Format]').html($i_xml.children('Format').html());
-      // ファイル添付部分を追加する。
-      $(this._jquery).find('[name=attachments]').html(Utility.InnerXml($i_xml.children('attachments')));
+      // 添付ファイルを追加する。
+      this.setAttachment($i_xml.children('attachments')[0]);
       // シェーマ部分を追加する。
-      $(this._jquery).find('[name=schemes]').html(Utility.InnerXml($i_xml.children('schemes')));
+      this.setScheme($i_xml.children('schemes')[0]);
       // 備考部分を追加する。
-      $(this._jquery).find('[name=remarks]').html(Utility.InnerXml($i_xml.children('remarks')));
+      this.setRemark($i_xml.children('remarks')[0]);
     }
   }
 
@@ -258,14 +258,14 @@ function NoteItem() {
   }
 
   /**
-   * ORCAフォーマットを設定する。
-   * @param {String/Object} i_xml ORCA情報
+   * ORCA情報を設定する。
+   * @param {String/Object} i_xml ORCA情報 <Orca/>
    */
   _proto.setOrca = function (i_xml)
   {
+    //console.log(i_xml);
     if (i_xml !== undefined)
     {
-      console.log(i_xml);
       const NameMedicalClass = 'Medical_Class';
       const NameMedicationCode = 'Medication_Code';
       const NameMedicationName = 'Medication_Name';
@@ -292,7 +292,6 @@ function NoteItem() {
         '</tbody>' + 
         '</table>' //+
       );     
-      console.log($(i_xml).children(NameMedicationUnit).text()); 
     }
   }
 
@@ -308,6 +307,32 @@ function NoteItem() {
     );
   }
 
+  /**
+   * 添付ファイルを設定する。
+   * @param {String/Object} i_xml 添付ファイル情報 <Attachment/>
+   */
+  _proto.setAttachment = function (i_xml)
+  {
+    $(this._jquery).find('[name=attachments]').html(Utility.InnerXml($(i_xml)));
+  }
+
+  /**
+   * シェーマを設定する。
+   * @param {String/Object} i_xml シェーマ情報 <Scheme />
+   */
+  _proto.setScheme = function (i_xml)
+  {
+    $(this._jquery).find('[name=schemes]').html(Utility.InnerXml($(i_xml)));
+  }
+
+  /**
+   * 備考を設定する。
+   * @param {String/Object} i_xml 備考情報 <Remark />
+   */
+  _proto.setRemark = function (i_xml)
+  {
+    $(this._jquery).find('[name=remarks]').html(Utility.InnerXml($(i_xml)));
+  }
 })();
 
 
