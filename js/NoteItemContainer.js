@@ -39,8 +39,8 @@ function NoteItemContainer ($i_xml)
 	
 	// 親要素内のみドラッグ可能に設定する。
 	$(this._jquery).draggable({
-        containment: 'parent',
-        scroll: false,		
+    // containment: 'parent',
+    // scroll: true		
 	});
 
 	/** 

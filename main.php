@@ -46,7 +46,7 @@ if (!isset($_SESSION["USERID"])) {
       </td>
 
       <!--name="note" カルテ記入欄-->
-      <td name="Note" style="width:1000px;height:700px;" rowspan="2" valign="top"></td>
+      <td name="Note" style="width:1000px;height:700px;overflow-y:scroll;" rowspan="2" valign="top"></td>
       
       <td style="width:280px">
         <!--付箋特記事項編集欄-->
