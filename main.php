@@ -32,27 +32,17 @@ if (!isset($_SESSION["USERID"])) {
     <!--自作CSS-->    
   </head>
   <body>
-  <div>
-    <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
-    <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button>
-    <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
-    <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
-  
-    <!--2014/08/31 12:34--><!--現在時刻不要？-->
-    <label>医師</label>&nbsp; 00001 渡邉花子
-
-    <!-- ログアウト -->
-    <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'">
-      <span class="glyphicon glyphicon-plus">ログアウト</span>
-    </button>
-    <!-- ログアウト -->
-  </div>
   <table border="1">
     <tr>
       <td valign="top">
-      <!--患者情報-->
-      <!--label>患者</label>&nbsp; --><input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
-      <button type="button" id="patient-info" class="btn btn-default btn-xs">患者情報</button>
+        <!--医師情報-->
+        <div><label>主治医</label>&nbsp; 00001 渡邉花子</div>      
+        <!--患者情報-->
+        <div>
+          <label>患者</label>&nbsp;<br/>
+          <input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
+          <button type="button" id="patient-info" class="btn btn-default btn-xs">詳細情報</button>
+        </div>
       </td>
 
       <!--name="note" カルテ記入欄-->
@@ -65,14 +55,52 @@ if (!isset($_SESSION["USERID"])) {
       </td>
       <tr>
         <td valign="top">
-          <div id="IndexList">
-            <div >2014/02/06</div>
-            <div >○○検査</div>
-            <div >視力検査</div>
-            <div >処方（AAA,XXX）</div>
-            <div >2014/01/06</div>
-            <div >○○検査</div>
-          </div>
+          <!--iframe style="width:100%;height:100%"><html-->
+          <div id="IndexList" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
+            <div class="Index IndexDate">2014/02/06</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">視力検査</div>
+            <div class="Index IndexItem">処方（AAA,XXX）</div>
+            <div class="Index IndexDate">2014/01/06</div>
+            <div class="Index IndexItem">プラン</div>
+            <div class="Index IndexDate">2013/12/08</div>
+            <div class="Index IndexItem">Dr.メモ</div>
+            <div class="Index IndexDate">2013/11/06</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexDate">2013/10/01</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexDate">2013/09/01</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexDate">2013/08/15</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexDate">2013/07/02</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexDate">2013/01/06</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexDate">2012/12/06</div>
+            <div class="Index IndexItem">アムスラー</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+            <div class="Index IndexItem">○○検査</div>
+          </div>            
+          <!--/html></iframe-->
         </td>
         <td>
           <!--スタンプリスト（アコーディオンメニュー）-->
@@ -92,6 +120,14 @@ if (!isset($_SESSION["USERID"])) {
       </tr>
     </tr>
   </table>  
+  <div>
+  　<!--デバック用-->
+    <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
+    <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button>
+    <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
+    <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
+    <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'"> <span class="glyphicon glyphicon-plus">ログアウト</span></button>
+  </div>
 <!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->
   <script src="js/jquery.base64/jquery.base64.js"></script>
   
@@ -133,6 +169,5 @@ if (!isset($_SESSION["USERID"])) {
   <!--script src="js/XmlManager.js"/></script-->
   <script src="js/Main.js"></script>
 <!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->
-
   </body>
 </html>

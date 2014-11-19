@@ -54,8 +54,33 @@ div#NoteItemMenu div.stamp_list
   padding : 0.1em 0.1em 0.1em 0.1em;
 }
 
+/**付箋リスト**/ 
+div.IndexList
+{
+  overflow: scroll; 
+  width: 100%;
+  height : 100%;
+}
 
-/**付箋コンテナ**/
+/**付箋**/
+div.Index
+{
+  border: solid 1px #eeeeee;
+}
+
+/**付箋（日付）**/
+div.Index.IndexDate
+{
+  background: #dddddd;
+}
+
+/**付箋（アイテム）**/
+div.Index.IndexItem
+{
+  background: #ffffff;
+}
+
+/**ノートアイテムコンテナ**/
 div.NoteItemContainer 
 { 
   width   : 400px; 
@@ -75,12 +100,19 @@ div.NoteItemContainer h1
   margin            : 0; 
 }
 
-/**付箋**/
+/*
+div.NoteItemContainer.NoteItemContainerComplaint
+{
+  left : 100;
+  top : 100;
+}
+*/
+
+/**ノートアイテム**/
 div.NoteItem
 {
   width: 100%; /*250px*/
   height: auto;/*100px;*/
-  /*background-color: #aaf;*/
   cursor: pointer;
   overflow: visible;
   padding           : 2px;/*0.5em;*/ 
@@ -94,44 +126,44 @@ div.NoteItem #tags
   font-size: 9pt;
 }
 
-/**付箋（主訴）**/
+/**ノートアイテム（主訴）**/
 div.NoteItemComplaint
 {
   background: #ff7f7f;
 }
 
-/**付箋（所見）**/
+/**ノートアイテム（所見）**/
 div.NoteItemDisease
 {
   background: #ff7fbf;
 }
 
-/**付箋（検査）**/
+/**ノートアイテム（検査）**/
 div.NoteItemMedicalCheck
 {
   background: #ff7fff;
 }
 
-/**付箋（処方）**/
+/**ノートアイテム（処方）**/
 div.NoteItemPrescription
 {
   background: #7f7fff;  
 }
 
-/**付箋（手術）**/
+/**ノートアイテム（手術）**/
 div.NoteItemOperation
 {
   background: #7fbfff;  
 }
 
-/**付箋（シェーマ）**/
+/**ノートアイテム（シェーマ）**/
 div.NoteItemScheme
 {
   background: #dddddd;
 }
 
 
-/**付箋（メモ）**/
+/**ノートアイテム（メモ）**/
 div.NoteItemMemo
 {
   background: #7fffff;
@@ -148,8 +180,6 @@ img.scheme
 {
   width : 100%;
 }
-
-
 
 /*** コンテキストメニュー ***/
 #ctx {
