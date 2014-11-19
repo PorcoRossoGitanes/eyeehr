@@ -22,6 +22,7 @@ function NoteItem() {
   const saveImageTo = '/db/apps/eyeehr/img';
 
   /*** 画像ファイル入力フォーム ***/
+  const Extension = 'image/jpeg, image/png, image/bmp, application/pdf, application/msexcel, application/msword';
   var iframetarget = 'uploadImage-' + id;
   var formAttachFile =     
     '<form ' + 
@@ -33,16 +34,11 @@ function NoteItem() {
     'style="display:none" ' + 
     '>' +
     '<input type="input" name="type" value="bin"/>' + 
-    '<input id="attachFile" type="file" name="file" value="" ' + 
-    //'style="display:none" ' + 
-    'accept="image/jpeg, image/png, image/bmp, application/pdf" ' + 
-    '/>' +
+    '<input id="attachFile" type="file" name="file" value="" accept="' + Extension + '" />' +
     '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
     '<input id="attachFileSubmit" type="submit" value="submit" />' +
     '</form>' +
-    '<iframe name="' + iframetarget + '" ' + 
-    'style="display:none"' + 
-    '></iframe>'; //結果表示用iframe
+    '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
   /*** 画像ファイル入力フォーム ***/
 
   /**
