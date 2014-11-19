@@ -44,6 +44,8 @@
   <head>
     <meta charset="UTF-8">
     <title>電子カルテ　ログイン</title>
+    <script src="js/jquery-2.1.1.js"></script><!-- jQuery 2.1.1 -->
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
   </head>
   <body>
     <form id="formLogin" name="formLogin" action="<?php print($_SERVER['PHP_SELF']) ?>" method="POST">
@@ -57,7 +59,7 @@
       <input type="password" id="password" name="password" value="">
       <br>
       <!--label></label-->
-      <input type="submit" id="login" name="login" value="ログイン">
+      <button type="submit" id="login" name="login">ログイン</button>
       </fieldset>
     </form>
   </body>
