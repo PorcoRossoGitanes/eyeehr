@@ -149,18 +149,6 @@ function NoteItem() {
     window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
   });
 
-  // /// @summary シェーマ領域が変更された場合に、画像にコンテキストイベントを追加する。
-  // $(this._jquery).find('div#scheme').load(function(){
-    
-  //   // console.log('シェーマ画像が変更されました。');
-  //   // alert('シェーマ画像が変更されました。');
-        
-  //   // シェーマ画像を右クリックしたときに、コンテキストメニュー表示出来るように変更する。
-  //   $(this).find('img').each(function () {
-
-  //   });
-  // });
-
   /// @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
   $(this._jquery).find('button#min').click(function()
   {
@@ -263,35 +251,38 @@ function NoteItem() {
    */
   _proto.setOrca = function (i_xml)
   {
-    //console.log(i_xml);
-    if (i_xml !== undefined)
+    if ($(i_xml).children().length > 0)
     {
-      const NameMedicalClass = 'Medical_Class';
-      const NameMedicationCode = 'Medication_Code';
-      const NameMedicationName = 'Medication_Name';
-      const NameMedicationNumber = 'Medication_Number';
-      const NameMecicationGenericFlg = 'Medication_Generic_Flg';
-      const NameMedicationUnitPoint = 'Medication_Unit_Point';
-      const NameMedicationUnit = 'Medication_Unit';
+      //console.log(i_xml);
+      if (i_xml !== undefined)
+      {
+        const NameMedicalClass = 'Medical_Class';
+        const NameMedicationCode = 'Medication_Code';
+        const NameMedicationName = 'Medication_Name';
+        const NameMedicationNumber = 'Medication_Number';
+        const NameMecicationGenericFlg = 'Medication_Generic_Flg';
+        const NameMedicationUnitPoint = 'Medication_Unit_Point';
+        const NameMedicationUnit = 'Medication_Unit';
 
-      $(this._jquery).find('[name="Orca"]').append(
-        '<table class="Orca">' +
-        '<tbody>' + 
-        '<tr>' + 
-        '<td><div name="' + NameMedicalClass + '" style="display:none">' + $(i_xml).children(NameMedicalClass).text() + '</div></td>' +
-        '<td><div name="' + NameMedicationCode + '" style="display:none">' + $(i_xml).children(NameMedicationCode).text() + '</div></td>' + 
-        '<td><div name="' + NameMedicationName + '" style="display:none">' + $(i_xml).children(NameMedicationName).text() +'</div></td>' + 
-        '<td>' + 
-        '<input name="' + NameMedicationNumber +'"  type="text" ' + 
-          'value="' + ($(i_xml).children(NameMedicationNumber).text() == '' ? 1 : $(i_xml).children(NameMedicationNumber).text()) + '"' + 
-        '/>' + 
-        '</td>' + 
-        '<td><div name="' + NameMedicationUnit + '" style="display:inherit">' + $(i_xml).children(NameMedicationUnit).text() + '</div></td>' + 
-        '<td><div name="' + NameMedicationUnitPoint +'"  style="display:none">' + $(i_xml).children(NameMedicationUnitPoint).text() + '</div></td>' + 
-        '</tr>' + 
-        '</tbody>' + 
-        '</table>' //+
-      );     
+        $(this._jquery).find('[name="Orca"]').append(
+          '<table class="Orca">' +
+          '<tbody>' + 
+          '<tr>' + 
+          '<td><div name="' + NameMedicalClass + '" style="display:none">' + $(i_xml).children(NameMedicalClass).text() + '</div></td>' +
+          '<td><div name="' + NameMedicationCode + '" style="display:none">' + $(i_xml).children(NameMedicationCode).text() + '</div></td>' + 
+          '<td><div name="' + NameMedicationName + '" style="display:none">' + $(i_xml).children(NameMedicationName).text() +'</div></td>' + 
+          '<td>' + 
+          '<input name="' + NameMedicationNumber +'"  type="text" ' + 
+            'value="' + ($(i_xml).children(NameMedicationNumber).text() == '' ? 1 : $(i_xml).children(NameMedicationNumber).text()) + '"' + 
+          '/>' + 
+          '</td>' + 
+          '<td><div name="' + NameMedicationUnit + '" style="display:inherit">' + $(i_xml).children(NameMedicationUnit).text() + '</div></td>' + 
+          '<td><div name="' + NameMedicationUnitPoint +'"  style="display:none">' + $(i_xml).children(NameMedicationUnitPoint).text() + '</div></td>' + 
+          '</tr>' + 
+          '</tbody>' + 
+          '</table>' //+
+        );     
+      }
     }
   }
 
