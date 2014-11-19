@@ -128,7 +128,44 @@ $(function()
 		 	$stampList.append(stamp.getJQueryObject());
 		};
 	}
-	
+
+	$('#MenuLeft').css('left', 0);
+	$('#MenuLeft').css('top', 0);
+	$('#MenuRight').css('left', parseFloat($(window).width()) - parseFloat($('#MenuRight').width()));
+	console.log(parseFloat($('#MenuRight').width()));
+	$('#MenuRight').css('top', -parseFloat($('#MenuLeft').css('height')));
+
+	console.log($(window).width());
+	$(window).scroll(function(){
+
+		var scrollTop = parseInt($(this).scrollTop());
+
+		$('#MenuLeft').css('top', scrollTop);
+		$('#MenuRight').css('top', scrollTop - parseFloat($('#MenuLeft').css('height')));
+
+		// console.log(scrollTop);
+		// console.log($('[name="Note"]').css('top'));
+		// console.log($('#MenuRight').css('top'));	
+
+		$('#MenuLeft').animate(
+			{top:scrollTop},
+			{
+				duration:800,
+				queue:false,
+				easing:"easeOutCubic", 
+			}
+		);
+
+		// $('#MenuRight').animate(
+		// 	{top : (scrollTop)},
+		// 	{
+		// 		duration:800,
+		// 		queue:false,
+		// 		easing:"easeOutCubic"
+		// 	}
+		// );
+	});
+
 	//----- アコーディオンメニューを作成する。 --------------------------------------
 	$( '#NoteItemMenu' ).accordion({heightStyle : "fill", active : 1});
 

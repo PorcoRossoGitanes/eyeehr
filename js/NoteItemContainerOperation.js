@@ -16,6 +16,8 @@ function NoteItemContainerOperation ($i_xml)
     $(this._jquery).addClass(this._name);
     $(this._jquery).attr('name', this._name);
     $(this._jquery).find('#title').text(this._title);
+    $(this._jquery).css('left', 800);  
+    $(this._jquery).css('top', 100);  
     //--JQuery オブジェクト操作---//
 
     // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。

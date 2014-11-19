@@ -31,28 +31,29 @@ if (!isset($_SESSION["USERID"])) {
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <!--自作CSS-->    
   </head>
-  <body>
-  <table border="1">
-    <tr>
-      <td valign="top">
-        <!--医師情報-->
-        <div><label>主治医</label>&nbsp; 00001 渡邉花子</div>      
-        <!--患者情報-->
-        <div>
-          <label>患者</label>&nbsp;<br/>
-          <input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
-          <button type="button" id="patient-info" class="btn btn-default btn-xs">詳細情報</button>
-        </div>
-      </td>
-
-      <!--name="note" カルテ記入欄-->
-      <td name="Note" style="width:1000px;height:700px;overflow-y:scroll;" rowspan="2" valign="top"></td>
-      
-      <td style="width:280px">
-        <!--付箋特記事項編集欄-->
-        <textarea id="area1" data-from="" style="width: 100%;"></textarea>
-        <input id="selectedNoteItem" type="hidden" value=""/> 
-      </td>
+  <body style="position:absolute">
+  <div>
+  　<!--デバック用-->
+    <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
+    <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button>
+    <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
+    <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
+    <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'"> <span class="glyphicon glyphicon-plus">ログアウト</span></button>
+  </div>
+  <div name="Note" style="position:absolute;zIndex:9999:" valign="top" style="border: 1px solid #000000"></div>
+  <div id="MenuLeft" style="position:relative;zIndex:1;width:280px">
+    <table>
+      <tr>
+        <td valign="top">
+          <!--医師情報--><div><label>主治医</label>&nbsp; 00001 渡邉花子</div>      
+          <!--患者情報-->
+          <div>
+            <label>患者</label>&nbsp;<br/>
+            <input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
+            <button type="button" id="patient-info" class="btn btn-default btn-xs">詳細情報</button>
+          </div>
+        </td>
+      </tr>
       <tr>
         <td valign="top">
           <!--iframe style="width:100%;height:100%"><html-->
@@ -101,7 +102,20 @@ if (!isset($_SESSION["USERID"])) {
             <div class="Index IndexItem">○○検査</div>
           </div>            
           <!--/html></iframe-->
+        </td>    
+      </tr>
+    </table>
+  </div>
+  <div id="MenuRight" style="position:relative;width:280px">
+    <table>
+      <tr>
+        <td>
+          <!--付箋特記事項編集欄-->
+          <textarea id="area1" data-from="" style="width:100%;"></textarea>
+          <input id="selectedNoteItem" type="hidden" value="" style="width:100%;"/> 
         </td>
+      </tr>
+      <tr>
         <td>
           <!--スタンプリスト（アコーディオンメニュー）-->
           <div id="NoteItemMenu">
@@ -118,15 +132,7 @@ if (!isset($_SESSION["USERID"])) {
           </div>
         </td>
       </tr>
-    </tr>
-  </table>  
-  <div>
-  　<!--デバック用-->
-    <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
-    <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button>
-    <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
-    <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
-    <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'"> <span class="glyphicon glyphicon-plus">ログアウト</span></button>
+    </table>  
   </div>
 <!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->
   <script src="js/jquery.base64/jquery.base64.js"></script>
