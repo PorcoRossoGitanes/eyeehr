@@ -10,7 +10,7 @@ function NoteItemContainerOperation ($i_xml)
     this._name = 'NoteItemContainerOperation';
 
     ///@param タイトル
-    this._title = '手術';
+    this._title = '処置／手術';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).addClass(this._name);

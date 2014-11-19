@@ -25,8 +25,14 @@ function StampMedicalCheck()
   //--JQuery オブジェクト操作---//
 
   $(this._jquery).click(function () {
+    
     var item = new NoteItemMedicalCheck(); 
+
     item.setTitle($(this).attr('title'));
+    
+    var xml = $(this).data('xml');
+    item.setOrca($(xml).children('Orca')[0]);
+
     item.appendTo('[name=NoteItemContainerMedicalCheck]');  
   });
 

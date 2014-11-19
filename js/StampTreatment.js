@@ -25,9 +25,14 @@ function StampTreatment()
   //--JQuery オブジェクト操作---//
 
   $(this._jquery).click(function () {
-    // TODO : 処置として登録する。
+
     var item = new NoteItemOperation(); 
+
     item.setTitle($(this).attr('title'));
+
+    var xml = $(this).data('xml');
+    item.setOrca($(xml).children('Orca')[0]);
+
     item.appendTo('[name=NoteItemContainerOperation]');  
   });
 

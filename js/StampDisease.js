@@ -24,8 +24,10 @@ function StampDisease()
   //--JQuery オブジェクト操作---//
 
   $(this._jquery).click(function () {
-    var item = new NoteItemDisease(); 
+    var item = new NoteItemDisease();
+
     item.setTitle($(this).attr('title'));
+    
     item.appendTo('[name="NoteItemContainerDisease"]');  
   });
 
