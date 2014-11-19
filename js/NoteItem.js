@@ -232,8 +232,10 @@ function NoteItem() {
   {
     if ($i_xml !== undefined)
     {
-      // TODO : タイトル部分を追加する。
-      $(this._jquery).find('[name="Title"]').html(Utility.InnerXml($i_xml.children('Title')));
+      // タイトル部分を追加する。
+      this.setTitle(Utility.InnerXml($i_xml.children('Title')));
+      // ORCA情報部分を追加する。
+      this.setOrca(($i_xml.children('Orca'))[0]);
       // TODO : 定型フォーマット部分を追加する。
       //$(this._jquery).find('[name=Format]').html($i_xml.children('Format').html());
       // ファイル添付部分を追加する。
@@ -261,28 +263,37 @@ function NoteItem() {
    */
   _proto.setOrca = function (i_xml)
   {
-    const NameMedicalClass = 'Medical_Class';
-    const NameMedicationCode = 'Medication_Code';
-    const NameMedicationName = 'Medication_Name';
-    const NameMedicationNumber = 'Medication_Number';
-    const NameMecicationGenericFlg = 'Medication_Generic_Flg';
-    const NameMedicationUnitPoint = 'Medication_Unit_Point';
-    const NameMedicationUnit = 'Medication_Unit';
+    if (i_xml !== undefined)
+    {
+      console.log(i_xml);
+      const NameMedicalClass = 'Medical_Class';
+      const NameMedicationCode = 'Medication_Code';
+      const NameMedicationName = 'Medication_Name';
+      const NameMedicationNumber = 'Medication_Number';
+      const NameMecicationGenericFlg = 'Medication_Generic_Flg';
+      const NameMedicationUnitPoint = 'Medication_Unit_Point';
+      const NameMedicationUnit = 'Medication_Unit';
 
-    $(this._jquery).find('[name="Orca"]').append(
-      '<table class="Orca">' +
-      '<tbody>' + 
-      '<tr>' + 
-      '<td><div name="' + NameMedicalClass + '" style="display:none">' + $(i_xml).children(NameMedicalClass).text() + '</div></td>' +
-      '<td><div name="' + NameMedicationCode + '" style="display:none">' + $(i_xml).children(NameMedicationCode).text() + '</div></td>' + 
-      '<td><div name="' + NameMedicationName + '" style="display:none">' + $(i_xml).children(NameMedicationName).text() +'</div></td>' + 
-      '<td><input name="' + NameMedicationNumber +'"  type="text" value="' + 1 + '"/></td>' + 
-      '<td><div name="' + NameMedicationUnit + '" style="display:inherit">' + $(i_xml).children(NameMedicationUnit).text() + '</div></td>' + 
-      '<td><div name="' + NameMedicationUnitPoint +'"  style="display:none">' + $(i_xml).children(NameMedicationUnitPoint).text() + '</div></td>' + 
-      '</tr>' + 
-      '</tbody>' + 
-      '</table>' //+
-    );
+      $(this._jquery).find('[name="Orca"]').append(
+        '<table class="Orca">' +
+        '<tbody>' + 
+        '<tr>' + 
+        '<td><div name="' + NameMedicalClass + '" style="display:none">' + $(i_xml).children(NameMedicalClass).text() + '</div></td>' +
+        '<td><div name="' + NameMedicationCode + '" style="display:none">' + $(i_xml).children(NameMedicationCode).text() + '</div></td>' + 
+        '<td><div name="' + NameMedicationName + '" style="display:none">' + $(i_xml).children(NameMedicationName).text() +'</div></td>' + 
+        '<td>' + 
+        '<input name="' + NameMedicationNumber +'"  type="text" ' + 
+          'value="' + ($(i_xml).children(NameMedicationNumber).text() == '' ? 1 : $(i_xml).children(NameMedicationNumber).text()) + '"' + 
+        '/>' + 
+        '</td>' + 
+        '<td><div name="' + NameMedicationUnit + '" style="display:inherit">' + $(i_xml).children(NameMedicationUnit).text() + '</div></td>' + 
+        '<td><div name="' + NameMedicationUnitPoint +'"  style="display:none">' + $(i_xml).children(NameMedicationUnitPoint).text() + '</div></td>' + 
+        '</tr>' + 
+        '</tbody>' + 
+        '</table>' //+
+      );     
+      console.log($(i_xml).children(NameMedicationUnit).text()); 
+    }
   }
 
   /**
@@ -328,8 +339,8 @@ NoteItem.HtmlToXml = function($i_jquery)
   $orca = $i_jquery.children('[name="Orca"]');
   //console.log($orca[0]);
   retVal += '<' + $orca.attr('name') + '>';
-  $orca.find('DIV').each(function(){ retVal += Utility.HtmlMinInputItemToXml($(this));});
-  $orca.find('INPUT').each(function(){ retVal += Utility.HtmlMinInputItemToXml($(this));});
+  $orca.find('DIV').each(function(){ retVal += Utility.HtmlMinInputItemToXml($(this)); console.log(this);});
+  $orca.find('INPUT').each(function(){ retVal += Utility.HtmlMinInputItemToXml($(this)); console.log(this);});
   retVal += '</' + $orca.attr('name') + '>';
 
   // □ORCAフォーマット部をXMLに変換する。
