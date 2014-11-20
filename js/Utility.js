@@ -1,10 +1,16 @@
-///@summary コンストラクタ
-///@remarks 使用するHTMLに下記が必要な点を留意する。 
-/// <div id="utility" style="display:none"></div><!--ユーティリティで使用-->
+/**
+ * ユーティリティ
+ * @class Utility
+ * @remarks 使用するHTMLに下記が必要な点を留意する。 
+ */
 function Utility() {
 }
 
-///@summary 現在日時(yyyyMMddhhmmss)を取得する。
+/**
+ * 現在日時(yyyyMMddhhmmss)を取得する。
+ * @method GetCurrentDateTime
+ * @return {String} 現在日時(yyyyMMddhhmmss)
+ */
 Utility.GetCurrentDateTime  = function ()
 {
 	var retVal = '';
@@ -23,7 +29,11 @@ Utility.GetCurrentDateTime  = function ()
 	return retVal;
 }
 
-///@summary 現在日(yyyyMMdd)を取得する。
+/**
+ * 現在日(yyyyMMdd)を取得する。
+ * @method GetCurrentDate
+ * @return 現在日(yyyyMMdd)
+ */
 Utility.GetCurrentDate  = function ()
 {
 	var retVal = '';
@@ -32,24 +42,22 @@ Utility.GetCurrentDate  = function ()
 	var yyyy = now.getFullYear().toString();
 	var MM = (now.getMonth()+1).toString(); // getMonth() is zero-based
 	var dd = now.getDate().toString();
-	// var hh = now.getHours().toString();
-	// var mm = now.getMinutes().toString();
- //    var ss = now.getSeconds().toString();
-	retVal = 
-		yyyy + (MM[1]?MM:"0"+MM[0]) + (dd[1]?dd:"0"+dd[0]);
-		 // + (hh[1]?hh:"0"+hh[0]) + (mm[1]?mm:"0"+mm[0]) + (ss[1]?ss:"0"+ss[0]);
+	retVal = yyyy + (MM[1]?MM:"0"+MM[0]) + (dd[1]?dd:"0"+dd[0]);
 
 	return retVal;
 }
 
-/// @summary  最小入力コントロールをXMLに置き換える。
-/// @param DIV, INPUT(集合で入ってくるかもしれない。）, IMG
-/// @remarks  入力最小単位 :=
-/// （備考の場合のみ）XHTML |　→XHTMLに変換して保存する
-///  <div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。
-///  <img name=“test-1” src=“Thumbnail” data-command=“本当のデーター">  例）眼底写真 |　→XHTMLに変換して保存する
-///  <input type=“text” name=“tag” value=“hogehoge">　※ほとんどinputでまかなえるのでそれ以外は無視
-/// TODO : ラジオボタン等はどのように扱うか、未検証である。
+/** 
+ * 最小入力コントロールをXMLに置き換える。
+ * @method HtmlMinInputItemToXml
+ * @param DIV, INPUT(集合で入ってくるかもしれない。）, IMG
+ * @remarks  入力最小単位 :=
+ *  （備考の場合のみ）XHTML |　→XHTMLに変換して保存する
+ *   <div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。
+ *   <img name=“test-1” src=“Thumbnail” data-command=“本当のデーター">  例）眼底写真 |　→XHTMLに変換して保存する
+ *   <input type=“text” name=“tag” value=“hogehoge">　※ほとんどinputでまかなえるのでそれ以外は無視
+ *   TODO : ラジオボタン等はどのように扱うか、未検証である。
+ */
 Utility.HtmlMinInputItemToXml = function($i_jquery)
 {
 	var retVal = '';
@@ -89,8 +97,12 @@ Utility.HtmlMinInputItemToXml = function($i_jquery)
 	return retVal;
 }
 
-/// @summary 	HTMLをXHTMLに変換する。（備考とIMGタグで使用する。）
-/// @param		HTML 
+/**
+ * HTMLをXHTMLに変換する。（備考とIMGタグで使用する。）
+ * @method HtmlToXhtml
+ * @param {String} i_html HTML 
+ * @return {String} XHTML
+ */
 Utility.HtmlToXhtml = function(i_html)
 {
 	var retVal = i_html;
@@ -99,9 +111,11 @@ Utility.HtmlToXhtml = function(i_html)
 	return retVal;
 }
 
-/// @summary	URLから拡張子を取得する。
-/// @param 	url URL
-/// @returns 拡張子
+/**
+ * URLから拡張子を取得する。
+ * @param {String} url URL
+ * @return {String} 拡張子
+ */
 Utility.GetExtention = function (url) {
     var ext = url.replace(/\?.*$/, "")          // 拡張子以降のパラメータを除去
                  .replace(/#.*$/, "")           // 拡張子以降のパラメータを除去
@@ -109,8 +123,11 @@ Utility.GetExtention = function (url) {
     return ext;
 }
 
-/// @summary コレクションを作成する。
-/// @param  i_collectionPath コレクションパス
+/**
+ * コレクションを作成する。
+ * @method CreateCollection
+ * @param  i_collectionPath コレクションパス
+ */
 Utility.CreateCollection = function (i_collectionPath)
 {
 	const SCRIPT = "/exist/apps/eyeehr/modules/create-collection.xql";
@@ -139,11 +156,14 @@ Utility.CreateCollection = function (i_collectionPath)
 	}
 }
 
-/// @summary XMLを保存する。
-/// @param i_path ファイルパス(URL)
-/// @param i_xml XML文字列
-/// @param callback コールバック関数
-/// @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
+/**
+ * XMLを保存する。
+ * @method SaveXml 
+ * @param i_path ファイルパス(URL)
+ * @param i_xml XML文字列
+ * @param callback コールバック関数
+ * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
+ */
 Utility.SaveXml = function (i_path, i_xml, callback) 
 {
 	// コレクションとファイル名を取得する。
@@ -191,16 +211,19 @@ Utility.SaveXml = function (i_path, i_xml, callback)
 	});
 }
 
-/// @summary XMLを読込む。(REST)
-/// @param i_type 
-///				REST...RESTful
-///				GET...GET送信
-///             POST...POST送信
-/// @param i_senddata 送信データ
-/// 	GET時　	URL?以降のGETパラメータ　例）"param1=aaa&param2=bbb"
-/// 	POST時　	POSTパラメータ(JSON形式）　例）{"page": 2}
-/// @param i_path ファイルパス(URL) 
-/// @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
+/**
+ * XMLを読込む。
+ * @method LoadXml
+ * @param i_type 
+ * 				REST...RESTful
+ * 				GET...GET送信
+ *              POST...POST送信
+ *  @param i_senddata 送信データ
+ *  	GET時　	URL?以降のGETパラメータ　例）"param1=aaa&param2=bbb"
+ *  	POST時　	POSTパラメータ(JSON形式）　例）{"page": 2}
+ * @param i_path ファイルパス(URL) 
+ * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
+ */
 Utility.LoadXml = function (i_type, i_path, i_senddata, callback) 
 {
 	// パスが設定されている場合のみ実行する。
@@ -335,8 +358,6 @@ Utility.JQueryToStr = function ($i_jquery) {
 Utility.XmlToStr = function (i_xmlNode) {
 	
 	var ret = '';
-
-	//console.log(i_xmlNode.toString());
 	
 	try 
 	{
@@ -358,21 +379,5 @@ Utility.XmlToStr = function (i_xmlNode) {
 
 	return ret;
 }
-
-// /**
-//  * XML Document を XML（文字列）に変換する。
-//  * @method XmlDocumentToXml
-//  * @param {XMLDocument} i_xmlDocument XmlDocumentオブジェクト
-//  * @return {String} XML文字列
-//  */
-// Utility.XmlDocumentToXml = function (i_xmlDocument) 
-// {
-// 	var ret = '';
-
-// 	var serializer = new XMLSerializer();
-// 	ret = serializer.serializeToString(i_xmlDocument);
-
-// 	return ret;
-// } 
 
 

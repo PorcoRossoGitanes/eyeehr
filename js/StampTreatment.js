@@ -19,7 +19,6 @@ function StampTreatment()
   arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
-  // クラス属性を追加した。
   $(this._jquery).attr('name', this._name);
   $(this._jquery).addClass(this._name);  
   //--JQuery オブジェクト操作---//
@@ -38,15 +37,11 @@ function StampTreatment()
 
 };(function() {
 
-    // 親クラス(Parent)のメソッドを継承
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = Stamp.prototype;
-  
     StampTreatment.prototype = new Super();
-  
     var _super = Super.prototype;
-  
-    // プロトタイプ
     var _proto = StampTreatment.prototype;
 
     /**

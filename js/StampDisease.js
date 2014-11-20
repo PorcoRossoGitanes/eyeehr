@@ -4,7 +4,6 @@
  */
 function StampDisease() 
 {
-  // 親クラス(Parent)のメンバ変数を継承
   Stamp.call(this);
 
   /**
@@ -33,15 +32,11 @@ function StampDisease()
 
 };(function() {
 
-    // 親クラス(Parent)のメソッドを継承
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = Stamp.prototype;
-  
     StampDisease.prototype = new Super();
-  
     var _super = Super.prototype;
-  
-    // プロトタイプ
     var _proto = StampDisease.prototype;
 
     /**
@@ -53,8 +48,10 @@ function StampDisease()
       if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
     }
 
-    ///@summary クラス名（親クラス...現在のクラス）を取得する
-    ///@return クラス名（親クラス...現在のクラス）
+    /**
+     * クラス名（親クラス...現在のクラス）を取得する
+     * @return クラス名（親クラス...現在のクラス）
+     */
     _proto.getName = function() 
     {
         var name = _super.getName.call(this);

@@ -38,15 +38,11 @@ function StampInjection()
 
 };(function() {
 
-    // 親クラス(Parent)のメソッドを継承
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = Stamp.prototype;
-  
     StampInjection.prototype = new Super();
-  
     var _super = Super.prototype;
-  
-    // プロトタイプ
     var _proto = StampInjection.prototype;
 
     /**
@@ -58,12 +54,14 @@ function StampInjection()
       if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
     }
 
-    ///@summary クラス名（親クラス...現在のクラス）を取得する
-    ///@return クラス名（親クラス...現在のクラス）
-    _proto.getName = function() 
-    {
-        var name = _super.getName.call(this);
-        return name + ' ' + this._name;
-    };
+  /**
+   * クラス名を取得する。
+   * @method getName
+   */
+  _proto.getName = function() 
+  {
+    var name = _super.getName.call(this);
+    return name + ' ' + this._name;
+  };
 })();
 
