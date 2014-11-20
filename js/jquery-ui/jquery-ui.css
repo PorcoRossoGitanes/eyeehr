@@ -960,9 +960,9 @@ body .ui-tooltip {
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
 .ui-widget-header .ui-state-disabled {
-	opacity: .35;
-	filter:Alpha(Opacity=35); /* support: IE8 */
-	background-image: none;
+	/*opacity: .35;*/
+	/*filter:Alpha(Opacity=35);*/ /* support: IE8 */
+	/*background-image: none;*/
 }
 .ui-state-disabled .ui-icon {
 	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
