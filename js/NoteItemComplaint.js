@@ -16,32 +16,35 @@ function NoteItemComplaint()
 
 };(function() {
 
-    // 継承設定
-    var Super = function Super(){};
-    Super.prototype = NoteItem.prototype;
-    NoteItemComplaint.prototype = new Super();
-    var _super = Super.prototype;
-    var _proto = NoteItemComplaint.prototype;
+  // 継承設定
+  var Super = function Super(){};
+  Super.prototype = NoteItem.prototype;
+  NoteItemComplaint.prototype = new Super();
+  var _super = Super.prototype;
+  var _proto = NoteItemComplaint.prototype;
 
-    ///@summary XMLを設定する。
-    ///@param $i_xml XMLオブジェクト
-    _proto.setByXml = function ($i_xml)
+  ///@summary XMLを設定する。
+  ///@param $i_xml XMLオブジェクト
+  _proto.setByXml = function ($i_xml)
+  {
+    if ($i_xml !== undefined)
     {
-      if ($i_xml !== undefined)
+      if ($i_xml[0].tagName == $(this._jquery).attr('name'))
       {
-        if ($i_xml[0].tagName == $(this._jquery).attr('name'))
-        {
-          _super.setByXml.call(this, $i_xml);
-        }
+        _super.setByXml.call(this, $i_xml);
       }
     }
+  }
 
-    ///@summary クラス名（親クラス...現在のクラス）を取得する
-    ///@return クラス名（親クラス...現在のクラス）
-    _proto.getName = function() 
-    {
-        var name = _super.getName.call(this);
-        return name + ' ' + this._name;
-    };
+  /**
+   * クラス名（親クラス...現在のクラス）を取得する
+   * @method getName
+   * @return {String} クラス名（親クラス...現在のクラス）
+   */
+  _proto.getName = function() 
+  {
+      var name = _super.getName.call(this);
+      return name + ' ' + this._name;
+  };
 })();
 

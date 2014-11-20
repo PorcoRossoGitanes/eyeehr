@@ -1,4 +1,7 @@
-///@summary スタッフ
+/**
+ * スタッフ
+ * @class Staff
+ */
 function Staff() {
 
 	///@param クラス名
@@ -25,7 +28,6 @@ function Staff() {
 
 };(function() {
 
-	// プロトタイプ
 	var _proto = Staff.prototype;
 
 	/**
@@ -38,6 +40,10 @@ function Staff() {
 	};
 })();
 
+/**
+ * 担当者情報(XML)を読み込む
+ * @method LoadXml 
+ */
 Staff.LoadXml = function ()
 {
 	var url = '/db/apps/eyeehr/data/staff/' + 'staff-1.xml';

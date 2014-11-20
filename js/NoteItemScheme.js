@@ -15,7 +15,7 @@ function NoteItemScheme()
   //--JQuery オブジェクト操作---//
 
 };(function() {
-  
+
   // 継承設定
   var Super = function Super(){};
   Super.prototype = NoteItem.prototype;
@@ -23,8 +23,11 @@ function NoteItemScheme()
   var _super = Super.prototype;
   var _proto = NoteItemScheme.prototype;
   
-  ///@summary XMLを設定する。
-  ///@param $i_xml XMLオブジェクト
+  /** 
+   * XMLを設定する。
+   * @method setByXml
+   * @param {String} i_xml XML文字列
+   */
   _proto.setByXml = function ($i_xml)
   {
     if ($i_xml !== undefined)
@@ -36,8 +39,11 @@ function NoteItemScheme()
     }
   }
   
-  ///@summary クラス名（親クラス...現在のクラス）を取得する
-  ///@return クラス名（親クラス...現在のクラス）
+  /**
+   * クラス名（親クラス...現在のクラス）を取得する
+   * @method getName
+   * @return {String} クラス名（親クラス...現在のクラス）
+   */
   _proto.getName = function() 
   {
       var name = _super.getName.call(this);
