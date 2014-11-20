@@ -1,6 +1,7 @@
-//--------------------------------------------------//
-///@summary カルテ項目コンテナ（メモ）
-///@param $i_xml XML JQuery Object
+/**
+ * カルテ項目コンテナ（メモ）
+ * @class NoteItemContainerMemo 
+ */
 function NoteItemContainerMemo ()
 {
     NoteItemContainer.call(this);
@@ -32,16 +33,19 @@ function NoteItemContainerMemo ()
     this.update();
 
 };(function() {
-    // 親クラス(Parent)のメソッドを継承
+    
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItemContainer.prototype;
     NoteItemContainerMemo.prototype = new Super();
     var _super = Super.prototype;
-    // プロトタイプ
     var _proto = NoteItemContainerMemo.prototype;
 
-    ///@summary クラス名（親クラス...現在のクラス）を取得する
-    ///@return クラス名（親クラス...現在のクラス）
+    /**
+     * クラス名（親クラス...現在のクラス）を取得する
+     * @method getName
+     * @return {String} クラス名（親クラス...現在のクラス）
+     */   
     _proto.getName = function() 
     {
         var name = _super.getName.call(this);

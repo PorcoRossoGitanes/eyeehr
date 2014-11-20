@@ -1,4 +1,7 @@
-///@summary 処方クラス
+/**
+ * ノートアイテム　処方
+ * @class NoteItemPrescription
+ */
 function NoteItemPrescription() 
 {
   NoteItem.call(this);  // 入力文字列
@@ -13,12 +16,12 @@ function NoteItemPrescription()
   //--JQuery オブジェクト操作---//
 
 };(function() {
-    // 親クラス(Parent)のメソッドを継承
+
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItem.prototype;
     NoteItemPrescription.prototype = new Super();
     var _super = Super.prototype;
-    // プロトタイプ
     var _proto = NoteItemPrescription.prototype;
 
     ///@summary XMLを設定する。

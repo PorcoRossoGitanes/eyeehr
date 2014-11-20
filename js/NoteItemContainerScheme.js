@@ -1,5 +1,5 @@
 /**
- *カルテ項目コンテナ（シェーマ）
+ * カルテ項目コンテナ（シェーマ）
  * @class NoteItemContainerScheme
  */
 function NoteItemContainerScheme ()
@@ -22,12 +22,12 @@ function NoteItemContainerScheme ()
 
 
 };(function() {
-    // 親クラス(Parent)のメソッドを継承
+
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItemContainer.prototype;
     NoteItemContainerScheme.prototype = new Super();
     var _super = Super.prototype;
-    // プロトタイプ
     var _proto = NoteItemContainerScheme.prototype;
     
     ///@summary クラス名（親クラス...現在のクラス）を取得する

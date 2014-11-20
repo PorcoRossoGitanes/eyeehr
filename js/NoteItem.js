@@ -1,4 +1,7 @@
-// ノートアイテムクラス
+/**
+ * ノートアイテムクラス
+ * @class NoteItem
+ */
 function NoteItem() {
   // メンバ変数の初期化
   this._name = 'NoteItem';

@@ -1,6 +1,9 @@
-// @sumamry 病名
+/**
+ * 病名
+ * @class  NoteItemDisease
+ */
 function NoteItemDisease() {
-  // 親クラス(Parent)のメンバ変数を継承
+
   NoteItem.call(this);
   
   /// @param クラス名
@@ -13,12 +16,12 @@ function NoteItemDisease() {
   //--JQuery オブジェクト操作---//
 
 };(function() {
-    // 親クラス(Parent)のメソッドを継承
+
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItem.prototype;
     NoteItemDisease.prototype = new Super();
     var _super = Super.prototype;
-    // プロトタイプ
     var _proto = NoteItemDisease.prototype;
     
 

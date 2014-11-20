@@ -1,7 +1,6 @@
 /**
  * カルテ項目コンテナ（処方）
  * @class NoteItemContainerPrescription
- * @param $i_xml XML JQuery Object
  */
 function NoteItemContainerPrescription ()
 {
@@ -34,7 +33,8 @@ function NoteItemContainerPrescription ()
     this.update();
 
 };(function() {
-    // 親クラス(Parent)のメソッドを継承
+
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItemContainer.prototype;
     NoteItemContainerPrescription.prototype = new Super();
@@ -42,8 +42,11 @@ function NoteItemContainerPrescription ()
     // プロトタイプ
     var _proto = NoteItemContainerPrescription.prototype;
     
-    ///@summary クラス名（親クラス...現在のクラス）を取得する
-    ///@return クラス名（親クラス...現在のクラス）
+    /**
+     * クラス名（親クラス...現在のクラス）を取得する
+     * @method getName
+     * @return {String} クラス名（親クラス...現在のクラス）
+     */   
     _proto.getName = function() 
     {
         var name = _super.getName.call(this);

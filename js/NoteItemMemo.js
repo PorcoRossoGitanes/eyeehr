@@ -1,8 +1,10 @@
-///@summary メモコンストラクタ
-///@param $i_xml XML
+/**
+ * メモコンストラクタ
+ * @class NoteItemMemo
+ */
 function NoteItemMemo() 
 {
-  NoteItem.call(this/*, i_text*/);  // 入力文字列
+  NoteItem.call(this);
 
   /// @param クラス名
   this._name = 'NoteItemMemo';
@@ -14,7 +16,8 @@ function NoteItemMemo()
   //--JQuery オブジェクト操作---//
 
 };(function() {
-    // 親クラス(Parent)のメソッドを継承
+    
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItem.prototype;
     NoteItemMemo.prototype = new Super();

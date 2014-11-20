@@ -1,7 +1,7 @@
-//--------------------------------------------------//
-
-///@summary カルテ項目コンテナ（検査）
-///@param $i_xml XML JQuery Object
+/**
+ * カルテ項目コンテナ（検査）
+ * @class NoteItemContainerMedicalCheck
+ */
 function NoteItemContainerMedicalCheck ()
 {
     NoteItemContainer.call(this);
@@ -35,12 +35,12 @@ function NoteItemContainerMedicalCheck ()
     this.update();
 
 };(function() {
-    // 親クラス(Parent)のメソッドを継承
+
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItemContainer.prototype;
     NoteItemContainerMedicalCheck.prototype = new Super();
     var _super = Super.prototype;
-    // プロトタイプ
     var _proto = NoteItemContainerMedicalCheck.prototype;
 
     /**

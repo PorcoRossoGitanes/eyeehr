@@ -1,4 +1,7 @@
-///@summary 検査クラス
+/**
+ * ノートアイテム　検査
+ * @class NoteItemMedicalCheck
+ */
 function NoteItemMedicalCheck() 
 {
   NoteItem.call(this);
@@ -13,12 +16,12 @@ function NoteItemMedicalCheck()
   //--JQuery オブジェクト操作---//
 
 };(function() {
-    // 親クラス(Parent)のメソッドを継承
+
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItem.prototype;
     NoteItemMedicalCheck.prototype = new Super();
     var _super = Super.prototype;
-    // プロトタイプ
     var _proto = NoteItemMedicalCheck.prototype;
 
         ///@summary XMLを設定する。

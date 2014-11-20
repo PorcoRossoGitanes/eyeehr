@@ -35,6 +35,7 @@ function NoteItemContainerComplaint ()
    this.update();
 
 };(function() {
+    
     // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItemContainer.prototype;
@@ -45,7 +46,7 @@ function NoteItemContainerComplaint ()
     /**
      * クラス名（親クラス...現在のクラス）を取得する
      * @method getName
-     * @return {String}クラス名（親クラス...現在のクラス）
+     * @return {String} クラス名（親クラス...現在のクラス）
      */
     _proto.getName = function() 
     {

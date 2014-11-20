@@ -1,7 +1,6 @@
 /**
  * カルテ項目コンテナ（手術）
  * @class NoteItemContainerOperation
- * @param $i_xml XML JQuery Object
  */ 
 function NoteItemContainerOperation ()
 {

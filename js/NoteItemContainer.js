@@ -1,6 +1,6 @@
 /**
  * ノートアイテムコンテナ
- * NoteItemContainer
+ * @class NoteItemContainer
  */
 function NoteItemContainer ()
 {
@@ -57,8 +57,12 @@ function NoteItemContainer ()
 
   // プロトタイプ
   var _proto = NoteItemContainer.prototype;
-  // メンバメソッド
 
+  /**
+   * クラス名（親クラス...現在のクラス）を取得する
+   * @method getName
+   * @return {String} クラス名（親クラス...現在のクラス）
+   */
   _proto.getName = function() {
       return this._name;
   };

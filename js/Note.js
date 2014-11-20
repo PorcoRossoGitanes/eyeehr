@@ -1,4 +1,7 @@
-///@summary カルテ
+/**
+ * カルテノート
+ * @class Note 
+ */
 function Note() {
 };(function() {
 

@@ -1,8 +1,10 @@
-
-///@summary 手術コンストラクタ
+/**
+ * 手術コンストラクタ
+ * @class NoteItemOperation
+ */
 function NoteItemOperation() 
 {
-  NoteItem.call(this/*, i_text*/);  // 入力文字列
+  NoteItem.call(this);
 
   /// @param クラス名
   this._name = 'NoteItemOperation';
@@ -14,7 +16,8 @@ function NoteItemOperation()
   //--JQuery オブジェクト操作---//
 
 };(function() {
-    // 親クラス(Parent)のメソッドを継承
+
+    // 継承設定
     var Super = function Super(){};
     Super.prototype = NoteItem.prototype;
     NoteItemOperation.prototype = new Super();
