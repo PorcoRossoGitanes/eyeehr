@@ -1,37 +1,36 @@
 //--------------------------------------------------//
 ///@summary カルテ項目コンテナ（メモ）
 ///@param $i_xml XML JQuery Object
-function NoteItemContainerMemo ($i_xml)
+function NoteItemContainerMemo ()
 {
-    NoteItemContainer.call(this, $i_xml);
+    NoteItemContainer.call(this);
 
     ///@param クラス名
     this._name = 'NoteItemContainerMemo';
 
-    ///@param タイトル
+    /**
+    * @param タイトル
+    */
     this._title = 'メモ';
+
+    /**
+    * @param 左座標
+    */
+    this._left = '800px';  
+
+    /**
+    * @param 上座標
+    */
+    this._top = '170px';  
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).addClass(this._name);
     $(this._jquery).attr('name', this._name);
     $(this._jquery).find('#title').text(this._title);
-    $(this._jquery).css('left', 800);  
-    $(this._jquery).css('top', 170);
     //--JQuery オブジェクト操作---//
 
-    // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
-    if ($i_xml !== undefined)
-    {
-        if ($i_xml[0].tagName == $(this._jquery).attr('name'))
-        {
-            for (var index = 0; index < this._xml.children.length; index++)
-            {
-                var item = new NoteItemMemo();
-                item.setByXml($(this._xml.children[index])); 
-                $(this._jquery).append(item.getJQueryObject());
-            }
-        }
-    }
+    this.update();
+
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
@@ -48,6 +47,28 @@ function NoteItemContainerMemo ($i_xml)
         var name = _super.getName.call(this);
         return name + ' ' + this._name;
     };
+
+    /**
+     * Xmlを設定する
+     * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
+     */
+    _proto.setByXml = function($i_xml) 
+    {
+        _super.setByXml.call(this, $i_xml);
+
+        if ($i_xml !== undefined)
+        {
+            if ($i_xml[0].tagName == $(this._jquery).attr('name'))
+            {
+                for (var index = 0; index < this._xml.children.length; index++)
+                {
+                    var item = new NoteItemMemo();
+                    item.setByXml($(this._xml.children[index])); 
+                    $(this._jquery).append(item.getJQueryObject());
+                }
+            }
+        }
+    }
 
 })();
 

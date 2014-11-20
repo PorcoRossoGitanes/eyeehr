@@ -1,38 +1,38 @@
-//--------------------------------------------------//
-
-///@summary カルテ項目コンテナ（処方）
-///@param $i_xml XML JQuery Object
-function NoteItemContainerPrescription ($i_xml)
+/**
+ * カルテ項目コンテナ（処方）
+ * @class NoteItemContainerPrescription
+ * @param $i_xml XML JQuery Object
+ */
+function NoteItemContainerPrescription ()
 {
-    NoteItemContainer.call(this, $i_xml);
+    NoteItemContainer.call(this);
 
     ///@param クラス名
     this._name = 'NoteItemContainerPrescription';
 
-    ///@param タイトル
+    /**
+     * @param タイトル
+     */
     this._title = '処方';
+
+    /**
+     * @param 左座標
+     */
+    this._left = '800px';  
+
+    /**
+     * @param 上座標
+     */
+    this._top = '30px';  
     
     //--JQuery オブジェクト操作---//
     $(this._jquery).addClass(this._name);
     $(this._jquery).attr('name', this._name);
     $(this._jquery).find('#title').text(this._title);
-    $(this._jquery).css('left', 800);  
-    $(this._jquery).css('top', 30);  
     //--JQuery オブジェクト操作---//
     
-    // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
-    if ($i_xml !== undefined)
-    {
-        if ($i_xml[0].tagName == $(this._jquery).attr('name'))
-        {
-            for (var index = 0; index < this._xml.children.length; index++)
-            {
-                var item = new NoteItemPrescription();
-                item.setByXml($(this._xml.children[index])); 
-                $(this._jquery).append(item.getJQueryObject());
-            }
-        }
-    }
+    this.update();
+
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
@@ -49,5 +49,28 @@ function NoteItemContainerPrescription ($i_xml)
         var name = _super.getName.call(this);
         return name + ' ' + this._name;
     };
+
+    /**
+     * Xmlを設定する
+     * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
+     */
+    _proto.setByXml = function($i_xml) 
+    {
+        _super.setByXml.call(this, $i_xml);
+
+        // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
+        if ($i_xml !== undefined)
+        {
+            if ($i_xml[0].tagName == $(this._jquery).attr('name'))
+            {
+                for (var index = 0; index < this._xml.children.length; index++)
+                {
+                    var item = new NoteItemPrescription();
+                    item.setByXml($(this._xml.children[index])); 
+                    $(this._jquery).append(item.getJQueryObject());
+                }
+            }
+        }
+    }
 })();
 

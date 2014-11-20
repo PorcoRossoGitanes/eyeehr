@@ -1,10 +1,11 @@
-///@summary ノートアイテムコンテナ
-///@param 	i_title	タイトル
-///@param   $i_xml XMLデータ（JQuery Object)
-function NoteItemContainer ($i_xml)
+/**
+ * ノートアイテムコンテナ
+ * NoteItemContainer
+ */
+function NoteItemContainer ()
 {
 	/**
-   * @param {String}クラス名
+   * @param {String} クラス名
    */
 	this._name = 'NoteItemContainer';
 
@@ -14,34 +15,33 @@ function NoteItemContainer ($i_xml)
   this._title = this._name;
 
   /**
+   * @param {String} 左座標
+   * @example 'auto', '100px'
+   */
+  this._left = null;
+
+  /**
+   * @param {String} 上座標
+   * @example 'auto', '100px'
+   */
+  this._top = null;
+
+  /**
    * @param {Object} XML オブジェクト
    */
-  this._xml = ($i_xml == undefined) ? null : $i_xml[0];
-		
-	///@param HTML
-  var leftpos = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('left');
-  var toppos  = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('top');
-
-  var html = 
-  '<div ' + 
-    'class="' + this._name + '" ' + 
-    'style="position:absolute;">' + 
-      '<h1 id="title">' + this._name + '</h1>' + 
-  '</div>';
+  this._xml = null;
 
   /**
    * @param {Object} JQuery オブジェクト
    */
-  this._jquery = $(html)[0];
-
-    // 位置を移動する。
-  $(this._jquery).css({left : leftpos, top : toppos});
+  this._jquery = $(
+    '<div ' + 'class="' + this._name + '" ' + 'style="position:absolute;">' + 
+      '<h1 id="title">' + this._name + '</h1>' + 
+    '</div>'
+  )[0];
 	
 	// 親要素内のみドラッグ可能に設定する。
-	$(this._jquery).draggable({
-    // containment: 'parent',
-    // scroll: true		
-	});
+	$(this._jquery).draggable({/* containment: 'parent', scroll: true */});
 
 	/** 
    * JQuery オブジェクトを返す。
@@ -50,14 +50,13 @@ function NoteItemContainer ($i_xml)
    */
 	this.getJQueryObject = function () 
 	{
-    //console.log($(this._jquery)[0]);
 		return $(this._jquery);
 	}
 
 };(function() {
 
   // プロトタイプ
-  var _proto = NoteItem.prototype;
+  var _proto = NoteItemContainer.prototype;
   // メンバメソッド
 
   _proto.getName = function() {
@@ -67,11 +66,39 @@ function NoteItemContainer ($i_xml)
   _proto.setName = function(name) {
       this._name = name;
   };
+
+  /**
+   * Xmlを設定する
+   * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
+   */
+  _proto.setByXml = function($i_xml) 
+  {
+
+    this._xml = ($i_xml == undefined) ? null : $i_xml[0];
+    this._left = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('left');
+    this._top  = ($i_xml === undefined)  ? 'auto' : $i_xml.attr('top');
+    
+    this.update();    
+  }
+
+  /**
+   * 表示を更新する。
+   * @method update
+   */
+  _proto.update = function ()
+  {
+    $(this._jquery).css({left : this._left, top : this._top});    
+  }
+
 })();
 
-/// @summary 	付箋コンテナHTMLをXMLに保存する。
-/// @param 		$i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
-/// @return 	保存用XML
+/**
+ * 付箋コンテナHTMLをXMLに保存する。
+ * @method NoteItemContainer.HtmlToXml
+ * @static 
+ * @param 	$i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
+ * @return 	{String}保存用XML
+ */
 NoteItemContainer.HtmlToXml = function($i_jquery)
 {
 	var retVal = '';

@@ -7,6 +7,7 @@ function NoteItemComplaint()
   /// @param クラス名
   this._name = 'NoteItemComplaint';
 
+
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
   $(this._jquery).attr('name', this._name);

@@ -100,45 +100,36 @@ Note.LoadXml = function (i_xml)
 
 	$note.children().each(function(){
 
+		var container = null;
 	    switch($(this)[0].tagName)
 	    {
 	        case 'NoteItemContainerComplaint' : 
 	            // コンテナを追加し、カルテにコンテナを貼付ける。
-	            var containerComplaint = new NoteItemContainerComplaint($(this));
-	            $currentNote.append(containerComplaint.getJQueryObject());
-	            //console.log(containerComplaint.getJQueryObject());
+	            container = new NoteItemContainerComplaint();
 	            break;
 	        case 'NoteItemContainerDisease' : // 病名 
-	            var containerDisease = new NoteItemContainerDisease($(this));
-	            $currentNote.append(containerDisease.getJQueryObject());
-	            // console.log($(this));
-	            // console.log(containerDisease.getJQueryObject());
+	            container = new NoteItemContainerDisease();
 	            break;
 	        case 'NoteItemContainerMedicalCheck' :　// 検査
-	            var containerMedicalCheck = new NoteItemContainerMedicalCheck($(this));
-	            $currentNote.append(containerMedicalCheck.getJQueryObject());
+	            container = new NoteItemContainerMedicalCheck();
 	            break; 
 	        case 'NoteItemContainerPrescription' :  // 処方
-	            var containerPrescription = new NoteItemContainerPrescription($(this));
-	            $currentNote.append(containerPrescription.getJQueryObject());
+	            container = new NoteItemContainerPrescription();
 	            break;
 	        case 'NoteItemContainerOperation' :     // 手術
-	            var containerOperation = new NoteItemContainerOperation($(this));
-	            $currentNote.append(containerOperation.getJQueryObject());
+	            container = new NoteItemContainerOperation();
 	            break;
 	        case 'NoteItemContainerMemo' : // メモ
-	            var containerMemo = new NoteItemContainerMemo($(this));
-	            $currentNote.append(containerMemo.getJQueryObject());
+	            container = new NoteItemContainerMemo();
 	            break;
 	        case 'NoteItemContainerScheme' :　// シェーマ
-	            var containerScheme = new NoteItemContainerScheme($(this));
-	            $currentNote.append(containerScheme.getJQueryObject());
-	            // $(this).children().each(function(){                                
-	            //     // TODO : コーディング未済
-	            // });
+	            container = new NoteItemContainerScheme();
 	            break;
 	        default :
 	            break;
 	    }
+		container.setByXml($(this));
+		$currentNote.append(container.getJQueryObject());
+
 	});
 }

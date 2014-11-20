@@ -1,7 +1,8 @@
-//--------------------------------------------------//
-///@summary カルテ項目コンテナ（シェーマ）
-///@param $i_xml XML JQuery Object
-function NoteItemContainerScheme ($i_xml)
+/**
+ *カルテ項目コンテナ（シェーマ）
+ * @class NoteItemContainerScheme
+ */
+function NoteItemContainerScheme ()
 {
     NoteItemContainer.call(this, $i_xml);
 
@@ -19,19 +20,7 @@ function NoteItemContainerScheme ($i_xml)
     $(this._jquery).css('top', 30);  
     //--JQuery オブジェクト操作---//
 
-    // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。
-    if ($i_xml !== undefined)
-    {
-        if ($i_xml[0].tagName == $(this._jquery).attr('name'))
-        {
-            for (var index = 0; index < this._xml.children.length; index++)
-            {
-                var item = new NoteItemScheme();
-                item.setByXml($(this._xml.children[index])); 
-                $(this._jquery).append(item.getJQueryObject());
-            }
-        }
-    }
+
 };(function() {
     // 親クラス(Parent)のメソッドを継承
     var Super = function Super(){};
@@ -49,6 +38,25 @@ function NoteItemContainerScheme ($i_xml)
         return name + ' ' + this._name;
     };
 
-})();
+    /**
+     * Xmlを設定する
+     * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
+     */
+    _proto.setByXml = function($i_xml) 
+    {
+        _super.setByXml.call(this, $i_xml);
 
-//--------------------------------------------------//
+        if ($i_xml !== undefined)
+        {
+            if ($i_xml[0].tagName == $(this._jquery).attr('name'))
+            {
+                for (var index = 0; index < this._xml.children.length; index++)
+                {
+                    var item = new NoteItemScheme();
+                    item.setByXml($(this._xml.children[index])); 
+                    $(this._jquery).append(item.getJQueryObject());
+                }
+            }
+        }
+    }
+})();

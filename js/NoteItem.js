@@ -153,16 +153,20 @@ function NoteItem() {
     {
       // 特記事項が表示されている場合は、文字列を非表示とする。
       $(this).parent().find('#tags').show();
+      $(this).parent().find('[name=Orca]').hide();      
       $(this).parent().find('[name=Format]').hide();      
       $(this).parent().find('[name=attachments]').hide();      
+      $(this).parent().find('[name=schemes]').hide();      
       $(this).parent().find('[name=remarks]').hide();      
     }
     else
     {
       // 特記事項が非表示の場合は、文字列を表示する。
       $(this).parent().find('#tags').hide();
+      $(this).parent().find('[name=Orca]').show();
       $(this).parent().find('[name=Format]').show();
       $(this).parent().find('[name=attachments]').show();
+      $(this).parent().find('[name=schemes]').show();
       $(this).parent().find('[name=remarks]').show();
     }
   });
