@@ -1,6 +1,5 @@
 ///@summary スタッフ
 function Staff() {
-};(function() {
 
 	///@param クラス名
 	this._name = 'Staff';
@@ -24,10 +23,16 @@ function Staff() {
 	// $currentNote.attr('data-url', this._url);
 
 
+};(function() {
+
 	// プロトタイプ
 	var _proto = Staff.prototype;
 
-	/// @summary クラス名を取得する。
+	/**
+	 * クラス名（親クラス...現在のクラス）を取得する
+	 * @method getName
+	 * @return {String} クラス名（親クラス...現在のクラス）
+	 */
 	_proto.getName = function() {
 	  return this._name;
 	};

@@ -3,7 +3,6 @@
  * @class Note 
  */
 function Note() {
-};(function() {
 
 	/**
 	 * @param {String} クラス名
@@ -51,6 +50,8 @@ function Note() {
 	$currentNote.append(containerMemo.getJQueryObject());
 	// var containerScheme = new NoteItemContainerScheme();
 	// $currentNote.append(containerScheme.getJQueryObject());
+	
+};(function() {
 
 	// プロトタイプ
 	var _proto = Note.prototype;
