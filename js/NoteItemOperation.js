@@ -6,7 +6,9 @@ function NoteItemOperation()
 {
   NoteItem.call(this);
 
-  /// @param クラス名
+  /**
+   * @param {String} クラス名
+   */
   this._name = 'NoteItemOperation';
 
   //--JQuery オブジェクト操作---//
@@ -29,13 +31,13 @@ function NoteItemOperation()
    * @method setByXml
    * @param {String} i_xml XML文字列
    */
-  _proto.setByXml = function ($i_xml)
+  _proto.setByXml = function (i_xml)
   {
-    if ($i_xml !== undefined)
+    if (i_xml !== undefined)
     {
-      if ($i_xml[0].tagName == $(this._jquery).attr('name'))
+      if ($(i_xml)[0].tagName == $(this._jquery).attr('name'))
       {
-        _super.setByXml.call(this, $i_xml);
+        _super.setByXml.call(this, i_xml);
       }
     }
   }

@@ -6,11 +6,12 @@ function NoteItemMedicalCheck()
 {
   NoteItem.call(this);
 
-  /// @param
+  /**
+   * @param {String} クラス名
+   */
   this._name = 'NoteItemMedicalCheck';
 
   //--JQuery オブジェクト操作---//
-  // クラス属性を追加した。
   $(this._jquery).attr('name', this._name);
   $(this._jquery).addClass(this._name);
   //--JQuery オブジェクト操作---//
@@ -29,13 +30,13 @@ function NoteItemMedicalCheck()
    * @method setByXml
    * @param {String} i_xml XML文字列
    */
-  _proto.setByXml = function ($i_xml)
+  _proto.setByXml = function (i_xml)
   {
-    if ($i_xml !== undefined)
+    if (i_xml !== undefined)
     {
-      if ($i_xml[0].tagName == $(this._jquery).attr('name'))
+      if ($(i_xml)[0].tagName == $(this._jquery).attr('name'))
       {
-        _super.setByXml.call(this, $i_xml);
+        _super.setByXml.call(this, i_xml);
       }
     }
   }

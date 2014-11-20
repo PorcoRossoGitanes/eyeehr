@@ -6,21 +6,23 @@ function NoteItemContainerDisease ()
 {
     NoteItemContainer.call(this);
 
-    ///@param クラス名
+    /**
+     * @param {String} クラス名
+     */
     this._name = 'NoteItemContainerDisease';
 
     /**
-    * @param タイトル
-    */
+     * @param  {String}タイトル
+     */
     this._title = '病名';
 
     /**
-    * @param 左座標
+    * @param {String} 左座標
     */
     this._left = '350px';  
 
     /**
-    * @param 上座標
+    * @param {String} 上座標
     */
     this._top = '100px';  
 

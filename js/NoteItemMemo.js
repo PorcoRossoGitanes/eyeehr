@@ -6,11 +6,12 @@ function NoteItemMemo()
 {
   NoteItem.call(this);
 
-  /// @param クラス名
+  /**
+   * @param クラス名
+   */
   this._name = 'NoteItemMemo';
 
   //--JQuery オブジェクト操作---//
-  // クラス属性を追加した。
   $(this._jquery).attr('name', this._name);
   $(this._jquery).addClass(this._name);
   //--JQuery オブジェクト操作---//
@@ -25,7 +26,7 @@ function NoteItemMemo()
   // プロトタイプ
   var _proto = NoteItemMemo.prototype;
   
-  /** 
+   /** 
    * XMLを設定する。
    * @method setByXml
    * @param {String} i_xml XML文字列

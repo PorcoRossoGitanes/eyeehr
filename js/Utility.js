@@ -199,9 +199,7 @@ Utility.SaveXml = function (i_path, i_xml, callback)
       	error: function(XMLHttpRequest, textStatus, errorThrown) 
       	{
       		alert('ファイルの保存に失敗しました。: ' + XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message);
-        	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
-        	// $("#textStatus").html("textStatus : " + textStatus);
-        	// $("#errorThrown").html("errorThrown : " + errorThrown.message);
+        	console.log(i_xml);
      	},
 		// complete : function(data) 
 		// {

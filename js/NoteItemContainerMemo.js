@@ -6,21 +6,23 @@ function NoteItemContainerMemo ()
 {
     NoteItemContainer.call(this);
 
-    ///@param クラス名
+    /**
+     * @param {String} クラス名
+     */
     this._name = 'NoteItemContainerMemo';
 
     /**
-    * @param タイトル
+    * @param {String} タイトル
     */
     this._title = 'メモ';
 
     /**
-    * @param 左座標
+    * @param {String} 左座標
     */
     this._left = '800px';  
 
     /**
-    * @param 上座標
+    * @param {String} 上座標
     */
     this._top = '170px';  
 

@@ -7,22 +7,22 @@ function NoteItemContainerMedicalCheck ()
     NoteItemContainer.call(this);
 
     /**
-     * @param クラス名
+     * @param {String} クラス名
      */
     this._name = 'NoteItemContainerMedicalCheck';
 
     /**
-     * @param タイトル
+     * @param {String} タイトル
      */
     this._title = '検査';
 
     /**
-     * @param 左座標
+     * @param {String} 左座標
      */
     this._left = '350px';  
     
     /**
-     * @param 上座標
+     * @param {String} 上座標
      */
     this._top = '170px';  
 

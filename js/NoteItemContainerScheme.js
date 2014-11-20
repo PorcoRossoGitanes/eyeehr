@@ -6,10 +6,14 @@ function NoteItemContainerScheme ()
 {
     NoteItemContainer.call(this, $i_xml);
 
-    ///@param クラス名
+    /**
+     * @param {String} クラス名
+     */
     this._name = 'NoteItemContainerScheme';
 
-    ///@param タイトル
+    /**
+     * @param {String} タイトル
+     */
     this._title = 'シェーマ';
 
     //--JQuery オブジェクト操作---//
