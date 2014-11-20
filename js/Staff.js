@@ -31,11 +31,6 @@ function Staff() {
 	_proto.getName = function() {
 	  return this._name;
 	};
-
-	/// @summary クラス名を設定する。
-	_proto.setName = function(name) {
-	  this._name = name;
-	};
 })();
 
 Staff.LoadXml = function ()

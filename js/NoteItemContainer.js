@@ -67,9 +67,6 @@ function NoteItemContainer ()
       return this._name;
   };
 
-  _proto.setName = function(name) {
-      this._name = name;
-  };
 
   /**
    * Xmlを設定する

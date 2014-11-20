@@ -197,10 +197,6 @@ function NoteItem() {
       return this._name;
   };
 
-  _proto.setName = function(name) {
-      this._name = name;
-  };
-
   ///@summary 付箋をカルテ上に登録する
   ///@param 貼付先
   _proto.appendTo = function(i_to)

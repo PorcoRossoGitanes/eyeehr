@@ -72,14 +72,6 @@ function Stamp() {
 		return this._name;
 	};
 
-	/**
-	 * クラス名を設定する。
-	 * @param {String} name クラス名
-	 */
-	_proto.setName = function(name) {
-		this._name = name;
-	};
-
 	/** 
 	 * XMLを設定する。
 	 * @param {String} i_xml XML文字列
