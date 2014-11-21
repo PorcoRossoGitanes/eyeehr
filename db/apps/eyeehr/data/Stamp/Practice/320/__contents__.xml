@@ -1,9 +1,0 @@
-<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eyeehr/data/Stamp/Practice/320" owner="admin" group="dba" mode="755" created="2014-11-12T04:14:39+09:00" version="1">
-    <acl entries="0" version="1"/>
-    <resource type="XMLResource" name="Practice-130003510.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:28+09:00" modified="2014-11-12T05:35:28+09:00" filename="Practice-130003510.xml" mimetype="application/xml">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="XMLResource" name="Practice-130003670.xml" owner="admin" group="dba" mode="644" created="2014-11-12T05:35:28+09:00" modified="2014-11-12T05:35:28+09:00" filename="Practice-130003670.xml" mimetype="application/xml">
-        <acl entries="0" version="1"/>
-    </resource>
-</collection>
