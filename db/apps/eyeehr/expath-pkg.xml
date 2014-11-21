@@ -1,1 +1,0 @@
-<package xmlns="http://expath.org/ns/pkg" name="192.168.33.10:8080/eyeehr" abbrev="eyeehr" version="0.1" spec="1.0"><title>eyeehr</title><dependency package="http://exist-db.org/apps/shared"/></package>
