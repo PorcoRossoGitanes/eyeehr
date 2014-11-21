@@ -71,9 +71,9 @@ function NoteItem() {
     '<div name="Title" style="display:block"></div>' + <!--入力フォーム（タイトル）-->
     '<div name="Orca" style="display:block"></div>' + <!--入力フォーム（ORCA連携用定型フォーム）-->
     '<div name="Format"></div>' +                    <!--入力フォーム（定型フォーム）-->
-    '<div name="attachments"></div>' +                <!--ファイル添付用--> 
-    '<div name="schemes"></div>' +                    <!--シェーマ添付用--> 
-    '<div name="remarks"></div>' +                    <!--備考入力用--> 
+    '<div name="Attachment"></div>' +                <!--ファイル添付用--> 
+    '<div name="Scheme"></div>' +                    <!--シェーマ添付用--> 
+    '<div name="Remark"></div>' +                    <!--備考入力用--> 
     '</div>'
   )[0];
 
@@ -119,7 +119,7 @@ function NoteItem() {
     }
     else 
     {
-      NoteItem.AttachFile($(this).parent().find('[name=attachments]'), url);
+      NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url);
     }
   });
 
@@ -156,21 +156,21 @@ function NoteItem() {
     {
       // 特記事項が表示されている場合は、文字列を非表示とする。
       $(this).parent().find('#tags').show();
-      $(this).parent().find('[name=Orca]').hide();      
-      $(this).parent().find('[name=Format]').hide();      
-      $(this).parent().find('[name=attachments]').hide();      
-      $(this).parent().find('[name=schemes]').hide();      
-      $(this).parent().find('[name=remarks]').hide();      
+      $(this).parent().find('[name="Orca"]').hide();      
+      $(this).parent().find('[name="Format"]').hide();      
+      $(this).parent().find('[name="Attachment"]').hide();      
+      $(this).parent().find('[name="Scheme"]').hide();      
+      $(this).parent().find('[name="Remark"]').hide();      
     }
     else
     {
       // 特記事項が非表示の場合は、文字列を表示する。
       $(this).parent().find('#tags').hide();
-      $(this).parent().find('[name=Orca]').show();
-      $(this).parent().find('[name=Format]').show();
-      $(this).parent().find('[name=attachments]').show();
-      $(this).parent().find('[name=schemes]').show();
-      $(this).parent().find('[name=remarks]').show();
+      $(this).parent().find('[name="Orca"]').show();
+      $(this).parent().find('[name="Format"]').show();
+      $(this).parent().find('[name="Attachment"]').show();
+      $(this).parent().find('[name="Scheme"]').show();
+      $(this).parent().find('[name="Remark"]').show();
     }
   });
 
@@ -181,7 +181,7 @@ function NoteItem() {
   
   // @summary 付箋をダブルクリック時に入力欄を表示する。
   $(this._jquery).dblclick(function(){
-    var memo = $(this).find('[name=remarks]').html();
+    var memo = $(this).find('[name="Remark"]').html();
     area.instanceById('area1').setContent(memo);
     $('input#selectedNoteItem').val($(this).attr('id'));
   });
@@ -197,8 +197,10 @@ function NoteItem() {
       return this._name;
   };
 
-  ///@summary 付箋をカルテ上に登録する
-  ///@param 貼付先
+  /**
+   * 付箋をカルテ上に登録する
+   * @param i_to 貼付先
+   */
   _proto.appendTo = function(i_to)
   {
     // 付箋をカルテ欄に登録する。
@@ -206,15 +208,19 @@ function NoteItem() {
     $(this._jquery).dblclick();
   }
 
-  ///@summary JQueryObjectを出力する
-  ///@return JQueryObject
+  /**
+   * JQueryObjectを出力する
+   * @return {JQuery Object} JQuery Object
+   */
   _proto.getJQueryObject = function () 
   {
     return $(this._jquery);
   }
 
-  ///@summary XMLを設定する。
-  ///@param $i_xml XMLオブジェクト
+  /**
+   * XMLを設定する。
+   * @param $i_xml XMLオブジェクト
+   */
   _proto.setByXml = function ($i_xml)
   {
     if ($i_xml !== undefined)
@@ -224,13 +230,13 @@ function NoteItem() {
       // ORCA情報部分を追加する。
       this.setOrca(($i_xml.children('Orca'))[0]);
       // TODO : 定型フォーマット部分を追加する。
-      //$(this._jquery).find('[name=Format]').html($i_xml.children('Format').html());
+      //$(this._jquery).find('[name="Format"]').html($i_xml.children('Format').html());
       // 添付ファイルを追加する。
-      this.setAttachment($i_xml.children('attachments')[0]);
+      this.setAttachment($i_xml.children('Attachment')[0]);
       // シェーマ部分を追加する。
-      this.setScheme($i_xml.children('schemes')[0]);
+      this.setScheme($i_xml.children('Scheme')[0]);
       // 備考部分を追加する。
-      this.setRemark($i_xml.children('remarks')[0]);
+      this.setRemark($i_xml.children('Remark')[0]);
     }
   }
 
@@ -303,7 +309,7 @@ function NoteItem() {
    */
   _proto.setAttachment = function (i_xml)
   {
-    $(this._jquery).find('[name=attachments]').html(Utility.InnerXml($(i_xml)));
+    $(this._jquery).find('[name="Attachment"]').html(Utility.InnerXml($(i_xml)));
   }
 
   /**
@@ -312,7 +318,7 @@ function NoteItem() {
    */
   _proto.setScheme = function (i_xml)
   {
-    $(this._jquery).find('[name=schemes]').html(Utility.InnerXml($(i_xml)));
+    $(this._jquery).find('[name="Scheme"]').html(Utility.InnerXml($(i_xml)));
   }
 
   /**
@@ -321,14 +327,16 @@ function NoteItem() {
    */
   _proto.setRemark = function (i_xml)
   {
-    $(this._jquery).find('[name=remarks]').html(Utility.InnerXml($(i_xml)));
+    $(this._jquery).find('[name="Remark"]').html(Utility.InnerXml($(i_xml)));
   }
 })();
 
 
-/// @summary  付箋コンテナHTMLをXMLに保存する。
-/// @param    $i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
-/// @return   保存用XML
+/**
+ * 付箋コンテナHTMLをXMLに保存する。
+ * @param    $i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
+ * @return   保存用XML
+ */
 NoteItem.HtmlToXml = function($i_jquery)
 {
   var retVal = '';
@@ -369,33 +377,35 @@ NoteItem.HtmlToXml = function($i_jquery)
   retVal += '</' + $format.attr('name') + '>';
 
   // □画像添付部をXMLに変換する。
-  $attachments = $i_jquery.children('[name=attachments]');
-  retVal += '<' + $attachments.attr('name') + '>';
-  $attachments.find('IMG').each(function(){
+  $Attachment = $i_jquery.children('[name="Attachment"]');
+  retVal += '<' + $Attachment.attr('name') + '>';
+  $Attachment.find('IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml($(this));
   });
-  retVal += '</' + $attachments.attr('name') + '>';
+  retVal += '</' + $Attachment.attr('name') + '>';
 
   // □シェーマ添付部をXMLに変換する。
-  $schemes = $i_jquery.children('[name=schemes]');
-  retVal += '<' + $schemes.attr('name') + '>';
-  $schemes.find('IMG').each(function(){
+  $Scheme = $i_jquery.children('[name="Scheme"]');
+  retVal += '<' + $Scheme.attr('name') + '>';
+  $Scheme.find('IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml($(this)); 
   });
-  retVal += '</' + $schemes.attr('name') + '>';
+  retVal += '</' + $Scheme.attr('name') + '>';
 
   // □備考をXMLに変換する。
-  $remarks = $i_jquery.children('[name=remarks]');
-  retVal += '<' + $remarks.attr('name') + '>';
-  retVal += Utility.HtmlToXhtml ($remarks.html());
-  retVal += '</' + $remarks.attr('name') + '>';
+  $Remark = $i_jquery.children('[name="Remark"]');
+  retVal += '<' + $Remark.attr('name') + '>';
+  retVal += Utility.HtmlToXhtml ($Remark.html());
+  retVal += '</' + $Remark.attr('name') + '>';
   
   retVal += '</' + tag + '>';
 
   return retVal;
 }
 
-// @summary 文字列を変更する。
+/**
+ * 文字列を変更する。
+ */
 NoteItem.ChangeVal = function($jquery, i_memo)
 {
   $memo = $('<memo>' + i_memo + '</memo>');
@@ -410,18 +420,19 @@ NoteItem.ChangeVal = function($jquery, i_memo)
   }
   
   $jquery.find('#tags').html(tags);
-  $jquery.find('[name=remarks]').html(i_memo);
+  $jquery.find('[name="Remark]').html(i_memo);
 }
 
-/// @summary ファイルを添付する
-/// @param $i_attachements 添付部 <div name="attachements">
-/// @param i_url ファイルURL
-NoteItem.AttachFile = function ($i_attachments, i_url)
+/**
+ * ファイルを添付する
+ * @param $i_attachements 添付部 <div name="Attachment" />
+ * @param i_url ファイルURL
+ */
+NoteItem.AttachFile = function ($i_attachment, i_url)
 {
-  //alert('NoteItem.AttachFile ' + i_url);
   // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
   $img = $('<a href="' + i_url + '" target="_blank"><img class="attachment" src="' + i_url + '" /></a>');
-  $i_attachments.append($img);   
+  $i_attachment.append($img);   
 
   // 画像が右クリックされたら、コンテキストメニューを表示する。   
   $img.bind("contextmenu", function(event){
@@ -443,10 +454,4 @@ NoteItem.AttachFile = function ($i_attachments, i_url)
     return false;
   });
 }
-
-// /// @summary 公式メソッド
-// NoteItem.prototype.publicMethod = function() {
-//   console.log("NoteItem's publicMethod");
-// };
-
 

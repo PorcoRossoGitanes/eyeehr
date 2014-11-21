@@ -5780,12 +5780,12 @@ this.save = function(opts, callback) {
 					// 親画面にシェーマ画像のタグを返却する。
 				 	$noteItem = window.opener.$('#' + noteItemId); console.log($noteItem);
 			 		// シェーマ領域を取得する。
-				 	$schemes = $noteItem.children('[name="schemes"]'); console.log($schemes);
+				 	$scheme = $noteItem.children('[name="Scheme"]'); console.log($scheme);
 				 	// 元画像を取得し、一度削除、再度追加する。
-				 	$imgs = $schemes.children("img[src^='" + url + "']");
+				 	$imgs = $scheme.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
 				 	$img = $('<img class="scheme" src="' + url + '?' + (new Date().getTime()) + '"/>');
-				 	$schemes.append($img);
+				 	$scheme.append($img);
 
 				 	// 完了メッセージを表示する。
 				 	alert('画像の保存が完了しました。');
@@ -5799,9 +5799,6 @@ this.save = function(opts, callback) {
 	      		alert('画像の保存に失敗しました。: ' + 
 	      			XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message
 	      		);
-            	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
-            	// $("#textStatus").html("textStatus : " + textStatus);
-            	// $("#errorThrown").html("errorThrown : " + errorThrown.message);
          	},
 			// complete : function(data) 
 			// {
