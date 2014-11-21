@@ -7,7 +7,7 @@ function NoteItemComplaint()
   NoteItem.call(this);
 
   /**
-   * @param クラス名
+   * @param {String} クラス名
    */
   this._name = 'NoteItemComplaint';
 

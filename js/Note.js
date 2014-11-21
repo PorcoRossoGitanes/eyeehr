@@ -25,7 +25,7 @@ function Note() {
     this._url = this._collection + this._filename;
 
     /** 
-     * @param カルテ
+     * @param {JQuery Object}カルテ
      */
 	$currentNote = $('[name="' + this._name + '"]');
 
