@@ -3,7 +3,7 @@
   	"url": "https://github.com/shokokb/eyeehr.git"
   },
   "run_list": [
-  	"recipe[hello]"
+  	"recipe[eyeehr]"
   ],
   "automatic": {
     "ipaddress": "eyeehr"

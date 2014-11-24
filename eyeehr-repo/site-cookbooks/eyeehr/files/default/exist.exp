@@ -53,11 +53,11 @@ send \"1\n\"
 # spawnジョブを通常の通信にする
 interact
 "
-## eXist-DBを開始する。
-sudo /usr/local/lib/exist/bin/startup.sh
+### eXist-DBを開始する。（立ち上がったままになる。）
+#sudo /usr/local/lib/exist/bin/startup.sh
 
-## デーモンを登録する。
+### デーモンを登録する。
 ## デフォルトで常時起動に設定されている。
-sudo /usr/local/lib/exist/tools/wrapper/bin/exist.sh install
-## alternativeも登録する。
-sudo ln -s /usr/local/lib/exist/tools/wrapper/bin/exist.sh /etc/init.d/exist
+#sudo /usr/local/lib/exist/tools/wrapper/bin/exist.sh install
+### alternativeも登録する。
+#sudo ln -s /usr/local/lib/exist/tools/wrapper/bin/exist.sh /etc/init.d/exist

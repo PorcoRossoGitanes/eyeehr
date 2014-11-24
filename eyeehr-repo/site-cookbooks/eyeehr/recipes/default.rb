@@ -11,14 +11,6 @@
 log "EyeEHR Server - Update OS"
 
 #----------------------------------
-## vim をインストールする。
-# install : vim 
-#package "vim-enhanced" do 
-#	action :install 
-#end
-#----------------------------------
-
-#----------------------------------
 # yum (fastestmirrorでダウンロード) の インストール＆アップデートを実行する。
 yum_package "yum-fastestmirror" do
   action :install
@@ -78,6 +70,27 @@ log "EyeEHR Server - Install Perl"
 	package p do 
 		action :install
 	end
+end
+##XML-RPCに必要なパッケージをインストールする。
+%w{ 
+	expat-devel
+	cpan
+}.each do |p|
+	package p do 
+		action :install
+	end
+end
+##CPANモジュールをインストールする。
+%w{
+	XML::Parser
+	RPC::XML
+}.each do |mod|
+  cpan_client "#{mod}" do
+    action 'install'
+    install_type 'cpan_module'
+    user 'root'
+    group 'root'
+  end
 end
 #----------------------------------
 
@@ -227,6 +240,28 @@ bash "exist.exp" do
   EOH
 end
 
+## デーモンを登録する。
+bash "eXist-db deamon" do
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+  /usr/local/lib/exist/tools/wrapper/bin/exist.sh install
+  EOH
+end
+
+## alternativeを設定する。
+bash "eXist-db alternative" do
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+  ln -s /usr/local/lib/exist/tools/wrapper/bin/exist.sh /etc/init.d/exist
+  EOH
+end
+
+# eXistを常時起動する。
+service "eXist-db" do 
+	action [:start, :enable]
+end 
 #----------------------------------
 # 再起動する。
 #bash "reboot" do
@@ -257,5 +292,12 @@ bash "git clone" do
   sudo echo git clone https://github.com/shokokb/eyeehr.git >> result.log
   EOH
 end
+
 #----------------------------------
 # バックアップ設定
+cookbook_file "backup.sh" do
+	# eXist JAR を サーバーに移行する。("cookbook_dir/files/default/" からの相対パスを指定する。)
+	source "backup.sh"
+	# eXist JAR の帆損先を指定する。
+	path "/tmp/exist.sh"
+end
