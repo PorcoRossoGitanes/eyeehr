@@ -1,20 +1,21 @@
 /**
  * カルテ項目コンテナ（シェーマ）
  * @class NoteItemContainerScheme
+ * @constructor
  */
-function NoteItemContainerScheme ()
-{
+ function NoteItemContainerScheme ()
+ {
     NoteItemContainer.call(this, $i_xml);
 
     /**
      * @param {String} クラス名
      */
-    this._name = 'NoteItemContainerScheme';
+     this._name = 'NoteItemContainerScheme';
 
     /**
      * @param {String} タイトル
      */
-    this._title = 'シェーマ';
+     this._title = 'シェーマ';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).addClass(this._name);
@@ -46,8 +47,8 @@ function NoteItemContainerScheme ()
      * Xmlを設定する
      * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
      */
-    _proto.setByXml = function($i_xml) 
-    {
+     _proto.setByXml = function($i_xml) 
+     {
         _super.setByXml.call(this, $i_xml);
 
         if ($i_xml !== undefined)

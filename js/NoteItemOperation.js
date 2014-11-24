@@ -1,15 +1,16 @@
 /**
  * 手術コンストラクタ
  * @class NoteItemOperation
+ * @constructor
  */
-function NoteItemOperation() 
-{
+ function NoteItemOperation() 
+ {
   NoteItem.call(this);
 
   /**
    * @param {String} クラス名
    */
-  this._name = 'NoteItemOperation';
+   this._name = 'NoteItemOperation';
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
@@ -31,8 +32,8 @@ function NoteItemOperation()
    * @method setByXml
    * @param {String} i_xml XML文字列
    */
-  _proto.setByXml = function (i_xml)
-  {
+   _proto.setByXml = function (i_xml)
+   {
     if (i_xml !== undefined)
     {
       if ($(i_xml)[0].tagName == $(this._jquery).attr('name'))
@@ -47,10 +48,10 @@ function NoteItemOperation()
    * @method getName
    * @return {String} クラス名（親クラス...現在のクラス）
    */
-  _proto.getName = function() 
-  {
-      var name = _super.getName.call(this);
-      return name + ' ' + this._name;
+   _proto.getName = function() 
+   {
+    var name = _super.getName.call(this);
+    return name + ' ' + this._name;
   };
 
 })();

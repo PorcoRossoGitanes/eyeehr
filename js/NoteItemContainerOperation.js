@@ -1,15 +1,16 @@
 /**
  * カルテ項目コンテナ（手術）
  * @class NoteItemContainerOperation
+ * @constructor
  */ 
-function NoteItemContainerOperation ()
-{
+ function NoteItemContainerOperation ()
+ {
     NoteItemContainer.call(this);
 
     /**
      * @param {String} クラス名
      */
-    this._name = 'NoteItemContainerOperation';
+     this._name = 'NoteItemContainerOperation';
 
     /**
     * @param {String} タイトル
@@ -48,8 +49,8 @@ function NoteItemContainerOperation ()
      * @method getName
      * @return クラス名（親クラス...現在のクラス）
      */
-    _proto.getName = function() 
-    {
+     _proto.getName = function() 
+     {
         var name = _super.getName.call(this);
         return name + ' ' + this._name;
     };
@@ -59,8 +60,8 @@ function NoteItemContainerOperation ()
      * @method setByXml
      * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
      */
-    _proto.setByXml = function($i_xml) 
-    {
+     _proto.setByXml = function($i_xml) 
+     {
         _super.setByXml.call(this, $i_xml);
 
         // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。

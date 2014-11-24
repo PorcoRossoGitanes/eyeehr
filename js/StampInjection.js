@@ -1,22 +1,24 @@
 /**
  * 注射スタンプクラス
  * @class StampInjection
+ * @constructor
+ * @extends Stamp
  */
-function StampInjection() 
-{
+ function StampInjection() 
+ {
   // 親クラス(Parent)のメンバ変数を継承
   Stamp.call(this);
 
   /**
    * @param {String} クラス名
    */
-  this._name = 'StampInjection';
+   this._name = 'StampInjection';
 
   /**
    * @param {String} XML
    * @static
    */
-  arguments.callee.Xml = ''; 
+   arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
@@ -49,8 +51,8 @@ function StampInjection()
      * XMLを設定する。
      * @param {String} i_xml XMLオブジェクト
      */
-    _proto.setByXml = function (i_xml)
-    {
+     _proto.setByXml = function (i_xml)
+     {
       if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
     }
 
@@ -58,8 +60,8 @@ function StampInjection()
    * クラス名を取得する。
    * @method getName
    */
-  _proto.getName = function() 
-  {
+   _proto.getName = function() 
+   {
     var name = _super.getName.call(this);
     return name + ' ' + this._name;
   };

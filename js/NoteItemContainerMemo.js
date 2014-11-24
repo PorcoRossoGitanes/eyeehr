@@ -1,15 +1,16 @@
 /**
  * カルテ項目コンテナ（メモ）
  * @class NoteItemContainerMemo 
+ * @constructor
  */
-function NoteItemContainerMemo ()
-{
+ function NoteItemContainerMemo ()
+ {
     NoteItemContainer.call(this);
 
     /**
      * @param {String} クラス名
      */
-    this._name = 'NoteItemContainerMemo';
+     this._name = 'NoteItemContainerMemo';
 
     /**
     * @param {String} タイトル
@@ -48,8 +49,8 @@ function NoteItemContainerMemo ()
      * @method getName
      * @return {String} クラス名（親クラス...現在のクラス）
      */   
-    _proto.getName = function() 
-    {
+     _proto.getName = function() 
+     {
         var name = _super.getName.call(this);
         return name + ' ' + this._name;
     };
@@ -58,8 +59,8 @@ function NoteItemContainerMemo ()
      * Xmlを設定する
      * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
      */
-    _proto.setByXml = function($i_xml) 
-    {
+     _proto.setByXml = function($i_xml) 
+     {
         _super.setByXml.call(this, $i_xml);
 
         if ($i_xml !== undefined)

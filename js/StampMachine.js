@@ -1,35 +1,36 @@
 /**
  * 特殊機材スタンプクラス
  * @class StampMachine
+ * @constructor
+ * @extends Stamp
  */
-function StampMachine() 
-{
+ function StampMachine() 
+ {
   // 親クラス(Parent)のメンバ変数を継承
   Stamp.call(this);
 
   /**
-   * @param {String}クラス名
+   * クラス名
+   * @type {String}
    */
-  this._name = 'StampMachine';
+   this._name = 'StampMachine';
 
   /**
-   * @param {String} XML
+   * XML
    * @static
+   * @type {String}
    */
-  arguments.callee.Xml = ''; 
+   arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
-  // クラス属性を追加した。
   $(this._jquery).attr('name', this._name);
   $(this._jquery).addClass(this._name);  
   //--JQuery オブジェクト操作---//
 
-  $(this._jquery).click(function () {
-    // TODO : 手術ではなく処置として登録する。
+  $(this._jquery).click(function () 
+  {
     var item = new NoteItemOperation(); 
-    
     item.setTitle($(this).attr('title'));
-    
     var xml = $(this).data('xml');
     item.setOrca($(xml).children('Orca')[0]);
     
@@ -47,10 +48,10 @@ function StampMachine()
 
   /**
    * XMLを設定する。
-   * @param {String} i_xml XMLオブジェクト
+   * @param {String/Object} i_xml XML
    */
-  _proto.setByXml = function (i_xml)
-  {
+   _proto.setByXml = function (i_xml)
+   {
     if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
   }
 
@@ -58,10 +59,10 @@ function StampMachine()
    * クラス名を取得する。
    * @method getName
    */
-  _proto.getName = function() 
-  {
-      var name = _super.getName.call(this);
-      return name + ' ' + this._name;
+   _proto.getName = function() 
+   {
+    var name = _super.getName.call(this);
+    return name + ' ' + this._name;
   };
 })();
 

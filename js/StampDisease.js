@@ -1,21 +1,23 @@
 /**
  * 病名（所見）スタンプクラス
  * @class StampDisease
+ * @constructor
+ * @extends Stamp
  */
-function StampDisease() 
-{
+ function StampDisease() 
+ {
   Stamp.call(this);
 
   /**
    * @param {String}クラス名
    */
-  this._name = 'StampDisease';
+   this._name = 'StampDisease';
 
   /**
    * @param {String} XML
    * @static
    */
-  arguments.callee.Xml = ''; 
+   arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
   $(this._jquery).attr('name', this._name);
@@ -43,8 +45,8 @@ function StampDisease()
      * XMLを設定する。
      * @param {String} i_xml XMLオブジェクト
      */
-    _proto.setByXml = function (i_xml)
-    {
+     _proto.setByXml = function (i_xml)
+     {
       if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
     }
 
@@ -52,10 +54,10 @@ function StampDisease()
      * クラス名（親クラス...現在のクラス）を取得する
      * @return クラス名（親クラス...現在のクラス）
      */
-    _proto.getName = function() 
-    {
-        var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+     _proto.getName = function() 
+     {
+      var name = _super.getName.call(this);
+      return name + ' ' + this._name;
     };
-})();
+  })();
 

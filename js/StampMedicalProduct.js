@@ -1,22 +1,24 @@
 /**
  * 医薬品スタンプクラス
  * @class StampMedicalProduct
+ * @constructor
+ * @extends Stamp
  */
-function StampMedicalProduct() 
-{
+ function StampMedicalProduct() 
+ {
   // 親クラス(Parent)のメンバ変数を継承
   Stamp.call(this);
 
   /**
    * @param {String}クラス名
    */
-  this._name = 'StampMedicalProduct';
+   this._name = 'StampMedicalProduct';
 
   /**
    * @param {String} XML
    * @static
    */
-  arguments.callee.Xml = ''; 
+   arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
@@ -27,7 +29,7 @@ function StampMedicalProduct()
   /**
    * クリック時に、NoteItemをカルテに貼付ける。
    */
-  $(this._jquery).click(function () {
+   $(this._jquery).click(function () {
     
     var item = new NoteItemPrescription();
     
@@ -39,7 +41,7 @@ function StampMedicalProduct()
     item.appendTo('[name=NoteItemContainerPrescription]');  
   });
 
-};(function() {
+ };(function() {
 
   // 継承設定
   var Super = function Super(){};
@@ -52,8 +54,8 @@ function StampMedicalProduct()
    * XMLを設定する。
    * @param {String} i_xml XMLオブジェクト
    */
-  _proto.setByXml = function (i_xml)
-  {
+   _proto.setByXml = function (i_xml)
+   {
     if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
   }
 
@@ -61,10 +63,10 @@ function StampMedicalProduct()
    * クラス名を取得する。
    * @method getName
    */
-  _proto.getName = function() 
-  {
-      var name = _super.getName.call(this);
-      return name + ' ' + this._name;
+   _proto.getName = function() 
+   {
+    var name = _super.getName.call(this);
+    return name + ' ' + this._name;
   };
 })();
 

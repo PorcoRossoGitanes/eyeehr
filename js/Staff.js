@@ -1,8 +1,9 @@
 /**
  * スタッフ
  * @class Staff
+ * @constructor
  */
-function Staff() {
+ function Staff() {
 
 	///@param クラス名
 	this._name = 'Staff';
@@ -17,7 +18,7 @@ function Staff() {
     this._url = this._collection + this._filename;
 
     ///@param カルテ
-	$currentStaff = $('<div name="' + this._name + '"></div>');
+    $currentStaff = $('<div name="' + this._name + '"></div>');
 
 	// // カルテを空にする。
 	// $currentNote.empty();
@@ -35,17 +36,18 @@ function Staff() {
 	 * @method getName
 	 * @return {String} クラス名（親クラス...現在のクラス）
 	 */
-	_proto.getName = function() {
-	  return this._name;
-	};
-})();
+	 _proto.getName = function() {
+	 	return this._name;
+	 };
+	})();
 
 /**
  * 担当者情報(XML)を読み込む
+ * @static
  * @method LoadXml 
  */
-Staff.LoadXml = function ()
-{
-	var url = '/db/apps/eyeehr/data/staff/' + 'staff-1.xml';
-	Utility.LoadXml('REST', url, '', function(xml){console.log(($(xml).children())[0]/*$xml.find('staff')*/);})
-}
+ Staff.LoadXml = function ()
+ {
+ 	var url = '/db/apps/eyeehr/data/staff/' + 'staff-1.xml';
+ 	Utility.LoadXml('REST', url, '', function(xml){console.log(($(xml).children())[0]/*$xml.find('staff')*/);})
+ }

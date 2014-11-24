@@ -1,15 +1,16 @@
 /**
  * メモコンストラクタ
  * @class NoteItemMemo
+ * @constructor
  */
-function NoteItemMemo() 
-{
+ function NoteItemMemo() 
+ {
   NoteItem.call(this);
 
   /**
    * @param クラス名
    */
-  this._name = 'NoteItemMemo';
+   this._name = 'NoteItemMemo';
 
   //--JQuery オブジェクト操作---//
   $(this._jquery).attr('name', this._name);
@@ -17,7 +18,7 @@ function NoteItemMemo()
   //--JQuery オブジェクト操作---//
 
 };(function() {
-    
+  
   // 継承設定
   var Super = function Super(){};
   Super.prototype = NoteItem.prototype;
@@ -31,8 +32,8 @@ function NoteItemMemo()
    * @method setByXml
    * @param {String} i_xml XML文字列
    */
-  _proto.setByXml = function (i_xml)
-  {
+   _proto.setByXml = function (i_xml)
+   {
     if (i_xml !== undefined)
     {
       if ($(i_xml)[0].tagName == $(this._jquery).attr('name'))
@@ -47,10 +48,10 @@ function NoteItemMemo()
    * @method getName
    * @return {String} クラス名（親クラス...現在のクラス）
    */
-  _proto.getName = function() 
-  {
-      var name = _super.getName.call(this);
-      return name + ' ' + this._name;
+   _proto.getName = function() 
+   {
+    var name = _super.getName.call(this);
+    return name + ' ' + this._name;
   };
 
 })();

@@ -1,22 +1,24 @@
 /**
  * 検査スタンプクラス
  * @class StampMedicalCheck
+ * @constructor
+ * @extends Stamp
  */
-function StampMedicalCheck() 
-{
+ function StampMedicalCheck() 
+ {
   // 親クラス(Parent)のメンバ変数を継承
   Stamp.call(this);
   
   /**
    * @param {String}クラス名
    */
-  this._name = 'StampMedicalCheck';
+   this._name = 'StampMedicalCheck';
 
   /**
    * @param {String} XML
    * @static
    */
-  arguments.callee.Xml = ''; 
+   arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
   // クラス属性を追加した。
@@ -49,8 +51,8 @@ function StampMedicalCheck()
    * XMLを設定する。
    * @param {String} i_xml XMLオブジェクト
    */
-  _proto.setByXml = function (i_xml)
-  {
+   _proto.setByXml = function (i_xml)
+   {
     if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
   }
 
@@ -58,10 +60,10 @@ function StampMedicalCheck()
    * クラス名を取得する。
    * @method getName
    */
-  _proto.getName = function() 
-  {
-      var name = _super.getName.call(this);
-      return name + ' ' + this._name;
+   _proto.getName = function() 
+   {
+    var name = _super.getName.call(this);
+    return name + ' ' + this._name;
   };
 })();
 

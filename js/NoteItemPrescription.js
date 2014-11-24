@@ -1,15 +1,16 @@
 /**
  * ノートアイテム　処方
  * @class NoteItemPrescription
+ * @constructor
  */
-function NoteItemPrescription() 
-{
+ function NoteItemPrescription() 
+ {
   NoteItem.call(this);  // 入力文字列
 
   /**
    * @param {String} クラス名
    */
-  this._name = 'NoteItemPrescription';
+   this._name = 'NoteItemPrescription';
 
   //--JQuery オブジェクト操作---//
   $(this._jquery).attr('name', this._name);
@@ -30,8 +31,8 @@ function NoteItemPrescription()
    * @method setByXml
    * @param {String} i_xml XML文字列
    */
-  _proto.setByXml = function (i_xml)
-  {
+   _proto.setByXml = function (i_xml)
+   {
     if (i_xml !== undefined)
     {
       if ($(i_xml)[0].tagName == $(this._jquery).attr('name'))
@@ -46,10 +47,10 @@ function NoteItemPrescription()
    * @method getName
    * @return {String} クラス名（親クラス...現在のクラス）
    */
-  _proto.getName = function() 
-  {
-      var name = _super.getName.call(this);
-      return name + ' ' + this._name;
+   _proto.getName = function() 
+   {
+    var name = _super.getName.call(this);
+    return name + ' ' + this._name;
   };
 
 })();

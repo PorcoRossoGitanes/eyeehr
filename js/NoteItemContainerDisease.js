@@ -1,20 +1,21 @@
 /**
  * カルテ項目コンテナ（所見（病名））
  * @class NoteItemContainerDisease
+ * @constructor
  */
-function NoteItemContainerDisease ()
-{
+ function NoteItemContainerDisease ()
+ {
     NoteItemContainer.call(this);
 
     /**
      * @param {String} クラス名
      */
-    this._name = 'NoteItemContainerDisease';
+     this._name = 'NoteItemContainerDisease';
 
     /**
      * @param  {String}タイトル
      */
-    this._title = '病名';
+     this._title = '病名';
 
     /**
     * @param {String} 左座標
@@ -48,8 +49,8 @@ function NoteItemContainerDisease ()
      * @method getName
      * @return {String} クラス名（親クラス...現在のクラス）
      */   
-    _proto.getName = function() 
-    {
+     _proto.getName = function() 
+     {
         var name = _super.getName.call(this);
         return name + ' ' + this._name;
     };
@@ -58,8 +59,8 @@ function NoteItemContainerDisease ()
      * Xmlを設定する
      * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
      */
-    _proto.setByXml = function($i_xml) 
-    {
+     _proto.setByXml = function($i_xml) 
+     {
         _super.setByXml.call(this, $i_xml);
 
         // 既存のXMLデーターが存在する場合は、データーをDOMに追加する。

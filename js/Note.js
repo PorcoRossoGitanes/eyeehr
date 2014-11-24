@@ -1,33 +1,42 @@
 /**
  * カルテノート
  * @class Note 
+ * @constructor
  */
-function Note() {
-
-	/**
-	 * @param {String} クラス名
-	 */
-	this._name = 'Note';
+ function Note() {
 
     /**
-     * @param {String} [保存先]コレクション
+     * クラス名
+     * @private
+     * @type {String}
+     * @default Note
      */
-    this._collection = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/' + Utility.GetCurrentDate() + '/';
+	 this._name = 'Note';
 
     /**
-     * @param {String} [保存先]ファイル名
+     * コレクション
+     * @private
+     * @type {String}
      */
-    this._filename =  this._name + Utility.GetCurrentDate() + '.xml';
+     this._collection = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/' + Utility.GetCurrentDate() + '/';
 
     /**
-     * @param {String}[保存先]URL
+     * [保存先]ファイル名
+     * @type {String} 
      */
-    this._url = this._collection + this._filename;
+     this._filename =  this._name + Utility.GetCurrentDate() + '.xml';
 
-    /** 
-     * @param {JQuery Object}カルテ
+    /**
+     * [保存先]URL
+     * @type {String}
      */
-	$currentNote = $('[name="' + this._name + '"]');
+     this._url = this._collection + this._filename;
+
+    /**
+     * カルテ
+     * @type {JQueryObject}
+     */
+     $currentNote = $('[name="' + this._name + '"]');
 
 	// カルテを空にする。
 	$currentNote.empty();
@@ -53,26 +62,34 @@ function Note() {
 	
 };(function() {
 
-	// プロトタイプ
-	var _proto = Note.prototype;
+	/**
+	 * プロトタイプ
+	 * @type {Object}
+	 */
+	 var _proto = Note.prototype;
 
-	/// @summary クラス名を取得する。
-	_proto.getName = function() {
-	  return this._name;
-	};
-})();
+    /**
+     * クラス名（親クラス...現在のクラス）を取得する
+     * @method getName
+     * @return {String} クラス名（親クラス...現在のクラス）
+     */ 
+     _proto.getName = function() 
+     {
+     	return this._name;
+     };
+ })();
 
 /**
  * HTMLをXMLに保存する。
  * @method HtmlNoteToXml
  * @param  {JQuery Object} $i_jquery HTML（入力フォーム）を含む <input/>,<textarea/>,<select/> ...等
  */
-Note.HtmlNoteToXml = function($i_jquery)
-{
-	var retVal = '';
-	var tag = $i_jquery.attr('name');
+ Note.HtmlNoteToXml = function($i_jquery)
+ {
+ 	var retVal = '';
+ 	var tag = $i_jquery.attr('name');
 
-	retVal += '<' + tag + ' id="' + $i_jquery.attr('id') + '">';
+ 	retVal += '<' + tag + ' id="' + $i_jquery.attr('id') + '">';
 
 	//TODO :  ヘッダー情報を保存する。
 	$i_jquery.children('div.NoteItemContainer').each(function () {
@@ -97,13 +114,12 @@ Note.SaveXml = function ()
 
 /**
  * カルテ（XMLファイル）を読込む。
+ * @static
  * @method LoadXml
  * @param {String/Object} i_xml XML<Note />
  */
-Note.LoadXml = function (i_xml)
-{
-	//console.log(i_xml);
-
+ Note.LoadXml = function (i_xml)
+ {
 	// 現在のカルテを空にする。
 	$currentNote.empty();
 
@@ -113,35 +129,35 @@ Note.LoadXml = function (i_xml)
 	$note.children().each(function(){
 
 		var container = null;
-	    switch($(this)[0].tagName)
-	    {
-	        case 'NoteItemContainerComplaint' : 
+		switch($(this)[0].tagName)
+		{
+			case 'NoteItemContainerComplaint' : 
 	            // コンテナを追加し、カルテにコンテナを貼付ける。
 	            container = new NoteItemContainerComplaint();
 	            break;
 	        case 'NoteItemContainerDisease' : // 病名 
-	            container = new NoteItemContainerDisease();
-	            break;
+	        container = new NoteItemContainerDisease();
+	        break;
 	        case 'NoteItemContainerMedicalCheck' :　// 検査
-	            container = new NoteItemContainerMedicalCheck();
-	            break; 
+	        container = new NoteItemContainerMedicalCheck();
+	        break; 
 	        case 'NoteItemContainerPrescription' :  // 処方
-	            container = new NoteItemContainerPrescription();
-	            break;
+	        container = new NoteItemContainerPrescription();
+	        break;
 	        case 'NoteItemContainerOperation' :     // 手術
-	            container = new NoteItemContainerOperation();
-	            break;
+	        container = new NoteItemContainerOperation();
+	        break;
 	        case 'NoteItemContainerMemo' : // メモ
-	            container = new NoteItemContainerMemo();
-	            break;
+	        container = new NoteItemContainerMemo();
+	        break;
 	        case 'NoteItemContainerScheme' :　// シェーマ
-	            container = new NoteItemContainerScheme();
-	            break;
+	        container = new NoteItemContainerScheme();
+	        break;
 	        default :
-	            break;
+	        break;
 	    }
-		container.setByXml($(this));
-		$currentNote.append(container.getJQueryObject());
+	    container.setByXml($(this));
+	    $currentNote.append(container.getJQueryObject());
 
 	});
 }

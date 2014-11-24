@@ -1,22 +1,24 @@
 /**
  * 処置スタンプクラス
  * @class StampTreatment
+ * @constructor
+ * @extends Stamp
  */
-function StampTreatment() 
-{
+ function StampTreatment() 
+ {
   // 親クラス(Parent)のメンバ変数を継承
   Stamp.call(this);
 
   /**
    * @param {String}クラス名
    */
-  this._name = 'StampTreatment';
+   this._name = 'StampTreatment';
 
   /**
    * @param {String} XML
    * @static
    */
-  arguments.callee.Xml = ''; 
+   arguments.callee.Xml = ''; 
 
   //--JQuery オブジェクト操作---//
   $(this._jquery).attr('name', this._name);
@@ -48,8 +50,8 @@ function StampTreatment()
    * XMLを設定する。
    * @param {String} i_xml XMLオブジェクト
    */
-  _proto.setByXml = function (i_xml)
-  {
+   _proto.setByXml = function (i_xml)
+   {
     if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
   }
 
@@ -57,10 +59,10 @@ function StampTreatment()
    * クラス名を取得する。
    * @method getName
    */
-  _proto.getName = function() 
-  {
-      var name = _super.getName.call(this);
-      return name + ' ' + this._name;
+   _proto.getName = function() 
+   {
+    var name = _super.getName.call(this);
+    return name + ' ' + this._name;
   };
 })();
 

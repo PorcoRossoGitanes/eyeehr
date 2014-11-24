@@ -1,21 +1,26 @@
 /**
  * ノートアイテムクラス
  * @class NoteItem
+ * @constructor
  */
-function NoteItem() {
+ function NoteItem() {
   // メンバ変数の初期化
   this._name = 'NoteItem';
 
   // @param 付箋のID(MAX値)
   const MAX = 9999999999;
   
-  // @param 付箋のID
-  var id = /*'ID' +*/ Math.round(Math.random() * MAX);
+  /**
+   * ID
+   * @type {String}
+   */
+  this._id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
   /**
-   * @param {String} タイトル
+   * タイトル
+   * @type {String}
    */
-  this._title = '';
+   this._title = '';
 
   // 付箋（JQuery オブジェクト）を生成する 。
   const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/uploadFileBin.xq";
@@ -26,30 +31,30 @@ function NoteItem() {
 
   /*** 画像ファイル入力フォーム ***/
   const Extension = 'image/jpeg, image/png, image/bmp, application/pdf, application/msexcel, application/msword';
-  var iframetarget = 'uploadImage-' + id;
+  var iframetarget = 'uploadImage-' + this._id;
   var formAttachFile =     
-    '<form ' + 
-    'id="attachFileForm" ' + 
-    'enctype="multipart/form-data" ' + 
-    'method="post" ' +
-    'action="' + uploadFileToXmlDb + '" ' + 
-    'target="' + iframetarget + '"' + 
-    'style="display:none" ' + 
-    '>' +
-    '<input type="input" name="type" value="bin"/>' + 
-    '<input id="attachFile" type="file" name="file" value="" accept="' + Extension + '" />' +
-    '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
-    '<input id="attachFileSubmit" type="submit" value="submit" />' +
-    '</form>' +
+  '<form ' + 
+  'id="attachFileForm" ' + 
+  'enctype="multipart/form-data" ' + 
+  'method="post" ' +
+  'action="' + uploadFileToXmlDb + '" ' + 
+  'target="' + iframetarget + '"' + 
+  'style="display:none" ' + 
+  '>' +
+  '<input type="input" name="type" value="bin"/>' + 
+  '<input id="attachFile" type="file" name="file" value="" accept="' + Extension + '" />' +
+  '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
+  '<input id="attachFileSubmit" type="submit" value="submit" />' +
+  '</form>' +
     '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
-  /*** 画像ファイル入力フォーム ***/
+    /*** 画像ファイル入力フォーム ***/
 
   /**
    * @param {Object} JQuery オブジェクト
    */
-  this._jquery = $(
+   this._jquery = $(
     '<div ' + 
-    'id="' + id + '" ' + 
+    'id="' + this._id + '" ' + 
     'class="' + this._name + '" ' + 
     '>' + 
     /*** 削除ボタン ***/
@@ -75,7 +80,7 @@ function NoteItem() {
     '<div name="Scheme"></div>' +                    <!--シェーマ添付用--> 
     '<div name="Remark"></div>' +                    <!--備考入力用--> 
     '</div>'
-  )[0];
+    )[0];
 
   // 付箋をリサイズ・ドラッグ可能とする。
   //$(this._jquery).resizable({handles : 's'});
@@ -141,8 +146,8 @@ function NoteItem() {
 
     // コマンドを設定する（追加時「add」、編集時「edit」とする。）
     var url = MethodDrawPath + '?command=add' + 
-      '&id=' + noteItemId + 
-      '&image=' + saveImageTo +'/' +　'scheme-' + (new Date()).getTime() +'.svg';
+    '&id=' + noteItemId + 
+    '&image=' + saveImageTo +'/' +　'scheme-' + (new Date()).getTime() +'.svg';
 
     // Method Drawを開く。
     window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
@@ -193,16 +198,21 @@ function NoteItem() {
   var _proto = NoteItem.prototype;
   // メンバメソッド
 
+  /**
+   * クラス名（親クラス...現在のクラス）を取得する
+   * @method getName
+   * @return {String} クラス名（親クラス...現在のクラス）
+   */ 
   _proto.getName = function() {
-      return this._name;
+    return this._name;
   };
 
   /**
    * 付箋をカルテ上に登録する
    * @param i_to 貼付先
    */
-  _proto.appendTo = function(i_to)
-  {
+   _proto.appendTo = function(i_to)
+   {
     // 付箋をカルテ欄に登録する。
     $(this._jquery).appendTo(i_to);  
     $(this._jquery).dblclick();
@@ -212,8 +222,8 @@ function NoteItem() {
    * JQueryObjectを出力する
    * @return {JQuery Object} JQuery Object
    */
-  _proto.getJQueryObject = function () 
-  {
+   _proto.getJQueryObject = function () 
+   {
     return $(this._jquery);
   }
 
@@ -221,8 +231,8 @@ function NoteItem() {
    * XMLを設定する。
    * @param $i_xml XMLオブジェクト
    */
-  _proto.setByXml = function ($i_xml)
-  {
+   _proto.setByXml = function ($i_xml)
+   {
     if ($i_xml !== undefined)
     {
       // タイトル部分を追加する。
@@ -245,8 +255,8 @@ function NoteItem() {
    * @method setTitle
    * @param {String} i_title タイトル
    */
-  _proto.setTitle = function (i_title)
-  {
+   _proto.setTitle = function (i_title)
+   {
     $(this._jquery).find('[name="Title"]').text(i_title); 
   }
 
@@ -254,8 +264,8 @@ function NoteItem() {
    * ORCA情報を設定する。
    * @param {String/Object} i_xml ORCA情報 <Orca/>
    */
-  _proto.setOrca = function (i_xml)
-  {
+   _proto.setOrca = function (i_xml)
+   {
     if ($(i_xml).children().length > 0)
     {
       //console.log(i_xml);
@@ -278,7 +288,7 @@ function NoteItem() {
           '<td><div name="' + NameMedicationName + '" style="display:none">' + $(i_xml).children(NameMedicationName).text() +'</div></td>' + 
           '<td>' + 
           '<input name="' + NameMedicationNumber +'"  type="text" ' + 
-            'value="' + ($(i_xml).children(NameMedicationNumber).text() == '' ? 1 : $(i_xml).children(NameMedicationNumber).text()) + '"' + 
+          'value="' + ($(i_xml).children(NameMedicationNumber).text() == '' ? 1 : $(i_xml).children(NameMedicationNumber).text()) + '"' + 
           '/>' + 
           '</td>' + 
           '<td><div name="' + NameMedicationUnit + '" style="display:inherit">' + $(i_xml).children(NameMedicationUnit).text() + '</div></td>' + 
@@ -286,29 +296,29 @@ function NoteItem() {
           '</tr>' + 
           '</tbody>' + 
           '</table>' //+
-        );     
-      }
-    }
-  }
+          );     
+}
+}
+}
 
   /**
    * 定型フォーマットを設定する。
    * @method setFormat
    */
-  _proto.setFormat = function ()
-  {
+   _proto.setFormat = function ()
+   {
     $(this._jquery).find('[name="Format"]').append(
       '<input name="Custom" type="text" value="" style="width:100%" />'  
       + ''
-    );
+      );
   }
 
   /**
    * 添付ファイルを設定する。
    * @param {String/Object} i_xml 添付ファイル情報 <Attachment/>
    */
-  _proto.setAttachment = function (i_xml)
-  {
+   _proto.setAttachment = function (i_xml)
+   {
     $(this._jquery).find('[name="Attachment"]').html(Utility.InnerXml($(i_xml)));
   }
 
@@ -316,8 +326,8 @@ function NoteItem() {
    * シェーマを設定する。
    * @param {String/Object} i_xml シェーマ情報 <Scheme />
    */
-  _proto.setScheme = function (i_xml)
-  {
+   _proto.setScheme = function (i_xml)
+   {
     $(this._jquery).find('[name="Scheme"]').html(Utility.InnerXml($(i_xml)));
   }
 
@@ -325,8 +335,8 @@ function NoteItem() {
    * 備考を設定する。
    * @param {String/Object} i_xml 備考情報 <Remark />
    */
-  _proto.setRemark = function (i_xml)
-  {
+   _proto.setRemark = function (i_xml)
+   {
     $(this._jquery).find('[name="Remark"]').html(Utility.InnerXml($(i_xml)));
   }
 })();
@@ -334,11 +344,13 @@ function NoteItem() {
 
 /**
  * 付箋コンテナHTMLをXMLに保存する。
+ * @static
+ * @method HtmlToXml
  * @param    $i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
  * @return   保存用XML
  */
-NoteItem.HtmlToXml = function($i_jquery)
-{
+ NoteItem.HtmlToXml = function($i_jquery)
+ {
   var retVal = '';
 
   var tag = $i_jquery.attr('name');
@@ -374,7 +386,7 @@ NoteItem.HtmlToXml = function($i_jquery)
   //   retVal += Utility.HtmlMinInputItemToXml($(this));
   //   console.log(Utility.HtmlMinInputItemToXml($(this)));
   // });
-  retVal += '</' + $format.attr('name') + '>';
+retVal += '</' + $format.attr('name') + '>';
 
   // □画像添付部をXMLに変換する。
   $Attachment = $i_jquery.children('[name="Attachment"]');
@@ -405,9 +417,11 @@ NoteItem.HtmlToXml = function($i_jquery)
 
 /**
  * 文字列を変更する。
+ * @method ChangeVal
+ * @static
  */
-NoteItem.ChangeVal = function($jquery, i_memo)
-{
+ NoteItem.ChangeVal = function($jquery, i_memo)
+ {
   $memo = $('<memo>' + i_memo + '</memo>');
   $strongs = $memo.find('strong');
 
@@ -415,21 +429,22 @@ NoteItem.ChangeVal = function($jquery, i_memo)
   for (index = 0; index < $strongs.length; index++)
   {
     tags += $($strongs[index]).text() + 
-      (index == ($strongs.length - 1) ? '' : ',');
+    (index == ($strongs.length - 1) ? '' : ',');
     //console.log($($strongs[index]).text());
   }
   
   $jquery.find('#tags').html(tags);
-  $jquery.find('[name="Remark]').html(i_memo);
+  $jquery.find('[name="Remark"]').html(i_memo);
 }
 
 /**
  * ファイルを添付する
+ * @static
  * @param $i_attachements 添付部 <div name="Attachment" />
  * @param i_url ファイルURL
  */
-NoteItem.AttachFile = function ($i_attachment, i_url)
-{
+ NoteItem.AttachFile = function ($i_attachment, i_url)
+ {
   // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
   $img = $('<a href="' + i_url + '" target="_blank"><img class="attachment" src="' + i_url + '" /></a>');
   $i_attachment.append($img);   

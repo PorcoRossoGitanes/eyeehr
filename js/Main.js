@@ -5,9 +5,9 @@ var area = null;
 // @summary nicEditの呼び込み時、入力欄を追加する。
 bkLib.onDomLoaded(function() {
 	const ID = 'area1';
-  	
-  	area = new nicEditor(
-  	{
+	
+	area = new nicEditor(
+	{
 		buttonList:[
  			'save', // 「保存ボタンを追加した。」
  			'bold',
@@ -30,7 +30,7 @@ bkLib.onDomLoaded(function() {
  			/*,
  			'image',
  			'upload'*/
- 		],
+ 			],
 		//convertToText:true
 
 		// 「保存」ボタン押下時、付箋の備考を保存する。
@@ -49,8 +49,8 @@ bkLib.onDomLoaded(function() {
 				var rootSelector = 'div#' + id;
 				NoteItem.ChangeVal($(rootSelector), memo);
 			}
-  		}
-  	}).panelInstance(ID);
+		}
+	}).panelInstance(ID);
 });
 //----- nicEdit -----
 
@@ -63,39 +63,39 @@ $(function()
 
 	//----- スタンプを自動生成する。 -----------------------------------------------
 	const StampListSetting = {
-	  'Stamp' : [
-	  	{'key' : 'DISEASE'			,'selector' : 'div.stamp_list#disease'					, 'class' : 'StampDisease'		    /*Disease => "" # 病名・所見*/                  	},
-	  	{'key' : 'PRACTICE'			,'selector' : ''/*'div.stamp_list#practice'*/			, 'class' : ''				        /*Practice => "001" # 診療行為*/                  	},
-	  	{'key' : 'INJECTION'		,'selector' : 'div.stamp_list#injection'				, 'class' : 'StampInjection'		/*Practice/300    => "001-300"  # 注射(300番台)*/		},
-	  	{'key' : 'TREATMENT'		,'selector' : 'div.stamp_list#treatment'				, 'class' : 'StampTreatment'       	/*Practice/400    => "001-400"    # 処置(400番台)*/	},
-	  	{'key' : 'OPERATION'		,'selector' : 'div.stamp_list#operation'				, 'class' : 'StampOperation'      	/*Practice/500    => "001-500"  # 手術(500番台)*/		},
-	  	{'key' : 'MEDICAL_CHECK'	,'selector' : 'div.stamp_list#medical_check'			, 'class' : 'StampMedicalCheck'    	/*Practice/600    => "001-600"  # 検査(600番台)*/		},
-	  	{'key' : 'MEDICAL_PRODUCT'	,'selector' : 'div.stamp_list#medical_product'			, 'class' : 'StampMedicalProduct'  	/*Medical_Product   => "002"    # 医薬品*/			},
-	  	{'key' : 'MACHINE'			,'selector' : 'div.stamp_list#machine'					, 'class' : 'StampMachine'         	/*Machine       => "003"    # 特定機材*/				},
-	  	{'key' : 'COMMENT'			,'selector' : ''/*'div.stamp_list#comment'*/			, 'class' : ''         				/*Comment       => "006"    # コメント*/				},
-	  	{'key' : 'PRIVATE_EXPENSE'	,'selector' : ''/*'div.stamp_list#private_expense' */ 	, 'class' : ''						/*Private_Expense   => "007"    # 自費診療*/			}
-	  ]	  
-	}
-	
-	for (var i in StampListSetting.Stamp) {
-		var key = StampListSetting.Stamp[i].key;
-		var selector = StampListSetting.Stamp[i].selector;
-		if (selector != '') {
-			Stamp.LoadXml(key, function(result){ 
+		'Stamp' : [
+	{'key' : 'DISEASE'			,'selector' : 'div.stamp_list#disease'					, 'class' : 'StampDisease'		    /*Disease => "" # 病名・所見*/                  	},
+{'key' : 'PRACTICE'			,'selector' : ''/*'div.stamp_list#practice'*/			, 'class' : ''				        /*Practice => "001" # 診療行為*/                  	},
+{'key' : 'INJECTION'		,'selector' : 'div.stamp_list#injection'				, 'class' : 'StampInjection'		/*Practice/300    => "001-300"  # 注射(300番台)*/		},
+{'key' : 'TREATMENT'		,'selector' : 'div.stamp_list#treatment'				, 'class' : 'StampTreatment'       	/*Practice/400    => "001-400"    # 処置(400番台)*/	},
+{'key' : 'OPERATION'		,'selector' : 'div.stamp_list#operation'				, 'class' : 'StampOperation'      	/*Practice/500    => "001-500"  # 手術(500番台)*/		},
+{'key' : 'MEDICAL_CHECK'	,'selector' : 'div.stamp_list#medical_check'			, 'class' : 'StampMedicalCheck'    	/*Practice/600    => "001-600"  # 検査(600番台)*/		},
+{'key' : 'MEDICAL_PRODUCT'	,'selector' : 'div.stamp_list#medical_product'			, 'class' : 'StampMedicalProduct'  	/*Medical_Product   => "002"    # 医薬品*/			},
+{'key' : 'MACHINE'			,'selector' : 'div.stamp_list#machine'					, 'class' : 'StampMachine'         	/*Machine       => "003"    # 特定機材*/				},
+{'key' : 'COMMENT'			,'selector' : ''/*'div.stamp_list#comment'*/			, 'class' : ''         				/*Comment       => "006"    # コメント*/				},
+{'key' : 'PRIVATE_EXPENSE'	,'selector' : ''/*'div.stamp_list#private_expense' */ 	, 'class' : ''						/*Private_Expense   => "007"    # 自費診療*/			}
+]	  
+}
+
+for (var i in StampListSetting.Stamp) {
+	var key = StampListSetting.Stamp[i].key;
+	var selector = StampListSetting.Stamp[i].selector;
+	if (selector != '') {
+		Stamp.LoadXml(key, function(result){ 
 				//result[0]がルートノードとなる。
 				//console.log(result[0].children); 
 				CreateStamp(key, selector, result[0].children);
 			});
-		}
 	}
+}
 	/** 
 	 * スタンプを生成する。
 	 * @param {String} i_key キー
 	 * @param {String} i_selector スタンプの張付先(JQueryセレクタ)
 	 * @param {XmlDocument} i_stampsXml スタンプリスト(XML)
 	 */
-	function CreateStamp (i_key, i_selector, i_stampsXml)
-	{
+	 function CreateStamp (i_key, i_selector, i_stampsXml)
+	 {
 		//console.log(i_stampsXml);
 		
 		// 貼付先を取得する。
@@ -124,8 +124,8 @@ $(function()
 				default 				: stamp = new Stamp(); 					break;
 			} 
 			
-		 	stamp.setByXml(Utility.XmlToStr(i_stampsXml[index])); 
-		 	$stampList.append(stamp.getJQueryObject());
+			stamp.setByXml(Utility.XmlToStr(i_stampsXml[index])); 
+			$stampList.append(stamp.getJQueryObject());
 		};
 	}
 
@@ -154,7 +154,7 @@ $(function()
 				queue:false,
 				easing:"easeOutCubic", 
 			}
-		);
+			);
 
 		// $('#MenuRight').animate(
 		// 	{top : (scrollTop)},
@@ -164,7 +164,7 @@ $(function()
 		// 		easing:"easeOutCubic"
 		// 	}
 		// );
-	});
+});
 
 	//----- アコーディオンメニューを作成する。 --------------------------------------
 	$( '#NoteItemMenu' ).accordion({heightStyle : "fill", active : 1});
