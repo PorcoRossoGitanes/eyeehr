@@ -2,6 +2,7 @@
 
 require 'uri'
 require 'net/http'
+require 'net/telnet'
 require 'yaml'
 require 'pp'
 
@@ -46,13 +47,28 @@ class OrcaManager #< Super
 	# @return 
 	# _result	結果 true=成功。false=失敗。
 	# _message　メッセージ。
+	# @dependency 'net/telnet'
 	##################################################################
 	def CheckConnection()
 		_result = true;
 		_message = "";
 
-		# TODO : 接続を確認する。(ping host)
-		# TODO : 接続を確認する。(telnet host port)
+		# 接続を確認する。(telnet host port)
+		begin
+			Net::Telnet::new(
+				"Host" => @host, 
+				"Port" => @port,
+				"Timeout" => 1
+	        #   "Telnetmode" => false,
+	        #    "Prompt" => /^\+OK/n
+	        );
+	    rescue TimeoutError => ex
+			_result = false; 
+			_message = "サーバー({@host}:{@port})への接続が失敗しました。(" + ex.message + ")" ;
+		rescue => ex 
+			_result = false; 
+			_message = "サーバー({@host}:{@port})への接続が失敗しました。(" + ex.message + ")" ;
+		end
 
 		return _result, _message;
 	end
