@@ -181,7 +181,18 @@ $('button#StampLoadXml').click(function(){
             <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
           </tr>
           <tr>
-            <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
+            <td><button type="button" id="OrcaGetPatientInfo" class="btn btn-default btn-s page">ORCA患者情報取得</button></td>
+<script type="text/javascript">
+// スタンプ情報を読み取る。
+$('button#OrcaGetPatientInfo').click(function(){
+  console.log($(this).text());
+  var url = './cgi-bin/Orca/patientgetv2.rb';
+  Utility.LoadXml('GET', url, 'patient_id=3', function($xml){
+    console.log($xml[0]);
+  })
+  alert('結果はコンソールに出力されました。');
+});
+</script>
             <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
             <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
             <td><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></td>
