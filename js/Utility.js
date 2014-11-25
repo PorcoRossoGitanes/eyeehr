@@ -254,13 +254,12 @@
 				},
 				error: function(XMLHttpRequest, textStatus, errorThrown) 
 				{
-					alert(
-						'XMLデータの読込みに失敗しました。\n' + 
+					var message = 'XMLデータの読込みに失敗しました。\n' + 
 						'URL=' + url + ' \n' +
 						'XMLHttpRequest状態=' + XMLHttpRequest.status + ' \n' + 
 						'テキストステータス='   + textStatus + ' \n' + 
-						'エラーメッセージ=' + errorThrown.message
-						);
+						'エラーメッセージ=' + errorThrown.message;
+					alert(message); console.log(errorThrown.message);
 		     	}//,
 				// complete : function(data) 
 				// {

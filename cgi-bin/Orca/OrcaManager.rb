@@ -1,16 +1,8 @@
 #!/usr/bin/ruby
 
-require 'uri'
-require 'net/http'
-require 'net/telnet'
-require 'yaml'
-require 'pp'
-
-Net::HTTP.version_1_1
-
 ######################################################################
 # @summary ORCA接続マネージャー
-# @dependency uri, net/http, yaml, pp
+# @dependency uri, net/http, net/telnet, yaml, pp
 # @dependency ./settings.yaml
 ######################################################################
 class OrcaManager #< Super
@@ -28,8 +20,13 @@ class OrcaManager #< Super
 
 	##################################################################
 	# 初期化
+	# @dependency yaml, pp
 	##################################################################
 	def initialize()
+
+		require 'yaml'
+		require 'pp'
+
 		# 設定ファイルを読み込む。
 		_settings = YAML.load_file(FILE_PATH); #pp(_settings);            
 		# @param ホスト名
@@ -50,6 +47,9 @@ class OrcaManager #< Super
 	# @dependency net/telnet
 	##################################################################
 	def CheckConnection()
+
+		require 'net/telnet'
+		
 		_result = true;
 		_message = "";
 
@@ -83,11 +83,19 @@ class OrcaManager #< Super
 	# @dependency uri, net/http, net/telnet
 	##################################################################
 	def GetPatientInfo(i_patient_id)
+		
+		require 'uri'
+		require 'net/http'
+		Net::HTTP.version_1_1
+
 		_result = true;
 		_xml = "";
 		_message = "";
 				
 		# 妥当性を確認する。
+		if (_result) then 
+			_result = (i_patient_id != nil);
+		end;
 		if (_result) then
 			if (i_patient_id.length <= 0) then _result = false; _message = "患者IDが未指定です。"; end;
 		end
@@ -140,6 +148,10 @@ class OrcaManager #< Super
 	# @dependency uri, net/http, net/telnet
 	##################################################################
 	def ModifyMedicalInfo(i_class, i_xml)
+		
+		require 'uri'
+		require 'net/http'
+		Net::HTTP.version_1_1
 
 		_result = true;
 		_message = "";
@@ -147,6 +159,9 @@ class OrcaManager #< Super
 		_res = nil;
 
 		# 妥当性を確認する。
+		if (_result) then 
+			_result = (i_xml != nil);
+		end;
 		if (_result) then 
 			if(i_xml.length <= 0) then 
 		 		_result = false; _message = "医療行為中途データー（XML）が未指定です。"; 
@@ -166,7 +181,7 @@ class OrcaManager #< Super
 
 		# 診療行為中途データーをORCAに送信する。
 		if (_result) then
-			_req = Net::HTTP::Post.new("/api21/medicalmodv2?class={i_class}");
+			_req = Net::HTTP::Post.new("/api21/medicalmodv2?class=#{i_class}");
 
 			_req.content_length = i_xml.size;
 			_req.content_type = MEDICALMODV2_CONTENT_TYPE;
