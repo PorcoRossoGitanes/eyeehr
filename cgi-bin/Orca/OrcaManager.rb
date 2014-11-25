@@ -16,6 +16,14 @@ class OrcaManager #< Super
 
 	# 設定ファイルのファイルパス（固定）
 	FILE_PATH = "./settings.yaml";
+	# @const class :01 中途データ登録
+	MEDICALMODV2_CLASS_ADD = "01";
+	# @const class :02 中途データ削除
+	MEDICALMODV2_CLASS_DEL = "02";
+	# @const class :03 中途データ変更
+	MEDICALMODV2_CLASS_MOD = "03";
+	# コンテントタイプ
+	MEDICALMODV2_CONTENT_TYPE = "application/xml";
 
 	##################################################################
 	# 初期化
@@ -99,5 +107,38 @@ class OrcaManager #< Super
 
 		# 処理結果、XML、メッセー時を返却する。
 		return _result, _xml, _message;
+	end
+
+	##################################################################
+	# @summary 医療行為中途データーを登録する。
+	# @param i_class クラス（01 中途データ登録、02 中途データ削除、03 中途データ変更）
+	# @param i_xml 医療行為中途データー（XML）
+	# @return 
+	# _result	結果 true=成功。false=失敗。
+	# _xml 		成功時、XML（レスポンス）。失敗時、空文字列。
+	# _message　メッセージ。
+	# @dependency uri, net/http
+	##################################################################
+	def ModifyMedicalInfo(i_class, i_xml)
+		_result = true;
+		_message = "";
+
+
+
+		_req = Net::HTTP::Post.new("/api21/medicalmodv2?class={i_class}");
+		_data = i_xml;
+
+
+		_req.content_length = _data.size;
+		_req.content_type = MEDICALMODV2_CONTENT_TYPE;
+		_req.body = _datal
+
+		_req.basic_auth(@user, @pswd);
+		#puts _req.body
+
+		Net::HTTP.start(HOST, PORT) {|http|
+		 	_res = http._request(_req)
+			puts _res.body
+		}
 	end
 end
