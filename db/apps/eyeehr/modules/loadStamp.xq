@@ -2,7 +2,7 @@ xquery version "3.0";
 
 (:
     @summary 対象のスタンプを取得する。
-    @param 	GET/POST [target] = 検索対象（下記参照）
+    @param     GET/POST [target] = 検索対象（下記参照）
 		use constant 
 		{
 			"DISEASE" 			Disease 			=> "   " 		# 病名・所見
