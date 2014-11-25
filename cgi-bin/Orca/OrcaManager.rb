@@ -47,7 +47,7 @@ class OrcaManager #< Super
 	# @return 
 	# _result	結果 true=成功。false=失敗。
 	# _message　メッセージ。
-	# @dependency 'net/telnet'
+	# @dependency net/telnet
 	##################################################################
 	def CheckConnection()
 		_result = true;
@@ -80,7 +80,7 @@ class OrcaManager #< Super
 	# _result	結果 true=成功。false=失敗。
 	# _xml 		成功時、XML。失敗時、空文字列。
 	# _message　メッセージ。
-	# @dependency uri, net/http
+	# @dependency uri, net/http, net/telnet
 	##################################################################
 	def GetPatientInfo(i_patient_id)
 		_result = true;
@@ -127,34 +127,53 @@ class OrcaManager #< Super
 
 	##################################################################
 	# @summary 医療行為中途データーを登録する。
-	# @param i_class クラス（01 中途データ登録、02 中途データ削除、03 中途データ変更）
+	# @param i_class クラス
+	# @example 01 中途データ登録
+	# @example 02 中途データ削除
+	# @example 03 中途データ変更
 	# @param i_xml 医療行為中途データー（XML）
 	# @return 
 	# _result	結果 true=成功。false=失敗。
-	# _xml 		成功時、XML（レスポンス）。失敗時、空文字列。
+	# _req.body	リクエスト。
+	# _res.body	レスポンス。
 	# _message　メッセージ。
-	# @dependency uri, net/http
+	# @dependency uri, net/http, net/telnet
 	##################################################################
 	def ModifyMedicalInfo(i_class, i_xml)
+
 		_result = true;
 		_message = "";
+		# _req = "";
+		# _res = "";
 
+		# 妥当性を確認する。
+		if(_result) then 
+			# XMLとして妥当か、確認する。
+		end
+		if(_result) then 
+			# ORCA APIの仕様に準拠しているか、確認する。
+		end
 
+		# 接続を確立できるか確認する。
+		if(_result) then 
+			_result, _message = self.CheckConnection();
+		end
 
-		_req = Net::HTTP::Post.new("/api21/medicalmodv2?class={i_class}");
-		_data = i_xml;
+		# 診療行為中途データーをORCAに送信する。
+		if (_result) then
+			_req = Net::HTTP::Post.new("/api21/medicalmodv2?class={i_class}");
 
+			_req.content_length = i_xml.size;
+			_req.content_type = MEDICALMODV2_CONTENT_TYPE;
+			_req.body = i_xml;
 
-		_req.content_length = _data.size;
-		_req.content_type = MEDICALMODV2_CONTENT_TYPE;
-		_req.body = _datal
+			_req.basic_auth(@user, @pswd);
 
-		_req.basic_auth(@user, @pswd);
-		#puts _req.body
-
-		Net::HTTP.start(HOST, PORT) {|http|
-		 	_res = http._request(_req)
-			puts _res.body
+			Net::HTTP.start(HOST, PORT) {|http|
+			 	_res = http._request(_req);
 		}
+		end
+
+		return _result, _req.body, _res.body, _message;
 	end
 end
