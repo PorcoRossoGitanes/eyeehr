@@ -143,8 +143,8 @@ class OrcaManager #< Super
 
 		_result = true;
 		_message = "";
-		# _req = "";
-		# _res = "";
+		_req = nil;
+		_res = nil;
 
 		# 妥当性を確認する。
 		if(_result) then 
@@ -169,9 +169,9 @@ class OrcaManager #< Super
 
 			_req.basic_auth(@user, @pswd);
 
-			Net::HTTP.start(HOST, PORT) {|http|
-			 	_res = http._request(_req);
-		}
+			Net::HTTP.start(@host, @port) {|http|
+			 	_res = http.request(_req);
+			}
 		end
 
 		return _result, _req.body, _res.body, _message;

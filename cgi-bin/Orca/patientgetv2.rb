@@ -8,7 +8,6 @@ require 'OrcaManager.rb'	# ORCA接続マネージャを追加する。
 # メイン処理：指定の患者番号の患者情報を取得する。
 # [POST] 	patient_id:患者番号(0埋めなし)
 # [参照]		http://www.orca.med.or.jp/receipt/tec/api/patientget.html
-# [_host, _port, _user, _pswd] : 設定ファイルから取得する。
 # @dependency cgi
 ######################################################################
 

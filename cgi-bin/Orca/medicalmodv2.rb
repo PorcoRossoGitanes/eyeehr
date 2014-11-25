@@ -1,25 +1,22 @@
 #!/usr/bin/ruby
-# -*- coding: utf-8 -*-
 
-require 'uri'
-require 'net/http'
+require "cgi"               # CGIモジュールを追加する。
+require 'OrcaManager.rb'    # ORCA接続マネージャを追加する。
 
-Net::HTTP.version_1_1
+######################################################################
+# メイン処理：指定の患者番号の患者情報を取得する。
+# [POST]    xml:診療行為中途データー
+# [参照]    http://www.orca.med.or.jp/receipt/tec/api/medicalmod.html
+# @dependency cgi
+######################################################################
 
-#HOST = "localhost"
-HOST = "192.168.0.8"
-PORT = "8000"
-USER = "ormaster"
-PASSWD = "ormaster123"
-CONTENT_TYPE = "application/xml"
+# POST値から
+# （１）xml:診療行為中途データー
+#を取得する。
+_cgi = CGI.new();
+#_xml = _cgi['xml'];
 
-req = Net::HTTP::Post.new("/api21/medicalmodv2?class=03")
-# class :01 中途データ登録
-# class :02 中途データ削除
-# class :03 中途データ変更
-#
-#
-BODY = <<EOF
+_xml = <<EOF
 <data>
         <medicalreq type="record">
                 <InOut type="string"></InOut>
@@ -148,14 +145,13 @@ BODY = <<EOF
 </data>
 EOF
 
-req.content_length = BODY.size
-req.content_type = CONTENT_TYPE
-req.body = BODY
-req.basic_auth(USER, PASSWD)
-  puts req.body
+# ORCAに接続し、ORCAの患者情報を取得する。
+_om = OrcaManager.new();
+_result, _req, _res, _message = _om.ModifyMedicalInfo(OrcaManager::MEDICALMODV2_CLASS_MOD, _xml);
 
-Net::HTTP.start(HOST, PORT) {|http|
-  res = http.request(req)
-  puts res.body
 
-}
+# CGIの実行結果を出力する。
+print("Content-type: text/html\n\n");
+
+puts(_result, _req, _res, _message);
+
