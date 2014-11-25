@@ -27,33 +27,45 @@ if (!isset($_SESSION["USERID"])) {
       <table class="table table-striped">
         <tbody>
           <tr>
+            <!--th >受付</th-->
             <!--td>&nbsp;<a href="./login.php"><button type="button" id="login" class="btn btn-default btn-s page">ログイン</button></a></td-->
-            <td><a href="./main.php"><button type="button" id="main" class="btn btn-default btn-s page">メイン画面</button></a></td>
-            <td><a href="./importStampFromOrcaToXmlDb.php"><button type="button" id="importStampFromOrcaToXmlDb" class="btn btn-default btn-s page">ORCA点数マスター自動取込</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">問診票<!--作成--></button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
             <td><a href="./logout.php"><button type="button" id="logout" class="btn btn-danger btn-s page">ログアウト</button></a></td>
           </tr>
           <tr>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
+            <!--th>カルテ</th-->
+            <td><a href="./main.php"><button type="button" id="main" class="btn btn-default btn-s page">カルテ<!--作成--></button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
           </tr>
           <tr>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
+            <!--th>マスター</th-->
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">スタッフ情報</button></a></td>
+            <td><a href="./none.php" target="_blank"><button type="button" id="none" class="btn btn-default btn-s page">患者情報</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">マスター読込</button></a></td>
+            <td><a href="./importStampFromOrcaToXmlDb.php"><button type="button" id="importStampFromOrcaToXmlDb" class="btn btn-default btn-s page">ORCA点数マスター自動取込</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
           </tr>
           <tr>
+            <!--th>文書</th-->
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">手紙※<!--作成--></button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">紹介状<!--作成--></button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">CL処方箋※<!--作成--></button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">眼鏡処方箋※<!--作成--></button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">各種書類<!--作成--></button></a></td>
+          </tr>
+          <tr>
+            <!--th>テスト</th-->
             <td><a href="./test.php"><button type="button" id="test" class="btn btn-info btn-s page">テスト</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">（未割当）</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
           </tr>
         </tbody>
       </table>
