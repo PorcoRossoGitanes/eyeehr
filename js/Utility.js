@@ -280,7 +280,8 @@
 			    success: function(data){
 			    	// data = #document
 			    	// data.children = ルートノードオブジェクト 
-			        if (callback !== undefined) callback(data.children); //d console.log(data.children); console.log(typeof(data.children));
+			        if (callback !== undefined) callback(data.children);
+			         //d console.log(data.children); console.log(typeof(data.children));
 			    },
 			    error: function(XMLHttpRequest, textStatus, errorThrown) 
 			    {
