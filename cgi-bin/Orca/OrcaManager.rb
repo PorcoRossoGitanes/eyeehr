@@ -147,15 +147,20 @@ class OrcaManager #< Super
 		_res = nil;
 
 		# 妥当性を確認する。
-		if(_result) then 
-			# XMLとして妥当か、確認する。
-		end
-		if(_result) then 
-			# ORCA APIの仕様に準拠しているか、確認する。
-		end
+		if (_result) then 
+			if(i_xml.length <= 0) then 
+		 		_result = false; _message = "医療行為中途データー（XML）が未指定です。"; 
+		 	end;
+		end;
+		if (_result) then 
+			# TODO : XMLとして妥当か、確認する。
+		end;
+		if (_result) then 
+			# TODO : ORCA APIの仕様に準拠しているか、確認する。
+		end;
 
 		# 接続を確立できるか確認する。
-		if(_result) then 
+		if (_result) then 
 			_result, _message = self.CheckConnection();
 		end
 
@@ -174,6 +179,6 @@ class OrcaManager #< Super
 			}
 		end
 
-		return _result, _req.body, _res.body, _message;
+		return _result, (_result ? _req.body : i_xml), (_result ? _res.body : ""), _message;
 	end
 end
