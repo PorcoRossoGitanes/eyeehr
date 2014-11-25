@@ -7,6 +7,12 @@ require 'OrcaManager.rb'    # ORCA接続マネージャを追加する。
 # メイン処理：指定の患者番号の患者情報を取得する。
 # [POST]    xml:診療行為中途データー
 # [参照]    http://www.orca.med.or.jp/receipt/tec/api/medicalmod.html
+# @return   <result>
+#           <result>送信結果（true/false)</result>
+#           <request>リクエスト内容（XML）</request>
+#           <response>レスポンス内容（XML）</response>
+#           <message>メッセージ</message>
+#           </result>
 # @dependency cgi
 ######################################################################
 
@@ -149,9 +155,13 @@ EOF
 _om = OrcaManager.new();
 _result, _req, _res, _message = _om.ModifyMedicalInfo(OrcaManager::MEDICALMODV2_CLASS_MOD, _xml);
 
-
 # CGIの実行結果を出力する。
 print("Content-type: text/html\n\n");
 
-puts(_result, _req, _res, _message);
+print("<result>\n");
+print("<result>", _result, "</result>\n");
+print("<request>", _req, "</request>\n");
+print("<response>", _res, "</response>\n");
+print("<message>", _message, "</message>\n");
+print("</result>\n");
 
