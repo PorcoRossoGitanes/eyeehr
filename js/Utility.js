@@ -242,16 +242,15 @@
 		if (i_type == 'POST')
 		{
 			// TODO : POST送信失敗
-			// console.log(url);
-			// console.log(i_senddata);
 			$.ajax({
 			  	async 	: false, 	// 同期通信
 			  	url 	: url,
 			  	type 	: 'POST',
-				//			    data    : i_senddata,
+				data    : i_senddata,
+			    dataType: "xml",
 				cache 	: false,
 				success: function(data) {
-					if(callback !== undefined) callback($(data)); 
+					if(callback !== undefined) callback(data.children);
 				},
 				error: function(XMLHttpRequest, textStatus, errorThrown) 
 				{
@@ -281,7 +280,6 @@
 			    	// data = #document
 			    	// data.children = ルートノードオブジェクト 
 			        if (callback !== undefined) callback(data.children);
-			         //d console.log(data.children); console.log(typeof(data.children));
 			    },
 			    error: function(XMLHttpRequest, textStatus, errorThrown) 
 			    {

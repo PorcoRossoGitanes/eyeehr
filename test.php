@@ -188,10 +188,10 @@ $('button#OrcaGetPatientInfo').click(function(){
   console.log($(this).text());
   // 存在する患者
   var url = './cgi-bin/Orca/patientgetv2.rb';
-  Utility.LoadXml('POST', url, 'patient_id=3', function($xml){console.log($xml[0]);});
+  Utility.LoadXml('POST', url, {patient_id:5}, function($xml){console.log($xml[0]);});
   // 存在しない患者
   var url = './cgi-bin/Orca/patientgetv2.rb';
-  Utility.LoadXml('GET', url, 'patient_id=2', function($xml){console.log($xml[0]);})
+  Utility.LoadXml('POST', url, {patient_id:2}, function($xml){console.log($xml[0]);});
   alert('結果はコンソールに出力されました。');
 });
 </script>
