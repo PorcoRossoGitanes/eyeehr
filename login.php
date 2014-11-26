@@ -37,21 +37,34 @@ if (isset($_POST["login"]))
     <title>電子カルテ　ログイン</title>
     <script src="js/jquery-2.1.1.js"></script><!-- jQuery 2.1.1 -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
+    <!--自作CSS-->    
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <!--自作CSS-->    
   </head>
-  <body>
-    <form id="formLogin" name="formLogin" action="<?php print($_SERVER['PHP_SELF']) ?>" method="POST">
-    <fieldset>
-      <legend>ログイン</legend>
-      <div><?php echo $message ?></div>
-      <label for="userid">ユーザID</label>
-      <input type="text" id="userid" name="userid" value="<?php echo $userid ?>">
-      <br>
-      <label for="password">パスワード</label>
-      <input type="password" id="password" name="password" value="">
-      <br>
-      <!--label></label-->
-      <button type="submit" id="login" name="login">ログイン</button>
+  <body class="form">
+    <form id="formLogin" class="form-horizontal" name="formLogin" action="<?php print($_SERVER['PHP_SELF']) ?>" method="POST">
+      <fieldset>
+        <legend>ログイン</legend>
+        <div><?php echo $message ?></div>
+        <div class="form-group">
+          <label for="userid" class="col-sm-2 control-label">ユーザID</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" id="userid" name="userid" value="<?php echo $userid ?>">
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="password" class="col-sm-2 control-label">パスワード</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="password" id="password" name="password" value="">
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><button class="btn btn-default" type="submit" id="login" name="login">ログイン</button>
+            </div>
+          </div>
       </fieldset>
-    </form>
+      </form>
   </body>
 </html>

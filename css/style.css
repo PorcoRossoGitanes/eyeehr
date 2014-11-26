@@ -3,9 +3,9 @@
  * @author S.Kobayashi
  */
 
-body
+body.form
 {
-/*  margin : 1em 1em 1em 1em;  */
+  margin : 1em;  
 }
 
 /*タイトル*/
