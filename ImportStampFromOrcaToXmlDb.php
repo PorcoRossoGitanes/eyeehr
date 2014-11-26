@@ -25,7 +25,7 @@ if (!isset($_SESSION["USERID"])) {
 	    <link href="css/style.css" rel="stylesheet" type="text/css">
 	    <!--自作CSS-->    
 	</head>
-	<body>
+	<body class="form">
 		<h1>マスター取込機能</h1>
 		<h2>スタンプ</h2>
 			<p>ORCAの点数マスター（CSV）等からスタンプを自動登録する事が出来ます。</p>
