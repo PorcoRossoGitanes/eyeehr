@@ -1,5 +1,3 @@
-eyeehr-repo/site-cookbooks/eyeehr/files/default/eXist-db-setup-2.1-rev18721.jar
-eyeehr-repo/site-cookbooks/eyeehr/files/default/jdk-7u67-linux-x64.rpm
 db/system/
 db/apps/xsltforms/
 db/apps/tutorial/
