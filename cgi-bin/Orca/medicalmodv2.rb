@@ -1,22 +1,23 @@
 #!/usr/bin/ruby
 
+=begin rdoc
+@summary	メイン処理：指定の患者番号の患者情報を取得する。
+* @param 		[POST] xml:診療行為中途データー
+* @return   	
+成功時：ORCAレスポンスデータ
+失敗時：
+  <eyeehr>
+  <result>送信結果（true/false)</result>
+  <request>リクエスト内容（XML）</request>
+  <message>メッセージ</message>
+  </eyeehr>
+* @dependency cgi, logger, OrcaManager.rb
+* [参照]    		http://www.orca.med.or.jp/receipt/tec/api/medicalmod.html
+=end
+
 #require 'logger'           # CGI実行時に500エラーとなる。
 require 'cgi'               # CGIモジュールを追加する。
 require 'OrcaManager.rb'    # ORCA接続マネージャを追加する。
-
-######################################################################
-# メイン処理：指定の患者番号の患者情報を取得する。
-# [POST]    xml:診療行為中途データー
-# [参照]    http://www.orca.med.or.jp/receipt/tec/api/medicalmod.html
-# @return   成功時：ORCAレスポンスデータ
-#           失敗時：
-#               <eyeehr>
-#                   <result>送信結果（true/false)</result>
-#                   <request>リクエスト内容（XML）</request>
-#                   <message>メッセージ</message>
-#               </eyeehr>
-# @dependency cgi, logger, OrcaManager.rb
-######################################################################
 
 # ログファイルを用意する。
 #log = Logger.new("result.log")

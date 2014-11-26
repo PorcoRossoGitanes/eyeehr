@@ -1,9 +1,13 @@
 #!/usr/bin/ruby
 
+=begin rdoc
+@summary ORCA接続マネージャー
+=end
+
 ######################################################################
 # @summary ORCA接続マネージャー
-# @dependency uri, net/http, net/telnet, yaml, pp
-# @dependency ./settings.yaml
+# * @dependency uri, net/http, net/telnet, yaml, pp
+# * @dependency ./settings.yaml
 ######################################################################
 class OrcaManager #< Super
 
@@ -20,7 +24,7 @@ class OrcaManager #< Super
 
 	##################################################################
 	# 初期化
-	# @dependency yaml, pp
+	# * @dependency yaml, pp
 	##################################################################
 	def initialize()
 
@@ -41,10 +45,10 @@ class OrcaManager #< Super
 
 	##################################################################
 	# @summary ORCAサーバへの接続を確認する。
-	# @return 
-	# _result	結果 true=成功。false=失敗。
-	# _message　メッセージ。
-	# @dependency net/telnet
+	# * @return 
+	#  _result	結果 true=成功。false=失敗。
+	#  _message　メッセージ。
+	# * @dependency net/telnet
 	##################################################################
 	def CheckConnection()
 
@@ -75,12 +79,12 @@ class OrcaManager #< Super
 
 	##################################################################
 	# @summary 患者情報を取得する。
-	# @param i_patient_id 患者情報
-	# @return 
-	# _result	結果 true=成功。false=失敗。
-	# _xml 		成功時、XML。失敗時、空文字列。
-	# _message　メッセージ。
-	# @dependency uri, net/http, net/telnet
+	# * @param i_patient_id 患者情報
+	# * @return 
+	#  _result	結果 true=成功。false=失敗。
+	#  _xml 		成功時、XML。失敗時、空文字列。
+	#  _message　メッセージ。
+	# * @dependency uri, net/http, net/telnet
 	##################################################################
 	def GetPatientInfo(i_patient_id)
 		
@@ -135,17 +139,17 @@ class OrcaManager #< Super
 
 	##################################################################
 	# @summary 医療行為中途データーを登録する。
-	# @param i_class クラス
-	# @example 01 中途データ登録
-	# @example 02 中途データ削除
-	# @example 03 中途データ変更
-	# @param i_xml 医療行為中途データー（XML）
-	# @return 
-	# _result	結果 true=成功。false=失敗。
-	# _req.body	リクエスト。
-	# _res.body	レスポンス。
-	# _message　メッセージ。
-	# @dependency uri, net/http, net/telnet
+	# * @param i_class クラス
+	# * @example 01 中途データ登録
+	# * @example 02 中途データ削除
+	# * @example 03 中途データ変更
+	# * @param i_xml 医療行為中途データー（XML）
+	# * @return 
+	#  _result	結果 true=成功。false=失敗。
+	#  _req.body	リクエスト。
+	#  _res.body	レスポンス。
+	#  _message　メッセージ。
+	# * @dependency uri, net/http, net/telnet
 	##################################################################
 	def ModifyMedicalInfo(i_class, i_xml)
 		
