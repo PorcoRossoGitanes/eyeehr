@@ -454,17 +454,58 @@ retVal += '</' + $format.attr('name') + '>';
  NoteItem.AttachFile = function ($i_attachment, i_url)
  {
   // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
-  $img = $('<a href="' + i_url + '" target="_blank"><img class="attachment" src="' + i_url + '" /></a>');
-  $i_attachment.append($img);   
+  var html = '<img class="attachment" src="' + i_url + '" />';
+  var img = NoteItem.CreateAttachementGadget($(html)[0]);
+  $i_attachment.append(img);   
+
+
+}
+
+/**
+ * 画像ファイルにはリンクを復活する。
+ * @param  String/Object  i_xml 添付ファイル（img）
+ * @return Object         添付ファイル（部品）（img）
+ */
+NoteItem.CreateAttachementGadget = function (i_xml) 
+{
+  var ret = null;
+  const thumbnailPdf = '';
+  var url  = $(i_xml).attr('src');
+  var html = '';
+  html += '<a href="' + url +'" target="_blank">';
+  html += Utility.XmlToStr(i_xml);
+  html += '</a>';
+
+  ret = $(html)[0];
 
   // 画像が右クリックされたら、コンテキストメニューを表示する。   
-  $img.bind("contextmenu", function(event){
+  $(ret).bind("contextmenu", function(event){
 
-    $ctx = $('<ul id="ctx"><!--li id="ctxEdit" disabled>編集</li--><li id="ctxDel">削除</li></ul>');
+    var html = '';
+    html += '<ul id="ctx">';
+    html += '<li id="ctxEdit" disabled>編集</li>';
+    html += '<li id="ctxDownload" disabled>ダウンロード</li>';
+    html += '<li id="ctxDel">削除</li>';
+    html += '</ul>';
+
+    $ctx = $(html);
+
     $(this).after($ctx);
 
+    // 編集を選択時、シェーマツールを開く。
+    // ダウンロード選択時、ファイルをダウンロードする。
+    $ctx.children('#ctxDownload').mousedown(function(){
+      var a = document.createElement('a');
+      a.href = url;
+      console.log(url);
+      a.setAttribute('download', name || 'noname');
+      a.dispatchEvent(new CustomEvent('click'));      
+    });
     // 削除を選択時、画像を削除する。
-    $ctx.children('#ctxDel').mousedown(function () { $(this).parent().prev().remove(); });
+    $ctx.children('#ctxDel').mousedown(function () { 
+      $(this).parent().prev().remove(); 
+    });
+
     // マウスダウン時、コンテキストメニューを閉じる。
     $(document).mousedown(function(){ $ctx.hide(); $ctx.remove(); });
 
@@ -476,22 +517,7 @@ retVal += '</' + $format.attr('name') + '>';
     // 通常の右クリック操作をOFFに設定する。
     return false;
   });
-}
 
-/**
- * 画像ファイルにはリンクを復活する。
- * @param  String/Object  i_xml 添付ファイル（img）
- * @return Object         添付ファイル（部品）
- */
-NoteItem.CreateAttachementGadget = function (i_xml) 
-{
-  var ret = '';
-  const thumbnailPdf = '';
-
-  ret += '<a href="' + $(i_xml).attr('src') +'">';
-  ret += Utility.XmlToStr(i_xml);
-  ret += '</a>';
-
-  return $(ret)[0];
+  return ret;
 }
 
