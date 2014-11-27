@@ -321,7 +321,7 @@
    {
     $parent = $(this._jquery).find('[name="Attachment"]');
     $(i_xml).children().each(function(){ 
-      var file = NoteItem.CreateAttachementGadget(this); 
+      var file = NoteItem.CreateAttachementGadget(this, false); 
       $parent.append(file);
     });
   }
@@ -334,7 +334,7 @@
    {
     $parent = $(this._jquery).find('[name="Scheme"]');
     $(i_xml).children().each(function(){ 
-      var file = NoteItem.CreateAttachementGadget(this); 
+      var file = NoteItem.CreateAttachementGadget(this, true); 
       $parent.append(file);
     });
   }
@@ -455,10 +455,8 @@ retVal += '</' + $format.attr('name') + '>';
  {
   // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
   var html = '<img class="attachment" src="' + i_url + '" />';
-  var img = NoteItem.CreateAttachementGadget($(html)[0]);
+  var img = NoteItem.CreateAttachementGadget($(html)[0], false);
   $i_attachment.append(img);   
-
-
 }
 
 /**
@@ -466,7 +464,7 @@ retVal += '</' + $format.attr('name') + '>';
  * @param  String/Object  i_xml 添付ファイル（img）
  * @return Object         添付ファイル（部品）（img）
  */
-NoteItem.CreateAttachementGadget = function (i_xml) 
+NoteItem.CreateAttachementGadget = function (i_xml, i_editable) 
 {
   var ret = null;
   const thumbnailPdf = '';
@@ -483,9 +481,9 @@ NoteItem.CreateAttachementGadget = function (i_xml)
 
     var html = '';
     html += '<ul id="ctx">';
-    html += '<li id="ctxEdit" disabled>編集</li>';
+    if (i_editable) html += '<li id="ctxEdit" disabled>編集</li>';
     html += '<li id="ctxDownload" disabled>ダウンロード</li>';
-    html += '<li id="ctxDel">削除</li>';
+    html += '<li id="ctxDelete">削除</li>';
     html += '</ul>';
 
     $ctx = $(html);
@@ -493,16 +491,15 @@ NoteItem.CreateAttachementGadget = function (i_xml)
     $(this).after($ctx);
 
     // 編集を選択時、シェーマツールを開く。
+    $ctx.children('#ctxEdit').mousedown(function(){
+      alert('MethodDraw');
+    });
     // ダウンロード選択時、ファイルをダウンロードする。
     $ctx.children('#ctxDownload').mousedown(function(){
-      var a = document.createElement('a');
-      a.href = url;
-      var filename = Utility.GetFileName (url, false);
-      a.setAttribute('download', filename || 'noname');
-      a.dispatchEvent(new CustomEvent('click'));      
+      Utility.DownloadFile(url);  
     });
     // 削除を選択時、画像を削除する。
-    $ctx.children('#ctxDel').mousedown(function () { 
+    $ctx.children('#ctxDelete').mousedown(function () { 
       $(this).parent().prev().remove(); 
     });
 

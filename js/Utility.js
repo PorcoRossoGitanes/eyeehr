@@ -424,3 +424,25 @@ Utility.GetFileName = function (i_url, i_ext)
 	return ret;
 }
 
+/**
+ * ファイルをダウンロードする。
+ * @static
+ * @param {String} i_url ダウンロード元URL
+ */
+Utility.DownloadFile = function (i_url)
+{
+	var a = document.createElement('a');
+	
+	// ダウンロード元URLを設定する。
+	a.href = i_url;
+
+	// ファイル名を取得する。
+	var filename = Utility.GetFileName (i_url, false);
+
+	// ダウンロードファイル名を設定する。
+	a.setAttribute('download', filename || 'noname');
+
+	//ファイルをダウンロードする。
+	a.dispatchEvent(new CustomEvent('click'));    
+}
+
