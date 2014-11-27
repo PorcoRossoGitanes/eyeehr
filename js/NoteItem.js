@@ -454,7 +454,7 @@ retVal += '</' + $format.attr('name') + '>';
  NoteItem.AttachFile = function ($i_attachment, i_url)
  {
   // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
-  var html = '<img class="attachment" src="' + i_url + '" />';
+  var html = '<img class="attachment" src="' + i_url + '" data-src="' + i_url + '"/>';
   var img = NoteItem.CreateAttachementGadget($(html)[0], false);
   $i_attachment.append(img);   
 }
@@ -468,11 +468,8 @@ NoteItem.CreateAttachementGadget = function (i_xml, i_editable)
 {
   var ret = null;
   const thumbnailPdf = '';
-  var url  = $(i_xml).attr('src');
-  var html = '';
-  html += '<a href="' + url +'" target="_blank">';
-  html += Utility.XmlToStr(i_xml);
-  html += '</a>';
+  var url  = $(i_xml).data('src');
+  var html = Utility.XmlToStr(i_xml);
 
   ret = $(html)[0];
 
@@ -481,8 +478,9 @@ NoteItem.CreateAttachementGadget = function (i_xml, i_editable)
 
     var html = '';
     html += '<ul id="ctx">';
-    if (i_editable) html += '<li id="ctxEdit" disabled>編集</li>';
-    html += '<li id="ctxDownload" disabled>ダウンロード</li>';
+    html += '<li id="ctxOpen">大きく表示</li>';
+    if (i_editable) html += '<li id="ctxEdit">編集</li>';
+    html += '<li id="ctxDownload">ダウンロード</li>';
     html += '<li id="ctxDelete">削除</li>';
     html += '</ul>';
 
@@ -490,6 +488,10 @@ NoteItem.CreateAttachementGadget = function (i_xml, i_editable)
 
     $(this).after($ctx);
 
+    // 別ウィンドウで開く。
+    $ctx.children('#ctxOpen').mousedown(function(){
+      window.open(url, '');
+    });
     // 編集を選択時、シェーマツールを開く。
     $ctx.children('#ctxEdit').mousedown(function(){
       alert('MethodDraw');

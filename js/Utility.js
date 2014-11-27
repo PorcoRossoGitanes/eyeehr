@@ -57,9 +57,9 @@
  * @param  i_jquery DIV, INPUT, IMG (集合で入ってくるかもしれない。）
  * @remarks  入力最小単位 :=
  *   （１）div 
- * 　　　<div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。（備考の場合のみ）XHTML |　→XHTMLに変換して保存する
+ * 　　　<div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。（備考の場合のみ）XHTML |　→XHTMLに変換して保存する。
  *   （２）img 
- * 　　　<a href="URL"><img name=“test-1” src=“THUMBNAIL” data-command=“本当のデーター"></a> 　例）PDF資料・写真 |　→XHTMLに変換して保存する
+ * 　　　<img name=“test-1” src=“THUMBNAIL” data-src=“URL（データ）"> 　例）PDF資料・写真 |　→XHTMLに変換して保存する。
  *   （３）input
  * 　　　<input type=“text” name=“tag” value=“hogehoge">　
  * 　　※ほとんどinputでまかなえるのでそれ以外は無視する。
@@ -99,8 +99,7 @@
 			case 'IMG':
 			{
 				// imgタグのsrc属性にはサムネイルが登録される場合があるため、画像のリンクを登録し直す。
-				$img = $(i_jquery).clone(); $img.attr('src', $img.parent().attr('href'));
-				console.log($(i_jquery).parent().attr('href'));
+				$img = $(i_jquery).clone(); // $img.attr('src', $img.data('src'));
 				// XHTMLに変換する。（一度、親要素に配置しなければ、HTML文字列が取得できない。）
 				var html = $('<div></div>').append($img).html();
 				retVal += Utility.HtmlToXhtml(html);
