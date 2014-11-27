@@ -66,8 +66,10 @@ end
 log "EyeEHR Server - Install Perl"
 #----------------------------------
 ## Perl をインストールする。
+## perl-CGI：さくらVPSでインストールした。
 %w{ 
 	perl
+	perl-CGI 
 }.each do |p|
 	package p do 
 		action :install
