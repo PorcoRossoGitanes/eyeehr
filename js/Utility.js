@@ -54,44 +54,47 @@
  * 最小入力コントロールをXMLに置き換える。
  * @static
  * @method HtmlMinInputItemToXml
- * @param DIV, INPUT(集合で入ってくるかもしれない。）, IMG
+ * @param  i_jquery DIV, INPUT, IMG (集合で入ってくるかもしれない。）
  * @remarks  入力最小単位 :=
- *  （備考の場合のみ）XHTML |　→XHTMLに変換して保存する
- *   <div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。
- *   <img name=“test-1” src=“Thumbnail” data-command=“本当のデーター">  例）眼底写真 |　→XHTMLに変換して保存する
- *   <input type=“text” name=“tag” value=“hogehoge">　※ほとんどinputでまかなえるのでそれ以外は無視
- *   TODO : ラジオボタン等はどのように扱うか、未検証である。
+ *   （１）div 
+ * 　　　<div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。（備考の場合のみ）XHTML |　→XHTMLに変換して保存する
+ *   （２）img 
+ * 　　　<a href="URL"><img name=“test-1” src=“THUMBNAIL” data-command=“本当のデーター"></a> 　例）PDF資料・写真 |　→XHTMLに変換して保存する
+ *   （３）input
+ * 　　　<input type=“text” name=“tag” value=“hogehoge">　
+ * 　　※ほとんどinputでまかなえるのでそれ以外は無視する。
+ *   　TODO : ラジオボタン等はどのように扱うか、未検証である。
  */
- Utility.HtmlMinInputItemToXml = function($i_jquery)
+ Utility.HtmlMinInputItemToXml = function(i_jquery)
  {
  	var retVal = '';
 
 	// 入力タグとなりうる要素を取得する。
 	//$i_jquery.find('DIV', 'INPUT', 'IMG').each(function (){
 
-		switch ($i_jquery[0].tagName)
+		switch (i_jquery.tagName)
 		{
 			case 'DIV':
-			if($i_jquery.attr('name') !== undefined)
+			if($(i_jquery).attr('name') !== undefined)
 			{
-				var tag = $i_jquery.attr('name');
+				var tag = $(i_jquery).attr('name');
 				retVal += '<' +  tag + '>';
-				retVal += $i_jquery.text();
+				retVal += $(i_jquery).text();
 				retVal += '</' + tag + '>';
 			}
 			break;
 			case 'INPUT':
-			if($i_jquery.attr('name') !== undefined)
+			if($(i_jquery).attr('name') !== undefined)
 			{
-				var tag = $i_jquery.attr('name');
+				var tag = $(i_jquery).attr('name');
 				retVal += '<' +  tag + '>';
-				retVal += $i_jquery.val();
+				retVal += $(i_jquery).val();
 				retVal += '</' + tag + '>';
 			}
 			break;
 			case 'IMG':
 			// XHTMLに変換する。（一度、親要素に配置しなければ、HTML文字列が取得できない。）
-			var html = $('<div></div>').append($i_jquery.clone()).html();
+			var html = $('<div></div>').append($(i_jquery).clone()).html();
 			retVal += Utility.HtmlToXhtml(html);
 			break;
 			default : 

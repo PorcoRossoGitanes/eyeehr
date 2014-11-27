@@ -366,7 +366,7 @@
   retVal += '<' + $title.attr('name') + '>' + $title.text() + '</' + $title.attr('name') + '>';
   // retVal += '<' + $title.attr('name') + '>';
   // $i_jquery.children('[name="Title"]').find('DIV', 'INPUT', 'IMG').each(function(){
-  //   retVal += Utility.HtmlMinInputItemToXml($(this));
+  //   retVal += Utility.HtmlMinInputItemToXml(this);
   // });
   // retVal += '</' + $title.attr('name') + '>';
 
@@ -374,8 +374,8 @@
   $orca = $i_jquery.children('[name="Orca"]');
   //console.log($orca[0]);
   retVal += '<' + $orca.attr('name') + '>';
-  $orca.find('DIV').each(function(){ retVal += Utility.HtmlMinInputItemToXml($(this)); console.log(this);});
-  $orca.find('INPUT').each(function(){ retVal += Utility.HtmlMinInputItemToXml($(this)); console.log(this);});
+  $orca.find('DIV').each(function(){ retVal += Utility.HtmlMinInputItemToXml(this); console.log(this);});
+  $orca.find('INPUT').each(function(){ retVal += Utility.HtmlMinInputItemToXml(this); console.log(this);});
   retVal += '</' + $orca.attr('name') + '>';
 
   // □ORCAフォーマット部をXMLに変換する。
@@ -383,8 +383,8 @@
   retVal += '<' + $format.attr('name') + '>';
   // $i_jquery.children('[name="Format"]').find('DIV', 'INPUT', 'IMG').each(function(){
   //   console.log(this);
-  //   retVal += Utility.HtmlMinInputItemToXml($(this));
-  //   console.log(Utility.HtmlMinInputItemToXml($(this)));
+  //   retVal += Utility.HtmlMinInputItemToXml(this);
+  //   console.log(Utility.HtmlMinInputItemToXml(this));
   // });
 retVal += '</' + $format.attr('name') + '>';
 
@@ -392,7 +392,7 @@ retVal += '</' + $format.attr('name') + '>';
   $Attachment = $i_jquery.children('[name="Attachment"]');
   retVal += '<' + $Attachment.attr('name') + '>';
   $Attachment.find('IMG').each(function(){
-    retVal += Utility.HtmlMinInputItemToXml($(this));
+    retVal += Utility.HtmlMinInputItemToXml(this);
   });
   retVal += '</' + $Attachment.attr('name') + '>';
 
@@ -400,7 +400,7 @@ retVal += '</' + $format.attr('name') + '>';
   $Scheme = $i_jquery.children('[name="Scheme"]');
   retVal += '<' + $Scheme.attr('name') + '>';
   $Scheme.find('IMG').each(function(){
-    retVal += Utility.HtmlMinInputItemToXml($(this)); 
+    retVal += Utility.HtmlMinInputItemToXml(this); 
   });
   retVal += '</' + $Scheme.attr('name') + '>';
 
