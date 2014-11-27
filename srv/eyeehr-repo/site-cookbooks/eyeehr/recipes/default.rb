@@ -12,6 +12,7 @@ log "EyeEHR Server - Update OS"
 
 #----------------------------------
 # yum (fastestmirrorでダウンロード) の インストール＆アップデートを実行する。
+# yum -y install yum-fastestmirror
 yum_package "yum-fastestmirror" do
   action :install
 end
@@ -56,6 +57,7 @@ end
 log "Firewall を OFF に設定する。"
 #----------------------------------
 ## iptables を OFF に設定する。
+## [Manual] $ chkconfig iptables off
 service "iptables" do 
 	action [:stop, :disable]
 end
@@ -80,7 +82,12 @@ end
 		action :install
 	end
 end
+
 ##CPANモジュールをインストールする。
+#sudo perl -MCPAN -e shell
+#cpan[1]> install XML::Parser
+#cpan[2]> install RPC::XML
+#cpan[3]> quit
 %w{
 	XML::Parser
 	RPC::XML
@@ -92,11 +99,13 @@ end
     group 'root'
   end
 end
+
 #----------------------------------
 
 log "EyeEHR Server - Install PHP"
 #----------------------------------
 ## PHP をインストールする。
+# yum -y install php php-mbstring
 %w{ 
 	php 
 	php-mbstring 
@@ -193,6 +202,7 @@ log "EyeEHR Server - Install eXist-DB"
 #----------------------------------
 
 ## JDK7(u67固定)を wget でダウンロードし、RPMでインストールする。
+## yum -y install java-1.7.0-openjdk-devel.x86_64
 cookbook_file "jdk-7u67-linux-x64" do
 	# JDK RPM を サーバーに移行する。("cookbook_dir/files/default/" からの相対パスを指定する。)
 	source "jdk-7u67-linux-x64.rpm"
@@ -206,6 +216,7 @@ rpm_package 'jdk-7u67-linux-x64' do
 end
 
 ## eXist-DB本体を/tmpにコピーする。
+## wget http://downloads.sourceforge.net/project/exist/Stable/2.1/eXist-db-setup-2.1-rev18721.jar?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fexist%2Ffiles%2FStable%2F2.1%2F&ts=1416990273&use_mirror=cznic
 cookbook_file "eXist-db-setup-2.1" do
 	# eXist JAR を サーバーに移行する。("cookbook_dir/files/default/" からの相対パスを指定する。)
 	source "eXist-db-setup-2.1-rev18721.jar"
@@ -214,6 +225,7 @@ cookbook_file "eXist-db-setup-2.1" do
 end
 
 ## exist.exp(インストール自動応答ファイル)を/tmpにコピーする。
+## bash exist.exp
 cookbook_file "exist.exp" do
 	# eXist JAR を サーバーに移行する。("cookbook_dir/files/default/" からの相対パスを指定する。)
 	source "exist.exp"
@@ -283,15 +295,20 @@ end
 
 ## /var/www/htmlにソースコードを展開する。
 ## git_repo = eyeehr.jsonに記載されている。
-## sudo git clone https://github.com/shokokb/eyeehr.git 
+## [Manual] sudo git clone https://github.com/shokokb/eyeehr.git 
 ## 　⇒　/var/www/html に eyeehr が展開される。
-bash "git clone" do
-  user "root"
-  cwd "/tmp"
-  code <<-EOH
-  sudo echo git clone https://github.com/shokokb/eyeehr.git >> result.log
-  EOH
+git "/var/www/html" do
+  repository "https://github.com/shokokb/eyeehr.git"
+  revision "master"
+  action :sync
 end
+# bash "git clone" do
+#   user "root"
+#   cwd "/var/www/html"
+#   code <<-EOH
+#   sudo echo git clone https://github.com/shokokb/eyeehr.git >> result.log
+#   EOH
+# end
 
 #----------------------------------
 # バックアップ設定
@@ -301,3 +318,11 @@ cookbook_file "backup.sh" do
 	# eXist JAR の帆損先を指定する。
 	path "/tmp/exist.sh"
 end
+ 
+#----------------------------------
+# デフォルトDBのリストア
+# [Manual] sudo bash backup.sh -r /var/www/html/eyeehr/db/eXist-backup.zip  -u admin -p zaq12wsx
+
+#----------------------------------
+# 実行権限の設定
+#----------------------------------
