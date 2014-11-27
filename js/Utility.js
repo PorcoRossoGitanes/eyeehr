@@ -408,4 +408,19 @@
 	return ret;
 }
 
+/**
+ * ファイル名を取得する
+ * @static
+ * @param {String} i_url URL
+ * @param {boolean} i_ext true=拡張子あり, false=拡張子なし
+ */
+Utility.GetFileName = function (i_url, i_ext)
+{
+	var ret = '';
+
+	if (i_ext) {ret = i_url.match(".+/(.+?)([\?#;].*)?$")[1]; }
+	else {ret = i_url.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1]; }
+	
+	return ret;
+}
 

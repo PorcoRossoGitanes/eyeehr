@@ -497,8 +497,8 @@ NoteItem.CreateAttachementGadget = function (i_xml)
     $ctx.children('#ctxDownload').mousedown(function(){
       var a = document.createElement('a');
       a.href = url;
-      console.log(url);
-      a.setAttribute('download', name || 'noname');
+      var filename = Utility.GetFileName (url, false);
+      a.setAttribute('download', filename || 'noname');
       a.dispatchEvent(new CustomEvent('click'));      
     });
     // 削除を選択時、画像を削除する。
