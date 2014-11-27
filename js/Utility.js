@@ -75,30 +75,41 @@
 		switch (i_jquery.tagName)
 		{
 			case 'DIV':
-			if($(i_jquery).attr('name') !== undefined)
-			{
-				var tag = $(i_jquery).attr('name');
-				retVal += '<' +  tag + '>';
-				retVal += $(i_jquery).text();
-				retVal += '</' + tag + '>';
+			{			
+				if($(i_jquery).attr('name') !== undefined)
+				{
+					var tag = $(i_jquery).attr('name');
+					retVal += '<' +  tag + '>';
+					retVal += $(i_jquery).text();
+					retVal += '</' + tag + '>';
+				}
+				break;
 			}
-			break;
 			case 'INPUT':
-			if($(i_jquery).attr('name') !== undefined)
 			{
-				var tag = $(i_jquery).attr('name');
-				retVal += '<' +  tag + '>';
-				retVal += $(i_jquery).val();
-				retVal += '</' + tag + '>';
+				if($(i_jquery).attr('name') !== undefined)
+				{
+					var tag = $(i_jquery).attr('name');
+					retVal += '<' +  tag + '>';
+					retVal += $(i_jquery).val();
+					retVal += '</' + tag + '>';
+				}
+				break;				
 			}
-			break;
 			case 'IMG':
-			// XHTMLに変換する。（一度、親要素に配置しなければ、HTML文字列が取得できない。）
-			var html = $('<div></div>').append($(i_jquery).clone()).html();
-			retVal += Utility.HtmlToXhtml(html);
-			break;
+			{
+				// imgタグのsrc属性にはサムネイルが登録される場合があるため、画像のリンクを登録し直す。
+				$img = $(i_jquery).clone(); $img.attr('src', $img.parent().attr('href'));
+				console.log($(i_jquery).parent().attr('href'));
+				// XHTMLに変換する。（一度、親要素に配置しなければ、HTML文字列が取得できない。）
+				var html = $('<div></div>').append($img).html();
+				retVal += Utility.HtmlToXhtml(html);
+				break;				
+			}
 			default : 
-			break;
+			{
+				break;
+			}
 		}
 
 		return retVal;

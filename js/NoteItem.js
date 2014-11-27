@@ -319,7 +319,11 @@
    */
    _proto.setAttachment = function (i_xml)
    {
-    $(this._jquery).find('[name="Attachment"]').html(Utility.InnerXml($(i_xml)));
+    $parent = $(this._jquery).find('[name="Attachment"]');
+    $(i_xml).children().each(function(){ 
+      var file = NoteItem.CreateAttachementGadget(this); 
+      $parent.append(file);
+    });
   }
 
   /**
@@ -328,7 +332,11 @@
    */
    _proto.setScheme = function (i_xml)
    {
-    $(this._jquery).find('[name="Scheme"]').html(Utility.InnerXml($(i_xml)));
+    $parent = $(this._jquery).find('[name="Scheme"]');
+    $(i_xml).children().each(function(){ 
+      var file = NoteItem.CreateAttachementGadget(this); 
+      $parent.append(file);
+    });
   }
 
   /**
@@ -337,7 +345,7 @@
    */
    _proto.setRemark = function (i_xml)
    {
-    $(this._jquery).find('[name="Remark"]').html(Utility.InnerXml($(i_xml)));
+    $(this._jquery).find('[name="Remark"]').html(Utility.InnerXml($(i_xml))/* html */);
   }
 })();
 
@@ -468,5 +476,22 @@ retVal += '</' + $format.attr('name') + '>';
     // 通常の右クリック操作をOFFに設定する。
     return false;
   });
+}
+
+/**
+ * 画像ファイルにはリンクを復活する。
+ * @param  String/Object  i_xml 添付ファイル（img）
+ * @return Object         添付ファイル（部品）
+ */
+NoteItem.CreateAttachementGadget = function (i_xml) 
+{
+  var ret = '';
+  const thumbnailPdf = '';
+
+  ret += '<a href="' + $(i_xml).attr('src') +'">';
+  ret += Utility.XmlToStr(i_xml);
+  ret += '</a>';
+
+  return $(ret)[0];
 }
 
