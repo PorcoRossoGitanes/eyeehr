@@ -5786,6 +5786,7 @@ this.save = function(opts, callback) {
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
 				 	$img = $('<img class="scheme img-thumbnail" src="' + url + '?' + (new Date().getTime()) + '" data-src="' + url + '" />');
 				 	$scheme.append($img);
+				 	$img.error(function(){alert('失敗');});
 
 				 	// 完了メッセージを表示する。
 				 	alert('画像の保存が完了しました。');
