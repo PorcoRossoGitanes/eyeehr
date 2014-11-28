@@ -471,7 +471,7 @@ Utility.DownloadFile = function (i_url)
 }
 
 /**
- * 画像ファイルをダウンロードする。
+ * 画像ファイルをリロードする。
  * @static
  * @param {Object} i_img 画像(imgタグ)
  * @param {String} i_url ダウンロード元URL
@@ -482,6 +482,5 @@ Utility.ReloadImageFile = function (i_img, i_url)
 	var url = Utility.GetUrl(i_url);
 	
 	// <img src="">	src属性を書き換える。
-	const MAX = 9999999999;
-	$(i_img).attr('src', url + '?' + Math.round(Math.random() * MAX));
+	$(i_img).attr('src', url + '?' + (new Date().getTime()));
 }
