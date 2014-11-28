@@ -469,6 +469,39 @@
 }
 
 /**
+ * シェーマを追加する。
+ * @param {String} i_noteItemId NoteItem ID
+ * @param {String} i_url 画像URL
+ * @param {function()} コールバック関数
+ */
+NoteItem.AttachScheme = function (i_noteItemId, i_url, callback)
+{
+  // 親画面にシェーマ画像のタグを返却する。
+  $noteItem = $('#' + i_noteItemId); 
+
+  // シェーマ領域を取得する。
+  $scheme = $noteItem.children('[name="Scheme"]'); 
+
+  // 元画像を取得し、一度削除、再度追加する。
+  $imgs = $scheme.children("img[src^='" + i_url + "']");
+  if ($imgs.length > 0) { $imgs.remove(); } 
+  var src = i_url;
+  var filename = Utility.GetFileName(i_url, true);
+  var html = '<img class="scheme img-thumbnail" src="' + src + '" data-src="' + i_url + '" alt="' + filename + '"/>';
+  var img = NoteItem.CreateAttachmentGadget($(html)[0], false);
+  $scheme.append(img);
+
+  // 画像が表示されない場合があるため、画像をリロードする。
+  $(img).ready(function(){$(img).attr('src', i_url + '?' + (new Date().getTime()))});
+
+  // 完了メッセージを表示する。
+  alert('画像の保存が完了しました。');
+
+  // コールバック関数があれば、コールバック関数を実行する。
+  if(callback) callback(); 
+}
+
+/**
  * 画像ファイルにはリンクを復活する。
  * @param  String/Object  i_xml 添付ファイル（img）
  * @return Object         添付ファイル（部品）（img）

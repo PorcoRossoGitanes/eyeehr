@@ -54,6 +54,18 @@ bkLib.onDomLoaded(function() {
 });
 //----- nicEdit -----
 
+//----- Method Draw ------
+/**
+ * シェーマを追加する。
+ * @param {String} i_noteItemId NoteItem ID
+ * @param {String} i_url 画像URL
+ * @param {function()} コールバック関数
+ */
+function AttachScheme (i_noteItemId, i_url, callback)
+{
+	NoteItem.AttachScheme(i_noteItemId, i_url, callback);
+}
+//----- Method Draw ------
 //----- ロード時、処理 -----
 $(function() 
 {
@@ -195,6 +207,8 @@ for (var i in StampListSetting.Stamp) {
 		alert('患者情報表示');
 	});
 	//----- イベント登録 -----
+
+
 });
 //----- ロード時、処理 -----
 
