@@ -456,8 +456,14 @@ retVal += '</' + $format.attr('name') + '>';
  */
  NoteItem.AttachFile = function ($i_attachment, i_url)
  {
+  // PDFの場合はNoImageアイコンを表示する。
+  const pdf = '/exist/rest/db/apps/eyeehr/img/NoImage/PDF/icon_1r_192.png' 
+  var ext = Utility.GetFileExt(i_url);  // console.log(ext);
+  var src = (ext == 'pdf') ? pdf : i_url; 
+
   // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
-  var html = '<img class="attachment" src="' + i_url + '" data-src="' + i_url + '"/>';
+  var filename = Utility.GetFileName(i_url, true);
+  var html = '<img class="attachment img-thumbnail" src="' + src + '" data-src="' + i_url + '" alt="' + filename + '"/>';
   var img = NoteItem.CreateAttachementGadget($(html)[0], false);
   $i_attachment.append(img);   
 }
@@ -498,7 +504,6 @@ NoteItem.CreateAttachementGadget = function (i_xml, i_editable)
     });
     // 編集を選択時、シェーマツールを開く。
     $ctx.children('#ctxEdit').mousedown(function(){
-      // Method Drawを開く。
       window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
     });
     // 再読み込みを選択時、画像を再度読込む。

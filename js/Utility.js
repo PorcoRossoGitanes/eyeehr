@@ -423,6 +423,7 @@ Utility.GetUrl = function (i_url)
  * @static
  * @param {String} i_url URL
  * @param {boolean} i_ext true=拡張子あり, false=拡張子なし
+ * @return {String} ファイル名
  */
 Utility.GetFileName = function (i_url, i_ext)
 {
@@ -431,6 +432,19 @@ Utility.GetFileName = function (i_url, i_ext)
 	if (i_ext) {ret = i_url.match(".+/(.+?)([\?#;].*)?$")[1]; }
 	else {ret = i_url.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1]; }
 	
+	return ret;
+}
+
+/**
+ * ファイルの拡張子を取得する
+ * @static
+ * @param {String} i_url URL
+ * @return {String} ファイルの拡張子
+ */
+Utility.GetFileExt = function (i_url)
+{
+	var filename = Utility.GetFileName(i_url, true);
+	var ret = filename.split('.')[1];
 	return ret;
 }
 
