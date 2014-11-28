@@ -10,12 +10,6 @@
   // @param 付箋のID(MAX値)
   const MAX = 9999999999;
 
-  // @param Method Drawの画面最大幅
-  const MethodDrawWidthMax = 1024;
-  // @param Method Drawの画面最大高さ
-  const MethodDrawHeightMax = 768;
-  // @param Meethod DrawのURL(相対パス)
-  const MethodDrawPath = './method_draw/editor/index.html';
 
   /**
    * ID
@@ -137,21 +131,16 @@
 
   /// @summary シェーマ画像を追加するために、シェーマ描画ツールを表示する。
   $(this._jquery).find('button#addScheme').click(function () {
-    
-    // Method Drawの画面サイズ（画面をオーバーする場合は画面のサイズに合わせる。）
-    var methodDrawWidth = window.parent.screen.width > MethodDrawWidthMax ? MethodDrawWidthMax : window.parent.screen.width;
-    var methodDrawHeight = window.parent.screen.heght > MethodDrawHeightMax ? MethodDrawHeightMax : window.parent.screen.height;
 
     // NoteItemのIDを取得する。
-    var noteItemId = $(this).parent().attr("id");
+    var noteItemId = $(this).parent().attr('id');
+  
+    // URLを作成する。
+    var url = saveImageTo +'/' +　'scheme-' + (new Date()).getTime() +'.svg';
+  
+    // シェーマを開く。
+    NoteItem.OpenMethodDraw('add', noteItemId, url);
 
-    // コマンドを設定する（追加時「add」、編集時「edit」とする。）
-    var url = MethodDrawPath + '?command=add' + 
-    '&id=' + noteItemId + 
-    '&image=' + saveImageTo +'/' +　'scheme-' + (new Date()).getTime() +'.svg';
-
-    // Method Drawを開く。
-    window.open(url, 'method_draw', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
   });
 
   /// @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
@@ -488,7 +477,7 @@ NoteItem.AttachScheme = function (i_noteItemId, i_url, callback)
   var src = i_url;
   var filename = Utility.GetFileName(i_url, true);
   var html = '<img class="scheme img-thumbnail" src="' + src + '" data-src="' + i_url + '" alt="' + filename + '"/>';
-  var img = NoteItem.CreateAttachmentGadget($(html)[0], false);
+  var img = NoteItem.CreateAttachmentGadget($(html)[0], true);
   $scheme.append(img);
 
   // 画像が表示されない場合があるため、画像をリロードする。
@@ -501,6 +490,33 @@ NoteItem.AttachScheme = function (i_noteItemId, i_url, callback)
   if(callback) callback(); 
 }
 
+/**
+ * MethodDrawを開く
+ * @param {String} i_mode add=新規追加, edit=編集
+ * @param {String} i_noteItemId NoteItem ID
+ * @param {String} i_to 保存先
+ */
+NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url)
+{
+  // @param {Number} Meethod DrawのURL(相対パス)
+  const MethodDrawPath = './method_draw/editor/index.html';
+
+  // @param {Number} Method Drawの画面 最大サイズ　幅
+  const MethodDrawWidthMax = 1024;
+  // @param {Number} Method Drawの画面 最大サイズ　高さ
+  const MethodDrawHeightMax = 768;
+
+  // @param {Number} Method Drawの画面　幅
+  var methodDrawWidth = window.parent.screen.width > MethodDrawWidthMax ? MethodDrawWidthMax : window.parent.screen.width;
+  // @param {Number} Method Drawの画面　高さ
+  var methodDrawHeight = window.parent.screen.heght > MethodDrawHeightMax ? MethodDrawHeightMax : window.parent.screen.height;
+
+  // Method Drawを開く。
+  var url = MethodDrawPath + '?command=' + i_mode + '&id=' + i_noteItemId + '&image=' + i_url;
+  var name = 'method_draw_' + (new Date().getTime());
+  window.open(url, name, 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
+
+}
 /**
  * 画像ファイルにはリンクを復活する。
  * @param  String/Object  i_xml 添付ファイル（img）
@@ -520,7 +536,7 @@ NoteItem.CreateAttachmentGadget = function (i_xml, i_editable)
 
     var html = '';
     html += '<ul id="ctx">';
-    html += '<li id="ctxOpen">大きく表示</li>';
+    html += '<li id="ctxOpen">表示</li>';
     if (i_editable) html += '<li id="ctxEdit">編集</li>';
     html += '<li id="ctxReload">再読み込み</li>';
     html += '<li id="ctxDownload">ダウンロード</li>';
@@ -533,15 +549,20 @@ NoteItem.CreateAttachmentGadget = function (i_xml, i_editable)
 
     // 大きく表示を選択時、別ウィンドウでMethodDrawを開く。
     $ctx.children('#ctxOpen').mousedown(function(){
-      window.open(url, 'method_draw');
+      window.open(url, 'scheme_' + (new Date().getTime()));
     });
     // 編集を選択時、シェーマツールを開く。
     $ctx.children('#ctxEdit').mousedown(function(){
-      window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
+      // シェーマを開く。
+      $img = $(ctx).before();
+      $scheme = $img.parent();
+      $noteItem = $scheme.parent();
+      var noteItemId = $noteItem.attr('id'); console.log($noteItem[0]);
+      NoteItem.OpenMethodDraw('edit', noteItemId, url);
     });
     // 再読み込みを選択時、画像を再度読込む。
     $ctx.children('#ctxReload').mousedown(function(){
-      $().attr('src', url + '?_');
+      $(ret).attr('src', url + '?' + (new Date().getTime()));
       Utility.ReloadImageFile(ret, url);
     });
     // ダウンロード選択時、ファイルをダウンロードする。

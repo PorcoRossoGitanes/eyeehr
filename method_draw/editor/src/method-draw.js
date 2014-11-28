@@ -3906,7 +3906,7 @@
 		        const KeyUrl = 'url';				// 画像URL
 				$("#tool_open_server").click(function(){
 					// 編集時のみ画像を読み込む。
-					if(result[KeyCommand]) openServerFile(result[KeyUrl]);
+					if(result[KeyCommand] == CommandEdit) openServerFile(result[KeyUrl]);
 				});
 				
 				var img_import = $('<input type="file">').change(import_image);
