@@ -3356,16 +3356,12 @@
 					{sel:'#tool_unlink_use', fn: clickGroup, evt: 'click'},
 					{sel:'#tool_quit', fn: clickQuit, evt: 'mouseup', key: [modKey + 'Q', true]},
 					{sel:'#tool_save_quit', 
-						fn: function() { 
-							editingsource?saveSourceEditor():clickSave(
-									function(){
-										console.log('close');
-										window.close();
-									}
-								)
-						 }, 
-						 evt: 'mouseup', 
-						 key: [modKey + 'shift+W', true]
+						fn: function() { editingsource?saveSourceEditor():clickSave(function(){ 
+							// 親画面に画像が表示されない事があるため、100msec待機してから閉じる。
+							setTimeout("window.close()", 100);
+						});}, 
+						evt: 'mouseup', 
+						key: [modKey + 'shift+W', true]
 					},
 					{sel:'[id^=tool_align]', fn: clickAlign, evt: 'click'},
 					{sel:'#tool_undo', fn: clickUndo, evt: 'click', key: modKey + 'z'},
