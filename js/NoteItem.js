@@ -324,7 +324,7 @@
    {
     $parent = $(this._jquery).find('[name="Attachment"]');
     $(i_xml).children().each(function(){ 
-      var file = NoteItem.CreateAttachementGadget(this, false); 
+      var file = NoteItem.CreateAttachmentGadget(this, false); 
       $parent.append(file);
     });
   }
@@ -337,7 +337,7 @@
    {
     $parent = $(this._jquery).find('[name="Scheme"]');
     $(i_xml).children().each(function(){ 
-      var file = NoteItem.CreateAttachementGadget(this, true); 
+      var file = NoteItem.CreateAttachmentGadget(this, true); 
       $parent.append(file);
     });
   }
@@ -397,23 +397,23 @@
   //   retVal += Utility.HtmlMinInputItemToXml(this);
   //   console.log(Utility.HtmlMinInputItemToXml(this));
   // });
-retVal += '</' + $format.attr('name') + '>';
+  retVal += '</' + $format.attr('name') + '>';
 
   // □画像添付部をXMLに変換する。
-  $Attachment = $i_jquery.children('[name="Attachment"]');
-  retVal += '<' + $Attachment.attr('name') + '>';
-  $Attachment.find('IMG').each(function(){
+  $attachment = $i_jquery.children('[name="Attachment"]');
+  retVal += '<' + $attachment.attr('name') + '>';
+  $attachment.find('IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml(this);
   });
-  retVal += '</' + $Attachment.attr('name') + '>';
+  retVal += '</' + $attachment.attr('name') + '>';
 
   // □シェーマ添付部をXMLに変換する。
-  $Scheme = $i_jquery.children('[name="Scheme"]');
-  retVal += '<' + $Scheme.attr('name') + '>';
-  $Scheme.find('IMG').each(function(){
+  $scheme = $i_jquery.children('[name="Scheme"]');
+  retVal += '<' + $scheme.attr('name') + '>';
+  $scheme.find('IMG').each(function(){
     retVal += Utility.HtmlMinInputItemToXml(this); 
   });
-  retVal += '</' + $Scheme.attr('name') + '>';
+  retVal += '</' + $scheme.attr('name') + '>';
 
   // □備考をXMLに変換する。
   $Remark = $i_jquery.children('[name="Remark"]');
@@ -464,7 +464,7 @@ retVal += '</' + $format.attr('name') + '>';
   // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
   var filename = Utility.GetFileName(i_url, true);
   var html = '<img class="attachment img-thumbnail" src="' + src + '" data-src="' + i_url + '" alt="' + filename + '"/>';
-  var img = NoteItem.CreateAttachementGadget($(html)[0], false);
+  var img = NoteItem.CreateAttachmentGadget($(html)[0], false);
   $i_attachment.append(img);   
 }
 
@@ -473,7 +473,7 @@ retVal += '</' + $format.attr('name') + '>';
  * @param  String/Object  i_xml 添付ファイル（img）
  * @return Object         添付ファイル（部品）（img）
  */
-NoteItem.CreateAttachementGadget = function (i_xml, i_editable) 
+NoteItem.CreateAttachmentGadget = function (i_xml, i_editable) 
 {
   var ret = null;
   const thumbnailPdf = '';
