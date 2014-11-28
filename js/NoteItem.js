@@ -483,6 +483,7 @@ NoteItem.CreateAttachementGadget = function (i_xml, i_editable)
     html += '<ul id="ctx">';
     html += '<li id="ctxOpen">大きく表示</li>';
     if (i_editable) html += '<li id="ctxEdit">編集</li>';
+    html += '<li id="ctxReload">再読み込み</li>';
     html += '<li id="ctxDownload">ダウンロード</li>';
     html += '<li id="ctxDelete">削除</li>';
     html += '</ul>';
@@ -491,7 +492,7 @@ NoteItem.CreateAttachementGadget = function (i_xml, i_editable)
 
     $(this).after($ctx);
 
-    // 別ウィンドウで開く。
+    // 大きく表示を選択時、別ウィンドウでMethodDrawを開く。
     $ctx.children('#ctxOpen').mousedown(function(){
       window.open(url, 'method_draw');
     });
@@ -499,6 +500,11 @@ NoteItem.CreateAttachementGadget = function (i_xml, i_editable)
     $ctx.children('#ctxEdit').mousedown(function(){
       // Method Drawを開く。
       window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
+    });
+    // 再読み込みを選択時、画像を再度読込む。
+    $ctx.children('#ctxReload').mousedown(function(){
+      $().attr('src', url + '?_');
+      Utility.ReloadImageFile(ret, url);
     });
     // ダウンロード選択時、ファイルをダウンロードする。
     $ctx.children('#ctxDownload').mousedown(function(){

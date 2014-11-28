@@ -408,6 +408,17 @@
 }
 
 /**
+ * URLを取得する
+ * @static
+ * @param {String} i_url URL
+ */
+Utility.GetUrl = function (i_url)
+{
+	var ret = i_url.split('?')[0];
+	return ret;
+}
+
+/**
  * ファイル名を取得する
  * @static
  * @param {String} i_url URL
@@ -445,3 +456,18 @@ Utility.DownloadFile = function (i_url)
 	a.dispatchEvent(new CustomEvent('click'));    
 }
 
+/**
+ * 画像ファイルをダウンロードする。
+ * @static
+ * @param {Object} i_img 画像(imgタグ)
+ * @param {String} i_url ダウンロード元URL
+ */
+Utility.ReloadImageFile = function (i_img, i_url)
+{
+	// URL(http://~~~~/test.jpg?11111)から?より手前を取得する。
+	var url = Utility.GetUrl(i_url);
+	
+	// <img src="">	src属性を書き換える。
+	const MAX = 9999999999;
+	$(i_img).attr('src', url + '?' + Math.round(Math.random() * MAX));
+}
