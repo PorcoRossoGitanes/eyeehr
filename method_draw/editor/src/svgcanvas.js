@@ -5778,9 +5778,9 @@ this.save = function(opts, callback) {
 			 	else 
 			 	{
 					// 親画面にシェーマ画像のタグを返却する。
-				 	$noteItem = window.opener.$('#' + noteItemId); console.log($noteItem);
+				 	$noteItem = window.opener.$('#' + noteItemId); //console.log($noteItem);
 			 		// シェーマ領域を取得する。
-				 	$scheme = $noteItem.children('[name="Scheme"]'); console.log($scheme);
+				 	$scheme = $noteItem.children('[name="Scheme"]'); //console.log($scheme);
 				 	// 元画像を取得し、一度削除、再度追加する。
 				 	$imgs = $scheme.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
