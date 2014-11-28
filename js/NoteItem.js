@@ -9,7 +9,14 @@
 
   // @param 付箋のID(MAX値)
   const MAX = 9999999999;
-  
+
+  // @param Method Drawの画面最大幅
+  const MethodDrawWidthMax = 1024;
+  // @param Method Drawの画面最大高さ
+  const MethodDrawHeightMax = 768;
+  // @param Meethod DrawのURL(相対パス)
+  const MethodDrawPath = './method_draw/editor/index.html';
+
   /**
    * ID
    * @type {String}
@@ -131,12 +138,6 @@
   /// @summary シェーマ画像を追加するために、シェーマ描画ツールを表示する。
   $(this._jquery).find('button#addScheme').click(function () {
     
-    // Method Drawの画面最大サイズ
-    const MethodDrawWidthMax = 1024;
-    const MethodDrawHeightMax = 768;
-    // Meethod DrawのURL(相対パス)
-    const MethodDrawPath = './method_draw/editor/index.html';
-
     // Method Drawの画面サイズ（画面をオーバーする場合は画面のサイズに合わせる。）
     var methodDrawWidth = window.parent.screen.width > MethodDrawWidthMax ? MethodDrawWidthMax : window.parent.screen.width;
     var methodDrawHeight = window.parent.screen.heght > MethodDrawHeightMax ? MethodDrawHeightMax : window.parent.screen.height;
@@ -150,7 +151,7 @@
     '&image=' + saveImageTo +'/' +　'scheme-' + (new Date()).getTime() +'.svg';
 
     // Method Drawを開く。
-    window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
+    window.open(url, 'method_draw', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
   });
 
   /// @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
@@ -191,7 +192,9 @@
     $('input#selectedNoteItem').val($(this).attr('id'));
   });
 
-
+  $(this._jquery).find('[name="Attachment"]').change(function(){
+    alert('changed');
+  });
 };(function() {
 
   // プロトタイプ
@@ -490,11 +493,12 @@ NoteItem.CreateAttachementGadget = function (i_xml, i_editable)
 
     // 別ウィンドウで開く。
     $ctx.children('#ctxOpen').mousedown(function(){
-      window.open(url, '');
+      window.open(url, 'method_draw');
     });
     // 編集を選択時、シェーマツールを開く。
     $ctx.children('#ctxEdit').mousedown(function(){
-      alert('MethodDraw');
+      // Method Drawを開く。
+      window.open(url, '', 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
     });
     // ダウンロード選択時、ファイルをダウンロードする。
     $ctx.children('#ctxDownload').mousedown(function(){
