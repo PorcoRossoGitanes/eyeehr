@@ -1,14 +1,22 @@
+
 {
-  'Stamp' : [
-  	{'key' : 'DISEASE'			,'selector' : 'div.stamp_list#disease'					, 'class' : 'StampDisease'		    /*Disease => "" # 病名・所見*/                  	},
-  	{'key' : 'PRACTICE'			,'selector' : ''/*'div.stamp_list#practice'*/			, 'class' : ''				        /*Practice => "001" # 診療行為*/                  	},
-  	{'key' : 'INJECTION'		,'selector' : 'div.stamp_list#injection'				, 'class' : 'StampInjection'		/*Practice/300    => "001-300"  # 注射(300番台)*/		},
-  	{'key' : 'TREATMENT'		,'selector' : 'div.stamp_list#treatment'				, 'class' : 'StampTreatment'       	/*Practice/400    => "001-400"    # 処置(400番台)*/	},
-  	{'key' : 'OPERATION'		,'selector' : 'div.stamp_list#operation'				, 'class' : 'StampOperation'      	/*Practice/500    => "001-500"  # 手術(500番台)*/		},
-  	{'key' : 'MEDICAL_CHECK'	,'selector' : 'div.stamp_list#medical_check'			, 'class' : 'StampMedicalCheck'    	/*Practice/600    => "001-600"  # 検査(600番台)*/		},
-  	{'key' : 'MEDICAL_PRODUCT'	,'selector' : 'div.stamp_list#medical_product'			, 'class' : 'StampMedicalProduct'  	/*Medical_Product   => "002"    # 医薬品*/			},
-  	{'key' : 'MACHINE'			,'selector' : 'div.stamp_list#machine'					, 'class' : 'StampMachine'         	/*Machine       => "003"    # 特定機材*/				},
-  	{'key' : 'COMMENT'			,'selector' : ''/*'div.stamp_list#comment'*/			, 'class' : ''         				/*Comment       => "006"    # コメント*/				},
-  	{'key' : 'PRIVATE_EXPENSE'	,'selector' : ''/*'div.stamp_list#private_expense' */ 	, 'class' : ''						/*Private_Expense   => "007"    # 自費診療*/			}
+  "NoImage" : [
+    { "txt" : "", "_comment" : "PDFファイルのサムネイルが表示されない場合の画像 " },
+    { "csv" : "", "_comment" : "CSVファイルのサムネイルが表示されない場合の画像 " },
+    { "pdf" : "/exist/rest/db/apps/eyeehr/img/NoImage/PDF/icon_1r_192.png", "_comment" : "PDFファイルのサムネイルが表示されない場合の画像 " },
+    { "doc" : "", "_comment" : "Wordファイルのサムネイルが表示されない場合の画像 " },
+    { "xls" : "", "_comment" : "Excelファイルのサムネイルが表示されない場合の画像 " }
+  ],
+  "Stamp" : [
+  	{"key" : "DISEASE"           ,"selector" : "div.stamp_list#disease"					, "class" : "StampDisease"          ,"_comment" : "XXX     病名・所見"      },
+  	{"key" : "PRACTICE"			     ,"selector" : ""			                          , "class" : ""                      ,"_comment" :	"001     診療行為"        },
+  	{"key" : "INJECTION"		     ,"selector" : "div.stamp_list#injection"				, "class" : "StampInjection"        ,"_comment" :	"001-300 注射(300番台)"   },
+  	{"key" : "TREATMENT"		     ,"selector" : "div.stamp_list#treatment"				, "class" : "StampTreatment"        ,"_comment" : "001-400 処置(400番台)"   },
+  	{"key" : "OPERATION"         ,"selector" : "div.stamp_list#operation"				, "class" : "StampOperation"        ,"_comment" : "001-500 手術(500番台)"   },
+  	{"key" : "MEDICAL_CHECK"     ,"selector" : "div.stamp_list#medical_check"		, "class" : "StampMedicalCheck"     ,"_comment" : "001-600 検査(600番台)"   },
+  	{"key" : "MEDICAL_PRODUCT"   ,"selector" : "div.stamp_list#medical_product"	, "class" : "StampMedicalProduct"   ,"_comment" : "002     医薬品"          },
+  	{"key" : "MACHINE"           ,"selector" : "div.stamp_list#machine"					, "class" : "StampMachine"          ,"_comment" : "003     特定機材"        },
+  	{"key" : "COMMENT"           ,"selector" : ""		                            , "class" : ""                      ,"_comment" : "006     コメント"        },
+  	{"key" : "PRIVATE_EXPENSE"   ,"selector" : "" 	                            , "class" : ""                      ,"_comment" :	"007     自費診療"				 }
   ]	  
 }
