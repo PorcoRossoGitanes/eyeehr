@@ -137,40 +137,40 @@ if (!isset($_SESSION["USERID"])) {
 <!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->
   <script src="js/jquery.base64/jquery.base64.js"></script>
   
-  <script src="js/Utility.js"></script>
+  <script src="js/Utility/Utility.js"></script>
 
-  <script src="js/Staff.js"></script>
+  <script src="js/Staff/Staff.js"></script>
   
-  <script src="js/Patient.js"></script>
+  <script src="js/Patient/Patient.js"></script>
 
-  <script src="js/Stamp.js"></script>
-  <script src="js/StampDisease.js"></script>
-  <script src="js/StampInjection.js"></script>
-  <script src="js/StampMachine.js"></script>
-  <script src="js/StampMedicalCheck.js"></script>
-  <script src="js/StampMedicalProduct.js"></script>
-  <script src="js/StampOperation.js"></script>
-  <script src="js/StampTreatment.js"></script>
+  <script src="js/Stamp/Stamp.js"></script>
+  <script src="js/Stamp/StampDisease.js"></script>
+  <script src="js/Stamp/StampInjection.js"></script>
+  <script src="js/Stamp/StampMachine.js"></script>
+  <script src="js/Stamp/StampMedicalCheck.js"></script>
+  <script src="js/Stamp/StampMedicalProduct.js"></script>
+  <script src="js/Stamp/StampOperation.js"></script>
+  <script src="js/Stamp/StampTreatment.js"></script>
 
-  <script src="js/NoteItem.js"></script>
-  <script src="js/NoteItemComplaint.js"></script>
-  <script src="js/NoteItemDisease.js"></script>
-  <script src="js/NoteItemMedicalCheck.js"></script>
-  <script src="js/NoteItemPrescription.js"></script>
-  <script src="js/NoteItemOperation.js"></script>
-  <script src="js/NoteItemScheme.js"></script>
-  <script src="js/NoteItemMemo.js"></script>
+  <script src="js/NoteItem/NoteItem.js"></script>
+  <script src="js/NoteItem/NoteItemComplaint.js"></script>
+  <script src="js/NoteItem/NoteItemDisease.js"></script>
+  <script src="js/NoteItem/NoteItemMedicalCheck.js"></script>
+  <script src="js/NoteItem/NoteItemPrescription.js"></script>
+  <script src="js/NoteItem/NoteItemOperation.js"></script>
+  <script src="js/NoteItem/NoteItemScheme.js"></script>
+  <script src="js/NoteItem/NoteItemMemo.js"></script>
 
-  <script src="js/NoteItemContainer.js"></script>
-  <script src="js/NoteItemContainerComplaint.js"></script>
-  <script src="js/NoteItemContainerDisease.js"></script>
-  <script src="js/NoteItemContainerMedicalCheck.js"></script>
-  <script src="js/NoteItemContainerPrescription.js"></script>
-  <script src="js/NoteItemContainerOperation.js"></script>
-  <script src="js/NoteItemContainerScheme.js"></script>
-  <script src="js/NoteItemContainerMemo.js"></script>
+  <script src="js/NoteItemContainer/NoteItemContainer.js"></script>
+  <script src="js/NoteItemContainer/NoteItemContainerComplaint.js"></script>
+  <script src="js/NoteItemContainer/NoteItemContainerDisease.js"></script>
+  <script src="js/NoteItemContainer/NoteItemContainerMedicalCheck.js"></script>
+  <script src="js/NoteItemContainer/NoteItemContainerPrescription.js"></script>
+  <script src="js/NoteItemContainer/NoteItemContainerOperation.js"></script>
+  <script src="js/NoteItemContainer/NoteItemContainerScheme.js"></script>
+  <script src="js/NoteItemContainer/NoteItemContainerMemo.js"></script>
 
-  <script src="js/Note.js"></script>
+  <script src="js/Note/Note.js"></script>
 
   <!--script src="js/XmlManager.js"/></script-->
   <script src="js/Main.js"></script>
