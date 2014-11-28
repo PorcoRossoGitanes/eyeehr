@@ -5784,7 +5784,7 @@ this.save = function(opts, callback) {
 				 	// 元画像を取得し、一度削除、再度追加する。
 				 	$imgs = $scheme.children("img[src^='" + url + "']");
 				 	if ($imgs.length > 0) { $imgs.remove(); } 
-				 	$img = $('<img class="scheme img-thumbnail" src="' + url + '?' + (new Date().getTime()) + '"/>');
+				 	$img = $('<img class="scheme img-thumbnail" src="' + url + '?' + (new Date().getTime()) + '" data-src="' + url + '" />');
 				 	$scheme.append($img);
 
 				 	// 完了メッセージを表示する。
