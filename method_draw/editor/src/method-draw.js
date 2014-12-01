@@ -3586,6 +3586,8 @@
 				}
 				
 				$('#rulers').toggle(!!curConfig.showRulers);
+
+				$('#tool_open_server').click();
 			});
 		
 			
@@ -3864,7 +3866,7 @@
 				var openServerFile = function(i_url) {
 					if (i_url !== undefined)
 					{
-						alert(i_url);
+						//alert(i_url);
 						$.ajax({
 							url : i_url,
 							type : "get",
@@ -3902,11 +3904,14 @@
 			        }
 			    }
 		        const KeyCommand = 'command';		// コマンド(add,edit)
-		        const CommandEdit = 'edit';
-		        const KeyUrl = 'url';				// 画像URL
+		        const KeyCommandEdit = 'edit';
+		        const KeyImage = 'image';				// 画像URL
 				$("#tool_open_server").click(function(){
+					// console.log(result[KeyCommand]);
+					// console.log(result[KeyCommandEdit]);
+					// console.log(result[KeyImage]);
 					// 編集時のみ画像を読み込む。
-					if(result[KeyCommand] == CommandEdit) openServerFile(result[KeyUrl]);
+					if(result[KeyCommand]) openServerFile(result[KeyImage]);
 				});
 				
 				var img_import = $('<input type="file">').change(import_image);

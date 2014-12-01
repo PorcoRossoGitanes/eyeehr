@@ -181,9 +181,9 @@
     $('input#selectedNoteItem').val($(this).attr('id'));
   });
 
-  $(this._jquery).find('[name="Attachment"]').change(function(){
-    alert('changed');
-  });
+  // $(this._jquery).find('[name="Attachment"]').change(function(){
+  //   alert('changed');
+  // });
 };(function() {
 
   // プロトタイプ
