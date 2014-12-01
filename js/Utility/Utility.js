@@ -518,36 +518,19 @@ Utility.GetQueryString = function ()
 
 /**
  * JSONファイルを読込む
+ * @param {method(json)} callback　コールバック関数
  */
-Utility.LoadJson = function ()
+Utility.LoadJson = function (callback)
 {
-	// // 背景画像を読み込む。
-	// const UrlBgImages = 'custom/bgimages.json';
-	// $.getJSON(
-	// 	UrlBgImages,
-	// 	function (json) {
-	// 		bgImages = json;
-
-	// 		// 背景メニューを追加する。
-	// 		$('#bgimage_menu').children().each(function(){
-	// 			//console.log($(this));
-	// 			var key = $(this).data('key');
-	// 			if (key <= bgImages.length)
-	// 			{
-	// 				var index = key - 1;
-	// 				var key = bgImages[index].key, title = bgImages[index].title, data = bgImages[index].data;
-	// 				//$menu.attr('id', 'tool_bg_color_' + key);
-	// 				//$menu.data('key', key);
-	// 				$(this).text(title);
-	// 			}
-	// 			else 
-	// 			{
-	// 				$(this).css('display', 'none');
-	// 			}
-	// 		});
-	// 	}
-	// ).error(function(jqXHR, textStatus, errorThrown) {
-	//     alert("背景画像の読み込みに失敗した。 " + textStatus);
-	// });
+	// 背景画像を読み込む。
+	const i_url = 'js/json/configure.json';
+	$.getJSON(
+		i_url,
+		function (json) {
+			if(callback !== undefined) callback(json);
+		}
+	).error(function(jqXHR, textStatus, errorThrown) {
+	    alert("JSONファイルの読み込みに失敗しました。 " + textStatus);
+	});
 
 }

@@ -1,4 +1,3 @@
-
 {
   "AttachFile" : {
     "XQ" : "/exist/apps/eyeehr/modules/uploadFileBin.xq", 
@@ -88,6 +87,9 @@
   	{"key" : "COMMENT"           ,"selector" : ""		                            , "class" : ""                      ,"_comment" : "006     コメント"        },
   	{"key" : "PRIVATE_EXPENSE"   ,"selector" : "" 	                            , "class" : ""                      ,"_comment" :	"007     自費診療"				 }
   ],
+  "SchemeDrawer" : {
+    "Size" : { "max_width" : "800", "max_height" : "600" , "_comment" : "画面サイズ" }
+  }, 
   "Remark" : {
     "Size" : { "width" : "400", "height" : "300" , "_comment" : "画面サイズ" }
   }

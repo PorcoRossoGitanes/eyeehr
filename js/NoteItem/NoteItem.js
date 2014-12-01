@@ -39,7 +39,7 @@
     'image/bmp' + ', ' + 
     'application/pdf' + ', ' + 
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document' + ', ' + // docx
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet ' + ', ' + // xlsx
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' + ', ' + // xlsx
     'application/msexcel' + ', ' + // xls
     'application/msword'  // doc
   ;
@@ -544,23 +544,25 @@ NoteItem.AttachScheme = function (i_noteItemId, i_url, callback)
  */
 NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url)
 {
-  // @param {Number} Meethod DrawのURL(相対パス)
-  const MethodDrawPath = './method_draw/editor/index.html';
+  var json = Utility.LoadJson(function(json){
+    // @param {Number} Meethod DrawのURL(相対パス)
+    const MethodDrawPath = './method_draw/editor/index.html';
 
-  // @param {Number} Method Drawの画面 最大サイズ　幅
-  const MethodDrawWidthMax = 1024;
-  // @param {Number} Method Drawの画面 最大サイズ　高さ
-  const MethodDrawHeightMax = 768;
+    // @param {Number} Method Drawの画面 最大サイズ　幅
+    const MethodDrawWidthMax = json['SchemeDrawer'].Size['max_width'];
+    // @param {Number} Method Drawの画面 最大サイズ　高さ
+    const MethodDrawHeightMax = json['SchemeDrawer'].Size['max_height'];
 
-  // @param {Number} Method Drawの画面　幅
-  var methodDrawWidth = window.parent.screen.width > MethodDrawWidthMax ? MethodDrawWidthMax : window.parent.screen.width;
-  // @param {Number} Method Drawの画面　高さ
-  var methodDrawHeight = window.parent.screen.heght > MethodDrawHeightMax ? MethodDrawHeightMax : window.parent.screen.height;
+    // @param {Number} Method Drawの画面　幅
+    var methodDrawWidth = window.parent.screen.width > MethodDrawWidthMax ? MethodDrawWidthMax : window.parent.screen.width;
+    // @param {Number} Method Drawの画面　高さ
+    var methodDrawHeight = window.parent.screen.height > MethodDrawHeightMax ? MethodDrawHeightMax : window.parent.screen.height;
 
-  // Method Drawを開く。
-  var url = MethodDrawPath + '?command=' + i_mode + '&id=' + i_noteItemId + '&image=' + i_url;
-  var name = 'method_draw_' + (new Date().getTime());
-  window.open(url, name, 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
+    // Method Drawを開く。
+    var url = MethodDrawPath + '?command=' + i_mode + '&id=' + i_noteItemId + '&image=' + i_url;
+    var name = 'method_draw_' + (new Date().getTime());
+    window.open(url, name, 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
+  });
 
 }
 
