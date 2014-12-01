@@ -544,7 +544,7 @@ NoteItem.AttachScheme = function (i_noteItemId, i_url, callback)
  */
 NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url)
 {
-  var json = Utility.LoadJson(function(json){
+  Utility.LoadJson(function(json){
     // @param {Number} Meethod DrawのURL(相対パス)
     const MethodDrawPath = './method_draw/editor/index.html';
 
@@ -573,13 +573,12 @@ NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url)
  */
 NoteItem.OpenRemarkForm = function(i_noteItemId, i_content)
 {
-  var url = 'remark.html' + '?' + 'id=' + i_noteItemId + '&' + 'content=' + i_content;
-  var id = 'remark_'+ i_noteItemId;
-  var size = 'width=400,height=300';
-  window.open(url, id, size);
-    //window.open('remark.html', 'remark_'+ (new Date().getTime()));
-    // area.instanceById('area1').setContent(memo);
-    // $('input#selectedNoteItem').val(id);
+  Utility.LoadJson(function(json){
+    var url = 'remark.html' + '?' + 'id=' + i_noteItemId + '&' + 'content=' + i_content;
+    var id = 'remark_'+ i_noteItemId;
+    var size = 'width=' + json['Remark'].Size['width'] + ',height=' + json['Remark'].Size['height'];
+    window.open(url, id, size);    
+  });
 }
 
 /**
