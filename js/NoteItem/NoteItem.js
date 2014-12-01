@@ -69,10 +69,10 @@
     /***ファイル　添付***/
     formAttachFile + // 隠し埋め込みフォーム
     '<button id="attachFile" class="btn btn-default btn-xs" ><span class="glyphicon glyphicon-upload"></span></button>' + 
-    /***ファイル　添付***/
-    /***シェーマ添付（処置・手術・検査などでシェーマを書くので、デフォルト表示とする。）***/
+    /***シェーマ　添付（処置・手術・検査などでシェーマを書くので、デフォルト表示とする。）***/
     '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:inherit">シェーマ</button>' + 
-    /***シェーマ添付***/
+    /***備考　編集***/
+    '<button id="editRemark" class="btn btn-default btn-xs" style="visibility:inherit">備考</button>' + 
     '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
     '<div name="Title" style="display:block"></div>' + <!--入力フォーム（タイトル）-->
     '<div name="Orca" style="display:block"></div>' + <!--入力フォーム（ORCA連携用定型フォーム）-->
@@ -174,11 +174,12 @@
     $(this).parent().remove();
   });
   
-  // @summary 付箋をダブルクリック時に入力欄を表示する。
-  $(this._jquery).dblclick(function(){
-    var memo = $(this).find('[name="Remark"]').html();
-    area.instanceById('area1').setContent(memo);
-    $('input#selectedNoteItem').val($(this).attr('id'));
+  // @summary 「備考」ボタンが押された時に備考編集フォームを表示する。
+  $(this._jquery).find('button#editRemark').click(function(){
+    $noteItem = $(this).parent();
+    var content = $noteItem.find('[name="Remark"]').html();
+    var noteItemId = $noteItem.attr('id');
+    NoteItem.OpenRemarkForm(noteItemId, content);
   });
 
   // $(this._jquery).find('[name="Attachment"]').change(function(){
@@ -416,13 +417,18 @@
 }
 
 /**
- * 文字列を変更する。
- * @method ChangeVal
+ * 備考内容（文字列）を変更する。
+ * @method ChangeRemark
+ * @param {String} i_noteItemId NoteItem ID
+ * @param {String} i_content 備考
+ * @param {method()} callback コールバック関数 
  * @static
  */
- NoteItem.ChangeVal = function($jquery, i_memo)
+ NoteItem.ChangeRemark = function(i_noteItemId, i_content, callback)
  {
-  $memo = $('<memo>' + i_memo + '</memo>');
+  $jquery = $('#' + i_noteItemId);
+
+  $memo = $('<memo>' + i_content + '</memo>');
   $strongs = $memo.find('strong');
 
   var tags = '';
@@ -434,7 +440,9 @@
   }
   
   $jquery.find('#tags').html(tags);
-  $jquery.find('[name="Remark"]').html(i_memo);
+  $jquery.find('[name="Remark"]').html(i_content);
+
+  if(callback !== undefined) callback();
 }
 
 /**
@@ -517,6 +525,23 @@ NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url)
   window.open(url, name, 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
 
 }
+
+/**
+ * 備考入力フォームを開く
+ * @param {String} i_noteItemId NoteItem ID
+ * @param {String} i_content 備考内容
+ */
+NoteItem.OpenRemarkForm = function(i_noteItemId, i_content)
+{
+  var url = 'remark.html' + '?' + 'id=' + i_noteItemId + '&' + 'content=' + i_content;
+  var id = 'remark_'+ i_noteItemId;
+  var size = 'width=400,height=300';
+  window.open(url, id, size);
+    //window.open('remark.html', 'remark_'+ (new Date().getTime()));
+    // area.instanceById('area1').setContent(memo);
+    // $('input#selectedNoteItem').val(id);
+}
+
 /**
  * 画像ファイルにはリンクを復活する。
  * @param  String/Object  i_xml 添付ファイル（img）

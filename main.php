@@ -24,9 +24,6 @@ if (!isset($_SESSION["USERID"])) {
     <script src="js/contextmenu/jquery.contextmenu.r2.packed.js"></script><!-- ContextMenu Plugin dependent on jQuery  -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
     <!--script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script--><!--nicEdit-->
-    
-    <script src="js/nicEdit/nicEdit.js" type="text/javascript"></script><!--nicEdit-->
-
     <!--自作CSS-->    
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <!--自作CSS-->    
@@ -111,7 +108,6 @@ if (!isset($_SESSION["USERID"])) {
       <tr>
         <td>
           <!--付箋特記事項編集欄-->
-          <textarea id="area1" data-from="" style="width:100%;"></textarea>
           <input id="selectedNoteItem" type="hidden" value="" style="width:100%;"/> 
         </td>
       </tr>

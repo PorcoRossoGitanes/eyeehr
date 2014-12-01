@@ -1,59 +1,3 @@
-//----- nicEdit -----
-//@param 入力パネルインスタンス
-var area = null;
-
-// @summary nicEditの呼び込み時、入力欄を追加する。
-bkLib.onDomLoaded(function() {
-	const ID = 'area1';
-	
-	area = new nicEditor(
-	{
-		buttonList:[
- 			'save', // 「保存ボタンを追加した。」
- 			'bold',
- 			'italic',
- 			'underline', 
- 			//'forecolor',
- 			'forecolor-black',
- 			'forecolor-red',
- 			'forecolor-blue',
- 			'forecolor-green',
- 			'forecolor-brown',
- 			'forecolor-yellow',
- 			// 'bgcolor',
- 			// 'bgcolor-black',
- 			'bgcolor-red',
- 			'bgcolor-blue',
- 			'bgcolor-green',
- 			'bgcolor-brown',
- 			'bgcolor-yellow'
- 			/*,
- 			'image',
- 			'upload'*/
- 			],
-		//convertToText:true
-
-		// 「保存」ボタン押下時、付箋の備考を保存する。
-		onSave : function(content, id, instance) {			
-			// 変更内容を取得する。
-			var memo = content;
-			
-			// 付箋IDを取得する。
-			var id = $('input#selectedNoteItem').val();
-
-			// IDが存在すれば、付箋を更新する。
-			if (id != '')
-			{
-				memo = memo.replace(/<div>/g, '<br />');
-				memo = memo.replace(/<\/div>/g, '');
-				var rootSelector = 'div#' + id;
-				NoteItem.ChangeVal($(rootSelector), memo);
-			}
-		}
-	}).panelInstance(ID);
-});
-//----- nicEdit -----
-
 //----- Method Draw ------
 /**
  * シェーマを追加する。
@@ -64,6 +8,17 @@ bkLib.onDomLoaded(function() {
 function AttachScheme (i_noteItemId, i_url, callback)
 {
 	NoteItem.AttachScheme(i_noteItemId, i_url, callback);
+}
+
+/**
+ * 備考を変更する。
+ * @param {String} i_noteItemId NoteItem ID
+ * @param {String} i_url 画像URL
+ * @param {function()} コールバック関数
+ */
+function ChangeRemark (i_noteItemId, i_content, callback)
+{
+	NoteItem.ChangeRemark(i_noteItemId, i_content, callback);
 }
 //----- Method Draw ------
 //----- ロード時、処理 -----
