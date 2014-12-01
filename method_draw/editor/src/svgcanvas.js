@@ -2223,7 +2223,6 @@ var clearSelection = this.clearSelection = function(noCall) {
 // elemsToAdd - an array of DOM elements to add to the selection
 // showGrips - a boolean flag indicating whether the resize grips should be shown
 var addToSelection = this.addToSelection = function(elemsToAdd, showGrips) {
-	console.log('addToSelection');
 	if (elemsToAdd.length == 0) { return; }
 	// find the first null in our selectedElements array
 	var j = 0;
@@ -3428,6 +3427,8 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				if (keep) {
 					element = pathActions.smoothPolylineIntoPath(element);
 				}
+				// 要素を選択し、パラメータ設定領域を表示する。
+				selectOnly([element]);
 				//canvas.clearSelection();
 				break;
 			case "fhhatch":
@@ -3445,11 +3446,15 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				if (keep) {
 					element = pathActions.smoothPolylineIntoPath(element);
 				}
+				// 要素を選択し、パラメータ設定領域を表示する。
+				selectOnly([element]);
 				//canvas.clearSelection();
 				break;
 			case "line":
 				var attrs = $(element).attr(["x1", "x2", "y1", "y2"]);
 				keep = (attrs.x1 != attrs.x2 || attrs.y1 != attrs.y2);
+				// 要素を選択し、パラメータ設定領域を表示する。
+				selectOnly([element]);
 				break;
 			case "foreignObject":
 			case "square":
@@ -3458,6 +3463,8 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				var attrs = $(element).attr(["width", "height"]);
 				// Image should be kept regardless of size (use inherit dimensions later)
 				keep = (attrs.width != 0 || attrs.height != 0) || current_mode === "image";
+				// 要素を選択し、パラメータ設定領域を表示する。
+				selectOnly([element]);
 				break;
 			case "circle":
 				keep = (element.getAttribute('r') != 0);
@@ -3506,7 +3513,9 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				keep = true;
 				selectOnly([element]);
 				textActions.start(element);
-				break;
+				// 要素を選択し、パラメータ設定領域を表示する。
+				selectOnly([element]);
+			break;
 			case "path":
 				// set element to null here so that it is not removed nor finalized
 				element = null;
