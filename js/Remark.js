@@ -6,8 +6,7 @@ bkLib.onDomLoaded(function() {
     const ID = 'remark';
         
     // GET値を取得する。
-    console.log(Utility);
-    var get = GetQueryString();
+    var get = Utility.GetQueryString();
     var noteItemId = get['id']; //console.log(noteItemId);
     var original = get['content']; //console.log(original);
     

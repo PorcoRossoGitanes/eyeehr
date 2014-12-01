@@ -515,3 +515,39 @@ Utility.GetQueryString = function ()
     }
     return result;
 }
+
+/**
+ * JSONファイルを読込む
+ */
+Utility.LoadJson = function ()
+{
+	// // 背景画像を読み込む。
+	// const UrlBgImages = 'custom/bgimages.json';
+	// $.getJSON(
+	// 	UrlBgImages,
+	// 	function (json) {
+	// 		bgImages = json;
+
+	// 		// 背景メニューを追加する。
+	// 		$('#bgimage_menu').children().each(function(){
+	// 			//console.log($(this));
+	// 			var key = $(this).data('key');
+	// 			if (key <= bgImages.length)
+	// 			{
+	// 				var index = key - 1;
+	// 				var key = bgImages[index].key, title = bgImages[index].title, data = bgImages[index].data;
+	// 				//$menu.attr('id', 'tool_bg_color_' + key);
+	// 				//$menu.data('key', key);
+	// 				$(this).text(title);
+	// 			}
+	// 			else 
+	// 			{
+	// 				$(this).css('display', 'none');
+	// 			}
+	// 		});
+	// 	}
+	// ).error(function(jqXHR, textStatus, errorThrown) {
+	//     alert("背景画像の読み込みに失敗した。 " + textStatus);
+	// });
+
+}

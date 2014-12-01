@@ -31,7 +31,18 @@
   const saveImageTo = '/db/apps/eyeehr/img';
 
   /*** 画像ファイル入力フォーム ***/
-  const Extension = 'image/jpeg, image/png, image/bmp, application/pdf, application/msexcel, application/msword';
+  const Extension = 
+    'text/plain' + ', ' + 
+    'text/csv' + ', ' + 
+    'image/jpeg' + ', ' + 
+    'image/png' + ', ' + 
+    'image/bmp' + ', ' + 
+    'application/pdf' + ', ' + 
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document' + ', ' + // docx
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet ' + ', ' + // xlsx
+    'application/msexcel' + ', ' + // xls
+    'application/msword'  // doc
+  ;
   var iframetarget = 'uploadImage-' + this._id;
   var formAttachFile =     
   '<form ' + 
@@ -453,10 +464,37 @@
  */
  NoteItem.AttachFile = function ($i_attachment, i_url)
  {
-  // PDFの場合はNoImageアイコンを表示する。
-  const pdf = '/exist/rest/db/apps/eyeehr/img/NoImage/PDF/icon_1r_192.png' 
+  // サムネイルを表示できない場合はNoImageアイコンを表示する。
+  // https://www.iconfinder.com/iconsets/lexter-flat-colorfull-file-formats
+  const WORD = '/exist/rest/db/apps/eyeehr/img/NoImage/WORD/NoImage.png' 
+  const EXCEL = '/exist/rest/db/apps/eyeehr/img/NoImage/EXCEL/NoImage.png' 
+  const PDF = '/exist/rest/db/apps/eyeehr/img/NoImage/PDF/NoImage.png' 
+  const TEXT = '/exist/rest/db/apps/eyeehr/img/NoImage/TEXT/NoImage.png' 
+  const CSV = '/exist/rest/db/apps/eyeehr/img/NoImage/CSV/CSV.png' 
   var ext = Utility.GetFileExt(i_url);  // console.log(ext);
-  var src = (ext == 'pdf') ? pdf : i_url; 
+  var src = i_url; 
+  switch (ext)
+  {
+    case 'doc' : 
+    case 'docx' : 
+      src = WORD;
+    break;
+    case 'xls' : 
+    case 'xlsx' : 
+      src = EXCEL;
+    break;
+    case 'pdf' : 
+      src = pdf; 
+    break;
+    case 'txt' : 
+      src = TEXT;
+    break;
+    case 'csv' :
+      src = CSV;
+    break;
+    default:
+    break;
+  } 
 
   // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
   var filename = Utility.GetFileName(i_url, true);
