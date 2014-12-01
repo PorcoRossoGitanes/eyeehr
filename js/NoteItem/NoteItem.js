@@ -484,7 +484,7 @@
       src = XLSX;
     break;
     case 'pdf' : 
-      src = pdf; 
+      src = PDF; 
     break;
     case 'txt' : 
       src = TEXT;
