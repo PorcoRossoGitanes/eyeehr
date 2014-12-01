@@ -1,12 +1,81 @@
 
 {
-  "NoImage" : [
-    { "txt" : "", "_comment" : "PDFファイルのサムネイルが表示されない場合の画像 " },
-    { "csv" : "", "_comment" : "CSVファイルのサムネイルが表示されない場合の画像 " },
-    { "pdf" : "/exist/rest/db/apps/eyeehr/img/NoImage/PDF/icon_1r_192.png", "_comment" : "PDFファイルのサムネイルが表示されない場合の画像 " },
-    { "doc" : "", "_comment" : "Wordファイルのサムネイルが表示されない場合の画像 " },
-    { "xls" : "", "_comment" : "Excelファイルのサムネイルが表示されない場合の画像 " }
-  ],
+  "AttachFile" : {
+    "XQ" : "/exist/apps/eyeehr/modules/uploadFileBin.xq", 
+    "FileType" : [
+      { "JPG" : 
+        { 
+          "access" : "image/jpeg", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/JPG/NoImage.png", 
+          "_comment" : "JPGファイルのサムネイルが表示されない場合の画像 " 
+        }
+      },
+      { "PNG" : 
+        { 
+          "access" : "image/png", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/PNG/NoImage.png", 
+          "_comment" : "PNGファイルのサムネイルが表示されない場合の画像 " 
+        }
+      },
+      { "BMP" : 
+        { 
+          "access" : "image/bmp", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/BMP/NoImage.png", 
+          "_comment" : "BMPファイルのサムネイルが表示されない場合の画像 " 
+        }
+      },
+      { "txt" : 
+        { 
+          "access" : "text/plain", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/TXT/NoImage.png", 
+          "_comment" : "PDFファイルのサムネイルが表示されない場合の画像 " 
+        }
+      },
+      { "csv" : 
+        { 
+          "access" : "text/csv", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/CSV/CSV.png", 
+          "_comment" : "CSVファイルのサムネイルが表示されない場合の画像 " 
+        }
+      },
+      { "pdf" : 
+        { 
+          "access" : "application/pdf", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/PDF/NoImage.png", 
+          "_comment" : "PDFファイルのサムネイルが表示されない場合の画像 " 
+        }
+      },
+      { "doc" : 
+        { 
+          "access" : "application/msword", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/DOC/NoImage.png", 
+          "_comment" : "Wordファイルのサムネイルが表示されない場合の画像 " 
+        }
+      },
+      { "docx" : 
+        { 
+          "access" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/DOCX/NoImage.png", 
+          "_comment" : "Wordファイルのサムネイルが表示されない場合の画像 " 
+        }
+      },
+      { "xls" : 
+        { 
+          "access" : "application/msexcel", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/XLS/NoImage.png", 
+          "_comment" : "Excelファイルのサムネイルが表示されない場合の画像 " 
+        }
+      },
+      { "xlsx" : 
+        { 
+          "access" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
+          "noimage" : "/exist/rest/db/apps/eyeehr/img/NoImage/XLSX/NoImage.png", 
+          "_comment" : "Excelファイルのサムネイルが表示されない場合の画像 " 
+        }
+      }
+    ], 
+    "_comment" : "添付ファイル" 
+  },
   "Stamp" : [
   	{"key" : "DISEASE"           ,"selector" : "div.stamp_list#disease"					, "class" : "StampDisease"          ,"_comment" : "XXX     病名・所見"      },
   	{"key" : "PRACTICE"			     ,"selector" : ""			                          , "class" : ""                      ,"_comment" :	"001     診療行為"        },
@@ -18,5 +87,8 @@
   	{"key" : "MACHINE"           ,"selector" : "div.stamp_list#machine"					, "class" : "StampMachine"          ,"_comment" : "003     特定機材"        },
   	{"key" : "COMMENT"           ,"selector" : ""		                            , "class" : ""                      ,"_comment" : "006     コメント"        },
   	{"key" : "PRIVATE_EXPENSE"   ,"selector" : "" 	                            , "class" : ""                      ,"_comment" :	"007     自費診療"				 }
-  ]	  
+  ],
+  "Remark" : {
+    "Size" : { "width" : "400", "height" : "300" , "_comment" : "画面サイズ" }
+  }
 }

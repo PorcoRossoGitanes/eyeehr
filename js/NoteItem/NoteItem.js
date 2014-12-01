@@ -466,10 +466,10 @@
  {
   // サムネイルを表示できない場合はNoImageアイコンを表示する。
   // https://www.iconfinder.com/iconsets/lexter-flat-colorfull-file-formats
-  const WORD = '/exist/rest/db/apps/eyeehr/img/NoImage/WORD/NoImage.png' 
-  const EXCEL = '/exist/rest/db/apps/eyeehr/img/NoImage/EXCEL/NoImage.png' 
+  const DOCX = '/exist/rest/db/apps/eyeehr/img/NoImage/DOCX/NoImage.png' 
+  const XLSX = '/exist/rest/db/apps/eyeehr/img/NoImage/XLSX/NoImage.png' 
   const PDF = '/exist/rest/db/apps/eyeehr/img/NoImage/PDF/NoImage.png' 
-  const TEXT = '/exist/rest/db/apps/eyeehr/img/NoImage/TEXT/NoImage.png' 
+  const TEXT = '/exist/rest/db/apps/eyeehr/img/NoImage/TXT/NoImage.png' 
   const CSV = '/exist/rest/db/apps/eyeehr/img/NoImage/CSV/CSV.png' 
   var ext = Utility.GetFileExt(i_url);  // console.log(ext);
   var src = i_url; 
@@ -477,11 +477,11 @@
   {
     case 'doc' : 
     case 'docx' : 
-      src = WORD;
+      src = DOCX;
     break;
     case 'xls' : 
     case 'xlsx' : 
-      src = EXCEL;
+      src = XLSX;
     break;
     case 'pdf' : 
       src = pdf; 
