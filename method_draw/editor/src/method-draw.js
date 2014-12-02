@@ -277,10 +277,12 @@
 					'align_middle':'align-middle.png',
 					'align_bottom':'align-bottom.png',
 					'arrow_right':'flyouth.png',
-					'arrow_down':'dropdown.gif'
+					'arrow_down':'dropdown.gif',
+					'save_quit' : 'quit.png'
 				},
 				placement: {
-				  '#logo':'logo',
+				  	'#logo':'logo',
+				  	'#save_quit' : 'quit',
 					'#tool_select':'select',
 					'#tool_fhpath':'pencil',
 					'#tool_fhhatch':'hatch',
@@ -291,6 +293,7 @@
 					'#tool_path':'path',
 					'#tool_text,#layer_rename':'text',
 					'#tool_image':'image',
+					'#tool_import':'image',
 					'#tool_zoom':'zoom',
 					'#tool_node_clone':'node_clone',
 					'#tool_node_delete':'node_delete',
@@ -2466,6 +2469,7 @@
 				svgCanvas.open();
 			};
 			var clickImport = function(){
+				//console.log('clickImport');
 			};
 			
 		  var flash = function($menu){
@@ -3328,15 +3332,15 @@
 					{sel:'#tool_clear', fn: clickClear, evt: 'mouseup', key: [modKey + 'N', true]},
 					{sel:'#tool_save', fn: function() { editingsource?saveSourceEditor():clickSave()}, evt: 'mouseup', key: [modKey + 'S', true]},
 					{sel:'#tool_export', fn: clickExport, evt: 'mouseup'},
-					{sel:'#tool_open', fn: clickOpen, evt: 'mouseup'},
-					{sel:'#tool_import', fn: clickImport, evt: 'mouseup'},
+					{sel:'#tool_open', fn: clickOpen, evt: 'mouseup', key: [modKey + 'O', true]},
+					{sel:'#tool_import', fn: clickImport, evt: 'click'/*'mouseup'*/, key: [modKey + 'I', true]},
 					{sel:'#tool_source', fn: showSourceEditor, evt: 'click', key: [modKey + 'U', true]},
 					{sel:'#tool_wireframe', fn: clickWireframe, evt: 'click'},
 					{sel:'#tool_snap', fn: clickSnapGrid, evt: 'click'},
 					{sel:'#tool_rulers', fn: clickRulers, evt: 'click'},
 					{sel:'#tool_source_cancel,#svg_source_overlay,#tool_docprops_cancel,#tool_prefs_cancel', fn: cancelOverlays, evt: 'click', key: ['esc', false, false], hidekey: true},
 					{sel:'#tool_source_save', fn: saveSourceEditor, evt: 'click'},
-					{sel:'#tool_delete,#tool_delete_multi', fn: deleteSelected, evt: 'click', key: ['del/backspace', true]},
+					{sel:'#tool_delete,#tool_delete,#tool_delete_multi', fn: deleteSelected, evt: 'click', key: ['del/backspace', true]},
 					{sel:'#tool_reorient', fn: reorientPath, evt: 'click'},
 					{sel:'#tool_node_link', fn: linkControlPoints, evt: 'change'},
 					{sel:'#tool_node_clone', fn: clonePathNode, evt: 'click'},
@@ -3354,11 +3358,7 @@
 					{sel:'#tool_ungroup', fn: clickGroup, evt: 'click', key: modKey + 'shift+G'},
 					{sel:'#tool_unlink_use', fn: clickGroup, evt: 'click'},
 					{sel:'#tool_quit', fn: clickQuit, evt: 'mouseup', key: [modKey + 'Q', true]},
-					{sel:'#tool_save_quit', 
-						fn: function() { editingsource?saveSourceEditor():clickSave(function(){ clickQuit(); });}, 
-						evt: 'mouseup', 
-						key: [modKey + 'shift+W', true]
-					},
+					{sel:'#tool_save_quit,#tool_save_quit', fn: function() { editingsource?saveSourceEditor():clickSave(function(){ clickQuit(); });}, evt: 'click', /*'mouseup',*/ key: [modKey + 'shift+W', true]},
 					{sel:'[id^=tool_align]', fn: clickAlign, evt: 'click'},
 					{sel:'#tool_undo', fn: clickUndo, evt: 'click', key: modKey + 'z'},
 					{sel:'#tool_redo', fn: clickRedo, evt: 'click', key: ['y', true]},
@@ -3440,10 +3440,10 @@
 						$.each(tool_buttons, function(i, opts)  {				
 							// Bind function to button
 							if(opts.sel) {
-								var btn = $(opts.sel);
+								var btn = $(opts.sel); //console.log(opts.sel);
 								if (btn.length == 0) return true; // Skip if markup does not exist
 								if(opts.evt) {
-								  if (svgedit.browser.isTouch() && opts.evt === "click") opts.evt = "mousedown" 
+								  if (svgedit.browser.isTouch() && opts.evt === "click") opts.evt = "mousedown";
 									btn[opts.evt](opts.fn);
 								}
 		
@@ -3713,9 +3713,10 @@
 			if (window.FileReader) {
 			  
 			  var import_image = function(e) {
-			    e.stopPropagation();
-          e.preventDefault();
-          $("#workarea").removeAttr("style");
+			  		console.log('import_image');
+					e.stopPropagation();
+					e.preventDefault();
+					$("#workarea").removeAttr("style");
 					$('#main_menu').hide();
 					var file = null;
 					if (e.type == "drop") file = e.dataTransfer.files[0]

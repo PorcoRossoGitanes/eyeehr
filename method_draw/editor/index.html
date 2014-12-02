@@ -550,27 +550,21 @@
 	<div class="tool_button" id="tool_fhhatch" title="ハッチ [H]"></div>
 	<div class="tool_button" id="tool_line" title="ライン [L]"></div>
 	<div class="tool_button" id="tool_delete" title="削除 [D]"></div>
-	<!-- MODIFIED_START S.K-->
 	<!--
 	<div class="tool_button" id="tool_rect" title="Square/Rect Tool [R]"></div>
 	<div class="tool_button" id="tool_ellipse" title="Ellipse/Circle Tool [C]"></div>
 	-->
-	<!-- ========== -->
 	<div class="tool_button" id="tool_rect" title="長方形／正方形 [R]" hidden></div>
 	<div class="tool_button" id="tool_ellipse" title="楕円／円 Tool [C]" hidden></div>
 	<div class="tool_button" id="tool_path" title="パス [P]" hidden></div>
 	<div class="tool_button" id="tool_zoom" title="ズーム [Z]" hidden></div>
-	<!-- MODIFIED_END S.K-->
 	<div class="tool_button" id="tool_text" title="テキスト [T]"></div>
-	<div class="tool_button" id="tool_import" title="画像を読込む..."></div>
+	<div class="tool_button" id="tool_import" title="画像を読込む..." onclick="console.log($('.menu_item#tool_import'));$('.menu_item#tool_import').click()"><div id="fileinputs_import" display="none"></div></div>
 	<div class="tool_button" id="tool_save_quit" title="保存して終了 "></div>
-<!-- MODIFIED_START S.K-->
 	<!--
-  <div id="color_tools">
+ 	<div id="color_tools">
   	-->
- <!-- ========== -->
   <div id="color_tools" style="display:none">
-<!-- MODIFIED_END S.K-->
         <div id="tool_switch" title="線色・塗りつぶし色を切替る [X]"></div>
   			<div class="color_tool active" id="tool_fill">
   				<label class="icon_label" title="塗りつぶし色を変更"></label>
