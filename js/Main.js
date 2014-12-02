@@ -27,12 +27,13 @@ $(function() {
 
     //----- スタンプを自動生成する。 -----------------------------------------------
     Utility.LoadJson(function(json) {
+        console.log(json);
         for (var i in json.Stamp) {
             var key = json.Stamp[i].key;
             var selector = json.Stamp[i].selector;
             if (selector != '') {
                 Stamp.LoadXml(key, function(result) {
-                    //result[0]がルートノードとなる。//console.log(result[0].children); 
+                    //result[0]がルートノードとなる。
                     CreateStamp(key, selector, result[0].children);
                 });
             }
