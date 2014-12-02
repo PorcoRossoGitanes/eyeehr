@@ -15,6 +15,9 @@
   //--JQuery オブジェクト操作---//
   $(this._jquery).attr('name', this._name);
   $(this._jquery).addClass(this._name);  
+
+  // 備考を開く。
+  $(this._jquery).find('#editRemark').click();
   //--JQuery オブジェクト操作---//
 
 };(function() {

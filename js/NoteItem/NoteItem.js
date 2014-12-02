@@ -4,12 +4,14 @@
  * @constructor
  */
  function NoteItem() {
-  // メンバ変数の初期化
+  
+  /**
+   * クラス名
+   */ 
   this._name = 'NoteItem';
 
   // @param 付箋のID(MAX値)
   const MAX = 9999999999;
-
 
   /**
    * ID
@@ -21,8 +23,9 @@
    * タイトル
    * @type {String}
    */
-   this._title = '';
+  this._title = '';
 
+  //--JQuery オブジェクト操作---//
   // 付箋（JQuery オブジェクト）を生成する 。
   const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/uploadFileBin.xq";
   
@@ -44,49 +47,32 @@
     'application/msword'  // doc
   ;
   var iframetarget = 'uploadImage-' + this._id;
-  var formAttachFile =     
-  '<form ' + 
-  'id="attachFileForm" ' + 
-  'enctype="multipart/form-data" ' + 
-  'method="post" ' +
-  'action="' + uploadFileToXmlDb + '" ' + 
-  'target="' + iframetarget + '"' + 
-  'style="display:none" ' + 
-  '>' +
+  var formAttachFile = /*** 画像ファイル入力フォーム ***/
+  '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:none" >' +
   '<input type="input" name="type" value="bin"/>' + 
   '<input id="attachFile" type="file" name="file" value="" accept="' + Extension + '" />' +
   '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
   '<input id="attachFileSubmit" type="submit" value="submit" />' +
   '</form>' +
-    '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
-    /*** 画像ファイル入力フォーム ***/
+  '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
 
   /**
    * @param {Object} JQuery オブジェクト
    */
    this._jquery = $(
-    '<div ' + 
-    'id="' + this._id + '" ' + 
-    'class="' + this._name + '" ' + 
-    '>' + 
-    /*** 削除ボタン ***/
-    '<button id="del" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>' + 
-    /*** 最小化ボタン ***/
-    '<button id="min" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>' + 
-    /*** ☆ボタン ***/
-    // '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">' + 
-    // '★<!--span class="glyphicon glyphicon-remove"></span-->' + 
-    // '</button>' + 
-    /***ファイル　添付***/
-    formAttachFile + // 隠し埋め込みフォーム
+    '<div ' + 'id="' + this._id + '" ' + 'class="' + this._name + '" ' + '>' + 
+    /*** 削除ボタン ***/ '<button id="del" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>' + 
+    /*** 最小化ボタン ***/ '<button id="min" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>' + 
+    /*** ☆ボタン ***/ // '<button id="starred" class="btn btn-default btn-xs" onclick="$(this).text(\'☆\')">★<!--span class="glyphicon glyphicon-remove"></span--></button>' + 
+    /***ファイル　添付***/ formAttachFile + // 隠し埋め込みフォーム
     '<button id="attachFile" class="btn btn-default btn-xs" ><span class="glyphicon glyphicon-upload"></span></button>' + 
     /***シェーマ　添付（処置・手術・検査などでシェーマを書くので、デフォルト表示とする。）***/
     '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:inherit">シェーマ</button>' + 
     /***備考　編集***/
     '<button id="editRemark" class="btn btn-default btn-xs" style="visibility:inherit">備考</button>' + 
-    '<div id="tags" style="display:block"></div>' +   <!--タグ表示用(初期：非表示)-->
-    '<div name="Title" style="display:block"></div>' + <!--入力フォーム（タイトル）-->
-    '<div name="Orca" style="display:block"></div>' + <!--入力フォーム（ORCA連携用定型フォーム）-->
+    '<div id="tags" style="display:none"></div>' +   <!--タグ表示用(初期：非表示)-->
+    '<div name="Title"></div>' +                     <!--入力フォーム（タイトル）-->
+    '<div name="Orca"></div>' +                      <!--入力フォーム（ORCA連携用定型フォーム）-->
     '<div name="Format"></div>' +                    <!--入力フォーム（定型フォーム）-->
     '<div name="Attachment"></div>' +                <!--ファイル添付用--> 
     '<div name="Scheme"></div>' +                    <!--シェーマ添付用--> 
@@ -116,86 +102,63 @@
     });
   });
 
-  /// @summary  ファイル添付（送信）処理が実施され、
-  ///           iframeがロードされたとき、
-  ///           成功時はファイル（imgタグ）を表示する。
+  /**
+   * @event 添付ファイル保存処理が実施され、結果がiframeにロードされた時
+   * @summary  添付ファイルを表示する。
+   * iframeには、ファイルのimgタグが返却される。
+   */
   $(this._jquery).find('iframe').load(function()
   {
-    // ファイル名が指定されているか確認する。
     var file = $(this).parent().find("#attachFile").val();
     var url =  $(this).contents().find('#url').text();
-    //console.log($(this).contents());
-    if (file == "")
-    {
-      // 画像ファイルが指定されていない場合は処理を実行しない。
-    }
-    else if (url == "")
-    {
-      // 画像ファイルが指定されているが、URLが未指定の場合、保存に失敗したと見なす。
-      alert('ファイルの保存に失敗しました。');
-    }
-    else 
-    {
-      NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url);
-    }
+    if (file == "") { /* 画像ファイルが指定されていない場合は処理を実行しない。 */ }
+    else if (url == "") { alert('ファイルの保存に失敗しました。');}
+    else { NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url);}
   });
 
-  /// @summary シェーマ画像を追加するために、シェーマ描画ツールを表示する。
+  /**
+   * @event 「シェーマ」ボタンの押下時
+   * @summary シェーマ描画ツールを表示する。
+   */
   $(this._jquery).find('button#addScheme').click(function () {
-
-    // NoteItemのIDを取得する。
-    var noteItemId = $(this).parent().attr('id');
-  
-    // URLを作成する。
-    var url = saveImageTo +'/' +　'scheme-' + (new Date()).getTime() +'.svg';
-  
-    // シェーマを開く。
-    NoteItem.OpenMethodDraw('add', noteItemId, url);
-
+    var noteItemId = $(this).parent().attr('id'); // NoteItemのIDを取得する。
+    var url = saveImageTo +'/' +　'scheme-' + (new Date()).getTime() +'.svg'; // URLを作成する。  
+    NoteItem.OpenMethodDraw('add', noteItemId, url); // シェーマを開く。
   });
 
-  /// @summary 「最小化」ボタンの押下時、タグのみ表示、または詳細（タグ以外）を表示する。
+  /**
+   * @event 「最小化」ボタンの押下時
+   * @summary 最小化を切替える。
+   */
   $(this._jquery).find('button#min').click(function()
   {
-    // タグが表示の場合は折り畳む（最小化する）。タグが非表示の場合は展開する。
-    if ($(this).parent().find('#tags').css('display') != 'block')
-    {
-      // 特記事項が表示されている場合は、文字列を非表示とする。
-      $(this).parent().find('#tags').show();
-      $(this).parent().find('[name="Orca"]').hide();      
-      $(this).parent().find('[name="Format"]').hide();      
+      $(this).parent().find('#tags').toggle();
+      $(this).parent().find('[name="Orca"]').toggle();      
+      $(this).parent().find('[name="Format"]').toggle();      
       $(this).parent().find('[name="Attachment"]').hide();      
-      $(this).parent().find('[name="Scheme"]').hide();      
-      $(this).parent().find('[name="Remark"]').hide();      
-    }
-    else
-    {
-      // 特記事項が非表示の場合は、文字列を表示する。
-      $(this).parent().find('#tags').hide();
-      $(this).parent().find('[name="Orca"]').show();
-      $(this).parent().find('[name="Format"]').show();
-      $(this).parent().find('[name="Attachment"]').show();
-      $(this).parent().find('[name="Scheme"]').show();
-      $(this).parent().find('[name="Remark"]').show();
-    }
+      $(this).parent().find('[name="Scheme"]').toggle();      
+      $(this).parent().find('[name="Remark"]').toggle();      
   });
 
-  //　@summary 「削除」ボタンが押されたときには、付箋を削除する。
+  /**
+   * @event 「削除」ボタンの押下時
+   * @summary 付箋を削除する。
+   */　
   $(this._jquery).find('button#del').click(function(){
     $(this).parent().remove();
   });
   
-  // @summary 「備考」ボタンが押された時に備考編集フォームを表示する。
+  /**
+   * @event 「備考」ボタンの押下時
+   * @summary 備考編集ツールを表示する。
+   */
   $(this._jquery).find('button#editRemark').click(function(){
     $noteItem = $(this).parent();
-    var content = $noteItem.find('[name="Remark"]').html();
-    var noteItemId = $noteItem.attr('id');
+    var noteItemId = $noteItem.attr('id'); var content = $noteItem.find('[name="Remark"]').html();
     NoteItem.OpenRemarkForm(noteItemId, content);
   });
+  //--JQuery オブジェクト操作---//
 
-  // $(this._jquery).find('[name="Attachment"]').change(function(){
-  //   alert('changed');
-  // });
 };(function() {
 
   // プロトタイプ
