@@ -2964,6 +2964,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 
 				// if not stretching in y direction, set dy to 0
 				// if not stretching in x direction, set dx to 0
+				//console.log(current_resize_mode);
 				if(current_resize_mode.indexOf("n")==-1 && current_resize_mode.indexOf("s")==-1) {
 					dy = 0;
 				}
@@ -3000,10 +3001,12 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				}
 
 				translateOrigin.setTranslate(-(left+tx),-(top+ty));
-				if(evt.shiftKey) {
+				// ShiftKeyが押されていない場合も、左右同等の比率で拡大・縮小する。
+				//if(evt.shiftKey) {
+					console.log('shiftKey');
 					if(sx == 1) sx = sy
 					else sy = sx;
-				}
+				//}
 				scale.setScale(sx,sy);
 				
 				translateBack.setTranslate(left+tx,top+ty);
