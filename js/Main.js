@@ -46,52 +46,26 @@ $(function() {
      * @param {XmlDocument} i_stampsXml スタンプリスト(XML)
      */
     function CreateStamp(i_key, i_selector, i_stampsXml) {
-        //console.log(i_stampsXml);
-
         // 貼付先を取得する。
         $stampList = $(i_selector);
 
         // XMLデーターをもとにボタンを貼付ける。
-        //console.log(i_stampsXml);
         for (var index = 0; index < i_stampsXml.length; index++) {
+
             var stamp = null;
-            //var stampXml = i_stampsXml[index];			
-            //console.log(stampXml);
 
             switch (i_key) {
-                case 'DISEASE':
-                    stamp = new StampDisease();
-                    break;
+                case 'DISEASE':         stamp = new StampDisease();         break;
+                case 'INJECTION':       stamp = new StampInjection();       break;
+                case 'TREATMENT':       stamp = new StampTreatment();       break;
+                case 'OPERATION':       stamp = new StampOperation();       break;
+                case 'MEDICAL_CHECK':   stamp = new StampMedicalCheck();    break;
+                case 'MEDICAL_PRODUCT': stamp = new StampMedicalProduct();  break;
+                case 'MACHINE':         stamp = new StampMachine();         break;
+                case 'PRIVATE_EXPENSE': stamp = new Stamp();                break;
                 case 'PRACTICE':
-                    stamp = new Stamp();
-                    break;
-                case 'INJECTION':
-                    stamp = new StampInjection();
-                    break;
-                case 'TREATMENT':
-                    stamp = new StampTreatment();
-                    break;
-                case 'OPERATION':
-                    stamp = new StampOperation();
-                    break;
-                case 'MEDICAL_CHECK':
-                    stamp = new StampMedicalCheck();
-                    break;
-                case 'MEDICAL_PRODUCT':
-                    stamp = new StampMedicalProduct();
-                    break;
-                case 'MACHINE':
-                    stamp = new StampMachine();
-                    break;
                 case 'COMMENT':
-                    stamp = new Stamp();
-                    break;
-                case 'PRIVATE_EXPENSE':
-                    stamp = new Stamp();
-                    break;
-                default:
-                    stamp = new Stamp();
-                    break;
+                default:                stamp = new Stamp();                break;
             }
 
             stamp.setByXml(Utility.XmlToStr(i_stampsXml[index]));
@@ -102,20 +76,14 @@ $(function() {
     $('#MenuLeft').css('left', 0);
     $('#MenuLeft').css('top', 0);
     $('#MenuRight').css('left', parseFloat($(window).width()) - parseFloat($('#MenuRight').width()));
-    console.log(parseFloat($('#MenuRight').width()));
     $('#MenuRight').css('top', -parseFloat($('#MenuLeft').css('height')));
 
-    console.log($(window).width());
     $(window).scroll(function() {
 
         var scrollTop = parseInt($(this).scrollTop());
 
         $('#MenuLeft').css('top', scrollTop);
         $('#MenuRight').css('top', scrollTop - parseFloat($('#MenuLeft').css('height')));
-
-        // console.log(scrollTop);
-        // console.log($('[name="Note"]').css('top'));
-        // console.log($('#MenuRight').css('top'));	
 
         $('#MenuLeft').animate({
             top: scrollTop
@@ -124,22 +92,10 @@ $(function() {
             queue: false,
             easing: "easeOutCubic",
         });
-
-        // $('#MenuRight').animate(
-        // 	{top : (scrollTop)},
-        // 	{
-        // 		duration:800,
-        // 		queue:false,
-        // 		easing:"easeOutCubic"
-        // 	}
-        // );
     });
 
     //----- アコーディオンメニューを作成する。 --------------------------------------
-    $('#NoteItemMenu').accordion({
-        heightStyle: "fill",
-        active: 1
-    });
+    $('#NoteItemMenu').accordion({ heightStyle: "fill", active: 1 });
 
     //----- イベント登録 -----
     /// @summary 「新規」ボタンを押下時、カルテを新規作成する。
