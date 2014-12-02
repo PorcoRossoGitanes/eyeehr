@@ -8,7 +8,7 @@
   /**
    * クラス名
    */ 
-  this._name = 'NoteItem';
+   this._name = 'NoteItem';
 
   // @param 付箋のID(MAX値)
   const MAX = 9999999999;
@@ -17,13 +17,13 @@
    * ID
    * @type {String}
    */
-  this._id = /*'ID' +*/ Math.round(Math.random() * MAX);
+   this._id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
   /**
    * タイトル
    * @type {String}
    */
-  this._title = '';
+   this._title = '';
 
   //--JQuery オブジェクト操作---//
   // 付箋（JQuery オブジェクト）を生成する 。
@@ -35,25 +35,25 @@
 
   /*** 画像ファイル入力フォーム ***/
   const Extension = 
-    'text/plain' + ', ' + 
-    'text/csv' + ', ' + 
-    'image/jpeg' + ', ' + 
-    'image/png' + ', ' + 
-    'image/bmp' + ', ' + 
-    'application/pdf' + ', ' + 
+  'text/plain' + ', ' + 
+  'text/csv' + ', ' + 
+  'image/jpeg' + ', ' + 
+  'image/png' + ', ' + 
+  'image/bmp' + ', ' + 
+  'application/pdf' + ', ' + 
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document' + ', ' + // docx
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' + ', ' + // xlsx
     'application/msexcel' + ', ' + // xls
     'application/msword'  // doc
-  ;
-  var iframetarget = 'uploadImage-' + this._id;
-  var formAttachFile = /*** 画像ファイル入力フォーム ***/
-  '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:none" >' +
-  '<input type="input" name="type" value="bin"/>' + 
-  '<input id="attachFile" type="file" name="file" value="" accept="' + Extension + '" />' +
-  '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
-  '<input id="attachFileSubmit" type="submit" value="submit" />' +
-  '</form>' +
+    ;
+    var iframetarget = 'uploadImage-' + this._id;
+    var formAttachFile = /*** 画像ファイル入力フォーム ***/
+    '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:none" >' +
+    '<input type="input" name="type" value="bin"/>' + 
+    '<input id="attachFile" type="file" name="file" value="" accept="' + Extension + '" />' +
+    '<input type="input" name="collection" value="' + saveImageTo + '"/>' + 
+    '<input id="attachFileSubmit" type="submit" value="submit" />' +
+    '</form>' +
   '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
 
   /**
@@ -107,20 +107,20 @@
    * @summary  添付ファイルを表示する。
    * iframeには、ファイルのimgタグが返却される。
    */
-  $(this._jquery).find('iframe').load(function()
-  {
+   $(this._jquery).find('iframe').load(function()
+   {
     var file = $(this).parent().find("#attachFile").val();
     var url =  $(this).contents().find('#url').text();
-    if (file == "") { /* 画像ファイルが指定されていない場合は処理を実行しない。 */ }
+  if (file == "") { /* 画像ファイルが指定されていない場合は処理を実行しない。 */ }
     else if (url == "") { alert('ファイルの保存に失敗しました。');}
-    else { NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url);}
-  });
+  else { NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url);}
+});
 
   /**
    * @event 「シェーマ」ボタンの押下時
    * @summary シェーマ描画ツールを表示する。
    */
-  $(this._jquery).find('button#addScheme').click(function () {
+   $(this._jquery).find('button#addScheme').click(function () {
     var noteItemId = $(this).parent().attr('id'); // NoteItemのIDを取得する。
     var url = saveImageTo +'/' +　'scheme-' + (new Date()).getTime() +'.svg'; // URLを作成する。  
     NoteItem.OpenMethodDraw('add', noteItemId, url); // シェーマを開く。
@@ -130,29 +130,29 @@
    * @event 「最小化」ボタンの押下時
    * @summary 最小化を切替える。
    */
-  $(this._jquery).find('button#min').click(function()
-  {
-      $(this).parent().find('#tags').toggle();
-      $(this).parent().find('[name="Orca"]').toggle();      
-      $(this).parent().find('[name="Format"]').toggle();      
-      $(this).parent().find('[name="Attachment"]').hide();      
-      $(this).parent().find('[name="Scheme"]').toggle();      
-      $(this).parent().find('[name="Remark"]').toggle();      
+   $(this._jquery).find('button#min').click(function()
+   {
+    $(this).parent().find('#tags').toggle();
+    $(this).parent().find('[name="Orca"]').toggle();      
+    $(this).parent().find('[name="Format"]').toggle();      
+    $(this).parent().find('[name="Attachment"]').hide();      
+    $(this).parent().find('[name="Scheme"]').toggle();      
+    $(this).parent().find('[name="Remark"]').toggle();      
   });
 
   /**
    * @event 「削除」ボタンの押下時
    * @summary 付箋を削除する。
    */　
-  $(this._jquery).find('button#del').click(function(){
+   $(this._jquery).find('button#del').click(function(){
     $(this).parent().remove();
   });
-  
+   
   /**
    * @event 「備考」ボタンの押下時
    * @summary 備考編集ツールを表示する。
    */
-  $(this._jquery).find('button#editRemark').click(function(){
+   $(this._jquery).find('button#editRemark').click(function(){
     $noteItem = $(this).parent();
     var noteItemId = $noteItem.attr('id'); var content = $noteItem.find('[name="Remark"]').html();
     NoteItem.OpenRemarkForm(noteItemId, content);
@@ -161,16 +161,17 @@
 
 };(function() {
 
-  // プロトタイプ
-  var _proto = NoteItem.prototype;
-  // メンバメソッド
+  /**
+   * @param {Object} _proto プロトタイプ
+   */ 
+   var _proto = NoteItem.prototype;
 
   /**
    * クラス名（親クラス...現在のクラス）を取得する
    * @method getName
    * @return {String} クラス名（親クラス...現在のクラス）
    */ 
-  _proto.getName = function() {
+   _proto.getName = function() {
     return this._name;
   };
 
@@ -361,7 +362,7 @@
   //   retVal += Utility.HtmlMinInputItemToXml(this);
   //   console.log(Utility.HtmlMinInputItemToXml(this));
   // });
-  retVal += '</' + $format.attr('name') + '>';
+retVal += '</' + $format.attr('name') + '>';
 
   // □画像添付部をXMLに変換する。
   $attachment = $i_jquery.children('[name="Attachment"]');
@@ -440,20 +441,20 @@
   {
     case 'doc' : 
     case 'docx' : 
-      src = DOCX;
+    src = DOCX;
     break;
     case 'xls' : 
     case 'xlsx' : 
-      src = XLSX;
+    src = XLSX;
     break;
     case 'pdf' : 
-      src = PDF; 
+    src = PDF; 
     break;
     case 'txt' : 
-      src = TEXT;
+    src = TEXT;
     break;
     case 'csv' :
-      src = CSV;
+    src = CSV;
     break;
     default:
     break;
@@ -472,8 +473,8 @@
  * @param {String} i_url 画像URL
  * @param {function()} コールバック関数
  */
-NoteItem.AttachScheme = function (i_noteItemId, i_url, callback)
-{
+ NoteItem.AttachScheme = function (i_noteItemId, i_url, callback)
+ {
   // 親画面にシェーマ画像のタグを返却する。
   $noteItem = $('#' + i_noteItemId); 
 
@@ -505,8 +506,8 @@ NoteItem.AttachScheme = function (i_noteItemId, i_url, callback)
  * @param {String} i_noteItemId NoteItem ID
  * @param {String} i_to 保存先
  */
-NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url)
-{
+ NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url)
+ {
   Utility.LoadJson(function(json){
     // @param {Number} Meethod DrawのURL(相対パス)
     const MethodDrawPath = './method_draw/editor/index.html';
@@ -534,8 +535,8 @@ NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url)
  * @param {String} i_noteItemId NoteItem ID
  * @param {String} i_content 備考内容
  */
-NoteItem.OpenRemarkForm = function(i_noteItemId, i_content)
-{
+ NoteItem.OpenRemarkForm = function(i_noteItemId, i_content)
+ {
   Utility.LoadJson(function(json){
     var url = 'remark.html' + '?' + 'id=' + i_noteItemId + '&' + 'content=' + i_content;
     var id = 'remark_'+ i_noteItemId;
@@ -549,8 +550,8 @@ NoteItem.OpenRemarkForm = function(i_noteItemId, i_content)
  * @param  String/Object  i_xml 添付ファイル（img）
  * @return Object         添付ファイル（部品）（img）
  */
-NoteItem.CreateAttachmentGadget = function (i_xml, i_editable) 
-{
+ NoteItem.CreateAttachmentGadget = function (i_xml, i_editable) 
+ {
   var ret = null;
   const thumbnailPdf = '';
   var url  = $(i_xml).data('src');
@@ -613,6 +614,6 @@ NoteItem.CreateAttachmentGadget = function (i_xml, i_editable)
     return false;
   });
 
-  return ret;
+return ret;
 }
 
