@@ -29,10 +29,11 @@
 </thead-->
 <tbody>
     <tr>
-        <td><textarea id="remark" data-from="" style="width:100%;height:220px;"></textarea><!--付箋特記事項編集欄--></td>
+        <td colspan="2"><textarea id="remark" data-from="" style="width:100%;height:220px;"></textarea><!--付箋特記事項編集欄--></td>
     </tr>    
-    <tr>
-        <td style="text-align:right;padding-top:0.5em;padding-bottom:0.5em">
+    <tr style="padding-top:0.5em;padding-bottom:0.5em">
+        <td id="result" style="text-align:left;display:none;vertical-align:middle"><mark>保存が完了しました。</mark></td>
+        <td style="text-align:right;">
             <button class="btn btn-default" id="save">保存</button>
             <button class="btn btn-danger" id="cancel">キャンセル</button>
         </td>
