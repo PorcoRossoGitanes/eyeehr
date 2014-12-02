@@ -604,7 +604,10 @@ var nicEditorInstance = bkClass.extend({
 		this.ne.addEvent('blur',this.blur.closure(this));
 
 		this.init();
-		this.blur();
+		// this.blur();
+
+		// 初期表示時にフォーカスを当てる。
+		this.elm.focus();
 	},
 	
 	init : function() {
@@ -613,7 +616,7 @@ var nicEditorInstance = bkClass.extend({
 			this.setContent('<br />');
 		}
 		this.instanceDoc = document.defaultView;
-		this.elm.addEvent('mousedown',this.selected.closureListener(this)).addEvent('keypress',this.keyDown.closureListener(this)).addEvent('focus',this.selected.closure(this)).addEvent('blur',this.blur.closure(this)).addEvent('keyup',this.selected.closure(this));
+		this.elm.addEvent('mousedown', this.selected.closureListener(this)).addEvent('keypress',this.keyDown.closureListener(this)).addEvent('focus',this.selected.closure(this)).addEvent('blur',this.blur.closure(this)).addEvent('keyup',this.selected.closure(this));
 		this.ne.fireEvent('add',this);
 	},
 	

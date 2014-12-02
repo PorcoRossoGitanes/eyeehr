@@ -1,16 +1,18 @@
 //----- nicEdit -----
+var area = null;
+const ID = 'remark';
+
+// GET値を取得する。
+var get = Utility.GetQueryString();
+var noteItemId = get['id']; //console.log(noteItemId);
+var original = get['content']; //console.log(original);
 
 // @summary nicEditの呼び込み時、入力欄を追加する。
 bkLib.onDomLoaded(function() {
 
-    const ID = 'remark';
         
-    // GET値を取得する。
-    var get = Utility.GetQueryString();
-    var noteItemId = get['id']; //console.log(noteItemId);
-    var original = get['content']; //console.log(original);
     
-    var area = new nicEditor(
+    area = new nicEditor(
     {
         buttonList:[
             'save', // 「保存ボタンを追加した。」
@@ -38,31 +40,29 @@ bkLib.onDomLoaded(function() {
         //convertToText:true
 
         // 「保存」ボタン押下時、付箋の備考を保存する。
-        onSave : function(content, id, instance) {  
-            
-            console.log('onsave');
-            console.log(noteItemId);
-            console.log(memo);
-            console.log(id);
+        onSave : function(content, id, instance) { sendContentToEyeehr(); }
 
-            
-
-            // IDが存在すれば、付箋を更新する。
-            if (noteItemId != '')
-            {
-                // 変更内容を取得する。
-                var memo = content;
-                memo = memo.replace(/<div>/g, '<br />');
-                memo = memo.replace(/<\/div>/g, '');
-                window.opener.ChangeRemark(noteItemId, memo);
-            }
-        }
     }).panelInstance(ID);
 
     // 元の備考内容を設定する。
-    area.instanceById('remark').setContent(original);
+    area.instanceById(ID).setContent(original);
 });
 
+$(function (){
+    $('#save').click(function () { sendContentToEyeehr(); });
+    $('#cancel').click(function () { window.close(); });
+});
+
+function sendContentToEyeehr () 
+{
+    // IDが存在すれば、付箋を更新する。
+    if(window.opener && (noteItemId != '')) {
+        var memo = area.instanceById(ID).getContent();
+        memo = memo.replace(/<div>/g, '<br />');
+        memo = memo.replace(/<\/div>/g, '');
+        window.opener.ChangeRemark(noteItemId, memo);
+    }    
+}
 
 function GetQueryString ()
 {

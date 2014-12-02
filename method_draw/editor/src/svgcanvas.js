@@ -2603,7 +2603,8 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 			case "fhpath":
 				started = true;
 				d_attr = real_x + "," + real_y  + " ";
-				var stroke_w = cur_shape.stroke_width == 0?1:cur_shape.stroke_width;
+				cur_shape.stroke_width = 1.5;// ストローク幅（初期値）を1.5ptに固定した。
+				//cur_shape.stroke_width == 0?1:cur_shape.stroke_width;
 				addSvgElementFromJson({
 					"element": "polyline",
 					"curStyles": true,
@@ -2612,6 +2613,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 						"id": getNextId(),
 						"fill": "none",
 						"opacity": cur_shape.opacity / 2,
+						"stroke-width": cur_shape.stroke_width,
 						"stroke-linecap": "round",
 						"style": "pointer-events:none"
 					}
@@ -2624,7 +2626,10 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 			case "fhhatch":
 				started = true;
 				d_attr = real_x + "," + real_y + " ";
-				var stroke_w = cur_shape.stroke_width == 0?1:cur_shape.stroke_width;
+				cur_shape.stroke_width = 1.5;// ストローク幅（初期値）を1.5ptに固定した。
+				//cur_shape.stroke_width == 0?1:cur_shape.stroke_width;
+				console.log(cur_shape.fill);
+				cur_shape.stroke = cur_shape.fill = 'url(#hatch_black)';
 				addSvgElementFromJson({
 					"element": "polyline",
 					"curStyles": true,
@@ -2633,6 +2638,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 						"id": getNextId(),
 						"fill": cur_shape.fill,
 						"opacity": cur_shape.opacity / 2,
+						"stroke-width": cur_shape.stroke_width,
 						"stroke-linecap": "round",
 						"style": "pointer-events:none"
 					}
@@ -2681,7 +2687,8 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
 				break;
 			case "line":
 				started = true;
-				var stroke_w = cur_shape.stroke_width == 0?1:cur_shape.stroke_width;
+				var stroke_w = 1.5;// ストローク幅（初期値）を1.5ptに固定した。 //cur_shape.stroke_width == 0?1:cur_shape.stroke_width;
+				cur_shape.stroke = '#f00'; // ストロークカラーを赤に初期固定した。//console.log(cur_shape.stroke);
 				addSvgElementFromJson({
 					"element": "line",
 					"curStyles": true,
