@@ -1,4 +1,3 @@
- "use strict"
 $(function() {
     //----- GET値を取得する。 -----
 
