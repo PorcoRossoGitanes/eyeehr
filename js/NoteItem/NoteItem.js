@@ -428,44 +428,31 @@ retVal += '</' + $format.attr('name') + '>';
  */
  NoteItem.AttachFile = function ($i_attachment, i_url)
  {
+    Utility.LoadJson(function(json){
   // サムネイルを表示できない場合はNoImageアイコンを表示する。
-  // https://www.iconfinder.com/iconsets/lexter-flat-colorfull-file-formats
-  const DOCX = '/exist/rest/db/apps/eyeehr/img/NoImage/DOCX/NoImage.png' 
-  const XLSX = '/exist/rest/db/apps/eyeehr/img/NoImage/XLSX/NoImage.png' 
-  const PDF = '/exist/rest/db/apps/eyeehr/img/NoImage/PDF/NoImage.png' 
-  const TEXT = '/exist/rest/db/apps/eyeehr/img/NoImage/TXT/NoImage.png' 
-  const CSV = '/exist/rest/db/apps/eyeehr/img/NoImage/CSV/CSV.png' 
-  var ext = Utility.GetFileExt(i_url);  // console.log(ext);
-  var src = i_url; 
-  switch (ext)
-  {
-    case 'doc' : 
-    case 'docx' : 
-    src = DOCX;
-    break;
-    case 'xls' : 
-    case 'xlsx' : 
-    src = XLSX;
-    break;
-    case 'pdf' : 
-    src = PDF; 
-    break;
-    case 'txt' : 
-    src = TEXT;
-    break;
-    case 'csv' :
-    src = CSV;
-    break;
-    default:
-    break;
-  } 
+    // https://www.iconfinder.com/iconsets/lexter-flat-colorfull-file-formats
+    var ext = Utility.GetFileExt(i_url);  // console.log(ext);
+    var src = i_url; 
+    switch (ext)
+    {
+      case 'doc' : src = json.AttachFile.FileType.DOCX.noimage; break;
+      case 'docx' : src = json.AttachFile.FileType.DOC.noimage; break;
+      case 'xls' : src = json.AttachFile.FileType.XLS.noimage; break;
+      case 'xlsx' : src = json.AttachFile.FileType.XLSX.noimage; break;
+      case 'pdf' : src = json.AttachFile.FileType.PDF.noimage; break;
+      case 'txt' : src = json.AttachFile.FileType.TXT.noimage; break;
+      case 'csv' : src = json.AttachFile.FileType.CSV.noimage; break;
+      default: break;
+    } 
 
-  // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
-  var filename = Utility.GetFileName(i_url, true);
-  var html = '<img class="attachment img-thumbnail" src="' + src + '" data-src="' + i_url + '" alt="' + filename + '"/>';
-  var img = NoteItem.CreateAttachmentGadget($(html)[0], false);
-  $i_attachment.append(img);   
-}
+    // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
+    var filename = Utility.GetFileName(i_url, true);
+    var html = '<img class="attachment img-thumbnail" src="' + src + '" data-src="' + i_url + '" alt="' + filename + '"/>';
+    var img = NoteItem.CreateAttachmentGadget($(html)[0], false);
+    $i_attachment.append(img);   
+
+    });
+  }
 
 /**
  * シェーマを追加する。
@@ -553,7 +540,6 @@ retVal += '</' + $format.attr('name') + '>';
  NoteItem.CreateAttachmentGadget = function (i_xml, i_editable) 
  {
   var ret = null;
-  const thumbnailPdf = '';
   var url  = $(i_xml).data('src');
   var html = Utility.XmlToStr(i_xml);
 
