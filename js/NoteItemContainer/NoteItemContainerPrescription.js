@@ -1,5 +1,5 @@
 /**
- * カルテ項目コンテナ（処方）
+ * ノートアイテムコンテナー　処方
  * @class NoteItemContainerPrescription
  * @extends NoteItemContainer
  * @constructor
@@ -13,17 +13,19 @@ function NoteItemContainerPrescription() {
     this._name = 'NoteItemContainerPrescription';
 
     /**
-     * @param {String} タイトル
+     * @property　{String} _title　タイトル
      */
     this._title = '処方';
 
     /**
-     * @param {String} 左座標
+     * @property {String} _left 左座標
+     * @example 'auto', '100px'
      */
     this._left = '800px';
 
     /**
-     * @param {String} 上座標
+     * @property {String} _top 上座標
+     * @example 'auto', '100px'
      */
     this._top = '30px';
 

@@ -4,24 +4,25 @@
  * @constructor
  */
 function NoteItemContainer() {
+    
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemContainer';
 
     /**
-     * @param {String} タイトル
+     * @property　{String} _title　タイトル
      */
     this._title = this._name;
 
     /**
-     * @param {String} 左座標
+     * @property {String} _left 左座標
      * @example 'auto', '100px'
      */
     this._left = null;
 
     /**
-     * @param {String} 上座標
+     * @property {String} _top 上座標
      * @example 'auto', '100px'
      */
     this._top = null;

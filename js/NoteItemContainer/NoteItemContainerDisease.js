@@ -1,28 +1,31 @@
 /**
- * カルテ項目コンテナ（所見（病名））
+ * ノートアイテムコンテナー　病名
  * @class NoteItemContainerDisease
+ * @extends NoteItemContainer
  * @constructor
  */
 function NoteItemContainerDisease() {
     NoteItemContainer.call(this);
-
+    
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemContainerDisease';
 
     /**
-     * @param  {String}タイトル
+     * @property　{String} _title　タイトル
      */
     this._title = '病名';
 
     /**
-     * @param {String} 左座標
+     * @property {String} _left 左座標
+     * @example 'auto', '100px'
      */
     this._left = '350px';
 
     /**
-     * @param {String} 上座標
+     * @property {String} _top 上座標
+     * @example 'auto', '100px'
      */
     this._top = '100px';
 

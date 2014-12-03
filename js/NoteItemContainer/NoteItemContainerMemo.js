@@ -1,5 +1,5 @@
 /**
- * カルテ項目コンテナ（メモ）
+ * ノートアイテムコンテナー　メモ
  * @class NoteItemContainerMemo
  * @extends NoteItemContainer
  * @constructor
@@ -13,17 +13,19 @@ function NoteItemContainerMemo() {
     this._name = 'NoteItemContainerMemo';
 
     /**
-     * @param {String} タイトル
+     * @property　{String} _title　タイトル
      */
     this._title = 'メモ';
 
     /**
-     * @param {String} 左座標
+     * @property {String} _left 左座標
+     * @example 'auto', '100px'
      */
     this._left = '800px';
 
     /**
-     * @param {String} 上座標
+     * @property{String} _top 上座標
+     * @example 'auto', '100px'
      */
     this._top = '170px';
 

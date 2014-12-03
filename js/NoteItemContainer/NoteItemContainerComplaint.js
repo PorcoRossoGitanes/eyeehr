@@ -1,28 +1,31 @@
 /**
- * カルテ項目コンテナ（主訴）
+ * ノートアイテムコンテナー　主訴
  * @class NoteItemContainerComplaint
+ * @extends NoteItemContainer
  * @constructor
  */
 function NoteItemContainerComplaint() {
     NoteItemContainer.call(this);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemContainerComplaint';
 
     /**
-     * @param {String} タイトル
+     * @property　{String} _title　タイトル
      */
     this._title = '主訴';
 
     /**
-     * @param {String} 左座標
+     * @property {String} _left 左座標
+     * @example 'auto', '100px'
      */
     this._left = '350px';
 
     /**
-     * @param {String} 上座標
+     * @property {String} _top 上座標
+     * @example 'auto', '100px'
      */
     this._top = '30px';
 

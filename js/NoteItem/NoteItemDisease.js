@@ -1,5 +1,5 @@
 /**
- * 病名
+ * ノートアイテム　病名
  * @class  NoteItemDisease
  * @extends NoteItem
  * @constructor
