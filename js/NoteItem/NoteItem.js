@@ -448,7 +448,6 @@ NoteItem.ChangeRemark = function(i_noteItemId, i_content, callback) {
     for (index = 0; index < $strongs.length; index++) {
         tags += $($strongs[index]).text() +
             (index == ($strongs.length - 1) ? '' : ',');
-        //console.log($($strongs[index]).text());
     }
 
     $jquery.find('#tags').html(tags);
