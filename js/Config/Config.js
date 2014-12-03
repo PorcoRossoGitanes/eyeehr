@@ -7,6 +7,8 @@ function Config() {}
 
 /**
  * システム設定を読み込む。
+ * @static
+ * @method Load
  * @return {Object} システム設定(JSONオブジェクト)
  */
 Config.Load = function() {
