@@ -6,37 +6,37 @@
 function Stamp() {
 
     /**
-     * @param {String}クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'Stamp';
 
     /**
-     * @param {String} ID (ファイル名　拡張子なし)
+     * @property {String} _id ID(ファイル名　拡張子なし)
      */
     this._id = '';
 
     /**
-     *@param {String} スタンプタイトル（正式）
+     *@property {String} _title スタンプタイトル（正式）
      */
     this._title = 'N/A';
 
     /**
-     * @param {String }スタンプタイトル（略称・表示名）
+     * @property {String} _short_titleスタンプタイトル（略称・表示名）
      */
     this._short_title = this._title;
 
     /**
-     * @param {String} [保存先]URL
+     * @property {String} _url [保存先]URL
      */
     this._url = '';
 
     /**
-     * @param {String} XML文字列
+     * @property {String} _xml XML文字列
      */
     this._xml = '';
 
     /**
-     * @param {Object} JQuery オブジェクト
+     * @property {Object} _jquery JQuery オブジェクト
      */
     this._jquery = $(
         '<button ' +
@@ -44,14 +44,6 @@ function Stamp() {
         'class="btn btn-default btn-xs"' +
         ' ></button>'
     )[0];
-
-    /**
-     * @param {String} XML
-     * @static
-     */
-    arguments.callee.Xml = '';
-
-
 };
 (function() {
 
@@ -78,7 +70,7 @@ function Stamp() {
     /** 
      * XMLを設定する。
      * @method setByXml
-     * @param {String} i_xml XML文字列
+     * @param {String/Object} i_xml XML文字列
      */
     _proto.setByXml = function(i_xml) {
         if (i_xml !== undefined) {

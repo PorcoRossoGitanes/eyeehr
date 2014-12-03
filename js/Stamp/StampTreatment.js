@@ -9,15 +9,9 @@ function StampTreatment() {
     Stamp.call(this);
 
     /**
-     * @param {String}クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'StampTreatment';
-
-    /**
-     * @param {String} XML
-     * @static
-     */
-    arguments.callee.Xml = '';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', this._name);

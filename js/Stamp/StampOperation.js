@@ -9,15 +9,9 @@ function StampOperation() {
     Stamp.call(this);
 
     /**
-     * @param {String}クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'StampOperation';
-
-    /**
-     * @param {String} XML
-     * @static
-     */
-    arguments.callee.Xml = '';
 
     //--JQuery オブジェクト操作---//
     // クラス属性を追加した。

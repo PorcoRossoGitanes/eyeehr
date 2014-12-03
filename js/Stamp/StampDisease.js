@@ -8,15 +8,9 @@ function StampDisease() {
     Stamp.call(this);
 
     /**
-     * @param {String}クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'StampDisease';
-
-    /**
-     * @param {String} XML
-     * @static
-     */
-    arguments.callee.Xml = '';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', this._name);
@@ -41,9 +35,10 @@ function StampDisease() {
     var _super = Super.prototype;
     var _proto = StampDisease.prototype;
 
-    /**
+    /** 
      * XMLを設定する。
-     * @param {String} i_xml XMLオブジェクト
+     * @method setByXml
+     * @param {String/Object} i_xml XML文字列
      */
     _proto.setByXml = function(i_xml) {
         if (i_xml !== undefined) _super.setByXml.call(this, i_xml);

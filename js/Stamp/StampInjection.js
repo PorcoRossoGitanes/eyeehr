@@ -9,7 +9,7 @@ function StampInjection() {
     Stamp.call(this);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'StampInjection';
 
@@ -47,9 +47,10 @@ function StampInjection() {
     var _super = Super.prototype;
     var _proto = StampInjection.prototype;
 
-    /**
+    /** 
      * XMLを設定する。
-     * @param {String} i_xml XMLオブジェクト
+     * @method setByXml
+     * @param {String/Object} i_xml XML文字列
      */
     _proto.setByXml = function(i_xml) {
         if (i_xml !== undefined) _super.setByXml.call(this, i_xml);

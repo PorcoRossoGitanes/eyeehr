@@ -9,8 +9,7 @@ function StampMachine() {
     Stamp.call(this);
 
     /**
-     * クラス名
-     * @type {String}
+     * @property {String} _name クラス名
      */
     this._name = 'StampMachine';
 
