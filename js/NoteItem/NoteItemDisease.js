@@ -1,6 +1,7 @@
 /**
  * 病名
  * @class  NoteItemDisease
+ * @extends NoteItem
  * @constructor
  */
 function NoteItemDisease() {
@@ -8,7 +9,7 @@ function NoteItemDisease() {
     NoteItem.call(this);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemDisease';
 

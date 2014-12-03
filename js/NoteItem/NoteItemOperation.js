@@ -1,13 +1,14 @@
 /**
- * 手術コンストラクタ
+ * ノートアイテム　手術
  * @class NoteItemOperation
+ * @extends NoteItem
  * @constructor
  */
 function NoteItemOperation() {
     NoteItem.call(this);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemOperation';
 

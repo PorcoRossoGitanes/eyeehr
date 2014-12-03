@@ -13,12 +13,6 @@ function StampInjection() {
      */
     this._name = 'StampInjection';
 
-    /**
-     * @param {String} XML
-     * @static
-     */
-    arguments.callee.Xml = '';
-
     //--JQuery オブジェクト操作---//
     // クラス属性を追加した。
     $(this._jquery).attr('name', this._name);

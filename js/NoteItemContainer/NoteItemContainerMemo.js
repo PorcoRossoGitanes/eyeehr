@@ -1,13 +1,14 @@
 /**
  * カルテ項目コンテナ（メモ）
  * @class NoteItemContainerMemo
+ * @extends NoteItemContainer
  * @constructor
  */
 function NoteItemContainerMemo() {
     NoteItemContainer.call(this);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemContainerMemo';
 

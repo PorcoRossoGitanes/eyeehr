@@ -1,13 +1,14 @@
 /**
  * ノートアイテム　処方
  * @class NoteItemPrescription
+ * @extends NoteItem
  * @constructor
  */
 function NoteItemPrescription() {
     NoteItem.call(this); // 入力文字列
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemPrescription';
 

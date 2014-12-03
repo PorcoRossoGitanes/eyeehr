@@ -1,13 +1,14 @@
 /**
- * メモコンストラクタ
+ * ノートアイテム　メモ
  * @class NoteItemMemo
+ * @extends NoteItem
  * @constructor
  */
 function NoteItemMemo() {
     NoteItem.call(this);
 
     /**
-     * @param クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemMemo';
 

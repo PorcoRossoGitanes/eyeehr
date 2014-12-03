@@ -1,13 +1,14 @@
 /**
  * カルテ項目コンテナ（検査）
  * @class NoteItemContainerMedicalCheck
+ * @extends NoteItemContainer
  * @constructor
  */
 function NoteItemContainerMedicalCheck() {
     NoteItemContainer.call(this);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemContainerMedicalCheck';
 

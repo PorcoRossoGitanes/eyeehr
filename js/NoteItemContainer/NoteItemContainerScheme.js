@@ -1,21 +1,32 @@
 /**
  * カルテ項目コンテナ（シェーマ）
  * @class NoteItemContainerScheme
+ * @extends NoteItemContainer
  * @constructor
  */
 function NoteItemContainerScheme() {
     NoteItemContainer.call(this, $i_xml);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemContainerScheme';
 
     /**
-     * @param {String} タイトル
+     * @property　{String} _title　タイトル
      */
     this._title = 'シェーマ';
 
+    /**
+     * @param {String} _left 左座標
+     */
+    this._left = '800px';
+
+    /**
+     * @param {String} _top 上座標
+     */
+    this._top = '30px';
+    
     //--JQuery オブジェクト操作---//
     $(this._jquery).addClass(this._name);
     $(this._jquery).attr('name', this._name);

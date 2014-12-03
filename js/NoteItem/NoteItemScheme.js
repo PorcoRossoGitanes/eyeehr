@@ -1,13 +1,14 @@
 /**
- * シェーマコンストラクタ
+ * ノートアイテム　シェーマ
  * @class NoteItemScheme
+ * @extends NoteItem
  * @constructor
  */
 function NoteItemScheme() {
     NoteItem.call(this);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemScheme';
 

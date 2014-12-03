@@ -4,9 +4,9 @@
  * @constructor
  */
 function NoteItem() {
-
+    
     /**
-     * クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItem';
 
@@ -14,14 +14,12 @@ function NoteItem() {
     const MAX = 9999999999;
 
     /**
-     * ID
-     * @type {String}
+     * @property {String} _id ID
      */
     this._id = /*'ID' +*/ Math.round(Math.random() * MAX);
 
     /**
-     * タイトル
-     * @type {String}
+     * @property {String} _title タイトル
      */
     this._title = '';
 
@@ -58,7 +56,7 @@ function NoteItem() {
         '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
 
     /**
-     * @param {Object} JQuery オブジェクト
+     * @property {Object} _jquery JQuery オブジェクト
      */
     this._jquery = $(
         '<div ' + 'id="' + this._id + '" ' + 'class="' + this._name + '" ' + '>' +

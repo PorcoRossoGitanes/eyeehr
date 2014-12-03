@@ -1,13 +1,14 @@
 /**
  * ノートアイテム　主訴
- * @class NoteItemComplaint
+ * @class  NoteItemComplaint
+ * @extends NoteItem
  * @constructor
  */
 function NoteItemComplaint() {
     NoteItem.call(this);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemComplaint';
 

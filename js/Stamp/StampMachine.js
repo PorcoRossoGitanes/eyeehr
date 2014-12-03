@@ -13,13 +13,6 @@ function StampMachine() {
      */
     this._name = 'StampMachine';
 
-    /**
-     * XML
-     * @static
-     * @type {String}
-     */
-    arguments.callee.Xml = '';
-
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', this._name);
     $(this._jquery).addClass(this._name);

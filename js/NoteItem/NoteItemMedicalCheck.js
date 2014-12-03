@@ -1,13 +1,14 @@
 /**
  * ノートアイテム　検査
  * @class NoteItemMedicalCheck
+ * @extends NoteItem
  * @constructor
  */
 function NoteItemMedicalCheck() {
     NoteItem.call(this);
 
     /**
-     * @param {String} クラス名
+     * @property {String} _name クラス名
      */
     this._name = 'NoteItemMedicalCheck';
 
