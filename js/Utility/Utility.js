@@ -32,7 +32,7 @@ Utility.GetCurrentDateTime = function() {
  * 現在日(yyyyMMdd)を取得する。
  * @static
  * @method GetCurrentDate
- * @return 現在日(yyyyMMdd)
+ * @return {String} 現在日(yyyyMMdd)
  */
 Utility.GetCurrentDate = function() {
     var retVal = '';
@@ -68,7 +68,7 @@ Utility.GetCurrentTime = function() {
  * 最小入力コントロールをXMLに置き換える。
  * @static
  * @method HtmlMinInputItemToXml
- * @param  i_jquery DIV, INPUT, IMG (集合で入ってくるかもしれない。）
+ * @param  {Object} i_jquery DIV, INPUT, IMG (集合で入ってくるかもしれない。）
  * @remarks  入力最小単位 :=
  *   （１）div
  * 　　　<div name=“tag”>VALUE</div> |　例）検査名 →<検査名>値</検査>で保存する。（備考の場合のみ）XHTML |　→XHTMLに変換して保存する。
@@ -141,6 +141,7 @@ Utility.HtmlToXhtml = function(i_html) {
 /**
  * URLから拡張子を取得する。
  * @static
+ * @method GetExtention
  * @param {String} url URL
  * @return {String} 拡張子
  */
@@ -195,9 +196,9 @@ Utility.CreateCollection = function(i_collectionPath, callback) {
  * XMLファイルをXMLDB(eXistDB)に保存する。
  * @static
  * @method SaveXml
- * @param i_path ファイルパス(URL)
- * @param i_xml XML文字列
- * @param callback コールバック関数
+ * @param {String} i_path ファイルパス(URL)
+ * @param {String} i_xml XML文字列
+ * @param {Function()} callback コールバック関数
  * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
  */
 Utility.SaveXml = function(i_path, i_xml, callback) {
@@ -259,15 +260,13 @@ Utility.SaveXml = function(i_path, i_xml, callback) {
  * XMLを読込む。
  * @static
  * @method LoadXml
- * @param i_type
- * 				REST...RESTful
- * 				GET...GET送信
- *              POST...POST送信
- *  @param i_senddata 送信データ
- *  	GET時　	URL?以降のGETパラメータ　例）"param1=aaa&param2=bbb"
+ * @param {String} i_type(REST:RESTful,GET:GET送信,POST:POST送信)
+ * @param {String} i_path ファイルパス(URL)
+ * @param {String} i_senddata 送信データ
+ * 		GET時　	URL?以降のGETパラメータ　例）"param1=aaa&param2=bbb"
  *  	POST時　	POSTパラメータ(JSON形式）　例）{"page": 2}
- * @param i_path ファイルパス(URL)
- * @return XMLデーター
+ * @param {Functio(Object)} callback コールバック関数
+ * @return {Object} XMLデーター
  * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
  */
 Utility.LoadXml = function(i_type, i_path, i_senddata, callback) {
@@ -346,9 +345,9 @@ Utility.LoadXml = function(i_type, i_path, i_senddata, callback) {
  * 画像からBase64に変換する
  * @static
  * @method ConvertImgToBase64
- * @param  {String}   URL
- * @param  {String}   [outputFormat='image/png'] 出力フォーマット
- * @param  {Function} callback　コールバック関数
+ * @param {String} i_url URL
+ * @param {String} i_outputFormat 出力フォーマット（例：image/png）
+ * @param  {Function(dataURL)} callback　コールバック関数
  * @remarks 画像形式
  *  PNG 	image/png
  *  JPEG	image/jpeg
@@ -356,7 +355,7 @@ Utility.LoadXml = function(i_type, i_path, i_senddata, callback) {
  *  （使用不可）bmp	image/bmp?
  * @example Utility.ConvertImgToBase64('http://goo.gl/AOxHAL', 'image/png', function(base64Img){console.log('IMAGE:',base64Img);})
  */
-Utility.ConvertImgToBase64 = function(url, outputFormat, callback) {
+Utility.ConvertImgToBase64 = function(i_url, i_outputFormat, callback) {
     var canvas = document.createElement('CANVAS');
     var ctx = canvas.getContext('2d');
     var img = new Image;
@@ -365,17 +364,17 @@ Utility.ConvertImgToBase64 = function(url, outputFormat, callback) {
         canvas.height = img.height;
         canvas.width = img.width;
         ctx.drawImage(img, 0, 0);
-        var dataURL = canvas.toDataURL(outputFormat);
+        var dataURL = canvas.toDataURL(i_outputFormat);
         callback.call(this, dataURL);
         canvas = null;
     };
-    img.src = url;
+    img.src = i_url;
 }
 
 /** 
  * JQueryObjectからXML(HTML)文字列を取得する。
  * @static
- * @method InnerHtml
+ * @method InnerXml
  * @param {JQueryObject} 対象のJQueryオブジェクト
  * @return {String} XML文字列(HTML文字列)
  */
@@ -507,7 +506,7 @@ Utility.ReloadImageFile = function(i_img, i_url) {
 /**
  * GET値を取得する。
  * @static
- * @return ハッシュ配列
+ * @return {Hashtable} ハッシュ配列
  */
 Utility.GetQueryString = function() {
     var result = {};
