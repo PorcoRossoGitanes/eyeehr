@@ -115,14 +115,9 @@ $(function() {
         {
             present = Note.Create(patientId);
             $('#CurrentFilePath').val(present.getCollection());
-            alert(patientId);
         }
 
     }
-    // /// @summary 「新規」ボタンを押下時、カルテを新規作成する。
-    // $('button#new').click(function() {
-    //     alert('新規作成'); // TODO 未作成
-    // });
 
     /// @summary 「読込」ボタンを押下時、XMLを読込む。
     $('button#load').click(function() {
