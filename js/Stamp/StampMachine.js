@@ -4,65 +4,63 @@
  * @constructor
  * @extends Stamp
  */
- function StampMachine() 
- {
-  // 親クラス(Parent)のメンバ変数を継承
-  Stamp.call(this);
+function StampMachine() {
+    // 親クラス(Parent)のメンバ変数を継承
+    Stamp.call(this);
 
-  /**
-   * クラス名
-   * @type {String}
-   */
-   this._name = 'StampMachine';
+    /**
+     * クラス名
+     * @type {String}
+     */
+    this._name = 'StampMachine';
 
-  /**
-   * XML
-   * @static
-   * @type {String}
-   */
-   arguments.callee.Xml = ''; 
+    /**
+     * XML
+     * @static
+     * @type {String}
+     */
+    arguments.callee.Xml = '';
 
-  //--JQuery オブジェクト操作---//
-  $(this._jquery).attr('name', this._name);
-  $(this._jquery).addClass(this._name);  
-  //--JQuery オブジェクト操作---//
+    //--JQuery オブジェクト操作---//
+    $(this._jquery).attr('name', this._name);
+    $(this._jquery).addClass(this._name);
+    //--JQuery オブジェクト操作---//
 
-  $(this._jquery).click(function () 
-  {
-    var item = new NoteItemOperation(); 
-    item.setTitle($(this).attr('title'));
-    var xml = $(this).data('xml');
-    item.setOrca($(xml).children('Orca')[0]);
-    
-    item.appendTo('[name=NoteItemContainerOperation]');  
-  });
+    $(this._jquery).click(function() {
+        var item = new NoteItemOperation();
+        item.setTitle($(this).attr('title'));
+        var xml = $(this).data('xml');
+        item.setOrca($(xml).children('Orca')[0]);
 
-};(function() {
+        item.appendTo('[name=NoteItemContainerOperation]');
+    });
 
-  // 継承設定
-  var Super = function Super(){};
-  Super.prototype = Stamp.prototype;
-  StampMachine.prototype = new Super();
-  var _super = Super.prototype;
-  var _proto = StampMachine.prototype;
+};
+(function() {
 
-  /**
-   * XMLを設定する。
-   * @param {String/Object} i_xml XML
-   */
-   _proto.setByXml = function (i_xml)
-   {
-    if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
-  }
+    // 継承設定
+    var Super = function Super() {};
+    Super.prototype = Stamp.prototype;
+    StampMachine.prototype = new Super();
+    var _super = Super.prototype;
+    var _proto = StampMachine.prototype;
 
-  /**
-   * クラス名を取得する。
-   * @method getName
-   */
-   _proto.getName = function() 
-   {
-    var name = _super.getName.call(this);
-    return name + ' ' + this._name;
-  };
+    /** 
+     * XMLを設定する。
+     * @method setByXml
+     * @param {String/Object} i_xml XML文字列
+     */
+    _proto.setByXml = function(i_xml) {
+        if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
+    }
+
+    /**
+     * クラス名を取得する。
+     * @method getName
+     * @return {String} クラス名
+     */
+    _proto.getName = function() {
+        var name = _super.getName.call(this);
+        return name + ' ' + this._name;
+    }
 })();
-

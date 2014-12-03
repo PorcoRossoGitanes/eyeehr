@@ -4,38 +4,38 @@
  * @constructor
  * @extends Stamp
  */
- function StampDisease() 
- {
-  Stamp.call(this);
+function StampDisease() {
+    Stamp.call(this);
 
-  /**
-   * @param {String}クラス名
-   */
-   this._name = 'StampDisease';
+    /**
+     * @param {String}クラス名
+     */
+    this._name = 'StampDisease';
 
-  /**
-   * @param {String} XML
-   * @static
-   */
-   arguments.callee.Xml = ''; 
+    /**
+     * @param {String} XML
+     * @static
+     */
+    arguments.callee.Xml = '';
 
-  //--JQuery オブジェクト操作---//
-  $(this._jquery).attr('name', this._name);
-  $(this._jquery).addClass(this._name);  
-  //--JQuery オブジェクト操作---//
+    //--JQuery オブジェクト操作---//
+    $(this._jquery).attr('name', this._name);
+    $(this._jquery).addClass(this._name);
+    //--JQuery オブジェクト操作---//
 
-  $(this._jquery).click(function () {
-    var item = new NoteItemDisease();
+    $(this._jquery).click(function() {
+        var item = new NoteItemDisease();
 
-    item.setTitle($(this).attr('title'));
-    
-    item.appendTo('[name="NoteItemContainerDisease"]');  
-  });
+        item.setTitle($(this).attr('title'));
 
-};(function() {
+        item.appendTo('[name="NoteItemContainerDisease"]');
+    });
+
+};
+(function() {
 
     // 継承設定
-    var Super = function Super(){};
+    var Super = function Super() {};
     Super.prototype = Stamp.prototype;
     StampDisease.prototype = new Super();
     var _super = Super.prototype;
@@ -45,19 +45,17 @@
      * XMLを設定する。
      * @param {String} i_xml XMLオブジェクト
      */
-     _proto.setByXml = function (i_xml)
-     {
-      if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
+    _proto.setByXml = function(i_xml) {
+        if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
     }
 
     /**
-     * クラス名（親クラス...現在のクラス）を取得する
-     * @return クラス名（親クラス...現在のクラス）
+     * クラス名を取得する。
+     * @method getName
+     * @return {String} クラス名
      */
-     _proto.getName = function() 
-     {
-      var name = _super.getName.call(this);
-      return name + ' ' + this._name;
-    };
-  })();
-
+    _proto.getName = function() {
+        var name = _super.getName.call(this);
+        return name + ' ' + this._name;
+    }
+})();

@@ -4,65 +4,64 @@
  * @constructor
  * @extends Stamp
  */
- function StampTreatment() 
- {
-  // 親クラス(Parent)のメンバ変数を継承
-  Stamp.call(this);
+function StampTreatment() {
+    // 親クラス(Parent)のメンバ変数を継承
+    Stamp.call(this);
 
-  /**
-   * @param {String}クラス名
-   */
-   this._name = 'StampTreatment';
+    /**
+     * @param {String}クラス名
+     */
+    this._name = 'StampTreatment';
 
-  /**
-   * @param {String} XML
-   * @static
-   */
-   arguments.callee.Xml = ''; 
+    /**
+     * @param {String} XML
+     * @static
+     */
+    arguments.callee.Xml = '';
 
-  //--JQuery オブジェクト操作---//
-  $(this._jquery).attr('name', this._name);
-  $(this._jquery).addClass(this._name);  
-  //--JQuery オブジェクト操作---//
+    //--JQuery オブジェクト操作---//
+    $(this._jquery).attr('name', this._name);
+    $(this._jquery).addClass(this._name);
+    //--JQuery オブジェクト操作---//
 
-  $(this._jquery).click(function () {
+    $(this._jquery).click(function() {
 
-    var item = new NoteItemOperation(); 
+        var item = new NoteItemOperation();
 
-    item.setTitle($(this).attr('title'));
+        item.setTitle($(this).attr('title'));
 
-    var xml = $(this).data('xml');
-    item.setOrca($(xml).children('Orca')[0]);
+        var xml = $(this).data('xml');
+        item.setOrca($(xml).children('Orca')[0]);
 
-    item.appendTo('[name=NoteItemContainerOperation]');  
-  });
+        item.appendTo('[name=NoteItemContainerOperation]');
+    });
 
-};(function() {
+};
+(function() {
 
-  // 継承設定
-  var Super = function Super(){};
-  Super.prototype = Stamp.prototype;
-  StampTreatment.prototype = new Super();
-  var _super = Super.prototype;
-  var _proto = StampTreatment.prototype;
+    // 継承設定
+    var Super = function Super() {};
+    Super.prototype = Stamp.prototype;
+    StampTreatment.prototype = new Super();
+    var _super = Super.prototype;
+    var _proto = StampTreatment.prototype;
 
-  /**
-   * XMLを設定する。
-   * @param {String} i_xml XMLオブジェクト
-   */
-   _proto.setByXml = function (i_xml)
-   {
-    if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
-  }
+    /** 
+     * XMLを設定する。
+     * @method setByXml
+     * @param {String/Object} i_xml XML文字列
+     */
+    _proto.setByXml = function(i_xml) {
+        if (i_xml !== undefined) _super.setByXml.call(this, i_xml);
+    }
 
-  /**
-   * クラス名を取得する。
-   * @method getName
-   */
-   _proto.getName = function() 
-   {
-    var name = _super.getName.call(this);
-    return name + ' ' + this._name;
-  };
+    /**
+     * クラス名を取得する。
+     * @method getName
+     * @return {String} クラス名
+     */
+    _proto.getName = function() {
+        var name = _super.getName.call(this);
+        return name + ' ' + this._name;
+    }
 })();
-

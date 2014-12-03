@@ -3,119 +3,119 @@
  * @class Stamp
  * @constructor
  */
- function Stamp() {
+function Stamp() {
 
-  /**
-   * @param {String}クラス名
-   */
-   this._name = 'Stamp';
+    /**
+     * @param {String}クラス名
+     */
+    this._name = 'Stamp';
 
-  /**
-   * @param {String} ID (ファイル名　拡張子なし)
-   */
-   this._id = '';
+    /**
+     * @param {String} ID (ファイル名　拡張子なし)
+     */
+    this._id = '';
 
-  /**
-   *@param {String} スタンプタイトル（正式）
-   */
-   this._title = 'N/A';
+    /**
+     *@param {String} スタンプタイトル（正式）
+     */
+    this._title = 'N/A';
 
-  /**
-   * @param {String }スタンプタイトル（略称・表示名）
-   */
-   this._short_title = this._title;
+    /**
+     * @param {String }スタンプタイトル（略称・表示名）
+     */
+    this._short_title = this._title;
 
-  /**
-   * @param {String} [保存先]URL
-   */
-   this._url = '';
+    /**
+     * @param {String} [保存先]URL
+     */
+    this._url = '';
 
-  /**
-   * @param {String} XML文字列
-   */
-   this._xml = '';
+    /**
+     * @param {String} XML文字列
+     */
+    this._xml = '';
 
-  /**
-   * @param {Object} JQuery オブジェクト
-   */
-   this._jquery = $(
-   	'<button ' + 
-   	'type="button" ' + 
-   	'class="btn btn-default btn-xs"' + 
-   	' ></button>'
-   	)[0];
+    /**
+     * @param {Object} JQuery オブジェクト
+     */
+    this._jquery = $(
+        '<button ' +
+        'type="button" ' +
+        'class="btn btn-default btn-xs"' +
+        ' ></button>'
+    )[0];
 
-  /**
-   * @param {String} XML
-   * @static
-   */
-   arguments.callee.Xml = ''; 
-
-
-};(function() {
-
-	/**
-	 * @param {Object} プロトタイプ
-	 */
-	 var _proto = Stamp.prototype;
-
-	/**
-	 * @param {Number} スタンプタイトル（略称・表示名）の最大長
-	 */
-	 const SHORT_TITLE_MAX_LENGTH = 5;
+    /**
+     * @param {String} XML
+     * @static
+     */
+    arguments.callee.Xml = '';
 
 
-	/**
-	 * クラス名を取得する。
-	 * @method getName
-	 */
-	 _proto.getName = function() {
-	 	return this._name;
-	 };
+};
+(function() {
 
-	/** 
-	 * XMLを設定する。
-	 * @param {String} i_xml XML文字列
-	 */
-	 _proto.setByXml = function (i_xml)
-	 {
-	 	if (i_xml !== undefined)
-	 	{
-	 		this._xml = i_xml;
-			//console.log(this._xml);
+    /**
+     * @param {Object} プロトタイプ
+     */
+    var _proto = Stamp.prototype;
 
-			this._id = $(i_xml).attr('Id');
-			this._url = $(i_xml).attr('Url');
-
-			// 正式名称を取得する。
-			this._title = $(i_xml).children('Eyeehr').children('Title').text();
-			
-			// 略称（表示名）を取得する。
-			this._short_title = 
-			(this._title.length >= SHORT_TITLE_MAX_LENGTH) ?  
-			this._title.slice(0, SHORT_TITLE_MAX_LENGTH - 1) + '...' : this._title; 
-
-			$(this._jquery).attr('id', this._id);
-			$(this._jquery).data('url', this._url);
-			$(this._jquery).attr('title', this._title);
-			$(this._jquery).text(this._short_title);
-
-			$(this._jquery).data('xml', this._xml);
-			//console.log($(this._jquery).data('xml'));
-		}
-	}
+    /**
+     * @param {Number} スタンプタイトル（略称・表示名）の最大長
+     */
+    const SHORT_TITLE_MAX_LENGTH = 5;
 
 
-	/**
-	 * JQueryObjectを出力する
-	 * @return {JQueryObject} JQuery オブジェクト
-	 */
-	 _proto.getJQueryObject = function () 
-	 {
-	 	return $(this._jquery);
-	 }
-	})();
-	
+    /**
+     * クラス名を取得する。
+     * @method getName
+     * @return {String} クラス名
+     */
+    _proto.getName = function() {
+        return this._name;
+    };
+
+    /** 
+     * XMLを設定する。
+     * @method setByXml
+     * @param {String} i_xml XML文字列
+     */
+    _proto.setByXml = function(i_xml) {
+        if (i_xml !== undefined) {
+            this._xml = i_xml;
+            //console.log(this._xml);
+
+            this._id = $(i_xml).attr('Id');
+            this._url = $(i_xml).attr('Url');
+
+            // 正式名称を取得する。
+            this._title = $(i_xml).children('Eyeehr').children('Title').text();
+
+            // 略称（表示名）を取得する。
+            this._short_title =
+                (this._title.length >= SHORT_TITLE_MAX_LENGTH) ?
+                this._title.slice(0, SHORT_TITLE_MAX_LENGTH - 1) + '...' : this._title;
+
+            $(this._jquery).attr('id', this._id);
+            $(this._jquery).data('url', this._url);
+            $(this._jquery).attr('title', this._title);
+            $(this._jquery).text(this._short_title);
+
+            $(this._jquery).data('xml', this._xml);
+            //console.log($(this._jquery).data('xml'));
+        }
+    }
+
+
+    /**
+     * JQueryObjectを出力する
+     * @return {JQueryObject} JQuery オブジェクト
+     */
+    _proto.getJQueryObject = function() {
+        return $(this._jquery);
+    }
+})();
+
 /// @summary 対象のスタンプを取得する。
 ///    @file loadStamp.xq
 /// @param  i_target = 検索対象（下記参照）
@@ -146,10 +146,8 @@
 ///</Stamp>
 ///<Stamp>...</Stamp>
 ///<Stamp>...</Stamp>
-Stamp.LoadXml = function (i_target, callback)
-{
-	const SCRIPT = '/exist/apps/eyeehr/modules/loadStamp.xq';
-	var senddata = "target=" + i_target;
-	Utility.LoadXml('GET', SCRIPT, senddata, callback);
+Stamp.LoadXml = function(i_target, callback) {
+    const SCRIPT = '/exist/apps/eyeehr/modules/loadStamp.xq';
+    var senddata = "target=" + i_target;
+    Utility.LoadXml('GET', SCRIPT, senddata, callback);
 }
-
