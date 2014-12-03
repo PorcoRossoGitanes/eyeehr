@@ -18,47 +18,44 @@
      * @private
      * @type {String}
      */
-     this._collection = '/db/apps/eyeehr/data/note/patient-to-10000/patient-00001/' + Utility.GetCurrentDate() + '/';
+     this._collection = '';
 
     /**
      * [保存先]ファイル名
      * @type {String} 
      */
-     this._filename =  this._name + Utility.GetCurrentDate() + '.xml';
+     this._filename =  '';
 
     /**
      * [保存先]URL
      * @type {String}
      */
-     this._url = this._collection + this._filename;
+     this._url = '';
 
     /**
-     * カルテ
-     * @type {JQueryObject}
+     * JQuery オブジェクト
+     * @type {Object}
      */
-     $currentNote = $('[name="' + this._name + '"]');
+    $jquery = $('[name="' + this._name + '"]');
 
 	// カルテを空にする。
-	$currentNote.empty();
-
-	// URLをDATA[url]に格納する。
-	$currentNote.attr('data-url', this._url);
+	$jquery.empty();
 
 	// NoteContainerを追加する。
 	var containerComplaint = new NoteItemContainerComplaint();
-	$currentNote.append(containerComplaint.getJQueryObject());
+	$jquery.append(containerComplaint.getJQueryObject());
 	var containerDisease = new NoteItemContainerDisease();
-	$currentNote.append(containerDisease.getJQueryObject());
+	$jquery.append(containerDisease.getJQueryObject());
 	var containerMedicalCheck = new NoteItemContainerMedicalCheck();
-	$currentNote.append(containerMedicalCheck.getJQueryObject());
+	$jquery.append(containerMedicalCheck.getJQueryObject());
 	var containerPrescription = new NoteItemContainerPrescription();
-	$currentNote.append(containerPrescription.getJQueryObject());
+	$jquery.append(containerPrescription.getJQueryObject());
 	var containerOperation = new NoteItemContainerOperation();
-	$currentNote.append(containerOperation.getJQueryObject());
+	$jquery.append(containerOperation.getJQueryObject());
 	var containerMemo = new NoteItemContainerMemo();
-	$currentNote.append(containerMemo.getJQueryObject());
+	$jquery.append(containerMemo.getJQueryObject());
 	// var containerScheme = new NoteItemContainerScheme();
-	// $currentNote.append(containerScheme.getJQueryObject());
+	// $jquery.append(containerScheme.getJQueryObject());
 	
 };(function() {
 
@@ -76,8 +73,128 @@
      _proto.getName = function() 
      {
      	return this._name;
-     };
+     }
+
+    /*
+     * 患者を設定する。
+	 * @method setPatient
+	 * @param {Number} i_patientId 患者番号(0詰めなし)
+     */
+    _proto.setPatient = function(i_patientId) {
+    	
+    	var yyyyMMdd = Utility.GetCurrentDate();
+    	var hhmmss = Utility.GetCurrentTime();
+    	
+    	var to = 10000 * (Math.floor(i_patientId / 10000) + 1) - 1;
+
+    	this._collection = 
+    		'/db/apps/eyeehr/data/Note/patient-to-' + to + 
+    		'/patient-' + i_patientId + '/' + yyyyMMdd + '/' + hhmmss + '/';
+	    this._filename = this._name + '-' + i_patientId + '-' + 
+	    	yyyyMMdd + '-' + hhmmss + '-' + '' + '.xml';
+	    
+	    this._url = this._collection + this._filename;
+
+	    // URLにコレクション先を退避する。
+		$jquery.data('url', this._collection);
+    }
+
+    /**
+     * コレクションパスを取得する。
+     * @method getCollection
+     * @return コレクションパス
+     */
+    _proto.getCollection = function ()
+    {
+    	return this._collection + this._filename;
+    }
+
+    /**
+     * @summary カルテ（XMLファイル）を保存する
+     */
+	_proto.saveXml = function ()
+	{
+		// 指定のカルテをXML(<note />)に変換する。
+		var xml = ''; 
+		$jquery.each(function(){ 
+			xml = Note.HtmlNoteToXml($(this));
+		});
+
+		// 指定のファイルパスにXMLデーターを保存する。
+		Utility.SaveXml(this._collection + this._filename, xml); 
+	}
+
+	/**
+	 * @summary カルテ（XMLファイル）を読込む。
+	 * @param {String} i_url URL
+	 */
+	_proto.loadXml = function (i_url)
+	{
+		Utility.LoadXml('REST', i_url, '', this.setByXml);
+	}
+
+	/**
+	 * XMLからカルテを設定する。
+	 * @static
+	 * @method setByXml
+	 * @param {String/Object} i_xml XML <Note />
+	 */
+	 _proto.setByXml = function (i_xml)
+	 {
+		// 現在のカルテを空にする。
+		$jquery.empty();
+
+		$note = $(i_xml);
+
+		$note.children().each(function(){
+
+			var container = null;
+			switch($(this)[0].tagName)
+			{
+				case 'NoteItemContainerComplaint' : // 主訴
+	            container = new NoteItemContainerComplaint();
+	            break;
+		        case 'NoteItemContainerDisease' : // 病名 
+		        container = new NoteItemContainerDisease();
+		        break;
+		        case 'NoteItemContainerMedicalCheck' :　// 検査
+		        container = new NoteItemContainerMedicalCheck();
+		        break; 
+		        case 'NoteItemContainerPrescription' :  // 処方
+		        container = new NoteItemContainerPrescription();
+		        break;
+		        case 'NoteItemContainerOperation' :     // 手術
+		        container = new NoteItemContainerOperation();
+		        break;
+		        case 'NoteItemContainerMemo' : // メモ
+		        container = new NoteItemContainerMemo();
+		        break;
+		        case 'NoteItemContainerScheme' :　// シェーマ
+		        container = new NoteItemContainerScheme();
+		        break;
+		        default :
+		        break;
+		    }
+		    container.setByXml($(this));
+		    $jquery.append(container.getJQueryObject());
+		});
+	}
  })();
+
+ /**
+ * 患者を設定する。
+ * @method Create
+ * @param {Number} i_patientId 患者番号
+ * @return {Note} Noteオブジェクト
+ */
+Note.Create = function(i_patientId)
+{
+	var ret = new Note();
+
+	ret.setPatient(i_patientId);
+
+	return ret;
+}
 
 /**
  * HTMLをXMLに保存する。
@@ -101,63 +218,5 @@
 	return retVal;
 }
 
-///@summary カルテ（XMLファイル）を保存する
-Note.SaveXml = function ()
-{
-	// 指定のカルテをXML(<note />)に変換する。
-	var xml = ''; $currentNote.each(function(){ xml = Note.HtmlNoteToXml($(this));});
 
-	// 指定のファイルパスにXMLデーターを保存する。
-	//console.log($currentNote.data('url'));
-	Utility.SaveXml($currentNote.data('url'), xml); 
-}
 
-/**
- * カルテ（XMLファイル）を読込む。
- * @static
- * @method LoadXml
- * @param {String/Object} i_xml XML<Note />
- */
- Note.LoadXml = function (i_xml)
- {
-	// 現在のカルテを空にする。
-	$currentNote.empty();
-
-	$note = $(i_xml);
-	//console.log($note[0]);
-
-	$note.children().each(function(){
-
-		var container = null;
-		switch($(this)[0].tagName)
-		{
-			case 'NoteItemContainerComplaint' : 
-	            // コンテナを追加し、カルテにコンテナを貼付ける。
-	            container = new NoteItemContainerComplaint();
-	            break;
-	        case 'NoteItemContainerDisease' : // 病名 
-	        container = new NoteItemContainerDisease();
-	        break;
-	        case 'NoteItemContainerMedicalCheck' :　// 検査
-	        container = new NoteItemContainerMedicalCheck();
-	        break; 
-	        case 'NoteItemContainerPrescription' :  // 処方
-	        container = new NoteItemContainerPrescription();
-	        break;
-	        case 'NoteItemContainerOperation' :     // 手術
-	        container = new NoteItemContainerOperation();
-	        break;
-	        case 'NoteItemContainerMemo' : // メモ
-	        container = new NoteItemContainerMemo();
-	        break;
-	        case 'NoteItemContainerScheme' :　// シェーマ
-	        container = new NoteItemContainerScheme();
-	        break;
-	        default :
-	        break;
-	    }
-	    container.setByXml($(this));
-	    $currentNote.append(container.getJQueryObject());
-
-	});
-}

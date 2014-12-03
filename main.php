@@ -31,7 +31,7 @@ if (!isset($_SESSION["USERID"])) {
   <body style="position:absolute">
   <div>
   　<!--デバック用-->
-    <input id="currentFilePath" style="display: inline-block; _display: inline;"/><!--保存中のファイル名（デバッグ用）-->
+    <input class="form-control" id="CurrentFilePath" style="display:inline-block; display:inline;" /><!--保存中のファイル名（デバッグ用）-->
     <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button>
     <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
     <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
@@ -43,12 +43,11 @@ if (!isset($_SESSION["USERID"])) {
       <tr>
         <td valign="top">
           <!--医師情報--><div><label>主治医</label>&nbsp; 00001 渡邉花子</div>      
-          <!--患者情報-->
-          <div>
-            <label>患者</label>&nbsp;<br/>
-            <input type="text" class="input-small" value="10002"/> 山田太郎 &nbsp;
-            <button type="button" id="patient-info" class="btn btn-default btn-xs">詳細情報</button>
-          </div>
+          <label>患者情報</label><!--患者情報-->
+          <input type="text" class="form-control mini" id="PatientId" value=""/>
+          <button type="button" id="patient-info" class="btn btn-default btn-xs">読込</button>
+          <div>山田太郎</div>
+          <button type="button" id="patient-info" class="btn btn-default btn-xs">詳細</button>
         </td>
       </tr>
       <tr>

@@ -50,6 +50,25 @@
 	return retVal;
 }
 
+/**
+ * 現在時刻(hhmmss)を取得する。
+ * @static
+ * @method GetCurrentTime
+ * @return {String} 現在時刻(hhmmss)
+ */
+ Utility.GetCurrentTime  = function ()
+ {
+ 	var retVal = '';
+
+ 	var now = new Date();		
+	var hh = now.getHours().toString();
+	var mm = now.getMinutes().toString();
+	var ss = now.getSeconds().toString();
+	retVal = (hh[1]?hh:"0"+hh[0]) + (mm[1]?mm:"0"+mm[0]) + (ss[1]?ss:"0"+ss[0]);
+
+	return retVal;
+}
+
 /** 
  * 最小入力コントロールをXMLに置き換える。
  * @static
@@ -146,12 +165,12 @@
  * コレクションを作成する。
  * @static
  * @method CreateCollection
- * @param  i_collectionPath コレクションパス
+ * @param {String} i_collectionPath コレクションパス
+ * @param {Function} callback コールバック関数
  */
- Utility.CreateCollection = function (i_collectionPath)
+ Utility.CreateCollection = function (i_collectionPath, callback)
  {
  	const SCRIPT = "/exist/apps/eyeehr/modules/create-collection.xql";
- 	console.log('Utility.CreateCollection');
 
  	var lastIndexOfSlash = i_collectionPath.lastIndexOf('/');
 
@@ -170,14 +189,14 @@
 		    	alert('コレクションの作成に失敗しました。');
 		    },
 		    success: function(xml){
-		    	console.log(xml);
+		    	if (callback) callback();
 		    }
 		});
  	}
  }
 
 /**
- * XMLを保存する。
+ * XMLファイルをXMLDB(eXistDB)に保存する。
  * @static
  * @method SaveXml 
  * @param i_path ファイルパス(URL)
@@ -191,43 +210,48 @@
 	var collection = i_path.substr(0, i_path.lastIndexOf('/'));
 	var file = i_path.substr(i_path.lastIndexOf('/') + 1);
 
-	// 画像をXMLDB上に保存する。
-	const Url = '/exist/apps/eyeehr/modules/uploadFileXml.xq';
-	$.ajax({
-	  	async 	: false, 	// 同期通信
-	  	url 	: Url,
-	  	type 	:'POST',
-	  	cache 	: false,
-	  	data 	: 
-	  	{ 
-	  		type       : 'xml', 
-	  		collection : collection,
-	  		filename   : file,
-	  		xml        : i_xml
-	  	},
-	  	success: function(data) {
+ 	// 先行して、コレクションを作成する。
+ 	Utility.CreateCollection(collection, function (){
 
-			// DB保存成功時は、URLを取得する。
-			var url = $(data).find('#url').text();
+		// ファイルをXMLDB上に保存する。
+		const Url = '/exist/apps/eyeehr/modules/uploadFileXml.xq';
+		$.ajax({
+		  	async 	: false, 	// 同期通信
+		  	url 	: Url,
+		  	type 	:'POST',
+		  	cache 	: false,
+		  	data 	: 
+		  	{ 
+		  		type       : 'xml', 
+		  		collection : collection,
+		  		filename   : file,
+		  		xml        : i_xml
+		  	},
+		  	success: function(data) {
 
-		 	// 完了メッセージを表示する。
-		 	alert('ファイルの保存が完了しました。');
+				// DB保存成功時は、URLを取得する。
+				var url = $(data).find('#url').text();
 
-		 	// コールバック関数があれば、コールバック関数を実行する。
-		 	if(callback !== undefined) callback(); 
+			 	// 完了メッセージを表示する。
+			 	alert('ファイルの保存が完了しました。');
 
-		 },
-		 error: function(XMLHttpRequest, textStatus, errorThrown) 
-		 {
-		 	alert('ファイルの保存に失敗しました。: ' + XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message);
-		 	console.log(i_xml);
-		 },
-		// complete : function(data) 
-		// {
-		// 	console.log('画像をXMLDBに保存する処理が完了した。');
-		//     //alert("finishi");
-		// }
-	});
+			 	// コールバック関数があれば、コールバック関数を実行する。
+			 	if(callback !== undefined) callback(); 
+			 },
+			 error: function(XMLHttpRequest, textStatus, errorThrown) 
+			 {
+			 	alert('ファイルの保存に失敗しました。: ' + XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message);
+			 	console.log(i_xml);
+			 }
+			//,
+			// complete : function(data) 
+			// {
+			// 	console.log('画像をXMLDBに保存する処理が完了した。');
+			// }
+		});
+ 	});
+
+
 }
 
 /**
