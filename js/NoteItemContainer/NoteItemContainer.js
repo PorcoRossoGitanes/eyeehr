@@ -40,10 +40,10 @@ function NoteItemContainer() {
         '</div>'
     )[0];
 
-    // 親要素内のみドラッグ可能に設定する。
+    // ドラッグ可能に設定する。
     $(this._jquery).draggable({ /* containment: 'parent', scroll: true */ });
-    // $(this._jquery).sortable();
-    // $(this._jquery).disableSelection();
+    // Sortable, Draggable は併用不可であるため、ソートは実行できない。
+    // $(this._jquery).sortable();$(this._jquery).disableSelection();
 
     /** 
      * JQuery オブジェクトを返す。
