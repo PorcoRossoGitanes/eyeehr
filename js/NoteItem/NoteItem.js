@@ -130,13 +130,11 @@ function NoteItem() {
      * iframeには、ファイルのimgタグが返却される。
      */
     $(this._jquery).find('iframe').load(function() {
-        var file = $(this).parent().find("#attachFile").val();
+        var file = $(this).parent().find('[type="file"]').val();
         var url = $(this).contents().find('#url').text();
-        if (file == "") { /* 画像ファイルが指定されていない場合は処理を実行しない。 */ } else if (url == "") {
-            alert('ファイルの保存に失敗しました。');
-        } else {
-            NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url);
-        }
+        if (file == "") { /* 画像ファイルが指定されていない場合は処理を実行しない。 */ } 
+        else if (url == "") { alert('ファイルの保存に失敗しました。'); } 
+        else { NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url); }
     });
 
     /**
