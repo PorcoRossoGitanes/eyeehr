@@ -133,6 +133,8 @@ if (!isset($_SESSION["USERID"])) {
   <script src="js/jquery.base64/jquery.base64.js"></script>
   
   <script src="js/Utility/Utility.js"></script>
+  
+  <script src="js/Config/Config.js"></script>
 
   <script src="js/Staff/Staff.js"></script>
   

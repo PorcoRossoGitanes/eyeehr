@@ -518,13 +518,13 @@ Utility.GetQueryString = function() {
 
 /**
  * JSONファイルを読込む
+ * @param {String} i_url URL
  * @param {method(json)} callback　コールバック関数
  * @return {Object} JSONオブジェクト
  */
-Utility.LoadJson = function(callback) {
-    var ret = null;
+Utility.LoadJson = function(i_url, callback) {
 
-    const i_url = 'js/json/configure.json';
+    var ret = null;
 
     $.ajax({
         async: false, // 同期通信
@@ -534,10 +534,8 @@ Utility.LoadJson = function(callback) {
         success: function(json, datatype) {
             if (callback !== undefined) callback(json, datatype);
             ret = json;
-            console.log(json.toString());
         }
     });
 
     return ret;
-
 }

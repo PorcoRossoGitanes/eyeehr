@@ -34,7 +34,7 @@ function NoteItem() {
     const saveImageTo = '/db/apps/eyeehr/img';
 
     /*** 画像ファイル入力フォーム ***/
-    var json = Utility.LoadJson();
+    var json = Config.Load();
     const Extension =
         (json.AttachFile.FileType.TXT.available ? json.AttachFile.FileType.TXT.access + ', ' : '') +
         (json.AttachFile.FileType.CSV.available ? json.AttachFile.FileType.CSV.access + ', ' : '') +
@@ -464,44 +464,27 @@ NoteItem.ChangeRemark = function(i_noteItemId, i_content, callback) {
  * @param i_url ファイルURL
  */
 NoteItem.AttachFile = function($i_attachment, i_url) {
-    Utility.LoadJson(function(json) {
-        // サムネイルを表示できない場合はNoImageアイコンを表示する。
-        // https://www.iconfinder.com/iconsets/lexter-flat-colorfull-file-formats
-        var ext = Utility.GetFileExt(i_url); // console.log(ext);
-        var src = i_url;
-        switch (ext) {
-            case 'doc':
-                src = json.AttachFile.FileType.DOCX.noimage;
-                break;
-            case 'docx':
-                src = json.AttachFile.FileType.DOC.noimage;
-                break;
-            case 'xls':
-                src = json.AttachFile.FileType.XLS.noimage;
-                break;
-            case 'xlsx':
-                src = json.AttachFile.FileType.XLSX.noimage;
-                break;
-            case 'pdf':
-                src = json.AttachFile.FileType.PDF.noimage;
-                break;
-            case 'txt':
-                src = json.AttachFile.FileType.TXT.noimage;
-                break;
-            case 'csv':
-                src = json.AttachFile.FileType.CSV.noimage;
-                break;
-            default:
-                break;
-        }
+    var json = Config.Load();
+    // サムネイルを表示できない場合はNoImageアイコンを表示する。
+    // https://www.iconfinder.com/iconsets/lexter-flat-colorfull-file-formats
+    var ext = Utility.GetFileExt(i_url); // console.log(ext);
+    var src = i_url;
+    switch (ext) {
+        case 'doc': src = json.AttachFile.FileType.DOCX.noimage; break;
+        case 'docx': src = json.AttachFile.FileType.DOC.noimage; break;
+        case 'xls': src = json.AttachFile.FileType.XLS.noimage; break;
+        case 'xlsx': src = json.AttachFile.FileType.XLSX.noimage; break;
+        case 'pdf': src = json.AttachFile.FileType.PDF.noimage; break;
+        case 'txt': src = json.AttachFile.FileType.TXT.noimage; break;
+        case 'csv': src = json.AttachFile.FileType.CSV.noimage; break;
+        default: break;
+    }
 
-        // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
-        var filename = Utility.GetFileName(i_url, true);
-        var html = '<img class="attachment img-thumbnail" src="' + src + '" data-src="' + i_url + '" alt="' + filename + '"/>';
-        var img = NoteItem.CreateAttachmentGadget($(html)[0], false);
-        $i_attachment.append(img);
-
-    });
+    // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
+    var filename = Utility.GetFileName(i_url, true);
+    var html = '<img class="attachment img-thumbnail" src="' + src + '" data-src="' + i_url + '" alt="' + filename + '"/>';
+    var img = NoteItem.CreateAttachmentGadget($(html)[0], false);
+    $i_attachment.append(img);
 }
 
 /**
@@ -547,25 +530,25 @@ NoteItem.AttachScheme = function(i_noteItemId, i_url, callback) {
  * @param {String} i_to 保存先
  */
 NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url) {
-    Utility.LoadJson(function(json) {
-        // @param {Number} Meethod DrawのURL(相対パス)
-        const MethodDrawPath = './method_draw/editor/index.html';
+    
+    var json = Config.Load();
 
-        // @param {Number} Method Drawの画面 最大サイズ　幅
-        const MethodDrawWidthMax = json['SchemeDrawer'].Size['max_width'];
-        // @param {Number} Method Drawの画面 最大サイズ　高さ
-        const MethodDrawHeightMax = json['SchemeDrawer'].Size['max_height'];
+    // MethodDrawのURL(相対パス)
+    const MethodDrawPath = json['SchemeDrawer'].Path;
+    // MethodDrawの画面 最大サイズ　幅
+    const MethodDrawWidthMax = json['SchemeDrawer'].Size['max_width'];
+    // MethodDrawの画面 最大サイズ　高さ
+    const MethodDrawHeightMax = json['SchemeDrawer'].Size['max_height'];
 
-        // @param {Number} Method Drawの画面　幅
-        var methodDrawWidth = window.parent.screen.width > MethodDrawWidthMax ? MethodDrawWidthMax : window.parent.screen.width;
-        // @param {Number} Method Drawの画面　高さ
-        var methodDrawHeight = window.parent.screen.height > MethodDrawHeightMax ? MethodDrawHeightMax : window.parent.screen.height;
+    // MethodDrawの画面　幅
+    var methodDrawWidth = window.parent.screen.width > MethodDrawWidthMax ? MethodDrawWidthMax : window.parent.screen.width;
+    // MethodDrawの画面　高さ
+    var methodDrawHeight = window.parent.screen.height > MethodDrawHeightMax ? MethodDrawHeightMax : window.parent.screen.height;
 
-        // Method Drawを開く。
-        var url = MethodDrawPath + '?command=' + i_mode + '&id=' + i_noteItemId + '&image=' + i_url;
-        var name = 'method_draw_' + (new Date().getTime());
-        window.open(url, name, 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
-    });
+    // Method Drawを開く。
+    var url = MethodDrawPath + '?command=' + i_mode + '&id=' + i_noteItemId + '&image=' + i_url;
+    var name = 'method_draw_' + (new Date().getTime());
+    window.open(url, name, 'width=' + methodDrawWidth + ',height=' + methodDrawHeight);
 
 }
 
@@ -575,12 +558,11 @@ NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url) {
  * @param {String} i_content 備考内容
  */
 NoteItem.OpenRemarkForm = function(i_noteItemId, i_content) {
-    Utility.LoadJson(function(json) {
-        var url = 'remark.html' + '?' + 'id=' + i_noteItemId + '&' + 'content=' + i_content;
-        var id = 'remark_' + i_noteItemId;
-        var size = 'width=' + json['Remark'].Size['width'] + ',height=' + json['Remark'].Size['height'];
-        window.open(url, id, size);
-    });
+    var json = Config.Load();
+    var url = 'remark.html' + '?' + 'id=' + i_noteItemId + '&' + 'content=' + i_content;
+    var id = 'remark_' + i_noteItemId;
+    var size = 'width=' + json['Remark'].Size['width'] + ',height=' + json['Remark'].Size['height'];
+    window.open(url, id, size);
 }
 
 /**

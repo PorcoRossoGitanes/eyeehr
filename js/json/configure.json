@@ -117,6 +117,7 @@
         "_comment": "007     自費診療"
     }],
     "SchemeDrawer": {
+        "Path": "./method_draw/editor/index.html",
         "Size": {
             "max_width": "900",
             "max_height": "600",
