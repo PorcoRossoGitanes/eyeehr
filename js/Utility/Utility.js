@@ -157,9 +157,14 @@ Utility.GetExtention = function(url) {
  * @method CreateCollection
  * @param {String} i_collectionPath コレクションパス
  * @param {Function} callback コールバック関数
+ * @return 実行結果（true=成功, false=失敗）
  */
 Utility.CreateCollection = function(i_collectionPath, callback) {
-    const SCRIPT = "/exist/apps/eyeehr/modules/create-collection.xql";
+
+    var ret = false;
+
+    const URL = "/exist/apps/eyeehr/modules/create-collection.xql";
+    var message_error = 'コレクションの作成に失敗しました。';
 
     var lastIndexOfSlash = i_collectionPath.lastIndexOf('/');
 
@@ -168,19 +173,22 @@ Utility.CreateCollection = function(i_collectionPath, callback) {
             "parent-collection=" + i_collectionPath.substring(0, lastIndexOfSlash) +
             "&target-collection=" + i_collectionPath.substr(lastIndexOfSlash + 1);
         $.ajax({
-            url: SCRIPT, // コレクション毎取得する場合
+            url: URL, // コレクション毎取得する場合
             async: false, // 同期通信に設定する
             cache: false,
             dataType: "xml",
             data: senddata,
-            error: function() {
-                alert('コレクションの作成に失敗しました。');
-            },
             success: function(xml) {
                 if (callback) callback();
-            }
+                ret = true;
+            },
+            error: function() {
+                alert(message_error);
+            } //,
         });
     }
+
+    return ret;
 }
 
 /**
@@ -193,18 +201,26 @@ Utility.CreateCollection = function(i_collectionPath, callback) {
  * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
  */
 Utility.SaveXml = function(i_path, i_xml, callback) {
+
+    // 先行して、コレクションを作成する。
+    var ret = true;
+
     // コレクションとファイル名を取得する。
     var collection = i_path.substr(0, i_path.lastIndexOf('/'));
     var file = i_path.substr(i_path.lastIndexOf('/') + 1);
 
-    // 先行して、コレクションを作成する。
-    Utility.CreateCollection(collection, function() {
+    ret = ret && Utility.CreateCollection(collection);
 
-        // ファイルをXMLDB上に保存する。
-        const Url = '/exist/apps/eyeehr/modules/uploadFileXml.xq';
+    // ファイルをXMLDB上に保存する。
+    if (ret) {
+
+        const URL = '/exist/apps/eyeehr/modules/uploadFileXml.xq';
+        var message_success = 'XMLファイルの保存が成功しました。';
+        var message_error = 'ファイルの保存に失敗しました。: {0} {1} {2}';
+
         $.ajax({
-            async: false, // 同期通信
-            url: Url,
+            async: false, // 同期通信に設定する。
+            url: URL,
             type: 'POST',
             cache: false,
             data: {
@@ -218,25 +234,25 @@ Utility.SaveXml = function(i_path, i_xml, callback) {
                 // DB保存成功時は、URLを取得する。
                 var url = $(data).find('#url').text();
 
-                // 完了メッセージを表示する。
-                alert('ファイルの保存が完了しました。');
-
                 // コールバック関数があれば、コールバック関数を実行する。
                 if (callback !== undefined) callback();
+
+                // 完了メッセージを表示する。
+                alert(message_success);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    alert('ファイルの保存に失敗しました。: ' + XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message);
-                    console.log(i_xml);
-                }
-                //,
-                // complete : function(data) 
-                // {
-                // 	console.log('画像をXMLDBに保存する処理が完了した。');
-                // }
+                message_error.format(XMLHttpRequest.status, textStatus, errorThrown.message);
+                console.log(i_xml);
+                alert(message_error);
+                ret = false;
+            },
+            complete: function(data) {
+                //console.log('画像をXMLDBに保存する処理が完了した。');
+            }
         });
-    });
+    }
 
-
+    return ret;
 }
 
 /**
