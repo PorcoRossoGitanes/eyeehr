@@ -50,7 +50,7 @@ function NoteItem() {
     var formAttachFile = /*** 画像ファイル入力フォーム ***/
         '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:none" >' +
         '<input type="input" name="type" value="bin"/>' +
-        '<input id="attachFile" type="file" name="file" value="" accept="' + Extension + '" />' +
+        '<input type="file" name="file" value="" accept="' + Extension + '" />' +
         '<input type="input" name="collection" value="' + saveImageTo + '"/>' +
         '<input id="attachFileSubmit" type="submit" value="submit" />' +
         '</form>' +
@@ -100,23 +100,28 @@ function NoteItem() {
     //$(this._jquery).draggable();
 
     /**
-     *
-     * @summary 画像を追加する。
+     * @event「ファイルアップロード」ボタンが押下された時
+     * @summary ファイルを選択する。
      */
     $(this._jquery).find('#attachFile').click(function() {
+
         // 画像選択ボタンを取得する。
-        $inputAttachImage = $(this).parent().find('form > input#attachFile');
+        $inputAttachImage = $(this).parent().find('form > input[type="file"]');
+
         // 画像選択ボタンをクリックする。
         $inputAttachImage.click();
-        // 画像選択がなされたら、ファイルパスを取得し、画像を追加する。
-        // 画像アップロード結果が入ってきたら、画像を追加する。
+
+        /**
+         * @event 画像データが追加された場合
+         * @summary 画像を追加する。
+         */
         $inputAttachImage.change(function() {
-            // 画像ファイル名が入力済みの場合のみ、フォームから画像を送信する。
             if ($(this).val() != "") {
                 $form = $(this).parent();
                 $form.submit();
             }
         });
+
     });
 
     /**
@@ -161,25 +166,33 @@ function NoteItem() {
      * @event 「↑」ボタンの押下時
      * @summary 一つ上に移動する。
      */
-    $(this._jquery).find('#up').click(function() { 
-			$target = $(this).parent(); $prev = $target.prev(); 
-    	if ($prev[0].tagName == $target[0].tagName) { $prev.before($target); }    
+    $(this._jquery).find('#up').click(function() {
+        $target = $(this).parent();
+        $prev = $target.prev();
+        if ($prev[0].tagName == $target[0].tagName) {
+            $prev.before($target);
+        }
     });
 
     /**
      * @event 「↓」ボタンの押下時
      * @summary 一つ下に移動する。
      */
-    $(this._jquery).find('#down').click(function() { 
-    	$target = $(this).parent(); $next = $target.next(); 
-    	if ($next[0].tagName == $target[0].tagName) { $next.after($target); }    
+    $(this._jquery).find('#down').click(function() {
+        $target = $(this).parent();
+        $next = $target.next();
+        if ($next[0].tagName == $target[0].tagName) {
+            $next.after($target);
+        }
     });
 
     /**
      * @event 「削除」ボタンの押下時
      * @summary 付箋を削除する。
      */
-    $(this._jquery).find('#del').click(function() { $(this).parent().remove(); });
+    $(this._jquery).find('#del').click(function() {
+        $(this).parent().remove();
+    });
 
     /**
      * @event 「備考」ボタンの押下時
@@ -572,18 +585,76 @@ NoteItem.OpenRemarkForm = function(i_noteItemId, i_content) {
 }
 
 /**
- * 画像ファイルにはリンクを復活する。
- * @param  String/Object  i_xml 添付ファイル（img）
- * @return Object         添付ファイル（部品）（img）
+ * 画像ファイルにはリンクおよび右クリックメニュー（コンテキスト）を作成する。
+ * @method CreateAttachmentGadget
+ * @param  {String/Object}  i_xml 添付ファイル（img）
+ * @return {Object}         添付ファイル（部品）（img）
  */
 NoteItem.CreateAttachmentGadget = function(i_xml, i_editable) {
+
     var ret = null;
     var url = $(i_xml).data('src');
     var html = Utility.XmlToStr(i_xml);
 
+    // 画像ファイルオブジェクトを格納する。
     ret = $(html)[0];
 
-    // 画像が右クリックされたら、コンテキストメニューを表示する。   
+    /**
+     * @summary 画像を別ウィンドウで開く。
+     * @method open
+     */
+    function open() {
+        window.open(url, 'img_' + (new Date().getTime()));
+    }
+
+    /**
+     * @summary シェーマ描画ツールを開き、画像を編集する。
+     * @method edit
+     */
+    function edit() {
+        $scheme = $(ret).parent();
+        $noteItem = $scheme.parent();
+        var noteItemId = $noteItem.attr('id');
+        console.log($noteItem[0]);
+        NoteItem.OpenMethodDraw('edit', noteItemId, url);
+    }
+
+    /**
+     * @summary 画像をリロードする。
+     * @method reload
+     */
+    function reload() {
+        $(ret).attr('src', url + '?' + (new Date().getTime()));
+        Utility.ReloadImageFile(ret, url);
+    }
+
+    /**
+     * @summary 画像をダウンロードする。
+     * @method download
+     */
+    function download() {
+        Utility.DownloadFile(url);
+    }
+
+    /**
+     * @summary 画像を削除する。
+     * @method remove
+     */
+    function remove() {
+        $(this).parent().prev().remove();
+    }
+
+    // 画像がダブルクリックされた時
+    // シェーマ(i_editable = true)の場合は、シェーマ描画ツールを表示する。
+    // それ以外の場合は。別ウィンドウで表示する。
+    $(ret).dblclick(function() {
+        if (i_editable) {
+            edit();
+        } else {
+            open();
+        }
+    });
+    // 画像が右クリックされた時、コンテキストメニューを表示する。   
     $(ret).bind("contextmenu", function(event) {
 
         var html = '';
@@ -601,30 +672,23 @@ NoteItem.CreateAttachmentGadget = function(i_xml, i_editable) {
 
         // 大きく表示を選択時、別ウィンドウでMethodDrawを開く。
         $ctx.children('#ctxOpen').mousedown(function() {
-            window.open(url, 'scheme_' + (new Date().getTime()));
+            open();
         });
         // 編集を選択時、シェーマツールを開く。
         $ctx.children('#ctxEdit').mousedown(function() {
-            // シェーマを開く。
-            $img = $(ctx).before();
-            $scheme = $img.parent();
-            $noteItem = $scheme.parent();
-            var noteItemId = $noteItem.attr('id');
-            console.log($noteItem[0]);
-            NoteItem.OpenMethodDraw('edit', noteItemId, url);
+            edit();
         });
         // 再読み込みを選択時、画像を再度読込む。
         $ctx.children('#ctxReload').mousedown(function() {
-            $(ret).attr('src', url + '?' + (new Date().getTime()));
-            Utility.ReloadImageFile(ret, url);
+            reload();
         });
         // ダウンロード選択時、ファイルをダウンロードする。
         $ctx.children('#ctxDownload').mousedown(function() {
-            Utility.DownloadFile(url);
+            download();
         });
         // 削除を選択時、画像を削除する。
         $ctx.children('#ctxDelete').mousedown(function() {
-            $(this).parent().prev().remove();
+            remove();
         });
 
         // マウスダウン時、コンテキストメニューを閉じる。
