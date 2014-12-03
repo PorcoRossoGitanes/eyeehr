@@ -270,6 +270,8 @@
  */
  Utility.LoadXml = function (i_type, i_path, i_senddata, callback) 
  {
+ 	var ret = false;
+
 	// パスが設定されている場合のみ実行する。
 	if (i_path != '')
 	{
@@ -286,8 +288,9 @@
 				data    : i_senddata,
 			    dataType: "xml",
 				cache 	: false,
-				success: function(data) {
+				success: function(data, datatype) {
 					if(callback !== undefined) callback(data.children);
+					ret = true;
 				},
 				error: function(XMLHttpRequest, textStatus, errorThrown) 
 				{
@@ -297,10 +300,11 @@
 						'テキストステータス='   + textStatus + ' \n' + 
 						'エラーメッセージ=' + errorThrown.message;
 					alert(message); console.log(errorThrown.message);
-		     	}//,
+		     	}
+		     	//,
 				// complete : function(data) 
 				// {
-				// 	//console.log('ファイルの読み込みが完了しました。');
+				// 	console.log('ファイルの読み込みが完了しました。');
 				// }
 			});
 		}
@@ -312,10 +316,11 @@
 			    cache: false,
 			    dataType:"xml",
 			    data: i_senddata,
-			    success: function(data){
+			    success: function(data, datatype){
 			    	// data = #document
 			    	// data.children = ルートノードオブジェクト 
 			        if (callback !== undefined) callback(data.children);
+					ret = true;
 			    },
 			    error: function(XMLHttpRequest, textStatus, errorThrown) 
 			    {
@@ -326,7 +331,12 @@
 			    		'テキストステータス='   + textStatus + ' \n' + 
 			    		'エラーメッセージ=' + errorThrown.message
 			    		);
-		     	}//,
+		     	}
+		     	//,
+				// complete : function(data) 
+				// {
+				// 	console.log('ファイルの読み込みが完了しました。');
+				// }
 		     });
 		}
 	}
@@ -334,6 +344,8 @@
 	{
 		alert('送信先URLが設定されていません。');
 	}
+
+	return ret;
 }
 
 /** 
@@ -543,18 +555,26 @@ Utility.GetQueryString = function ()
 /**
  * JSONファイルを読込む
  * @param {method(json)} callback　コールバック関数
+ * @return {Object} JSONオブジェクト 
  */
 Utility.LoadJson = function (callback)
 {
-	// 背景画像を読み込む。
+	var ret = '';
+
 	const i_url = 'js/json/configure.json';
-	$.getJSON(
-		i_url,
-		function (json) {
-			if(callback !== undefined) callback(json);
+
+	$.ajax({
+		async : false, // 同期通信
+		url: i_url,
+		dataType: 'json',
+		//data: data,
+		success: function (json, datatype) {
+			if(callback !== undefined) callback(json, datatype); 
+			ret = json;
+			console.log(json.toString());
 		}
-	).error(function(jqXHR, textStatus, errorThrown) {
-	    alert("JSONファイルの読み込みに失敗しました。 " + textStatus);
 	});
+
+	return ret;
 
 }
