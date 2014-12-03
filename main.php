@@ -32,7 +32,7 @@ if (!isset($_SESSION["USERID"])) {
   <div>
   　<!--デバック用-->
     <input class="form-control" id="CurrentFilePath" style="display:inline-block; display:inline;" /><!--保存中のファイル名（デバッグ用）-->
-    <button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button>
+    <!--button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button-->
     <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
     <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
     <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'"> <span class="glyphicon glyphicon-plus">ログアウト</span></button>
