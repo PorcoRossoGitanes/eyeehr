@@ -1,7 +1,6 @@
 /**
  * システム設定
- * @class Utility
- * @remarks 使用するHTMLに下記が必要な点を留意する。
+ * @class Config
  * @constructor
  */
 function Config() {}
