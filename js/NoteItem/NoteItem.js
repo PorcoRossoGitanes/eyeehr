@@ -34,18 +34,19 @@ function NoteItem() {
     const saveImageTo = '/db/apps/eyeehr/img';
 
     /*** 画像ファイル入力フォーム ***/
+    var json = Utility.LoadJson();
     const Extension =
-        'text/plain' + ', ' +
-        'text/csv' + ', ' +
-        'image/jpeg' + ', ' +
-        'image/png' + ', ' +
-        'image/bmp' + ', ' +
-        'application/pdf' + ', ' +
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document' + ', ' + // docx
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' + ', ' + // xlsx
-        'application/msexcel' + ', ' + // xls
-        'application/msword' // doc
-    ;
+        (json.AttachFile.FileType.TXT.available ? json.AttachFile.FileType.TXT.access + ', ' : '') +
+        (json.AttachFile.FileType.CSV.available ? json.AttachFile.FileType.CSV.access + ', ' : '') +
+        (json.AttachFile.FileType.JPG.available ? json.AttachFile.FileType.JPG.access + ', ' : '') +
+        (json.AttachFile.FileType.PNG.available ? json.AttachFile.FileType.PNG.access + ', ' : '') +
+        (json.AttachFile.FileType.BMP.available ? json.AttachFile.FileType.BMP.access + ', ' : '') +
+        (json.AttachFile.FileType.PDF.available ? json.AttachFile.FileType.PDF.access + ', ' : '') +
+        (json.AttachFile.FileType.DOCX.available ? json.AttachFile.FileType.DOCX.access + ', ' : '') +
+        (json.AttachFile.FileType.DOC.available ? json.AttachFile.FileType.DOC.access + ', ' : '') +
+        (json.AttachFile.FileType.XLSX.available ? json.AttachFile.FileType.XLSX.access + ', ' : '') +
+        (json.AttachFile.FileType.XLS.available ? json.AttachFile.FileType.XLS.access + ''/*', '*/ : '');
+
     var iframetarget = 'uploadImage-' + this._id;
     var formAttachFile = /*** 画像ファイル入力フォーム ***/
         '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:none" >' +

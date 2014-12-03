@@ -3,51 +3,61 @@
         "XQ": "/exist/apps/eyeehr/modules/uploadFileBin.xq",
         "FileType": {
             "JPG": {
+                "available" : true, 
                 "access": "image/jpeg",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/JPG/NoImage.png",
                 "_comment": "JPGファイルのサムネイルが表示されない場合の画像 "
             },
             "PNG": {
+                "available" : true, 
                 "access": "image/png",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/PNG/NoImage.png",
                 "_comment": "PNGファイルのサムネイルが表示されない場合の画像 "
             },
             "BMP": {
+                "available" : true, 
                 "access": "image/bmp",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/BMP/NoImage.png",
                 "_comment": "BMPファイルのサムネイルが表示されない場合の画像 "
             },
             "TXT": {
+                "available" : true, 
                 "access": "text/plain",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/TXT/NoImage.png",
                 "_comment": "PDFファイルのサムネイルが表示されない場合の画像 "
             },
             "CSV": {
+                "available" : true, 
                 "access": "text/csv",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/CSV/CSV.png",
                 "_comment": "CSVファイルのサムネイルが表示されない場合の画像 "
             },
             "PDF": {
+                "available" : true, 
                 "access": "application/pdf",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/PDF/NoImage.png",
                 "_comment": "PDFファイルのサムネイルが表示されない場合の画像 "
             },
             "DOC": {
+                "available" : true, 
                 "access": "application/msword",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/DOC/NoImage.png",
                 "_comment": "Wordファイルのサムネイルが表示されない場合の画像 "
             },
             "DOCX": {
+                "available" : true, 
                 "access": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/DOCX/NoImage.png",
                 "_comment": "Wordファイルのサムネイルが表示されない場合の画像 "
             },
             "XLS": {
+                "available" : true, 
                 "access": "application/msexcel",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/XLS/NoImage.png",
                 "_comment": "Excelファイルのサムネイルが表示されない場合の画像 "
             },
             "XLSX": {
+                "available" : true, 
                 "access": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/XLSX/NoImage.png",
                 "_comment": "Excelファイルのサムネイルが表示されない場合の画像 "
