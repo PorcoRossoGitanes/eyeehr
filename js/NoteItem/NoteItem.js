@@ -467,17 +467,20 @@ NoteItem.AttachFile = function($i_attachment, i_url) {
     var json = Config.Load();
     // サムネイルを表示できない場合はNoImageアイコンを表示する。
     // https://www.iconfinder.com/iconsets/lexter-flat-colorfull-file-formats
-    var ext = Utility.GetFileExt(i_url); // console.log(ext);
+    var ext = Utility.GetFileExt(i_url).toUpperCase(); // console.log(ext);
     var src = i_url;
     switch (ext) {
-        case 'doc': src = json.AttachFile.FileType.DOCX.noimage; break;
-        case 'docx': src = json.AttachFile.FileType.DOC.noimage; break;
-        case 'xls': src = json.AttachFile.FileType.XLS.noimage; break;
-        case 'xlsx': src = json.AttachFile.FileType.XLSX.noimage; break;
-        case 'pdf': src = json.AttachFile.FileType.PDF.noimage; break;
-        case 'txt': src = json.AttachFile.FileType.TXT.noimage; break;
-        case 'csv': src = json.AttachFile.FileType.CSV.noimage; break;
-        default: break;
+        case 'DOC': 
+        case 'DOCX':
+        case 'XLS': 
+        case 'XLSX': 
+        case 'PDF': 
+        case 'TXT': 
+        case 'CSV': 
+            src = json.AttachFile.FileType[ext].noimage; 
+        break;
+        default: 
+        break;
     }
 
     // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
