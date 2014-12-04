@@ -37,7 +37,7 @@ button.page
 }
 
 /* スタンプリスト（アコーディオンメニュー） */
-div#NoteItemMenu h3
+div#StampGadget h3
 {
 /* 
   margin paddingは初期設定に準拠する。
@@ -46,7 +46,7 @@ div#NoteItemMenu h3
 */
 }
 
-div#NoteItemMenu div.stamp_list 
+div#StampGadget div.StampList 
 {
   overflow: scroll;
   height : 200px; /* TODO : 暫定 */
@@ -152,6 +152,12 @@ div.NoteItemPrescription
 
 /**ノートアイテム（手術）**/
 div.NoteItemOperation
+{
+  background: #7fbfff;  
+}
+
+/**ノートアイテム（処置）**/
+div.NoteItemTreatment
 {
   background: #7fbfff;  
 }

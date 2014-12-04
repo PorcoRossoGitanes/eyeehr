@@ -67,7 +67,7 @@
     },
     "Stamp": [{
         "key": "DISEASE",
-        "selector": "div.stamp_list#disease",
+        "selector": "div.StampList#StampListDisease",
         "class": "StampDisease",
         "_comment": "XXX     病名・所見"
     }, {
@@ -77,32 +77,32 @@
         "_comment": "001     診療行為"
     }, {
         "key": "INJECTION",
-        "selector": "div.stamp_list#injection",
+        "selector": "div.StampList#StampListInjection",
         "class": "StampInjection",
         "_comment": "001-300 注射(300番台)"
     }, {
         "key": "TREATMENT",
-        "selector": "div.stamp_list#treatment",
+        "selector": "div.StampList#StampListTreatment",
         "class": "StampTreatment",
         "_comment": "001-400 処置(400番台)"
     }, {
         "key": "OPERATION",
-        "selector": "div.stamp_list#operation",
+        "selector": "div.StampList#StampListOperation",
         "class": "StampOperation",
         "_comment": "001-500 手術(500番台)"
     }, {
         "key": "MEDICAL_CHECK",
-        "selector": "div.stamp_list#medical_check",
+        "selector": "div.StampList#StampListMedicalCheck",
         "class": "StampMedicalCheck",
         "_comment": "001-600 検査(600番台)"
     }, {
         "key": "MEDICAL_PRODUCT",
-        "selector": "div.stamp_list#medical_product",
+        "selector": "div.StampList#StampListMedicalProduct",
         "class": "StampMedicalProduct",
         "_comment": "002     医薬品"
     }, {
         "key": "MACHINE",
-        "selector": "div.stamp_list#machine",
+        "selector": "div.StampList#StampListMachine",
         "class": "StampMachine",
         "_comment": "003     特定機材"
     }, {

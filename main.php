@@ -113,7 +113,7 @@ if (!isset($_SESSION["USERID"])) {
       <tr>
         <td>
           <!--スタンプリスト（アコーディオンメニュー）-->
-          <div id="NoteItemMenu">
+          <div id="StampGadget">
           </div>
         </td>
       </tr>
@@ -131,6 +131,7 @@ if (!isset($_SESSION["USERID"])) {
   <script src="js/Patient/Patient.js"></script>
 
   <script src="js/Stamp/Stamp.js"></script>
+  <script src="js/Stamp/StampComplaint.js"></script>
   <script src="js/Stamp/StampDisease.js"></script>
   <script src="js/Stamp/StampInjection.js"></script>
   <script src="js/Stamp/StampMachine.js"></script>
@@ -138,6 +139,18 @@ if (!isset($_SESSION["USERID"])) {
   <script src="js/Stamp/StampMedicalProduct.js"></script>
   <script src="js/Stamp/StampOperation.js"></script>
   <script src="js/Stamp/StampTreatment.js"></script>
+  <script src="js/Stamp/StampMemo.js"></script>
+
+  <script src="js/StampList/StampList.js"></script>
+  <script src="js/StampList/StampListComplaint.js"></script>
+  <script src="js/StampList/StampListDisease.js"></script>
+  <script src="js/StampList/StampListMedicalCheck.js"></script>
+  <script src="js/StampList/StampListTreatment.js"></script>
+  <script src="js/StampList/StampListMedicalProduct.js"></script>  
+  <script src="js/StampList/StampListOperation.js"></script>
+  <script src="js/StampList/StampListInjection.js"></script>
+  <script src="js/StampList/StampListMachine.js"></script>
+  <script src="js/StampList/StampListMemo.js"></script>
 
   <script src="js/StampGadget/StampGadget.js"></script>
 
