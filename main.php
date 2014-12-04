@@ -117,11 +117,35 @@ if (!isset($_SESSION["USERID"])) {
             <h3 class='ui-state-disabled' onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</h3><div></div>
             <h3>病名</h3><div class="stamp_list" id="disease"></div>
             <h3>検査</h3><div class="stamp_list" id="medical_check"></div>
-            <h3>注射</h3><div class="stamp_list" id="injection"></div>
-            <h3>特定機材</h3><div class="stamp_list" id="machine"></div>
             <h3>処置</h3><div class="stamp_list" id="treatment"></div>
             <h3>手術</h3><div class="stamp_list" id="operation"></div>
-            <h3>処方（医薬品）</h3><div class="stamp_list" id="medical_product"></div>
+            <h3>医薬品</h3>
+            <div class="stamp_list" id="medical_product">
+              <div class="radio">
+                <label><input type="radio" name="stamp_list_medical_product" value="検査"> 検査</label>
+                <label><input type="radio" name="stamp_list_medical_product" value="処方" checked> 処方</label>
+                <label><input type="radio" name="stamp_list_medical_product" value="処置"> 処置</label>
+                <label><input type="radio" name="stamp_list_medical_product" value="処置"> 手術</label>
+              </div>           
+            </div>
+            <h3>注射</h3>
+            <div class="stamp_list" id="injection">
+              <div class="radio">
+                <label><input type="radio" name="stamp_list_injection_select" value="検査"> 検査</label>
+                <label><input type="radio" name="stamp_list_injection_select" value="処方"> 処方</label>
+                <label><input type="radio" name="stamp_list_injection_select" value="処置" checked> 処置</label>
+                <label><input type="radio" name="stamp_list_injection_select" value="処置"> 手術</label>
+              </div>    
+            </div>
+            <h3>特定機材</h3>
+            <div class="stamp_list" id="machine">
+              <div class="radio">
+                <label><input type="radio" name="stamp_list_machine_select" value="検査"> 検査</label>
+                <label><input type="radio" name="stamp_list_machine_select" value="処方"> 処方</label>
+                <label><input type="radio" name="stamp_list_machine_select" value="処置" checked> 処置</label>
+                <label><input type="radio" name="stamp_list_machine_select" value="処置"> 手術</label>
+              </div>    
+            </div>
             <!--h3 class='ui-state-disabled' onclick="var item = new NoteItemScheme(); item.appendTo('[name=NoteItemContainerScheme]')">シェーマ</h3><div></div-->
             <h3 class='ui-state-disabled' onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</h3><div></div>
           </div>
@@ -154,6 +178,7 @@ if (!isset($_SESSION["USERID"])) {
   <script src="js/NoteItem/NoteItemDisease.js"></script>
   <script src="js/NoteItem/NoteItemMedicalCheck.js"></script>
   <script src="js/NoteItem/NoteItemPrescription.js"></script>
+  <script src="js/NoteItem/NoteItemTreatment.js"></script>
   <script src="js/NoteItem/NoteItemOperation.js"></script>
   <script src="js/NoteItem/NoteItemScheme.js"></script>
   <script src="js/NoteItem/NoteItemMemo.js"></script>
@@ -162,6 +187,7 @@ if (!isset($_SESSION["USERID"])) {
   <script src="js/NoteItemContainer/NoteItemContainerComplaint.js"></script>
   <script src="js/NoteItemContainer/NoteItemContainerDisease.js"></script>
   <script src="js/NoteItemContainer/NoteItemContainerMedicalCheck.js"></script>
+  <script src="js/NoteItemContainer/NoteItemContainerTreatment.js"></script>
   <script src="js/NoteItemContainer/NoteItemContainerPrescription.js"></script>
   <script src="js/NoteItemContainer/NoteItemContainerOperation.js"></script>
   <script src="js/NoteItemContainer/NoteItemContainerScheme.js"></script>
