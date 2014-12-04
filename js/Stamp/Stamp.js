@@ -3,7 +3,7 @@
  * @class Stamp
  * @constructor
  */
-function Stamp() {
+var Stamp= function () {
 
     /**
      * @property {String} _id ID(ファイル名　拡張子なし)

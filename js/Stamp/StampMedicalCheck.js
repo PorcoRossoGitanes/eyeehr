@@ -4,7 +4,7 @@
  * @constructor
  * @extends Stamp
  */
-function StampMedicalCheck() {
+var StampMedicalCheck = function () {
 
     Stamp.call(this);
 

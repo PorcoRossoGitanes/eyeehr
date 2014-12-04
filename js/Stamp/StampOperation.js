@@ -4,7 +4,7 @@
  * @constructor
  * @extends Stamp
  */
-function StampOperation() {
+var StampOperation = function () {
 
     Stamp.call(this);
 
