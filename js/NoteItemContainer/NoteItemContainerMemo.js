@@ -27,7 +27,7 @@ function NoteItemContainerMemo() {
      * @property{String} _top 上座標
      * @example 'auto', '100px'
      */
-    this._top = '170px';
+    this._top = '240px';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).addClass(this._name);

@@ -15,7 +15,7 @@ function NoteItemContainerOperation() {
     /**
      * @property　{String} _title　タイトル
      */
-    this._title = '処置／手術';
+    this._title = '手術';
 
     /**
      * @property {String} _left 左座標
@@ -27,7 +27,7 @@ function NoteItemContainerOperation() {
      * @property {String} _top 上座標
      * @example 'auto', '100px'
      */
-    this._top = '100px';
+    this._top = '170px';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).addClass(this._name);
