@@ -5,38 +5,21 @@
  * @extends Stamp
  */
 function StampMachine() {
-    // 親クラス(Parent)のメンバ変数を継承
+
     Stamp.call(this);
-
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'StampMachine';
-
-    /**
-     * @property {String} To 貼付先
-     * @static
-     */
-    arguments.callee.To =  'NoteItemContainerOperation';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', StampMachine.ClassName);
     $(this._jquery).addClass(StampMachine.ClassName);
     //--JQuery オブジェクト操作---//
 
+    /**
+     * @event スタンプ（ボタン）がクリックされたときに、ノートアイテムを所定のノートアイテムコンテナに添付する。
+     */
     $(this._jquery).click(function() {
-
-        var item = new NoteItemOperation();
-        
-        item.setTitle($(this).attr('title'));
-        
-        var xml = $(this).data('xml');
-        item.setOrca($(xml).children('Orca')[0]);
-
+        var item = Stamp.CreateNoteItem(this, StampMachine.To);
         item.appendTo('[name="' + StampMachine.To + '"]');
     });
-
 };
 (function() {
 
@@ -66,3 +49,16 @@ function StampMachine() {
         return name + ' ' + StampMachine.ClassName;
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+StampMachine.ClassName = 'StampMachine';
+
+/**
+ * @property {String} To 貼付先
+ * @static
+ */
+StampMachine.To =  'NoteItemContainerOperation';
+

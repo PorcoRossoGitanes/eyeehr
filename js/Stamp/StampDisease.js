@@ -5,30 +5,19 @@
  * @extends Stamp
  */
 function StampDisease() {
+
     Stamp.call(this);
-
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'StampDisease';
-
-    /**
-     * @property {String} To 貼付先
-     * @static
-     */
-    arguments.callee.To =  'NoteItemContainerDisease';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', StampDisease.ClassName);
     $(this._jquery).addClass(StampDisease.ClassName);
     //--JQuery オブジェクト操作---//
 
+    /**
+     * @event スタンプ（ボタン）がクリックされたときに、ノートアイテムを所定のノートアイテムコンテナに添付する。
+     */
     $(this._jquery).click(function() {
-        var item = new NoteItemDisease();
-
-        item.setTitle($(this).attr('title'));
-
+        var item = Stamp.CreateNoteItem(this, StampDisease.To);
         item.appendTo('[name="' + StampDisease.To + '"]');
     });
 
@@ -61,3 +50,15 @@ function StampDisease() {
         return name + ' ' + StampDisease.ClassName;
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+StampDisease.ClassName = 'StampDisease';
+
+/**
+ * @property {String} To 貼付先
+ * @static
+ */
+StampDisease.To =  'NoteItemContainerDisease';

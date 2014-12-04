@@ -6,18 +6,6 @@
 function Stamp() {
 
     /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'Stamp';
-
-    /**
-     * @property {String} To 貼付先
-     * @static
-     */
-    arguments.callee.To =  'NoteItemContainer';
-
-    /**
      * @property {String} _id ID(ファイル名　拡張子なし)
      */
     this._id = '';
@@ -104,11 +92,6 @@ function Stamp() {
             //console.log($(this._jquery).data('xml'));
         }
     }
-
-    // _proto.createNoteItem = function ()
-    // {
-
-    // }
     
     /**
      * JQueryObjectを出力する
@@ -118,6 +101,18 @@ function Stamp() {
         return $(this._jquery);
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+Stamp.ClassName = 'Stamp';
+
+/**
+ * @property {String} To 貼付先
+ * @static
+ */
+Stamp.To =  'NoteItemContainer';
 
 /// @summary 対象のスタンプを取得する。
 ///    @file loadStamp.xq
@@ -153,4 +148,54 @@ Stamp.LoadXml = function(i_target, callback) {
     const SCRIPT = '/exist/apps/eyeehr/modules/loadStamp.xq';
     var senddata = "target=" + i_target;
     Utility.LoadXml('GET', SCRIPT, senddata, callback);
+}
+
+/**
+ * スタンプからノートアイテムを生成する。
+ * @method
+ * @param {Object} i_jquery スタンプオブジェクト
+ * @param {String} i_to 貼付先（NoteItemContainer）
+ */
+Stamp.CreateNoteItem = function(i_jquery, i_to) {
+
+    var item = null;
+
+    switch (i_to) {
+        case NoteItemContainerComplaint.ClassName:
+            item = new NoteItemComplaint();
+            break;
+        case NoteItemContainerDisease.ClassName:
+            item = new NoteItemDisease();
+            break;
+        case NoteItemContainerMedicalCheck.ClassName:
+            item = new NoteItemMedicalCheck();
+            break;
+        case NoteItemContainerMemo.ClassName:
+            item = new NoteItemMemo();
+            break;
+        case NoteItemContainerOperation.ClassName:
+            item = new NoteItemOperation();
+            break;
+        case NoteItemContainerPrescription.ClassName:
+            item = new NoteItemPrescription();
+            break;
+        case NoteItemContainerScheme.ClassName:
+            item = new NoteItemScheme();
+            break;
+        case NoteItemContainerTreatment.ClassName:
+            item = new NoteItemTreatment();
+            break;
+        default:
+            break;
+    }
+
+    if (item !== null)
+    {
+        item.setTitle($(i_jquery).attr('title'));
+
+        var xml = $(i_jquery).data('xml'); 
+        item.setOrca($(xml).children('Orca')[0]);        
+    }
+
+    return item;
 }

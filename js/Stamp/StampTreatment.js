@@ -5,34 +5,19 @@
  * @extends Stamp
  */
 function StampTreatment() {
-    // 親クラス(Parent)のメンバ変数を継承
-    Stamp.call(this);
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'StampTreatment';
 
-    /**
-     * @property {String} To 貼付先
-     * @static
-     */
-    arguments.callee.To =  'NoteItemContainerOperation';
+    Stamp.call(this);
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', StampTreatment.ClassName);
     $(this._jquery).addClass(StampTreatment.ClassName);
     //--JQuery オブジェクト操作---//
 
+    /**
+     * @event スタンプ（ボタン）がクリックされたときに、ノートアイテムを所定のノートアイテムコンテナに添付する。
+     */
     $(this._jquery).click(function() {
-
-        var item = new NoteItemOperation();
-
-        item.setTitle($(this).attr('title'));
-
-        var xml = $(this).data('xml');
-        item.setOrca($(xml).children('Orca')[0]);
-
+        var item = Stamp.CreateNoteItem(this, StampTreatment.To);
         item.appendTo('[name="' + StampTreatment.To + '"]');
     });
 
@@ -65,3 +50,15 @@ function StampTreatment() {
         return name + ' ' + StampTreatment.ClassName;
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+StampTreatment.ClassName = 'StampTreatment';
+
+/**
+ * @property {String} To 貼付先
+ * @static
+ */
+StampTreatment.To =  'NoteItemContainerOperation';

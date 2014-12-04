@@ -5,35 +5,19 @@
  * @extends Stamp
  */
 function StampMedicalCheck() {
-    // 親クラス(Parent)のメンバ変数を継承
+
     Stamp.call(this);
-
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'StampMedicalCheck';
-
-    /**
-     * @property {String} To 貼付先
-     * @static
-     */
-    arguments.callee.To =  'NoteItemContainerMedicalCheck';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', StampMedicalCheck.ClassName);
     $(this._jquery).addClass(StampMedicalCheck.ClassName);
     //--JQuery オブジェクト操作---//
 
+    /**
+     * @event スタンプ（ボタン）がクリックされたときに、ノートアイテムを所定のノートアイテムコンテナに添付する。
+     */
     $(this._jquery).click(function() {
-
-        var item = new NoteItemMedicalCheck();
-
-        item.setTitle($(this).attr('title'));
-
-        var xml = $(this).data('xml');
-        item.setOrca($(xml).children('Orca')[0]);
-
+        var item = Stamp.CreateNoteItem(this, StampMedicalCheck.To);
         item.appendTo('[name="' + StampMedicalCheck.To + '"]');
     });
 
@@ -66,3 +50,16 @@ function StampMedicalCheck() {
         return name + ' ' + StampMedicalCheck.ClassName;
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+StampMedicalCheck.ClassName = 'StampMedicalCheck';
+
+/**
+ * @property {String} To 貼付先
+ * @static
+ */
+StampMedicalCheck.To =  'NoteItemContainerMedicalCheck';
+

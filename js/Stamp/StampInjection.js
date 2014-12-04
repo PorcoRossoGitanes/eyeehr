@@ -5,38 +5,21 @@
  * @extends Stamp
  */
 function StampInjection() {
-    // 親クラス(Parent)のメンバ変数を継承
+
     Stamp.call(this);
-
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'StampInjection';
-
-    /**
-     * @property {String} To 貼付先
-     * @static
-     */
-    arguments.callee.To =  'NoteItemContainerOperation';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', StampInjection.ClassName);
     $(this._jquery).addClass(StampInjection.ClassName);
     //--JQuery オブジェクト操作---//
 
-    $(this._jquery).click(function() {
-        // TODO : 手術ではなく処置として登録する。
-        var item = new NoteItemOperation();
-
-        item.setTitle($(this).attr('title'));
-
-        var xml = $(this).data('xml');
-        item.setOrca($(xml).children('Orca')[0]);
-
+    /**
+     * @event スタンプ（ボタン）がクリックされたときに、ノートアイテムを所定のノートアイテムコンテナに添付する。
+     */
+    $(this._jquery).click(function() {    
+        var item = Stamp.CreateNoteItem(this, StampInjection.To);
         item.appendTo('[name=' + StampInjection.To + ']');
     });
-
 };
 (function() {
 
@@ -66,3 +49,15 @@ function StampInjection() {
         return name + ' ' + StampInjection.ClassName;
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+StampInjection.ClassName = 'StampInjection';
+
+/**
+ * @property {String} To 貼付先
+ * @static
+ */
+StampInjection.To =  'NoteItemContainerTreatment';
