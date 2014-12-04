@@ -93,3 +93,37 @@ var StampList = function (i_hasOne, i_canSelectTo) {
  * @static
  */
 StampList.ClassName = 'StampList';
+
+/** 
+ * スタンプを生成する。
+ * @param {String} i_key キー
+ * @param {String} i_selector スタンプの張付先(JQueryセレクタ)
+ * @param {XmlDocument} i_stampsXml スタンプリスト(XML)
+ */
+StampList.SetStamp = function (i_key, i_selector, i_stampsXml) {
+    // 貼付先を取得する。
+    $stampList = $(i_selector);
+
+    // XMLデーターをもとにボタンを貼付ける。
+    for (var index = 0; index < i_stampsXml.length; index++) {
+
+        var stamp = null;
+
+        switch (i_key) {
+            case 'DISEASE':         stamp = new StampDisease();         break;
+            case 'INJECTION':       stamp = new StampInjection();       break;
+            case 'TREATMENT':       stamp = new StampTreatment();       break;
+            case 'OPERATION':       stamp = new StampOperation();       break;
+            case 'MEDICAL_CHECK':   stamp = new StampMedicalCheck();    break;
+            case 'MEDICAL_PRODUCT': stamp = new StampMedicalProduct();  break;
+            case 'MACHINE':         stamp = new StampMachine();         break;
+            case 'PRIVATE_EXPENSE': stamp = new Stamp();                break;
+            case 'PRACTICE':
+            case 'COMMENT':
+            default:                stamp = new Stamp();                break;
+        }
+
+        stamp.setByXml(Utility.XmlToStr(i_stampsXml[index]));
+        $stampList.append(stamp.getJQueryObject());
+    };
+}
