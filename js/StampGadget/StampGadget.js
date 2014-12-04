@@ -53,41 +53,18 @@ var StampGadget = function () {
 
     //console.log(this._jquery);
 
-    // var html = 
-    //     '<h3 class="ui-state-disabled" onclick="var item = new NoteItemComplaint(); item.appendTo("[name=NoteItemContainerComplaint]");">主訴</h3><div></div>' +
-    //     '<h3>病名</h3>' +
-    //     '<div class="StampList" id="StampListDisease">' +
-    //     search + 
-    //     '</div>' +
-    //     '<h3>検査</h3>' +
-    //     '<div class="StampList" id="StampListMedicalCheck">' + 
-    //     search + 
-    //     '</div>' +
-    //     '<h3>処置</h3>' +
-    //     '<div class="StampList" id="StampListTreatment">' +
-    //     search + 
-    //     '</div>' +
-    //     '<h3>手術</h3>' +
-    //     '<div class="StampList" id="StampListOperation">' +
-    //     search + 
-    //     '</div>' +
-    //     '<h3>医薬品</h3>' +
-    //     '<div class="StampList" id="StampListMedicalProduct">' +
-    //     select_to +
-    //     search + 
-    //     '</div>' +
-    //     '<h3>注射</h3>' +
-    //     '<div class="StampList" id="StampListInjection">' +
-    //     select_to +
-    //     search + 
-    //     '</div>' +
-    //     '<h3>特定機材</h3>' +
-    //     '<div class="StampList" id="StampListMachine">' +
-    //     select_to +
-    //     search + 
-    //     '</div>' +
-    //     '<h3 class="ui-state-disabled" onclick="var item = new NoteItemMemo(); item.appendTo("[name=NoteItemContainerMemo]")">メモ</h3><div></div> ';
-    // $(this._jquery).append(html);
+    //----- スタンプを自動生成する。 -----------------------------------------------
+    var json = Config.Load();
+    for (var i in json.Stamp) {
+        var key = json.Stamp[i].key;
+        var selector = json.Stamp[i].selector;
+        if (selector != '') {
+            Stamp.LoadXml(key, function(result) {
+                //result[0]がルートノードとなる。
+                StampList.SetStamp(key, selector, result[0].children);
+            });
+        }
+    }
 
     //----- アコーディオンメニューを作成する。 --------------------------------------
     $(this._jquery).accordion({ heightStyle: "fill", active: 1 });
@@ -103,3 +80,4 @@ var StampGadget = function () {
 })();
 
 StampGadget.ClassName = 'StampGadget';
+

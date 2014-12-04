@@ -28,19 +28,6 @@ function ChangeRemark(i_noteItemId, i_content, callback)
 $(function() {
 
     var stampGadget = new StampGadget();
-    
-    //----- スタンプを自動生成する。 -----------------------------------------------
-    var json = Config.Load();
-    for (var i in json.Stamp) {
-        var key = json.Stamp[i].key;
-        var selector = json.Stamp[i].selector;
-        if (selector != '') {
-            Stamp.LoadXml(key, function(result) {
-                //result[0]がルートノードとなる。
-                StampList.SetStamp(key, selector, result[0].children);
-            });
-        }
-    }
 
     $('#MenuLeft').css('left', 0);
     $('#MenuLeft').css('top', 0);
