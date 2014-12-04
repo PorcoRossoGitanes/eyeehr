@@ -4,7 +4,7 @@
  * @extends NoteItemContainer
  * @constructor
  */
-function NoteItemContainerDisease() {
+var NoteItemContainerDisease = function () {
     NoteItemContainer.call(this);
     
     /**

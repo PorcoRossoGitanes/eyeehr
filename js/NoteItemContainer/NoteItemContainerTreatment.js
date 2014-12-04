@@ -9,12 +9,6 @@ function NoteItemContainerTreatment() {
     NoteItemContainer.call(this);
 
     /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemContainerTreatment';
-
-    /**
      * @property　{String} _title　タイトル
      */
     this._title = '処置';
@@ -79,3 +73,9 @@ function NoteItemContainerTreatment() {
         }
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemContainerTreatment.ClassName = 'NoteItemContainerTreatment';

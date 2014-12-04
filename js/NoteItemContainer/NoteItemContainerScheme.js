@@ -4,14 +4,8 @@
  * @extends NoteItemContainer
  * @constructor
  */
-function NoteItemContainerScheme() {
+var  NoteItemContainerScheme = function() {
     NoteItemContainer.call(this, $i_xml);
-
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemContainerScheme';
 
     /**
      * @property　{String} _title　タイトル
@@ -74,3 +68,10 @@ function NoteItemContainerScheme() {
         }
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemContainerScheme.ClassName = 'NoteItemContainerScheme';
+

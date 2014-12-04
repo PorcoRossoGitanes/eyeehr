@@ -3,13 +3,7 @@
  * @class NoteItemContainer
  * @constructor
  */
-function NoteItemContainer() {
-    
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemContainer';
+var NoteItemContainer = function () {
 
     /**
      * @property　{String} _title　タイトル
@@ -99,6 +93,12 @@ function NoteItemContainer() {
 })();
 
 /**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemContainer.ClassName = 'NoteItemContainer';
+
+/**
  * 付箋コンテナHTMLをXMLに保存する。
  * @method HtmlToXml
  * @static
@@ -126,3 +126,4 @@ NoteItemContainer.HtmlToXml = function($i_jquery) {
 
     return retVal;
 }
+

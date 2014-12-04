@@ -4,14 +4,9 @@
  * @extends NoteItemContainer
  * @constructor
  */
-function NoteItemContainerPrescription() {
-    NoteItemContainer.call(this);
+var NoteItemContainerPrescription = function () {
 
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemContainerPrescription';
+    NoteItemContainer.call(this);
 
     /**
      * @property　{String} _title　タイトル
@@ -78,3 +73,9 @@ function NoteItemContainerPrescription() {
         }
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemContainerPrescription.ClassName = 'NoteItemContainerPrescription';

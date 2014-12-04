@@ -4,14 +4,9 @@
  * @extends NoteItemContainer
  * @constructor
  */
-function NoteItemContainerMedicalCheck() {
-    NoteItemContainer.call(this);
+var NoteItemContainerMedicalCheck = function () {
 
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemContainerMedicalCheck';
+    NoteItemContainer.call(this);
 
     /**
      * @property　{String} _title　タイトル
@@ -78,3 +73,9 @@ function NoteItemContainerMedicalCheck() {
     }
 
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemContainerMedicalCheck.ClassName = 'NoteItemContainerMedicalCheck';
