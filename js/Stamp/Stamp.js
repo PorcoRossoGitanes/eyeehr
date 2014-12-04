@@ -105,7 +105,11 @@ function Stamp() {
         }
     }
 
+    // _proto.createNoteItem = function ()
+    // {
 
+    // }
+    
     /**
      * JQueryObjectを出力する
      * @return {JQueryObject} JQuery オブジェクト

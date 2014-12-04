@@ -26,8 +26,11 @@ function StampMachine() {
     //--JQuery オブジェクト操作---//
 
     $(this._jquery).click(function() {
+
         var item = new NoteItemOperation();
+        
         item.setTitle($(this).attr('title'));
+        
         var xml = $(this).data('xml');
         item.setOrca($(xml).children('Orca')[0]);
 

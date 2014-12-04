@@ -21,7 +21,6 @@ function StampInjection() {
     arguments.callee.To =  'NoteItemContainerOperation';
 
     //--JQuery オブジェクト操作---//
-    // クラス属性を追加した。
     $(this._jquery).attr('name', StampInjection.ClassName);
     $(this._jquery).addClass(StampInjection.ClassName);
     //--JQuery オブジェクト操作---//
