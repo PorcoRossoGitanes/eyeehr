@@ -4,17 +4,11 @@
  * @extends NoteItem
  * @constructor
  */
-function NoteItemOperation() {
+var NoteItemOperation = function () {
+
     NoteItem.call(this);
 
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemOperation';
-
     //--JQuery オブジェクト操作---//
-    // クラス属性を追加した。
     $(this._jquery).attr('name', NoteItemOperation.ClassName);
     $(this._jquery).addClass(NoteItemOperation.ClassName);
     //--JQuery オブジェクト操作---//
@@ -51,5 +45,10 @@ function NoteItemOperation() {
         var name = _super.getName.call(this);
         return name + ' ' + NoteItemOperation.ClassName;
     };
-
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemOperation.ClassName = 'NoteItemOperation';

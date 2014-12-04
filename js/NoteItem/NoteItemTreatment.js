@@ -1,24 +1,18 @@
+
 /**
  * ノートアイテム　処置
  * @class NoteItemTreatment
  * @extends NoteItem
  * @constructor
  */
-function NoteItemTreatment() {
+var NoteItemTreatment = function () {
+    
     NoteItem.call(this);
 
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemTreatment';
-
     //--JQuery オブジェクト操作---//
-    // クラス属性を追加した。
     $(this._jquery).attr('name', NoteItemTreatment.ClassName);
     $(this._jquery).addClass(NoteItemTreatment.ClassName);
     //--JQuery オブジェクト操作---//
-
 };
 (function() {
 
@@ -53,3 +47,9 @@ function NoteItemTreatment() {
     };
 
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemTreatment.ClassName = 'NoteItemTreatment';

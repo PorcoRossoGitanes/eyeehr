@@ -5,13 +5,8 @@
  * @constructor
  */
 function NoteItemPrescription() {
-    NoteItem.call(this); // 入力文字列
 
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemPrescription';
+    NoteItem.call(this);
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', NoteItemPrescription.ClassName);
@@ -50,5 +45,11 @@ function NoteItemPrescription() {
         var name = _super.getName.call(this);
         return name + ' ' + NoteItemPrescription.ClassName;
     };
-
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemPrescription.ClassName = 'NoteItemPrescription';
+

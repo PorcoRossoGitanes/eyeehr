@@ -4,14 +4,9 @@
  * @extends NoteItem
  * @constructor
  */
-function NoteItemMedicalCheck() {
-    NoteItem.call(this);
+var NoteItemMedicalCheck = function () {
 
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemMedicalCheck';
+    NoteItem.call(this);
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', NoteItemMedicalCheck.ClassName);
@@ -52,3 +47,9 @@ function NoteItemMedicalCheck() {
     };
 
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemMedicalCheck.ClassName = 'NoteItemMedicalCheck';

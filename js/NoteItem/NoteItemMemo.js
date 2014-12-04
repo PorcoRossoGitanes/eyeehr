@@ -4,14 +4,9 @@
  * @extends NoteItem
  * @constructor
  */
-function NoteItemMemo() {
-    NoteItem.call(this);
+var NoteItemMemo = function () {
 
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemMemo';
+    NoteItem.call(this);
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', NoteItemMemo.ClassName);
@@ -54,5 +49,11 @@ function NoteItemMemo() {
         var name = _super.getName.call(this);
         return name + ' ' + NoteItemMemo.ClassName;
     };
-
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemMemo.ClassName = 'NoteItemMemo';
+

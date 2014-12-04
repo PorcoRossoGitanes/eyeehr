@@ -3,13 +3,7 @@
  * @class NoteItem
  * @constructor
  */
-function NoteItem() {
-    
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItem';
+var NoteItem = function() {
 
     // @param 付箋のID(MAX値)
     const MAX = 9999999999;
@@ -44,7 +38,7 @@ function NoteItem() {
         (json.AttachFile.FileType.DOCX.available ? json.AttachFile.FileType.DOCX.access + ', ' : '') +
         (json.AttachFile.FileType.DOC.available ? json.AttachFile.FileType.DOC.access + ', ' : '') +
         (json.AttachFile.FileType.XLSX.available ? json.AttachFile.FileType.XLSX.access + ', ' : '') +
-        (json.AttachFile.FileType.XLS.available ? json.AttachFile.FileType.XLS.access + ''/*', '*/ : '');
+        (json.AttachFile.FileType.XLS.available ? json.AttachFile.FileType.XLS.access + '' /*', '*/ : '');
 
     var iframetarget = 'uploadImage-' + this._id;
     var formAttachFile = /*** 画像ファイル入力フォーム ***/
@@ -350,7 +344,6 @@ function NoteItem() {
     }
 })();
 
-
 /**
  * 付箋コンテナHTMLをXMLに保存する。
  * @static
@@ -531,7 +524,7 @@ NoteItem.AttachScheme = function(i_noteItemId, i_url, callback) {
  * @param {String} i_to 保存先
  */
 NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url) {
-    
+
     var json = Config.Load();
 
     // MethodDrawのURL(相対パス)
@@ -694,3 +687,9 @@ NoteItem.CreateAttachmentGadget = function(i_xml, i_editable) {
 
     return ret;
 }
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItem.ClassName = 'NoteItem';

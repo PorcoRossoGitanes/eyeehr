@@ -5,13 +5,8 @@
  * @constructor
  */
 function NoteItemScheme() {
+    
     NoteItem.call(this);
-
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemScheme';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', NoteItemScheme.ClassName);
@@ -52,3 +47,9 @@ function NoteItemScheme() {
     };
 
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemScheme.ClassName = 'NoteItemScheme';

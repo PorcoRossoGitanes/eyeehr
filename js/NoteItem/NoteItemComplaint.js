@@ -4,15 +4,9 @@
  * @extends NoteItem
  * @constructor
  */
-function NoteItemComplaint() {
+var NoteItemComplaint = function () {
     
     NoteItem.call(this);
-
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemComplaint';
 
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', NoteItemComplaint.ClassName);
@@ -55,3 +49,10 @@ function NoteItemComplaint() {
         return name + ' ' + NoteItemComplaint.ClassName;
     };
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemComplaint.ClassName = 'NoteItemComplaint';
+
