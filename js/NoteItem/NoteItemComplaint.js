@@ -8,13 +8,14 @@ function NoteItemComplaint() {
     NoteItem.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemComplaint';
+    arguments.callee.ClassName = 'NoteItemComplaint';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', NoteItemComplaint.ClassName);
+    $(this._jquery).addClass(NoteItemComplaint.ClassName);
 
     // 備考を開く。
     $(this._jquery).find('#editRemark').click();
@@ -50,6 +51,6 @@ function NoteItemComplaint() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemComplaint.ClassName;
     };
 })();

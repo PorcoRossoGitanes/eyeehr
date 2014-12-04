@@ -9,13 +9,14 @@ function NoteItemDisease() {
     NoteItem.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemDisease';
+    arguments.callee.ClassName = 'NoteItemDisease';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', NoteItemDisease.ClassName);
+    $(this._jquery).addClass(NoteItemDisease.ClassName);
     //--JQuery オブジェクト操作---//
 
 };
@@ -48,6 +49,6 @@ function NoteItemDisease() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemDisease.ClassName;
     };
 })();

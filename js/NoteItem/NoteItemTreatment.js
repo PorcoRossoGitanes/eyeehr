@@ -8,14 +8,15 @@ function NoteItemTreatment() {
     NoteItem.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemTreatment';
+    arguments.callee.ClassName = 'NoteItemTreatment';
 
     //--JQuery オブジェクト操作---//
     // クラス属性を追加した。
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', NoteItemTreatment.ClassName);
+    $(this._jquery).addClass(NoteItemTreatment.ClassName);
     //--JQuery オブジェクト操作---//
 
 };
@@ -48,7 +49,7 @@ function NoteItemTreatment() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemTreatment.ClassName;
     };
 
 })();

@@ -8,13 +8,14 @@ function NoteItemScheme() {
     NoteItem.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemScheme';
+    arguments.callee.ClassName = 'NoteItemScheme';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', NoteItemScheme.ClassName);
+    $(this._jquery).addClass(NoteItemScheme.ClassName);
     //--JQuery オブジェクト操作---//
 
 };
@@ -47,7 +48,7 @@ function NoteItemScheme() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemScheme.ClassName;
     };
 
 })();

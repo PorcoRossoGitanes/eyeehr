@@ -6,9 +6,10 @@
 function NoteItem() {
     
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItem';
+    arguments.callee.ClassName = 'NoteItem';
 
     // @param 付箋のID(MAX値)
     const MAX = 9999999999;
@@ -59,7 +60,7 @@ function NoteItem() {
      * @property {Object} _jquery JQuery オブジェクト
      */
     this._jquery = $(
-        '<div ' + 'id="' + this._id + '" ' + 'class="' + this._name + '" ' + '>' +
+        '<div ' + 'id="' + this._id + '" ' + 'class="' + NoteItem.ClassName + '" ' + '>' +
         /*** 削除　ボタン ***/
         '<button id="del" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>' +
         /*** 最小化ボタン ***/
@@ -217,7 +218,7 @@ function NoteItem() {
      * @return {String} クラス名（親クラス...現在のクラス）
      */
     _proto.getName = function() {
-        return this._name;
+        return NoteItem.ClassName;
     };
 
     /**

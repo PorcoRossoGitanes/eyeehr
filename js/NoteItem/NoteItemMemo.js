@@ -7,14 +7,15 @@
 function NoteItemMemo() {
     NoteItem.call(this);
 
-    /**
-     * @property {String} _name クラス名
+     /**
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemMemo';
+    arguments.callee.ClassName = 'NoteItemMemo';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', NoteItemMemo.ClassName);
+    $(this._jquery).addClass(NoteItemMemo.ClassName);
 
     // 備考を開く。
     $(this._jquery).find('#editRemark').click();
@@ -51,7 +52,7 @@ function NoteItemMemo() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemMemo.ClassName;
     };
 
 })();

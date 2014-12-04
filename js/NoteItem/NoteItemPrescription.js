@@ -8,13 +8,14 @@ function NoteItemPrescription() {
     NoteItem.call(this); // 入力文字列
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemPrescription';
+    arguments.callee.ClassName = 'NoteItemPrescription';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', NoteItemPrescription.ClassName);
+    $(this._jquery).addClass(NoteItemPrescription.ClassName);
     //--JQuery オブジェクト操作---//
 
 };
@@ -47,7 +48,7 @@ function NoteItemPrescription() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemPrescription.ClassName;
     };
 
 })();

@@ -8,13 +8,14 @@ function NoteItemMedicalCheck() {
     NoteItem.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemMedicalCheck';
+    arguments.callee.ClassName = 'NoteItemMedicalCheck';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', NoteItemMedicalCheck.ClassName);
+    $(this._jquery).addClass(NoteItemMedicalCheck.ClassName);
     //--JQuery オブジェクト操作---//
 
 };
@@ -47,7 +48,7 @@ function NoteItemMedicalCheck() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemMedicalCheck.ClassName;
     };
 
 })();
