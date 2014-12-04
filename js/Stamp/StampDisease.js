@@ -8,13 +8,20 @@ function StampDisease() {
     Stamp.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'StampDisease';
+    arguments.callee.ClassName = 'StampDisease';
+
+    /**
+     * @property {String} To 貼付先
+     * @static
+     */
+    arguments.callee.To =  'NoteItemContainerDisease';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', StampDisease.ClassName);
+    $(this._jquery).addClass(StampDisease.ClassName);
     //--JQuery オブジェクト操作---//
 
     $(this._jquery).click(function() {
@@ -22,7 +29,7 @@ function StampDisease() {
 
         item.setTitle($(this).attr('title'));
 
-        item.appendTo('[name="NoteItemContainerDisease"]');
+        item.appendTo('[name="' + StampDisease.To + '"]');
     });
 
 };
@@ -51,6 +58,6 @@ function StampDisease() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + StampDisease.ClassName;
     }
 })();

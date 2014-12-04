@@ -6,9 +6,16 @@
 function Stamp() {
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'Stamp';
+    arguments.callee.ClassName = 'Stamp';
+
+    /**
+     * @property {String} To 貼付先
+     * @static
+     */
+    arguments.callee.To =  'NoteItemContainer';
 
     /**
      * @property {String} _id ID(ファイル名　拡張子なし)
@@ -64,7 +71,7 @@ function Stamp() {
      * @return {String} クラス名
      */
     _proto.getName = function() {
-        return this._name;
+        return ClassName;
     };
 
     /** 

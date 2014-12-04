@@ -9,13 +9,20 @@ function StampMachine() {
     Stamp.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'StampMachine';
+    arguments.callee.ClassName = 'StampMachine';
+
+    /**
+     * @property {String} To 貼付先
+     * @static
+     */
+    arguments.callee.To =  'NoteItemContainerOperation';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', StampMachine.ClassName);
+    $(this._jquery).addClass(StampMachine.ClassName);
     //--JQuery オブジェクト操作---//
 
     $(this._jquery).click(function() {
@@ -24,7 +31,7 @@ function StampMachine() {
         var xml = $(this).data('xml');
         item.setOrca($(xml).children('Orca')[0]);
 
-        item.appendTo('[name=NoteItemContainerOperation]');
+        item.appendTo('[name="' + StampMachine.To + '"]');
     });
 
 };
@@ -53,6 +60,6 @@ function StampMachine() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + StampMachine.ClassName;
     }
 })();

@@ -9,14 +9,20 @@ function StampMedicalCheck() {
     Stamp.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'StampMedicalCheck';
+    arguments.callee.ClassName = 'StampMedicalCheck';
+
+    /**
+     * @property {String} To 貼付先
+     * @static
+     */
+    arguments.callee.To =  'NoteItemContainerMedicalCheck';
 
     //--JQuery オブジェクト操作---//
-    // クラス属性を追加した。
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', StampMedicalCheck.ClassName);
+    $(this._jquery).addClass(StampMedicalCheck.ClassName);
     //--JQuery オブジェクト操作---//
 
     $(this._jquery).click(function() {
@@ -28,7 +34,7 @@ function StampMedicalCheck() {
         var xml = $(this).data('xml');
         item.setOrca($(xml).children('Orca')[0]);
 
-        item.appendTo('[name=NoteItemContainerMedicalCheck]');
+        item.appendTo('[name="' + StampMedicalCheck.To + '"]');
     });
 
 };
@@ -57,6 +63,6 @@ function StampMedicalCheck() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + StampMedicalCheck.ClassName;
     }
 })();

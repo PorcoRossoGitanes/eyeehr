@@ -9,14 +9,21 @@ function StampInjection() {
     Stamp.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'StampInjection';
+    arguments.callee.ClassName = 'StampInjection';
+
+    /**
+     * @property {String} To 貼付先
+     * @static
+     */
+    arguments.callee.To =  'NoteItemContainerOperation';
 
     //--JQuery オブジェクト操作---//
     // クラス属性を追加した。
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', StampInjection.ClassName);
+    $(this._jquery).addClass(StampInjection.ClassName);
     //--JQuery オブジェクト操作---//
 
     $(this._jquery).click(function() {
@@ -28,7 +35,7 @@ function StampInjection() {
         var xml = $(this).data('xml');
         item.setOrca($(xml).children('Orca')[0]);
 
-        item.appendTo('[name=NoteItemContainerOperation]');
+        item.appendTo('[name=' + StampInjection.To + ']');
     });
 
 };
@@ -57,6 +64,6 @@ function StampInjection() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + StampInjection.ClassName;
     }
 })();

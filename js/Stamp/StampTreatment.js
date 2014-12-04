@@ -7,15 +7,21 @@
 function StampTreatment() {
     // 親クラス(Parent)のメンバ変数を継承
     Stamp.call(this);
+    /**
+     * @property {String} ClassName クラス名
+     * @static
+     */
+    arguments.callee.ClassName = 'StampTreatment';
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} To 貼付先
+     * @static
      */
-    this._name = 'StampTreatment';
+    arguments.callee.To =  'NoteItemContainerOperation';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).attr('name', this._name);
-    $(this._jquery).addClass(this._name);
+    $(this._jquery).attr('name', StampTreatment.ClassName);
+    $(this._jquery).addClass(StampTreatment.ClassName);
     //--JQuery オブジェクト操作---//
 
     $(this._jquery).click(function() {
@@ -27,7 +33,7 @@ function StampTreatment() {
         var xml = $(this).data('xml');
         item.setOrca($(xml).children('Orca')[0]);
 
-        item.appendTo('[name=NoteItemContainerOperation]');
+        item.appendTo('[name="' + StampTreatment.To + '"]');
     });
 
 };
@@ -56,6 +62,6 @@ function StampTreatment() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + StampTreatment.ClassName;
     }
 })();
