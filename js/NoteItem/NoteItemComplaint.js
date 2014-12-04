@@ -5,6 +5,7 @@
  * @constructor
  */
 function NoteItemComplaint() {
+    
     NoteItem.call(this);
 
     /**

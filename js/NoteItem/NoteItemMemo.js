@@ -7,7 +7,7 @@
 function NoteItemMemo() {
     NoteItem.call(this);
 
-     /**
+    /**
      * @property {String} ClassName クラス名
      * @static
      */
