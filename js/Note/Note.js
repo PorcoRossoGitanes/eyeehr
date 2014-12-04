@@ -48,6 +48,8 @@
 	$jquery.append(containerDisease.getJQueryObject());
 	var containerMedicalCheck = new NoteItemContainerMedicalCheck();
 	$jquery.append(containerMedicalCheck.getJQueryObject());
+	var containerTreatment= new NoteItemContainerTreatment();
+	$jquery.append(containerTreatment.getJQueryObject());
 	var containerPrescription = new NoteItemContainerPrescription();
 	$jquery.append(containerPrescription.getJQueryObject());
 	var containerOperation = new NoteItemContainerOperation();
