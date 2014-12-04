@@ -8,9 +8,10 @@ function NoteItemContainerDisease() {
     NoteItemContainer.call(this);
     
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemContainerDisease';
+    arguments.callee.ClassName = 'NoteItemContainerDisease';
 
     /**
      * @property　{String} _title　タイトル
@@ -30,8 +31,8 @@ function NoteItemContainerDisease() {
     this._top = '100px';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).addClass(this._name);
-    $(this._jquery).attr('name', this._name);
+    $(this._jquery).addClass(NoteItemContainerDisease.ClassName);
+    $(this._jquery).attr('name', NoteItemContainerDisease.ClassName);
     $(this._jquery).find('#title').text(this._title);
     //--JQuery オブジェクト操作---//
 
@@ -54,7 +55,7 @@ function NoteItemContainerDisease() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemContainerDisease.ClassName;
     };
 
     /**

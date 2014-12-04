@@ -5,12 +5,14 @@
  * @constructor
  */
 function NoteItemContainerMemo() {
+
     NoteItemContainer.call(this);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemContainerMemo';
+    arguments.callee.ClassName = 'NoteItemContainerMemo';
 
     /**
      * @property　{String} _title　タイトル
@@ -30,8 +32,8 @@ function NoteItemContainerMemo() {
     this._top = '240px';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).addClass(this._name);
-    $(this._jquery).attr('name', this._name);
+    $(this._jquery).addClass(NoteItemContainerMemo.ClassName);
+    $(this._jquery).attr('name', NoteItemContainerMemo.ClassName);
     $(this._jquery).find('#title').text(this._title);
     //--JQuery オブジェクト操作---//
 
@@ -54,7 +56,7 @@ function NoteItemContainerMemo() {
      */
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemContainerMemo.ClassName;
     };
 
     /**

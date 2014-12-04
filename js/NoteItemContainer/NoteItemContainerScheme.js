@@ -8,9 +8,10 @@ function NoteItemContainerScheme() {
     NoteItemContainer.call(this, $i_xml);
 
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemContainerScheme';
+    arguments.callee.ClassName = 'NoteItemContainerScheme';
 
     /**
      * @property　{String} _title　タイトル
@@ -30,8 +31,8 @@ function NoteItemContainerScheme() {
     this._top = '30px';
 
     //--JQuery オブジェクト操作---//
-    $(this._jquery).addClass(this._name);
-    $(this._jquery).attr('name', this._name);
+    $(this._jquery).addClass(NoteItemContainerScheme.ClassName);
+    $(this._jquery).attr('name', NoteItemContainerScheme.ClassName);
     $(this._jquery).find('#title').text(this._title);
     $(this._jquery).css('left', 800);
     $(this._jquery).css('top', 30);
@@ -52,7 +53,7 @@ function NoteItemContainerScheme() {
     ///@return クラス名（親クラス...現在のクラス）
     _proto.getName = function() {
         var name = _super.getName.call(this);
-        return name + ' ' + this._name;
+        return name + ' ' + NoteItemContainerScheme.ClassName;
     };
 
     /**

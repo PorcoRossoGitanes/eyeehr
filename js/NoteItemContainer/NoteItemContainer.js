@@ -6,14 +6,15 @@
 function NoteItemContainer() {
     
     /**
-     * @property {String} _name クラス名
+     * @property {String} ClassName クラス名
+     * @static
      */
-    this._name = 'NoteItemContainer';
+    arguments.callee.ClassName = 'NoteItemContainer';
 
     /**
      * @property　{String} _title　タイトル
      */
-    this._title = this._name;
+    this._title = NoteItemContainer.ClassName;
 
     /**
      * @property {String} _left 左座標
@@ -36,8 +37,8 @@ function NoteItemContainer() {
      * @param {Object} JQuery オブジェクト
      */
     this._jquery = $(
-        '<div ' + 'class="' + this._name + '" ' + 'style="position:absolute;">' +
-        '<h1 id="title">' + this._name + '</h1>' +
+        '<div ' + 'class="' + NoteItemContainer.ClassName + '" ' + 'style="position:absolute;">' +
+        '<h1 id="title">' + NoteItemContainer.ClassName + '</h1>' +
         '</div>'
     )[0];
 
@@ -67,7 +68,7 @@ function NoteItemContainer() {
      * @return {String} クラス名（親クラス...現在のクラス）
      */
     _proto.getName = function() {
-        return this._name;
+        return NoteItemContainer.ClassName;
     };
 
 
