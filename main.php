@@ -114,90 +114,6 @@ if (!isset($_SESSION["USERID"])) {
         <td>
           <!--スタンプリスト（アコーディオンメニュー）-->
           <div id="NoteItemMenu">
-            <h3 class='ui-state-disabled' onclick="var item = new NoteItemComplaint(); item.appendTo('[name=NoteItemContainerComplaint]');">主訴</h3><div></div>
-            <h3>病名</h3>
-            <div class="stamp_list" id="disease">
-              <table>
-                <tbody>
-                  <td><input type="text" class="form-control mini" value=""/></td>
-                  <td><button class="btn btn-default btn-xs">検索</button></td>
-                </tbody>
-              </table>
-            </div>
-            <h3>検査</h3>
-            <div class="stamp_list" id="medical_check">
-              <table>
-                <tbody>
-                  <td><input type="text" class="form-control mini" value=""/></td>
-                  <td><button class="btn btn-default btn-xs">検索</button></td>
-                </tbody>
-              </table>
-            </div>
-            <h3>処置</h3>
-            <div class="stamp_list" id="treatment">
-              <table>
-                <tbody>
-                  <td><input type="text" class="form-control mini" value=""/></td>
-                  <td><button class="btn btn-default btn-xs">検索</button></td>
-                </tbody>
-              </table>
-            </div>
-            <h3>手術</h3>
-            <div class="stamp_list" id="operation">
-              <table>
-                <tbody>
-                  <td><input type="text" class="form-control mini" value=""/></td>
-                  <td><button class="btn btn-default btn-xs">検索</button></td>
-                </tbody>
-              </table>
-            </div>
-            <h3>医薬品</h3>
-            <div class="stamp_list" id="medical_product">
-              <div class="radio">
-                <label><input type="radio" name="stamp_list_medical_product" value="検査"> 検査</label>
-                <label><input type="radio" name="stamp_list_medical_product" value="処方" checked> 処方</label>
-                <label><input type="radio" name="stamp_list_medical_product" value="処置"> 処置</label>
-                <label><input type="radio" name="stamp_list_medical_product" value="処置"> 手術</label>
-              </div>           
-              <table>
-                <tbody>
-                  <td><input type="text" class="form-control mini" value=""/></td>
-                  <td><button class="btn btn-default btn-xs">検索</button></td>
-                </tbody>
-              </table>
-            </div>
-            <h3>注射</h3>
-            <div class="stamp_list" id="injection">
-              <div class="radio">
-                <label><input type="radio" name="stamp_list_injection_select" value="検査"> 検査</label>
-                <label><input type="radio" name="stamp_list_injection_select" value="処方"> 処方</label>
-                <label><input type="radio" name="stamp_list_injection_select" value="処置" checked> 処置</label>
-                <label><input type="radio" name="stamp_list_injection_select" value="処置"> 手術</label>
-              </div>    
-              <table>
-                <tbody>
-                  <td><input type="text" class="form-control mini" value=""/></td>
-                  <td><button class="btn btn-default btn-xs">検索</button></td>
-                </tbody>
-              </table>
-            </div>
-            <h3>特定機材</h3>
-            <div class="stamp_list" id="machine">
-              <div class="radio">
-                <label><input type="radio" name="stamp_list_machine_select" value="検査"> 検査</label>
-                <label><input type="radio" name="stamp_list_machine_select" value="処方"> 処方</label>
-                <label><input type="radio" name="stamp_list_machine_select" value="処置" checked> 処置</label>
-                <label><input type="radio" name="stamp_list_machine_select" value="処置"> 手術</label>
-              </div>    
-              <table>
-                <tbody>
-                  <td><input type="text" class="form-control mini" value=""/></td>
-                  <td><button class="btn btn-default btn-xs">検索</button></td>
-                </tbody>
-              </table>             
-            </div>
-            <!--h3 class='ui-state-disabled' onclick="var item = new NoteItemScheme(); item.appendTo('[name=NoteItemContainerScheme]')">シェーマ</h3><div></div-->
-            <h3 class='ui-state-disabled' onclick="var item = new NoteItemMemo(); item.appendTo('[name=NoteItemContainerMemo]')">メモ</h3><div></div>
           </div>
         </td>
       </tr>
@@ -222,6 +138,8 @@ if (!isset($_SESSION["USERID"])) {
   <script src="js/Stamp/StampMedicalProduct.js"></script>
   <script src="js/Stamp/StampOperation.js"></script>
   <script src="js/Stamp/StampTreatment.js"></script>
+
+  <script src="js/StampGadget/StampGadget.js"></script>
 
   <script src="js/NoteItem/NoteItem.js"></script>
   <script src="js/NoteItem/NoteItemComplaint.js"></script>

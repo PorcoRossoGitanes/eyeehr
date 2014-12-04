@@ -27,6 +27,8 @@ function ChangeRemark(i_noteItemId, i_content, callback)
 //----- ドキュメントロード時処理 -----------------------------------------------------
 $(function() {
 
+    var stampGadget = new StampGadget();
+    
     //----- スタンプを自動生成する。 -----------------------------------------------
     var json = Config.Load();
     for (var i in json.Stamp) {
@@ -95,8 +97,6 @@ $(function() {
         });
     });
 
-    //----- アコーディオンメニューを作成する。 --------------------------------------
-    $('#NoteItemMenu').accordion({ heightStyle: "fill", active: 1 });
 
     //----- イベント登録 -----
     /**
