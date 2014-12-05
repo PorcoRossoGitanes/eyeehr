@@ -179,7 +179,6 @@ Utility.CreateCollection = function(i_collectionPath) {
             dataType: "xml",
             data: senddata,
             success: function(xml) {
-                if (callback) callback();
                 ret = true;
             },
             error: function() {
