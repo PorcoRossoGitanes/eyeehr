@@ -43,15 +43,19 @@ var  NoteItemContainerScheme = function() {
     var _super = Super.prototype;
     var _proto = NoteItemContainerScheme.prototype;
 
-    ///@summary クラス名（親クラス...現在のクラス）を取得する
-    ///@return クラス名（親クラス...現在のクラス）
+    /**
+     * クラス名（親クラス...現在のクラス）を取得する
+     * @method getName
+     * @return {String} クラス名（親クラス...現在のクラス）
+     */
     _proto.getName = function() {
         var name = _super.getName.call(this);
         return name + ' ' + NoteItemContainerScheme.ClassName;
     };
 
     /**
-     * Xmlを設定する
+     * XMLを設定する
+     * @method setByXml
      * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
      */
     _proto.setByXml = function($i_xml) {

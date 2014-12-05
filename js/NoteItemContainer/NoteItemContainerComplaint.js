@@ -54,7 +54,8 @@ var NoteItemContainerComplaint = function () {
     }
 
     /**
-     * Xmlを設定する
+     * XMLを設定する
+     * @method setByXml
      * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
      */
     _proto.setByXml = function($i_xml) {
@@ -82,6 +83,7 @@ NoteItemContainerComplaint.ClassName = 'NoteItemContainerComplaint';
 /**
  * コレクションを作成する。
  * @method CreateCollection
+ * @static
  * @param {String} i_noteCollection Noteのコレクションパス
  * @return 実行結果（true=成功, false=失敗）
  */
