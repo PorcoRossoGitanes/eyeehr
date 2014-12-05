@@ -27,6 +27,8 @@ function ChangeRemark(i_noteItemId, i_content, callback)
 //----- ドキュメントロード時処理 -----------------------------------------------------
 $(function() {
 
+    $('#SideMenuLeft').sidr();
+
     var stampGadget = new StampGadget();
 
     $('#MenuLeft').css('left', 0);
@@ -53,8 +55,7 @@ $(function() {
 
     //----- イベント登録 -----
     /**
-     * 患者の本日のカルテを表示する。
-     * @event 患者IDが入力され、RETURN(ENTER)キーが押下された時
+     * @event 患者IDが入力され、RETURN(ENTER)キーが押下された時、患者の本日のカルテを表示する。
      */
     $('#PatientId').keypress(function(evt) {
         const ENTER = 13; if ( evt.which == ENTER ) { LoadPatient(); return false; }
@@ -70,21 +71,27 @@ $(function() {
 
     }
 
-    /// @summary 「読込」ボタンを押下時、XMLを読込む。
-    $('button#load').click(function() {
+    /**
+     * @event 「読込」を選択時、カルテを読込む。
+     */
+    $('#LoadNote').click(function() {
         var filePath = $('#CurrentFilePath').val();
         present.loadXml(filePath);
     });
 
-    /// @summary 「保存」ボタンを押下時、XMLを保存する。
-    $('button#save').click(function() {
+    /**
+     * @event 「保存」を選択時、カルテを保存する。
+     */
+    $('#SaveNote').click(function() {
         // カルテを保存する。
         if(present) present.saveXml();
         // TODO : 現在のカルテファイルパスを表示する。
         $('#CurrentFilePath').val(present.getCollection());
     });
 
-    // @summary 「患者情報」ボタンを押下時、患者情報を表示する。
+    /**
+     * @event「患者情報」ボタンを押下時、患者情報を表示する。
+     */
     $('button#patient-info').click(function() {
         alert('患者情報表示');
     });

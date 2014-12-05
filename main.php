@@ -20,22 +20,26 @@ if (!isset($_SESSION["USERID"])) {
     <script src="js/jquery-2.1.1.js"></script><!-- jQuery 2.1.1 -->
     <script src="js/jquery-ui/jquery-ui.js"></script><!-- jQuery-ui 1.11.1 -->
     <link href="js/jquery-ui/jquery-ui.css" rel="stylesheet"><!-- jQuery-ui 1.11.1 -->
-    <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" /-->
     <script src="js/contextmenu/jquery.contextmenu.r2.packed.js"></script><!-- ContextMenu Plugin dependent on jQuery  -->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
-    <!--script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script--><!--nicEdit-->
-    <!--自作CSS-->    
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <!--自作CSS-->    
+    <script src="js/plugin/sidr/jquery.sidr.min.js"></script><!-- スライドメニュー -->
+    <link rel="stylesheet" href="js/plugin/sidr/stylesheets/jquery.sidr.dark.css"><!-- スライドメニュー -->
+    <link href="css/style.css" rel="stylesheet" type="text/css"><!--自作CSS-->    
   </head>
   <body style="position:absolute">
+
+    <a id="SideMenuLeft" href="#sidr">メニュー表示</a>
+    <div id="sidr">
+      <ul>
+        <!-- デバッグ用ファイルパス -->
+        <li><a href="#"><input class="form-control" id="CurrentFilePath" style="display:inline-block; display:inline;"/></a></li>
+        <li><a href="#">新規作成</a></li>
+        <li id="LoadNote"><a href="#">開く</a></li>
+        <li id="SaveNote"><a href="#">保存</a></li>
+        <li><a href="logout.php">ログアウト</a></li>
+      </ul>
+    </div>
   <div>
-  　<!--デバック用-->
-    <input class="form-control" id="CurrentFilePath" style="display:inline-block; display:inline;" /><!--保存中のファイル名（デバッグ用）-->
-    <!--button type="button" id="new" class="btn btn-default btn-s"><span class="glyphicon glyphicon-plus">新規作成</span></button-->
-    <button type="button" id="load" class="btn btn-default btn-s"><span class="glyphicon glyphicon-open">読込</span></button>
-    <button type="button" id="save" class="btn btn-default btn-s"><span class="glyphicon glyphicon-save">保存</span></button>
-    <button type="button" id="logout" class="btn btn-default btn-s" onclick="location.href='logout.php'"> <span class="glyphicon glyphicon-plus">ログアウト</span></button>
   </div>
   <div name="Note" style="position:absolute;zIndex:9999:" valign="top" style="border: 1px solid #000000"></div>
   <div id="MenuLeft" style="position:relative;zIndex:1;width:280px">
