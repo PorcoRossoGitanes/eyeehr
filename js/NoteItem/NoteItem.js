@@ -239,6 +239,7 @@ var NoteItem = function() {
      */
     _proto.setByXml = function($i_xml) {
         if ($i_xml !== undefined) {
+            this.setId($i_xml.attr('id'));
             // タイトル部分を追加する。
             this.setTitle(Utility.InnerXml($i_xml.children('Title')));
             // ORCA情報部分を追加する。
@@ -255,12 +256,23 @@ var NoteItem = function() {
     }
 
     /**
+     * IDを設定する。
+     * @method setId
+     * @param {String} i_id IT
+     */
+    _proto.setId = function(i_id) {
+        this._id = i_id;
+        $(this._jquery).attr('id', this._id);
+        //console.log(this._jquery);
+    }
+    /**
      * タイトルを設定する。
      * @method setTitle
      * @param {String} i_title タイトル
      */
     _proto.setTitle = function(i_title) {
-        $(this._jquery).find('[name="Title"]').text(i_title);
+        this._title = i_title;
+        $(this._jquery).find('[name="Title"]').text(this._title);
     }
 
     /**
