@@ -345,7 +345,7 @@ var NoteItem = function() {
 })();
 
 /**
- * 付箋コンテナHTMLをXMLに保存する。
+ * NoteItemをHTMLをXMLに保存する。
  * @static
  * @method HtmlToXml
  * @param    $i_jquery HTML（入力フォーム）を含む例:input,textarea,select ...等
@@ -358,9 +358,6 @@ NoteItem.HtmlToXml = function($i_jquery) {
 
     retVal += '<' + tag + ' id="' + $i_jquery.attr('id') + '">';
 
-    //$i_jquery.find('del')
-    //$i_jquery.find('min')
-    //$i_jquery.find('attachFile')
 
     // □タイトルをXMLに変換する。
     $title = $i_jquery.children('[name="Title"]');

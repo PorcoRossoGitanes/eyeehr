@@ -157,10 +157,9 @@ Utility.GetExtention = function(url) {
  * @static
  * @method CreateCollection
  * @param {String} i_collectionPath コレクションパス
- * @param {Function} callback コールバック関数
  * @return 実行結果（true=成功, false=失敗）
  */
-Utility.CreateCollection = function(i_collectionPath, callback) {
+Utility.CreateCollection = function(i_collectionPath) {
 
     var ret = false;
 

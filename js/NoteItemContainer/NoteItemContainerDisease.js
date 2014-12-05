@@ -6,12 +6,6 @@
  */
 var NoteItemContainerDisease = function () {
     NoteItemContainer.call(this);
-    
-    /**
-     * @property {String} ClassName クラス名
-     * @static
-     */
-    arguments.callee.ClassName = 'NoteItemContainerDisease';
 
     /**
      * @property　{String} _title　タイトル
@@ -77,3 +71,23 @@ var NoteItemContainerDisease = function () {
         }
     }
 })();
+
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemContainerDisease.ClassName = 'NoteItemContainerDisease';
+
+/**
+ * コレクションを作成する。
+ * @method CreateCollection
+ * @static
+ * @param {String} i_noteCollection Noteのコレクションパス
+ * @return 実行結果（true=成功, false=失敗）
+ */
+NoteItemContainerDisease.CreateCollection = function (i_noteCollection)
+{
+    var ret = Utility.CreateCollection(i_noteCollection + NoteItemContainerDisease.ClassName);
+    return ret;
+}
+

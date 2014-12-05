@@ -34,7 +34,6 @@ $(function() {
     var stampGadget = new StampGadget();
 
     // 左メインメニュー・右メインメニューを生成し、表示する。
-
     $('#MenuLeft').css('left', 0);
     $('#MenuLeft').css('top', 0);
     $('#MenuRight').css('left', parseFloat($(window).width()) - parseFloat($('#MenuRight').width()));
@@ -69,7 +68,16 @@ $(function() {
         var patientId = $('#PatientId').val();
         if(patientId !== '')
         {
-            present = Note.Create(patientId);
+            // 現在のカルテを初期化する。
+            present = null;
+
+            // 作成日時を取得する。
+            var yyyyMMdd = Utility.GetCurrentDate();
+            var hhmmss = Utility.GetCurrentTime();
+
+            // 指定の患者の本日のカルテを作成する。
+            present = Note.Create(patientId, yyyyMMdd, hhmmss);
+
             $('#CurrentFilePath').val(present.getCollection());
         }
 

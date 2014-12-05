@@ -5,31 +5,26 @@
  */
  function Note() {
 
+ 	this._patientId = '';
     /**
-     * クラス名
-     * @private
-     * @type {String}
-     * @default Note
-     */
-	 this._name = 'Note';
-
-    /**
-     * コレクション
+     * @property {String} _collection コレクションパス
      * (root)/Note/Patient-9999(*1)/Patient-n(*2)/yyyymmdd/hhmmss
      * @private
-     * @type {String}
      */
      this._collection = '';
 
     /**
-     * [保存先]ファイル名
-     * @type {String} 
+     * @property {String} _filename [保存先]ファイル名
+     * @private
      */
      this._filename =  '';
 
+     this._yyyyMMdd = '';
+     this._hhmmss = '';
+
     /**
-     * [保存先]URL
-     * @type {String}
+     * @property {String} _url [保存先]URL
+     * @private
      */
      this._url = '';
 
@@ -37,9 +32,9 @@
      * JQuery オブジェクト
      * @type {Object}
      */
-    $jquery = $('[name="' + this._name + '"]');
+    $jquery = $('[name="' + Note.ClassName + '"]');
 
-	// カルテを空にする。
+	// カルテ(JQuery オブジェクト)を空にする。
 	$jquery.empty();
 
 	// NoteContainerを追加する。
@@ -75,32 +70,8 @@
      */ 
      _proto.getName = function() 
      {
-     	return this._name;
+     	return Note.ClassName;
      }
-
-    /*
-     * 患者を設定する。
-	 * @method setPatient
-	 * @param {Number} i_patientId 患者番号(0詰めなし)
-     */
-    _proto.setPatient = function(i_patientId) {
-    	
-    	var yyyyMMdd = Utility.GetCurrentDate();
-    	var hhmmss = Utility.GetCurrentTime();
-    	
-    	var to = 10000 * (Math.floor(i_patientId / 10000) + 1) - 1;
-
-    	this._collection = 
-    		'/db/apps/eyeehr/data/Note/patient-to-' + to + 
-    		'/patient-' + i_patientId + '/' + yyyyMMdd + '/' + hhmmss + '/';
-	    this._filename = this._name + '-' + i_patientId + '-' + 
-	    	yyyyMMdd + '-' + hhmmss + '-' + '' + '.xml';
-	    
-	    this._url = this._collection + this._filename;
-
-	    // URLにコレクション先を退避する。
-		$jquery.data('url', this._collection);
-    }
 
     /**
      * コレクションパスを取得する。
@@ -118,13 +89,12 @@
 	_proto.saveXml = function ()
 	{
 		var ret = true;
-		// （１）カルテのコレクションを作成する。
-		if (ret)
+
+		// 　NoteItemContainerのコレクションを作成し、各NoteItemを作成する。
+		if(ret)
 		{
-			ret = Utility.CreateCollection(this._collection);
-			console.log(ret);
+
 		}
-		// 　NoteItemContainerのコレクションを作成する。
 
 		// NoteItemをファイルとして保存する。
 
@@ -168,32 +138,32 @@
 			var container = null;
 			switch($(this)[0].tagName)
 			{
-				case 'NoteItemContainerComplaint' : // 主訴
-	            container = new NoteItemContainerComplaint();
-	            break;
-		        case 'NoteItemContainerDisease' : // 病名 
-		        container = new NoteItemContainerDisease();
-		        break;
-		        case 'NoteItemContainerMedicalCheck' :　// 検査
-		        container = new NoteItemContainerMedicalCheck();
-		        break; 
-		        case 'NoteItemContainerTreatment' :  // 処置
-		        container = new NoteItemContainerTreatment();
-		        break;
-		        case 'NoteItemContainerPrescription' :  // 処方
-		        container = new NoteItemContainerPrescription();
-		        break;
-		        case 'NoteItemContainerOperation' :     // 手術
-		        container = new NoteItemContainerOperation();
-		        break;
-		        case 'NoteItemContainerMemo' : // メモ
-		        container = new NoteItemContainerMemo();
-		        break;
-		        case 'NoteItemContainerScheme' :　// シェーマ
-		        container = new NoteItemContainerScheme();
-		        break;
-		        default :
-		        break;
+                case NoteItemContainerComplaint.ClassName : // 主訴
+                container = new NoteItemContainerComplaint();
+                break;
+                case NoteItemContainerDisease.ClassName : // 病名 
+                container = new NoteItemContainerDisease();
+                break;
+                case NoteItemContainerMedicalCheck.ClassName :　// 検査
+                container = new NoteItemContainerMedicalCheck();
+                break; 
+                case NoteItemContainerTreatment.ClassName :  // 処置
+                container = new NoteItemContainerTreatment();
+                break;
+                case NoteItemContainerPrescription.ClassName :  // 処方
+                container = new NoteItemContainerPrescription();
+                break;
+                case NoteItemContainerOperation.ClassName :     // 手術
+                container = new NoteItemContainerOperation();
+                break;
+                case NoteItemContainerMemo.ClassName : // メモ
+                container = new NoteItemContainerMemo();
+                break;
+                case NoteItemContainerScheme.ClassName :　// シェーマ
+                container = new NoteItemContainerScheme();
+                break;
+                default :
+                break;
 		    }
 		    container.setByXml($(this));
 		    $jquery.append(container.getJQueryObject());
@@ -202,16 +172,54 @@
  })();
 
  /**
- * 患者を設定する。
+ * 指定患者の指定日時のカルテを新規作成する。
  * @method Create
  * @param {Number} i_patientId 患者番号
+ * @param {String} i_yyyyMMdd 作成日(yyyyMMdd)
+ * @param {String} i_hhmmss 作成時刻(hhmmss)
  * @return {Note} Noteオブジェクト
  */
-Note.Create = function(i_patientId)
+Note.Create = function(i_patientId, i_yyyyMMdd, i_hhmmss)
 {
 	var ret = new Note();
 
-	ret.setPatient(i_patientId);
+	// 患者番号を設定する。
+	ret._patientId = i_patientId;
+
+	// 日時を設定する。
+	ret._yyyyMMdd = i_yyyyMMdd; 
+	ret._hhmmss = i_hhmmss; 
+
+	// patient-to-XXXXのXXXX(万の桁+99999)の部分を検出する。1の場合、9999、10000の場合、19999となる。
+	var to = 10000 * (Math.floor(i_patientId / 10000) + 1) - 1;
+
+	// 保存先を設定する。
+	ret._collection = Note.CollectionRoot + 'patient-to-' + to + '/patient-' + ret._patientId + '/' + ret._yyyyMMdd + '/' + ret._hhmmss + '/';
+    ret._filename = Note.ClassName + '-' + ret._patientId + '-' + ret._yyyyMMdd + '-' + ret._hhmmss + '-' + '' + '.xml';
+    ret._url = ret._collection + ret._filename;
+
+	// （１）カルテのコレクションを作成する。
+	var result = true;
+	if (result) result = Utility.CreateCollection(ret._collection);
+
+	// （２）画像用のコレクションを作成する。
+	if (result) result = Utility.CreateCollection(ret._collection + 'IMG');
+
+	// （３）各種コンテナ用のコレクションを作成する。
+	if (result)
+	{
+		result = result && NoteItemContainerComplaint.CreateCollection(ret._collection);
+		result = result & NoteItemContainerDisease.CreateCollection(ret._collection);
+		result = result & NoteItemContainerMedicalCheck.CreateCollection(ret._collection);
+		result = result & NoteItemContainerMemo.CreateCollection(ret._collection);
+		result = result & NoteItemContainerOperation.CreateCollection(ret._collection);
+		result = result & NoteItemContainerPrescription.CreateCollection(ret._collection);
+		result = result & NoteItemContainerScheme.CreateCollection(ret._collection);
+		result = result & NoteItemContainerTreatment.CreateCollection(ret._collection);
+	}
+
+    // URLにコレクション先を退避する。
+	$jquery.data('url', ret._collection);
 
 	return ret;
 }
@@ -238,5 +246,14 @@ Note.Create = function(i_patientId)
 	return retVal;
 }
 
+/**
+ * @property {String} Classnameクラス名
+ * @static
+ * @type {String}
+ * @default Note
+ */
+Note.ClassName = 'Note';
+
+Note.CollectionRoot = '/db/apps/eyeehr/data/Note/';
 
 
