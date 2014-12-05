@@ -5,51 +5,32 @@
  */
 var StampGadget = function () {
 
+    /**
+     * @property {String} _id ID
+     */
     this._id = 'StampGadget';
+
+    /**
+     * @property {String} _selector セレクタ
+     */
+    this._selector = '#' + this._id;
 
     /**
      * @property JQuery オブジェクト
      * @type {Object}
      */
-    this._jquery = $('#' + this._id)[0];
+    this._jquery = $(this._selector)[0];
 
     var stampList = null;
-
-    stampList = new StampListComplaint();
-    $(this._jquery).append(stampList.getJQueryHead()); 
-    $(this._jquery).append(stampList.getJQueryBody()); 
-
-    stampList = new StampListDisease();
-    $(this._jquery).append(stampList.getJQueryHead()); 
-    $(this._jquery).append(stampList.getJQueryBody()); 
-
-    stampList = new StampListMedicalCheck();
-    $(this._jquery).append(stampList.getJQueryHead()); 
-    $(this._jquery).append(stampList.getJQueryBody()); 
-
-    stampList = new StampListTreatment();
-    $(this._jquery).append(stampList.getJQueryHead()); 
-    $(this._jquery).append(stampList.getJQueryBody()); 
-
-    stampList = new StampListOperation();
-    $(this._jquery).append(stampList.getJQueryHead()); 
-    $(this._jquery).append(stampList.getJQueryBody()); 
-
-    stampList = new StampListMedicalProduct();
-    $(this._jquery).append(stampList.getJQueryHead()); 
-    $(this._jquery).append(stampList.getJQueryBody()); 
-
-    stampList = new StampListInjection();
-    $(this._jquery).append(stampList.getJQueryHead()); 
-    $(this._jquery).append(stampList.getJQueryBody()); 
-
-    stampList = new StampListMachine();
-    $(this._jquery).append(stampList.getJQueryHead()); 
-    $(this._jquery).append(stampList.getJQueryBody()); 
-
-    stampList = new StampListMemo();
-    $(this._jquery).append(stampList.getJQueryHead()); 
-    $(this._jquery).append(stampList.getJQueryBody()); 
+    stampList = new StampListComplaint(); stampList.appendTo(this._selector);
+    stampList = new StampListDisease(); stampList.appendTo(this._selector);
+    stampList = new StampListMedicalCheck(); stampList.appendTo(this._selector);
+    stampList = new StampListTreatment(); stampList.appendTo(this._selector);
+    stampList = new StampListOperation(); stampList.appendTo(this._selector);
+    stampList = new StampListMedicalProduct(); stampList.appendTo(this._selector);
+    stampList = new StampListInjection(); stampList.appendTo(this._selector);
+    stampList = new StampListMachine(); stampList.appendTo(this._selector);
+    stampList = new StampListMemo(); stampList.appendTo(this._selector);
 
     //console.log(this._jquery);
 

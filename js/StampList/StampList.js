@@ -38,7 +38,7 @@ var StampList = function (i_hasOne, i_canSelectTo) {
     var canSearch =         
         '<table>' +
         '<tbody>' +
-        '<td><input type="text" class="form-control mini" value=""/></td>' +
+        '<td><input type="text" id="StampTitle" class="form-control mini" value=""/></td>' +
         '<td><button class="btn btn-default btn-xs">検索</button></td>' +
         '</tbody>' +
         '</table>';
@@ -62,7 +62,15 @@ var StampList = function (i_hasOne, i_canSelectTo) {
         (this._hasOne ? '' : canSearch) + 
         '</div>'
     )[0];
-    console.log(this._body);
+
+    $(this._body).find('#StampTitle').change(function () {
+        var title = $(this).val();
+        $body = $(this).parents('div.' + StampList.ClassName);
+
+        $body.find('button').hide();
+        $body.find('button[title*="' + title + '"]').show();
+    })
+
 };
 (function() {
 
@@ -85,6 +93,15 @@ var StampList = function (i_hasOne, i_canSelectTo) {
      */
     _proto.getJQueryBody = function() {
         return this._body;
+    }
+
+    /**
+     * スタンプを登録する
+     * @param i_to 貼付先
+     */
+    _proto.appendTo = function(i_to) {
+        $(this._head).appendTo(i_to);
+        $(this._body).appendTo(i_to);
     }
 })();
 
