@@ -28,6 +28,7 @@ if (!isset($_SESSION["USERID"])) {
   </head>
   <body style="position:absolute">
 
+    <!-- 左サイドメニュー -->
     <a id="SideMenuLeft" href="#sidr">メニュー表示</a>
     <div id="sidr">
       <ul>
@@ -39,10 +40,11 @@ if (!isset($_SESSION["USERID"])) {
         <li><a href="logout.php">ログアウト</a></li>
       </ul>
     </div>
-  <div>
-  </div>
-  <div name="Note" style="position:absolute;zIndex:9999:" valign="top" style="border: 1px solid #000000"></div>
-  <div id="MenuLeft" style="position:relative;zIndex:1;width:280px">
+
+    <!-- カルテ -->
+    <div name="Note" style="position:absolute;zIndex:9999:" valign="top" style="border: 1px solid #000000"></div>
+    <!-- 左メインメニュー -->
+    <div id="MenuLeft" style="position:relative;zIndex:1;width:280px">
     <table>
       <tr>
         <td valign="top">
@@ -106,14 +108,11 @@ if (!isset($_SESSION["USERID"])) {
       </tr>
     </table>
   </div>
+
+
+  <!-- 左メインメニュー -->
   <div id="MenuRight" style="position:relative;width:280px">
     <table>
-      <tr>
-        <td>
-          <!--付箋特記事項編集欄-->
-          <input id="selectedNoteItem" type="hidden" value="" style="width:100%;"/> 
-        </td>
-      </tr>
       <tr>
         <td>
           <!--スタンプリスト（アコーディオンメニュー）-->
@@ -123,6 +122,7 @@ if (!isset($_SESSION["USERID"])) {
       </tr>
     </table>  
   </div>
+
 <!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->
   <script src="js/jquery.base64/jquery.base64.js"></script>
   
