@@ -15,6 +15,7 @@
 
     /**
      * コレクション
+     * (root)/Note/Patient-9999(*1)/Patient-n(*2)/yyyymmdd/hhmmss
      * @private
      * @type {String}
      */
@@ -116,6 +117,18 @@
      */
 	_proto.saveXml = function ()
 	{
+		var ret = true;
+		// （１）カルテのコレクションを作成する。
+		if (ret)
+		{
+			ret = Utility.CreateCollection(this._collection);
+			console.log(ret);
+		}
+		// 　NoteItemContainerのコレクションを作成する。
+
+		// NoteItemをファイルとして保存する。
+
+		// -------- (旧ソースコード)
 		// 指定のカルテをXML(<note />)に変換する。
 		var xml = ''; 
 		$jquery.each(function(){ 
@@ -124,6 +137,8 @@
 
 		// 指定のファイルパスにXMLデーターを保存する。
 		Utility.SaveXml(this._collection + this._filename, xml); 
+
+		return ret;
 	}
 
 	/**
@@ -162,6 +177,9 @@
 		        case 'NoteItemContainerMedicalCheck' :　// 検査
 		        container = new NoteItemContainerMedicalCheck();
 		        break; 
+		        case 'NoteItemContainerTreatment' :  // 処置
+		        container = new NoteItemContainerTreatment();
+		        break;
 		        case 'NoteItemContainerPrescription' :  // 処方
 		        container = new NoteItemContainerPrescription();
 		        break;
