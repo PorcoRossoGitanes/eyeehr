@@ -1,5 +1,3 @@
-var present = null;
-
 //----- Method Draw ------
 /**
  * シェーマを追加する。
@@ -27,9 +25,15 @@ function ChangeRemark(i_noteItemId, i_content, callback)
 //----- ドキュメントロード時処理 -----------------------------------------------------
 $(function() {
 
+    var present = null;
+
+    // 左サイドメニューを生成する。
     $('#SideMenuLeft').sidr();
 
+    // スタンプガジェットを作成する。
     var stampGadget = new StampGadget();
+
+    // 左メインメニュー・右メインメニューを生成し、表示する。
 
     $('#MenuLeft').css('left', 0);
     $('#MenuLeft').css('top', 0);
@@ -75,19 +79,34 @@ $(function() {
      * @event 「読込」を選択時、カルテを読込む。
      */
     $('#LoadNote').click(function() {
-        var filePath = $('#CurrentFilePath').val();
-        present.loadXml(filePath);
+        LoadNote();
     });
+    /**
+     * カルテを読込む。
+     * @method LoadNote
+     */
+    function LoadNote()
+    {
+        var filePath = $('#CurrentFilePath').val();
+        present.loadXml(filePath);        
+    }
 
     /**
      * @event 「保存」を選択時、カルテを保存する。
      */
     $('#SaveNote').click(function() {
-        // カルテを保存する。
+        SaveNote();
+    });
+    /**
+     * カルテを保存する。
+     * @method SaveNote
+     */
+    function SaveNote() 
+    {
         if(present) present.saveXml();
         // TODO : 現在のカルテファイルパスを表示する。
-        $('#CurrentFilePath').val(present.getCollection());
-    });
+        $('#CurrentFilePath').val(present.getCollection());        
+    }
 
     /**
      * @event「患者情報」ボタンを押下時、患者情報を表示する。
