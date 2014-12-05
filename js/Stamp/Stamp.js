@@ -85,6 +85,7 @@ var Stamp= function () {
 
             $(this._jquery).attr('id', this._id);
             $(this._jquery).data('url', this._url);
+            //console.log(this._url);
             $(this._jquery).attr('title', this._title);
             $(this._jquery).text(this._short_title);
 
@@ -114,37 +115,45 @@ Stamp.ClassName = 'Stamp';
  */
 Stamp.To =  'NoteItemContainer';
 
-/// @summary 対象のスタンプを取得する。
-///    @file loadStamp.xq
-/// @param  i_target = 検索対象（下記参照）
-///     "PRACTICE"      Practice      => "001"    # 診療行為
-///     "INJECTION"     Practice/300    => "001-300"  # 注射(300番台)
-///     "TREATMENT"     Practice/400    => "001-400"    # 処置(400番台)
-///     "OPERATION"     Practice/500    => "001-500"  # 手術(500番台)
-///     "MEDICAL_CHECK"   Practice/600    => "001-600"  # 検査(600番台)
-///     "MEDICAL_PRODUCT"   Medical_Product   => "002"    # 医薬品
-///     "MACHINE"       Machine       => "003"    # 特定機材
-///     "COMMENT"       Comment       => "006"    # コメント
-///     "PRIVATE_EXPENSE"   Private_Expense   => "007"    # 自費診療
-/// @param callback コールバック関数
-/// @return 成功時、指定のスタンプ一覧が返却される。失敗時、スタンプが返却されない。
-/// 出力例)
-///<Stamp>
-///<Orca>
-///<Medical_Class/>
-///<Medication_Code>096000001</Medication_Code>
-///<Medication_Name>文書料</Medication_Name>
-///<Medication_Number>1</Medication_Number>
-///<Medication_Generic_Flg>yes</Medication_Generic_Flg>
-///<Medication_Unit_Point>000003240.00</Medication_Unit_Point>
-///<Medication_Unit/>
-///</Orca>
-///<Eyeehr>
-///</Eyeehr>
-///</Stamp>
-///<Stamp>...</Stamp>
-///<Stamp>...</Stamp>
+/**
+ * 対象のスタンプを取得する。
+ * @method LoadXml
+ * @static
+ * @param  {String} i_target = 検索対象（下記参照）
+ *      <br/>"PRACTICE"      Practice      => "001"    # 診療行為
+ *      <br/>"INJECTION"     Practice/300    => "001-300"  # 注射(300番台)
+ *      <br/>"TREATMENT"     Practice/400    => "001-400"    # 処置(400番台)
+ *      <br/>"OPERATION"     Practice/500    => "001-500"  # 手術(500番台)
+ *      <br/>"MEDICAL_CHECK"   Practice/600    => "001-600"  # 検査(600番台)
+ *      <br/>"MEDICAL_PRODUCT"   Medical_Product   => "002"    # 医薬品
+ *      <br/>"MACHINE"       Machine       => "003"    # 特定機材
+ *      <br/>"COMMENT"       Comment       => "006"    # コメント
+ *      <br/>"PRIVATE_EXPENSE"   Private_Expense   => "007"    # 自費診療
+ *  @param callback コールバック関数
+ *  @return 成功時、指定のスタンプ一覧が返却される。失敗時、スタンプが返却されない。
+ *  出力例)
+ * <br/>&lt;Stamp&gt;
+ * <br/>&lt;Orca&gt;
+ * <br/>&lt;Medical_Class/&gt;
+ * <br/>&lt;Medication_Code&gt;096000001&lt;/Medication_Code&gt;
+ * <br/>&lt;Medication_Name&gt;文書料&lt;/Medication_Name&gt;
+ * <br/>&lt;Medication_Number&gt;1&lt;/Medication_Number&gt;
+ * <br/>&lt;Medication_Generic_Flg&gt;yes&lt;/Medication_Generic_Flg&gt;
+ * <br/>&lt;Medication_Unit_Point&gt;000003240.00&lt;/Medication_Unit_Point&gt;
+ * <br/>&lt;Medication_Unit/&gt;
+ * <br/>&lt;/Orca&gt;
+ * <br/>&lt;Eyeehr&gt;
+ * <br/>&lt;/Eyeehr&gt;
+ * <br/>&lt;/Stamp&gt;
+ * <br/>&lt;Stamp&gt;...&lt;/Stamp&gt;
+ * <br/>&lt;Stamp&gt;...&lt;/Stamp&gt;
+ */
 Stamp.LoadXml = function(i_target, callback) {
+
+    /**
+     * @property {String} SCRIPT スタンプ読込スクリプト
+     * @final
+     */
     const SCRIPT = '/exist/apps/eyeehr/modules/loadStamp.xq';
     var senddata = "target=" + i_target;
     Utility.LoadXml('GET', SCRIPT, senddata, callback);
@@ -152,9 +161,11 @@ Stamp.LoadXml = function(i_target, callback) {
 
 /**
  * スタンプからノートアイテムを生成する。
- * @method
+ * @method CreateNoteItem
+ * @static
  * @param {Object} i_jquery スタンプオブジェクト
  * @param {String} i_to 貼付先（NoteItemContainer）
+ * @return ノートアイテム
  */
 Stamp.CreateNoteItem = function(i_jquery, i_to) {
 
