@@ -1,6 +1,8 @@
 /**
  * スタンプリストクラス
  * @class StampList
+ * @param {Boolean} i_hasOne true=スタンプが1つ登録される、false=スタンプを複数登録する。
+ * @param {String} i_canSelectTo スタンプの貼付先
  * @constructor
  */
 var StampList = function (i_hasOne, i_canSelectTo) {
@@ -63,10 +65,12 @@ var StampList = function (i_hasOne, i_canSelectTo) {
         '</div>'
     )[0];
 
+    /**
+     * @event スタンプ名が検索欄に入力されたときに、該当名に一致するスタンプのみを表示する。
+     */
     $(this._body).find('#StampTitle').change(function () {
         var title = $(this).val();
         $body = $(this).parents('div.' + StampList.ClassName);
-
         $body.find('button').hide();
         $body.find('button[title*="' + title + '"]').show();
     })

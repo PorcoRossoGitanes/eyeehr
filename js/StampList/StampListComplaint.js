@@ -22,12 +22,19 @@ var StampListComplaint = function () {
     $(this._body).attr('id', this._id);
     //--JQuery オブジェクト操作---//
     
+    /**
+     * @event （スタンプが1つの場合のみ)ヘッダーをクリックした場合に、NoteItemを登録する。
+     */
     if(this._hasOne) 
     {
         $(this._head).click(function (){
-        	var item = new NoteItemComplaint(); 
-        	item.appendTo('[name="' + StampComplaint.To + '"]');
-            console.log($('[name="' + StampComplaint.To + '"]')[0]);
+            var selector = '[name="' + StampComplaint.To + '"]';
+            // 貼付先が存在するか確認し、貼付先がない場合、エラーメッセージを表示する。
+            if ($(selector) !== undefined)
+            {
+                var item = new NoteItemComplaint(); 
+                item.appendTo(selector);
+            }
         });
     }
 };
