@@ -1,6 +1,7 @@
 /**
  * 手術スタンプリストクラス　
  * @class StampListOperation
+ * @extends StampList
  * @constructor
  */
 var StampListOperation = function () {

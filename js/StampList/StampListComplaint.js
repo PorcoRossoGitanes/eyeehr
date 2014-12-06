@@ -1,6 +1,7 @@
 /**
  * 主訴スタンプリストクラス　
  * @class StampListComplaint
+ * @extends StampList
  * @constructor
  */
 var StampListComplaint = function () {

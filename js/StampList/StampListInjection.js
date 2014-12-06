@@ -1,6 +1,7 @@
 /**
  * 注射スタンプリストクラス　
  * @class StampListInjection
+ * @extends StampList
  * @constructor
  */
 var StampListInjection = function () {

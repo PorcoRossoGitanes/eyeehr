@@ -1,6 +1,7 @@
 /**
  * 検査スタンプリストクラス　
  * @class StampListMedicalCheck
+ * @extends StampList
  * @constructor
  */
 var StampListMedicalCheck = function () {

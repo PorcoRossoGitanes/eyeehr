@@ -1,6 +1,7 @@
 /**
  * 医薬品スタンプリストクラス　
  * @class StampListMedicalProduct
+ * @extends StampList
  * @constructor
  */
 var StampListMedicalProduct = function () {

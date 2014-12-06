@@ -1,6 +1,7 @@
 /**
  * メモスタンプリストクラス　
  * @class StampListMemo
+ * @extends StampList
  * @constructor
  */
 var StampListMemo = function () {

@@ -1,6 +1,7 @@
 /**
  * 病名スタンプリストクラス　
  * @class StampListDisease
+ * @extends StampList
  * @constructor
  */
 var StampListDisease = function () {

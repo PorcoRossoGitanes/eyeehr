@@ -1,6 +1,7 @@
 /**
  * 特定機材スタンプリストクラス　
  * @class StampListMachine
+ * @extends StampList
  * @constructor
  */
 var StampListMachine = function () {

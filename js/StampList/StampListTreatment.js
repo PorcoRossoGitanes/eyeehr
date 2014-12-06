@@ -1,6 +1,7 @@
 /**
  * 処置スタンプリストクラス　
  * @class StampListTreatment
+ * @extends StampList
  * @constructor
  */
 var StampListTreatment = function () {
