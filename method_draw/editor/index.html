@@ -48,7 +48,7 @@
   <script type="text/javascript" src="lib/contextmenu.js"></script>
   <script type="text/javascript" src="lib/jgraduate/jpicker.min.js"></script>
   <script type="text/javascript" src="lib/mousewheel.js"></script>
-  <script type="text/javascript" src="extensions/ext-eyedropper.js"></script>
+  <!--script type="text/javascript" src="extensions/ext-eyedropper.js"></script-->
   <!--script type="text/javascript" src="extensions/ext-shapes.js"></script-->
   <script type="text/javascript" src="extensions/ext-grid.js"></script>
   <script type="text/javascript" src="lib/requestanimationframe.js"></script>
@@ -84,6 +84,9 @@
 </div>
 </div>
 
+<!-- 　----------------------　-->
+<!-- 　メニューバーの設定　-->
+<!-- 　----------------------　-->
 <div id="menu_bar">  
   <a class="menu">
     <div class="menu_title" id="logo"></div>
@@ -96,6 +99,7 @@
     </div>
   </a>
   
+<!-- 　ファイルメニュー　-->
   <div class="menu">
   	<div class="menu_title">ファイル</div>
   	<div class="menu_list" id="file_menu"> 
@@ -112,6 +116,7 @@
   	</div>
   </div>
 
+<!-- 　編集メニュー　-->
   <div class="menu">
     <div class="menu_title">編集</div>
   	<div class="menu_list" id="edit_menu">
@@ -126,6 +131,7 @@
     </div>
   </div>
   
+<!-- 　オブジェクトメニュー　-->
   <div class="menu">
     <div class="menu_title">オブジェクト</div>
   	<div class="menu_list"  id="object_menu">
@@ -144,6 +150,7 @@
     </div>
   </div>
 
+<!-- 　ビューメニュー　-->
   <div class="menu">
     <div class="menu_title">ビュー</div>
   	<div class="menu_list" id="view_menu">
@@ -158,6 +165,7 @@
   </div>
 
 
+<!-- 　背景メニュー　-->
   <div class="menu">
     <div class="menu_title">背景</div>
   	<div class="menu_list" id="bgimage_menu">
@@ -174,11 +182,13 @@
     </div>
   </div>
 
+<!-- 　管理（背景画像）メニュー　-->
   <div class="menu">
     <div class="menu_title">管理（背景画像）</div>
   </div>
 </div>
 
+<!-- 　ツールパネル　-->
 <div id="tools_top" class="tools_panel">
 
 	<div id="canvas_panel" class="context_panel">
@@ -194,7 +204,6 @@
 			<span class="icon_label">高さ</span>
 		</label>
 		  	
-  	
   	<label data-title="Change canvas color" class="draginput">
     	<span>背景色</span>
   		<div id="color_canvas_tools">
@@ -543,24 +552,25 @@
 		
 	</div>
 
-
+<!-- 　ツールショートカット（左側のツールアイコン）　-->
 <div id="tools_left" class="tools_panel">
 	<div class="tool_button" id="tool_select" title="選択ツール [V]"></div>
 	<div class="tool_button" id="tool_fhpath" title="ペンシル [P]"></div>
 	<div class="tool_button" id="tool_fhhatch" title="ハッチ [H]"></div>
 	<div class="tool_button" id="tool_line" title="ライン [L]"></div>
-	<div class="tool_button" id="tool_delete" title="削除 [D]"></div>
 	<!--
 	<div class="tool_button" id="tool_rect" title="Square/Rect Tool [R]"></div>
-	<div class="tool_button" id="tool_ellipse" title="Ellipse/Circle Tool [C]"></div>
 	-->
+	<div class="tool_button" id="tool_ellipse" title="Ellipse/Circle Tool [C]"></div>
+
 	<div class="tool_button" id="tool_rect" title="長方形／正方形 [R]" hidden></div>
 	<div class="tool_button" id="tool_ellipse" title="楕円／円 Tool [C]" hidden></div>
 	<div class="tool_button" id="tool_path" title="パス [P]" hidden></div>
 	<div class="tool_button" id="tool_zoom" title="ズーム [Z]" hidden></div>
 	<div class="tool_button" id="tool_text" title="テキスト [T]"></div>
-	<div class="tool_button" id="tool_import" title="画像を読込む..." onclick="console.log($('.menu_item#tool_import'));$('.menu_item#tool_import').click()"><div id="fileinputs_import" display="none"></div></div>
-	<div class="tool_button" id="tool_save_quit" title="保存して終了 "></div>
+	<div class="tool_button" id="tool_delete_sc" title="削除 [D]"></div>
+	<div class="tool_button" id="tool_import_sc" title="画像を読込む..." onclick="console.log($('.menu_item#tool_import'));$('.menu_item#tool_import').click()"><div id="fileinputs_import" display="none"></div></div>
+	<div class="tool_button" id="tool_save_quit_sc" title="保存して終了 "></div>
 	<!--
  	<div id="color_tools">
   	-->
