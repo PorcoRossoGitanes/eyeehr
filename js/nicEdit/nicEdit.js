@@ -346,20 +346,20 @@ var nicEditorConfig = bkClass.extend({
 		"bgcolor":2,
 		// 独自作成(gbcolor-***)TODO : 必要分、マーカーを追加する。
 		"bgcolor-black":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		"bgcolor-red":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		"bgcolor-blue":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		"bgcolor-green":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		"bgcolor-brown":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		"bgcolor-yellow":2,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		"bgcolor-red":35,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		"bgcolor-blue":36,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		"bgcolor-green":37,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		"bgcolor-brown":38,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		"bgcolor-yellow":39,　// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
 		// 独自作成(bgcolor-***)
 		"forecolor":3,
 		// 独自作成(forecolor-***)TODO : 必要分、色ペンを追加する
-		'forecolor-black':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		'forecolor-red':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		'forecolor-blue':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		'forecolor-green':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		'forecolor-brown':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
-		'forecolor-yellow':3,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-black':29,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-red':30,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-blue':31,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-green':32,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-brown':33,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
+		'forecolor-yellow':34,// TODO : 番号は新しいアイコンが出来り次第、適宜変更する。
 		// 独自作成(forecolor-***)
 		"bold":4,
 		"center":5,
