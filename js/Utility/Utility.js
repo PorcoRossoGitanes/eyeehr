@@ -255,6 +255,35 @@ Utility.SaveXml = function(i_path, i_xml, callback) {
 }
 
 /**
+ * XMLファイルをXMLDB(eXistDB)から削除する。
+ * @static
+ * @method RemoveDoc
+ * @param {String} i_path ファイルパス(URL)
+ * @param {String} i_xml XML文字列
+ * @param {Function()} callback コールバック関数
+ * @return true=成功、false=失敗
+ * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
+ */
+Utility.RemoveDoc = function (i_path) 
+{
+    var ret = false;
+
+    // コレクションとファイル名を取得する。
+    var collection = i_path.substr(0, i_path.lastIndexOf('/'));
+    var file = i_path.substr(i_path.lastIndexOf('/') + 1);
+
+    const URL = '/exist/apps/eyeehr/modules/delete-doc.xq';
+
+    // ドキュメントを削除する。
+    var result = Utility.LoadXml('POST', URL, {'collection' : collection, 'file' : file});
+
+    console.log(result);
+
+    ret = (result.children[0].tagName == success);
+    
+    return ret;
+}
+/**
  * XMLを読込む。
  * @static
  * @method LoadXml
@@ -268,6 +297,7 @@ Utility.SaveXml = function(i_path, i_xml, callback) {
  * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
  */
 Utility.LoadXml = function(i_type, i_path, i_senddata, callback) {
+
     var ret = null;
 
     // パスが設定されている場合のみ実行する。
