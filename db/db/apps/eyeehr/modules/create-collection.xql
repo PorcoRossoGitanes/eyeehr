@@ -2,7 +2,7 @@ xquery version "3.0";
 
 (: 
     @summary コレクションを保存する
-    @prama GET/POST [parent-collection] = 追加対象のコレクションの親のコレクション（末尾スラッシュなし）
+    @param GET/POST [parent-collection] = 追加対象のコレクションの親のコレクション（末尾スラッシュなし）
 	@param GET/POST [target-collection] = 追加対象のコレクション（末尾スラッシュなし）
 	@return 
     	成功時、コレクションパスが返却される。

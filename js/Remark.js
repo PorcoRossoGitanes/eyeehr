@@ -77,7 +77,7 @@ $(function() {
     var save_required = false;
 
     /**
-     * @prama {boolean} 保存完了フラグ
+     * @param {boolean} 保存完了フラグ
      */
     var save_complete = true;
 
@@ -98,7 +98,7 @@ $(function() {
     }
 
     /**
-     * @prama ウィンドウを閉じる前に、自動保存を終了する。
+     * @param ウィンドウを閉じる前に、自動保存を終了する。
      */
     $(window).bind('beforeunload', function() {
         AutoSaveEnd(false);

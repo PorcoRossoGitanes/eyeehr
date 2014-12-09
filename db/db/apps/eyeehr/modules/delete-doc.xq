@@ -4,7 +4,7 @@ import module namespace eyeehr-util="eyeehr-util" at "./eyeehr-util.xq";
 
 (: 
     @summary ドキュメントを削除する
-    @prama GET/POST [collection] = コレクション
+    @param GET/POST [collection] = コレクション
 	@param GET/POST [file] = ファイル
 	@return 
     	成功時、<success/>

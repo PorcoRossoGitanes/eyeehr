@@ -4,7 +4,7 @@ module namespace eyeehr-util = "eyeehr-util";
 
 (: 
     @summary ドキュメントの存在を確認する
-    @prama $collection = コレクション
+    @param $collection = コレクション
     @param $resource = リソースファイル
     @return true=存在する false=存在しない
 :)
@@ -17,7 +17,7 @@ as xs:boolean
 
 (: 
     @summary コレクションを保存する（再帰的にコレクションを作成する。）
-    @prama $parent-collection = 追加対象のコレクションの親のコレクション（末尾スラッシュなし）
+    @param $parent-collection = 追加対象のコレクションの親のコレクション（末尾スラッシュなし）
 	@param $target-collection = 追加対象のコレクション（末尾スラッシュなし）
 	@return true=成功 false=失敗
 :)
@@ -95,10 +95,26 @@ as xs:string
 };
 
 
+
 (: 
     @summary ドキュメントを削除する
-    @prama $collection = コレクション
-	@param $resource = リソースファイル
+    @param $collection = コレクション（ex:/db/apps/sample/）
+	@param $resource = リソースファイル（ex:sample.xml）
+	@return true=成功時 false=失敗    	
+:)
+(:
+declare function eyeehr-util:delete-node($collection as xs:string, $resource as xs:string, ) 
+as xs:boolean
+{
+	let $ret := not(empty(xmldb:remove($collection, $resource)))
+	return $ret
+};
+:)
+
+(: 
+    @summary ドキュメントを削除する
+    @param $collection = コレクション （ex:/db/apps/sample/）
+	@param $resource = リソースファイル （ex:sample.xml）
 	@return true=成功時 false=失敗    	
 :)
 declare function eyeehr-util:delete-doc($collection as xs:string, $resource as xs:string) 

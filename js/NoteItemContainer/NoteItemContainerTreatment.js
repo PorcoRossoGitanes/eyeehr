@@ -54,7 +54,7 @@ function NoteItemContainerTreatment() {
     };
 
     /**
-     * Xmlを設定する
+     * XMLを設定する
      * @method setByXml
      * @param {JQuery Object} $i_xml XML</NoteItemContainerXXX />
      */
