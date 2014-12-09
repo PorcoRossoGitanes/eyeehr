@@ -279,7 +279,7 @@ Utility.RemoveDoc = function (i_path)
 
     console.log(result);
 
-    ret = (result.children[0].tagName == success);
+    ret = (result.children[0].tagName == 'success');
     
     return ret;
 }
