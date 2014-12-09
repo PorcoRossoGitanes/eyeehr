@@ -126,9 +126,11 @@ var NoteItem = function() {
     $(this._jquery).find('iframe').load(function() {
         var file = $(this).parent().find('[type="file"]').val();
         var url = $(this).contents().find('#url').text();
-        if (file == "") { /* 画像ファイルが指定されていない場合は処理を実行しない。 */ } 
-        else if (url == "") { alert('ファイルの保存に失敗しました。'); } 
-        else { NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url); }
+        if (file == "") { /* 画像ファイルが指定されていない場合は処理を実行しない。 */ } else if (url == "") {
+            alert('ファイルの保存に失敗しました。');
+        } else {
+            NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url);
+        }
     });
 
     /**
@@ -258,15 +260,15 @@ var NoteItem = function() {
      * @param {String} i_id IT
      */
     _proto.setId = function(i_id) {
-        this._id = i_id;
-        $(this._jquery).attr('id', this._id);
-        //console.log(this._jquery);
-    }
-    /**
-     * タイトルを設定する。
-     * @method setTitle
-     * @param {String} i_title タイトル
-     */
+            this._id = i_id;
+            $(this._jquery).attr('id', this._id);
+            //console.log(this._jquery);
+        }
+        /**
+         * タイトルを設定する。
+         * @method setTitle
+         * @param {String} i_title タイトル
+         */
     _proto.setTitle = function(i_title) {
         this._title = i_title;
         $(this._jquery).find('[name="Title"]').text(this._title);
@@ -473,17 +475,17 @@ NoteItem.AttachFile = function($i_attachment, i_url) {
     var ext = Utility.GetFileExt(i_url).toUpperCase(); // console.log(ext);
     var src = i_url;
     switch (ext) {
-        case 'DOC': 
+        case 'DOC':
         case 'DOCX':
-        case 'XLS': 
-        case 'XLSX': 
-        case 'PDF': 
-        case 'TXT': 
-        case 'CSV': 
-            src = json.AttachFile.FileType[ext].noimage; 
-        break;
-        default: 
-        break;
+        case 'XLS':
+        case 'XLSX':
+        case 'PDF':
+        case 'TXT':
+        case 'CSV':
+            src = json.AttachFile.FileType[ext].noimage;
+            break;
+        default:
+            break;
     }
 
     // 画像を添付する。（ダブルクリック時、別画面で画像を表示する。）
@@ -533,7 +535,7 @@ NoteItem.AttachScheme = function(i_noteItemId, i_url, callback) {
 /**
  * MethodDrawを開く
  * @method OpenMethodDraw
- * @static 
+ * @static
  * @param {String} i_mode add=新規追加, edit=編集
  * @param {String} i_noteItemId NoteItem ID
  * @param {String} i_to 保存先
@@ -563,7 +565,7 @@ NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url) {
 
 /**
  * 備考入力フォームを開く
- * @static 
+ * @static
  * @param {String} i_noteItemId NoteItem ID
  * @param {String} i_content 備考内容
  */
@@ -578,7 +580,7 @@ NoteItem.OpenRemarkForm = function(i_noteItemId, i_content) {
 /**
  * 画像ファイルにはリンクおよび右クリックメニュー（コンテキスト）を作成する。
  * @method CreateAttachmentGadget
- * @static 
+ * @static
  * @param  {String/Object}  i_xml 添付ファイル（img）
  * @return {Object}         添付ファイル（部品）（img）
  */

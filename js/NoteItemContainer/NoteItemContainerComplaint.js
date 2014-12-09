@@ -74,21 +74,3 @@ var NoteItemContainerComplaint = function () {
     }
 })();
 
-/**
- * @property {String} ClassName クラス名
- * @static
- */
-NoteItemContainerComplaint.ClassName = 'NoteItemContainerComplaint';
-
-/**
- * コレクションを作成する。
- * @method CreateCollection
- * @static
- * @param {String} i_noteCollection Noteのコレクションパス
- * @return 実行結果（true=成功, false=失敗）
- */
-NoteItemContainerComplaint.CreateCollection = function (i_noteCollection)
-{
-    var ret = Utility.CreateCollection(i_noteCollection + NoteItemContainerComplaint.ClassName);
-    return ret;
-}

@@ -3,9 +3,9 @@
  * @class Note 
  * @constructor
  */
- function Note() {
+ function Note(i_patientId, i_yyyyMMdd, i_hhmmss) {
 
- 	this._patientId = '';
+ 	this._patientId = i_patientId;
     /**
      * @property {String} _collection コレクションパス
      * (root)/Note/Patient-9999(*1)/Patient-n(*2)/yyyymmdd/hhmmss
@@ -19,20 +19,44 @@
      */
      this._filename =  '';
 
-     this._yyyyMMdd = '';
-     this._hhmmss = '';
-
     /**
-     * @property {String} _url [保存先]URL
-     * @private
+     * @property {String} _yyyyMMdd 作成日
      */
-     this._url = '';
+     this._yyyyMMdd = i_yyyyMMdd;
+    
+    /**
+     * @property {String} _hhmmss 作成時刻
+     */
+     this._hhmmss = i_hhmmss;
 
     /**
-     * JQuery オブジェクト
-     * @type {Object}
+     * @property {String} _url [保存先]コレクション
+     * patient-to-XXXXのXXXX(万の桁+99999)の部分を検出する。1の場合、9999、10000の場合、19999となる。
+     */
+	this._collection = 
+		Note.CollectionRoot + 
+		'patient-to-' + (10000 * (Math.floor(i_patientId / 10000) + 1) - 1) + '/' + 
+		'patient-' + this._patientId + '/' + 
+		this._yyyyMMdd + '/' + 
+		this._hhmmss + '/';
+
+    /**
+     * @property {String} _filename [保存先]ファイル名（Note-N-yyyyMMdd-hhmmss-{0}.xml）
+     * patient-to-XXXXのXXXX(万の桁+99999)の部分を検出する。1の場合、9999、10000の場合、19999となる。
+     */
+    this._filename = Note.ClassName + '-' + this._patientId + '-' + this._yyyyMMdd + '-' + this._hhmmss + '-' + '{0}' + '.xml';
+
+	// カルテコレクション＆画像用のコレクションを作成する。
+	var result = Utility.CreateCollection(this._collection + 'IMG');
+
+
+    /**
+     * @property {Object} $jquery JQueryオブジェクト
      */
     $jquery = $('[name="' + Note.ClassName + '"]');
+
+	// // URLにコレクション先を退避する。
+	// $jquery.data('url', ret._collection);
 
 	// カルテ(JQuery オブジェクト)を空にする。
 	$jquery.empty();
@@ -76,11 +100,11 @@
     /**
      * コレクションパスを取得する。
      * @method getCollection
-     * @return コレクションパス
+     * @return コレクションパス(ex:/db/apps/eyeehr/data/Note/patient-9999/patient-1/yyyyMMdd/hhmmss/)
      */
     _proto.getCollection = function ()
     {
-    	return this._collection + this._filename;
+    	return this._collection;
     }
 
     /**
@@ -90,23 +114,75 @@
 	{
 		var ret = true;
 
-		// 　NoteItemContainerのコレクションを作成し、各NoteItemを作成する。
+		// （１）主訴コンテナのコレクションを作成し、XMLデーターを保存する。
+		var dir = this._collection + NoteItemContainerComplaint.ClassName;
+	    var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerComplaint.ClassName));
+	    console.log($jquery.children('.' + NoteItemContainerComplaint.ClassName)[0]);
+	    var path = dir + '/'+ this._filename.format(NoteItemContainerComplaint.ClassName);
+		ret = ret && Utility.SaveXml(path, xml);
+
+		// （２）病名コンテナのコレクションを作成し、XMLデーターを保存する。
+		var dir = this._collection + NoteItemContainerDisease.ClassName;
+		// ret = ret && Utility.CreateCollection(dir);
+	    var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerDisease.ClassName));
+	    var path = dir + '/'+ this._filename.format(NoteItemContainerDisease.ClassName);
+		ret = ret && Utility.SaveXml(path, xml);
+
+		// （３）検査コンテナのコレクションを作成し、XMLデーターを保存する。
+		var dir = this._collection + NoteItemContainerMedicalCheck.ClassName;
+		// ret = ret && Utility.CreateCollection(dir);
+		var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerMedicalCheck.ClassName));
+		var path = dir + '/'+ this._filename.format(NoteItemContainerMedicalCheck.ClassName);
+		ret = ret && Utility.SaveXml(path, xml);
+
+		// （４）メモコンテナのコレクションを作成し、XMLデーターを保存する。
+		var dir = this._collection + NoteItemContainerMemo.ClassName;
+		//ret = ret && Utility.CreateCollection(dir);
+		var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerMemo.ClassName));
+		var path = dir + '/'+ this._filename.format(NoteItemContainerMemo.ClassName);
+		ret = ret && Utility.SaveXml(path, xml);
+
+		// （５）手術コンテナのコレクションを作成し、XMLデーターを保存する。
+		var dir = this._collection + NoteItemContainerOperation.ClassName;
+		ret = ret && Utility.CreateCollection(dir);
+		var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerOperation.ClassName));
+		var path = dir + '/'+ this._filename.format(NoteItemContainerOperation.ClassName);
+		ret = ret && Utility.SaveXml(path, xml);
+
+		// （６）処方コンテナのコレクションを作成し、XMLデーターを保存する。
+		var dir = this._collection + NoteItemContainerPrescription.ClassName;
+		ret = ret && Utility.CreateCollection(dir);
+		var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerPrescription.ClassName));
+		var path = dir + '/'+ this._filename.format(NoteItemContainerPrescription.ClassName);
+		ret = ret && Utility.SaveXml(path, xml);
+
+		// // （７）シェーマコンテナのコレクションを作成し、XMLデーターを保存する。
+		// ret = ret && Utility.CreateCollection(this._collection + NoteItemContainerScheme.ClassName);
+		// var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerScheme.ClassName));
+		// var path = this._collection + this._filename.format(NoteItemContainerScheme.ClassName);
+		// ret = ret && Utility.SaveXml(path, xml);
+
+		// （８）処置コンテナのコレクションを作成し、XMLデーターを保存する。
+		var dir = this._collection + NoteItemContainerTreatment.ClassName;
+		ret = ret && Utility.CreateCollection(dir);
+	    var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerTreatment.ClassName));
+	    var path = dir + '/'+ this._filename.format(NoteItemContainerTreatment.ClassName);
+		ret = ret && Utility.SaveXml(path, xml);
+
 		if(ret)
 		{
+	        var message_success = 'XMLデーターの保存が成功しました。';
 
+            // 完了メッセージを表示する。
+            alert(message_success);        
 		}
+		else 
+		{
+	        var message_error = 'XMLデーターの保存が失敗しました。';
 
-		// NoteItemをファイルとして保存する。
-
-		// -------- (旧ソースコード)
-		// 指定のカルテをXML(<note />)に変換する。
-		var xml = ''; 
-		$jquery.each(function(){ 
-			xml = Note.HtmlNoteToXml($(this));
-		});
-
-		// 指定のファイルパスにXMLデーターを保存する。
-		Utility.SaveXml(this._collection + this._filename, xml); 
+            // 完了メッセージを表示する。
+            alert(message_error);        			
+		}
 
 		return ret;
 	}
@@ -181,46 +257,7 @@
  */
 Note.Create = function(i_patientId, i_yyyyMMdd, i_hhmmss)
 {
-	var ret = new Note();
-
-	// 患者番号を設定する。
-	ret._patientId = i_patientId;
-
-	// 日時を設定する。
-	ret._yyyyMMdd = i_yyyyMMdd; 
-	ret._hhmmss = i_hhmmss; 
-
-	// patient-to-XXXXのXXXX(万の桁+99999)の部分を検出する。1の場合、9999、10000の場合、19999となる。
-	var to = 10000 * (Math.floor(i_patientId / 10000) + 1) - 1;
-
-	// 保存先を設定する。
-	ret._collection = Note.CollectionRoot + 'patient-to-' + to + '/patient-' + ret._patientId + '/' + ret._yyyyMMdd + '/' + ret._hhmmss + '/';
-    ret._filename = Note.ClassName + '-' + ret._patientId + '-' + ret._yyyyMMdd + '-' + ret._hhmmss + '-' + '' + '.xml';
-    ret._url = ret._collection + ret._filename;
-
-	// （１）カルテのコレクションを作成する。
-	var result = true;
-	if (result) result = Utility.CreateCollection(ret._collection);
-
-	// （２）画像用のコレクションを作成する。
-	if (result) result = Utility.CreateCollection(ret._collection + 'IMG');
-
-	// （３）各種コンテナ用のコレクションを作成する。
-	if (result)
-	{
-		result = result && NoteItemContainerComplaint.CreateCollection(ret._collection);
-		result = result & NoteItemContainerDisease.CreateCollection(ret._collection);
-		result = result & NoteItemContainerMedicalCheck.CreateCollection(ret._collection);
-		result = result & NoteItemContainerMemo.CreateCollection(ret._collection);
-		result = result & NoteItemContainerOperation.CreateCollection(ret._collection);
-		result = result & NoteItemContainerPrescription.CreateCollection(ret._collection);
-		result = result & NoteItemContainerScheme.CreateCollection(ret._collection);
-		result = result & NoteItemContainerTreatment.CreateCollection(ret._collection);
-	}
-
-    // URLにコレクション先を退避する。
-	$jquery.data('url', ret._collection);
-
+	var ret = new Note(i_patientId, i_yyyyMMdd, i_hhmmss);
 	return ret;
 }
 
@@ -256,4 +293,21 @@ Note.ClassName = 'Note';
 
 Note.CollectionRoot = '/db/apps/eyeehr/data/Note/';
 
+/**
+ * フォーマット関数
+ */
+String.prototype.format = function(arg)
+{
+	var rep_fn = undefined;
+
+	if (typeof arg == "object") {
+	    rep_fn = function(m, k) { return arg[k]; }
+	}
+	else {
+	    var args = arguments;
+	    rep_fn = function(m, k) { return args[ parseInt(k) ]; }
+	}
+
+	return this.replace( /\{(\w+)\}/g, rep_fn );
+}
 

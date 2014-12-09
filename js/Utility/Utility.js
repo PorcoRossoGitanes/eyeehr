@@ -214,7 +214,7 @@ Utility.SaveXml = function(i_path, i_xml, callback) {
     if (ret) {
 
         const URL = '/exist/apps/eyeehr/modules/uploadFileXml.xq';
-        var message_success = 'XMLファイルの保存が成功しました。';
+
         var message_error = 'ファイルの保存に失敗しました。: {0} {1} {2}';
 
         $.ajax({
@@ -235,9 +235,6 @@ Utility.SaveXml = function(i_path, i_xml, callback) {
 
                 // コールバック関数があれば、コールバック関数を実行する。
                 if (callback !== undefined) callback();
-
-                // 完了メッセージを表示する。
-                alert(message_success);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 message_error.format(XMLHttpRequest.status, textStatus, errorThrown.message);
