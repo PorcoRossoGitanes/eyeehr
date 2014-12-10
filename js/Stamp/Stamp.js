@@ -171,9 +171,10 @@ Stamp.CreateNoteItem = function(i_jquery, i_to) {
 
     var item = null;
 
+    // 医薬品等は貼付先が異なるため、分岐する。
     switch (i_to) {
         case NoteItemContainerComplaint.ClassName:
-            item = new NoteItemComplaint();
+            item = new NoteItemComplaint(); 
             break;
         case NoteItemContainerDisease.ClassName:
             item = new NoteItemDisease();
@@ -209,15 +210,16 @@ Stamp.CreateNoteItem = function(i_jquery, i_to) {
         var xml = $(i_jquery).data('xml'); 
         item.setOrca($(xml).children('Orca')[0]); 
 
-        // 主訴・メモの場合は備考入力のみのため、備考入力欄を開く。
-        switch (typeof(item)) {
-            case NoteItemComplaint.ClassName:
-            case NoteItemMemo.ClassName:
-                item.openRemark();
-                break;
-            default:
-                break;
-        }
+        // console.log(typeof(item));
+        // console.log(item.toString());
+        // switch (typeof(item)) {
+        //     case NoteItemComplaint.ClassName:
+        //     case NoteItemMemo.ClassName:
+        //         item.openRemark();
+        //         break;
+        //     default:
+        //         break;
+        // }
 
     }
 
