@@ -18,6 +18,9 @@ var StampListMedicalProduct = function () {
 	 */
 	this._title = '医薬品';
 
+    // スタンプを追加する。
+    this.setStamps(StampMedicalProduct.ClassName);
+
     //--JQuery オブジェクト操作---//
 	$(this._head).text(this._title);
     $(this._body).attr('id', this._id);

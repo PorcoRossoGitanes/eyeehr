@@ -18,6 +18,9 @@ var StampListMemo = function () {
 	 */
 	this._title = 'メモ';
 
+    // スタンプを追加する。
+    this.setStamps(StampMemo.ClassName);
+
     //--JQuery オブジェクト操作---//
     $(this._head).text(this._title);
     $(this._body).attr('id', this._id);

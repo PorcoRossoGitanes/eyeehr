@@ -3,61 +3,61 @@
         "XQ": "/exist/apps/eyeehr/modules/uploadFileBin.xq",
         "FileType": {
             "JPG": {
-                "available" : true, 
+                "available": true,
                 "access": "image/jpeg",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/JPG/NoImage.png",
                 "_comment": "JPGファイルのサムネイルが表示されない場合の画像 "
             },
             "PNG": {
-                "available" : true, 
+                "available": true,
                 "access": "image/png",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/PNG/NoImage.png",
                 "_comment": "PNGファイルのサムネイルが表示されない場合の画像 "
             },
             "BMP": {
-                "available" : true, 
+                "available": true,
                 "access": "image/bmp",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/BMP/NoImage.png",
                 "_comment": "BMPファイルのサムネイルが表示されない場合の画像 "
             },
             "TXT": {
-                "available" : true, 
+                "available": true,
                 "access": "text/plain",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/TXT/NoImage.png",
                 "_comment": "PDFファイルのサムネイルが表示されない場合の画像 "
             },
             "CSV": {
-                "available" : true, 
+                "available": true,
                 "access": "text/csv",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/CSV/CSV.png",
                 "_comment": "CSVファイルのサムネイルが表示されない場合の画像 "
             },
             "PDF": {
-                "available" : true, 
+                "available": true,
                 "access": "application/pdf",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/PDF/NoImage.png",
                 "_comment": "PDFファイルのサムネイルが表示されない場合の画像 "
             },
             "DOC": {
-                "available" : true, 
+                "available": true,
                 "access": "application/msword",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/DOC/NoImage.png",
                 "_comment": "Wordファイルのサムネイルが表示されない場合の画像 "
             },
             "DOCX": {
-                "available" : true, 
+                "available": true,
                 "access": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/DOCX/NoImage.png",
                 "_comment": "Wordファイルのサムネイルが表示されない場合の画像 "
             },
             "XLS": {
-                "available" : true, 
+                "available": true,
                 "access": "application/msexcel",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/XLS/NoImage.png",
                 "_comment": "Excelファイルのサムネイルが表示されない場合の画像 "
             },
             "XLSX": {
-                "available" : true, 
+                "available": true,
                 "access": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 "noimage": "/exist/rest/db/apps/eyeehr/img/NoImage/XLSX/NoImage.png",
                 "_comment": "Excelファイルのサムネイルが表示されない場合の画像 "
@@ -65,57 +65,58 @@
             "_comment": "添付ファイル"
         }
     },
-    "Stamp": [{
-        "key": "DISEASE",
-        "selector": "div.StampList#StampListDisease",
-        "class": "StampDisease",
-        "_comment": "XXX     病名・所見"
-    }, {
-        "key": "PRACTICE",
-        "selector": "",
-        "class": "",
-        "_comment": "001     診療行為"
-    }, {
-        "key": "INJECTION",
-        "selector": "div.StampList#StampListInjection",
-        "class": "StampInjection",
-        "_comment": "001-300 注射(300番台)"
-    }, {
-        "key": "TREATMENT",
-        "selector": "div.StampList#StampListTreatment",
-        "class": "StampTreatment",
-        "_comment": "001-400 処置(400番台)"
-    }, {
-        "key": "OPERATION",
-        "selector": "div.StampList#StampListOperation",
-        "class": "StampOperation",
-        "_comment": "001-500 手術(500番台)"
-    }, {
-        "key": "MEDICAL_CHECK",
-        "selector": "div.StampList#StampListMedicalCheck",
-        "class": "StampMedicalCheck",
-        "_comment": "001-600 検査(600番台)"
-    }, {
-        "key": "MEDICAL_PRODUCT",
-        "selector": "div.StampList#StampListMedicalProduct",
-        "class": "StampMedicalProduct",
-        "_comment": "002     医薬品"
-    }, {
-        "key": "MACHINE",
-        "selector": "div.StampList#StampListMachine",
-        "class": "StampMachine",
-        "_comment": "003     特定機材"
-    }, {
-        "key": "COMMENT",
-        "selector": "",
-        "class": "",
-        "_comment": "006     コメント"
-    }, {
-        "key": "PRIVATE_EXPENSE",
-        "selector": "",
-        "class": "",
-        "_comment": "007     自費診療"
-    }],
+    "Stamp": {
+        "StampDisease": {
+            "key": "DISEASE",
+            "selector": "div.StampList#StampListDisease",
+            "_comment": "XXX     病名・所見"
+        },
+        "StampPractice": {
+            "key": "PRACTICE",
+            "selector": "",
+            "_comment": "001     診療行為"
+        },
+        "StampInjection": {
+            "key": "INJECTION",
+            "selector": "div.StampList#StampListInjection",
+            "_comment": "001-300 注射(300番台)"
+        },
+        "StampTreatment": {
+            "key": "TREATMENT",
+            "selector": "div.StampList#StampListTreatment",
+            "_comment": "001-400 処置(400番台)"
+        },
+        "StampOperation": {
+            "key": "OPERATION",
+            "selector": "div.StampList#StampListOperation",
+            "_comment": "001-500 手術(500番台)"
+        },
+        "StampMedicalCheck": {
+            "key": "MEDICAL_CHECK",
+            "selector": "div.StampList#StampListMedicalCheck",
+            "_comment": "001-600 検査(600番台)"
+        },
+        "StampMedicalProduct": {
+            "key": "MEDICAL_PRODUCT",
+            "selector": "div.StampList#StampListMedicalProduct",
+            "_comment": "002     医薬品"
+        },
+        "StampMachine": {
+            "key": "MACHINE",
+            "selector": "div.StampList#StampListMachine",
+            "_comment": "003     特定機材"
+        },
+        "StampComment": {
+            "key": "COMMENT",
+            "selector": "",
+            "_comment": "006     コメント"
+        },
+        "StampPrivateExpense": {
+            "key": "PRIVATE_EXPENSE",
+            "selector": "",
+            "_comment": "007     自費診療"
+        }
+    },
     "SchemeDrawer": {
         "Path": "./method_draw/editor/index.html",
         "Size": {
@@ -134,4 +135,3 @@
         "_comment": "備考入力ツール"
     }
 }
-

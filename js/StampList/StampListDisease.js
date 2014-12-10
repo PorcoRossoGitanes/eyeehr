@@ -1,39 +1,40 @@
 /**
- * 病名スタンプリストクラス　
+ * 病名スタンプリストクラス
  * @class StampListDisease
  * @extends StampList
  * @constructor
  */
-var StampListDisease = function () {
+var StampListDisease = function() {
 
     StampList.call(this, false, true);
 
-	/**
-	 * @property {String} _id ID
-	 */
-	this._id = StampListDisease.ClassName;
+    /**
+     * @property {String} _id ID
+     */
+    this._id = StampListDisease.ClassName;
 
-	/**
-	 * @property {String} _title タイトル
-	 */
-	this._title = '病名';
+    /**
+     * @property {String} _title タイトル
+     */
+    this._title = '病名';
+
+    // スタンプを追加する。
+    this.setStamps(StampDisease.ClassName);
 
     //--JQuery オブジェクト操作---//
-	$(this._head).text(this._title);
+    $(this._head).text(this._title);
     $(this._body).attr('id', this._id);
     //--JQuery オブジェクト操作---//
 
     /**
      * @event （スタンプが1つの場合のみ)ヘッダーをクリックした場合に、NoteItemを登録する。
      */
-    if(this._hasOne) 
-    {
-        $(this._head).click(function (){
+    if (this._hasOne) {
+        $(this._head).click(function() {
             var selector = '[name="' + StampDisease.To + '"]';
             // 貼付先が存在するか確認し、貼付先がない場合、エラーメッセージを表示する。
-            if ($(selector) !== undefined)
-            {
-                var item = new NoteItemDisease(); 
+            if ($(selector) !== undefined) {
+                var item = new NoteItemDisease();
                 item.appendTo(selector);
             }
         });

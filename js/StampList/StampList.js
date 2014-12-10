@@ -107,6 +107,36 @@ var StampList = function (i_hasOne, i_canSelectTo) {
         $(this._head).appendTo(i_to);
         $(this._body).appendTo(i_to);
     }
+
+    /**
+     * スタンプを設定する。
+     * @param {String} i_class_name クラス名
+     */
+    _proto.setStamps = function (i_class_name)
+    {
+        var json = Config.Load();　//console.log(json.Stamp);
+
+        if (json.Stamp[i_class_name]) {
+
+            var key = json.Stamp[i_class_name].key;
+            var selector = json.Stamp[i_class_name].selector; 
+
+            var stamps = Stamp.LoadXml(key);
+
+            // XMLデーターをもとにボタンを貼付ける。
+            for (var index = 0; index < stamps.length; index++) {
+                var stamp = Stamp.Create(i_class_name);
+                stamp.setByXml(Utility.XmlToStr(stamps[index]));
+                $(this._body).append(stamp.getJQueryObject());
+            }
+        }
+        else 
+        {
+            // XMLデータが存在しない場合は、デフォルトボタンを追加する。
+            var stamp = Stamp.Create(i_class_name);
+            $(this._body).append(stamp.getJQueryObject());
+        }
+    }
 })();
 
 /**
@@ -115,36 +145,36 @@ var StampList = function (i_hasOne, i_canSelectTo) {
  */
 StampList.ClassName = 'StampList';
 
-/** 
- * スタンプを生成する。
- * @param {String} i_key キー
- * @param {String} i_selector スタンプの張付先(JQueryセレクタ)
- * @param {XmlDocument} i_stampsXml スタンプリスト(XML)
- */
-StampList.SetStamp = function (i_key, i_selector, i_stampsXml) {
-    // 貼付先を取得する。
-    $stampList = $(i_selector);
+// /** 
+//  * スタンプを生成する。
+//  * @param {String} i_key キー
+//  * @param {String} i_selector スタンプの張付先(JQueryセレクタ)
+//  * @param {XmlDocument} i_stampsXml スタンプリスト(XML)
+//  */
+// StampList.SetStamp = function (i_key, i_selector, i_stampsXml) {
+//     // 貼付先を取得する。
+//     $stampList = $(i_selector);
 
-    // XMLデーターをもとにボタンを貼付ける。
-    for (var index = 0; index < i_stampsXml.length; index++) {
+//     // XMLデーターをもとにボタンを貼付ける。
+//     for (var index = 0; index < i_stampsXml.length; index++) {
 
-        var stamp = null;
+//         var stamp = null;
 
-        switch (i_key) {
-            case 'DISEASE':         stamp = new StampDisease();         break;
-            case 'INJECTION':       stamp = new StampInjection();       break;
-            case 'TREATMENT':       stamp = new StampTreatment();       break;
-            case 'OPERATION':       stamp = new StampOperation();       break;
-            case 'MEDICAL_CHECK':   stamp = new StampMedicalCheck();    break;
-            case 'MEDICAL_PRODUCT': stamp = new StampMedicalProduct();  break;
-            case 'MACHINE':         stamp = new StampMachine();         break;
-            case 'PRIVATE_EXPENSE': stamp = new Stamp();                break;
-            case 'PRACTICE':
-            case 'COMMENT':
-            default:                stamp = new Stamp();                break;
-        }
+//         switch (i_key) {
+//             case 'DISEASE':         stamp = new StampDisease();         break;
+//             case 'INJECTION':       stamp = new StampInjection();       break;
+//             case 'TREATMENT':       stamp = new StampTreatment();       break;
+//             case 'OPERATION':       stamp = new StampOperation();       break;
+//             case 'MEDICAL_CHECK':   stamp = new StampMedicalCheck();    break;
+//             case 'MEDICAL_PRODUCT': stamp = new StampMedicalProduct();  break;
+//             case 'MACHINE':         stamp = new StampMachine();         break;
+//             case 'PRIVATE_EXPENSE': stamp = new Stamp();                break;
+//             case 'PRACTICE':
+//             case 'COMMENT':
+//             default:                stamp = new Stamp();                break;
+//         }
 
-        stamp.setByXml(Utility.XmlToStr(i_stampsXml[index]));
-        $stampList.append(stamp.getJQueryObject());
-    };
-}
+//         stamp.setByXml(Utility.XmlToStr(i_stampsXml[index]));
+//         $stampList.append(stamp.getJQueryObject());
+//     };
+// }

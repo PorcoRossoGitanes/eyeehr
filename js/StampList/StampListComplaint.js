@@ -18,6 +18,9 @@ var StampListComplaint = function () {
 	 */
 	this._title = '主訴';
 
+    // スタンプを追加する。
+    this.setStamps(StampComplaint.ClassName);
+
     //--JQuery オブジェクト操作---//
     $(this._head).text(this._title);
     $(this._body).attr('id', this._id);

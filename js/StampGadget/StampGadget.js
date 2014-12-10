@@ -21,6 +21,7 @@ var StampGadget = function () {
      */
     this._jquery = $(this._selector)[0];
 
+    // スタンプリストを作成し、スタンプを追加する。
     var stampList = null;
     stampList = new StampListComplaint(); stampList.appendTo(this._selector);
     stampList = new StampListDisease(); stampList.appendTo(this._selector);
@@ -32,20 +33,7 @@ var StampGadget = function () {
     stampList = new StampListMachine(); stampList.appendTo(this._selector);
     stampList = new StampListMemo(); stampList.appendTo(this._selector);
 
-    //console.log(this._jquery);
-
-    //----- スタンプを自動生成する。 -----------------------------------------------
-    var json = Config.Load();
-    for (var i in json.Stamp) {
-        var key = json.Stamp[i].key;
-        var selector = json.Stamp[i].selector;
-        if (selector != '') {
-            var xml = Stamp.LoadXml(key); //console.log(xml);
-            StampList.SetStamp(key, selector, xml);
-        }
-    }
-
-    //----- アコーディオンメニューを作成する。 --------------------------------------
+    // アコーディオンメニューを作成する。 
     $(this._jquery).accordion({ heightStyle: "fill", active: 1 });
 };
 (function() {

@@ -219,19 +219,52 @@ Stamp.CreateNoteItem = function(i_jquery, i_to) {
         // ORCA情報を設定する。
         var xml = $(i_jquery).data('xml'); 
         item.setOrca($(xml).children('Orca')[0]); 
-
-        // console.log(typeof(item));
-        // console.log(item.toString());
-        // switch (typeof(item)) {
-        //     case NoteItemComplaint.ClassName:
-        //     case NoteItemMemo.ClassName:
-        //         item.openRemark();
-        //         break;
-        //     default:
-        //         break;
-        // }
-
     }
 
     return item;
 }
+
+
+/**
+ * クラス名に応じたスタンプを作成する。
+ * @param {String} i_class_name クラス名
+ * @return {Stamp} スタンプ
+ */
+Stamp.Create = function(i_class_name)
+{
+    var stamp = null;
+
+    switch (i_class_name) {
+        case StampComplaint.ClassName:
+            stamp = new StampComplaint();
+            break;
+        case StampDisease.ClassName:
+            stamp = new StampDisease();
+            break;
+        case StampInjection.ClassName:
+            stamp = new StampInjection();
+            break;
+        case StampMachine.ClassName:
+            stamp = new StampMachine();
+            break;
+        case StampMedicalCheck.ClassName:
+            stamp = new StampMedicalCheck();
+            break;
+        case StampMedicalProduct.ClassName:
+            stamp = new StampMedicalProduct();
+            break;
+        case StampMemo.ClassName:
+            stamp = new StampMemo();
+            break;
+        case StampOperation.ClassName:
+            stamp = new StampOperation();
+            break;
+        case StampTreatment.ClassName:
+            stamp = new StampTreatment();
+            break;
+        default:
+            break;
+    }
+
+    return stamp;
+}    

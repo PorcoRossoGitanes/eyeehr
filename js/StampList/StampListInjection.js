@@ -18,6 +18,9 @@ var StampListInjection = function () {
 	 */
 	this._title = '注射';
 
+    // スタンプを追加する。
+    this.setStamps(StampInjection.ClassName);
+
     //--JQuery オブジェクト操作---//
 	$(this._head).text(this._title);
     $(this._body).attr('id', this._id);

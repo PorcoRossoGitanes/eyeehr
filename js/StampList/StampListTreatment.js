@@ -18,6 +18,9 @@ var StampListTreatment = function () {
 	 */
 	this._title = '処置';
     
+    // スタンプを追加する。
+    this.setStamps(StampTreatment.ClassName);
+
     //--JQuery オブジェクト操作---//
 	$(this._head).text(this._title);
     $(this._body).attr('id', this._id);
