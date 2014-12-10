@@ -28,12 +28,16 @@ $(function() {
     // 左サイドメニューを生成する。
     $('#SideMenuLeft').sidr();
 
+
     // スタンプガジェットを作成する。
     var stampGadget = new StampGadget();
 
     // 左メインメニュー・右メインメニューを生成し、表示する。
     $('#MenuLeft').css('left', 0);
     $('#MenuLeft').css('top', 0);
+    // タブを生成する。
+    $('#tab').tabs();
+
     $('#MenuRight').css('left', parseFloat($(window).width()) - parseFloat($('#MenuRight').width()));
     $('#MenuRight').css('top', -parseFloat($('#MenuLeft').css('height')));
 
@@ -43,7 +47,7 @@ $(function() {
 
         $('#MenuLeft').css('top', scrollTop);
         $('#MenuRight').css('top', scrollTop - parseFloat($('#MenuLeft').css('height')));
-
+        console.log(parseFloat($('#MenuLeft').css('height')));
         $('#MenuLeft').animate({
             top: scrollTop
         }, {
@@ -53,7 +57,6 @@ $(function() {
         });
     });
 
-    $('#tab').tabs();
 
     //----- イベント登録 -----
     /**
