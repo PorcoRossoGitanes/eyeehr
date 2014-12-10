@@ -5,8 +5,7 @@
  * @param {String} i_url 画像URL
  * @param {function()} コールバック関数
  */
-function AttachScheme(i_noteItemId, i_url, callback) 
-{
+function AttachScheme(i_noteItemId, i_url, callback) {
     NoteItem.AttachScheme(i_noteItemId, i_url, callback);
 }
 
@@ -16,11 +15,10 @@ function AttachScheme(i_noteItemId, i_url, callback)
  * @param {String} i_url 画像URL
  * @param {function()} コールバック関数
  */
-function ChangeRemark(i_noteItemId, i_content, callback) 
-{
-    NoteItem.ChangeRemark(i_noteItemId, i_content, callback);
-}
-//----- Method Draw ------
+function ChangeRemark(i_noteItemId, i_content, callback) {
+        NoteItem.ChangeRemark(i_noteItemId, i_content, callback);
+    }
+    //----- Method Draw ------
 
 //----- ドキュメントロード時処理 -----------------------------------------------------
 $(function() {
@@ -62,23 +60,51 @@ $(function() {
      * @event 患者IDが入力され、RETURN(ENTER)キーが押下された時、患者の本日のカルテを表示する。
      */
     $('#PatientId').keypress(function(evt) {
-        const ENTER = 13; if ( evt.which == ENTER ) { LoadPatient(); return false; }
+        const ENTER = 13;
+        if (evt.which == ENTER) {
+            LoadPatient($(this).val());
+            return false;
+        }
     });
-    function LoadPatient (i_input) 
-    {
-        var patientId = $('#PatientId').val();
-        if(patientId !== '')
-        {
-            // 作成日時を取得する。
-            var yyyyMMdd = Utility.GetCurrentDate(); hhmmss = Utility.GetCurrentTime();
 
-            // 指定の患者の本日のカルテを作成する。
-            present = Note.Create(patientId, yyyyMMdd, hhmmss);
+    function LoadPatient(i_patientId) {
+        var ret = true;
 
-            $('#CurrentFilePath').val(present.getCollection());
+        // ■患者番号の妥当性を確認する。
+        if (ret) {
+            ret = Utility.IsInt(i_patientId);
+            if (!ret) {
+                alert('患者番号は半角数字で入力してください。')
+            }
         }
 
+        if (ret) {
+            // 本日の日付を取得する。
+            var today = Utility.GetCurrentDate();
+            hhmmss = Utility.GetCurrentTime();
+            // 当日のデーターが存在するか確認する。
+            var exist = Note.Exist(i_patientId, today);
+            var create = !exist;
+            if (exist) {
+                // カルテを作成するか確認メッセージを表示する。
+                // 「はい」の場合はカルテを作成する。「いいえ」の場合は本日の最後のカルテを開く
+                create = confirm('本日のカルテが存在します。新規作成しますか。');
+            }
+            if (create) {
+                // 指定の患者の本日のカルテを作成する。
+                present = Note.Create(i_patientId, today, hhmmss);
+            } else {
+                // 本日の最後のカルテを開く
+            }
+
+        }
+        if (ret) {
+
+        }
+
+        $('#CurrentFilePath').val(present.getCollection());
     }
+
 
     /**
      * @event 「読込」を選択時、カルテを読込む。
@@ -90,10 +116,9 @@ $(function() {
      * カルテを読込む。
      * @method LoadNote
      */
-    function LoadNote()
-    {
+    function LoadNote() {
         //var filePath = $('#CurrentFilePath').val();
-        present.loadXml(present._patientId, present._yyyyMMdd, present._hhmmss);        
+        present.loadXml(present._patientId, present._yyyyMMdd, present._hhmmss);
     }
 
     /**
@@ -106,11 +131,10 @@ $(function() {
      * カルテを保存する。
      * @method SaveNote
      */
-    function SaveNote() 
-    {
-        if(present) present.saveXml();
+    function SaveNote() {
+        if (present) present.saveXml();
         // TODO : 現在のカルテファイルパスを表示する。
-        $('#CurrentFilePath').val(present.getCollection());        
+        $('#CurrentFilePath').val(present.getCollection());
     }
 
     /**

@@ -1,9 +1,10 @@
 /**
  * ノートアイテムクラス
  * @class NoteItem
+ * @param {String} i_collcetion コレクションパス
  * @constructor
  */
-var NoteItem = function() {
+var NoteItem = function(i_collection) {
 
     /**
      * @property {Number} MAX 付箋のID(MAX値)
@@ -13,6 +14,7 @@ var NoteItem = function() {
 
     /**
      * @property {String} _id ID
+     * @default 乱数
      */
     this._id = Math.round(Math.random() * MAX);
 
@@ -21,12 +23,12 @@ var NoteItem = function() {
      */
     this._title = '';
 
+    /**
+     * @property {String} _img 画像の保存先（コレクションパス）
+     */
+    this._img = i_collection + 'IMG/';
+
     //--JQuery オブジェクト操作---//
-
-    // 画像の保存先を設定する。
-    // TODO : 画像の保存先はカルテのフォルダの直下のimgコレクションとする。（後で対応）
-    const saveImageTo = '/db/apps/eyeehr/img';
-
     /*** 画像ファイル入力フォーム ***/
     var json = Config.Load();
     const Extension =
@@ -45,13 +47,13 @@ var NoteItem = function() {
     // 付箋（JQuery オブジェクト）を生成する 。
     const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/uploadFileBin.xq";
     var formAttachFile = /*** 画像ファイル入力フォーム ***/
-        '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:none" >' +
+        '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:inherit" >' +
         '<input type="input" name="type" value="bin"/>' +
         '<input type="file" name="file" value="" accept="' + Extension + '" />' +
-        '<input type="input" name="collection" value="' + saveImageTo + '"/>' +
+        '<input type="input" name="collection" value="' + this._img + '"/>' +
         '<input id="attachFileSubmit" type="submit" value="submit" />' +
         '</form>' +
-        '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
+        '<iframe name="' + iframetarget + '" style="display:inherit"></iframe>'; //結果表示用iframe
 
     /**
      * @property {Object} _jquery JQuery オブジェクト
@@ -138,7 +140,7 @@ var NoteItem = function() {
      */
     $(this._jquery).find('#addScheme').click(function() {
         var noteItemId = $(this).parent().attr('id'); // NoteItemのIDを取得する。
-        var url = saveImageTo + '/' + 　'scheme-' + (new Date()).getTime() + '.svg'; // URLを作成する。  
+        var url = this._img + '/' + 　'scheme-' + (new Date()).getTime() + '.svg'; // URLを作成する。  
         NoteItem.OpenMethodDraw('add', noteItemId, url); // シェーマを開く。
     });
 
@@ -220,6 +222,7 @@ var NoteItem = function() {
         // 付箋をカルテ欄に登録する。
         $(this._jquery).appendTo(i_to);
         $(this._jquery).dblclick();
+        console.log(present);
     }
 
     /**
@@ -444,7 +447,7 @@ NoteItem.HtmlToXml = function($i_jquery) {
  * @param {method()} callback コールバック関数
  */
 NoteItem.ChangeRemark = function(i_noteItemId, i_content, callback) {
-    $item = $('#' + i_noteItemId);
+    var item = $('#' + i_noteItemId)[0];
 
     $memo = $('<memo>' + i_content + '</memo>');
     $strongs = $memo.find('strong');
@@ -455,8 +458,8 @@ NoteItem.ChangeRemark = function(i_noteItemId, i_content, callback) {
             (index == ($strongs.length - 1) ? '' : ',');
     }
 
-    $item.find('#tags').html(tags);
-    $item.find('[name="Remark"]').html(i_content);
+    $(item).find('#tags').html(tags);
+    $(item).find('[name="Remark"]').html(i_content);
 
     if (callback !== undefined) callback();
 }

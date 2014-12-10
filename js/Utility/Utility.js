@@ -182,8 +182,8 @@ Utility.CreateCollection = function(i_collectionPath) {
                 ret = true;
             },
             error: function() {
-                alert(message_error);
-            } //,
+                    alert(message_error);
+                } //,
         });
     }
 
@@ -261,38 +261,40 @@ Utility.SaveXml = function(i_path, i_xml, callback) {
  * @return true=成功、false=失敗
  * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
  */
-Utility.RemoveDoc = function (i_path) 
-{
-    var ret = false;
+Utility.RemoveDoc = function(i_path) {
+        var ret = false;
 
-    // コレクションとファイル名を取得する。
-    var collection = i_path.substr(0, i_path.lastIndexOf('/'));
-    var file = i_path.substr(i_path.lastIndexOf('/') + 1);
+        // コレクションとファイル名を取得する。
+        var collection = i_path.substr(0, i_path.lastIndexOf('/'));
+        var file = i_path.substr(i_path.lastIndexOf('/') + 1);
 
-    const URL = '/exist/apps/eyeehr/modules/delete-doc.xq';
+        const URL = '/exist/apps/eyeehr/modules/delete-doc.xq';
 
-    // ドキュメントを削除する。
-    var result = Utility.LoadXml('POST', URL, {'collection' : collection, 'file' : file});
+        // ドキュメントを削除する。
+        var result = Utility.LoadXml('POST', URL, {
+            'collection': collection,
+            'file': file
+        });
 
-    console.log(result);
+        console.log(result);
 
-    ret = (result.children[0].tagName == 'success');
-    
-    return ret;
-}
-/**
- * XMLを読込む。
- * @static
- * @method LoadXml
- * @param {String} i_type(REST:RESTful,GET:GET送信,POST:POST送信)
- * @param {String} i_path ファイルパス(URL)
- * @param {String} i_senddata 送信データ
- * 		GET時　	URL?以降のGETパラメータ　例）"param1=aaa&param2=bbb"
- *  	POST時　	POSTパラメータ(JSON形式）　例）{"page": 2}
- * @param {Functio(Object)} callback コールバック関数
- * @return {Object} XMLデーター
- * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
- */
+        ret = (result.children[0].tagName == 'success');
+
+        return ret;
+    }
+    /**
+     * XMLを読込む。
+     * @static
+     * @method LoadXml
+     * @param {String} i_type(REST:RESTful,GET:GET送信,POST:POST送信)
+     * @param {String} i_path ファイルパス(URL)
+     * @param {String} i_senddata 送信データ
+     *      GET時　   URL?以降のGETパラメータ　例）"param1=aaa&param2=bbb"
+     *      POST時　  POSTパラメータ(JSON形式）　例）{"page": 2}
+     * @param {Functio(Object)} callback コールバック関数
+     * @return {Object} XMLデーター
+     * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
+     */
 Utility.LoadXml = function(i_type, i_path, i_senddata, callback) {
 
     var ret = null;
@@ -327,7 +329,7 @@ Utility.LoadXml = function(i_type, i_path, i_senddata, callback) {
                     //,
                     // complete : function(data) 
                     // {
-                    // 	console.log('ファイルの読み込みが完了しました。');
+                    //  console.log('ファイルの読み込みが完了しました。');
                     // }
             });
         } else if (i_type == 'REST' || i_type == 'GET') {
@@ -355,7 +357,7 @@ Utility.LoadXml = function(i_type, i_path, i_senddata, callback) {
                     //,
                     // complete : function(data) 
                     // {
-                    // 	console.log('ファイルの読み込みが完了しました。');
+                    //  console.log('ファイルの読み込みが完了しました。');
                     // }
             });
         }
@@ -374,10 +376,10 @@ Utility.LoadXml = function(i_type, i_path, i_senddata, callback) {
  * @param {String} i_outputFormat 出力フォーマット（例：image/png）
  * @param  {Function(dataURL)} callback　コールバック関数
  * @remarks 画像形式
- *  PNG 	image/png
- *  JPEG	image/jpeg
- *  （使用不可）svg	image/svg
- *  （使用不可）bmp	image/bmp?
+ *  PNG     image/png
+ *  JPEG    image/jpeg
+ *  （使用不可）svg   image/svg
+ *  （使用不可）bmp   image/bmp?
  * @example Utility.ConvertImgToBase64('http://goo.gl/AOxHAL', 'image/png', function(base64Img){console.log('IMAGE:',base64Img);})
  */
 Utility.ConvertImgToBase64 = function(i_url, i_outputFormat, callback) {
@@ -524,7 +526,7 @@ Utility.ReloadImageFile = function(i_img, i_url) {
     // URL(http://~~~~/test.jpg?11111)から?より手前を取得する。
     var url = Utility.GetUrl(i_url);
 
-    // <img src="">	src属性を書き換える。
+    // <img src=""> src属性を書き換える。
     $(i_img).attr('src', url + '?' + (new Date().getTime()));
 }
 
@@ -577,5 +579,18 @@ Utility.LoadJson = function(i_url, callback) {
         }
     });
 
+    return ret;
+}
+
+/**
+ * 数値判定
+ * @param {Object} i_val 数値
+ * @return true=数値、false=数値以外
+ */
+Utility.IsInt = function(i_val) {
+    var ret = false;
+    if (!(typeof(i_val) != 'number' && typeof(i_val) != 'string')) {
+        ret = (i_val == parseInt(i_val) && isFinite(i_val));
+    }
     return ret;
 }
