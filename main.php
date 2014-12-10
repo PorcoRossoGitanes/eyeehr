@@ -63,7 +63,7 @@ if (!isset($_SESSION["USERID"])) {
               <li><a href="#tab-index">付箋</a></li>
               <li><a href="#tab-history">履歴</a></li>
             </ul>
-            <div id="tab-index">
+            <div id="tab-index" style="padding:0">
               <div id="IndexList" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
                 <div class="Index IndexDate">2014/02/06</div>
                 <div class="Index IndexItem">○○検査</div>
@@ -109,7 +109,7 @@ if (!isset($_SESSION["USERID"])) {
                 <div class="Index IndexItem">○○検査</div>
               </div>   
             </div>
-            <div id="tab-history">
+            <div id="tab-history" style="padding:0">
               <!--iframe style="width:100%;height:100%"><html-->
               <div id="History" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
                 <div class="Index IndexDate">2014/02/06</div>
