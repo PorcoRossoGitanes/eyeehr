@@ -4,7 +4,7 @@
  * @param {String} i_collcetion コレクションパス
  * @constructor
  */
-var NoteItem = function(i_collection) {
+var NoteItem = function() {
 
     /**
      * @property {Number} MAX 付箋のID(MAX値)
@@ -23,37 +23,8 @@ var NoteItem = function(i_collection) {
      */
     this._title = '';
 
-    /**
-     * @property {String} _img 画像の保存先（コレクションパス）
-     */
-    this._img = i_collection + 'IMG/';
-
     //--JQuery オブジェクト操作---//
     /*** 画像ファイル入力フォーム ***/
-    var json = Config.Load();
-    const Extension =
-        (json.AttachFile.FileType.TXT.available ? json.AttachFile.FileType.TXT.access + ', ' : '') +
-        (json.AttachFile.FileType.CSV.available ? json.AttachFile.FileType.CSV.access + ', ' : '') +
-        (json.AttachFile.FileType.JPG.available ? json.AttachFile.FileType.JPG.access + ', ' : '') +
-        (json.AttachFile.FileType.PNG.available ? json.AttachFile.FileType.PNG.access + ', ' : '') +
-        (json.AttachFile.FileType.BMP.available ? json.AttachFile.FileType.BMP.access + ', ' : '') +
-        (json.AttachFile.FileType.PDF.available ? json.AttachFile.FileType.PDF.access + ', ' : '') +
-        (json.AttachFile.FileType.DOCX.available ? json.AttachFile.FileType.DOCX.access + ', ' : '') +
-        (json.AttachFile.FileType.DOC.available ? json.AttachFile.FileType.DOC.access + ', ' : '') +
-        (json.AttachFile.FileType.XLSX.available ? json.AttachFile.FileType.XLSX.access + ', ' : '') +
-        (json.AttachFile.FileType.XLS.available ? json.AttachFile.FileType.XLS.access + '' /*', '*/ : '');
-
-    var iframetarget = 'uploadImage-' + this._id;
-    // 付箋（JQuery オブジェクト）を生成する 。
-    const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/uploadFileBin.xq";
-    var formAttachFile = /*** 画像ファイル入力フォーム ***/
-        '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:inherit" >' +
-        '<input type="input" name="type" value="bin"/>' +
-        '<input type="file" name="file" value="" accept="' + Extension + '" />' +
-        '<input type="input" name="collection" value="' + this._img + '"/>' +
-        '<input id="attachFileSubmit" type="submit" value="submit" />' +
-        '</form>' +
-        '<iframe name="' + iframetarget + '" style="display:inherit"></iframe>'; //結果表示用iframe
 
     /**
      * @property {Object} _jquery JQuery オブジェクト
@@ -68,9 +39,7 @@ var NoteItem = function(i_collection) {
         '<button id="up" class="btn btn-default btn-xs"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></button>' +
         /*** 　↓　ボタン ***/
         '<button id="down" class="btn btn-default btn-xs"><span class="glyphicon glyphicon glyphicon-arrow-down"></span></button>' +
-        /*** ファイル添付 ***/
-        formAttachFile +
-        /* 隠し埋め込みフォーム */
+        /* 隠し埋め込みフォーム *//*** ファイル添付 ***//**formAttachFile +**/
         '<button id="attachFile" class="btn btn-default btn-xs" ><span class="glyphicon glyphicon-upload"></span></button>' +
         /*** シェーマ描画 ***/
         '<button id="addScheme" class="btn btn-default btn-xs" style="visibility:inherit">シェーマ</button>' +
@@ -119,29 +88,6 @@ var NoteItem = function(i_collection) {
             }
         });
 
-    });
-
-    /**
-     * @event 添付ファイル保存処理が実施され、結果がiframeにロードされた時、添付ファイルを表示する。
-     * iframeには、ファイルのimgタグが返却される。
-     */
-    $(this._jquery).find('iframe').load(function() {
-        var file = $(this).parent().find('[type="file"]').val();
-        var url = $(this).contents().find('#url').text();
-        if (file == "") { /* 画像ファイルが指定されていない場合は処理を実行しない。 */ } else if (url == "") {
-            alert('ファイルの保存に失敗しました。');
-        } else {
-            NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url);
-        }
-    });
-
-    /**
-     * @event 「シェーマ」ボタンの押下時、シェーマ描画ツールを表示する。
-     */
-    $(this._jquery).find('#addScheme').click(function() {
-        var noteItemId = $(this).parent().attr('id'); // NoteItemのIDを取得する。
-        var url = this._img + '/' + 　'scheme-' + (new Date()).getTime() + '.svg'; // URLを作成する。  
-        NoteItem.OpenMethodDraw('add', noteItemId, url); // シェーマを開く。
     });
 
     /**
@@ -219,10 +165,68 @@ var NoteItem = function(i_collection) {
      * @param i_to 貼付先
      */
     _proto.appendTo = function(i_to) {
+
         // 付箋をカルテ欄に登録する。
         $(this._jquery).appendTo(i_to);
-        $(this._jquery).dblclick();
-        console.log(present);
+        
+        // ファイルの添付先を検出する。（カルテによって異なるため、ここで定義する。）
+        $note = $(this._jquery).parents('[name="Note"]');
+        var img_collection = $note.data('Collection') + 'IMG'
+
+        // ファイル添付=================================================
+        // ファイル添付フォームを追加する。
+        var json = Config.Load();
+        const Extension =
+            (json.AttachFile.FileType.TXT.available ? json.AttachFile.FileType.TXT.access + ', ' : '') +
+            (json.AttachFile.FileType.CSV.available ? json.AttachFile.FileType.CSV.access + ', ' : '') +
+            (json.AttachFile.FileType.JPG.available ? json.AttachFile.FileType.JPG.access + ', ' : '') +
+            (json.AttachFile.FileType.PNG.available ? json.AttachFile.FileType.PNG.access + ', ' : '') +
+            (json.AttachFile.FileType.BMP.available ? json.AttachFile.FileType.BMP.access + ', ' : '') +
+            (json.AttachFile.FileType.PDF.available ? json.AttachFile.FileType.PDF.access + ', ' : '') +
+            (json.AttachFile.FileType.DOCX.available ? json.AttachFile.FileType.DOCX.access + ', ' : '') +
+            (json.AttachFile.FileType.DOC.available ? json.AttachFile.FileType.DOC.access + ', ' : '') +
+            (json.AttachFile.FileType.XLSX.available ? json.AttachFile.FileType.XLSX.access + ', ' : '') +
+            (json.AttachFile.FileType.XLS.available ? json.AttachFile.FileType.XLS.access + '' /*', '*/ : '');
+
+        // 付箋（JQuery オブジェクト）を生成する 。
+        const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/uploadFileBin.xq";
+        var iframetarget = 'attachFile-iframe' + this._id;
+        var formAttachFile = /*** 画像ファイル入力フォーム ***/
+            '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:none" >' +
+            '<input type="input" name="type" value="bin"/>' +
+            '<input type="file" name="file" value="" accept="' + Extension + '" />' +
+            '<input type="input" name="collection" value="' + img_collection + '"/>' +
+            '<input id="attachFileSubmit" type="submit" value="submit" />' +
+            '</form>' +
+            '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
+        $(formAttachFile).insertBefore($(this._jquery).find('#attachFile'));
+
+        /**
+         * @event 添付ファイル保存処理が実施され、結果がiframeにロードされた時、添付ファイルを表示する。
+         * iframeには、ファイルのimgタグが返却される。
+         */
+        $(this._jquery).find('iframe').load(function() {
+            var file = $(this).parent().find('[type="file"]').val();
+            var url = $(this).contents().find('#url').text();
+            if (file == "") { /* 画像ファイルが指定されていない場合は処理を実行しない。 */ } else if (url == "") {
+                alert('ファイルの保存に失敗しました。');
+            } else {
+                NoteItem.AttachFile($(this).parent().find('[name="Attachment"]'), url);
+            }
+        });
+        // ファイル添付=================================================
+
+        // シェーマ描画=================================================
+        /**
+         * @event 「シェーマ」ボタンの押下時、シェーマ描画ツールを表示する。
+         */
+        $(this._jquery).find('#addScheme').click(function() {
+            var noteItemId = $(this).parent().attr('id'); // NoteItemのIDを取得する。
+            var url = img_collection + '/' + 　'scheme-' + (new Date()).getTime() + '.svg'; // URLを作成する。 
+            console.log(url); 
+            NoteItem.OpenMethodDraw('add', noteItemId, url); // シェーマを開く。
+        });
+        // シェーマ描画=================================================
     }
 
     /**
@@ -376,7 +380,6 @@ NoteItem.HtmlToXml = function($i_jquery) {
     var tag = $i_jquery.attr('name');
 
     retVal += '<' + tag + ' id="' + $i_jquery.attr('id') + '">';
-
 
     // □タイトルをXMLに変換する。
     $title = $i_jquery.children('[name="Title"]');
