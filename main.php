@@ -167,7 +167,7 @@ if (!isset($_SESSION["USERID"])) {
   </div>
 
 
-  <!-- 左メインメニュー -->
+  <!-- 右メインメニュー -->
   <div id="MenuRight" style="position:relative;width:280px">
     <table>
       <tr>
