@@ -58,52 +58,109 @@ if (!isset($_SESSION["USERID"])) {
       </tr>
       <tr>
         <td valign="top">
-          <!--iframe style="width:100%;height:100%"><html-->
-          <div id="IndexList" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
-            <div class="Index IndexDate">2014/02/06</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">視力検査</div>
-            <div class="Index IndexItem">処方（AAA,XXX）</div>
-            <div class="Index IndexDate">2014/01/06</div>
-            <div class="Index IndexItem">プラン</div>
-            <div class="Index IndexDate">2013/12/08</div>
-            <div class="Index IndexItem">Dr.メモ</div>
-            <div class="Index IndexDate">2013/11/06</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexDate">2013/10/01</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexDate">2013/09/01</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexDate">2013/08/15</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexDate">2013/07/02</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexDate">2013/01/06</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexDate">2012/12/06</div>
-            <div class="Index IndexItem">アムスラー</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-            <div class="Index IndexItem">○○検査</div>
-          </div>            
-          <!--/html></iframe-->
+          <div style='clear:both;' id="tab">
+            <ul>
+              <li><a href="#tab-index">付箋</a></li>
+              <li><a href="#tab-history">履歴</a></li>
+            </ul>
+            <div id="tab-index">
+              <div id="IndexList" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
+                <div class="Index IndexDate">2014/02/06</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">視力検査</div>
+                <div class="Index IndexItem">処方（AAA,XXX）</div>
+                <div class="Index IndexDate">2014/01/06</div>
+                <div class="Index IndexItem">プラン</div>
+                <div class="Index IndexDate">2013/12/08</div>
+                <div class="Index IndexItem">Dr.メモ</div>
+                <div class="Index IndexDate">2013/11/06</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/10/01</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/09/01</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/08/15</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/07/02</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/01/06</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2012/12/06</div>
+                <div class="Index IndexItem">アムスラー</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+              </div>   
+            </div>
+            <div id="tab-history">
+              <!--iframe style="width:100%;height:100%"><html-->
+              <div id="History" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
+                <div class="Index IndexDate">2014/02/06</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">視力検査</div>
+                <div class="Index IndexItem">処方（AAA,XXX）</div>
+                <div class="Index IndexDate">2014/01/06</div>
+                <div class="Index IndexItem">プラン</div>
+                <div class="Index IndexDate">2013/12/08</div>
+                <div class="Index IndexItem">Dr.メモ</div>
+                <div class="Index IndexDate">2013/11/06</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/10/01</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/09/01</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/08/15</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/07/02</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2013/01/06</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexDate">2012/12/06</div>
+                <div class="Index IndexItem">アムスラー</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+                <div class="Index IndexItem">○○検査</div>
+              </div>            
+              <!--/html></iframe-->
+            </div>
+            <div id="tab-ms1">
+              <p>Windows Phone</p>
+            </div>
+          </div>
         </td>    
       </tr>
     </table>

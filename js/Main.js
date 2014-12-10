@@ -55,6 +55,7 @@ $(function() {
         });
     });
 
+    $('#tab').tabs();
 
     //----- イベント登録 -----
     /**
@@ -68,12 +69,8 @@ $(function() {
         var patientId = $('#PatientId').val();
         if(patientId !== '')
         {
-            // 現在のカルテを初期化する。
-            present = null;
-
             // 作成日時を取得する。
-            var yyyyMMdd = Utility.GetCurrentDate();
-            var hhmmss = Utility.GetCurrentTime();
+            var yyyyMMdd = Utility.GetCurrentDate(); hhmmss = Utility.GetCurrentTime();
 
             // 指定の患者の本日のカルテを作成する。
             present = Note.Create(patientId, yyyyMMdd, hhmmss);
