@@ -200,12 +200,25 @@ Stamp.CreateNoteItem = function(i_jquery, i_to) {
             break;
     }
 
-    if (item !== null)
+    if (item)
     {
+        // タイトルを設定する。
         item.setTitle($(i_jquery).attr('title'));
 
+        // ORCA情報を設定する。
         var xml = $(i_jquery).data('xml'); 
-        item.setOrca($(xml).children('Orca')[0]);        
+        item.setOrca($(xml).children('Orca')[0]); 
+
+        // 主訴・メモの場合は備考入力のみのため、備考入力欄を開く。
+        switch (typeof(item)) {
+            case NoteItemComplaint.ClassName:
+            case NoteItemMemo.ClassName:
+                item.openRemark();
+                break;
+            default:
+                break;
+        }
+
     }
 
     return item;

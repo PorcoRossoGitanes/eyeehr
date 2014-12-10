@@ -11,9 +11,6 @@ var NoteItemComplaint = function () {
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', NoteItemComplaint.ClassName);
     $(this._jquery).addClass(NoteItemComplaint.ClassName);
-
-    // 備考を開く。
-    $(this._jquery).find('#editRemark').click();
     //--JQuery オブジェクト操作---//
 
 };

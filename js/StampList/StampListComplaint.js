@@ -35,6 +35,8 @@ var StampListComplaint = function () {
             {
                 var item = new NoteItemComplaint(); 
                 item.appendTo(selector);
+                // 主訴は備考欄のみであるため、備考入力画面を開く。
+                item.openRemark();
             }
         });
     }

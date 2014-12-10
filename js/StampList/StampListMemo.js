@@ -35,6 +35,8 @@ var StampListMemo = function () {
             {
                 var item = new NoteItemMemo(); 
                 item.appendTo(selector);
+                // メモは備考欄のみであるため、備考入力画面を開く。
+                item.openRemark();
             }
         });
     }

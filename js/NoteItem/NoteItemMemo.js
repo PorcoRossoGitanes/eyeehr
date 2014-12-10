@@ -11,11 +11,7 @@ var NoteItemMemo = function () {
     //--JQuery オブジェクト操作---//
     $(this._jquery).attr('name', NoteItemMemo.ClassName);
     $(this._jquery).addClass(NoteItemMemo.ClassName);
-
-    // 備考を開く。
-    $(this._jquery).find('#editRemark').click();
     //--JQuery オブジェクト操作---//
-
 };
 (function() {
 

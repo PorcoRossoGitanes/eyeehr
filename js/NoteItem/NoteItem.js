@@ -365,6 +365,15 @@ var NoteItem = function() {
     _proto.setRemark = function(i_xml) {
         $(this._jquery).find('[name="Remark"]').html(Utility.InnerXml($(i_xml)) /* html */ );
     }
+
+    /**
+     * 備考入力欄を開く。
+     * @method openRemark
+     */
+    _proto.openRemark = function ()
+    {
+        $(this._jquery).find('#editRemark').click();
+    }
 })();
 
 /**
