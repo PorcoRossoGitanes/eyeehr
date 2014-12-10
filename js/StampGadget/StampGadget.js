@@ -40,10 +40,8 @@ var StampGadget = function () {
         var key = json.Stamp[i].key;
         var selector = json.Stamp[i].selector;
         if (selector != '') {
-            Stamp.LoadXml(key, function(result) {
-                //result[0]がルートノードとなる。
-                StampList.SetStamp(key, selector, result[0].children);
-            });
+            var xml = Stamp.LoadXml(key); //console.log(xml);
+            StampList.SetStamp(key, selector, xml);
         }
     }
 

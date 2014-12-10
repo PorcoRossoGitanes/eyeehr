@@ -130,8 +130,8 @@ Stamp.To =  'NoteItemContainer';
  *      <br/>"COMMENT"       Comment       => "006"    # コメント
  *      <br/>"PRIVATE_EXPENSE"   Private_Expense   => "007"    # 自費診療
  *  @param callback コールバック関数
- *  @return 成功時、指定のスタンプ一覧が返却される。失敗時、スタンプが返却されない。
- *  出力例)
+ *  @return {Array[Object]} 成功時、指定のスタンプ一覧。失敗時、null。
+ *  出力例)スタンプ
  * <br/>&lt;Stamp&gt;
  * <br/>&lt;Orca&gt;
  * <br/>&lt;Medical_Class/&gt;
@@ -148,15 +148,25 @@ Stamp.To =  'NoteItemContainer';
  * <br/>&lt;Stamp&gt;...&lt;/Stamp&gt;
  * <br/>&lt;Stamp&gt;...&lt;/Stamp&gt;
  */
-Stamp.LoadXml = function(i_target, callback) {
+Stamp.LoadXml = function(i_target) {
 
+    var ret = null;
     /**
      * @property {String} SCRIPT スタンプ読込スクリプト
      * @final
      */
-    const SCRIPT = '/exist/apps/eyeehr/modules/loadStamp.xq';
+    const URL = '/exist/apps/eyeehr/modules/loadStamp.xq';
+    // GETパラメータを設定する。
     var senddata = "target=" + i_target;
-    Utility.LoadXml('GET', SCRIPT, senddata, callback);
+
+    // 検索結果<result/>を取得する。
+    var result = (Utility.LoadXml('GET', URL, senddata)).children[0];
+
+    // スタンプ<stamp/>一覧を取得する。
+    ret = result.children;
+    
+    //console.log(ret);
+    return ret;
 }
 
 /**
