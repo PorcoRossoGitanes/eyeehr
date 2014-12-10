@@ -117,7 +117,6 @@
 		// （１）主訴コンテナのコレクションを作成し、XMLデーターを保存する。
 		var dir = this._collection + NoteItemContainerComplaint.ClassName;
 	    var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerComplaint.ClassName));
-	    console.log($jquery.children('.' + NoteItemContainerComplaint.ClassName)[0]);
 	    var path = dir + '/'+ this._filename.format(NoteItemContainerComplaint.ClassName);
 		ret = ret && Utility.SaveXml(path, xml);
 
@@ -189,11 +188,23 @@
 
 	/**
 	 * @summary カルテ（XMLファイル）を読込む。
-	 * @param {String} i_url URL
+	 * @param {Number} i_patinetId 患者番号
+	 * @param {String} i_yyyyMMdd 作成日
+	 * @param {String} i_hhmmss 作成時刻
 	 */
-	_proto.loadXml = function (i_url)
+	_proto.loadXml = function (i_patientId, i_yyyyMMdd, i_hhmmss)
 	{
-		Utility.LoadXml('REST', i_url, '', this.setByXml);
+		var xml = Utility.LoadXml(
+			'POST', 
+			'/exist/apps/eyeehr/modules/get-note.xq',
+			{
+				'patient_id' : i_patientId, 
+				'date' : i_yyyyMMdd, 
+				'time' : i_hhmmss
+			}
+		).children;
+		
+		this.setByXml(xml);
 	}
 
 	/**
@@ -208,10 +219,12 @@
 		$jquery.empty();
 
 		$note = $(i_xml);
+		console.log($note[0]);
 
 		$note.children().each(function(){
 
 			var container = null;
+			console.log($(this)[0].tagName);
 			switch($(this)[0].tagName)
 			{
                 case NoteItemContainerComplaint.ClassName : // 主訴
@@ -259,6 +272,16 @@ Note.Create = function(i_patientId, i_yyyyMMdd, i_hhmmss)
 {
 	var ret = new Note(i_patientId, i_yyyyMMdd, i_hhmmss);
 	return ret;
+}
+
+/**
+ * 指定患者の指定日時のカルテを新規作成する。
+ * @method Create
+ * @param {Number} i_patientId 患者番号
+ */
+Note.GetNoteList = function (i_patientId)
+{
+
 }
 
 /**

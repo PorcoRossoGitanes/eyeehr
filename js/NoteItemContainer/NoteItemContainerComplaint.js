@@ -74,3 +74,8 @@ var NoteItemContainerComplaint = function () {
     }
 })();
 
+/**
+ * @property {String} ClassName クラス名
+ * @static
+ */
+NoteItemContainerComplaint.ClassName = 'NoteItemContainerComplaint';

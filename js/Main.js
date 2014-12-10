@@ -92,8 +92,8 @@ $(function() {
      */
     function LoadNote()
     {
-        var filePath = $('#CurrentFilePath').val();
-        present.loadXml(filePath);        
+        //var filePath = $('#CurrentFilePath').val();
+        present.loadXml(present._patientId, present._yyyyMMdd, present._hhmmss);        
     }
 
     /**

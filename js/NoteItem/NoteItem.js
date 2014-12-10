@@ -444,7 +444,7 @@ NoteItem.HtmlToXml = function($i_jquery) {
  * @param {method()} callback コールバック関数
  */
 NoteItem.ChangeRemark = function(i_noteItemId, i_content, callback) {
-    $jquery = $('#' + i_noteItemId);
+    $item = $('#' + i_noteItemId);
 
     $memo = $('<memo>' + i_content + '</memo>');
     $strongs = $memo.find('strong');
@@ -455,8 +455,8 @@ NoteItem.ChangeRemark = function(i_noteItemId, i_content, callback) {
             (index == ($strongs.length - 1) ? '' : ',');
     }
 
-    $jquery.find('#tags').html(tags);
-    $jquery.find('[name="Remark"]').html(i_content);
+    $item.find('#tags').html(tags);
+    $item.find('[name="Remark"]').html(i_content);
 
     if (callback !== undefined) callback();
 }
