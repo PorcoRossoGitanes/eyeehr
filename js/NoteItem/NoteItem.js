@@ -68,29 +68,6 @@ var NoteItem = function() {
     //$(this._jquery).draggable();
 
     /**
-     * @event「ファイルアップロード」ボタンが押下された時、ファイルを選択する。
-     */
-    $(this._jquery).find('#attachFile').click(function() {
-
-        // ファイル選択ボタンを取得する。
-        $inputAttachFile = $(this).parent().find('form > input[type="file"]');
-
-        // ファイル選択ボタンをクリックする。
-        $inputAttachFile.click();
-
-        /**
-         * @event ファイルデータが追加された場合、画像を追加する。
-         */
-        $inputAttachFile.change(function() {
-            if ($(this).val() != "") {
-                $form = $(this).parent();
-                $form.submit();
-            }
-        });
-
-    });
-
-    /**
      * @event 「最小化」ボタンの押下時、最小化を切替える。
      */
     $(this._jquery).find('#min').click(function() {
@@ -201,6 +178,28 @@ var NoteItem = function() {
             '<iframe name="' + iframetarget + '" style="display:none"></iframe>'; //結果表示用iframe
         $(formAttachFile).insertBefore($(this._jquery).find('#attachFile'));
 
+        /**
+         * @event「ファイルアップロード」ボタンが押下された時、ファイルを選択する。
+         */
+        $(this._jquery).find('#attachFile').click(function() {
+
+            // ファイル選択ボタンを取得する。
+            $inputAttachFile = $(this).parent().find('form > input[type="file"]');
+
+            // ファイル選択ボタンをクリックする。
+            $inputAttachFile.click();
+
+            /**
+             * @event ファイルデータが追加された場合、画像を追加する。
+             */
+            $inputAttachFile.change(function() {
+                if ($(this).val() != "") {
+                    $form = $(this).parent();
+                    $form.submit();
+                }
+            });
+        });
+        
         /**
          * @event 添付ファイル保存処理が実施され、結果がiframeにロードされた時、添付ファイルを表示する。
          * iframeには、ファイルのimgタグが返却される。

@@ -100,6 +100,9 @@ function Note(i_patient, i_date, i_time, i_doctor) {
      */
     $jquery = $('[name="' + Note.ClassName + '"]');
 
+    // ファイル添付用に現在のコレクションを退避しておく。（NoteItemで使用する。）
+    $jquery.data('Collection', this._collection);
+
     // デバッグ用
     console.log(Note.TagPatient + ':' + this._patient);
     console.log(Note.TegDate + ':' + this._date);
@@ -259,9 +262,11 @@ function Note(i_patient, i_date, i_time, i_doctor) {
      * @param {Number} i_patinetId 患者番号
      * @param {String} i_date 作成日(yyyyMMdd)
      * @param {String} i_time 作成時刻(hhmmss)
+     * @param {Number} i_doctor 医師番号（スタッフ番号）
      * @return {Boolean} true=成功、false=失敗
+     * TODO : 医師情報で絞れていない。
      */
-    _proto.loadXml = function(i_patientId, i_date, i_time) {
+    _proto.loadXml = function(i_patientId, i_date, i_time, i_doctor) {
         var ret = false;
 
         // DBから指定のカルテを読み込む。
@@ -419,7 +424,7 @@ Note.Exist = function(i_patientId, i_date, i_time) {
  * @return {Object} <Notes />
  */
 Note.GetNoteList = function(i_patientId, i_date) {
-    const URL = '/exist/apps/eyeehr/modules/get-note-list.xq';
+    const URL = '/exist/apps/eyeehr/modules/get-patient-note-list.xq';
 
     var ret = (Utility.LoadXml('POST', URL, {
         'patient_id': i_patientId
