@@ -1,4 +1,4 @@
-//----- Method Draw ------
+//----- Method Draw --------------------------------------------------
 /**
  * シェーマを追加する。
  * @param {String} i_noteItemId NoteItem ID
@@ -16,11 +16,13 @@ function AttachScheme(i_noteItemId, i_url, callback) {
  * @param {function()} コールバック関数
  */
 function ChangeRemark(i_noteItemId, i_content, callback) {
-        NoteItem.ChangeRemark(i_noteItemId, i_content, callback);
-    }
-    //----- Method Draw ------
+    NoteItem.ChangeRemark(i_noteItemId, i_content, callback);
+}
+//----- Method Draw --------------------------------------------------
 
-//----- ドキュメントロード時処理 -----------------------------------------------------
+
+
+//----- ドキュメントロード時処理 -----------------------------------------
 $(function() {
 
     var present = null;
@@ -28,37 +30,35 @@ $(function() {
     // 左サイドメニューを生成する。
     $('#SideMenuLeft').sidr();
 
+    // 左メインメニューを作成し、位置を修正し、表示する。
+    $('#MenuLeft').css('left', 0);
+    $('#MenuLeft').css('top', 0);
+    // 左メインメニューのタブを生成する。
+    $('#tab').tabs();
+
+    // 右メインメニューを作成し、位置を修正し、表示する。
+    $('#MenuRight').css('left', parseFloat($(window).width()) - parseFloat($('#MenuRight').width()));
+    $('#MenuRight').css('top', -parseFloat($('#MenuLeft').css('height')));
 
     // スタンプガジェットを作成する。
     var stampGadget = new StampGadget();
 
-    // 左メインメニュー・右メインメニューを生成し、表示する。
-    $('#MenuLeft').css('left', 0);
-    $('#MenuLeft').css('top', 0);
-    // タブを生成する。
-    $('#tab').tabs();
-
-    $('#MenuRight').css('left', parseFloat($(window).width()) - parseFloat($('#MenuRight').width()));
-    $('#MenuRight').css('top', -parseFloat($('#MenuLeft').css('height')));
-
+    // 左メニュー・右メニューをスクロールに応じて移動させる。
     $(window).scroll(function() {
-
+        // 上座標をウィンドウの上座標に合わせる。
         var scrollTop = parseInt($(this).scrollTop());
-
         $('#MenuLeft').css('top', scrollTop);
         $('#MenuRight').css('top', scrollTop - parseFloat($('#MenuLeft').css('height')));
-        console.log(parseFloat($('#MenuLeft').css('height')));
-        $('#MenuLeft').animate({
-            top: scrollTop
-        }, {
-            duration: 800,
-            queue: false,
-            easing: "easeOutCubic",
-        });
+        // $('#MenuLeft').animate({
+        //     top: scrollTop
+        // }, {
+        //     duration: 800,
+        //     queue: false,
+        //     easing: "easeOutCubic",
+        // });
     });
 
-
-    //----- イベント登録 -----
+    //----- イベント登録 -----------------------------------------------
     /**
      * @event 患者IDが入力され、RETURN(ENTER)キーが押下された時、患者の本日のカルテを表示する。
      */
@@ -69,7 +69,13 @@ $(function() {
             return false;
         }
     });
-
+    /**
+     * 患者番号からカルテを表示する。
+     * 当日の患者カルテががある場合、ユーザーにカルテを新規作成するか確認し、新規作成、または、最後のカルテを表示する。
+     * 当日の患者のカルテがない場合、カルテを新規作成する。
+     * @method LoadPatient
+     * @param {Number} i_patientId 患者ID
+     */
     function LoadPatient(i_patientId) {
         var ret = true;
 
@@ -120,7 +126,6 @@ $(function() {
      * @method LoadNote
      */
     function LoadNote() {
-        //var filePath = $('#CurrentFilePath').val();
         present.loadXml(present._patientId, present._yyyyMMdd, present._hhmmss);
     }
 
@@ -135,10 +140,22 @@ $(function() {
      * @method SaveNote
      */
     function SaveNote() {
-        if (present) present.saveXml();
-        // TODO : 現在のカルテファイルパスを表示する。
-        $('#CurrentFilePath').val(present.getCollection());
+
+        if (present) {
+            // カルテを保存する。
+            present.saveXml();
+            // 現在のカルテファイルパスを表示する。
+            $('#CurrentFilePath').val(present.getCollection());
+        }
     }
+
+    /**
+     * @event [開発]カルテHTMLを押下時、カルテHTMLをログ表示する。
+     */
+    $('#DebutNoteHTML').click(function(){
+        $jquery = $('[name="' + Note.ClassName + '"]');
+        console.log($jquery[0]);
+    });
 
     /**
      * @event「患者情報」ボタンを押下時、患者情報を表示する。
@@ -146,8 +163,8 @@ $(function() {
     $('button#patient-info').click(function() {
         alert('患者情報表示');
     });
-    //----- イベント登録 -----
+    //----- イベント登録 -----------------------------------------------
 
 
 });
-//----- ロード時、処理 -----
+//----- ロード時、処理 -------------------------------------------------
