@@ -6,7 +6,7 @@
  */
 var StampListDisease = function() {
 
-    StampList.call(this, false, true);
+    StampList.call(this, false, false);
 
     /**
      * @property {String} _id ID
