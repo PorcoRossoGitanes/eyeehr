@@ -38,6 +38,7 @@ if (!isset($_SESSION["USERID"])) {
         <li id="LoadNote"><a href="#">開く</a></li>
         <li id="SaveNote"><a href="#">保存</a></li>
         <li><a href="logout.php">ログアウト</a></li>
+        <li id="DebutNoteHTML"><a href="#">[開発]カルテHTML</a></li>
       </ul>
     </div>
 
@@ -183,6 +184,7 @@ if (!isset($_SESSION["USERID"])) {
 <!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->
   <script src="js/jquery.base64/jquery.base64.js"></script>
   
+  <script src="js/String.js"></script>
   <script src="js/Utility/Utility.js"></script>
   
   <script src="js/Config/Config.js"></script>
