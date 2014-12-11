@@ -61,4 +61,4 @@ StampTreatment.ClassName = 'StampTreatment';
  * @property {String} To 貼付先
  * @static
  */
-StampTreatment.To =  'NoteItemContainerOperation';
+StampTreatment.To =  'NoteItemContainerTreatment';
