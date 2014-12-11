@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-import module namespace eyeehr-note="eyeehr-note" at "./eyeehr-note.xq";
+import module namespace eyeehr-note="eyeehr-note" at "./eyeehr/eyeehr-note.xq";
 
 (:
 	@summary 指定の患者・日時のカルテを取得する。

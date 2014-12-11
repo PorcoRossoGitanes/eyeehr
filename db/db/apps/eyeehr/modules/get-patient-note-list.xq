@@ -6,8 +6,15 @@ xquery version "3.0";
 	@return {String} カルテコレクションリスト 
 :)
 
-import module namespace eyeehr-note="eyeehr-note" at "./eyeehr-note.xq";
+import module namespace eyeehr-note="eyeehr-note" at "./eyeehr/eyeehr-note.xq";
 
 let $patient_id := xs:integer(request:get-parameter('patient_id', ''))
-
-return eyeehr-note:get-note-list($patient_id)
+let $doctor_id := 
+	try
+	{
+		xs:integer(request:get-parameter('doctor_id', ''))
+	} catch *
+	{
+		0 (:医師未指定:)
+	}
+return eyeehr-note:get-patient-note-list($patient_id, $doctor_id)
