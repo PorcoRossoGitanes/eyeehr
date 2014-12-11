@@ -152,43 +152,25 @@ Utility.GetExtention = function(url) {
     return ext;
 }
 
-/**
- * コレクションを作成する。
- * @static
- * @method CreateCollection
- * @param {String} i_collectionPath コレクションパス
- * @return 実行結果（true=成功, false=失敗）
- */
-Utility.CreateCollection = function(i_collectionPath) {
+// /**
+//  * コレクションを作成する。（ドキュメント保存時に動的にコレクションも作成するため、不要となった。）
+//  * @static
+//  * @method CreateCollection
+//  * @param {String} i_collectionPath コレクションパス
+//  * @return 実行結果（true=成功, false=失敗）
+//  */
+// Utility.CreateCollection = function(i_collectionPath) {
 
-    var ret = false;
+//     var ret = false;
 
-    const URL = "/exist/apps/eyeehr/modules/create-collection.xql";
-    var message_error = 'コレクションの作成に失敗しました。';
+//     const URL = "/exist/apps/eyeehr/modules/create-collection.xq";
+//     var message_error = 'コレクションの作成に失敗しました。';
 
-    var lastIndexOfSlash = i_collectionPath.lastIndexOf('/');
+//     var result = Utility.LoadXml('POST', URL, {'collection' : i_collectionPath})
 
-    if (lastIndexOfSlash >= 0) {
-        var senddata =
-            "parent-collection=" + i_collectionPath.substring(0, lastIndexOfSlash) +
-            "&target-collection=" + i_collectionPath.substr(lastIndexOfSlash + 1);
-        $.ajax({
-            url: URL, // コレクション毎取得する場合
-            async: false, // 同期通信に設定する
-            cache: false,
-            dataType: "xml",
-            data: senddata,
-            success: function(xml) {
-                ret = true;
-            },
-            error: function() {
-                    alert(message_error);
-                } //,
-        });
-    }
-
-    return ret;
-}
+//     console.log(result.children);
+//     return ret;
+// }
 
 /**
  * XMLファイルをXMLDB(eXistDB)に保存する。
@@ -207,8 +189,6 @@ Utility.SaveXml = function(i_path, i_xml, callback) {
     // コレクションとファイル名を取得する。
     var collection = i_path.substr(0, i_path.lastIndexOf('/'));
     var file = i_path.substr(i_path.lastIndexOf('/') + 1);
-
-    ret = ret && Utility.CreateCollection(collection);
 
     // ファイルをXMLDB上に保存する。
     if (ret) {
