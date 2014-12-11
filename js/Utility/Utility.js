@@ -292,7 +292,7 @@ Utility.RemoveDoc = function(i_path) {
      *      GET時　   URL?以降のGETパラメータ　例）"param1=aaa&param2=bbb"
      *      POST時　  POSTパラメータ(JSON形式）　例）{"page": 2}
      * @param {Functio(Object)} callback コールバック関数
-     * @return {Object} XMLデーター
+     * @return {Object} 成功時、XMLデーター。失敗時、null。
      * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
      */
 Utility.LoadXml = function(i_type, i_path, i_senddata, callback) {

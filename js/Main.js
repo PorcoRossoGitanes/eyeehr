@@ -20,8 +20,6 @@ function ChangeRemark(i_noteItemId, i_content, callback) {
 }
 //----- Method Draw --------------------------------------------------
 
-
-
 //----- ドキュメントロード時処理 -----------------------------------------
 $(function() {
 
@@ -88,27 +86,29 @@ $(function() {
         }
 
         if (ret) {
+
             // 本日の日付を取得する。
             var today = Utility.GetCurrentDate();
-            hhmmss = Utility.GetCurrentTime();
+            var time = Utility.GetCurrentTime();
+            
             // 当日のデーターが存在するか確認する。
             var exist = Note.Exist(i_patientId, today);
+            
             var create = !exist;
             if (exist) {
                 // カルテを作成するか確認メッセージを表示する。
                 // 「はい」の場合はカルテを作成する。「いいえ」の場合は本日の最後のカルテを開く
                 create = confirm('本日のカルテが存在します。新規作成しますか。');
             }
+            
             if (create) {
-                // 指定の患者の本日のカルテを作成する。
-                present = Note.Create(i_patientId, today, hhmmss);
+                // カルテが存在しない場合、および、新規作成が選択された場合、指定の患者の本日のカルテを作成する。
+                present = new Note(i_patientId, today, time, 1); // TODO : 医師番号
             } else {
-                // 本日の最後のカルテを開く
+                // TODO : 本日の最後のカルテを開く
             }
 
-        }
-        if (ret) {
-
+            // TODO : 直前のカルテがあれば、カルテを表示する。
         }
 
         $('#CurrentFilePath').val(present.getCollection());
@@ -126,7 +126,7 @@ $(function() {
      * @method LoadNote
      */
     function LoadNote() {
-        present.loadXml(present._patientId, present._yyyyMMdd, present._hhmmss);
+        present.loadXml(present._patient, present._date, present._time);
     }
 
     /**
