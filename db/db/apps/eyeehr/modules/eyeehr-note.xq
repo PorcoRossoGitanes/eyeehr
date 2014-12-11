@@ -4,7 +4,7 @@ module namespace eyeehr-note = "eyeehr-note";
 import module namespace eyeehr-util="eyeehr-util" at "./eyeehr-util.xq";
 
 (:
-	@summary 指定の患者・日時のカルテを取得する。
+    @summary 指定の患者・日時のカルテを取得する。
 	@param $patient_id {String} $patient_id 患者ID
 	@param $yyyyMMdd {String} $date 作成日（yyyyMMdd）
 	@param $hhmmss {String} $time 作成時刻（hhmmss）
@@ -25,18 +25,22 @@ as node()*
 (: 
     @summary 指定の患者のカルテ一覧を取得する
     @param $collection = コレクション（ex:/db/apps/eyeehr/data/Note/Patient-to-9999/Patient-1/）
-	@return コレクション一覧（ex:/db/apps/eyeehr/data/Note/Patient-to-9999/Patient-1/yyyyMMdd/hhmmss）
+	@return コレクション一覧 <Notes />（ex:/db/apps/eyeehr/data/Note/Patient-to-9999/Patient-1/yyyyMMdd/hhmmss）
 	@example eyeehr-note:get-note-list('1')
 :)
 declare function eyeehr-note:get-note-list($patinet_id as xs:integer) 
 as node()*
 {
-	let $collection := '/db/apps/eyeehr/data/Note/' ||  eyeehr-note:get-Patient-to($patinet_id) || '/Patient-' || $patinet_id || '/'
-	let $note-list := 
-		for $date in xmldb:get-child-collections($collection)
-			for $time in xmldb:get-child-collections($collection || $date)
-				return <Note>{$collection || $date || '/' ||  $time}</Note>
-	return <Notes>{$note-list}</Notes>
+	try {
+		let $collection := '/db/apps/eyeehr/data/Note/' ||  eyeehr-note:get-Patient-to($patinet_id) || '/Patient-' || $patinet_id || '/'
+		let $note-list := 
+			for $date in xmldb:get-child-collections($collection)
+				for $time in xmldb:get-child-collections($collection || $date)
+					return <Note>{$collection || $date || '/' ||  $time}</Note>
+		return <Notes>{$note-list}</Notes>
+	} catch * {
+		<Notes />
+	}
 };
 
 (: 
