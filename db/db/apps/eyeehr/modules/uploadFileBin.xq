@@ -17,7 +17,8 @@ let $filename := request:get-uploaded-file-name('file')
 let $data := request:get-uploaded-file-data('file')
  
 (:===ファイルを保存する===:)
+let $ret := eyeehr-util:upload-bin-file($collection, $filename, $data);
 return
 <html>
-   <div id='url'>{eyeehr-util:upload-bin-file($collection, $filename, $data)}</div>
+   <div id='url'>{$ret}</div>
 </html>

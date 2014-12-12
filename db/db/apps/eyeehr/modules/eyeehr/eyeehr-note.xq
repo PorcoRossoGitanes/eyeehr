@@ -56,7 +56,7 @@ as node()*
 	@param $patient_id {Number} $patient_id 患者ID
 	@param $doctor_id {Number} 医師番号 未指定:0以下
 	@return コレクション一覧 <Notes />（ex:/db/apps/eyeehr/data/Note/Patient-to-9999/Patient-1/yyyyMMdd/hhmmss）
-	@example eyeehr-note:get-note-list('1')
+	@example eyeehr-note:get-patient-note-list('1')
 	TODO : 作成途中（医師絞り込み）
 :)
 declare function eyeehr-note:get-patient-note-list($patinet_id as xs:integer, $doctor_id as xs:integer) 

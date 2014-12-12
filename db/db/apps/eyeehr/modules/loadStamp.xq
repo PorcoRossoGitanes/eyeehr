@@ -18,7 +18,7 @@ import module namespace eyeehr-stamp="eyeehr-stamp" at "./eyeehr/eyeehr-stamp.xq
 			"COMMENT" 			Comment 			=> "006" 		# コメント
 			"PRIVATE_EXPENSE" 	Private_Expense		=> "007"		# 自費診療
 		};
-	@param GET/POST [file] = ファイル(<input name="file" />)
+	@param GET/POST [target] = 対象のスタンプ(ex:DISEASE)
 	@return 
     	成功時、指定のデータが返却される。
     	失敗時、スタンプが返却されない。
@@ -26,6 +26,6 @@ import module namespace eyeehr-stamp="eyeehr-stamp" at "./eyeehr/eyeehr-stamp.xq
 
 (:===GETデータを取得する。===:)
 let $target := request:get-parameter('target', '')
-return 
+return eyeehr-stamp:get-stamp-list($target)
 	
 

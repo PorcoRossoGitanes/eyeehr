@@ -17,4 +17,4 @@ as xs:boolean
 
 	return 
 		xmldb:login($collection, $admin-id, $admin-password)
-}
+};

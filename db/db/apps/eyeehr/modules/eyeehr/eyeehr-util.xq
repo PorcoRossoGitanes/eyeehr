@@ -115,27 +115,24 @@ as xs:string
 declare function eyeehr-util:create-collection($collection as xs:string) 
 as xs:boolean
 {
-	(:===親のコレクションを分割する（再帰的にコレクションを追加するため）===:)
+    (:===親のコレクションを分割する（再帰的にコレクションを追加するため）===:)
 	let $collection-parts := tokenize($collection, '[/]')
 
 	(:===ルートからコレクションを作成していく。コレクションが既存の場合は前後で内容が変化しない事を確認した。===:)
 	let $cnt := fn:count($collection-parts)
 
-	for $index in (2 to $cnt - 1) (: $index = 1 の場合、$new-collection = ''（先頭部のため）:)
-
-		let $new-collection := $collection-parts[$index + 1]
-
-		let $current-parent-collection := string-join( $collection-parts[position() <= $index], '/')
-
-		(:指定のコレクションにログインする。:)
-		let $login := admin:login($current-parent-collection)
-		let $result :=
-			if ($login) then  
-				xmldb:create-collection($current-parent-collection, $new-collection)
-			else 
-				''
-	return ($index = $cnt - 1) 
+	let $result := 
+		for $index in (2 to $cnt - 1) (: $index = 1 の場合、$new-collection = ''（先頭部のため）:)
+			let $new-collection := $collection-parts[$index + 1]
+			let $current-parent-collection := string-join( $collection-parts[position() <= $index], '/')
+			(:指定のコレクションにログインする。:)
+			let $login := admin:login($current-parent-collection)
+			return
+				if ($login) then  xmldb:create-collection($current-parent-collection, $new-collection)
+				else ''
+		return ($collection =$result[$cnt - 2])
 };
+
 
 (: 
     @summary ドキュメントを削除する
