@@ -17,8 +17,13 @@ var StampMachine = function () {
      * @event スタンプ（ボタン）がクリックされたときに、ノートアイテムを所定のノートアイテムコンテナに添付する。
      */
     $(this._jquery).click(function() {
-        var item = Stamp.CreateNoteItem(this, StampMachine.To);
-        item.appendTo('[name="' + StampMachine.To + '"]');
+        // 貼付先が存在するか確認し、貼付先がない場合、貼り付けを中止する。
+        var selector = '[name="' + StampMachine.To + '"]';
+        if ($(selector).length > 0)
+        {
+            var item = Stamp.CreateNoteItem(this, StampMachine.To);
+            item.appendTo(selector);
+        }
     });
 };
 (function() {

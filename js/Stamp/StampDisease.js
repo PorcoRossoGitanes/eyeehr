@@ -17,8 +17,13 @@ var StampDisease = function () {
      * @event スタンプ（ボタン）がクリックされたときに、ノートアイテムを所定のノートアイテムコンテナに添付する。
      */
     $(this._jquery).click(function() {
-        var item = Stamp.CreateNoteItem(this, StampDisease.To);
-        item.appendTo('[name="' + StampDisease.To + '"]');
+        // 貼付先が存在するか確認し、貼付先がない場合、貼り付けを中止する。
+        var selector = '[name="' + StampDisease.To + '"]';
+        if ($(selector).length > 0)
+        {
+            var item = Stamp.CreateNoteItem(this, StampDisease.To);
+            item.appendTo(selector);            
+        }
     });
 
 };
