@@ -13,4 +13,5 @@ let $patient_id := request:get-parameter('patient_id', '')(:4:)
 let $date := request:get-parameter('date', '')(:'20141209':)
 let $time := request:get-parameter('time', '')(:'134107':)
 
-return eyeehr-note:get-note($patient_id, $date, $time)
+return 
+eyeehr-note:get-note($patient_id, $date, $time)

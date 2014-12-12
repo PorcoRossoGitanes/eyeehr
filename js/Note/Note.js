@@ -185,14 +185,14 @@ function Note(i_patient, i_date, i_time, i_doctor) {
             xml += '<' + Note.TagTime + '>' + this._time + '</' + Note.TagTime + '>';
             xml += '<' + Note.TagDoctor + '>' + this._doctor + '</' + Note.TagDoctor + '>'; // TODO : 1番決め打ち
             xml += '</' + Note.TagHead + '>';
-            var path = dir + '/' + 'Head.xml'
+            var path = dir + 'Head.xml'
             ret = ret && Utility.SaveXml(path, xml);
             if (ret) xmlDebug += xml;
 
             // （１）主訴コンテナのコレクションを作成し、XMLデーターを保存する。
             var dir = this._collection + NoteItemContainerComplaint.ClassName;
             var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerComplaint.ClassName));
-            var path = dir + '/' + this._filename.format(NoteItemContainerComplaint.ClassName);
+            var path = dir + this._filename.format(NoteItemContainerComplaint.ClassName);
             ret = ret && Utility.SaveXml(path, xml);
             if (ret) xmlDebug += xml;
 
@@ -200,49 +200,49 @@ function Note(i_patient, i_date, i_time, i_doctor) {
             // （２）病名コンテナのコレクションを作成し、XMLデーターを保存する。
             var dir = this._collection + NoteItemContainerDisease.ClassName;
             var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerDisease.ClassName));
-            var path = dir + '/' + this._filename.format(NoteItemContainerDisease.ClassName);
+            var path = dir + this._filename.format(NoteItemContainerDisease.ClassName);
             ret = ret && Utility.SaveXml(path, xml);
             if (ret) xmlDebug += xml;
 
             // （３）検査コンテナのコレクションを作成し、XMLデーターを保存する。
             var dir = this._collection + NoteItemContainerMedicalCheck.ClassName;
             var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerMedicalCheck.ClassName));
-            var path = dir + '/' + this._filename.format(NoteItemContainerMedicalCheck.ClassName);
+            var path = dir + this._filename.format(NoteItemContainerMedicalCheck.ClassName);
             ret = ret && Utility.SaveXml(path, xml);
             if (ret) xmlDebug += xml;
 
             // （４）メモコンテナのコレクションを作成し、XMLデーターを保存する。
             var dir = this._collection + NoteItemContainerMemo.ClassName;
             var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerMemo.ClassName));
-            var path = dir + '/' + this._filename.format(NoteItemContainerMemo.ClassName);
+            var path = dir + this._filename.format(NoteItemContainerMemo.ClassName);
             ret = ret && Utility.SaveXml(path, xml);
             if (ret) xmlDebug += xml;
 
             // （５）手術コンテナのコレクションを作成し、XMLデーターを保存する。
             var dir = this._collection + NoteItemContainerOperation.ClassName;
             var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerOperation.ClassName));
-            var path = dir + '/' + this._filename.format(NoteItemContainerOperation.ClassName);
+            var path = dir + this._filename.format(NoteItemContainerOperation.ClassName);
             ret = ret && Utility.SaveXml(path, xml);
             if (ret) xmlDebug += xml;
 
             // （６）処方コンテナのコレクションを作成し、XMLデーターを保存する。
             var dir = this._collection + NoteItemContainerPrescription.ClassName;
             var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerPrescription.ClassName));
-            var path = dir + '/' + this._filename.format(NoteItemContainerPrescription.ClassName);
+            var path = dir + this._filename.format(NoteItemContainerPrescription.ClassName);
             ret = ret && Utility.SaveXml(path, xml);
             if (ret) xmlDebug += xml;
 
             // // （７）シェーマコンテナのコレクションを作成し、XMLデーターを保存する。
             // ret = ret && Utility.CreateCollection(this._collection + NoteItemContainerScheme.ClassName);
             // var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerScheme.ClassName));
-            // var path = this._collection + this._filename.format(NoteItemContainerScheme.ClassName);
+            // var path = dir + this._filename.format(NoteItemContainerScheme.ClassName);
             // ret = ret && Utility.SaveXml(path, xml);
             //if (ret) xmlDebug += xml;
 
             // （８）処置コンテナのコレクションを作成し、XMLデーターを保存する。
             var dir = this._collection + NoteItemContainerTreatment.ClassName;
             var xml = NoteItemContainer.HtmlToXml($jquery.children('.' + NoteItemContainerTreatment.ClassName));
-            var path = dir + '/' + this._filename.format(NoteItemContainerTreatment.ClassName);
+            var path = dir + this._filename.format(NoteItemContainerTreatment.ClassName);
             ret = ret && Utility.SaveXml(path, xml);
             if (ret) xmlDebug += xml;
 

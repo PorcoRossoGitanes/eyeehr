@@ -155,7 +155,7 @@ Stamp.LoadXml = function(i_target) {
      * @property {String} SCRIPT スタンプ読込スクリプト
      * @final
      */
-    const URL = '/exist/apps/eyeehr/modules/loadStamp.xq';
+    const URL = '/exist/apps/eyeehr/modules/get-stamp-list.xq';
     // GETパラメータを設定する。
     var senddata = "target=" + i_target;
 
