@@ -33,8 +33,8 @@ var StampListMemo = function () {
     {
         $(this._head).click(function (){
             var selector = '[name="' + StampMemo.To + '"]';
-            // 貼付先が存在するか確認し、貼付先がない場合、エラーメッセージを表示する。
-            if ($(selector) !== undefined)
+            // 貼付先が存在するか確認し、貼付先がない場合、貼り付けを中止する。
+            if ($(selector).length > 0)
             {
                 var item = new NoteItemMemo(); 
                 item.appendTo(selector);

@@ -32,8 +32,8 @@ var StampListDisease = function() {
     if (this._hasOne) {
         $(this._head).click(function() {
             var selector = '[name="' + StampDisease.To + '"]';
-            // 貼付先が存在するか確認し、貼付先がない場合、エラーメッセージを表示する。
-            if ($(selector) !== undefined) {
+            // 貼付先が存在するか確認し、貼付先がない場合、貼り付けを中止する。
+            if ($(selector).length > 0)
                 var item = new NoteItemDisease();
                 item.appendTo(selector);
             }

@@ -34,7 +34,7 @@ var StampListComplaint = function () {
         $(this._head).click(function (){
             var selector = '[name="' + StampComplaint.To + '"]';
             // 貼付先が存在するか確認し、貼付先がない場合、エラーメッセージを表示する。
-            if ($(selector) !== undefined)
+            if ($(selector).length > 0)
             {
                 var item = new NoteItemComplaint(); 
                 item.appendTo(selector);
