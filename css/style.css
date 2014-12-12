@@ -49,7 +49,7 @@ div#StampGadget h3
 div#StampGadget div.StampList 
 {
   overflow: scroll;
-  height : 200px; /* TODO : 暫定 */
+  height : 600px; /* TODO : 暫定 */
   margin  : 0.em 0em 0em 0em;
   padding : 0.1em 0.1em 0.1em 0.1em;
 }

@@ -62,6 +62,7 @@ if (!isset($_SESSION["USERID"])) {
           <div style='clear:both;' id="tab">
             <ul>
               <li><a href="#tab-index">付箋</a></li>
+              <li><a href="#tab-disease">病歴</a></li>
               <li><a href="#tab-history">履歴</a></li>
             </ul>
             <div id="tab-index" style="padding:0">
@@ -110,6 +111,14 @@ if (!isset($_SESSION["USERID"])) {
                 <div class="Index IndexItem">○○検査</div>
               </div>   
             </div>
+            <div id="tab-disease" style="padding:0">
+              <!--iframe style="width:100%;height:100%"><html-->
+              <div id="History" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
+                <div class="Index IndexDate">2014/02/06</div>
+                <div class="Index IndexItem">糖尿病</div>
+                <div class="Index IndexDate">2014/01/06</div>
+                <div class="Index IndexItem">花粉症</div>
+              </div>            
             <div id="tab-history" style="padding:0">
               <!--iframe style="width:100%;height:100%"><html-->
               <div id="History" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
@@ -158,9 +167,6 @@ if (!isset($_SESSION["USERID"])) {
               </div>            
               <!--/html></iframe-->
             </div>
-            <div id="tab-ms1">
-              <p>Windows Phone</p>
-            </div>
           </div>
         </td>    
       </tr>
@@ -169,7 +175,7 @@ if (!isset($_SESSION["USERID"])) {
 
 
   <!-- 右メインメニュー -->
-  <div id="MenuRight" style="position:relative;width:280px">
+  <div id="MenuRight" style="position:relative;width:280px;">
     <table>
       <tr>
         <td>
