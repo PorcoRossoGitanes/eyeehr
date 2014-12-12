@@ -152,26 +152,6 @@ Utility.GetExtention = function(url) {
     return ext;
 }
 
-// /**
-//  * コレクションを作成する。（ドキュメント保存時に動的にコレクションも作成するため、不要となった。）
-//  * @static
-//  * @method CreateCollection
-//  * @param {String} i_collectionPath コレクションパス
-//  * @return 実行結果（true=成功, false=失敗）
-//  */
-// Utility.CreateCollection = function(i_collectionPath) {
-
-//     var ret = false;
-
-//     const URL = "/exist/apps/eyeehr/modules/create-collection.xq";
-//     var message_error = 'コレクションの作成に失敗しました。';
-
-//     var result = Utility.LoadXml('POST', URL, {'collection' : i_collectionPath})
-
-//     console.log(result.children);
-//     return ret;
-// }
-
 /**
  * XMLファイルをXMLDB(eXistDB)に保存する。
  * @static
@@ -193,7 +173,7 @@ Utility.SaveXml = function(i_path, i_xml, callback) {
     // ファイルをXMLDB上に保存する。
     if (ret) {
 
-        const URL = '/exist/apps/eyeehr/modules/uploadFileXml.xq';
+        const URL = '/exist/apps/eyeehr/modules/upload-xml-file.xq';
 
         var message_error = 'ファイルの保存に失敗しました。: {0} {1} {2}';
 
