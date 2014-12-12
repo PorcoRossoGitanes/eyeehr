@@ -2,7 +2,7 @@ xquery version "3.0";
 
 module namespace eyeehr-util = "eyeehr-util";
 
-declare namespace functx = "http://www.functx.com";
+import module namespace admin="admin" at "./admin.xq";
 
 (: 
     @summary ドキュメントの存在を確認する
@@ -13,7 +13,17 @@ declare namespace functx = "http://www.functx.com";
 declare function eyeehr-util:exists($collection as xs:string, $resource as xs:string) 
 as xs:boolean
 {
-    let $ret := not(empty(xmldb:last-modified($collection, $resource)))
+	(:指定のコレクションにログインする。:)
+	let $ret := admin:login($collection)
+
+	let $ret := 
+		if ($ret) then 
+			(:指定のリソースの最終変更時刻が存在すれば、リソースが存在するのもとする。:)
+			not(empty(xmldb:last-modified($collection, $resource)))
+		else 
+			(:それ以外の場合、リソースが存在しないものとする。:)
+			false
+
 	return $ret
 };
 
@@ -22,26 +32,36 @@ as xs:boolean
 	@param $collection = 追加対象のコレクション（末尾スラッシュなし）
 	@param $resource = リソースファイル(<input name="file" />)
 	@param $data バイナリーデーター
-	@return 成功時、対象ファイルのパス、失敗時、空文字列
+	@return 成功時、対象ファイルのパス（REST）、失敗時、空文字列
 :)
-declare function eyeehr-util:upload-bin-file($collection as xs:string, $resource as xs:string, $data as xs:base64Binary*) 
+declare function eyeehr-util:upload-bin-file(
+	$collection as xs:string, 
+	$resource as xs:string, 
+	$data as xs:base64Binary*
+) 
 as xs:string
 {
-
-	let $user := 'admin'
-	let $pswd := 'zaq12wsx'
-
 	(:===コレクションを作成する。===:)
-	let $create-collection := eyeehr-util:create-collection($collection) 
-	 
+	let $create-collection := eyeehr-util:create-collection($collection)
+
+	(:===指定のコレクションにログインする。===:)
+	let $login :=
+		if ($create-collection) then admin:login($collection)
+		else false
+	
 	(:===ファイルを保存する===:)
-	let $login := xmldb:login($collection, $user, $pswd)
-	let $store := xmldb:store($collection, $filename, $data)
+	let $store := 
+		if ($login) then xmldb:store($collection, $resource, $data)
+		else ''
 
+	(:===対象ファイルのパス（REST）を取得する。===:)
 	let $rootrest := '/exist/rest'
-	let $url := if($store  ne '') then ($rootrest || $collection || '/' || $filename) else ('')
+	let $ret := 
+		if($store ne '') then 
+			($rootrest || $collection || '/' || $resource) 
+		else ('')
 
-	return $url
+	return $ret
 };
 
 (:
@@ -53,23 +73,38 @@ as xs:string
     	成功時、画像迄のURLが返却される。
     	失敗時、空文字列が返却される
 :)
-declare function eyeehr-util:upload-xml-file($collection as xs:string, $resource as xs:string, $data as xs:string)
+declare function eyeehr-util:upload-xml-file(
+	$collection as xs:string, 
+	$resource as xs:string, 
+	$data as xs:string
+)
 as xs:string
 {
-	let $user := 'admin'
-	let $pswd := 'zaq12wsx'
-
 	(:===コレクションを作成する===:)
 	let $create-collection := eyeehr-util:create-collection($collection) 
 
-	(:===ファイルを保存する===:)
-	let $login := xmldb:login($collection, $user, $pswd)
-	let $store := xmldb:store($collection, $filename, $data)
+	(:===指定のコレクションにログインする。===:)
+	let $login := 
+		if ($create-collection) then 
+			admin:login($collection)
+		else 
+			false
 
+	(:===ファイルを保存する===:)
+	let $store := 
+		if ($login) then 
+			xmldb:store($collection, $resource, $data)
+		else 
+			''
+
+	(:===対象ファイルのパス（REST）を取得する。===:)
 	let $rootrest := '/exist/rest'
-	let $url := if($store  ne '') then ($rootrest || $collection || '/' || $filename) else ('')
+	let $ret := 
+		if($store ne '') then 
+			($rootrest || $collection || '/' || $resource) 
+		else ('')
 	 
-	return $url
+	return $ret
 };
 
 (: 
@@ -80,20 +115,25 @@ as xs:string
 declare function eyeehr-util:create-collection($collection as xs:string) 
 as xs:boolean
 {
-	let $user := 'admin'
-	let $pswd := 'zaq12wsx'
-
-	(:親のコレクションを分割する（再帰的にコレクションを追加するため）:)
+	(:===親のコレクションを分割する（再帰的にコレクションを追加するため）===:)
 	let $collection-parts := tokenize($collection, '[/]')
 
-	(: ルートからコレクションを作成していく。コレクションが既存の場合は前後で内容が変化しない事を確認した。:)
+	(:===ルートからコレクションを作成していく。コレクションが既存の場合は前後で内容が変化しない事を確認した。===:)
 	let $cnt := fn:count($collection-parts)
 
 	for $index in (2 to $cnt - 1) (: $index = 1 の場合、$new-collection = ''（先頭部のため）:)
+
 		let $new-collection := $collection-parts[$index + 1]
+
 		let $current-parent-collection := string-join( $collection-parts[position() <= $index], '/')
-		let $login := xmldb:login($current-parent-collection, $user, $pswd)
-		let $result := xmldb:create-collection($current-parent-collection, $new-collection)
+
+		(:指定のコレクションにログインする。:)
+		let $login := admin:login($current-parent-collection)
+		let $result :=
+			if ($login) then  
+				xmldb:create-collection($current-parent-collection, $new-collection)
+			else 
+				''
 	return ($index = $cnt - 1) 
 };
 
@@ -118,12 +158,14 @@ as xs:boolean
 	@param $resource = リソースファイル （ex:sample.xml）
 	@return true=成功時 false=失敗    	
 :)
+(:
 declare function eyeehr-util:delete-doc($collection as xs:string, $resource as xs:string) 
 as xs:boolean
 {
 	let $ret := not(empty(xmldb:remove($collection, $resource)))
 	return $ret
 };
+:)
 
 (: 
     @summary 末数を取得する

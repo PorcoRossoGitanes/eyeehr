@@ -1,6 +1,8 @@
 xquery version "3.0";
 
 module namespace eyeehr-note = "eyeehr-note";
+
+import module namespace admin="admin" at "./admin.xq";
 import module namespace eyeehr-util="eyeehr-util" at "./eyeehr-util.xq";
 
 (:
@@ -14,12 +16,20 @@ import module namespace eyeehr-util="eyeehr-util" at "./eyeehr-util.xq";
 declare function eyeehr-note:get-note($patient_id as xs:integer, $date as xs:string, $time as xs:string)
 as node()*
 {
-	let $collection := '/db/apps/eyeehr/data/Note/' || eyeehr-note:get-patient-to($patient_id) || '/' || 
+	let $collection := '/db/apps/eyeehr/data/Note/' || 
+		eyeehr-note:get-patient-to($patient_id) || '/' || 
 		'Patient-' || xs:string($patient_id) || '/' || $date || '/' ||  $time
-	let $data := collection($collection)
-	return 
-	if (empty($data)) then <Error Message="データーが存在しません。"/>
-	else <Note>{$data}</Note>
+
+	let $login := admin:login($collection)
+
+	let $data := if($login) then collection($collection)
+		else ()
+
+	let $ret := 
+		if (empty($data)) then <Error Message="データーが存在しません。"/>
+		else <Note>{$data}</Note>
+
+	return $ret
 };
 
 (:
@@ -56,12 +66,16 @@ as node()*
 		try {
 			(:患者のコレクションパスを取得する。:)
 			let $patient_collection := '/db/apps/eyeehr/data/Note/' ||  eyeehr-note:get-patient-to($patinet_id) || '/Patient-' || $patinet_id || '/'
+			let $login := admin:login($patient_collection)
 			let $note-list := 
-				for $date in xmldb:get-child-collections($patient_collection)
-					for $time in xmldb:get-child-collections($patient_collection || $date)
-						(:患者のカルテのコレクションパスを取得する。:)
-						let $collection := $patient_collection || $date || '/' ||  $time
-						return <Note>{$collection}</Note>
+				if ($login) then 
+					for $date in xmldb:get-child-collections($patient_collection)
+						for $time in xmldb:get-child-collections($patient_collection || $date)
+							(:患者のカルテのコレクションパスを取得する。:)
+							let $collection := $patient_collection || $date || '/' ||  $time
+							return <Note>{$collection}</Note>
+				else 
+					''
 			return <Notes>{$note-list}</Notes>
 		} catch * {
 			<Notes />

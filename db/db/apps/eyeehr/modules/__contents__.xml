@@ -18,9 +18,6 @@
     <resource type="BinaryResource" name="restxq.xql" owner="admin" group="dba" mode="755" created="2014-10-23T04:28:47+09:00" modified="2014-10-23T04:28:47+09:00" filename="restxq.xql" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="create-collection.xql" owner="admin" group="dba" mode="755" created="2014-10-24T08:30:30+09:00" modified="2014-10-31T04:36:07+09:00" filename="create-collection.xql" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
     <resource type="BinaryResource" name="delete-doc.xq" owner="admin" group="dba" mode="644" created="2014-12-10T16:18:50+09:00" modified="2014-12-10T16:18:50+09:00" filename="delete-doc.xq" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>

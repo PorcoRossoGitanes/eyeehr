@@ -17,4 +17,5 @@ let $doctor_id :=
 	{
 		0 (:医師未指定:)
 	}
-return eyeehr-note:get-patient-note-list($patient_id, $doctor_id)
+return 
+    eyeehr-note:get-patient-note-list($patient_id, $doctor_id)
