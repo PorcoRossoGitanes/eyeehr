@@ -1,39 +1,35 @@
 <collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/apps/eyeehr/modules" owner="admin" group="dba" mode="775" created="2014-09-22T23:52:09+09:00" version="1">
     <acl entries="0" version="1"/>
-    <resource type="BinaryResource" name="view.xql" owner="admin" group="dba" mode="775" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="view.xql" mimetype="application/xquery">
+    <resource type="BinaryResource" name="get-note.xq" owner="admin" group="dba" mode="755" created="2014-12-10T16:18:51+09:00" modified="2014-12-12T10:37:14+09:00" filename="get-note.xq" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="uploadFileBin.xq" owner="admin" group="dba" mode="755" created="2014-10-31T12:30:28+09:00" modified="2014-11-03T01:36:48+09:00" filename="uploadFileBin.xq" mimetype="application/xquery">
+    <resource type="BinaryResource" name="upload-xml-file.xq" owner="admin" group="dba" mode="755" created="2014-09-29T02:37:26+09:00" modified="2014-12-12T07:55:42+09:00" filename="upload-xml-file.xq" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="app.xql" owner="admin" group="dba" mode="775" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:25+09:00" filename="app.xql" mimetype="application/xquery">
+    <resource type="BinaryResource" name="view.xql" owner="admin" group="dba" mode="775" created="2014-09-22T23:52:09+09:00" modified="2014-12-12T05:58:06+09:00" filename="view.xql" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="uploadFileXml.xq" owner="admin" group="dba" mode="755" created="2014-09-29T02:37:26+09:00" modified="2014-11-03T01:42:48+09:00" filename="uploadFileXml.xq" mimetype="application/xquery">
+    <resource type="BinaryResource" name="get-patient-note-list.xq" owner="admin" group="dba" mode="755" created="2014-12-12T05:56:24+09:00" modified="2014-12-12T08:08:04+09:00" filename="get-patient-note-list.xq" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="config.xqm" owner="admin" group="dba" mode="775" created="2014-09-22T23:52:09+09:00" modified="2014-09-22T23:57:26+09:00" filename="config.xqm" mimetype="application/xquery">
+    <resource type="BinaryResource" name="restxq.xql" owner="admin" group="dba" mode="755" created="2014-10-23T04:28:47+09:00" modified="2014-12-12T05:58:06+09:00" filename="restxq.xql" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="restxq.xql" owner="admin" group="dba" mode="755" created="2014-10-23T04:28:47+09:00" modified="2014-10-23T04:28:47+09:00" filename="restxq.xql" mimetype="application/xquery">
+    <resource type="BinaryResource" name="upload-bin-file.xq" owner="admin" group="dba" mode="755" created="2014-10-31T12:30:28+09:00" modified="2014-12-12T09:01:17+09:00" filename="upload-bin-file.xq" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="delete-doc.xq" owner="admin" group="dba" mode="644" created="2014-12-10T16:18:50+09:00" modified="2014-12-10T16:18:50+09:00" filename="delete-doc.xq" mimetype="application/xquery">
+    <resource type="BinaryResource" name="app.xql" owner="admin" group="dba" mode="775" created="2014-09-22T23:52:09+09:00" modified="2014-12-12T05:57:52+09:00" filename="app.xql" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="eyeehr-note.xq" owner="admin" group="dba" mode="644" created="2014-12-10T16:18:50+09:00" modified="2014-12-10T16:18:50+09:00" filename="eyeehr-note.xq" mimetype="application/xquery">
+    <resource type="BinaryResource" name="config.xqm" owner="admin" group="dba" mode="775" created="2014-09-22T23:52:09+09:00" modified="2014-12-12T05:57:58+09:00" filename="config.xqm" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="eyeehr-util.xq" owner="admin" group="dba" mode="644" created="2014-12-10T16:18:50+09:00" modified="2014-12-10T16:18:50+09:00" filename="eyeehr-util.xq" mimetype="application/xquery">
+    <resource type="BinaryResource" name="get-patient-notes.xq" owner="admin" group="dba" mode="644" created="2014-12-12T05:56:24+09:00" modified="2014-12-12T05:58:06+09:00" filename="get-patient-notes.xq" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="get-note-list.xq" owner="admin" group="dba" mode="644" created="2014-12-10T16:18:51+09:00" modified="2014-12-10T16:18:51+09:00" filename="get-note-list.xq" mimetype="application/xquery">
+    <resource type="BinaryResource" name="get-stamp-list.xq" owner="admin" group="dba" mode="755" created="2014-11-12T06:54:02+09:00" modified="2014-12-12T07:45:17+09:00" filename="get-stamp-list.xq" mimetype="application/xquery">
         <acl entries="0" version="1"/>
     </resource>
-    <resource type="BinaryResource" name="get-note.xq" owner="admin" group="dba" mode="644" created="2014-12-10T16:18:51+09:00" modified="2014-12-10T16:18:51+09:00" filename="get-note.xq" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
-    <resource type="BinaryResource" name="loadStamp.xq" owner="admin" group="dba" mode="755" created="2014-11-12T06:54:02+09:00" modified="2014-11-25T12:12:22+09:00" filename="loadStamp.xq" mimetype="application/xquery">
-        <acl entries="0" version="1"/>
-    </resource>
+    <subcollection name="eyeehr" filename="eyeehr"/>
+    <subcollection name="config" filename="config"/>
 </collection>
