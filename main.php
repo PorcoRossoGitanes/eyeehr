@@ -50,9 +50,13 @@ if (!isset($_SESSION["USERID"])) {
       <tr>
         <td valign="top">
           <!--医師情報--><div><label>主治医</label>&nbsp; 00001 渡邉花子</div>      
-          <label>患者情報</label><!--患者情報-->
-          <input type="text" class="form-control mini" id="PatientId" value=""/>
-          <button type="button" id="patient-info" class="btn btn-default btn-xs">読込</button>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label class="sr-only" for="PatientId">患者番号</label>
+              <input type="number" class="form-control" id="PatientId" placeholder="患者番号">
+            </div>
+            <button type="button" class="btn btn-default" id="LoadPatientId">読込</button>
+          </form>
           <div>山田太郎</div>
           <button type="button" id="patient-info" class="btn btn-default btn-xs">詳細</button>
         </td>

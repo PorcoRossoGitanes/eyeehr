@@ -97,6 +97,9 @@ $(function() {
             return false;
         }
     });
+    $('#LoadPatientId').click(function () {
+        LoadPatient($(this).parents('form').find('#PatientId').val());
+    });
 
     /**
      * 患者番号からカルテを表示する。
