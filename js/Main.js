@@ -16,14 +16,50 @@ function AttachScheme(i_noteItemId, i_url, callback) {
  * @param {function()} コールバック関数
  */
 function ChangeRemark(i_noteItemId, i_content, callback) {
-    NoteItem.ChangeRemark(i_noteItemId, i_content, callback);
-}
-//----- Method Draw --------------------------------------------------
+        NoteItem.ChangeRemark(i_noteItemId, i_content, callback);
+    }
+    //----- Method Draw ----------------------------------------------
 
 //----- ドキュメントロード時処理 -----------------------------------------
 $(function() {
 
     var present = null;
+
+    // GET値を取得する。------------------------------------------------
+    var result = {};
+    if( 1 < window.location.search.length )
+    {
+        // 最初の1文字 (?記号) を除いた文字列を取得する
+        var query = window.location.search.substring( 1 );
+
+        // クエリの区切り記号 (&) で文字列を配列に分割する
+        var parameters = query.split( '&' );
+
+        for( var i = 0; i < parameters.length; i++ )
+        {
+            // パラメータ名とパラメータ値に分割する
+            var element = parameters[ i ].split( '=' );
+            var paramName = decodeURIComponent( element[ 0 ] );
+            var paramValue = decodeURIComponent( element[ 1 ] );
+
+            // パラメータ名をキーとして連想配列に追加する
+            result[ paramName ] = paramValue;
+        }
+    }
+
+    // コマンド値・NoteItemIDを取得する。
+    var get_patient = result['patient']; 
+    console.log(get_patient);
+    var get_date = result['date'];  
+    console.log(get_date);
+    var get_time = result['time'];
+    console.log(get_time);
+
+    if (get_patient && get_date && get_time)
+    {
+        present = new Note(get_patient, get_date, get_time, 1);
+    }
+    //----------------------------------------------------------------
 
     // 左サイドメニューを生成する。
     $('#SideMenuLeft').sidr();
@@ -82,48 +118,72 @@ $(function() {
 
         if (ret) {
 
+            // ■患者の本日のデータを表示する。
+
             // 本日の日付を取得する。
             var today = Utility.GetCurrentDate();
             var time = Utility.GetCurrentTime();
-            
+
             // 当日のデーターが存在するか確認する。
             var exist = Note.Exist(i_patientId, today);
-            
+
             var create = !exist;
             if (exist) {
                 // カルテを作成するか確認メッセージを表示する。
                 // 「はい」の場合はカルテを作成する。「いいえ」の場合は本日の最後のカルテを開く
                 create = confirm('本日のカルテが存在します。新規作成しますか。');
             }
-            
+
             if (create) {
                 // カルテが存在しない場合、および、新規作成が選択された場合、指定の患者の本日のカルテを作成する。
                 present = new Note(i_patientId, today, time, 1); // TODO : 医師番号
             } else {
                 // 本日の最後のカルテを開く
+                var result = true;
                 var xml = Note.GetNotes(i_patientId);
-                if ($(xml).children().length > 0)
-                {
+                if ($(xml).children().length > 0) {
                     $notes = $(xml).children(':first');
-                    if ($notes.children().length > 0)
-                    {
+                    if ($notes.children().length > 0) {
                         $note = $notes.children(':first');
                         var date = $note.children('Head').children('Date').text();
                         var time = $note.children('Head').children('Time').text();
                         present = new Note(i_patientId, date, time, 1);
+                    } else {
+                        result = false;
                     }
+                } else {
+                    result = false;
                 }
-                else 
-                {
-                    alert('適切なデーターを取得できませんでした。');
-                }
+
+                if (!result) alert('適切なデーターを取得できませんでした。');
             }
 
-            // TODO : 直前のカルテがあれば、カルテを表示する。
-
+            // ■患者のカルテ一覧を取得し、履歴・付箋・病歴を更新する。
+            var result = true;
+            var xml = Note.GetNotes(i_patientId);
+            $('#History').empty();
+            console.log($('#History')[0]);
+            if ($(xml).children().length > 0) {
+                $notes = $(xml).children(':first');
+                $notes.children().each(function () {
+                    $head = $(this).children('Head');                    
+                    var date = $head.children('Date').text();
+                    var time = $head.children('Time').text();
+                    console.log(Note.GetCollectionUrl(i_patientId, date, time) + ' ' + date + ' ' + time);
+                    $('#History').append(
+                        '<a href="main.php?patient=' + i_patientId + '&date=' + date + '&time=' + time + '" target="_blank">' + 
+                        '<div class="Index IndexDate">' + date + ' ' + time + '</div>' + 
+                        '</a>'
+                    );
+                }); 
+            } else {
+                result = false;
+            }
+            if (!result) alert('適切なデーターを取得できませんでした。');
         }
 
-        $('#CurrentFilePath').val(present.getCollection());
+        // 現行のコレクションパスを更新する。
+        if(present) $('#CurrentFilePath').val(present.getCollection());
     }
 
 
@@ -164,7 +224,7 @@ $(function() {
     /**
      * @event [開発]カルテHTMLを押下時、カルテHTMLをログ表示する。
      */
-    $('#DebutNoteHTML').click(function(){
+    $('#DebutNoteHTML').click(function() {
         $jquery = $('[name="' + Note.ClassName + '"]');
         console.log($jquery[0]);
     });

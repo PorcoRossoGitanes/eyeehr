@@ -84,11 +84,8 @@ function Note(i_patient, i_date, i_time, i_doctor) {
      * @property {String} _collection コレクションパス
      * (root)/Note/Patient-9999(*1)/Patient-n(*2)/yyyymmdd/hhmmss
      */
-    this._collection =
-        Note.CollectionRoot +
-        'Patient-to-' + (10000 * (Math.floor(this._patient / 10000) + 1) - 1) + '/' +
-        'Patient-' + this._patient + '/' +
-        this._date + '/' + this._time + '/';
+    this._collection = Note.GetCollectionUrl(this._patient, this._date, this._time);
+
 
     /**
      * @property {String} _filename ファイル名（ドキュメント）
@@ -470,4 +467,21 @@ Note.HtmlNoteToXml = function($i_jquery) {
     retVal += '</' + tag + '>';
 
     return retVal;
+}
+
+/**
+ * コレクションURLを取得する。
+ * @method GetCollectionUrl
+ * @param {Number} i_patientId 患者番号
+ * @param {String} i_date 指定日 yyyyMMdd
+ * @param {String} i_time 時刻 hhmmss
+ * @return {String} コレクションへのURL
+ */
+Note.GetCollectionUrl = function (i_patientId, i_date, i_time)
+{
+    var ret = Note.CollectionRoot +
+        'Patient-to-' + (10000 * (Math.floor(i_patientId / 10000) + 1) - 1) + '/' +
+        'Patient-' + i_patientId + '/' + i_date + '/' + i_time + '/';
+    return ret;
+        
 }

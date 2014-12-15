@@ -61,11 +61,11 @@ if (!isset($_SESSION["USERID"])) {
         <td valign="top">
           <div style='clear:both;' id="tab">
             <ul>
-              <li><a href="#tab-index">付箋</a></li>
+              <li><a href="#tab-index-list">付箋</a></li>
               <li><a href="#tab-disease">病歴</a></li>
               <li><a href="#tab-history">履歴</a></li>
             </ul>
-            <div id="tab-index" style="padding:0">
+            <div id="tab-index-list" style="padding:0">
               <div id="IndexList" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
                 <div class="Index IndexDate">2014/02/06</div>
                 <div class="Index IndexItem">○○検査</div>
@@ -113,59 +113,16 @@ if (!isset($_SESSION["USERID"])) {
             </div>
             <div id="tab-disease" style="padding:0">
               <!--iframe style="width:100%;height:100%"><html-->
-              <div id="History" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
+              <div id="Disease" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
                 <div class="Index IndexDate">2014/02/06</div>
                 <div class="Index IndexItem">糖尿病</div>
                 <div class="Index IndexDate">2014/01/06</div>
                 <div class="Index IndexItem">花粉症</div>
-              </div>            
+              </div>   
+            </div>         
             <div id="tab-history" style="padding:0">
-              <!--iframe style="width:100%;height:100%"><html-->
               <div id="History" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
-                <div class="Index IndexDate">2014/02/06</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">視力検査</div>
-                <div class="Index IndexItem">処方（AAA,XXX）</div>
-                <div class="Index IndexDate">2014/01/06</div>
-                <div class="Index IndexItem">プラン</div>
-                <div class="Index IndexDate">2013/12/08</div>
-                <div class="Index IndexItem">Dr.メモ</div>
-                <div class="Index IndexDate">2013/11/06</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexDate">2013/10/01</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexDate">2013/09/01</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexDate">2013/08/15</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexDate">2013/07/02</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexDate">2013/01/06</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexDate">2012/12/06</div>
-                <div class="Index IndexItem">アムスラー</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
-                <div class="Index IndexItem">○○検査</div>
               </div>            
-              <!--/html></iframe-->
             </div>
           </div>
         </td>    
