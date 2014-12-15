@@ -1,4 +1,11 @@
 /**
+ * @property {String} CollectionRoot カルテのコレクションルート
+ * @static
+ * @readOnly
+ */
+Patient.CollectionRoot = '/db/apps/eyeehr/data/Patient/';
+
+/**
  * 患者
  * @class Patient
  * @constructor
@@ -10,39 +17,71 @@
  })();
 
 /**
- * XMLを読込む。
+ * 患者情報を取得する。
  * @static
- * @param i_path ファイルパス(URL)
+ * @method GetInfo
+ * @param {Number} i_patientId
+ * @return 患者情報XML
+ */
+Patient.GetInfo = function (i_patientId) 
+{
+ 	var ret = ret;
+
+	const URL = '/exist/apps/eyeehr/modules/get-patient-info.xq';
+	ret = Utility.LoadXml('POST', URL, {patient_id: i_patientId});
+
+	return ret;
+}
+
+/**
+ * ORCA患者情報を読み込み、XMLDBに登録する。
+ * @static
+ * @method LoadXmlFromOrcaToXmlDb
+ * @param i_patientId 患者番号
+ * @return true=成功, false=失敗
  * @remarks ファイルが存在しない場合は新規保存、既存の場合は編集する。
  */
- Patient.LoadXmlFromOrca = function () 
+ Patient.LoadXmlFromOrcaToXmlDb = function (i_patientId) 
  {
-	// 画像をXMLDB上に保存する。
-	var url = 'http://192.168.24.117:8000/api01rv2/patientgetv2?id=1233';
-    //console.log(url);
+ 	var ret = true;
 
-    $.ajax({
-	  	async 	: false, 	// 同期通信
-	  	url 	: url,
-	  	type 	:'GET',
-	  	cache 	: false,
-	  	success: function(data) {
-	  		alert(data);
-			//if(callback !== undefined) callback($(data)); 
-		},
-		error: function(XMLHttpRequest, textStatus, errorThrown) 
-		{
-			alert('画像の読込みに失敗しました。: ' + 
-				XMLHttpRequest.status + ' ' + textStatus + ' ' + errorThrown.message
-				);
-        	// $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
-        	// $("#textStatus").html("textStatus : " + textStatus);
-        	// $("#errorThrown").html("errorThrown : " + errorThrown.message);
-        },
-		// complete : function(data) 
-		// {
-		// 	console.log('画像をXMLDBに保存する処理が完了した。');
-		//     //alert("finishi");
-		// }
-	});
+ 	var xml = '';
+
+ 	// ORCAの情報を取得する。
+ 	if (ret)
+ 	{
+		const URL = '/eyeehr/cgi-bin/Orca/patientgetv2.rb';
+		var doc = Utility.LoadXml('POST', URL, {patient_id: i_patientId});
+		xml = Utility.XmlToStr(doc);
+		console.log(xml);
+		ret = (xml.length > 0);
+ 	}
+
+	// 上記の情報をXMLDBに登録する。
+	if (ret)
+	{
+		var path = Patient.GetCollectionUrl(i_patientId) + 'Orca.xml'
+		console.log(path);
+		ret = Utility.SaveXml(path, xml);
+	}
+
+	return ret;
+}
+
+/**
+ * コレクションURLを取得する。
+ * @static
+ * @method GetCollectionUrl
+ * @param {Number} i_patientId 患者番号
+ * @param {String} i_date 指定日 yyyyMMdd
+ * @param {String} i_time 時刻 hhmmss
+ * @return {String} コレクションへのURL
+ */
+Patient.GetCollectionUrl = function (i_patientId)
+{
+    var ret = Patient.CollectionRoot +
+        'Patient-to-' + (10000 * (Math.floor(i_patientId / 10000) + 1) - 1) + '/' + 
+        'Patient-' + i_patientId + '/';
+    return ret;
+        
 }

@@ -34,11 +34,12 @@ if (!isset($_SESSION["USERID"])) {
       <ul>
         <!-- デバッグ用ファイルパス -->
         <li><a href="#"><input class="form-control" id="CurrentFilePath" style="display:inline-block; display:inline;"/></a></li>
-        <li><a href="#">新規作成</a></li>
-        <li id="LoadNote"><a href="#">開く</a></li>
-        <li id="SaveNote"><a href="#">保存</a></li>
+        <!--li><a href="#">新規作成</a></li-->
+        <li id="LoadNote">開く</li>
+        <li id="SaveNote">保存</li>
+        <li id="ReallocateNote">再配置</li>
+        <li id="DebutNoteHTML">[開発]カルテHTML</li>
         <li><a href="logout.php">ログアウト</a></li>
-        <li id="DebutNoteHTML"><a href="#">[開発]カルテHTML</a></li>
       </ul>
     </div>
 
@@ -57,8 +58,13 @@ if (!isset($_SESSION["USERID"])) {
             </div>
             <button type="button" class="btn btn-default" id="LoadPatientId">読込</button>
           </form>
-          <div>山田太郎</div>
-          <button type="button" id="patient-info" class="btn btn-default btn-xs">詳細</button>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label class="sr-only" for="PatientName">患者氏名</label>
+              <input type="text" class="form-control" id="PatientName" placeholder="患者氏名">
+            </div>
+            <button type="button" class="btn btn-default" id="LoadPatientInfo">詳細</button>
+          </form>
         </td>
       </tr>
       <tr>

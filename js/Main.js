@@ -98,9 +98,8 @@ $(function() {
         }
     });
     $('#LoadPatientId').click(function () {
-        LoadPatient($(this).parents('form').find('#PatientId').val());
+        LoadPatient($('#PatientId').val());
     });
-
     /**
      * 患者番号からカルテを表示する。
      * 当日の患者カルテががある場合、ユーザーにカルテを新規作成するか確認し、新規作成、または、最後のカルテを表示する。
@@ -114,15 +113,27 @@ $(function() {
         // ■患者番号の妥当性を確認する。
         if (ret) {
             ret = Utility.IsInt(i_patientId);
-            if (!ret) {
-                alert('患者番号は半角数字で入力してください。')
-            }
+            if (!ret) alert('患者番号は半角数字で入力してください。');
         }
 
+        // ■患者データをORCAから取得する。（DBに保存する。）患者名を表示する。
         if (ret) {
+            // ORCAからXMLDBに患者データを更新する。
+            ret = Patient.LoadXmlFromOrcaToXmlDb(i_patientId);
 
-            // ■患者の本日のデータを表示する。
+            if (!ret) alert('ORCAから正常に患者情報を取得できませんでした。')
 
+            // ■　XMLDBから患者名を取得する。
+            var doc = Patient.GetInfo(i_patientId); 
+            var xml = Utility.XmlToStr(doc);
+            var name = $(xml).find('WholeName').text();
+
+            $('#PatientName').val(name);            
+        }
+
+        // ■患者の本日のデータを表示する。（存在しなければ、新規作成する。）
+        if (ret)
+        {
             // 本日の日付を取得する。
             var today = Utility.GetCurrentDate();
             var time = Utility.GetCurrentTime();
@@ -189,9 +200,19 @@ $(function() {
         if(present) $('#CurrentFilePath').val(present.getCollection());
     }
 
+    /**
+     * @event 「詳細」ボタンを押下時、患者情報を読み込む。
+     */ 
+     $('#LoadPatientInfo').click(function () {
+        var patientId = $('#PatientId').val();
+        console.log(patientId)
+        var doc = Patient.GetInfo(patientId); 
+        var xml = Utility.XmlToStr(doc);
+        alert(xml);
+     });
 
     /**
-     * @event 「読込」を選択時、カルテを読込む。
+     * @event 「読込」メニューを選択時、カルテを読込む。
      */
     $('#LoadNote').click(function() {
         LoadNote();
