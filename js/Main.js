@@ -117,19 +117,19 @@ $(function() {
         }
 
         // ■患者データをORCAから取得する。（DBに保存する。）患者名を表示する。
-        if (ret) {
-            // ORCAからXMLDBに患者データを更新する。
-            ret = Patient.LoadXmlFromOrcaToXmlDb(i_patientId);
+        // if (ret) {
+        //     // ORCAからXMLDBに患者データを更新する。
+        //     ret = Patient.LoadXmlFromOrcaToXmlDb(i_patientId);
 
-            if (!ret) alert('ORCAから正常に患者情報を取得できませんでした。')
+        //     if (!ret) alert('ORCAから正常に患者情報を取得できませんでした。')
 
-            // ■　XMLDBから患者名を取得する。
-            var doc = Patient.GetInfo(i_patientId); 
-            var xml = Utility.XmlToStr(doc);
-            var name = $(xml).find('WholeName').text();
+        //     // ■　XMLDBから患者名を取得する。
+        //     var doc = Patient.GetInfo(i_patientId); 
+        //     var xml = Utility.XmlToStr(doc);
+        //     var name = $(xml).find('WholeName').text();
 
-            $('#PatientName').val(name);            
-        }
+        //     $('#PatientName').val(name);            
+        // }
 
         // ■患者の本日のデータを表示する。（存在しなければ、新規作成する。）
         if (ret)
