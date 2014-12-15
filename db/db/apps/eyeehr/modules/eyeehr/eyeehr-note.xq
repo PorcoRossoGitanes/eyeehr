@@ -33,7 +33,7 @@ as node()*
 };
 
 (:
-	@summary 患者の全カルテを取得する。
+	@summary 患者の全カルテ（降順、新しいものを先頭）を取得する。
 	@param $patient_id {Number} $patient_id 患者ID
 	@return 患者のカルテ一覧
 	@example eyeehr-note:get-patient-notes(1) 
@@ -45,8 +45,8 @@ as node()*
 	{
 		let $notes := eyeehr-note:get-patient-note-list($patient_id, 0)
 		for $note in $notes/Note
-			let $collection := $note/text()
-			return <Note>{collection($collection)}</Note>		
+			order by $note descending
+			return <Note>{collection($note/text())}</Note>		
 	}
 	</Notes>
 };
