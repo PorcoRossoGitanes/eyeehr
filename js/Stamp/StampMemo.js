@@ -25,7 +25,6 @@ var StampMemo = function () {
             item.appendTo(selector);
         }
     });
-
 };
 (function() {
 

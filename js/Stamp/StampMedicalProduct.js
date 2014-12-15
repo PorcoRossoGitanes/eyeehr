@@ -25,7 +25,6 @@ var StampMedicalProduct = function () {
             item.appendTo(selector);
         }
     });
-
 };
 (function() {
 

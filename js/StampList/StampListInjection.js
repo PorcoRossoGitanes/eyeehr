@@ -41,6 +41,13 @@ var StampListInjection = function () {
             }
         });
     }
+
+    /**
+     * @event 貼付先選択用ラジオボタンを選択したとき、貼付先を変更する。
+     */
+    $(this._body).find('input[name="SelectTo"]:radio').change(function () {
+        StampInjection.To =  $(this).val();
+    });
 };
 (function() {
 

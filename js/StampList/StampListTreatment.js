@@ -41,6 +41,13 @@ var StampListTreatment = function () {
             }
         });
     }
+
+    /**
+     * @event 貼付先選択用ラジオボタンを選択したとき、貼付先を変更する。
+     */
+    $(this._body).find('input[name="SelectTo"]:radio').change(function () {
+        StampTreatment.To =  $(this).val();
+    });
 };
 (function() {
     // 継承設定

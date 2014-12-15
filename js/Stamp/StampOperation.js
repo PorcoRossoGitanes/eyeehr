@@ -25,7 +25,6 @@ var StampOperation = function () {
             item.appendTo(selector);            
         }
     });
-
 };
 (function() {
 

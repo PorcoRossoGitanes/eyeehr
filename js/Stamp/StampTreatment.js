@@ -25,7 +25,6 @@ var StampTreatment = function () {
             item.appendTo(selector);            
         }
     });
-
 };
 (function() {
 

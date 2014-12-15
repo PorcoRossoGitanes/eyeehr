@@ -30,10 +30,10 @@ var StampList = function (i_hasOne, i_canSelectTo) {
 	// 貼付先選択フォーム
     var selectTo = 
         '<div class="radio">' +
-        '<label><input type="radio" name="SelectTo" value="検査"> 検査</label>' +
-        '<label><input type="radio" name="SelectTo" value="処方"> 処方</label>' +
-        '<label><input type="radio" name="SelectTo" value="処置"> 処置</label>' +
-        '<label><input type="radio" name="SelectTo" value="処置"> 手術</label>' +
+        '<label><input type="radio" name="SelectTo" value="NoteItemContainerMedicalCheck"> 検査</label>' +
+        '<label><input type="radio" name="SelectTo" value="NoteItemContainerPrescription"> 処方</label>' +
+        '<label><input type="radio" name="SelectTo" value="NoteItemContainerTreatment"> 処置</label>' +
+        '<label><input type="radio" name="SelectTo" value="NoteItemContainerOperation"> 手術</label>' +
         '</div>';
 
 	// 検索フォーム
@@ -74,7 +74,6 @@ var StampList = function (i_hasOne, i_canSelectTo) {
         $body.find('button').hide();
         $body.find('button[title*="' + title + '"]').show();
     })
-
 };
 (function() {
 

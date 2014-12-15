@@ -25,7 +25,6 @@ var StampMedicalCheck = function () {
             item.appendTo(selector);        
         }
     });
-
 };
 (function() {
 

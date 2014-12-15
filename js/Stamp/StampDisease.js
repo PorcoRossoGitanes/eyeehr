@@ -25,7 +25,6 @@ var StampDisease = function () {
             item.appendTo(selector);            
         }
     });
-
 };
 (function() {
 
