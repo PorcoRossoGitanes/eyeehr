@@ -166,7 +166,7 @@ var NoteItem = function() {
             (json.AttachFile.FileType.XLS.available ? json.AttachFile.FileType.XLS.access + '' /*', '*/ : '');
 
         // 付箋（JQuery オブジェクト）を生成する 。
-        const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/uploadFileBin.xq";
+        const uploadFileToXmlDb = "/exist/apps/eyeehr/modules/upload-bin-file.xq";
         var iframetarget = 'attachFile-iframe' + this._id;
         var formAttachFile = /*** 画像ファイル入力フォーム ***/
             '<form id="attachFileForm" method="post" enctype="multipart/form-data" action="' + uploadFileToXmlDb + '" target="' + iframetarget + '" style="display:none" >' +
