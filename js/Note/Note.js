@@ -419,7 +419,7 @@ Note.Exist = function(i_patientId, i_date, i_time) {
  * 指定の患者のカルテ内容をすべて取得する。
  * @method GetNotes
  * @param {Number} i_patientId 患者番号
- * @param 指定患者のカルテの内容 <Notes />
+ * @return 指定患者のカルテの内容 <Notes />
  */
 Note.GetNotes = function (i_patientId)
 {
