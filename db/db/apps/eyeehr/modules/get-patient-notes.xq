@@ -1,5 +1,6 @@
 xquery version "3.0";
 
+import module namespace admin="admin" at "./eyeehr/admin.xq";
 import module namespace eyeehr-note="eyeehr-note" at "./eyeehr/eyeehr-note.xq";
 
 (:
@@ -11,6 +12,12 @@ import module namespace eyeehr-note="eyeehr-note" at "./eyeehr/eyeehr-note.xq";
 		:
 	</Notes>
 :)
+
+(:===ログインする。===:)
+let $collection := '/db/apps/eyeehr'
+let $login := admin:login($collection)
+
+(:===指定患者の全カルテを取得する。===:)
 let $patient_id := request:get-parameter('patient_id', '')
 
 return eyeehr-note:get-patient-notes($patient_id)

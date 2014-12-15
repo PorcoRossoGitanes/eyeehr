@@ -1,11 +1,12 @@
 xquery version "3.0";
 
+import module namespace admin="admin" at "./eyeehr/admin.xq";
 import module namespace eyeehr-stamp="eyeehr-stamp" at "./eyeehr/eyeehr-stamp.xq";
 
 (:
     @summary 対象のスタンプを取得する。
     @param     GET/POST [target] = 検索対象（下記参照）
-		use constant 
+    	use constant 
 		{
 			"DISEASE" 			Disease 			=> "   " 		# 病名・所見
 			"PRACTICE" 			Practice 			=> "001" 		# 診療行為
@@ -23,6 +24,10 @@ import module namespace eyeehr-stamp="eyeehr-stamp" at "./eyeehr/eyeehr-stamp.xq
     	成功時、指定のデータが返却される。
     	失敗時、スタンプが返却されない。
 :)
+
+(:===ログインする。===:)
+let $collection := '/db/apps/eyeehr'
+let $login := admin:login($collection)
 
 (:===GETデータを取得する。===:)
 let $target := request:get-parameter('target', '')

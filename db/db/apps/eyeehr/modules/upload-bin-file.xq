@@ -1,5 +1,6 @@
 xquery version "3.0";
 
+import module namespace admin="admin" at "./eyeehr/admin.xq";
 import module namespace eyeehr-util="eyeehr-util" at "./eyeehr/eyeehr-util.xq";
 
 (:
@@ -10,6 +11,10 @@ import module namespace eyeehr-util="eyeehr-util" at "./eyeehr/eyeehr-util.xq";
     	成功時、画像迄のURL(REST)が返却される。
     	失敗時、空文字列が返却される
 :)
+
+(:===ログインする。===:)
+let $collection := '/db/apps/eyeehr'
+let $login := admin:login($collection)
 
 (:===GETデータを取得する。===:)
 let $collection := request:get-parameter('collection', '')

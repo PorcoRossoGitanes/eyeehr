@@ -1,5 +1,6 @@
 xquery version "3.0";
 
+import module namespace admin="admin" at "./eyeehr/admin.xq";
 import module namespace eyeehr-note="eyeehr-note" at "./eyeehr/eyeehr-note.xq";
 
 (:
@@ -9,6 +10,11 @@ import module namespace eyeehr-note="eyeehr-note" at "./eyeehr/eyeehr-note.xq";
 	@param [GET/POST] {String} $time 作成時刻（hhmmss）（ex:'134107'）
 	@return カルテデーター <Note PatientId="4" Date="20141209" Time="134107">...</Note>
 :)
+
+(:===ログインする。===:)
+let $collection := '/db/apps/eyeehr'
+let $login := admin:login($collection)
+
 let $patient_id := request:get-parameter('patient_id', '')(:4:)
 let $date := request:get-parameter('date', '')(:'20141209':)
 let $time := request:get-parameter('time', '')(:'134107':)
