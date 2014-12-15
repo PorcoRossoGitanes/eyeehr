@@ -47,16 +47,10 @@ $(function() {
         var scrollTop = parseInt($(this).scrollTop());
         $('#MenuLeft').css('top', scrollTop);
         $('#MenuRight').css('top', scrollTop - parseFloat($('#MenuLeft').css('height')));
-        // $('#MenuLeft').animate({
-        //     top: scrollTop
-        // }, {
-        //     duration: 800,
-        //     queue: false,
-        //     easing: "easeOutCubic",
-        // });
     });
 
     //----- イベント登録 -----------------------------------------------
+
     /**
      * @event 患者IDが入力され、RETURN(ENTER)キーが押下された時、患者の本日のカルテを表示する。
      */
@@ -67,6 +61,7 @@ $(function() {
             return false;
         }
     });
+
     /**
      * 患者番号からカルテを表示する。
      * 当日の患者カルテががある場合、ユーザーにカルテを新規作成するか確認し、新規作成、または、最後のカルテを表示する。
@@ -105,10 +100,27 @@ $(function() {
                 // カルテが存在しない場合、および、新規作成が選択された場合、指定の患者の本日のカルテを作成する。
                 present = new Note(i_patientId, today, time, 1); // TODO : 医師番号
             } else {
-                // TODO : 本日の最後のカルテを開く
+                // 本日の最後のカルテを開く
+                var xml = Note.GetNotes(i_patientId);
+                if ($(xml).children().length > 0)
+                {
+                    $notes = $(xml).children(':first');
+                    if ($notes.children().length > 0)
+                    {
+                        $note = $notes.children(':first');
+                        var date = $note.children('Head').children('Date').text();
+                        var time = $note.children('Head').children('Time').text();
+                        present = new Note(i_patientId, date, time, 1);
+                    }
+                }
+                else 
+                {
+                    alert('適切なデーターを取得できませんでした。');
+                }
             }
 
             // TODO : 直前のカルテがあれば、カルテを表示する。
+
         }
 
         $('#CurrentFilePath').val(present.getCollection());

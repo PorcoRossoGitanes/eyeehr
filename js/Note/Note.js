@@ -381,7 +381,9 @@ function Note(i_patient, i_date, i_time, i_doctor) {
  * @return true=カルテが存在する。false=カルテが存在しない。
  */
 Note.Exist = function(i_patientId, i_date, i_time) {
+
     var ret = false;
+    
     var text = Utility.XmlToStr(Note.GetNoteList(i_patientId));
 
     if (window.DOMParser) {
@@ -417,8 +419,24 @@ Note.Exist = function(i_patientId, i_date, i_time) {
 }
 
 /**
+ * 指定の患者のカルテ内容をすべて取得する。
+ * @method GetNotes
+ * @param {Number} i_patientId 患者番号
+ */
+Note.GetNotes = function (i_patientId)
+{
+    const URL = '/exist/apps/eyeehr/modules/get-patient-notes.xq';
+
+    var ret = (Utility.LoadXml('POST', URL, {
+        'patient_id': i_patientId
+    }));
+    console.log(ret);
+
+    return ret;
+}
+/**
  * 指定患者の指定日のカルテのコレクション一覧を取得する。
- * @method Create
+ * @method GetNoteList
  * @param {Number} i_patientId 患者番号
  * @param {String} i_date 指定日（未指定の場合）全カルテを検索する。
  * @return {Object} <Notes />
