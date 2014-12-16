@@ -585,7 +585,7 @@ NoteItem.OpenMethodDraw = function(i_mode, i_noteItemId, i_url) {
  */
 NoteItem.OpenRemarkForm = function(i_noteItemId, i_content) {
     var json = Config.Load();
-    var url = 'remark.html' + '?' + 'id=' + i_noteItemId + '&' + 'content=' + escape(i_content);
+    var url = 'remark.html' + '?' + 'id=' + encodeURIComponent(i_noteItemId) + '&' + 'content=' + encodeURIComponent(i_content);
     var id = 'remark_' + i_noteItemId;
     var size = 'width=' + json['Remark'].Size['width'] + ',height=' + json['Remark'].Size['height'];
     window.open(url, id, size);

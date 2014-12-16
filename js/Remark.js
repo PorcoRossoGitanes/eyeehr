@@ -12,7 +12,7 @@ $(function() {
     /**
      * @param {String} 備考の内容
      */
-    var original = get['content']; //
+    var original = get['content'];
 
     //----- nicEdit -----
     var area = null;
