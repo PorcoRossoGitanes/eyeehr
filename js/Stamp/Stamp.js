@@ -47,11 +47,13 @@ var Stamp= function () {
      */
     var _proto = Stamp.prototype;
 
+    // システム設定を読み込む。
+    var json = Config.Load();
+
     /**
      * @param {Number} スタンプタイトル（略称・表示名）の最大長
      */
-    const SHORT_TITLE_MAX_LENGTH = 5;
-
+    const SHORT_TITLE_MAX_LENGTH = json.Stamp.ShortTitle.max_length;
 
     /**
      * クラス名を取得する。
@@ -151,11 +153,15 @@ Stamp.To =  'NoteItemContainer';
 Stamp.LoadXml = function(i_target) {
 
     var ret = null;
+
+    // システム設定を読み込む。
+    var json = Config.Load();
     /**
      * @property {String} SCRIPT スタンプ読込スクリプト
      * @final
      */
-    const URL = '/exist/apps/eyeehr/modules/get-stamp-list.xq';
+    const URL = json.Stamp.XQ;
+
     // GETパラメータを設定する。
     var senddata = "target=" + i_target;
 

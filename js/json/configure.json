@@ -80,6 +80,10 @@
         }
     },
     "Stamp": {
+        "XQ": "/exist/apps/eyeehr/modules/get-stamp-list.xq",
+        "ShortTitle": {
+            "max_length": 5
+        },
         "StampDisease": {
             "key": "DISEASE",
             "selector": "div.StampList#StampListDisease",
