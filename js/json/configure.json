@@ -1,4 +1,7 @@
 {
+    "Patient": {
+        "XQ": "/exist/apps/eyeehr/modules/get-patient-info.xq"
+        },
     "Orca": {
         "Sync": false,
         "Func": {

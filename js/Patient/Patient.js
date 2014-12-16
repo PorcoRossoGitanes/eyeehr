@@ -27,7 +27,10 @@ Patient.GetInfo = function (i_patientId)
 {
  	var ret = ret;
 
-	const URL = '/exist/apps/eyeehr/modules/get-patient-info.xq';
+    // システム設定を読み込む。
+    var json = Config.Load();
+
+	const URL = json.Patient.XQ;
 	ret = Utility.LoadXml('POST', URL, {patient_id: i_patientId});
 
 	return ret;
@@ -53,7 +56,7 @@ Patient.GetInfo = function (i_patientId)
  	// ORCAの情報を取得する。
  	if (ret)
  	{
-		const URL = json.Orca.Func['patientgetv2'].cgi;//'/eyeehr/cgi-bin/Orca/patientgetv2.rb';
+		const URL = json.Orca.Func['patientgetv2'].cgi;
 		var doc = Utility.LoadXml('POST', URL, {patient_id: i_patientId});
 		console.log(doc);
 		xml = Utility.XmlToStr(doc);
