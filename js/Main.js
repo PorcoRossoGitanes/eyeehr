@@ -16,47 +16,44 @@ function AttachScheme(i_noteItemId, i_url, callback) {
  * @param {function()} コールバック関数
  */
 function ChangeRemark(i_noteItemId, i_content, callback) {
-        NoteItem.ChangeRemark(i_noteItemId, i_content, callback);
-    }
-    //----- Method Draw ----------------------------------------------
+    NoteItem.ChangeRemark(i_noteItemId, i_content, callback);
+}
+//----- Method Draw --------------------------------------------------
 
 //----- ドキュメントロード時処理 -----------------------------------------
 $(function() {
 
     var present = null;
 
+    // システム設定を読み込む。
+    var json = Config.Load();
+
     // GET値を取得する。------------------------------------------------
     var result = {};
-    if( 1 < window.location.search.length )
-    {
+    if (1 < window.location.search.length) {
         // 最初の1文字 (?記号) を除いた文字列を取得する
-        var query = window.location.search.substring( 1 );
+        var query = window.location.search.substring(1);
 
         // クエリの区切り記号 (&) で文字列を配列に分割する
-        var parameters = query.split( '&' );
+        var parameters = query.split('&');
 
-        for( var i = 0; i < parameters.length; i++ )
-        {
+        for (var i = 0; i < parameters.length; i++) {
             // パラメータ名とパラメータ値に分割する
-            var element = parameters[ i ].split( '=' );
-            var paramName = decodeURIComponent( element[ 0 ] );
-            var paramValue = decodeURIComponent( element[ 1 ] );
+            var element = parameters[i].split('=');
+            var paramName = decodeURIComponent(element[0]);
+            var paramValue = decodeURIComponent(element[1]);
 
             // パラメータ名をキーとして連想配列に追加する
-            result[ paramName ] = paramValue;
+            result[paramName] = paramValue;
         }
     }
 
     // コマンド値・NoteItemIDを取得する。
-    var get_patient = result['patient']; 
-    console.log(get_patient);
-    var get_date = result['date'];  
-    console.log(get_date);
-    var get_time = result['time'];
-    console.log(get_time);
+    var get_patient = result['patient'];//console.log(get_patient);
+    var get_date = result['date'];//console.log(get_date);
+    var get_time = result['time'];//console.log(get_time);
 
-    if (get_patient && get_date && get_time)
-    {
+    if (get_patient && get_date && get_time) {
         present = new Note(get_patient, get_date, get_time, 1);
     }
     //----------------------------------------------------------------
@@ -97,7 +94,7 @@ $(function() {
             return false;
         }
     });
-    $('#LoadPatientId').click(function () {
+    $('#LoadPatientId').click(function() {
         LoadPatient($('#PatientId').val());
     });
     /**
@@ -116,24 +113,26 @@ $(function() {
             if (!ret) alert('患者番号は半角数字で入力してください。');
         }
 
-        // ■患者データをORCAから取得する。（DBに保存する。）患者名を表示する。
-        // if (ret) {
-        //     // ORCAからXMLDBに患者データを更新する。
-        //     ret = Patient.LoadXmlFromOrcaToXmlDb(i_patientId);
+        //■患者データをORCAから取得する。（DBに保存する。）患者名を表示する。
+        if (ret && json.Orca.Sync)
+        {
+            // ORCAからXMLDBに患者データを更新する。
+            ret = Patient.LoadXmlFromOrcaToXmlDb(i_patientId);
 
-        //     if (!ret) alert('ORCAから正常に患者情報を取得できませんでした。')
+            if (!ret) alert('ORCAから正常に患者情報を取得できませんでした。')
+        }
 
-        //     // ■　XMLDBから患者名を取得する。
-        //     var doc = Patient.GetInfo(i_patientId); 
-        //     var xml = Utility.XmlToStr(doc);
-        //     var name = $(xml).find('WholeName').text();
+        if (ret) {
+            // ■　XMLDBから患者名を取得する。
+            var doc = Patient.GetInfo(i_patientId); 
+            var xml = Utility.XmlToStr(doc); 
+            var name = $(xml).find('WholeName').text();
 
-        //     $('#PatientName').val(name);            
-        // }
+            $('#PatientName').val(name);            
+        }
 
         // ■患者の本日のデータを表示する。（存在しなければ、新規作成する。）
-        if (ret)
-        {
+        if (ret) {
             // 本日の日付を取得する。
             var today = Utility.GetCurrentDate();
             var time = Utility.GetCurrentTime();
@@ -179,17 +178,17 @@ $(function() {
             console.log($('#History')[0]);
             if ($(xml).children().length > 0) {
                 $notes = $(xml).children(':first');
-                $notes.children().each(function () {
-                    $head = $(this).children('Head');                    
+                $notes.children().each(function() {
+                    $head = $(this).children('Head');
                     var date = $head.children('Date').text();
                     var time = $head.children('Time').text();
                     console.log(Note.GetCollectionUrl(i_patientId, date, time) + ' ' + date + ' ' + time);
                     $('#History').append(
-                        '<a href="main.php?patient=' + i_patientId + '&date=' + date + '&time=' + time + '" target="_blank">' + 
-                        '<div class="Index IndexDate">' + date + ' ' + time + '</div>' + 
+                        '<a href="main.php?patient=' + i_patientId + '&date=' + date + '&time=' + time + '" target="_blank">' +
+                        '<div class="Index IndexDate">' + date + ' ' + time + '</div>' +
                         '</a>'
                     );
-                }); 
+                });
             } else {
                 result = false;
             }
@@ -197,19 +196,19 @@ $(function() {
         }
 
         // 現行のコレクションパスを更新する。
-        if(present) $('#CurrentFilePath').val(present.getCollection());
+        if (present) $('#CurrentFilePath').val(present.getCollection());
     }
 
     /**
      * @event 「詳細」ボタンを押下時、患者情報を読み込む。
-     */ 
-     $('#LoadPatientInfo').click(function () {
+     */
+    $('#LoadPatientInfo').click(function() {
         var patientId = $('#PatientId').val();
         console.log(patientId)
-        var doc = Patient.GetInfo(patientId); 
+        var doc = Patient.GetInfo(patientId);
         var xml = Utility.XmlToStr(doc);
         alert(xml);
-     });
+    });
 
     /**
      * @event 「読込」メニューを選択時、カルテを読込む。

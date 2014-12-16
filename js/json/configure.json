@@ -1,4 +1,8 @@
 {
+    "Orca": {
+        "Sync": false, 
+        "_comment" : "ORCA連携フラグ true=連携ON, false=連携OFF"
+    },
     "AttachFile": {
         "XQ": "/exist/apps/eyeehr/modules/upload-bin-file.xq",
         "FileType": {

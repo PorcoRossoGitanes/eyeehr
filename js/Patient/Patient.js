@@ -52,9 +52,10 @@ Patient.GetInfo = function (i_patientId)
  	{
 		const URL = '/eyeehr/cgi-bin/Orca/patientgetv2.rb';
 		var doc = Utility.LoadXml('POST', URL, {patient_id: i_patientId});
+		console.log(doc);
 		xml = Utility.XmlToStr(doc);
 		console.log(xml);
-		ret = (xml.length > 0);
+		ret = (xml != null);
  	}
 
 	// 上記の情報をXMLDBに登録する。
