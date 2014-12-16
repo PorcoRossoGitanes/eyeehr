@@ -1,7 +1,17 @@
 {
     "Orca": {
-        "Sync": false, 
-        "_comment" : "ORCA連携フラグ true=連携ON, false=連携OFF"
+        "Sync": false,
+        "Func": {
+            "patientgetv2": {
+                "cgi": "/eyeehr/cgi-bin/Orca/patientgetv2.rb",
+                "_comment": "患者情報をORCAから取得するCGI。"
+            },
+            "medicalmodv2": {
+                "cgi": "/eyeehr/cgi-bin/Orca/medicalmodv2.rb",
+                "_comment": "医療行為をORCAに送信するCGI。"
+            }
+        },
+        "_comment": "ORCA連携フラグ true=連携ON, false=連携OFF"
     },
     "AttachFile": {
         "XQ": "/exist/apps/eyeehr/modules/upload-bin-file.xq",
