@@ -190,10 +190,10 @@ $(function() {
      */
     $('#LoadPatientInfo').click(function() {
         var patientId = $('#PatientId').val();
-        console.log(patientId)
-        var doc = Patient.GetInfo(patientId);
-        var xml = Utility.XmlToStr(doc);
-        alert(xml);
+        const URL = 'patient.php';
+        var url = URL + '?patient=' + patientId;
+        var name = URL + (new Date().getTime());
+        window.open(url, name/*, 'width=' + 400 + ',height=' + 300*/);
     });
 
     /**
@@ -245,7 +245,5 @@ $(function() {
         alert('患者情報表示');
     });
     //----- イベント登録 -----------------------------------------------
-
-
 });
 //----- ロード時、処理 -------------------------------------------------
