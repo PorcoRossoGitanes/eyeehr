@@ -29,32 +29,18 @@ $(function() {
     var json = Config.Load();
 
     // GET値を取得する。------------------------------------------------
-    var result = {};
-    if (1 < window.location.search.length) {
-        // 最初の1文字 (?記号) を除いた文字列を取得する
-        var query = window.location.search.substring(1);
-
-        // クエリの区切り記号 (&) で文字列を配列に分割する
-        var parameters = query.split('&');
-
-        for (var i = 0; i < parameters.length; i++) {
-            // パラメータ名とパラメータ値に分割する
-            var element = parameters[i].split('=');
-            var paramName = decodeURIComponent(element[0]);
-            var paramValue = decodeURIComponent(element[1]);
-
-            // パラメータ名をキーとして連想配列に追加する
-            result[paramName] = paramValue;
-        }
-    }
-
+    /**
+     * @param {Hashtable} GET値
+     */
+    var get = Utility.GetQueryString();
     // コマンド値・NoteItemIDを取得する。
-    var get_patient = result['patient'];//console.log(get_patient);
-    var get_date = result['date'];//console.log(get_date);
-    var get_time = result['time'];//console.log(get_time);
+    var get_patient = get['patient'];//console.log(get_patient);
+    var get_date = get['date'];//console.log(get_date);
+    var get_time = get['time'];//console.log(get_time);
 
+    // 指定の患者のカルテ情報を取得する。
     if (get_patient && get_date && get_time) {
-        present = new Note(get_patient, get_date, get_time, 1);
+        present = new Note(get_patient, get_date, get_time, 1); // TODO : 医師情報1固定
     }
     //----------------------------------------------------------------
 
