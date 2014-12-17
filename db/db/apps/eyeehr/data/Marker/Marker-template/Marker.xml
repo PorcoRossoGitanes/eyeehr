@@ -1,2 +1,6 @@
 <Marker>
+	<Id>マーカーID</Id>
+	<Name>マーカー名</Name>
+	<Description>説明</Description>
+	<IMG>画像までのフルパス 例)/exist/rest/db/apps/eyeehr/data/Marker/Maker-1/icon.png</IMG>
 </Marker>
