@@ -149,7 +149,10 @@ if (!isset($_SESSION["USERID"])) {
         <li><a href="#MenuLeftTabElse">その他</a></li>
       </ul>
       <div id="MenuLeftTabStampGadget" style="padding:0"><div id="StampGadget"></div><!--スタンプリスト（アコーディオンメニュー）--></div>
-      <div id="MenuLeftTabElse" style="padding:0">Else</div>
+      <div id="MenuLeftTabElse" style="padding:0">
+        <div id="IndexGadget">付箋</div>
+        <div id="MarkGadget">ぶたさんマーク</div>
+      </div>
     </div>
   </div>
 
