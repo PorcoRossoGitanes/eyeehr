@@ -1,0 +1,105 @@
+<xmlio2>
+	<patientinfores type="record">
+		<Information_Date type="string">実施日</Information_Date>
+		<Information_Time type="string">実施時間</Information_Time>
+		<Api_Result type="string">結果コード</Api_Result>
+		<Api_Result_Message type="string">エラーメッセージ</Api_Result_Message>
+		<Reskey type="string">Patient Info</Reskey>
+		
+		<Patient_Information type="record" label="患者基本情報">
+			<Patient_ID type="string">患者番号</Patient_ID>
+			<WholeName type="string">患者氏名</WholeName>
+			<WholeName_inKana type="string">患者カナ氏名</WholeName_inKana>
+			<BirthDate type="string">生年月日</BirthDate>
+			<Sex type="string">性別(1:男性、2:女性)</Sex>
+			<HouseHolder_WholeName type="string">世帯主名</HouseHolder_WholeName>
+			
+			<Home_Address_Information type="record" label="住所情報(自宅)">
+				<Address_ZipCode type="string">郵便番号</Address_ZipCode>
+				<WholeAddress1 type="string">住所1</WholeAddress1>
+				<WholeAddress2 type="string">住所2</WholeAddress2>
+				<PhoneNumber1 type="string">自宅電話番号</PhoneNumber1>
+				<PhoneNumber2 type="string">連絡先電話番号</PhoneNumber2>
+			</Home_Address_Information>
+			
+			<Contraindication1 type="string" >禁忌１</Contraindication1>
+			<Contraindication2 type="string" >禁忌２</Contraindication2>
+			<Allergy1 type="string" >アレルギー１</Allergy1>
+			<Allergy2 type="string" >アレルギー２</Allergy2>
+			<Infection1 type="string" >感染症１</Infection1>
+			<Infection2 type="string" >感染症２</Infection2>
+			<Comment1 type="string" >コメント１</Comment1>
+			<Comment2 type="string" >コメント２</Comment2>
+			<Community_Cid_Agree type="string">同意フラグ（True：同意する、False：それ以外）</Community_Cid_Agree>
+			
+			<HealthInsurance_Information type="array" label="保険組合せ情報">
+				<HealthInsurance_Information_child type="record" loop_max="20">
+					<Insurance_Combination_Number type="string">保険組合せ番号</Insurance_Combination_Number>
+					<InsuranceProvider_Class type="string">保険の種類(060:国保)</InsuranceProvider_Class>
+					<InsuranceProvider_Number type="string">保険者番号</InsuranceProvider_Number>
+					<InsuranceProvider_WholeName type="string">保険の制度名称</InsuranceProvider_WholeName>
+					<HealthInsuredPerson_Symbol type="string">記号</HealthInsuredPerson_Symbol>
+					<HealthInsuredPerson_Number type="string">番号</HealthInsuredPerson_Number>
+					<HealthInsuredPerson_Assistance type="string">補助区分</HealthInsuredPerson_Assistance>
+					<HealthInsuredPerson_Assistance_Name type="string">補助区分名称</HealthInsuredPerson_Assistance_Name>
+					<RelationToInsuredPerson type="string">本人家族区分(1:本人、 2:家族)</RelationToInsuredPerson>
+					<HealthInsuredPerson_WholeName type="string">被保険者名</HealthInsuredPerson_WholeName>
+					<Certificate_StartDate type="string">適用開始日</Certificate_StartDate>
+					<Certificate_ExpiredDate type="string">適用終了日</Certificate_ExpiredDate>
+					
+					<PublicInsurance_Information type="array" label="公費情報">
+						<PublicInsurance_Information_child type="record" loop_max="4">
+							<PublicInsurance_Class type="string">公費の種類</PublicInsurance_Class>
+							<PublicInsurance_Name type="string">公費の種類名称</PublicInsurance_Name>
+							<PublicInsurer_Number type="string">負担者番号</PublicInsurer_Number>
+							<PublicInsuredPerson_Number type="string">受給者番号</PublicInsuredPerson_Number>
+							<Rate_Admission type="string">入院ー負担率(割) </Rate_Admission>
+							<Money_Admission type="string">入院ー固定額</Money_Admission>
+							<Rate_Outpatient type="string">外来ー負担率(割)</Rate_Outpatient>
+							<Money_Outpatient type="string">外来ー固定額</Money_Outpatient>
+							<Certificate_IssuedDate type="string">適用開始日</Certificate_IssuedDate>
+							<Certificate_ExpiredDate type="string">適用終了日</Certificate_ExpiredDate>
+						</PublicInsurance_Information_child>
+					</PublicInsurance_Information>
+				</HealthInsurance_Information_child>
+			</HealthInsurance_Information>
+			
+			<Care_Information type="record" label="介護情報">
+				<Insurance type="array" label="介護保険情報">
+					<Insurance_child type="record" loop_max="10">
+						<InsuranceProvider_Number type="string">保険者番号</InsuranceProvider_Number>
+						<HealthInsuredPerson_Number type="string">被保険者番号</HealthInsuredPerson_Number>
+						<Certificate_StartDate type="string">開始日</Certificate_StartDate>
+						<Certificate_ExpiredDate type="string">終了日</Certificate_ExpiredDate>
+					</Insurance_child>
+				</Insurance>
+				
+				<Certification type="array" label="介護認定情報">
+					<Certification_child type="record" loop_max="10">
+						<Need_Care_State_Code type="string">要介護状態コード</Need_Care_State_Code>
+						<Need_Care_State type="string">要介護状態</Need_Care_State>
+						<Certification_Date type="string">認定日</Certification_Date>
+						<Certificate_StartDate type="string">開始日</Certificate_StartDate>
+						<Certificate_ExpiredDate type="string">終了日</Certificate_ExpiredDate>
+					</Certification_child>
+				</Certification>
+				
+				<Community_Disease type="array" label="地域包括診療対象疾病">
+					<Community_Disease_child type="record">
+						<Target_Disease type="string">高血圧症（True：対象病名である、False：対象でない）</Target_Disease>
+					</Community_Disease_child>
+					<Community_Disease_child type="record">
+						<Target_Disease type="string">糖尿病（True：対象病名である、False：対象でない）</Target_Disease>
+					</Community_Disease_child>
+					<Community_Disease_child type="record">
+						<Target_Disease type="string">脂質異常症（True：対象病名である、False：対象でない）</Target_Disease>
+					</Community_Disease_child>
+					<Community_Disease_child type="record">
+						<Target_Disease type="string">認知症（True：対象病名である、False：対象でない）</Target_Disease>
+					</Community_Disease_child>
+				</Community_Disease>
+			</Care_Information>
+			
+		</Patient_Information>
+	</patientinfores>
+</xmlio2>
