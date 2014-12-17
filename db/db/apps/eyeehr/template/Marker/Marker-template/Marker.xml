@@ -1,6 +1,6 @@
 <Marker>
-	<Id>マーカーID</Id>
-	<Name>マーカー名</Name>
-	<Description>説明</Description>
-	<IMG>画像までのフルパス 例)/exist/rest/db/apps/eyeehr/data/Marker/Maker-1/icon.png</IMG>
+	<Id data-label="ID">マーカーID</Id>
+	<Name data-label="マーカー名">マーカー名</Name>
+	<Description data-label="説明">説明を入力します。</Description>
+	<Icon type="file" data-label="アイコン">アイコン画像までのフルパスを指定します。 例)/exist/rest/db/apps/eyeehr/data/Marker/Maker-1/icon.png</Icon>
 </Marker>
