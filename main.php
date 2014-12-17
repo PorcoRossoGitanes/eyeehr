@@ -69,13 +69,13 @@ if (!isset($_SESSION["USERID"])) {
       </tr>
       <tr>
         <td valign="top">
-          <div style='clear:both;' id="tab">
+          <div style='clear:both;' id="MenuLeftTab">
             <ul>
-              <li><a href="#tab-index-list">付箋</a></li>
-              <li><a href="#tab-disease">病歴</a></li>
-              <li><a href="#tab-history">履歴</a></li>
+              <li><a href="#MenuLeftTabIndexList">付箋</a></li>
+              <li><a href="#MenuLeftTabDisease">病歴</a></li>
+              <li><a href="#MenuLeftTabHistory">履歴</a></li>
             </ul>
-            <div id="tab-index-list" style="padding:0">
+            <div id="MenuLeftTabIndexList" style="padding:0">
               <div id="IndexList" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
                 <div class="Index IndexDate">2014/02/06</div>
                 <div class="Index IndexItem">○○検査</div>
@@ -121,7 +121,7 @@ if (!isset($_SESSION["USERID"])) {
                 <div class="Index IndexItem">○○検査</div>
               </div>   
             </div>
-            <div id="tab-disease" style="padding:0">
+            <div id="MenuLeftTabDisease" style="padding:0">
               <!--iframe style="width:100%;height:100%"><html-->
               <div id="Disease" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
                 <div class="Index IndexDate">2014/02/06</div>
@@ -130,7 +130,7 @@ if (!isset($_SESSION["USERID"])) {
                 <div class="Index IndexItem">花粉症</div>
               </div>   
             </div>         
-            <div id="tab-history" style="padding:0">
+            <div id="MenuLeftTabHistory" style="padding:0">
               <div id="History" style="width:100%;height:700px;overflow-y:scroll;margin:0;padding:8">
               </div>            
             </div>
@@ -143,15 +143,14 @@ if (!isset($_SESSION["USERID"])) {
 
   <!-- 右メインメニュー -->
   <div id="MenuRight" style="position:relative;width:280px;">
-    <table>
-      <tr>
-        <td>
-          <!--スタンプリスト（アコーディオンメニュー）-->
-          <div id="StampGadget">
-          </div>
-        </td>
-      </tr>
-    </table>  
+    <div style='clear:both;' id="MenuRightTab">
+      <ul>
+        <li><a href="#MenuLeftTabStampGadget">スタンプ</a></li>
+        <li><a href="#MenuLeftTabElse">その他</a></li>
+      </ul>
+      <div id="MenuLeftTabStampGadget" style="padding:0"><div id="StampGadget"></div><!--スタンプリスト（アコーディオンメニュー）--></div>
+      <div id="MenuLeftTabElse" style="padding:0">Else</div>
+    </div>
   </div>
 
 <!--自作JS ※ロードの都合上、本ファイルの末尾で登録する。-->

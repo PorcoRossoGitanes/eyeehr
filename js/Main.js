@@ -51,11 +51,13 @@ $(function() {
     $('#MenuLeft').css('left', 0);
     $('#MenuLeft').css('top', 0);
     // 左メインメニューのタブを生成する。
-    $('#tab').tabs();
+    $('#MenuLeftTab').tabs();
 
     // 右メインメニューを作成し、位置を修正し、表示する。
     $('#MenuRight').css('left', parseFloat($(window).width()) - parseFloat($('#MenuRight').width()));
     $('#MenuRight').css('top', -parseFloat($('#MenuLeft').css('height')));
+    // 右メインメニューのタブを生成する。
+    $('#MenuRightTab').tabs();
 
     // スタンプガジェットを作成する。
     var stampGadget = new StampGadget();

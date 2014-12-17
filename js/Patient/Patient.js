@@ -30,7 +30,7 @@ Patient.GetInfo = function (i_patientId)
     // システム設定を読み込む。
     var json = Config.Load();
 
-	const URL = json.Patient.XQ;
+	const URL = json.Patient.GetNote.XQ;
 	ret = Utility.LoadXml('POST', URL, {patient_id: i_patientId});
 
 	return ret;

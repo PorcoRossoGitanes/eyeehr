@@ -1,7 +1,20 @@
 {
+    "Page": {
+
+    },
+    "XmlDb": {
+        "Note": {
+            "GetNote": {
+                "XQ": "/exist/apps/eyeehr/modules/get-note.xq",
+                "_comment": "指定の患者のカルテを取得する。"
+            }
+        }
+    },
     "Patient": {
-        "XQ": "/exist/apps/eyeehr/modules/get-patient-info.xq",
-        "_comment": "指定の患者の患者情報を取得するXQuery"
+        "GetNote": {
+            "XQ": "/exist/apps/eyeehr/modules/get-patient-info.xq",
+            "_comment": "指定の患者の指定日時の患者情報を取得するXQuery"
+        }
     },
     "Orca": {
         "Sync": false,
