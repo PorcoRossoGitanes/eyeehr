@@ -41,11 +41,14 @@ if (!isset($_SESSION["USERID"])) {
     });
     </script>
 </head>
+
 <div id="example" />
 
+<script src="js/Config/Config.js"></script>
 <script src="js/String.js"></script>
 <script src="js/Utility/Utility.js"></script>
 <script src="js/Patient/Patient.js"></script>
+
 </body>
 
 </html>

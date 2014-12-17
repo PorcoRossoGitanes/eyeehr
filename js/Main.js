@@ -246,6 +246,19 @@ $(function() {
     $('button#patient-info').click(function() {
         alert('患者情報表示');
     });
+    
+    // // keyCode F1=112
+    // // http://faq.creasus.net/04/0131/CharCode.html
+    // // 通常キー　e.keyCode, e.which
+    // // Ctrl e.ctrlKey Cmd e.metaKey
+    // // Shift e.shiftKey
+    // $(document).keydown(function(e){
+    //     console.log(e.keyCode + ',' + e.which + ',' + e.ctrlKey + ',' + e.shiftKey + ',' + e.metaKey);
+    // });
+    // var code = 13; //# Enterキー
+    // $(document).trigger(
+    //     jQuery.Event( 'keydown', { keyCode: code, which: code } )
+    // );
     //----- イベント登録 -----------------------------------------------
 });
 //----- ロード時、処理 -------------------------------------------------
