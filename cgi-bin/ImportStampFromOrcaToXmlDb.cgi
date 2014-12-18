@@ -248,6 +248,7 @@ sub lineToXml
 	my $medication_unit = "";
 	my $medication_number = 1;
 	my $medication_generic_flg = MEDICATION_GENERIC_FLG_DEFAULT;
+	my $medication_priority = 0;	#スタンプ表示順位フラグ
 
 	my $title = "";
 
@@ -271,7 +272,7 @@ sub lineToXml
 	if ($key eq "DISEASE")
 	{
 		#use constant DISEASE => X; 		# 病名・所見
-		if ($length > 1)#== $len[PRACTICE])
+		if ($length > 2)#== $len[PRACTICE])
 		{
 			#$medical_class 			= $item[9];
 			#$medication_code 		= $item[1];
@@ -280,12 +281,13 @@ sub lineToXml
 			#$medication_unit 		= $item[6];
 			$id = $item[0];
 			$title = $item[1];
+			$medication_priority = $item[2];	#スタンプ優先順位フラグを読み込む
 		} 
 	}
 	elsif ($key eq "PRACTICE")
 	{
 		#use constant PRACTICE => 1; 		# 診療行為
-		if ($length > 9)#== $len[PRACTICE])
+		if ($length > 25)#== $len[PRACTICE])
 		{
 			$medical_class 			= $item[9];
 			$medication_code 		= $item[1];
@@ -294,12 +296,13 @@ sub lineToXml
 			$medication_unit 		= $item[6];
 			$id = $medication_code;
 			$title = $medication_name;
+			$medication_priority = $item[25];	#スタンプ優先順位フラグを読み込む（ExcelのZ列）
 		} 
 	}
 	elsif ($key eq "MEDICAL_PRODUCT")
 	{
 		#use constant MEDICAL_PRODUCT => 2; # 医薬品
-		if ($length > 6)#== $len[MEDICAL_PRODUCT])
+		if ($length > 16)#== $len[MEDICAL_PRODUCT])
 		{
 			#$medical_class 		= $item[9]; #見つからない
 			$medication_code 		= $item[1];
@@ -308,12 +311,13 @@ sub lineToXml
 			$medication_unit 		= $item[6];
 			$id = $medication_code;
 			$title = $medication_name;
+			$medication_priority = $item[16];	#スタンプ優先順位フラグを読み込む（ExcelのQ列）
 		}
 	}
 	elsif ($key eq "MACHINE")
 	{
 		#use constant MACHINE => 3; 		# 特定機材
-		if ($length > 7)#== $len[MACHINE])
+		if ($length > 18)#== $len[MACHINE])
 		{
 			#$medical_class 		= $item[9]; #見つからない
 			$medication_code 		= $item[1];
@@ -322,12 +326,13 @@ sub lineToXml
 			$medication_unit 		= $item[7];
 			$id = $medication_code;
 			$title = $medication_name;
+			$medication_priority = $item[18];	#スタンプ優先順位フラグを読み込む（ExcelのS列）
 		}
 	}
 	elsif ($key eq "COMMENT")
 	{
 		#use constant COMMENT => 6; 		# コメント
-		if ($length > 5) #== $len[COMMENT])
+		if ($length > 18) #== $len[COMMENT])
 		{
 			#$medical_class 		= $item[9]; #見つからない
 			$medication_code 		= $item[1];
@@ -336,12 +341,13 @@ sub lineToXml
 			#$medication_unit 		= $item[7]; #見つからない
 			$id = $medication_code;
 			$title = $medication_name;
+			$medication_priority = $item[18];	#スタンプ優先順位フラグを読み込む（ExcelのS列）
 		}
 	}
 	elsif ($key eq "PRIVATE_EXPENSE")
 	{
 		#use constant PRIVATE_EXPENSE =>7;	# 自費診療
-		if ($length > 5)#== $len[PRIVATE_EXPENSE])
+		if ($length > 18)#== $len[PRIVATE_EXPENSE])
 		{
 			#$medical_class 		= $item[9]; #見つからない
 			$medication_code 		= $item[1];
@@ -350,6 +356,7 @@ sub lineToXml
 			#$medication_unit 		= $item[7]; #見つからない
 			$id = $medication_code;
 			$title = $medication_name;
+			$medication_priority = $item[18];	#スタンプ優先順位フラグを読み込む（ExcelのS列）
 		}
 	}
 
@@ -394,10 +401,12 @@ sub lineToXml
 			"<$tag{'MEDICATION_UNIT_POINT'}>$medication_unit_point</$tag{'MEDICATION_UNIT_POINT'}>" .
 			"<$tag{'MEDICATOIN_UNIT'}>$medication_unit</$tag{'MEDICATOIN_UNIT'}>" .
 			"</$tag{'ORCA'}>";
+		print $xml;
 	}
 
 	$xml .= "<$tag{'EYEEHR'}>" . 
 		"<$tag{'TITLE'}>$title</$tag{'TITLE'}>" . 
+		"<$tag{'MEDICATOIN_PRIORITY'}>$medication_priority</$tag{'MEDICATOIN_PRIORITY'}>" .	#スタンプ優先順位フラグ
 		"</$tag{'EYEEHR'}>";
 	$xml .= "</$tag{'STAMP'}>";
 
