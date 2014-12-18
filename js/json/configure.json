@@ -1,4 +1,24 @@
 {
+    "Page": {
+        "Main": {
+            "Key" : [
+            ]
+        }
+    },
+    "XmlDb": {
+        "Note": {
+            "GetNote": {
+                "XQ": "/exist/apps/eyeehr/modules/get-note.xq",
+                "_comment": "指定の患者のカルテを取得する。"
+            }
+        }
+    },
+    "Patient": {
+        "GetNote": {
+            "XQ": "/exist/apps/eyeehr/modules/get-patient-info.xq",
+            "_comment": "指定の患者の指定日時の患者情報を取得するXQuery"
+        }
+    },
     "Orca": {
         "Sync": false,
         "Func": {
@@ -80,6 +100,10 @@
         }
     },
     "Stamp": {
+        "XQ": "/exist/apps/eyeehr/modules/get-stamp-list.xq",
+        "ShortTitle": {
+            "max_length": 5
+        },
         "StampDisease": {
             "key": "DISEASE",
             "selector": "div.StampList#StampListDisease",

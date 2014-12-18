@@ -47,16 +47,16 @@ if (!isset($_SESSION["USERID"])) {
             <!--th>マスター</th-->
             <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">スタッフ情報</button></a></td>
             <td><a href="./none.php" target="_blank"><button type="button" id="none" class="btn btn-default btn-s page">患者情報</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">マスター読込</button></a></td>
-            <td><a href="./importStampFromOrcaToXmlDb.php"><button type="button" id="importStampFromOrcaToXmlDb" class="btn btn-default btn-s page">ORCA点数マスター自動取込</button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">&nbsp;</button></a></td>
+            <td><a href="./importStampFromOrcaToXmlDb.php"><button type="button" id="importStampFromOrcaToXmlDb" class="btn btn-default btn-s page">スタンプ管理</button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">付箋管理</button></a></td>
+            <td><a href="./marker_list.php"><button type="button" id="none" class="btn btn-default btn-s page">マーカー管理</button></a></td>
           </tr>
           <tr>
             <!--th>文書</th-->
             <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">手紙※<!--作成--></button></a></td>
             <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">紹介状<!--作成--></button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">CL処方箋※<!--作成--></button></a></td>
-            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">眼鏡処方箋※<!--作成--></button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">CL処方箋※CL販売管理SYSで作成？<!--作成--></button></a></td>
+            <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">眼鏡処方箋※CL販売管理SYSで作成？<!--作成--></button></a></td>
             <td><a href="./none.php"><button type="button" id="none" class="btn btn-default btn-s page">各種書類<!--作成--></button></a></td>
           </tr>
           <tr>

@@ -51,11 +51,13 @@ $(function() {
     $('#MenuLeft').css('left', 0);
     $('#MenuLeft').css('top', 0);
     // 左メインメニューのタブを生成する。
-    $('#tab').tabs();
+    $('#MenuLeftTab').tabs();
 
     // 右メインメニューを作成し、位置を修正し、表示する。
     $('#MenuRight').css('left', parseFloat($(window).width()) - parseFloat($('#MenuRight').width()));
     $('#MenuRight').css('top', -parseFloat($('#MenuLeft').css('height')));
+    // 右メインメニューのタブを生成する。
+    $('#MenuRightTab').tabs();
 
     // スタンプガジェットを作成する。
     var stampGadget = new StampGadget();
@@ -244,6 +246,19 @@ $(function() {
     $('button#patient-info').click(function() {
         alert('患者情報表示');
     });
+    
+    // // keyCode F1=112
+    // // http://faq.creasus.net/04/0131/CharCode.html
+    // // 通常キー　e.keyCode, e.which
+    // // Ctrl e.ctrlKey Cmd e.metaKey
+    // // Shift e.shiftKey
+    // $(document).keydown(function(e){
+    //     console.log(e.keyCode + ',' + e.which + ',' + e.ctrlKey + ',' + e.shiftKey + ',' + e.metaKey);
+    // });
+    // var code = 13; //# Enterキー
+    // $(document).trigger(
+    //     jQuery.Event( 'keydown', { keyCode: code, which: code } )
+    // );
     //----- イベント登録 -----------------------------------------------
 });
 //----- ロード時、処理 -------------------------------------------------
